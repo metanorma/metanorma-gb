@@ -4,3 +4,9 @@ Gem for generating https://en.wikipedia.org/wiki/Guobiao_standards[Guibiao stand
 (Chinese national standards), using Asciidoc. This gem inherits from 
 https://github.com/riboseinc/asciidoctor-iso, a gem used to generate ISO standards
 using Asciidoc. The two standards formats are closely aligned.
+
+== Differences from asciidoctor-iso
+
+=== Document Attributes
+
+`:title-intro-zh:, :title-main-zh:, :title-part-zh:`:: These are the title introduction, main title, and part title in Chinese. (They replace their French counterparts in asciidoctor-iso.)
