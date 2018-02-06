@@ -2,10 +2,11 @@ require "asciidoctor"
 require "asciidoctor/gb/version"
 require "asciidoctor/gb/gbconvert"
 require "asciidoctor/iso/converter"
+require "pp"
 
 module Asciidoctor
   module Gb
-    GB_NAMESPACE = "https://www.calconnect.org/standards/csd"
+    GB_NAMESPACE = "http://riboseinc.com/gbstandard"
 
     # A {Converter} implementation that generates CSD output, and a document
     # schema encapsulation of the document for validation
@@ -48,7 +49,7 @@ module Asciidoctor
       end
 
       def title(node, xml)
-        ["en", "fr"].each do |lang|
+        ["en", "zh"].each do |lang|
           xml.title **{ language: lang } do |t|
             if node.attr("title-intro-#{lang}")
               t.title_intro { |t1| t1 << node.attr("title-intro-#{lang}") }
@@ -83,40 +84,32 @@ module Asciidoctor
         end
       end
 
-      def inline_quoted(node)
-        noko do |xml|
-          case node.type
-          when :emphasis then xml.em node.text
-          when :strong then xml.strong node.text
-          when :monospaced then xml.tt node.text
-          when :double then xml << "\"#{node.text}\""
-          when :single then xml << "'#{node.text}'"
-          when :superscript then xml.sup node.text
-          when :subscript then xml.sub node.text
-          when :asciimath then xml.stem node.text, **{ type: "AsciiMath" }
-          else
-            case node.role
-              # TODO localisedstring encoding for alt, deprecated
-            when "alt" then xml.admitted { |a| a << node.text }
-            when "deprecated" then xml.deprecates { |a| a << node.text }
-            when "domain" then xml.domain { |a| a << node.text }
-            when "strike" then xml.strike node.text
-            when "smallcap" then xml.smallcap node.text
-            else
-              xml << node.text
-            end
-          end
-        end.join
+      def termdef_cleanup(xmldoc)
+        termdef_unnest_cleanup(xmldoc)
+        termdef_stem_cleanup(xmldoc)
+        termdomain_cleanup(xmldoc)
+        termdefinition_cleanup(xmldoc)
+        termdef_style(xmldoc)
+        termdef_localisedstr(xmldoc)
       end
 
-      # TODO localisedstring encoding for preferred
-      def term_def_subclause_parse(attrs, xml, node)
-        xml.term **attr_code(attrs) do |xml_section|
-          xml_section.preferred { |name| name << node.title }
-          xml_section << node.content
+      def termdef_localisedstr(xmldoc)
+        xmldoc.xpath("//admitted | //deprecates | //preferred").each do |x|
+          en = Nokogiri::XML.fragment('<string lang="en"></string>')
+          zh = Nokogiri::XML.fragment('<string lang="zh"></string>')
+          x1 = x.dup
+          x.children.each { |c| en.child.add_child(c.remove) }
+          x1.children.each { |c| zh.child.add_child(c.remove) }
+          en.traverse do |c|
+            c.content = c.text.gsub(/\s*[\u4e00-\u9fff]+/, "").gsub(/^\s*/, "") if c.text? 
+          end
+          zh.traverse do |c| 
+            c.content = c.text.gsub(/\s*[a-z\u00c0-\u00d6\u00d8-\u00f0\u0100-\u0240]/i, "").gsub(/^\s*/, "")  if c.text? 
+          end
+          en.parent = x
+          zh.parent = x
         end
       end
-
 
 
     end
