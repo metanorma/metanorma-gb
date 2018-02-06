@@ -1,40 +1,113 @@
 <div class="coverpage">
 
+  <div class="coverpage-category">
+    <span class="category-1">ICS 35.40</span>
+    <span class="category-2">L 80</span>
+  </div>
+
   <div class="coverpage-logo">
-    <span>The Calendaring and Scheduling Consortium</span>
+    <!-- for GB, GB/T, GB/Z -->
+    <div class="coverpage-logo-gb-img"> </div>
+
+    <!-- for GB, GB/T -->
+    <span class="coverpage-logo-text">中华人民共和国国家标准</span>
+
+    <!-- for GB/Z -->
+    <!--
+    <span class="coverpage-logo-text">中华人民共和国国家标准化指导文件</span>
+    -->
+
+    <!-- for sector standards (XX, XX/T), XX is the sector code -->
+    <!--
+    <div class="coverpage-logo-XX-img"> </div>
+    <span class="coverpage-logo-text">中华人民共和国XX行业标准</span>
+    -->
+
+    <!-- for local standards (DB, DB/T),
+      - XX is the location code
+      - XXXX the name of location
+    -->
+    <!--
+    <div class="coverpage-logo-db-img"> </div>
+    <span class="coverpage-logo-text">XXXX 地方标准</span>
+    -->
   </div>
 
-  <div class="coverpage-tc-name">
-    <span>TC TECHCOMMITTEE</span>
-  </div>
-
-  <div class="coverpage-doc-identity">
+  <div class="coverpage-doc-identity-first">
     <div class="doc-number">
       <span class="docnumber">DOCNUMBER</span>
-      <span class="docnumber-separator">:</span>
+      <span class="docnumber-separator">-</span>
       <span class="docyear">DOCYEAR</span>
     </div>
 
-    <div class="coverpage-title">
+    <div class="coverpage-doc-relations">
+      <span class="supercedes">代替</span>
+      <!--
+      <span class="partially-supercedes">部分代替</span>
+      -->
+      <ul>
+        <li>GB/T XXXX-XXXX</li>
+        <li>GB/T YYYY-YYYY</li>
+      </ul>
+    </div>
+  </div>
+
+  <hr/>
+
+  <div class="coverpage-doc-identity-second">
+    <div class="coverpage-title-zh">
       <span class="title-first">DOCTITLE</span>
       <span class="title-second">DOCSUBTITLE</span>
+      <span class="title-third">DOCPARTTITLE</span>
+    </div>
+
+    <!-- for local standards (DB, DB/T), no en title -->
+    <div class="coverpage-title-en">
+      <span class="title-first">DOCTITLEEN</span>
+      <span class="title-second">DOCSUBTITLEEN</span>
+      <span class="title-third">DOCPARTTITLEEN</span>
+    </div>
+
+    <!-- for local standards (DB, DB/T), no relation to ISO standards -->
+    <!-- if related to ISO standards -->
+    <div class="coverpage-iso-relation">
+      <span class="openparen">（</span>
+      <span class="iso-document-code">ISODOCCODE</span>
+      <span class="iso-title-first">ISOTITLEFIRST</span>
+      <span class="iso-title-second">ISOTITLESECOND</span>
+      <span class="iso-title-third">ISOTITLETHIRD</span>
+      <span class="join">，</span>
+      <span class="iso-equivalence-code">NEQ | EQV | IDN</span>
+      <span class="closeparen">）</span>
     </div>
   </div>
 
   <div class="coverpage-stage-block">
-    <span class="coverpage-stage">DOCSTAGE Stage</span>
+    <span class="stage">DOCSTAGE Stage</span>
+    <span class="stage-if-draft">（征求意见稿）</span>
+    <span class="revsion-if-draft">（本稿完成日期：20XX年XX月）</span>
+    <span class="warning-if-draft">
+    在提交反馈意见时，请将您知道的相关专利连同支持文件一并附上
+    </span>
   </div>
 
-  <div class="coverpage-warning">
-    <span class="title">Warning for Drafts</span>
+  <div class="coverpage-dates">
+    <span class="date-publish">XXXX-XX-XX 发布</span>
+    <span class="date-active">XXXX-XX-XX 实施</span>
+  </div>
 
-    <p class="content">
-    This document is not a CalConnect Standard. It is distributed for review and
-    comment, and is subject to change without notice and may not be referred to as
-    a Standard. Recipients of this draft are invited to submit, with their
-    comments, notification of any relevant patent rights of which they are aware
-    and to provide supporting documentation.
-    </p>
+  <div class="coverpage-footer">
+    <!-- for GB standards -->
+    <span class="publisher-1">中华人民共和国国家质量监督检验检疫总局</span>
+    <span class="publisher-2">中国国家标准化管理委员会</span>
+
+    <!-- for sector, local standards, use the publisher's name -->
+    <!-- e.g., this is for GM standards -->
+    <!--
+    <span class="publisher-1">国家密码管理局</span>
+    -->
+
+    <span class="publisher-done">发布</span>
   </div>
 
 </div>
