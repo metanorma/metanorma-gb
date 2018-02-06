@@ -85,11 +85,7 @@ module Asciidoctor
       end
 
       def termdef_cleanup(xmldoc)
-        termdef_unnest_cleanup(xmldoc)
-        termdef_stem_cleanup(xmldoc)
-        termdomain_cleanup(xmldoc)
-        termdefinition_cleanup(xmldoc)
-        termdef_style(xmldoc)
+        super
         termdef_localisedstr(xmldoc)
       end
 
