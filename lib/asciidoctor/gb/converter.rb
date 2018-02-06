@@ -103,9 +103,11 @@ module Asciidoctor
             c.content = c.text.gsub(/\s*[a-z\u00c0-\u00d6\u00d8-\u00f0\u0100-\u0240]/i, "").gsub(/^\s*/, "")  if c.text? 
           end
           en.parent = x
+          x.add_child(" ")
           zh.parent = x
         end
       end
+
 
 
     end
