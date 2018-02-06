@@ -1,0 +1,6 @@
+= asciidoctor-gb
+
+Gem for generating https://en.wikipedia.org/wiki/Guobiao_standards[Guibiao standards]
+(Chinese national standards), using Asciidoc. This gem inherits from 
+https://github.com/riboseinc/asciidoctor-iso, a gem used to generate ISO standards
+using Asciidoc. The two standards formats are closely aligned.
