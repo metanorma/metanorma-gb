@@ -116,7 +116,7 @@ module Asciidoctor
       end
 
       def section(node)
-        a = { id: Utils::anchor_or_uuid(node) }
+        a = { id: Asciidoctor::ISO::Utils::anchor_or_uuid(node) }
         noko do |xml|
           case node.title
           when "引言" then
@@ -155,7 +155,7 @@ module Asciidoctor
             xml_abstract.title { |t| t << "前言" }
             content = node.content
             xml_abstract << content
-            text = Utils::flatten_rawtext(content).join("\n")
+            text = Asciidoctor::ISO::Utils::flatten_rawtext(content).join("\n")
             foreword_style(node, text)
           end
         end.join("\n")
