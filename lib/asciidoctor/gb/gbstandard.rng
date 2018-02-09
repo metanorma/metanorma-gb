@@ -80,8 +80,16 @@
       <optional>
         <ref name="version"/>
       </optional>
+      <ref name="foreword"/>
+      <ref name="introduction"/>
       <oneOrMore>
         <ref name="sections"/>
+      </oneOrMore>
+      <zeroOrMore>
+        <ref name="annex"/>
+      </zeroOrMore>
+      <oneOrMore>
+        <ref name="references"/>
       </oneOrMore>
     </element>
   </define>
