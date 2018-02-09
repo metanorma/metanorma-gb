@@ -10,19 +10,19 @@ module Asciidoctor
       end
 
       def title(isoxml, _out)
-        intro = isoxml.at(ns("//title[@language='zh']/title-intro"))
-        main = isoxml.at(ns("//title[@language='zh']/title-main"))
-        part = isoxml.at(ns("//title[@language='zh']/title-part"))
-        partnumber = isoxml.at(ns("//id/project-number/@part"))
+        intro = isoxml.at(ns("//title-intro[@language='zh']"))
+        main = isoxml.at(ns("//title-main[@language='zh']"))
+        part = isoxml.at(ns("//title-part[@language='zh']"))
+        partnumber = isoxml.at(ns("//project-number/@part"))
         main = compose_title(main, intro, part, partnumber)
         set_metadata(:doctitle, main)
       end
 
       def subtitle(isoxml, _out)
-        intro = isoxml.at(ns("//title[@language='en']/title-intro"))
-        main = isoxml.at(ns("//title[@language='en']/title-main"))
-        part = isoxml.at(ns("//title[@language='en']/title-part"))
-        partnumber = isoxml.at(ns("//id/project-number/@part"))
+        intro = isoxml.at(ns("//title-intro[@language='en]"))
+        main = isoxml.at(ns("//title-main[@language='en]"))
+        part = isoxml.at(ns("//title-part[@language='en]"))
+        partnumber = isoxml.at(ns("//project-number/@part"))
         main = compose_title(main, intro, part, partnumber)
         set_metadata(:docsubtitle, main)
       end
@@ -35,31 +35,39 @@ module Asciidoctor
 
       def figure_key(out)
         out.p do |p|
-          p.b { |b| b << "Key" }
+          p.b { |b| b << "Key" } # TODO: Chinese
         end
       end
 
       def formula_where(dl, out)
-        out.p { |p| p << "where" }
+        out.p { |p| p << "where" } # TODO: Chinese
         parse(dl, out)
       end
 
       def figure_get_or_make_dl(t)
         dl = t.at(".//dl")
         if dl.nil?
-          t.add_child("<p><b>Key</b></p><dl></dl>")
+          t.add_child("<p><b>Key</b></p><dl></dl>") # TODO: Chinese
           dl = t.at(".//dl")
         end
         dl
       end
 
-      def compose_title(main, intro, part, partnumber)
+def part_label(partnumber, lang)
+case lang
+when "en" then "Part #{partnumber}"
+when "zh" then "第#{partnumber}部"
+end
+end
+
+      def compose_title(main, intro, part, partnumber, lang)
         c = HTMLEntities.new
         main = c.encode(main.text, :hexadecimal)
         intro &&
           main = "#{c.encode(intro.text, :hexadecimal)}&nbsp;&mdash; #{main}"
+        plabel = part_label(partnumber, lang)
         part &&
-          main = "#{main}&nbsp;&mdash; 第#{partnumber}部: "\
+          main = "#{main}&nbsp;&mdash; #{plabel}: "\
           "#{c.encode(part.text, :hexadecimal)}"
         main
       end
@@ -76,7 +84,7 @@ module Asciidoctor
           gsub(/DOCSUBTITLE/, meta[:docsubtitle]).
           gsub(/SECRETARIAT/, meta[:secretariat]).
           gsub(/[ ]?DRAFTINFO/, meta[:draftinfo]).
-          gsub(/\[TERMREF\]\s*/, "[SOURCE: ").
+          gsub(/\[TERMREF\]\s*/, "[SOURCE: "). # TODO: Chinese
           gsub(/\s*\[\/TERMREF\]\s*/, "]").
           gsub(/\s*\[ISOSECTION\]/, ", 定义").
           gsub(/\s*\[MODIFICATION\]/, ", 改写 &mdash; ").
@@ -93,7 +101,7 @@ module Asciidoctor
         "本文件并没有规范性引用文件。"
 
       def norm_ref(isoxml, out)
-        q = "//sections/references[title = '规范性引用文件']"
+        q = "./*/references/references[title = '规范性引用文件']"
         f = isoxml.at(ns(q)) or return
         out.div do |div|
           clause_name("2.", "规范性引用文件", div, false)
@@ -103,7 +111,7 @@ module Asciidoctor
       end
 
       def bibliography(isoxml, out)
-        q = "//sections/references[title = '参考文献']"
+        q = "./*/references/references[title = '参考文献']"
         f = isoxml.at(ns(q)) or return
         page_break(out)
         out.div do |div|
@@ -146,7 +154,7 @@ module Asciidoctor
       end
 
       def introduction(isoxml, out)
-        f = isoxml.at(ns("//content[title = '引言']")) || return
+        f = isoxml.at(ns("//introduction")) || return
         title_attr = { class: "IntroTitle" }
         page_break(out)
         out.div **{ class: "Section3" } do |div|
@@ -162,7 +170,7 @@ module Asciidoctor
       end
 
       def foreword(isoxml, out)
-        f = isoxml.at(ns("//content[title = '前言']")) || return
+        f = isoxml.at(ns("//foreword")) || return
         page_break(out)
         out.div do |s|
           s.h1 **{ class: "ForewordTitle" } { |h1| h1 << "前言" }
@@ -172,14 +180,14 @@ module Asciidoctor
 
       def deprecated_term_parse(node, out)
         out.p **{ class: "AltTerms" } do |p|
-          p << "DEPRECATED: #{node.text}"
+          p << "DEPRECATED: #{node.text}" #TODO: Chinese
         end
       end
 
       def termexample_parse(node, out)
-        out.div **{ class: "注" } do |div|
+        out.div **{ class: "Note" } do |div|
           first = node.first_element_child
-          div.p **{ class: "注" } do |p|
+          div.p **{ class: "Note" } do |p|
             p << "示例:"
             insert_tab(p, 1)
             para_then_remainder(first, node, p)
@@ -200,7 +208,7 @@ module Asciidoctor
       }.freeze
 
       def initial_anchor_names(d)
-        introduction_names(d.at(ns("//content[title = '引言']")))
+        introduction_names(d.at(ns("//introduction")))
         section_names(d.at(ns("//clause[title = '范围']")), "1", 1)
         section_names(d.at(ns(
           "//references[title = '规范性引用文件']")), "2", 1)
@@ -332,10 +340,10 @@ module Asciidoctor
       end
 
       def reference_names(ref)
-        isopub = ref.at(ns("./publisher/affiliation[name = 'ISO']"))
+        isopub = ref.at(ns(ISO_PUBLISHER_XPATH))
         docid = ref.at(ns("./docidentifier"))
         return ref_names(ref) unless docid
-        date = ref.at(ns("./publisherdate"))
+        date = ref.at(ns("./date[@type = 'published']"))
         reference = format_ref(docid.text, isopub)
         reference += ": #{date.text}" if date && isopub
         @anchors[ref["id"]] = { xref: reference }

@@ -8,7 +8,7 @@ module Asciidoctor
   module Gb
     GB_NAMESPACE = "http://riboseinc.com/gbstandard"
 
-    # A {Converter} implementation that generates CSD output, and a document
+    # A {Converter} implementation that generates GB output, and a document
     # schema encapsulation of the document for validation
     class Converter < ISO::Converter
 
@@ -22,13 +22,15 @@ module Asciidoctor
         result << "</gb-standard>"
         result = textcleanup(result.flatten * "\n")
         ret1 = cleanup(Nokogiri::XML(result))
+        validate(ret1)
         ret1.root.add_namespace(nil, GB_NAMESPACE)
         ret1
       end
 
       def validate(doc)
         content_validate(doc)
-        schema_validate(doc, File.join(File.dirname(__FILE__), "gbstandard.rng"))
+        schema_validate(formattedstr_strip(doc.dup),
+                        File.join(File.dirname(__FILE__), "gbstandard.rng"))
       end
 
       def html_doc_path(file)
@@ -50,21 +52,26 @@ module Asciidoctor
 
       def title(node, xml)
         ["en", "zh"].each do |lang|
-          xml.title **{ language: lang } do |t|
-            if node.attr("title-intro-#{lang}")
-              t.title_intro { |t1| t1 << node.attr("title-intro-#{lang}") }
+          xml.title do |t|
+            at = { language: lang, format: "plain" }
+            node.attr("title-intro-#{lang}") and
+              t.title_intro **attr_code(at) do |t1|
+              t1 << node.attr("title-intro-#{lang}")
             end
-            t.title_main { |t1| t1 << node.attr("title-main-#{lang}") }
-            if node.attr("title-part-#{lang}")
-              t.title_part node.attr("title-part-#{lang}")
+            t.title_main **attr_code(at) do |t1|
+              t1 << node.attr("title-main-#{lang}")
+            end
+            node.attr("title-part-#{lang}") and
+              t.title_part **attr_code(at) do |t1|
+              t1 << node.attr("title-part-#{lang}")
             end
           end
         end
       end
 
       def title_intro_validate(root)
-        title_intro_en = root.at("//title[@language='en']/title-intro")
-        title_intro_zh = root.at("//title[@language='zh']/title-intro")
+        title_intro_en = root.at("//title-intro[@language='en']")
+        title_intro_zh = root.at("//title-intro[@language='zh']")
         if title_intro_en.nil? && !title_intro_zh.nil?
           warn "No English Title Intro!"
         end
@@ -74,12 +81,12 @@ module Asciidoctor
       end
 
       def title_part_validate(root)
-        title_part_en = root.at("//title[@language='en']/title-part")
-        title_part_fr = root.at("//title[@language='zh']/title-part")
-        if title_part_en.nil? && !title_part_fr.nil?
+        title_part_en = root.at("//title-part[@language='en']")
+        title_part_zh = root.at("//title-part[@language='zh']")
+        if title_part_en.nil? && !title_part_zh.nil?
           warn "No English Title Part!"
         end
-        if !title_part_en.nil? && title_part_fr.nil?
+        if !title_part_en.nil? && title_part_zh.nil?
           warn "No Chinese Title Part!"
         end
       end
@@ -108,6 +115,51 @@ module Asciidoctor
         end
       end
 
+      def section(node)
+        a = { id: Utils::anchor_or_uuid(node) }
+        noko do |xml|
+          case node.title
+          when "引言" then
+            if node.level == 1
+              introduction_parse(a, xml, node)
+            else
+              clause_parse(a, xml, node)
+            end
+          when "patent notice" then patent_notice_parse(xml, node)
+          when "范围" then scope_parse(a, xml, node)
+          when "规范性引用文件" then norm_ref_parse(a, xml, node)
+          when "术语和定义"
+            term_def_parse(a, xml, node, node.title.downcase)
+          when "terms, definitions, symbols and abbreviations" # TODO: Chinese
+            term_def_parse(a, xml, node, node.title.downcase)
+          when "符号、代号和缩略语"
+            symbols_parse(a, xml, node)
+          when "参考文献" then bibliography_parse(a, xml, node)
+          else
+            if @term_def
+              term_def_subclause_parse(a, xml, node)
+            elsif @biblio
+              bibliography_parse(a, xml, node)
+            elsif node.attr("style") == "appendix" && node.level == 1
+              annex_parse(a, xml, node)
+            else
+              clause_parse(a, xml, node)
+            end
+          end
+        end.join("\n")
+      end
+      
+      def preamble(node)
+        noko do |xml|
+          xml.foreword do |xml_abstract|
+            xml_abstract.title { |t| t << "前言" }
+            content = node.content
+            xml_abstract << content
+            text = Utils::flatten_rawtext(content).join("\n")
+            foreword_style(node, text)
+          end
+        end.join("\n")
+      end
 
 
     end
