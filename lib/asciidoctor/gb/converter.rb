@@ -51,6 +51,70 @@ module Asciidoctor
         )
       end
 
+      def metadata_author(node, xml)
+        xml.contributor do |c|
+          c.role **{ type: "author" }
+          c.organization do |a|
+            a.name "GB"
+          end
+        end
+      end
+
+      def metadata_publisher(node, xml)
+        xml.contributor do |c|
+          c.role **{ type: "publisher" }
+          c.organization do |a|
+            a.name "GB"
+          end
+        end
+      end
+
+      def metadata_copyright(node, xml)
+        from = node.attr("copyright-year") || Date.today.year
+        xml.copyright do |c|
+          c.from from
+          c.owner do |owner|
+            owner.organization do |o|
+              o.name "GB"
+            end
+          end
+        end
+      end
+
+      def metadata_committee(node, xml)
+        attrs = {type: node.attr("technical-committee-type") }
+        xml.gbcommittee **attr_code(attrs) do |a|
+          a << node.attr("technical-committee")
+        end
+      end
+
+      def metadata_equivalence(node, xml)
+        xml.gbequivalence { |a| a << node.attr("equivalence") }
+      end
+
+      def metadata_gbtype(node, xml)
+        xml.gbtype do |t| 
+          t.gbscope { |s| s << node.attr("scope") }
+          t.gbprefix { |p| p << node.attr("prefix") }
+          t.gbmandate { |m| m << node.attr("mandate") }
+        end
+      end
+
+      def metadata(node, xml)
+        title node, xml
+        metadata_id(node, xml)
+        metadata_author(node, xml)
+        metadata_publisher(node, xml)
+        xml.language "zh"
+        xml.script "Hans"
+        metadata_status(node, xml)
+        metadata_copyright(node, xml)
+        metadata_committee(node, xml)
+        metadata_equivalence(node, xml)
+        metadata_gbtype(node, xml)
+      end
+
+
       def title(node, xml)
         ["en", "zh"].each do |lang|
           xml.title do |t|
@@ -118,8 +182,8 @@ module Asciidoctor
           end
         end
       end
-      
-      
+
+
     end
   end
 end

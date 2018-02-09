@@ -28,6 +28,27 @@ module Asciidoctor
         set_metadata(:docsubtitle, main)
       end
 
+      def author(isoxml, _out)
+        gbcommittee = isoxml.at(ns("//bibdata/gbcommittee"))
+        set_metadata(:committee, gbcommittee.text)
+      end
+
+      def id(isoxml, _out)
+        super
+        gb_identifier(isoxml)
+      end
+
+      def gb_identifier(isoxml)
+        dn = get_metadata()[:docnumber]
+        gbscope = isoxml.at(ns("//gbscope"))
+        gbmandate = isoxml.at(ns("//gbmandate"))
+        gbprefix = isoxml.at(ns("//gbprefix"))
+        dn += "/T" if gbmandate == "recommended"
+        dn += "/Z" if gbmandate == "guide"
+        dn = "#{gbprefix.text} #{dn}"
+        set_metadata(:docidentifier, dn)
+      end
+
       def note_label(node)
         n = get_anchors()[node["id"]]
         return "注" if n.nil?
@@ -78,12 +99,10 @@ module Asciidoctor
         docxml.
           gsub(/DOCYEAR/, meta[:docyear]).
           gsub(/DOCNUMBER/, meta[:docnumber]).
-          gsub(/TCNUM/, meta[:tc]).
-          gsub(/SCNUM/, meta[:sc]).
-          gsub(/WGNUM/, meta[:wg]).
+          gsub(/DOCIDENTIFIER/, meta[:docidentifier]).
+          gsub(/COMMITTEE/, meta[:committee]).
           gsub(/DOCTITLE/, meta[:doctitle]).
           gsub(/DOCSUBTITLE/, meta[:docsubtitle]).
-          gsub(/SECRETARIAT/, meta[:secretariat]).
           gsub(/[ ]?DRAFTINFO/, meta[:draftinfo]).
           gsub(/\[TERMREF\]\s*/, "[SOURCE: "). # TODO: Chinese
           gsub(/\s*\[\/TERMREF\]\s*/, "]").

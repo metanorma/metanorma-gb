@@ -10,3 +10,8 @@ using Asciidoc. The two standards formats are closely aligned.
 === Document Attributes
 
 `:title-intro-zh:, :title-main-zh:, :title-part-zh:`:: These are the title introduction, main title, and part title in Chinese. (They replace their French counterparts in asciidoctor-iso.)
+`:technical-committee-type:`:: The type of the technical committee (`technical` or `provisional`).
+`:equivalence:`:: The relation of the GB standard to a corresponding ISO standard (`equivalent`, `identical`, `nonequivalent`).
+`:scope:`:: The scope of the GB standard (`national`, `sector`, `professional`, `local`, `enterprise`).
+`:mandate:`:: The mandate of the GB standard (`mandatory`, `recommended`, `guidelines`).
+`:prefix:`:: The prefix classifying the GB standard.
