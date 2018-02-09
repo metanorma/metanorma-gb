@@ -15,16 +15,16 @@ module Asciidoctor
         main = isoxml.at(ns("//title-main[@language='zh']"))
         part = isoxml.at(ns("//title-part[@language='zh']"))
         partnumber = isoxml.at(ns("//project-number/@part"))
-        main = compose_title(main, intro, part, partnumber)
+        main = compose_title(main, intro, part, partnumber, "zh")
         set_metadata(:doctitle, main)
       end
 
       def subtitle(isoxml, _out)
-        intro = isoxml.at(ns("//title-intro[@language='en]"))
-        main = isoxml.at(ns("//title-main[@language='en]"))
-        part = isoxml.at(ns("//title-part[@language='en]"))
+        intro = isoxml.at(ns("//title-intro[@language='en']"))
+        main = isoxml.at(ns("//title-main[@language='en']"))
+        part = isoxml.at(ns("//title-part[@language='en']"))
         partnumber = isoxml.at(ns("//project-number/@part"))
-        main = compose_title(main, intro, part, partnumber)
+        main = compose_title(main, intro, part, partnumber, "en")
         set_metadata(:docsubtitle, main)
       end
 

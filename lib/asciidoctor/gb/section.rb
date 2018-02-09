@@ -44,7 +44,7 @@ module Asciidoctor
           content = node.content
           xml_section << content
           introduction_style(node,
-                             Utils::flatten_rawtext(content).
+                             ISO::Utils::flatten_rawtext(content).
                              join("\n"))
         end
       end
@@ -55,7 +55,7 @@ module Asciidoctor
           xml_section.title { |t| t << "范围" }
           content = node.content
           xml_section << content
-          c = Utils::flatten_rawtext(content).join("\n")
+          c = ISO::Utils::flatten_rawtext(content).join("\n")
           scope_style(node, c)
         end
         @scope = false
@@ -107,6 +107,33 @@ module Asciidoctor
           end
         end.join("\n")
       end
+      
+    def normref_cleanup(xmldoc)
+        q = "//references[title = '规范性引用文件']"
+        r = xmldoc.at(q)
+        r.elements.each do |n|
+          n.remove unless ["title", "bibitem"].include? n.name
+        end
+      end
+
+      def normref_validate(root)
+        f = root.at("//references[title = '规范性引用文件']")
+        f.at("./references") and
+          warn "ISO style: normative references contains subsections"
+      end
+
+      def symbols_validate(root)
+        f = root.at("//clause[title = '符号、代号和缩略语']")
+        return if f.nil?
+        f.elements do |e|
+          unless e.name == "dl"
+            warn "ISO style: Symbols and Abbreviations can only contain "\
+              "a definition list"
+            return
+          end
+        end
+      end
+
 
       # spec of permissible section sequence
       SEQ = [
@@ -140,7 +167,6 @@ module Asciidoctor
       ]
 
       def sections_sequence_validate(root)
-        puts root
         f = root.xpath(" //foreword | //introduction | //sections/terms | "\
                        "//sections/clause | ./references | "\
                        "./annex")
