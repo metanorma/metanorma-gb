@@ -102,7 +102,7 @@ module Asciidoctor
         "本文件并没有规范性引用文件。"
 
       def norm_ref(isoxml, out)
-        q = "./*/references/references[title = '规范性引用文件']"
+        q = "./*/references[title = '规范性引用文件']"
         f = isoxml.at(ns(q)) or return
         out.div do |div|
           clause_name("2.", "规范性引用文件", div, false)
@@ -112,7 +112,7 @@ module Asciidoctor
       end
 
       def bibliography(isoxml, out)
-        q = "./*/references/references[title = '参考文献']"
+        q = "./*/references[title = '参考文献']"
         f = isoxml.at(ns(q)) or return
         page_break(out)
         out.div do |div|
