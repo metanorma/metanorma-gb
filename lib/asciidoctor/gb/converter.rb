@@ -97,22 +97,25 @@ module Asciidoctor
         termdef_localisedstr(xmldoc)
       end
 
+      ROMAN_TEXT = /\s*[a-z\u00c0-\u00d6\u00d8-\u00f0\u0100-\u0240]/i
+      CHINESE_TEXT = /\s*[\u4e00-\u9fff]+/
+
       def termdef_localisedstr(xmldoc)
-        xmldoc.xpath("//admitted | //deprecates | //preferred").each do |x|
-          en = Nokogiri::XML.fragment('<string lang="en"></string>')
-          zh = Nokogiri::XML.fragment('<string lang="zh"></string>')
-          x1 = x.dup
-          x.children.each { |c| en.child.add_child(c.remove) }
-          x1.children.each { |c| zh.child.add_child(c.remove) }
+        xmldoc.xpath("//admitted | //deprecates | //preferred").each do |zh|
+          # en = Nokogiri::XML.fragment(%{<#{x.name} lang="en"/>})
+          # zh = Nokogiri::XML.fragment(%{<#{x.name} lang="zh"/>})
+          en = zh.dup.remove
+          zh.after(en).after(" ")
+          zh["language"] = "zh"
+          en["language"] = "en"
           en.traverse do |c|
-            c.content = c.text.gsub(/\s*[\u4e00-\u9fff]+/, "").gsub(/^\s*/, "") if c.text? 
+            next unless c.text?
+            c.content = c.text.gsub(CHINESE_TEXT, "").gsub(/^\s*/, "")
           end
           zh.traverse do |c| 
-            c.content = c.text.gsub(/\s*[a-z\u00c0-\u00d6\u00d8-\u00f0\u0100-\u0240]/i, "").gsub(/^\s*/, "")  if c.text? 
+            next unless c.text?
+            c.content = c.text.gsub(ROMAN_TEXT, "").gsub(/^\s*/, "")
           end
-          en.parent = x
-          x.add_child(" ")
-          zh.parent = x
         end
       end
       
