@@ -3,7 +3,7 @@ require_relative "./xref_gen.rb"
 
 module Asciidoctor
   module Gb
-    # A {Converter} implementation that generates CSD output, and a document
+    # A {Converter} implementation that generates GB output, and a document
     # schema encapsulation of the document for validation
     class GbConvert < IsoDoc::Convert
       def initialize(options)
@@ -15,17 +15,25 @@ module Asciidoctor
         main = isoxml.at(ns("//title-main[@language='zh']"))
         part = isoxml.at(ns("//title-part[@language='zh']"))
         partnumber = isoxml.at(ns("//project-number/@part"))
-        main = compose_title(main, intro, part, partnumber, "zh")
-        set_metadata(:doctitle, main)
+        set_metadata(:docmaintitlezh, "XXXX")
+        set_metadata(:docsubtitlezh, "")
+        set_metadata(:docparttitlezh, "")
+        set_metadata(:docmaintitlezh, intro.text + "&mdash;") unless intro.nil?
+        set_metadata(:docsubtitlezh, main.text)
+        set_metadata(:docparttitlezh, "&mdash;#{part_label(partnumber, 'zh')}: #{part.text}") unless part.nil?
       end
 
       def subtitle(isoxml, _out)
+        set_metadata(:docmaintitleen, "XXXX")
+        set_metadata(:docsubtitleen, "")
+        set_metadata(:docparttitleen, "")
         intro = isoxml.at(ns("//title-intro[@language='en']"))
         main = isoxml.at(ns("//title-main[@language='en']"))
         part = isoxml.at(ns("//title-part[@language='en']"))
         partnumber = isoxml.at(ns("//project-number/@part"))
-        main = compose_title(main, intro, part, partnumber, "en")
-        set_metadata(:docsubtitle, main)
+        set_metadata(:docmaintitleen, intro.text + "&mdash;") unless intro.nil?
+        set_metadata(:docsubtitleen, main.text)
+        set_metadata(:docparttitleen, "&mdash;#{part_label(partnumber, 'en')}: #{part.text}") unless part.nil?
       end
 
       def author(isoxml, _out)
@@ -101,8 +109,12 @@ module Asciidoctor
           gsub(/DOCNUMBER/, meta[:docnumber]).
           gsub(/DOCIDENTIFIER/, meta[:docidentifier]).
           gsub(/COMMITTEE/, meta[:committee]).
-          gsub(/DOCTITLE/, meta[:doctitle]).
-          gsub(/DOCSUBTITLE/, meta[:docsubtitle]).
+          gsub(/DOCMAINTITLEZH/, meta[:docmaintitlezh]).
+          gsub(/DOCSUBTITLEZH/, meta[:docsubtitlezh]).
+          gsub(/DOCPARTTITLEZH/, meta[:docparttitlezh]).
+          gsub(/DOCMAINTITLEEN/, meta[:docmaintitleen]).
+          gsub(/DOCSUBTITLEEN/, meta[:docsubtitleen]).
+          gsub(/DOCPARTTITLEEN/, meta[:docparttitleen]).
           gsub(/[ ]?DRAFTINFO/, meta[:draftinfo]).
           gsub(/\[TERMREF\]\s*/, "[SOURCE: "). # TODO: Chinese
           gsub(/\s*\[\/TERMREF\]\s*/, "]").
@@ -238,6 +250,18 @@ module Asciidoctor
 
       def string_parse(node, out)
         node.children.each { |c| parse(c, out) }
+      end
+
+            def generate_header(filename, dir)
+        header = File.read(@header, encoding: "UTF-8").
+          gsub(/FILENAME/, filename).
+          gsub(/DOCYEAR/, get_metadata()[:docyear]).
+          gsub(/DOCIDENTIFIER/, get_metadata()[:docidentifier])
+        File.open("header.html", "w") do |f|
+          f.write(header)
+        end
+        system "cp #{File.join(File.dirname(__FILE__), "logo.png")} logo.png"
+        system "cp #{File.join(File.dirname(__FILE__), "footer.png")} footer.png"
       end
 
 
