@@ -161,6 +161,82 @@ module Asciidoctor
         end.join("\n")
       end
 
+      # spec of permissible section sequence
+      SEQ = [
+        {
+          msg: "Initial section must be (content) Foreword",
+          val:  [{ tag: "foreword", title: "前言" }],
+        },
+        {
+          msg: "Prefatory material must be followed by (clause) Scope",
+          val:  [{ tag: "introduction", title: "引言" },
+                 { tag: "clause", title: "范围" }],
+        },
+        {
+          msg: "Prefatory material must be followed by (clause) Scope",
+          val: [{ tag: "clause", title: "范围" }],
+        },
+        # we skip normative references, it goes to end of list
+        #{
+          #msg: "Scope must be followed by Normative References",
+          #val: [{ tag: "references", title: "Normative References" }]
+        #},
+        {
+          msg: "Normative References must be followed by "\
+          "Terms and Definitions",
+          val: [
+            { tag: "terms", title: "术语和定义" },
+            { tag: "terms",
+              title: "Terms, Definitions, Symbols and Abbreviations" } # TODO: Chinese
+          ]
+        },
+      ]
+
+      def sections_sequence_validate(root)
+        f = root.xpath(" //foreword | //introduction | //sections/terms | "\
+                       "//sections/clause | ./references | "\
+                       "./annex")
+        names = f.map { |s| { tag: s.name, title: s.at("./title").text } }
+        names = seqcheck(names, SEQ[0][:msg], SEQ[0][:val]) or return
+        n = names[0]
+        names = seqcheck(names, SEQ[1][:msg], SEQ[1][:val]) or return
+        if n == { tag: "introduction", title: "引言" }
+          names = seqcheck(names, SEQ[2][:msg], SEQ[2][:val]) or return
+        end
+        # names = seqcheck(names, SEQ[3][:msg], SEQ[3][:val]) or return
+        names = seqcheck(names, SEQ[3][:msg], SEQ[3][:val]) or return
+        n = names.shift
+        if n == { tag: "clause", title: "符号、代号和缩略语" }
+          n = names.shift or return
+        end
+        n[:tag] == "clause" or
+          warn "ISO style: Document must contain at least one clause"
+        n == { tag: "clause", title: "Scope" } and
+          warn "ISO style: Scope must occur before Terms and Definitions"
+        n = names.shift or return
+        while n[:tag] == "clause"
+          n[:title] == "范围" and
+            warn "ISO style: Scope must occur before Terms and Definitions"
+          n[:title] == "符号、代号和缩略语" and
+            warn "ISO style: Symbols and Abbreviations must occur "\
+            "right after Terms and Definitions"
+          n = names.shift or return
+        end
+        unless n[:tag] == "annex" or n[:tag] == "references"
+          warn "ISO style: Only annexes and references can follow clauses"
+        end
+        while n[:tag] == "annex"
+          n = names.shift or return
+        end
+        n == { tag: "references", title: "规范性引用文件" } or
+          warn "ISO style: Document must include (references) Normative References"
+        n = names.shift
+        n == { tag: "references", title: "参考文献" } or
+          warn "ISO style: Final section must be (references) Bibliography"
+        names.empty? or
+          warn "ISO style: There are sections after the final Bibliography"
+      end
+
 
     end
   end

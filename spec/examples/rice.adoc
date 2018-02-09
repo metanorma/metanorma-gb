@@ -32,7 +32,7 @@
 :table-caption: Table
 :example-caption: Figure
 
-.Foreword 
+.前言 
 ISO (the International Organization for Standardization) 
 is a worldwide federation of national standards bodies (ISO member bodies). The work of preparing International Standards is normally carried out through ISO technical committees. Each member body interested in a subject for which a technical committee has been established has the right to be represented on that committee. International organizations, governmental and non-governmental, in liaison with ISO, also take part in the work. ISO collaborates closely with the International Electrotechnical Commission (IEC) on all matters of electrotechnical standardization.
 
@@ -56,7 +56,7 @@ The main changes compared to the previous edition are:
 A list of all parts in the ISO {docnumber} series can be found on the ISO website. 
 
 :sectnums!:
-== Introduction 
+== 引言 
 
 This document was developed in response to worldwide demand for minimum specifications for rice traded internationally, since most commercial bulks of grain, which have not been screened or aspirated, contain a proportion of other grains, weed seeds, chaff, straw, stones, sand, etc. The vegetable materials can have physical and biological properties which differ from those of the main constituent and can therefore affect the storage behaviour. 
 
@@ -82,7 +82,7 @@ gehf@vacheequipment.fic
 Attention is drawn to the possibility that some of the elements of this document may be the subject of patent rights other than those identified above. ISO shall not be held responsible for identifying any or all such patent rights.
 
 :sectnums:
-== Scope 
+== 范围 
 
 This document specifies minimum requirements and test methods for rice (_Oryza sativa L._). 
 
@@ -91,7 +91,7 @@ It is applicable to husked rice, husked parboiled rice, milled rice and milled p
 It is not applicable to cooked rice products. 
 
 [bibliography]
-== Normative References 
+== 规范性引用文件 
 
 The following documents are referred to in the text in such a way that some or all of their content constitutes requirements of this document. For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments) applies. 
 
@@ -109,7 +109,7 @@ The following documents are referred to in the text in such a way that some or a
 
 * [[[ISO24333,ISO 24333:2009]]], _Cereals and cereal products -- Sampling_
 
-== Terms and Definitions 
+== 术语和定义 
 
 For the purposes of this document, the following terms and definitions apply. 
 
@@ -638,7 +638,7 @@ An interlaboratory test <<ref15>> was carried out by the ENR [Rice Research Cent
 |===
 
 [bibliography]
-== Bibliography 
+== 参考文献 
 
 * [[[ISO3696,ISO 3696]]], _Water for analytical laboratory use -- Specification and test methods_
 
