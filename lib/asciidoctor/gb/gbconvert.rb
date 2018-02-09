@@ -260,8 +260,9 @@ module Asciidoctor
         File.open("header.html", "w") do |f|
           f.write(header)
         end
-        system "cp #{File.join(File.dirname(__FILE__), "logo.png")} logo.png"
-        system "cp #{File.join(File.dirname(__FILE__), "footer.png")} footer.png"
+        system "cp #{File.join(File.dirname(__FILE__), File.join("html", "logo.png"))} logo.png"
+        system "cp #{File.join(File.dirname(__FILE__), File.join("html", "footer.png"))} footer.png"
+        system "cp #{File.join(File.dirname(__FILE__), File.join("html", "blank.png"))} blank.png"
       end
 
 
