@@ -679,6 +679,58 @@ p.a6, li.a6, div.a6
 	mso-ansi-language:EN-GB;
 	mso-fareast-language:JA;
 	font-weight:bold;}
+p.2, li.2, div.2
+	{mso-style-name:封面标准号2;
+	mso-style-unhide:no;
+	mso-style-parent:"";
+	margin-top:17.85pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	margin-bottom:.0001pt;
+	text-align:right;
+	line-height:14.0pt;
+	mso-line-height-rule:exactly;
+	mso-pagination:widow-orphan;
+	mso-element:frame;
+	mso-element-frame-width:457.0pt;
+	mso-element-frame-height:62.1pt;
+	mso-element-frame-hspace:14.2pt;
+	mso-element-wrap:around;
+	mso-element-anchor-vertical:page;
+	mso-element-anchor-horizontal:page;
+	mso-element-left:82.25pt;
+	mso-element-top:145.5pt;
+	mso-height-rule:exactly;
+	mso-element-anchor-lock:locked;
+	font-size:14.0pt;
+	font-family:SimHei;
+	mso-hansi-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	mso-ansi-language:EN-US;
+	mso-fareast-language:ZH-CN;}
+p.ad, li.ad, div.ad
+	{mso-style-name:段;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:"";
+	mso-style-link:"段 Char";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	text-indent:21.0pt;
+	mso-char-indent-count:2.0;
+	mso-pagination:widow-orphan;
+	tab-stops:center 210.05pt right dotted 464.9pt;
+	text-autospace:none;
+	font-size:10.5pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:SimSun;
+	mso-hansi-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";
+	mso-ansi-language:EN-US;
+	mso-fareast-language:ZH-CN;}
 span.FooterChar
 	{mso-style-name:"Footer Char";
 	mso-style-noshow:yes;
@@ -803,6 +855,7 @@ p.Tablebody, li.Tablebody, div.Tablebody
 	mso-header:url("file:///C:/Doc/FILENAME_files/header.html") h1;
 	mso-even-footer:url("file:///C:/Doc/FILENAME_files/header.html") ef1;
 	<!-- end if header present -->
+	layout-grid:15.6pt;
 	mso-paper-source:0;}
 div.WordSection1
 	{page:WordSection1;}
