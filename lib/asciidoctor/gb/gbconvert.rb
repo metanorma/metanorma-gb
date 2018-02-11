@@ -115,6 +115,8 @@ module Asciidoctor
           gsub(/DOCMAINTITLEEN/, meta[:docmaintitleen]).
           gsub(/DOCSUBTITLEEN/, meta[:docsubtitleen]).
           gsub(/DOCPARTTITLEEN/, meta[:docparttitleen]).
+          gsub(/PUBDATE/, meta[:publisheddate]).
+          gsub(/ACTIVEDATE/, meta[:activateddate]).
           gsub(/[ ]?DRAFTINFO/, meta[:draftinfo]).
           gsub(/\[TERMREF\]\s*/, "[SOURCE: "). # TODO: Chinese
           gsub(/\s*\[\/TERMREF\]\s*/, "]").

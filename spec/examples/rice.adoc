@@ -25,6 +25,8 @@
 :scope: sector
 :mandate: recommended
 :prefix: NY
+:published-date: 2016-01-02
+:activated-date: 2016-04-02
 :toc:
 :sectnumlevels: 7
 :stem:

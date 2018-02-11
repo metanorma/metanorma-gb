@@ -15,3 +15,5 @@ using Asciidoc. The two standards formats are closely aligned.
 `:scope:`:: The scope of the GB standard (`national`, `sector`, `professional`, `local`, `enterprise`).
 `:mandate:`:: The mandate of the GB standard (`mandatory`, `recommended`, `guidelines`).
 `:prefix:`:: The prefix classifying the GB standard.
+`:published-date`:: The date on which the GB standard was published.
+`:activated-date`:: The date on which the GB standard was activated.

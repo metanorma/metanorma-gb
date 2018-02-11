@@ -100,9 +100,17 @@ module Asciidoctor
         end
       end
 
+      def metadata_date(node, xml)
+        pubdate = node.attr("published-date")
+        activdate = node.attr("activated-date")
+        xml.date(pubdate, **{ type: "published" }) if pubdate
+        xml.date(activdate, **{ type: "activated" }) if activdate
+      end
+
       def metadata(node, xml)
         title node, xml
         metadata_id(node, xml)
+        metadata_date(node, xml)
         metadata_author(node, xml)
         metadata_publisher(node, xml)
         xml.language "zh"
