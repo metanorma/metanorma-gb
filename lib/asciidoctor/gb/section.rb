@@ -65,7 +65,7 @@ module Asciidoctor
       def section(node)
         a = { id: Asciidoctor::ISO::Utils::anchor_or_uuid(node) }
         noko do |xml|
-          case node.title
+          case node.title.downcase
           when "引言" then
             if node.level == 1
               introduction_parse(a, xml, node)
@@ -73,15 +73,14 @@ module Asciidoctor
               clause_parse(a, xml, node)
             end
           when "patent notice" then patent_notice_parse(xml, node)
-          when "范围" then scope_parse(a, xml, node)
-          when "规范性引用文件" then norm_ref_parse(a, xml, node)
-          when "术语和定义"
+          when "范围", "scope" then scope_parse(a, xml, node)
+          when "规范性引用文件", "normative references"
+          norm_ref_parse(a, xml, node)
+          when "术语和定义", "terms and definitions"
             term_def_parse(a, xml, node, node.title.downcase)
-          when "terms, definitions, symbols and abbreviations" # TODO: Chinese
-            term_def_parse(a, xml, node, node.title.downcase)
-          when "符号、代号和缩略语"
+          when "符号、代号和缩略语", "symbols and abbreviated terms"
             symbols_parse(a, xml, node)
-          when "参考文献" then bibliography_parse(a, xml, node)
+          when "参考文献", "bibliography" then bibliography_parse(a, xml, node)
           else
             if @term_def
               term_def_subclause_parse(a, xml, node)

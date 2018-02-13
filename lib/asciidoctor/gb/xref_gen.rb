@@ -7,22 +7,22 @@ module Asciidoctor
     class GbConvert < IsoDoc::Convert
           def initial_anchor_names(d)
         introduction_names(d.at(ns("//introduction")))
-        section_names(d.at(ns("//clause[title = '范围']")), "1", 1)
+        section_names(d.at(ns("//clause[title = '范围' or title = 'Scope']")), "1", 1)
         section_names(d.at(ns(
-          "//references[title = '规范性引用文件']")), "2", 1)
+          "//references[title = '规范性引用文件' or title = 'Normative References']")), "2", 1)
         section_names(d.at(ns("//terms")), "3", 1)
         middle_section_asset_names(d)
       end
 
       def middle_section_asset_names(d)
-        middle_sections = "//clause[title = '范围'] | "\
-          "//references[title = '规范性引用文件'] | //terms | "\
+        middle_sections = "//clause[title = '范围' or title = 'Scope'] | "\
+          "//references[title = '规范性引用文件' or title = 'Normative References'] | //terms | "\
           "//symbols-abbrevs | //clause[parent::sections]"
         sequential_asset_names(d.xpath(ns(middle_sections)))
       end
 
       def clause_names(docxml,sect_num)
-        q = "//clause[parent::sections][not(xmlns:title = '范围')]"
+        q = "//clause[parent::sections][not(xmlns:title = '范围') and not (xmlns:title = 'Scope')]"
         docxml.xpath(ns(q)).each_with_index do |c, i|
           section_names(c, (i + sect_num).to_s, 1)
         end
