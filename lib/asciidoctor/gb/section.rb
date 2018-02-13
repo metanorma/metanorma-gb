@@ -180,7 +180,11 @@ module Asciidoctor
         names = seqcheck(names, SEQ[3][:msg], SEQ[3][:val]) or return
         n = names.shift
         if n == { tag: "clause", title: "符号、代号和缩略语" }
-          n = names.shift or return
+          n = names.shift
+        end
+       unless n
+          warn "ISO style: Document must contain at least one clause"
+          return
         end
         n[:tag] == "clause" or
           warn "ISO style: Document must contain at least one clause"
