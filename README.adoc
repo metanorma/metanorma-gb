@@ -1,5 +1,9 @@
 = asciidoctor-gb
 
+image:https://img.shields.io/gem/v/asciidoctor-gb.svg["Gem Version", link="https://rubygems.org/gems/asciidoctor-gb"]
+image:https://img.shields.io/travis/riboseinc/asciidoctor-gb/master.svg["Build Status", link="https://travis-ci.org/riboseinc/asciidoctor-gb"]
+image:https://codeclimate.com/github/riboseinc/asciidoctor-gb/badges/gpa.svg["Code Climate", link="https://codeclimate.com/github/riboseinc/asciidoctor-gb"]
+
 Gem for generating https://en.wikipedia.org/wiki/Guobiao_standards[Guibiao standards]
 (Chinese national standards), using Asciidoc. This gem inherits from 
 https://github.com/riboseinc/asciidoctor-iso, a gem used to generate ISO standards
