@@ -21,3 +21,37 @@ using Asciidoc. The two standards formats are closely aligned.
 `:prefix:`:: The prefix classifying the GB standard.
 `:published-date`:: The date on which the GB standard was published.
 `:activated-date`:: The date on which the GB standard was activated.
+
+=== Language macros
+
+In Terms and Definitions, preferred terms, alternate terms and deprecated
+terms are expected to be given in both Chinese and English. By default,
+the gem does this by detecting space-delimited runs of Han or Latin script
+text:
+
+[source,asciidoc]
+--
+[alt]#rough rice 糙米#
+--
+
+[source,xml]
+--
+<admitted language="zh">糙米</admitted> <admitted language="en">rough rice</admitted>
+--
+
+However if there is script mixing in a term -- if the Chinese term contains
+a Latin script acronym or a mathematical expression, for example -- the
+Chinese term will not be detected correctly. To address this, the macros
++`[zh]#...#`+ and +`[en]#...#`+ are used. If they are present, then the content
+of those macros is treated as the Chinese and English equivalents of the
+parent node instead:
+
+[source,asciidoc]
+--
+=== [en]#XYZ paddy# [zh]#水稻XYZ#
+--
+
+[source,xml]
+--
+<preferred language="en">XYZ paddy</preferred> <preferred language="zh">水稻XYZ</preferred>
+--
