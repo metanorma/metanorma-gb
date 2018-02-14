@@ -90,18 +90,6 @@ module Asciidoctor
         end
       end
 
-      def compose_title(main, intro, part, partnumber, lang)
-        c = HTMLEntities.new
-        main = c.encode(main.text, :hexadecimal)
-        intro &&
-          main = "#{c.encode(intro.text, :hexadecimal)}&nbsp;&mdash; #{main}"
-        plabel = part_label(partnumber, lang)
-        part &&
-          main = "#{main}&nbsp;&mdash; #{plabel}: "\
-          "#{c.encode(part.text, :hexadecimal)}"
-        main
-      end
-
       def populate_template(docxml)
         meta = get_metadata
         docxml.
