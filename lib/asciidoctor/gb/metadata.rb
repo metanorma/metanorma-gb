@@ -6,14 +6,21 @@ module Asciidoctor
     # A {Converter} implementation that generates GB output, and a document
     # schema encapsulation of the document for validation
     class GbConvert < IsoDoc::Convert
+      def init_metadata
+        super
+        set_metadata(:docmaintitlezh, "XXXX")
+        set_metadata(:docsubtitlezh, "")
+        set_metadata(:docparttitlezh, "")
+        set_metadata(:docmaintitleen, "XXXX")
+        set_metadata(:docsubtitleen, "")
+        set_metadata(:docparttitleen, "")
+      end
+
       def title(isoxml, _out)
         intro = isoxml.at(ns("//title-intro[@language='zh']"))
         main = isoxml.at(ns("//title-main[@language='zh']"))
         part = isoxml.at(ns("//title-part[@language='zh']"))
         partnumber = isoxml.at(ns("//project-number/@part"))
-        set_metadata(:docmaintitlezh, "XXXX")
-        set_metadata(:docsubtitlezh, "")
-        set_metadata(:docparttitlezh, "")
         set_metadata(:docmaintitlezh, intro.text + "&mdash;") unless intro.nil?
         set_metadata(:docsubtitlezh, main.text)
         partnum = partnumber ? "#{part_label(partnumber, 'zh')}: " : ""
@@ -21,9 +28,6 @@ module Asciidoctor
       end
 
       def subtitle(isoxml, _out)
-        set_metadata(:docmaintitleen, "XXXX")
-        set_metadata(:docsubtitleen, "")
-        set_metadata(:docparttitleen, "")
         intro = isoxml.at(ns("//title-intro[@language='en']"))
         main = isoxml.at(ns("//title-main[@language='en']"))
         part = isoxml.at(ns("//title-part[@language='en']"))
