@@ -63,6 +63,7 @@ module Asciidoctor
 
     def clause(isoxml, out)
       isoxml.xpath(ns("//clause[parent::sections]")).each do |c|
+      puts c.at(ns("./title")).text
         next if c.at(ns("./title")).text == "范围"
         out.div **attr_code(id: c["id"]) do |s|
           c.elements.each do |c1|
