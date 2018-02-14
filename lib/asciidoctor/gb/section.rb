@@ -61,23 +61,6 @@ module Asciidoctor
         @scope = false
       end
 
-    def clause(isoxml, out)
-      isoxml.xpath(ns("//clause[parent::sections]")).each do |c|
-      puts c.at(ns("./title")).text
-        next if c.at(ns("./title")).text == "范围"
-        out.div **attr_code(id: c["id"]) do |s|
-          c.elements.each do |c1|
-            if c1.name == "title"
-              clause_name("#{get_anchors()[c['id']][:label]}.",
-                          c1.text, s, c["inline-header"])
-            else
-              parse(c1, s)
-            end
-          end
-        end
-      end
-    end
-
       def section(node)
         a = { id: Asciidoctor::ISO::Utils::anchor_or_uuid(node) }
         noko do |xml|

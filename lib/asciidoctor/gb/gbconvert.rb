@@ -200,6 +200,22 @@ module Asciidoctor
         end
       end
 
+    def clause(isoxml, out)
+      isoxml.xpath(ns("//clause[parent::sections]")).each do |c|
+        next if c.at(ns("./title")).text == "范围"
+        out.div **attr_code(id: c["id"]) do |s|
+          c.elements.each do |c1|
+            if c1.name == "title"
+              clause_name("#{get_anchors()[c['id']][:label]}.",
+                          c1.text, s, c["inline-header"])
+            else
+              parse(c1, s)
+            end
+          end
+        end
+      end
+    end
+
       def deprecated_term_parse(node, out)
         out.p **{ class: "AltTerms" } do |p|
           p << "DEPRECATED: #{node.text}" #TODO: Chinese
