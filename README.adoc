@@ -21,6 +21,8 @@ using Asciidoc. The two standards formats are closely aligned.
 `:prefix:`:: The prefix classifying the GB standard.
 `:published-date`:: The date on which the GB standard was published.
 `:activated-date`:: The date on which the GB standard was activated.
+`:library-ics`:: The international categorisation number for the GB standard
+`:library-l`:: The L-identifier (library) for the GB standard
 
 === Language macros
 

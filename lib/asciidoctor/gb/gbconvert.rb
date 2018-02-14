@@ -1,5 +1,6 @@
 require "isodoc"
 require_relative "./xref_gen.rb"
+require_relative "./metadata.rb"
 
 module Asciidoctor
   module Gb
@@ -8,53 +9,6 @@ module Asciidoctor
     class GbConvert < IsoDoc::Convert
       def initialize(options)
         super
-      end
-
-      def title(isoxml, _out)
-        intro = isoxml.at(ns("//title-intro[@language='zh']"))
-        main = isoxml.at(ns("//title-main[@language='zh']"))
-        part = isoxml.at(ns("//title-part[@language='zh']"))
-        partnumber = isoxml.at(ns("//project-number/@part"))
-        set_metadata(:docmaintitlezh, "XXXX")
-        set_metadata(:docsubtitlezh, "")
-        set_metadata(:docparttitlezh, "")
-        set_metadata(:docmaintitlezh, intro.text + "&mdash;") unless intro.nil?
-        set_metadata(:docsubtitlezh, main.text)
-        set_metadata(:docparttitlezh, "&mdash;#{part_label(partnumber, 'zh')}: #{part.text}") unless part.nil?
-      end
-
-      def subtitle(isoxml, _out)
-        set_metadata(:docmaintitleen, "XXXX")
-        set_metadata(:docsubtitleen, "")
-        set_metadata(:docparttitleen, "")
-        intro = isoxml.at(ns("//title-intro[@language='en']"))
-        main = isoxml.at(ns("//title-main[@language='en']"))
-        part = isoxml.at(ns("//title-part[@language='en']"))
-        partnumber = isoxml.at(ns("//project-number/@part"))
-        set_metadata(:docmaintitleen, intro.text + "&mdash;") unless intro.nil?
-        set_metadata(:docsubtitleen, main.text)
-        set_metadata(:docparttitleen, "&mdash;#{part_label(partnumber, 'en')}: #{part.text}") unless part.nil?
-      end
-
-      def author(isoxml, _out)
-        gbcommittee = isoxml.at(ns("//bibdata/gbcommittee"))
-        set_metadata(:committee, gbcommittee.text)
-      end
-
-      def id(isoxml, _out)
-        super
-        gb_identifier(isoxml)
-      end
-
-      def gb_identifier(isoxml)
-        dn = get_metadata()[:docnumber]
-        gbscope = isoxml.at(ns("//gbscope"))
-        gbmandate = isoxml.at(ns("//gbmandate"))
-        gbprefix = isoxml.at(ns("//gbprefix"))
-        dn += "/T" if gbmandate == "recommended"
-        dn += "/Z" if gbmandate == "guide"
-        dn = "#{gbprefix.text} #{dn}"
-        set_metadata(:docidentifier, dn)
       end
 
       def note_label(node)
@@ -81,36 +35,6 @@ module Asciidoctor
           dl = t.at(".//dl")
         end
         dl
-      end
-
-      def part_label(partnumber, lang)
-        case lang
-        when "en" then "Part #{partnumber}"
-        when "zh" then "第#{partnumber}部"
-        end
-      end
-
-      def populate_template(docxml)
-        meta = get_metadata
-        docxml.
-          gsub(/DOCYEAR/, meta[:docyear]).
-          gsub(/DOCNUMBER/, meta[:docnumber]).
-          gsub(/DOCIDENTIFIER/, meta[:docidentifier]).
-          gsub(/COMMITTEE/, meta[:committee]).
-          gsub(/DOCMAINTITLEZH/, meta[:docmaintitlezh]).
-          gsub(/DOCSUBTITLEZH/, meta[:docsubtitlezh]).
-          gsub(/DOCPARTTITLEZH/, meta[:docparttitlezh]).
-          gsub(/DOCMAINTITLEEN/, meta[:docmaintitleen]).
-          gsub(/DOCSUBTITLEEN/, meta[:docsubtitleen]).
-          gsub(/DOCPARTTITLEEN/, meta[:docparttitleen]).
-          gsub(/PUBDATE/, meta[:publisheddate]).
-          gsub(/ACTIVEDATE/, meta[:activateddate]).
-          gsub(/[ ]?DRAFTINFO/, meta[:draftinfo]).
-          gsub(/\[TERMREF\]\s*/, "[SOURCE: "). # TODO: Chinese
-          gsub(/\s*\[\/TERMREF\]\s*/, "]").
-          gsub(/\s*\[ISOSECTION\]/, ", 定义").
-          gsub(/\s*\[MODIFICATION\]/, ", 改写 &mdash; ").
-          gsub(%r{WD/CD/DIS/FDIS}, meta[:stageabbr])
       end
 
       NORM_WITH_REFS_PREF = <<~BOILERPLATE
@@ -200,21 +124,21 @@ module Asciidoctor
         end
       end
 
-    def clause(isoxml, out)
-      isoxml.xpath(ns("//clause[parent::sections]")).each do |c|
-        next if c.at(ns("./title")).text == "范围"
-        out.div **attr_code(id: c["id"]) do |s|
-          c.elements.each do |c1|
-            if c1.name == "title"
-              clause_name("#{get_anchors()[c['id']][:label]}.",
-                          c1.text, s, c["inline-header"])
-            else
-              parse(c1, s)
+      def clause(isoxml, out)
+        isoxml.xpath(ns("//clause[parent::sections]")).each do |c|
+          next if c.at(ns("./title")).text == "范围"
+          out.div **attr_code(id: c["id"]) do |s|
+            c.elements.each do |c1|
+              if c1.name == "title"
+                clause_name("#{get_anchors()[c['id']][:label]}.",
+                            c1.text, s, c["inline-header"])
+              else
+                parse(c1, s)
+              end
             end
           end
         end
       end
-    end
 
       def deprecated_term_parse(node, out)
         out.p **{ class: "AltTerms" } do |p|
@@ -233,18 +157,6 @@ module Asciidoctor
         end
       end
 
-      STAGE_ABBRS = {
-        "00": "PWI",
-        "10": "NWIP",
-        "20": "WD",
-        "30": "CD",
-        "40": "DIS",
-        "50": "FDIS",
-        "60": "IS",
-        "90": "(Review)",
-        "95": "(Withdrawal)",
-      }.freeze
-
       def error_parse(node, out)
         # catch elements not defined in ISO
         case node.name
@@ -258,7 +170,7 @@ module Asciidoctor
         node.children.each { |c| parse(c, out) }
       end
 
-            def generate_header(filename, dir)
+      def generate_header(filename, dir)
         header = File.read(@header, encoding: "UTF-8").
           gsub(/FILENAME/, filename).
           gsub(/DOCYEAR/, get_metadata()[:docyear]).
@@ -270,8 +182,6 @@ module Asciidoctor
         system "cp #{File.join(File.dirname(__FILE__), File.join("html", "footer.png"))} footer.png"
         system "cp #{File.join(File.dirname(__FILE__), File.join("html", "blank.png"))} blank.png"
       end
-
-
     end
   end
 end

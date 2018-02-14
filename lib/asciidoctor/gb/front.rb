@@ -57,6 +57,17 @@ module Asciidoctor
         xml.date(activdate, **{ type: "activated" }) if activdate
       end
 
+      def metadata_gblibraryids(node, xml)
+        ics = node.attr("library-ics")
+        l = node.attr("library-l")
+        if ics || l
+          xml.gblibraryids do |g|
+            xml.ics ics if ics
+            xml.l l if l
+          end
+        end
+      end
+
       def metadata(node, xml)
         title node, xml
         metadata_id(node, xml)
@@ -70,8 +81,8 @@ module Asciidoctor
         metadata_committee(node, xml)
         metadata_equivalence(node, xml)
         metadata_gbtype(node, xml)
+        metadata_gblibraryids(node, xml)
       end
-
 
       def title(node, xml)
         ["en", "zh"].each do |lang|
