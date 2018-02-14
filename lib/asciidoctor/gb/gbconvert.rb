@@ -147,7 +147,6 @@ module Asciidoctor
 
       def scope(isoxml, out)
         f = isoxml.at(ns("//clause[title = '范围']")) || return
-        puts "SCOPE"
         out.div do |div|
           clause_name("1", "范围", div, false)
           f.elements.each do |e|
@@ -168,7 +167,6 @@ module Asciidoctor
 
       def symbols_abbrevs(isoxml, out)
         f = isoxml.at(ns("//symbols-abbrevs")) || return
-        puts "SUMBBR"
         out.div do |div|
           clause_name("4", "符号、代号和缩略语", div, false)
           f.elements.each do |e|
