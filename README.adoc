@@ -9,16 +9,21 @@ Gem for generating https://en.wikipedia.org/wiki/Guobiao_standards[Guibiao stand
 https://github.com/riboseinc/asciidoctor-iso, a gem used to generate ISO standards
 using Asciidoc. The two standards formats are closely aligned.
 
+The Gem can also be used to generate Chinese local or sector standards, which have the 
+same format; the gem formats the title page to have the correct metadata displayed.
+
 == Differences from asciidoctor-iso
 
 === Document Attributes
+
+In the following, "GB standard" should be read to refer to any Chinese national, sector or local standard.
 
 `:title-intro-zh:, :title-main-zh:, :title-part-zh:`:: These are the title introduction, main title, and part title in Chinese. (They replace their French counterparts in asciidoctor-iso.)
 `:technical-committee-type:`:: The type of the technical committee (`technical` or `provisional`).
 `:equivalence:`:: The relation of the GB standard to a corresponding ISO standard (`equivalent`, `identical`, `nonequivalent`).
 `:scope:`:: The scope of the GB standard (`national`, `sector`, `professional`, `local`, `enterprise`).
 `:mandate:`:: The mandate of the GB standard (`mandatory`, `recommended`, `guidelines`).
-`:prefix:`:: The prefix classifying the GB standard.
+`:prefix:`:: The prefix classifying the GB standard. (Refer to https://github.com/riboseinc/gbdoc/blob/master/models/gb-standard-national-prefix.adoc, https://github.com/riboseinc/gbdoc/blob/master/models/gb-standard-sector-prefix.adoc, https://github.com/riboseinc/gbdoc/blob/master/models/gb-standard-local-prefix.adoc.)
 `:published-date`:: The date on which the GB standard was published.
 `:activated-date`:: The date on which the GB standard was activated.
 `:library-ics`:: The international categorisation number for the GB standard

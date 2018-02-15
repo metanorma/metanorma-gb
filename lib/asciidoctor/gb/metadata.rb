@@ -48,15 +48,25 @@ module Asciidoctor
         gb_library_identifier(isoxml)
       end
 
+      def docidentifier(gbscope, gbprefix, gbmandate)
+        docnum = get_metadata()[:docnumber]
+        dn = if gbscope == "local"
+               "DB#{mandate_suffix(gbprefix, gbmandate)}/#{docnum}".
+                 gsub(%r{/([TZ])/}, "/\\1 ")
+             else
+               "#{mandate_suffix(gbprefix, gbmandate)} #{docnum}"
+             end
+        set_metadata(:docidentifier, dn)
+      end
+
       def gb_identifier(isoxml)
         gbscope = isoxml.at(ns("//gbscope"))&.text || "national"
         gbmandate = isoxml.at(ns("//gbmandate"))&.text || "mandatory"
         gbprefix = isoxml.at(ns("//gbprefix"))&.text || "XXX"
-        dn = "#{mandate_suffix(gbprefix, gbmandate)} #{get_metadata()[:docnumber]}"
-        set_metadata(:docidentifier, dn)
+        docidentifier(gbscope, gbprefix, gbmandate)
         set_metadata(:standard_class, standard_class(gbscope, gbprefix, gbmandate))
         set_metadata(:standard_agency, standard_agency(gbscope, gbprefix, gbmandate))
-        set_metadata(:gbprefix, gbprefix)
+        set_metadata(:gbprefix, gbscope == "local" ? "DB" : gbprefix)
       end
 
       def standard_logo(gbprefix)

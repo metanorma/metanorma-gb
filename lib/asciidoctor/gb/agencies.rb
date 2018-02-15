@@ -123,6 +123,14 @@ module Asciidoctor
         "82": "澳门特别行政区",
       }.freeze
 
+      def gb_mandate_suffix(prefix, mandate)
+        if prefix == "GB"
+          prefix += "/T" if mandate == "recommended"
+          prefix += "/Z" if mandate == "guide"
+        end
+        prefix
+      end
+
       def mandate_suffix(prefix, mandate)
         if prefix == "GB"
           prefix += "/T" if mandate == "recommended"
@@ -134,13 +142,13 @@ module Asciidoctor
       def standard_class(scope, prefix, mandate)
         case scope
         when "national"
-          NATIONAL[mandate_suffix(prefix, mandate).to_sym][:name]
+          NATIONAL[gb_mandate_suffix(prefix, mandate).to_sym][:name]
         when "sector"
           "中华人民共和国#{SECTOR[prefix.to_sym][:industry]}行业标准"
         when "professional" # TODO
           "PROFESSIONAL STANDARD"
-        when "local" # TODO
-          "LOCAL STANDARD"
+        when "local"
+          "#{LOCAL[prefix.to_sym]}地方标准"
         when "enterprise" # TODO
           "ENTERPRISE STANDARD"
         end
@@ -149,13 +157,13 @@ module Asciidoctor
       def standard_agency(scope, prefix, mandate)
         case scope
         when "national"
-          NATIONAL[mandate_suffix(prefix, mandate).to_sym][:admin]
+          NATIONAL[gb_mandate_suffix(prefix, mandate).to_sym][:admin]
         when "sector"
           SECTOR[prefix.to_sym][:admin]
         when "professional" # TODO
           "PROFESSIONAL STANDARD"
-        when "local" # TODO
-          "LOCAL STANDARD"
+        when "local"
+          "#{LOCAL[prefix.to_sym]}质量技术检测局"
         when "enterprise" # TODO
           "ENTERPRISE STANDARD"
         end
