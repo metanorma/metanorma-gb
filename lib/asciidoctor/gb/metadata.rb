@@ -49,14 +49,28 @@ module Asciidoctor
       end
 
       def gb_identifier(isoxml)
-        dn = get_metadata()[:docnumber]
         gbscope = isoxml.at(ns("//gbscope"))&.text || "national"
         gbmandate = isoxml.at(ns("//gbmandate"))&.text || "mandatory"
         gbprefix = isoxml.at(ns("//gbprefix"))&.text || "XXX"
-        dn = "#{mandate_suffix(gbprefix, gbmandate)} #{dn}"
+        dn = "#{mandate_suffix(gbprefix, gbmandate)} #{get_metadata()[:docnumber]}"
         set_metadata(:docidentifier, dn)
         set_metadata(:standard_class, standard_class(gbscope, gbprefix, gbmandate))
         set_metadata(:standard_agency, standard_agency(gbscope, gbprefix, gbmandate))
+        set_metadata(:gbprefix, gbprefix)
+      end
+
+      def standard_logo(gbprefix)
+        case gbprefix.downcase
+        when "db" then "html/gb-standard-db"
+        when "gb" then "html/gb-standard-gb"
+        when "gjb" then "html/gb-standard-gjb"
+        when "gjb" then "html/gb-standard-gjb"
+        when "gm" then "html/gb-standard-gm"
+        when "jjf" then "html/gb-standard-jjf"
+        when "zb" then "html/gb-standard-zb"
+        else
+          nil
+        end
       end
 
       def gb_library_identifier(isoxml)
@@ -73,8 +87,20 @@ module Asciidoctor
         end
       end
 
-      def populate_template(docxml)
+      def format_logo(prefix, format)
+        logo = standard_logo(prefix)
+        if logo.nil?
+          "<span style='font-size:36pt;font-weight:bold'>#{prefix}</span>"
+        else
+          logo += (format == :html ? ".png" : ".svg")
+          system "cp #{File.join(File.dirname(__FILE__), File.join("html", logo))} #{logo}"
+          logo
+        end
+      end
+
+      def populate_template(docxml, format)
         meta = get_metadata
+        logo = format_logo(meta[:gbprefix], format)
         docxml.
           gsub(/DOCYEAR/, meta[:docyear]).
           gsub(/DOCNUMBER/, meta[:docnumber]).
@@ -93,6 +119,7 @@ module Asciidoctor
           gsub(/STANDARD_CLASS/, meta[:standard_class]).
           gsub(/STANDARD_AGENCY/, meta[:standard_agency]).
           gsub(/LIBRARYID_L/, meta[:libraryid_l]).
+          gsub(/STANDARD_LOGO/, logo).
           gsub(/[ ]?DRAFTINFO/, meta[:draftinfo]).
           gsub(/\[TERMREF\]\s*/, "[SOURCE: "). # TODO: Chinese
           gsub(/\s*\[\/TERMREF\]\s*/, "]").
@@ -112,15 +139,6 @@ module Asciidoctor
         "90": "(Review)",
         "95": "(Withdrawal)",
       }.freeze
-
-=begin
-GB: 中华人民共和国{国家}标准
-AQ: 中华人民共和国{安全生产}[行业]标准
-GM: 中华人民共和国{密码}[行业]标准
-
-INDUSTRY standard
-=end
-
     end
   end
 end

@@ -180,7 +180,7 @@ module Asciidoctor
           f.write(header)
         end
         system "cp #{File.join(File.dirname(__FILE__), File.join("html", "logo.png"))} logo.png"
-        system "cp #{File.join(File.dirname(__FILE__), File.join("html", "footer.png"))} footer.png"
+        # system "cp #{File.join(File.dirname(__FILE__), File.join("html", "footer.png"))} footer.png"
         system "cp #{File.join(File.dirname(__FILE__), File.join("html", "blank.png"))} blank.png"
       end
     end
