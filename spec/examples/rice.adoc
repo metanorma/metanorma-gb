@@ -22,9 +22,9 @@
 :workgroup-number: 3
 :workgroup: Rice Group
 :equivalence: identical
-:scope: sector
+:scope: national
 :mandate: recommended
-:prefix: NY
+:prefix: GB
 :published-date: 2016-01-02
 :activated-date: 2016-04-02
 :toc:
@@ -36,6 +36,8 @@
 :section-refsig: Clause
 :table-caption: Table
 :example-caption: Figure
+:library-ics: 1322
+:library-l: 80
 
 .前言 
 ISO (the International Organization for Standardization) 
@@ -123,8 +125,8 @@ ISO and IEC maintain terminological databases for use in standardization at the 
 
 :sectnums!:
 [[paddy]]
-=== paddy 水稻
-[alt]#rough rice 糙米#
+=== [en]#paddy# [zh]#水稻#
+[alt]#[en]#rough rice# [zh]#糙米# #
 
 rice retaining its husk after threshing 
 
