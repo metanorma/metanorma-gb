@@ -1,6 +1,7 @@
 require "isodoc"
 require_relative "./xref_gen.rb"
 require_relative "./metadata.rb"
+require_relative "./agencies.rb"
 
 module Asciidoctor
   module Gb

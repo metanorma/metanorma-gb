@@ -1,5 +1,4 @@
 require "isodoc"
-require_relative "./xref_gen.rb"
 
 module Asciidoctor
   module Gb
@@ -51,13 +50,13 @@ module Asciidoctor
 
       def gb_identifier(isoxml)
         dn = get_metadata()[:docnumber]
-        gbscope = isoxml.at(ns("//gbscope"))
-        gbmandate = isoxml.at(ns("//gbmandate"))
-        gbprefix = isoxml.at(ns("//gbprefix"))
-        dn += "/T" if gbmandate == "recommended"
-        dn += "/Z" if gbmandate == "guide"
-        dn = "#{gbprefix.text} #{dn}"
+        gbscope = isoxml.at(ns("//gbscope"))&.text || "national"
+        gbmandate = isoxml.at(ns("//gbmandate"))&.text || "mandatory"
+        gbprefix = isoxml.at(ns("//gbprefix"))&.text || "XXX"
+        dn = "#{mandate_suffix(gbprefix, gbmandate} #{dn}"
         set_metadata(:docidentifier, dn)
+        set_metadata(:standard_class, standard_class(gbscope, gbprefix, gbmandate))
+        set_metadata(:standard_agency, standard_agency(gbscope, gbprefix, gbmandate))
       end
 
       def gb_library_identifier(isoxml)
@@ -91,6 +90,9 @@ module Asciidoctor
           gsub(/ACTIVEDATE/, meta[:activateddate]).
           gsub(/LIBRARYID_ICS/, meta[:libraryid_ics]).
           gsub(/LIBRARYID_L/, meta[:libraryid_l]).
+          gsub(/STANDARD_CLASS/, meta[:standard_class]).
+          gsub(/STANDARD_AGENCY/, meta[:standard_agency]).
+          gsub(/LIBRARYID_L/, meta[:libraryid_l]).
           gsub(/[ ]?DRAFTINFO/, meta[:draftinfo]).
           gsub(/\[TERMREF\]\s*/, "[SOURCE: "). # TODO: Chinese
           gsub(/\s*\[\/TERMREF\]\s*/, "]").
@@ -110,6 +112,14 @@ module Asciidoctor
         "90": "(Review)",
         "95": "(Withdrawal)",
       }.freeze
+
+=begin
+GB: 中华人民共和国{国家}标准
+AQ: 中华人民共和国{安全生产}[行业]标准
+GM: 中华人民共和国{密码}[行业]标准
+
+INDUSTRY standard
+=end
 
     end
   end
