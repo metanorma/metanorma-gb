@@ -53,7 +53,7 @@ module Asciidoctor
         gbscope = isoxml.at(ns("//gbscope"))&.text || "national"
         gbmandate = isoxml.at(ns("//gbmandate"))&.text || "mandatory"
         gbprefix = isoxml.at(ns("//gbprefix"))&.text || "XXX"
-        dn = "#{mandate_suffix(gbprefix, gbmandate} #{dn}"
+        dn = "#{mandate_suffix(gbprefix, gbmandate)} #{dn}"
         set_metadata(:docidentifier, dn)
         set_metadata(:standard_class, standard_class(gbscope, gbprefix, gbmandate))
         set_metadata(:standard_agency, standard_agency(gbscope, gbprefix, gbmandate))
