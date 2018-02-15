@@ -61,13 +61,13 @@ module Asciidoctor
 
       def standard_logo(gbprefix)
         case gbprefix.downcase
-        when "db" then "html/gb-standard-db"
-        when "gb" then "html/gb-standard-gb"
-        when "gjb" then "html/gb-standard-gjb"
-        when "gjb" then "html/gb-standard-gjb"
-        when "gm" then "html/gb-standard-gm"
-        when "jjf" then "html/gb-standard-jjf"
-        when "zb" then "html/gb-standard-zb"
+        when "db" then "gb-standard-db"
+        when "gb" then "gb-standard-gb"
+        when "gjb" then "gb-standard-gjb"
+        when "gjb" then "gb-standard-gjb"
+        when "gm" then "gb-standard-gm"
+        when "jjf" then "gb-standard-jjf"
+        when "zb" then "gb-standard-zb"
         else
           nil
         end
@@ -87,14 +87,15 @@ module Asciidoctor
         end
       end
 
-      def format_logo(prefix, format)
+      def format_logo(prefix, _format)
         logo = standard_logo(prefix)
         if logo.nil?
           "<span style='font-size:36pt;font-weight:bold'>#{prefix}</span>"
         else
-          logo += (format == :html ? ".png" : ".svg")
-          system "cp #{File.join(File.dirname(__FILE__), File.join("html", logo))} #{logo}"
-          logo
+          logo += ".gif"
+          system "cp #{File.join(File.dirname(__FILE__), File.join("html/gb-logos", logo))}"\
+            " #{logo}"
+          "<img width='113' height='56' src='#{logo}' alt='#{prefix}'>"
         end
       end
 

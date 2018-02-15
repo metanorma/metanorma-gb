@@ -125,8 +125,8 @@ module Asciidoctor
 
       def mandate_suffix(prefix, mandate)
         if prefix == "GB"
-          prefix += "/T" if gbmandate == "recommended"
-          prefix += "/Z" if gbmandate == "guide"
+          prefix += "/T" if mandate == "recommended"
+          prefix += "/Z" if mandate == "guide"
         end
         prefix
       end
@@ -134,7 +134,7 @@ module Asciidoctor
       def standard_class(scope, prefix, mandate)
         case scope
         when "national"
-          NATIONAL[mandate_suffix(prefix).to_sym][:name]
+          NATIONAL[mandate_suffix(prefix, mandate).to_sym][:name]
         when "sector"
           "中华人民共和国#{SECTOR[prefix.to_sym][:industry]}行业标准"
         when "professional" # TODO
@@ -149,7 +149,7 @@ module Asciidoctor
       def standard_agency(scope, prefix, mandate)
         case scope
         when "national"
-          NATIONAL[mandate_suffix(prefix).to_sym][:admin]
+          NATIONAL[mandate_suffix(prefix, mandate).to_sym][:admin]
         when "sector"
           SECTOR[prefix.to_sym][:admin]
         when "professional" # TODO
