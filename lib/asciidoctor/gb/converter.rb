@@ -78,17 +78,17 @@ module Asciidoctor
         elem.replace(elem.children)
       end
 
-        def duplicate_localisedstrings(zh)
-          en = zh.dup.remove
-          zh.after(en).after(" ")
-          zh["language"] = "zh"
-          en["language"] = "en"
-          en.traverse do |c|
-            c.text? && c.content = c.text.gsub(HAN_TEXT, "").gsub(/^\s*/, "")
-          end
-          zh.traverse do |c| 
-            c.text? && c.content = c.text.gsub(ROMAN_TEXT, "").gsub(/^\s*/, "")
-          end
+      def duplicate_localisedstrings(zh)
+        en = zh.dup.remove
+        zh.after(en).after(" ")
+        zh["language"] = "zh"
+        en["language"] = "en"
+        en.traverse do |c|
+          c.text? && c.content = c.text.gsub(HAN_TEXT, "").gsub(/^\s*/, "")
+        end
+        zh.traverse do |c| 
+          c.text? && c.content = c.text.gsub(ROMAN_TEXT, "").gsub(/^\s*/, "")
+        end
       end
 
       def inline_quoted(node)

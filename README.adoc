@@ -38,7 +38,7 @@ text:
 
 [source,asciidoc]
 --
-[alt]#rough rice 糙米#
+alt:[rough rice 糙米]
 --
 
 [source,xml]
@@ -48,17 +48,23 @@ text:
 
 However if there is script mixing in a term -- if the Chinese term contains
 a Latin script acronym or a mathematical expression, for example -- the
-Chinese term will not be detected correctly. To address this, the macros
+Chinese term will not be detected correctly. To address this, the formatting macros
 +`[zh]#...#`+ and +`[en]#...#`+ are used. If they are present, then the content
 of those macros is treated as the Chinese and English equivalents of the
 parent node instead:
 
 [source,asciidoc]
 --
-=== [en]#XYZ paddy# [zh]#水稻XYZ#
+=== [en]#XYZ paddy# [zh]#水稻XY#]
+alt:[[en]#rough rice# [zh]#糙米#]
 --
 
 [source,xml]
 --
 <preferred language="en">XYZ paddy</preferred> <preferred language="zh">水稻XYZ</preferred>
+<admitted language="zh">糙米</admitted> <admitted language="en">rough rice</admitted>
 --
+
+Unfortunately no further markup is permitted within the +`[zh]#...#`+ and +`[en]#...#`+ 
+macros by Asciidoctor, and Asciidoctor does not correctly nest inline macros within other
+inline macros (so +`alt:[en:[_xyz_] zh:[xyz]`+  would not give correct behaviour either.)
