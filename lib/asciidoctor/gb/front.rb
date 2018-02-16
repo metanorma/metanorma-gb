@@ -42,11 +42,36 @@ module Asciidoctor
         xml.gbequivalence { |a| a << node.attr("equivalence") }
       end
 
+      def get_scope(node)
+        unless scope = node.attr("scope")
+          scope = "national"
+          warn "GB: no scope supplied, defaulting to National"
+        end
+        scope
+      end
+
+      def get_prefix(node)
+        unless prefix = node.attr("prefix")
+          prefix = "GB" 
+          scope = "national"
+          warn "GB: no prefix supplied, defaulting to GB"
+        end
+        prefix
+      end
+
+      def get_mandate(node)
+        unless mandate = node.attr("mandate") 
+          mandate = "mandatory"
+          warn "GB: no mandate supplied, defaulting to mandatory"
+        end
+        mandate
+      end
+
       def metadata_gbtype(node, xml)
         xml.gbtype do |t| 
-          t.gbscope { |s| s << node.attr("scope") }
-          t.gbprefix { |p| p << node.attr("prefix") }
-          t.gbmandate { |m| m << node.attr("mandate") }
+          t.gbscope { |s| s << get_scope(node) }
+          t.gbprefix { |p| p << get_prefix(node) }
+          t.gbmandate { |m| m << get_mandate(node) }
         end
       end
 

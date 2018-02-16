@@ -22,9 +22,9 @@
 :workgroup-number: 3
 :workgroup: Rice Group
 :equivalence: identical
-:scope: national
+:scope: sector
 :mandate: recommended
-:prefix: GB
+:prefix: NY
 :published-date: 2016-01-02
 :activated-date: 2016-04-02
 :toc:
