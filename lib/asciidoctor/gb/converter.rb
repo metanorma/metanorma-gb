@@ -35,6 +35,11 @@ module Asciidoctor
                         File.join(File.dirname(__FILE__), "gbstandard.rng"))
       end
 
+      def content_validate(doc)
+        super
+        doc_converter.gbtype_validate(doc.root)
+      end
+
       def html_doc_path(file)
         File.join(File.dirname(__FILE__), File.join("html", file))
       end
