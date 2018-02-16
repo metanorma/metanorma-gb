@@ -76,7 +76,7 @@ module Asciidoctor
         scope = isoxml.at(ns("//gbscope"))&.text || "national"
         mandate = isoxml.at(ns("//gbmandate"))&.text || "mandatory"
         prefix = isoxml.at(ns("//gbprefix"))&.text || "XXX"
-        docidentifier(gbscope, gbprefix, gbmandate)
+        docidentifier(scope, prefix, mandate)
         set_metadata(:standard_class, standard_class(scope, prefix, mandate))
         set_metadata(:standard_agency, standard_agency(scope, prefix, mandate))
         set_metadata(:gbprefix, scope == "local" ? "DB" : prefix)
