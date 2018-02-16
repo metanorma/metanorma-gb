@@ -109,6 +109,20 @@ module Asciidoctor
         end
       end
 
+      def format_agency(agency, format)
+        if agency.is_a?(Array)
+          ret = "<table><tr><td>#{agency[0]}</td><td rowspan='#{agency.size}'>发布</td></tr>"
+          agency[1..-1].each { |a| ret += "<tr><td>#{a}</td></tr>" }
+          ret += "</table>"
+          if format == :word
+            ret.gsub!(/<table>/, "<table width='100%'>")
+          end
+          ret
+        else
+          agency
+        end
+      end
+
       def populate_template(docxml, format)
         meta = get_metadata
         logo = format_logo(meta[:gbprefix], format)
@@ -128,15 +142,16 @@ module Asciidoctor
           gsub(/LIBRARYID_ICS/, meta[:libraryid_ics]).
           gsub(/LIBRARYID_L/, meta[:libraryid_l]).
           gsub(/STANDARD_CLASS/, meta[:standard_class]).
-          gsub(/STANDARD_AGENCY/, meta[:standard_agency]).
-          gsub(/LIBRARYID_L/, meta[:libraryid_l]).
-          gsub(/STANDARD_LOGO/, logo).
-          gsub(/[ ]?DRAFTINFO/, meta[:draftinfo]).
-          gsub(/\[TERMREF\]\s*/, "[SOURCE: "). # TODO: Chinese
-          gsub(/\s*\[\/TERMREF\]\s*/, "]").
-          gsub(/\s*\[ISOSECTION\]/, ", 定义").
-          gsub(/\s*\[MODIFICATION\]/, ", 改写 &mdash; ").
-          gsub(%r{WD/CD/DIS/FDIS}, meta[:stageabbr])
+          gsub(/STANDARD_AGENCY/, 
+               format_agency(meta[:standard_agency], format)).
+        gsub(/LIBRARYID_L/, meta[:libraryid_l]).
+        gsub(/STANDARD_LOGO/, logo).
+        gsub(/[ ]?DRAFTINFO/, meta[:draftinfo]).
+        gsub(/\[TERMREF\]\s*/, "[SOURCE: "). # TODO: Chinese
+        gsub(/\s*\[\/TERMREF\]\s*/, "]").
+        gsub(/\s*\[ISOSECTION\]/, ", 定义").
+        gsub(/\s*\[MODIFICATION\]/, ", 改写 &mdash; ").
+        gsub(%r{WD/CD/DIS/FDIS}, meta[:stageabbr])
       end
 
       STAGE_ABBRS = {

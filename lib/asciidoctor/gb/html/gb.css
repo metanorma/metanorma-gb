@@ -506,6 +506,13 @@ div.coverpage_warning
 .coverpage_warning
     {color:#485094;
     font-size:10.0pt;}
+.coverpage_footer
+    {text-align:center;
+    font-family:"SimHei"}
+.coverpage_footer table
+    {text-align:left;
+    margin-left:auto; 
+    margin-right:auto;}
 a.TableFootnoteRef
         {mso-style-priority:99;
         vertical-align:super;}

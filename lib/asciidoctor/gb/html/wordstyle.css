@@ -1317,7 +1317,7 @@ p.afffff5, li.afffff5, div.afffff5
 	mso-fareast-font-family:SimHei;
 	mso-ansi-language:EN-US;
 	mso-fareast-language:ZH-CN;}
-p.aff7, li.aff7, div.aff7
+p.aff7, li.aff7, div.aff7, p.aff7 td
 	{mso-style-name:发布部门;
 	mso-style-unhide:no;
 	mso-style-parent:"";
@@ -1327,14 +1327,14 @@ p.aff7, li.aff7, div.aff7
 	text-align:center;
 	mso-pagination:widow-orphan;
 	mso-element:frame;
-	mso-element-frame-width:14.0cm;
+	mso-element-frame-width:16.0cm;
 	mso-element-frame-height:2.0cm;
 	mso-element-frame-hspace:6.25pt;
 	mso-element-frame-vspace:9.05pt;
 	mso-element-wrap:around;
 	mso-element-anchor-vertical:page;
 	mso-element-anchor-horizontal:page;
-	mso-element-left:107.5pt;
+	mso-element-left:75.5pt;
 	mso-element-top:731.5pt;
 	mso-height-rule:exactly;
 	mso-element-anchor-lock:locked;
