@@ -13,6 +13,7 @@ module Asciidoctor
         set_metadata(:docmaintitleen, "XXXX")
         set_metadata(:docsubtitleen, "")
         set_metadata(:docparttitleen, "")
+        set_metadata(:gbequivalence, "")
       end
 
       def title(isoxml, _out)
@@ -48,6 +49,16 @@ module Asciidoctor
         super
         gb_identifier(isoxml)
         gb_library_identifier(isoxml)
+        gb_equivalence(isoxml)
+      end
+
+      def gb_equivalence(isoxml)
+        eq = isoxml.at(ns("//gbequivalence")) || return
+        case eq.text
+        when "equivalent" then set_metadata(:gbequivalence, "EQV")
+        when "nonequivalent" then set_metadata(:gbequivalence, "NEQ")
+        when "identical" then set_metadata(:gbequivalence, "IDN")
+        end
       end
 
       def docidentifier(gbscope, gbprefix, gbmandate)
@@ -139,29 +150,11 @@ module Asciidoctor
           map do |a|
           a.size < 3 ? a[0] : a[0] + termref_render(a[2])
         end.join
-
-        docxml.
-          gsub(/DOCYEAR/, meta[:docyear]).
-          gsub(/DOCNUMBER/, meta[:docnumber]).
-          gsub(/DOCIDENTIFIER/, meta[:docidentifier]).
-          gsub(/COMMITTEE/, meta[:committee]).
-          gsub(/DOCMAINTITLEZH/, meta[:docmaintitlezh]).
-          gsub(/DOCSUBTITLEZH/, meta[:docsubtitlezh]).
-          gsub(/DOCPARTTITLEZH/, meta[:docparttitlezh]).
-          gsub(/DOCMAINTITLEEN/, meta[:docmaintitleen]).
-          gsub(/DOCSUBTITLEEN/, meta[:docsubtitleen]).
-          gsub(/DOCPARTTITLEEN/, meta[:docparttitleen]).
-          gsub(/PUBDATE/, meta[:publisheddate]).
-          gsub(/ACTIVEDATE/, meta[:activateddate]).
-          gsub(/LIBRARYID_ICS/, meta[:libraryid_ics]).
-          gsub(/LIBRARYID_L/, meta[:libraryid_l]).
-          gsub(/STANDARD_CLASS/, meta[:standard_class]).
-          gsub(/STANDARD_AGENCY/, 
-               format_agency(meta[:standard_agency], format)).
-        gsub(/STANDARD_LOGO/, logo).
-        gsub(/[ ]?DRAFTINFO/, meta[:draftinfo]).
-        gsub(/\s*\[ISOSECTION\]/, ", 定义").
-        gsub(%r{WD/CD/DIS/FDIS}, meta[:stageabbr])
+        docxml.gsub!(/\s*\[ISOSECTION\]/, ", ?~Z?~I")
+        meta[:standard_agency_formatted] = format_agency(meta[:standard_agency], format)
+        meta[:standard_logo] = logo
+        template = Liquid::Template.parse(docxml)
+        template.render(meta.map { |k, v| [k.to_s, v] }.to_h)
       end
 
       STAGE_ABBRS = {

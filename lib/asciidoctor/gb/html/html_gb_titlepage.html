@@ -1,14 +1,14 @@
 <div class="coverpage">
 
   <div class="coverpage-category">
-    <span class="category-1">ICS LIBRARYID_ICS</span>
-    <span class="category-2">L LIBRARYID_L</span>
+    <span class="category-1">ICS {{ libraryid_ics }} </span>
+    <span class="category-2">L {{ libraryid_l }}</span>
   </div>
 
   <div class="coverpage-logo">
-    <div class="coverpage-logo-gb-img">STANDARD_LOGO</div>
+    <div class="coverpage-logo-gb-img">{{ standard_logo }}</div>
 
-    <span class="coverpage-logo-text">STANDARD_CLASS</span>
+    <span class="coverpage-logo-text">{{ standard_class }}</span>
 
     <!-- for local standards (DB, DB/T),
       - XX is the location code
@@ -22,9 +22,9 @@
 
   <div class="coverpage-doc-identity-first">
     <div class="doc-number">
-      <span class="docnumber">DOCIDENTIFIER</span>
+      <span class="docnumber">{{ docidentifier }}</span>
       <span class="docnumber-separator">-</span>
-      <span class="docyear">DOCYEAR</span>
+      <span class="docyear">{{ docyear }}</span>
     </div>
 
     <div class="coverpage-doc-relations">
@@ -43,16 +43,16 @@
 
   <div class="coverpage-doc-identity-second">
     <div class="coverpage-title-zh">
-      <span class="title-first">DOCMAINTITLEZH</span>
-      <span class="title-second">DOCSUBTITLEZH</span>
-      <span class="title-third">DOCPARTTITLEZH</span>
+      <span class="title-first">{{ docmaintitlezh }}</span>
+      <span class="title-second">{{ docsubtitlezh }}</span>
+      <span class="title-third"> {{ docpartitlezh }}</span>
     </div>
 
     <!-- for local standards (DB, DB/T), no en title -->
     <div class="coverpage-title-en">
-      <span class="title-first">DOCMAINTITLEEN</span>
-      <span class="title-second">DOCSUBTITLEEN</span>
-      <span class="title-third">DOCPARTTITLEEN</span>
+      <span class="title-first">{{ docmaintitleen }}</span>
+      <span class="title-second">{{ docsubtitleen }</span>
+      <span class="title-third">{{ docpartitleen }}</span>
     </div>
 
     <!-- for local standards (DB, DB/T), no relation to ISO standards -->
@@ -64,13 +64,13 @@
       <span class="iso-title-second">ISOTITLESECOND</span>
       <span class="iso-title-third">ISOTITLETHIRD</span>
       <span class="join">，</span>
-      <span class="iso-equivalence-code">NEQ | EQV | IDN</span>
+      <span class="iso-equivalence-code">{{ gbequivalence }}</span>
       <span class="closeparen">）</span>
     </div>
   </div>
 
   <div class="coverpage-stage-block">
-    <span class="stage">DOCSTAGE Stage</span>
+    <span class="stage">{{ stageabbr }} Stage</span>
     <span class="stage-if-draft">（征求意见稿）</span>
     <span class="revsion-if-draft">（本稿完成日期：20XX年XX月）</span>
     <span class="warning-if-draft">
@@ -79,12 +79,12 @@
   </div>
 
   <div class="coverpage-dates">
-    <span class="date-publish">PUBDATE 发布</span>
-    <span class="date-active">ACTIVEDATE 实施</span>
+    <span class="date-publish">{{ publisheddate }} 发布</span>
+    <span class="date-active">{{ activateddate }} 实施</span>
   </div>
 
   <div class="coverpage_footer">
-    STANDARD_AGENCY
+    {{ standard_agency_formatted }}
   </div>
 
 </div>
