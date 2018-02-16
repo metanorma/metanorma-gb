@@ -2,8 +2,6 @@ require "isodoc"
 
 module Asciidoctor
   module Gb
-    # A {Converter} implementation that generates GB output, and a document
-    # schema encapsulation of the document for validation
     class GbConvert < IsoDoc::Convert
 
       SECTOR = {
@@ -186,8 +184,6 @@ module Asciidoctor
             warn("GB: #{prefix} is not a recognised local prefix")
         end
       end
-
-
     end
   end
 end

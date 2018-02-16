@@ -62,13 +62,13 @@ module Asciidoctor
       end
 
       def gb_identifier(isoxml)
-        gbscope = isoxml.at(ns("//gbscope"))&.text || "national"
-        gbmandate = isoxml.at(ns("//gbmandate"))&.text || "mandatory"
-        gbprefix = isoxml.at(ns("//gbprefix"))&.text || "XXX"
+        scope = isoxml.at(ns("//gbscope"))&.text || "national"
+        mandate = isoxml.at(ns("//gbmandate"))&.text || "mandatory"
+        prefix = isoxml.at(ns("//gbprefix"))&.text || "XXX"
         docidentifier(gbscope, gbprefix, gbmandate)
-        set_metadata(:standard_class, standard_class(gbscope, gbprefix, gbmandate))
-        set_metadata(:standard_agency, standard_agency(gbscope, gbprefix, gbmandate))
-        set_metadata(:gbprefix, gbscope == "local" ? "DB" : gbprefix)
+        set_metadata(:standard_class, standard_class(scope, prefix, mandate))
+        set_metadata(:standard_agency, standard_agency(scope, prefix, mandate))
+        set_metadata(:gbprefix, scope == "local" ? "DB" : prefix)
       end
 
       def standard_logo(gbprefix)

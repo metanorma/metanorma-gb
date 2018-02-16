@@ -146,8 +146,6 @@ module Asciidoctor
         reference += ": #{date.text}" if date && isopub
         @anchors[ref["id"]] = { xref: reference }
       end
-
-
     end
   end
 end

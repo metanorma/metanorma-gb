@@ -2,7 +2,7 @@ require "asciidoctor"
 require "asciidoctor/gb/version"
 require "asciidoctor/gb/gbconvert"
 require "asciidoctor/iso/converter"
-require_relative "./section.rb"
+require_relative "./section_input.rb"
 require_relative "./front.rb"
 require "pp"
 
