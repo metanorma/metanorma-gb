@@ -55,30 +55,30 @@ module Asciidoctor
           end
         end
       end
-      
+
       # TODO
       LOCALITY = {
-      section: "section",
-      clause: "clause",
-      part: "part",
-      paragraph: "paragraph",
-      chapter: "chapter",
-      page: "page",
+        section: "section",
+        clause: "clause",
+        part: "part",
+        paragraph: "paragraph",
+        chapter: "chapter",
+        page: "page",
       }.freeze
 
-    def eref_localities(r)
-      ret = ""
-      r.each do |r|
-        if r["type"] == "whole"
-          ret += ", Whole of text"
-        else
-          ret += ", #{LOCALITY[r["type"].to_sym]}"
-          ref = r.at(ns("./reference"))
-          ret += " #{ref.text}" if ref
+      def eref_localities(r)
+        ret = ""
+        r.each do |r|
+          if r["type"] == "whole"
+            ret += ", Whole of text"
+          else
+            ret += ", #{LOCALITY[r["type"].to_sym]}"
+            ref = r.at(ns("./reference"))
+            ret += " #{ref.text}" if ref
+          end
         end
+        ret
       end
-      ret
-    end
 
       def error_parse(node, out)
         # catch elements not defined in ISO
@@ -98,13 +98,7 @@ module Asciidoctor
       end
 
       def generate_header(filename, dir)
-        header = File.read(@header, encoding: "UTF-8").
-          gsub(/FILENAME/, filename).
-          gsub(/DOCYEAR/, get_metadata[:docyear]).
-          gsub(/DOCIDENTIFIER/, get_metadata[:docidentifier])
-        File.open("header.html", "w") do |f|
-          f.write(header)
-        end
+        super
         system "cp #{fileloc(File.join('html', 'blank.png'))} blank.png"
       end
     end
