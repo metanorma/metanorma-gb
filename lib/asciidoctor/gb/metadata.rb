@@ -20,10 +20,11 @@ module Asciidoctor
         main = isoxml.at(ns("//title-main[@language='zh']"))
         part = isoxml.at(ns("//title-part[@language='zh']"))
         partnumber = isoxml.at(ns("//project-number/@part"))
-        set_metadata(:docmaintitlezh, intro.text + "&mdash;") unless intro.nil?
+        intro.nil? || set_metadata(:docmaintitlezh, intro.text + "&mdash;")
         set_metadata(:docsubtitlezh, main.text)
         partnum = partnumber ? "#{part_label(partnumber, 'zh')}: " : ""
-        set_metadata(:docparttitlezh, "&mdash;#{partnum} #{part.text}") unless part.nil?
+        part.nil? || set_metadata(:docparttitlezh, 
+                                  "&mdash;#{partnum} #{part.text}")
       end
 
       def subtitle(isoxml, _out)
@@ -31,10 +32,11 @@ module Asciidoctor
         main = isoxml.at(ns("//title-main[@language='en']"))
         part = isoxml.at(ns("//title-part[@language='en']"))
         partnumber = isoxml.at(ns("//project-number/@part"))
-        set_metadata(:docmaintitleen, intro.text + "&mdash;") unless intro.nil?
+        intro.nil? || set_metadata(:docmaintitleen, intro.text + "&mdash;")
         set_metadata(:docsubtitleen, main.text)
         partnum = partnumber ? "#{part_label(partnumber, 'en')}: " : ""
-        set_metadata(:docparttitleen, "&mdash;#{partnum} #{part.text}") unless part.nil?
+        part.nil? || set_metadata(:docparttitleen, 
+                                  "&mdash;#{partnum} #{part.text}")
       end
 
       def author(isoxml, _out)
@@ -122,9 +124,22 @@ module Asciidoctor
         end
       end
 
+      def termref_render(x)
+        parts = x.split(%r{(\s*\[MODIFICATION\]|,)}m)        
+        parts[1] = "，定义" if parts.size > 1 && parts[1] == ","
+        parts.map do |p|
+          /\s*\[MODIFICATION\]/.match?(p) ? ", 改写 &mdash; " : p 
+        end.join.sub(/\A\s*/m, "【").sub(/\s*\z/m, "】")
+      end
+
       def populate_template(docxml, format)
         meta = get_metadata
         logo = format_logo(meta[:gbprefix], format)
+        docxml = docxml.split(%r{(\[TERMREF\]|\[/TERMREF\])}).each_slice(4).
+          map do |a|
+          a.size < 3 ? a[0] : a[0] + termref_render(a[2])
+        end.join
+
         docxml.
           gsub(/DOCYEAR/, meta[:docyear]).
           gsub(/DOCNUMBER/, meta[:docnumber]).
@@ -143,13 +158,9 @@ module Asciidoctor
           gsub(/STANDARD_CLASS/, meta[:standard_class]).
           gsub(/STANDARD_AGENCY/, 
                format_agency(meta[:standard_agency], format)).
-        gsub(/LIBRARYID_L/, meta[:libraryid_l]).
         gsub(/STANDARD_LOGO/, logo).
         gsub(/[ ]?DRAFTINFO/, meta[:draftinfo]).
-        gsub(/\[TERMREF\]\s*/, "[SOURCE: "). # TODO: Chinese
-        gsub(/\s*\[\/TERMREF\]\s*/, "]").
         gsub(/\s*\[ISOSECTION\]/, ", 定义").
-        gsub(/\s*\[MODIFICATION\]/, ", 改写 &mdash; ").
         gsub(%r{WD/CD/DIS/FDIS}, meta[:stageabbr])
       end
 
