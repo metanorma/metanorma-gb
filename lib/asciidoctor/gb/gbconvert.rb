@@ -49,7 +49,7 @@ module Asciidoctor
 
       def norm_ref(isoxml, out)
         q = "./*/references[title = '规范性引用文件']"
-        f = isoxml.at(ns(q)) or return
+        (f = isoxml.at(ns(q))) || return
         out.div do |div|
           clause_name("2.", "规范性引用文件", div, false)
           norm_ref_preface(f, div)
@@ -59,7 +59,7 @@ module Asciidoctor
 
       def bibliography(isoxml, out)
         q = "./*/references[title = '参考文献']"
-        f = isoxml.at(ns(q)) or return
+        (f = isoxml.at(ns(q))) || return
         page_break(out)
         out.div do |div|
           div.h1 "参考文献", **{ class: "Section3" }
@@ -171,17 +171,19 @@ module Asciidoctor
         node.children.each { |c| parse(c, out) }
       end
 
+      def fileloc(loc)
+        File.join(File.dirname(__FILE__), loc)
+      end
+
       def generate_header(filename, dir)
         header = File.read(@header, encoding: "UTF-8").
           gsub(/FILENAME/, filename).
-          gsub(/DOCYEAR/, get_metadata()[:docyear]).
-          gsub(/DOCIDENTIFIER/, get_metadata()[:docidentifier])
+          gsub(/DOCYEAR/, get_metadata[:docyear]).
+          gsub(/DOCIDENTIFIER/, get_metadata[:docidentifier])
         File.open("header.html", "w") do |f|
           f.write(header)
         end
-        system "cp #{File.join(File.dirname(__FILE__), File.join("html", "logo.png"))} logo.png"
-        # system "cp #{File.join(File.dirname(__FILE__), File.join("html", "footer.png"))} footer.png"
-        system "cp #{File.join(File.dirname(__FILE__), File.join("html", "blank.png"))} blank.png"
+        system "cp #{fileloc(File.join('html', 'blank.png'))} blank.png"
       end
     end
   end

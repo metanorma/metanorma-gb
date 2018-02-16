@@ -37,7 +37,25 @@ module Asciidoctor
 
       def content_validate(doc)
         super
+        bilingual_terms_validate(doc.root)
         doc_converter.gbtype_validate(doc.root)
+      end
+
+      def check_bilingual(t, element)
+        zh = t.at(".//#{element}[@language = 'zh']")
+        en = t.at(".//#{element}[@language = 'en']")
+        (en.nil? || en.text.empty?) && !(zh.nil? || zh.text.empty?) &&
+          warn("GB: #{element} term #{zh.text} has no English counterpart")
+        !(en.nil? || en.text.empty?) && (zh.nil? || zh.text.empty?) &&
+          warn("GB: #{element} term #{en.text} has no Chinese counterpart")
+      end
+
+      def bilingual_terms_validate(root)
+        root.xpath("//term").each do |t|
+          check_bilingual(t, "preferred")
+          check_bilingual(t, "admitted")
+          check_bilingual(t, "deprecates")
+        end
       end
 
       def html_doc_path(file)

@@ -103,8 +103,7 @@ module Asciidoctor
           "<span style='font-size:36pt;font-weight:bold'>#{prefix}</span>"
         else
           logo += ".gif"
-          system "cp #{File.join(File.dirname(__FILE__), File.join("html/gb-logos", logo))}"\
-            " #{logo}"
+          system "cp #{fileloc(File.join("html/gb-logos", logo))}  #{logo}"
           "<img width='113' height='56' src='#{logo}' alt='#{prefix}'>"
         end
       end
