@@ -27,7 +27,7 @@ module Asciidoctor
         partnum = partnumber ? "#{part_label(partnumber, 'zh')}: " : ""
         part.nil? || set_metadata(:docparttitlezh,
                                   "&mdash;#{partnum} #{part.text}")
-        set_metadata(:doctitle, get_metadata[:docmaintitlezh] + main.text + 
+        set_metadata(:doctitle, get_metadata[:docmaintitlezh] + main.text +
                      get_metadata[:docparttitlezh])
       end
 

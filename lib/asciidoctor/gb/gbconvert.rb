@@ -40,7 +40,7 @@ module Asciidoctor
       end
 
       def deprecated_term_parse(node, out)
-        out.p **{ class: "AltTerms" } do |p|
+        out.p **{ class: "DeprecatedTerms" } do |p|
           p << "被取代: #{node.text}"
         end
       end
@@ -89,7 +89,13 @@ module Asciidoctor
       end
 
       def string_parse(node, out)
-        node.children.each { |c| parse(c, out) }
+        if node["script"] == "Hant"
+          out.span **{ class: "Hant" } do |s|
+            node.children.each { |c| parse(c, s) }
+          end
+        else
+          node.children.each { |c| parse(c, out) }
+        end
       end
 
       def fileloc(loc)

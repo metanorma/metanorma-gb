@@ -1,11 +1,11 @@
 require "isodoc"
-  
+
 module Asciidoctor
   module Gb
     # A {Converter} implementation that generates CSD output, and a document
     # schema encapsulation of the document for validation
     class GbConvert < IsoDoc::Convert
-          def initial_anchor_names(d)
+      def initial_anchor_names(d)
         introduction_names(d.at(ns("//introduction")))
         section_names(d.at(ns("//clause[title = '范围' or title = 'Scope']")), "1", 1)
         section_names(d.at(ns(
@@ -16,13 +16,15 @@ module Asciidoctor
 
       def middle_section_asset_names(d)
         middle_sections = "//clause[title = '范围' or title = 'Scope'] | "\
-          "//references[title = '规范性引用文件' or title = 'Normative References'] | //terms | "\
+          "//references[title = '规范性引用文件' "\
+          "or title = 'Normative References'] | //terms | "\
           "//symbols-abbrevs | //clause[parent::sections]"
         sequential_asset_names(d.xpath(ns(middle_sections)))
       end
 
-      def clause_names(docxml,sect_num)
-        q = "//clause[parent::sections][not(xmlns:title = '范围') and not (xmlns:title = 'Scope')]"
+      def clause_names(docxml, sect_num)
+        q = "//clause[parent::sections][not(xmlns:title = '范围') and "\
+          "not (xmlns:title = 'Scope')]"
         docxml.xpath(ns(q)).each_with_index do |c, i|
           section_names(c, (i + sect_num).to_s, 1)
         end
@@ -32,7 +34,7 @@ module Asciidoctor
         docxml.xpath(ns("//term[termnote]")).each do |t|
           t.xpath(ns("./termnote")).each_with_index do |n, i|
             @anchors[n["id"]] = { label: "注 #{i + 1}",
-                                  xref: "#{@anchors[t["id"]][:xref]},"\
+                                  xref: "#{@anchors[t['id']][:xref]},"\
                                   "注 #{i + 1}" }
           end
         end
@@ -42,7 +44,7 @@ module Asciidoctor
         docxml.xpath(ns("//table[note]")).each do |t|
           t.xpath(ns("./note")).each_with_index do |n, i|
             @anchors[n["id"]] = { label: "注 #{i + 1}",
-                                  xref: "#{@anchors[t["id"]][:xref]},"\
+                                  xref: "#{@anchors[t['id']][:xref]},"\
                                   "注 #{i + 1}" }
           end
         end
@@ -51,14 +53,12 @@ module Asciidoctor
       def sequential_figure_names(clause)
         i = j = 0
         clause.xpath(ns(".//figure")).each do |t|
-          label = "图 #{i}" + ( j.zero? ? "" : "-#{j}" )
-          if t.parent.name == "figure"
-            j += 1
+          if t.parent.name == "figure" then j += 1
           else
             j = 0
             i += 1
           end
-          label = "图 #{i}" + ( j.zero? ? "" : "-#{j}" )
+          label = "图 #{i}" + (j.zero? ? "" : "-#{j}")
           @anchors[t["id"]] = { label: label, xref: label }
         end
       end
@@ -84,7 +84,7 @@ module Asciidoctor
             j = 0
             i += 1
           end
-          label = "图 #{num}.#{i}" + ( j.zero? ? "" : "-#{j}" )
+          label = "图 #{num}.#{i}" + (j.zero? ? "" : "-#{j}")
           @anchors[t["id"]] = { label: label, xref: label }
         end
       end
@@ -102,7 +102,7 @@ module Asciidoctor
       end
 
       def section_names(clause, num, level)
-        @anchors[clause["id"]] = { label: num, xref: "#{num}",
+        @anchors[clause["id"]] = { label: num, xref: num.to_s,
                                    level: level }
         clause.xpath(ns("./subsection | ./term")).each_with_index do |c, i|
           section_names1(c, "#{num}.#{i + 1}", level + 1)
@@ -112,7 +112,7 @@ module Asciidoctor
       def section_names1(clause, num, level)
         @anchors[clause["id"]] =
           { label: num, level: level,
-            xref: clause.name == "term" ? num : "#{num}" }
+            xref: clause.name == "term" ? num : num.to_s }
         clause.xpath(ns("./subsection ")).
           each_with_index do |c, i|
           section_names1(c, "#{num}.#{i + 1}", level + 1)

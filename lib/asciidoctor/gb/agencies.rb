@@ -3,7 +3,6 @@ require "isodoc"
 module Asciidoctor
   module Gb
     class GbConvert < IsoDoc::Convert
-
       SECTOR = {
         AQ: { industry: "安全生产", admin: "国家安全生产管理局" },
         BB: { industry: "包装", admin: "国家发改委" },
@@ -80,9 +79,9 @@ module Asciidoctor
                 admin: ["中华人民共和国国家质量监督检验检疫总局", "中国国家标准化管理委员会"] },
       GBZ: { name: "中华人民共和国国家职业卫生标准", admin: "中华人民共和国卫生部" },
       GJB: { name: "中华人民共和国国家军用标准", admin: "中国人民解放军装备总部" },
-      GBn: { name: "中华人民共和国国家内部标准" , admin: "" },
-      GHZB: { name: "中华人民共和国国家环境质量标准" , admin: "" },                                                                                                                  GWKB: { name: "中华人民共和国国家环境保护标准", admin: "环境保护部" },
-      GWPB: { name: "中华人民共和国国家污染物排放标准" , admin: "" },
+      GBn: { name: "中华人民共和国国家内部标准", admin: "" },
+      GHZB: { name: "中华人民共和国国家环境质量标准", admin: "" },                                                                                                                  GWKB: { name: "中华人民共和国国家环境保护标准", admin: "环境保护部" },
+      GWPB: { name: "中华人民共和国国家污染物排放标准", admin: "" },
       JJF: { name: "中华人民共和国国家计量技术规范", admin: "中华人民共和国国家质量监督检验检疫总局" },
       JJG: { name: "中华人民共和国国家计量检定规程", admin: "中华人民共和国国家质量监督检验检疫总局" },
       }.freeze
@@ -147,11 +146,11 @@ module Asciidoctor
                         :name) || "XXXX"
         when "sector"
           "中华人民共和国#{SECTOR&.dig(prefix.to_sym,
-          :industry) || "XXXX"}行业标准"
-        when "professional" then "PROFESSIONAL STANDARD" # TODO
-          when "local"
-            "#{LOCAL&.dig(prefix.to_sym) || "XXXX"}地方标准"
+          :industry) || 'XXXX'}行业标准"
+        when "local"
+          "#{LOCAL&.dig(prefix.to_sym) || 'XXXX'}地方标准"
           when "enterprise" then "ENTERPRISE STANDARD" # TODO
+          when "professional" then "PROFESSIONAL STANDARD" # TODO
           end
       end
 
@@ -162,10 +161,10 @@ module Asciidoctor
                         :admin) || "XXXX"
         when "sector"
           SECTOR&.dig(prefix.to_sym, :admin) || "XXXX"
-        when "professional" then "PROFESSIONAL STANDARD" # TODO
         when "local"
-          "#{LOCAL&.dig(prefix.to_sym) || "XXXX"}质量技术检测局"
+          "#{LOCAL&.dig(prefix.to_sym) || 'XXXX'}质量技术检测局"
         when "enterprise" then "ENTERPRISE STANDARD" # TODO
+        when "professional" then "PROFESSIONAL STANDARD" # TODO
         end
       end
 

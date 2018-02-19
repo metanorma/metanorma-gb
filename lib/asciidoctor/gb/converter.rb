@@ -134,6 +134,10 @@ module Asciidoctor
             when "smallcap" then xml.smallcap node.text
             when "en" then xml.string node.text, **{ language: "en" }
             when "zh" then xml.string node.text, **{ language: "zh" }
+            when "zh-Hans"
+              xml.string node.text, **{ language: "zh", script: "Hans" }
+            when "zh-Hant"
+              xml.string node.text, **{ language: "zh", script: "Hant" }
             else
               xml << node.text
             end
