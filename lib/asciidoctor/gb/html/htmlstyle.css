@@ -67,6 +67,13 @@ p.AltTerms {
 	margin: 0;
 }
 
+p.DeprecatedTerms {
+  color: #485094;
+  font-weight: 400;
+  font-style: italic;
+	margin: 0;
+}
+
 
 ul {
   padding-left: 1em;

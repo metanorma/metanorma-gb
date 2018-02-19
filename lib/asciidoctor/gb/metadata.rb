@@ -14,6 +14,7 @@ module Asciidoctor
         set_metadata(:docsubtitleen, "")
         set_metadata(:docparttitleen, "")
         set_metadata(:gbequivalence, "")
+        set_metadata(:doctitle, "XXXX")
       end
 
       def title(isoxml, _out)
@@ -26,6 +27,8 @@ module Asciidoctor
         partnum = partnumber ? "#{part_label(partnumber, 'zh')}: " : ""
         part.nil? || set_metadata(:docparttitlezh,
                                   "&mdash;#{partnum} #{part.text}")
+        set_metadata(:doctitle, get_metadata[:docmaintitlezh] + main.text + 
+                     get_metadata[:docparttitlezh])
       end
 
       def subtitle(isoxml, _out)

@@ -100,6 +100,28 @@ module Asciidoctor
         super
         system "cp #{fileloc(File.join('html', 'blank.png'))} blank.png"
       end
+
+      def cleanup(docxml)
+        super
+        terms_cleanup(docxml)
+      end
+
+      def term_merge(docxml, term_class)
+        docxml.xpath("//p[@class = '#{term_class}']").each do |t|
+          t1 = t.next_element || next
+          if t1.name == "p" && t1["class"] == term_class
+            t.add_child(" ")
+            t.add_child(t1.remove.children)
+          end
+        end
+      end
+
+      def terms_cleanup(docxml)
+        term_merge(docxml, "Terms")
+        term_merge(docxml, "AltTerms")
+        term_merge(docxml, "DeprecatedTerms")
+        docxml
+      end
     end
   end
 end

@@ -152,15 +152,15 @@ p.Definition, li.Definition, div.Definition
 	mso-fareast-font-family:SimSun;
 	mso-bidi-font-family:"Source Sans Pro";
 	mso-ansi-language:EN-GB;}
-p.ForewordTitle, li.ForewordTitle, div.ForewordTitle
+p.ForewordTitle, li.ForewordTitle, div.ForewordTitle, h1.ForewordTitle
 	{mso-style-name:"Foreword Title";
 	mso-style-noshow:yes;
 	mso-style-unhide:no;
-	margin-top:0cm;
+	margin-top:32.0pt;
 	margin-right:0cm;
-	margin-bottom:15.5pt;
+	margin-bottom:28.0pt;
 	margin-left:0cm;
-	text-align:justify;
+	text-align:center;
 	line-height:15.5pt;
 	page-break-before:always;
 	mso-pagination:widow-orphan;
@@ -168,38 +168,37 @@ p.ForewordTitle, li.ForewordTitle, div.ForewordTitle
 	mso-outline-level:1;
 	mso-hyphenate:none;
 	tab-stops:20.15pt;
-	font-size:14.0pt;
+	font-size:16.0pt;
 	mso-bidi-font-size:11.0pt;
 	font-family:"Times New Roman",serif;
 	mso-fareast-font-family:SimHei;
 	mso-bidi-font-family:"Source Sans Pro";
 	mso-ansi-language:EN-GB;
-	font-weight:bold;
+	mso-fareast-language:ZH-CN;
 	mso-bidi-font-weight:normal;}
-p.IntroTitle, li.IntroTitle, div.IntroTitle
+p.IntroTitle, li.IntroTitle, div.IntroTitle, h1.IntroTitle
 	{mso-style-name:"Intro Title";
 	mso-style-noshow:yes;
 	mso-style-unhide:no;
-	mso-style-parent:"Foreword Title";
-	margin-top:0cm;
+	margin-top:32.0pt;
 	margin-right:0cm;
-	margin-bottom:15.5pt;
+	margin-bottom:28.0pt;
 	margin-left:0cm;
-	text-align:justify;
+	text-align:center;
 	line-height:15.5pt;
+	page-break-before:always;
 	mso-pagination:widow-orphan;
 	page-break-after:avoid;
 	mso-outline-level:1;
 	mso-hyphenate:none;
 	tab-stops:20.15pt;
-	font-size:14.0pt;
+	font-size:16.0pt;
 	mso-bidi-font-size:11.0pt;
-	page-break-before:always;
 	font-family:"Times New Roman",serif;
 	mso-fareast-font-family:SimHei;
 	mso-bidi-font-family:"Source Sans Pro";
 	mso-ansi-language:EN-GB;
-	font-weight:bold;
+	mso-fareast-language:ZH-CN;
 	mso-bidi-font-weight:normal;}
 p.zzContents, li.zzContents, div.zzContents
 	{mso-style-name:zzContents;
@@ -210,6 +209,7 @@ p.zzContents, li.zzContents, div.zzContents
 	margin-right:0cm;
 	margin-bottom:15.5pt;
 	margin-left:0cm;
+	text-align:center;
 	line-height:15.5pt;
 	mso-line-height-rule:exactly;
 	page-break-before:always;
@@ -217,13 +217,12 @@ p.zzContents, li.zzContents, div.zzContents
 	page-break-after:avoid;
 	mso-hyphenate:none;
 	tab-stops:20.15pt;
-	font-size:14.0pt;
+	font-size:16.0pt;
 	mso-bidi-font-size:11.0pt;
 	font-family:"Times New Roman",serif;
 	mso-fareast-font-family:SimHei;
 	mso-bidi-font-family:"Source Sans Pro";
 	mso-ansi-language:EN-GB;
-	font-weight:bold;
 	mso-bidi-font-weight:normal;}
 p.zzCopyright, li.zzCopyright
 	{mso-style-name:zzCopyright;
@@ -277,6 +276,7 @@ p.zzSTDTitle, li.zzSTDTitle, div.zzSTDTitle
 	margin-bottom:38.0pt;
 	margin-left:0cm;
 	line-height:17.5pt;
+	text-align:center;
 	mso-line-height-rule:exactly;
 	mso-pagination:widow-orphan;
 	mso-hyphenate:none;
@@ -299,6 +299,7 @@ p.zzSTDTitle1, li.zzSTDTitle1, div.zzSTDTitle1
 	margin-bottom:18.0pt;
 	margin-left:0cm;
 	line-height:17.5pt;
+	text-align:center;
 	mso-line-height-rule:exactly;
 	mso-pagination:widow-orphan;
 	mso-hyphenate:none;
@@ -387,6 +388,35 @@ p.Formula, li.Formula, div.Formula
 	mso-fareast-font-family:SimSun;
 	mso-bidi-font-family:"Source Sans Pro";
 	mso-ansi-language:EN-GB;}
+.h2Annex
+    {mso-style-priority:2;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:"Heading 1";
+	mso-style-link:"Heading 2 Char";
+	mso-style-next:Normal;
+	margin-top:7.8pt;
+	margin-right:0cm;
+	margin-bottom:7.8pt;
+	margin-left:0cm;
+	mso-para-margin-top:.5gd;
+	mso-para-margin-right:0cm;
+	mso-para-margin-bottom:.5gd;
+	mso-para-margin-left:0cm;
+	text-indent:0cm;
+	line-height:12.5pt;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:2;
+	mso-hyphenate:none;
+	tab-stops:27.0pt 35.0pt;
+	font-size:10.5pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:"Times New Roman",serif;
+	mso-fareast-font-family:SimHei;
+	mso-ansi-language:EN-GB;
+	mso-fareast-language:ZH-CN;
+	mso-bidi-font-weight:normal;}
 @page WordSection1
 	{size:595.3pt 841.9pt;
 	margin:39.7pt 53.85pt 1.0cm 53.85pt;

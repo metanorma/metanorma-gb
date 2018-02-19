@@ -95,6 +95,25 @@ p.MsoNormal, li.MsoNormal, div.MsoNormal
 	margin-bottom:.0001pt;
 	text-align:justify;
 	text-justify:inter-ideograph;
+	text-indent:21.0pt;
+	mso-pagination:widow-orphan;
+	tab-stops:20.15pt;
+	font-size:10.5pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:"Times New Roman",serif;
+	mso-fareast-font-family:SimSun;
+	mso-font-kerning:1.0pt;
+	mso-ansi-language:EN-US;
+	mso-fareast-language:ZH-CN;}
+p.MsoNormalUnindented, li.MsoNormalUnindented, div.MsoNormalUnindented
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:"";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	text-indent:21.0pt;
 	mso-pagination:widow-orphan;
 	tab-stops:20.15pt;
 	font-size:10.5pt;
@@ -155,27 +174,34 @@ h1
 	mso-style-qformat:yes;
 	mso-style-link:"Heading 1 Char";
 	mso-style-next:Normal;
-	margin-top:13.5pt;
+	margin-top:15.6pt;
 	margin-right:0cm;
-	margin-bottom:12.0pt;
+	margin-bottom:15.6pt;
 	margin-left:0cm;
 	text-indent:0cm;
 	line-height:13.5pt;
+	mso-para-margin-top:1.0gd;
+	mso-para-margin-right:0cm;
+	mso-para-margin-bottom:1.0gd;
+	mso-para-margin-left:0cm;
 	mso-pagination:widow-orphan;
+	text-align:justify;
+	text-justify:inter-ideograph;
 	page-break-after:avoid;
 	mso-outline-level:1;
 	mso-list:l1 level1 lfo6;
 	mso-hyphenate:none;
 	tab-stops:20.0pt list 21.6pt left 28.0pt;
-	font-size:13.0pt;
-	mso-bidi-font-size:11.0pt;
-	font-family:"Times New Roman",serif;
+	font-size:10.5pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:SimHei;
+	font-weight:normal;
 	mso-fareast-font-family:SimHei;
 	mso-font-kerning:0pt;
 	mso-ansi-language:EN-GB;
 	mso-fareast-language:ZH-CN;
 	mso-bidi-font-weight:normal;}
-h1.Annex
+h1.Annex, h1.Section3
 	{mso-style-priority:1;
 	mso-style-unhide:no;
 	mso-style-qformat:yes;
@@ -195,9 +221,10 @@ h1.Annex
 	mso-list:l1 level1 lfo6;
 	mso-hyphenate:none;
 	tab-stops:20.0pt list 21.6pt left 28.0pt;
-	font-size:13.0pt;
-	mso-bidi-font-size:11.0pt;
-	font-family:"Times New Roman",serif;
+	font-size:10.5pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:SimHei;
+	font-weight:normal;
 	mso-fareast-font-family:SimHei;
 	mso-font-kerning:0pt;
 	mso-ansi-language:EN-GB;
@@ -210,10 +237,14 @@ h2
 	mso-style-parent:"Heading 1";
 	mso-style-link:"Heading 2 Char";
 	mso-style-next:Normal;
-	margin-top:3.0pt;
+	margin-top:7.8pt;
 	margin-right:0cm;
-	margin-bottom:12.0pt;
+	margin-bottom:7.8pt;
 	margin-left:0cm;
+	mso-para-margin-top:.5gd;
+	mso-para-margin-right:0cm;
+	mso-para-margin-bottom:.5gd;
+	mso-para-margin-left:0cm;
 	text-indent:0cm;
 	line-height:12.5pt;
 	mso-pagination:widow-orphan;
@@ -222,9 +253,10 @@ h2
 	mso-list:l1 level2 lfo6;
 	mso-hyphenate:none;
 	tab-stops:27.0pt 35.0pt;
-	font-size:12.0pt;
-	mso-bidi-font-size:11.0pt;
-	font-family:"Times New Roman",serif;
+	font-size:10.5pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:SimHei;
+	font-weight:normal;
 	mso-fareast-font-family:SimHei;
 	mso-ansi-language:EN-GB;
 	mso-fareast-language:ZH-CN;
@@ -248,8 +280,10 @@ h3
 	mso-list:l1 level3 lfo6;
 	mso-hyphenate:none;
 	tab-stops:list 36.0pt left 44.0pt;
-	font-size:11.0pt;
-	font-family:"Times New Roman",serif;
+	font-size:10.5pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:SimHei;
+	font-weight:normal;
 	mso-fareast-font-family:SimHei;
 	mso-ansi-language:EN-GB;
 	mso-fareast-language:ZH-CN;
@@ -273,8 +307,10 @@ h4
 	mso-list:l1 level4 lfo6;
 	mso-hyphenate:none;
 	tab-stops:51.05pt 57.0pt 68.0pt;
-	font-size:11.0pt;
-	font-family:"Times New Roman",serif;
+	font-size:10.5pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:SimHei;
+	font-weight:normal;
 	mso-fareast-font-family:SimHei;
 	mso-ansi-language:EN-GB;
 	mso-fareast-language:ZH-CN;
@@ -298,8 +334,10 @@ h5
 	mso-list:l1 level5 lfo6;
 	mso-hyphenate:none;
 	tab-stops:51.05pt list 54.0pt;
-	font-size:11.0pt;
-	font-family:"Times New Roman",serif;
+	font-size:10.5pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:SimHei;
+	font-weight:normal;
 	mso-fareast-font-family:SimHei;
 	mso-ansi-language:EN-GB;
 	mso-fareast-language:ZH-CN;
@@ -323,8 +361,10 @@ h6
 	mso-list:l1 level6 lfo6;
 	mso-hyphenate:none;
 	tab-stops:51.05pt list 72.0pt;
-	font-size:11.0pt;
-	font-family:"Times New Roman",serif;
+	font-size:10.5pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:SimHei;
+	font-weight:normal;
 	mso-fareast-font-family:SimHei;
 	mso-ansi-language:EN-GB;
 	mso-fareast-language:ZH-CN;
@@ -333,7 +373,7 @@ p.MsoToc1, li.MsoToc1, div.MsoToc1
 	{mso-style-update:auto;
 	mso-style-priority:39;
 	mso-style-unhide:no;
-	mso-style-next:Βασικό;
+	mso-style-next:Normal;
 	margin-top:1.25pt;
 	margin-right:0cm;
 	margin-bottom:1.25pt;
@@ -355,7 +395,7 @@ p.MsoToc2, li.MsoToc2, div.MsoToc2
 	{mso-style-update:auto;
 	mso-style-noshow:yes;
 	mso-style-unhide:no;
-	mso-style-next:Βασικό;
+	mso-style-next:Normal;
 	margin:0cm;
 	margin-bottom:.0001pt;
 	text-align:justify;
@@ -373,7 +413,7 @@ p.MsoToc3, li.MsoToc3, div.MsoToc3
 	{mso-style-update:auto;
 	mso-style-priority:39;
 	mso-style-unhide:no;
-	mso-style-next:Βασικό;
+	mso-style-next:Normal;
 	margin:0cm;
 	margin-bottom:.0001pt;
 	text-indent:5.1pt;
@@ -391,7 +431,7 @@ p.MsoToc4, li.MsoToc4, div.MsoToc4
 	{mso-style-update:auto;
 	mso-style-priority:39;
 	mso-style-unhide:no;
-	mso-style-next:Βασικό;
+	mso-style-next:Normal;
 	margin:0cm;
 	margin-bottom:.0001pt;
 	text-indent:9.9pt;
@@ -409,7 +449,7 @@ p.MsoToc5, li.MsoToc5, div.MsoToc5
 	{mso-style-update:auto;
 	mso-style-noshow:yes;
 	mso-style-unhide:no;
-	mso-style-next:Βασικό;
+	mso-style-next:Normal;
 	margin:0cm;
 	margin-bottom:.0001pt;
 	text-indent:15.0pt;
@@ -427,7 +467,7 @@ p.MsoToc6, li.MsoToc6, div.MsoToc6
 	{mso-style-update:auto;
 	mso-style-noshow:yes;
 	mso-style-unhide:no;
-	mso-style-next:Βασικό;
+	mso-style-next:Normal;
 	margin:0cm;
 	margin-bottom:.0001pt;
 	text-indent:20.15pt;
@@ -445,7 +485,7 @@ p.MsoToc7, li.MsoToc7, div.MsoToc7
 	{mso-style-update:auto;
 	mso-style-noshow:yes;
 	mso-style-unhide:no;
-	mso-style-next:Βασικό;
+	mso-style-next:Normal;
 	margin:0cm;
 	margin-bottom:.0001pt;
 	text-indent:25.25pt;
@@ -463,7 +503,7 @@ p.MsoToc8, li.MsoToc8, div.MsoToc8
 	{mso-style-update:auto;
 	mso-style-noshow:yes;
 	mso-style-unhide:no;
-	mso-style-next:Βασικό;
+	mso-style-next:Normal;
 	margin:0cm;
 	margin-bottom:.0001pt;
 	text-indent:30.35pt;
@@ -481,7 +521,7 @@ p.MsoToc9, li.MsoToc9, div.MsoToc9
 	{mso-style-update:auto;
 	mso-style-noshow:yes;
 	mso-style-unhide:no;
-	mso-style-next:Βασικό;
+	mso-style-next:Normal;
 	margin-top:0cm;
 	margin-right:0cm;
 	margin-bottom:0cm;
@@ -605,6 +645,7 @@ span.Heading1Char
 	mso-hansi-font-family:Cambria;
 	mso-ansi-language:EN-GB;
 	mso-fareast-language:ZH-CN;
+	font-weight:normal;
 	mso-bidi-font-weight:normal;}
 span.Heading2Char
 	{mso-style-name:"Heading 2 Char";
@@ -620,6 +661,7 @@ span.Heading2Char
 	mso-hansi-font-family:Cambria;
 	mso-ansi-language:EN-GB;
 	mso-fareast-language:ZH-CN;
+	font-weight:normal;
 	mso-bidi-font-weight:normal;}
 span.Heading3Char
 	{mso-style-name:"Heading 3 Char";
@@ -635,6 +677,7 @@ span.Heading3Char
 	mso-hansi-font-family:Cambria;
 	mso-ansi-language:EN-GB;
 	mso-fareast-language:ZH-CN;
+	font-weight:normal;
 	mso-bidi-font-weight:normal;}
 span.Heading4Char
 	{mso-style-name:"Heading 4 Char";
@@ -650,6 +693,7 @@ span.Heading4Char
 	mso-hansi-font-family:Cambria;
 	mso-ansi-language:EN-GB;
 	mso-fareast-language:ZH-CN;
+	font-weight:normal;
 	mso-bidi-font-weight:normal;}
 span.Heading5Char
 	{mso-style-name:"Heading 5 Char";
@@ -665,6 +709,7 @@ span.Heading5Char
 	mso-hansi-font-family:Cambria;
 	mso-ansi-language:EN-GB;
 	mso-fareast-language:ZH-CN;
+	font-weight:normal;
 	mso-bidi-font-weight:normal;}
 span.Heading6Char
 	{mso-style-name:"Heading 6 Char";
@@ -675,6 +720,7 @@ span.Heading6Char
 	mso-style-link:"Heading 6";
 	mso-ansi-font-size:11.0pt;
 	font-family:"Source Sans Pro",sans-serif;
+	font-weight:normal;
 	mso-ascii-font-family:Source Sans Pro;
 	mso-fareast-font-family:SimHei;
 	mso-hansi-font-family:Cambria;
@@ -1001,7 +1047,7 @@ div.WordSection1
 	font-family:"Times New Roman",serif;
 	mso-fareast-font-family:SimSun;
 	mso-bidi-font-family:"Source Sans Pro";
-	mso-ansi-font-weight:bold;
+	mso-ansi-font-weight:normal;
 	mso-ansi-font-style:normal;}
 @list l0:level2
 	{mso-level-style-link:a2;
@@ -1011,7 +1057,7 @@ div.WordSection1
 	margin-left:0cm;
 	text-indent:0cm;
 	mso-bidi-font-family:"Source Sans Pro";
-	mso-ansi-font-weight:bold;
+	mso-ansi-font-weight:normal;
 	mso-ansi-font-style:normal;}
 @list l0:level3
 	{mso-level-style-link:a3;
@@ -1021,7 +1067,7 @@ div.WordSection1
 	margin-left:0cm;
 	text-indent:0cm;
 	mso-bidi-font-family:"Source Sans Pro";
-	mso-ansi-font-weight:bold;
+	mso-ansi-font-weight:normal;
 	mso-ansi-font-style:normal;}
 @list l0:level4
 	{mso-level-style-link:a4;
@@ -1031,7 +1077,7 @@ div.WordSection1
 	margin-left:0cm;
 	text-indent:0cm;
 	mso-bidi-font-family:"Source Sans Pro";
-	mso-ansi-font-weight:bold;
+	mso-ansi-font-weight:normal;
 	mso-ansi-font-style:normal;}
 @list l0:level5
 	{mso-level-style-link:a5;
@@ -1041,7 +1087,7 @@ div.WordSection1
 	margin-left:0cm;
 	text-indent:0cm;
 	mso-bidi-font-family:"Source Sans Pro";
-	mso-ansi-font-weight:bold;
+	mso-ansi-font-weight:normal;
 	mso-ansi-font-style:normal;}
 @list l0:level6
 	{mso-level-style-link:a6;
@@ -1051,7 +1097,7 @@ div.WordSection1
 	margin-left:0cm;
 	text-indent:0cm;
 	mso-bidi-font-family:"Source Sans Pro";
-	mso-ansi-font-weight:bold;
+	mso-ansi-font-weight:normal;
 	mso-ansi-font-style:normal;}
 @list l0:level7
 	{mso-level-reset-level:level2;
@@ -1090,7 +1136,7 @@ div.WordSection1
 	margin-left:21.6pt;
 	text-indent:-21.6pt;
 	mso-bidi-font-family:"Source Sans Pro";
-	mso-ansi-font-weight:bold;
+	mso-ansi-font-weight:normal;
 	mso-ansi-font-style:normal;}
 @list l1:level2
 	{mso-level-style-link:"Heading 2";
@@ -1100,7 +1146,7 @@ div.WordSection1
 	margin-left:0cm;
 	text-indent:0cm;
 	mso-bidi-font-family:"Source Sans Pro";
-	mso-ansi-font-weight:bold;
+	mso-ansi-font-weight:normal;
 	mso-ansi-font-style:normal;}
 @list l1:level3
 	{mso-level-style-link:"Heading 3";
@@ -1110,7 +1156,7 @@ div.WordSection1
 	margin-left:0cm;
 	text-indent:0cm;
 	mso-bidi-font-family:"Source Sans Pro";
-	mso-ansi-font-weight:bold;
+	mso-ansi-font-weight:normal;
 	mso-ansi-font-style:normal;}
 @list l1:level4
 	{mso-level-style-link:"Heading 4";
@@ -1120,7 +1166,7 @@ div.WordSection1
 	margin-left:0cm;
 	text-indent:0cm;
 	mso-bidi-font-family:"Source Sans Pro";
-	mso-ansi-font-weight:bold;
+	mso-ansi-font-weight:normal;
 	mso-ansi-font-style:normal;}
 @list l1:level5
 	{mso-level-style-link:"Heading 5";
@@ -1130,7 +1176,7 @@ div.WordSection1
 	margin-left:0cm;
 	text-indent:0cm;
 	mso-bidi-font-family:"Source Sans Pro";
-	mso-ansi-font-weight:bold;
+	mso-ansi-font-weight:normal;
 	mso-ansi-font-style:normal;}
 @list l1:level6
 	{mso-level-style-link:"Heading 6";
@@ -1140,7 +1186,7 @@ div.WordSection1
 	margin-left:0cm;
 	text-indent:0cm;
 	mso-bidi-font-family:"Source Sans Pro";
-	mso-ansi-font-weight:bold;
+	mso-ansi-font-weight:normal;
 	mso-ansi-font-style:normal;}
 @list l1:level7
 	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7";
@@ -1529,12 +1575,12 @@ p.Terms, li.Terms, div.Terms
 	page-break-after:avoid;
 	mso-hyphenate:none;
 	tab-stops:20.15pt;
+	text-indent:21.0pt;
 	font-size:11.0pt;
-	font-family:"Times New Roman",serif;
-	mso-fareast-font-family:SimSun;
+	font-family:SimHei;
+	mso-fareast-font-family:SimHei;
 	mso-bidi-font-family:"Source Sans Pro";
 	mso-ansi-language:EN-GB;
-	font-weight:bold;
 	mso-bidi-font-weight:normal;}
 p.AltTerms, li.AltTerms, div.AltTerms
 	{mso-style-name:"AltTerm\(s\)";
@@ -1548,29 +1594,54 @@ p.AltTerms, li.AltTerms, div.AltTerms
 	page-break-after:avoid;
 	mso-hyphenate:none;
 	tab-stops:20.15pt;
+	text-indent:21.0pt;
 	font-size:11.0pt;
 	font-family:"Times New Roman",serif;
 	mso-fareast-font-family:SimSun;
 	mso-bidi-font-family:"Source Sans Pro";
 	mso-ansi-language:EN-GB;
 	mso-bidi-font-weight:normal;}
+p.DeprecatedTerms, li.DeprecatedTerms, div.DeprecatedTerms
+        {mso-style-name:"AltTerm\(s\)";
+        mso-style-priority:8;
+        mso-style-unhide:no;
+        mso-style-next:Definition;
+        margin:0cm;
+        margin-bottom:.0001pt;
+        line-height:12.0pt;
+        mso-pagination:widow-orphan;
+        page-break-after:avoid;
+        mso-hyphenate:none;
+        tab-stops:20.15pt;
+	text-indent:21.0pt;
+        font-size:11.0pt;
+        font-family:"Times New Roman",serif;
+        mso-fareast-font-family:SimSun;
+        mso-bidi-font-family:"Source Sans Pro";
+        mso-ansi-language:EN-GB;
+        mso-bidi-font-weight:normal;}
 p.TermNum, li.TermNum, div.TermNum
 	{mso-style-name:TermNum;
 	mso-style-priority:7;
 	mso-style-unhide:no;
 	mso-style-next:"Term\(s\)";
-	margin:0cm;
-	margin-bottom:.0001pt;
+	margin-top:7.8pt;
+	margin-right:0cm;
+	margin-bottom:7.8pt;
+	margin-left:0cm;
+	mso-para-margin-top:.5gd;
+	mso-para-margin-right:0cm;
+	mso-para-margin-bottom:.5gd;
+	mso-para-margin-left:0cm;
 	line-height:12.0pt;
 	mso-pagination:widow-orphan;
 	page-break-after:avoid;
 	tab-stops:20.15pt;
 	font-size:11.0pt;
-	font-family:"Times New Roman",serif;
-	mso-fareast-font-family:SimSun;
+	font-family:SimHei;
+	mso-fareast-font-family:SimHei;
 	mso-bidi-font-family:"Source Sans Pro";
 	mso-ansi-language:EN-GB;
-	font-weight:bold;
 	mso-bidi-font-weight:normal;}
 	/* may need to be revised */
 a:link, span.MsoHyperlink

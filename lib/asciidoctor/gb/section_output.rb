@@ -69,7 +69,10 @@ module Asciidoctor
         title_attr = { class: "IntroTitle" }
         page_break(out)
         out.div **{ class: "Section3" } do |div|
-          div.h1 "引言", **attr_code(title_attr)
+          div.h1 **attr_code(title_attr) do |h1|
+          h1 << "引言"
+          insert_tab(h1, 1)
+          end
           f.elements.each do |e|
             if e.name == "patent-notice"
               e.elements.each { |e1| parse(e1, div) }
@@ -80,11 +83,15 @@ module Asciidoctor
         end
       end
 
+     # putting in tab so that ToC aligns
       def foreword(isoxml, out)
         f = isoxml.at(ns("//foreword")) || return
         page_break(out)
         out.div do |s|
-          s.h1 **{ class: "ForewordTitle" } { |h1| h1 << "前言" }
+          s.h1 **{ class: "ForewordTitle" } do |h1|
+          h1 << "前言"
+          insert_tab(h1, 1)
+          end
           f.elements.each { |e| parse(e, s) unless e.name == "title" }
         end
       end
