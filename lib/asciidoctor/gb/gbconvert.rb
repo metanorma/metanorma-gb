@@ -21,7 +21,7 @@ module Asciidoctor
 
       def figure_key(out)
         out.p do |p|
-          p.b { |b| b << "Key" } # TODO: Chinese
+          p.b { |b| b << "说明" }
         end
       end
 
@@ -33,7 +33,7 @@ module Asciidoctor
       def figure_get_or_make_dl(t)
         dl = t.at(".//dl")
         if dl.nil?
-          t.add_child("<p><b>Key</b></p><dl></dl>") # TODO: Chinese
+          t.add_child("<p><b>说明</b></p><dl></dl>")
           dl = t.at(".//dl")
         end
         dl
