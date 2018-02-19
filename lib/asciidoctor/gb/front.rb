@@ -1,7 +1,7 @@
 module Asciidoctor
   module Gb
     class Converter < ISO::Converter
-      def metadata_author(node, xml)
+      def metadata_author(_node, xml)
         xml.contributor do |c|
           c.role **{ type: "author" }
           c.organization do |a|
@@ -10,7 +10,7 @@ module Asciidoctor
         end
       end
 
-      def metadata_publisher(node, xml)
+      def metadata_publisher(_node, xml)
         xml.contributor do |c|
           c.role **{ type: "publisher" }
           c.organization do |a|
@@ -32,7 +32,7 @@ module Asciidoctor
       end
 
       def metadata_committee(node, xml)
-        attrs = {type: node.attr("technical-committee-type") }
+        attrs = { type: node.attr("technical-committee-type") }
         xml.gbcommittee **attr_code(attrs) do |a|
           a << node.attr("technical-committee")
         end
@@ -51,16 +51,17 @@ module Asciidoctor
       end
 
       def get_prefix(node)
+        scope = get_scope(node)
         unless prefix = node.attr("prefix")
-          prefix = "GB" 
+          prefix = "GB"
           scope = "national"
           warn "GB: no prefix supplied, defaulting to GB"
         end
-        prefix
+        [scope, prefix]
       end
 
       def get_mandate(node)
-        unless mandate = node.attr("mandate") 
+        unless mandate = node.attr("mandate")
           mandate = "mandatory"
           warn "GB: no mandate supplied, defaulting to mandatory"
         end
@@ -68,9 +69,10 @@ module Asciidoctor
       end
 
       def metadata_gbtype(node, xml)
-        xml.gbtype do |t| 
-          t.gbscope { |s| s << get_scope(node) }
-          t.gbprefix { |p| p << get_prefix(node) }
+        xml.gbtype do |t|
+          scope, prefix = get_prefix(node)
+          t.gbscope { |s| s << scope }
+          t.gbprefix { |p| p << prefix }
           t.gbmandate { |m| m << get_mandate(node) }
         end
       end

@@ -18,7 +18,7 @@ module Asciidoctor
       def term_def_parse(attrs, xml, node, title)
         @term_def = true
         xml.terms **attr_code(attrs) do |xml_section|
-          if title.downcase == "terms, definitions, symbols and abbreviations" || 
+          if title.downcase == "terms, definitions, symbols and abbreviations" ||
               title == "术语、定义、符号、代号和缩略语"
             title = "术语、定义、符号、代号和缩略语"
           else
@@ -75,13 +75,13 @@ module Asciidoctor
           when "范围", "scope" then scope_parse(a, xml, node)
           when "规范性引用文件", "normative references"
             norm_ref_parse(a, xml, node)
-          when "术语和定义", "terms and definitions", 
+          when "术语和定义", "terms and definitions",
             "术语、定义、符号、代号和缩略语",
             "terms, definitions, symbols and abbreviations"
             term_def_parse(a, xml, node, node.title.downcase)
           when "符号、代号和缩略语", "symbols and abbreviated terms"
             symbols_parse(a, xml, node)
-          when "参考文献", "bibliography" 
+          when "参考文献", "bibliography"
             bibliography_parse(a, xml, node)
           else
             if @term_def
@@ -119,8 +119,8 @@ module Asciidoctor
 
       def normref_validate(root)
         f = root.at("//references[title = '规范性引用文件']")
-        f.at("./references") and
-          warn "ISO style: normative references contains subsections"
+        f.at("./references") &&
+          warn("ISO style: normative references contains subsections")
       end
 
       def symbols_validate(root)
@@ -158,13 +158,13 @@ module Asciidoctor
                        "//sections/clause | ./references | "\
                        "./annex")
         names = f.map { |s| { tag: s.name, title: s.at("./title").text } }
-        names = seqcheck(names, SEQ[0][:msg], SEQ[0][:val]) or return
+        names = seqcheck(names, SEQ[0][:msg], SEQ[0][:val]) || return
         n = names[0]
-        names = seqcheck(names, SEQ[1][:msg], SEQ[1][:val]) or return
+        names = seqcheck(names, SEQ[1][:msg], SEQ[1][:val]) || return
         if n == { tag: "introduction", title: "引言" }
-          names = seqcheck(names, SEQ[2][:msg], SEQ[2][:val]) or return
+          names = seqcheck(names, SEQ[2][:msg], SEQ[2][:val]) || return
         end
-        names = seqcheck(names, SEQ[3][:msg], SEQ[3][:val]) or return
+        names = seqcheck(names, SEQ[3][:msg], SEQ[3][:val]) || return
         n = names.shift
         if n == { tag: "clause", title: "符号、代号和缩略语" }
           n = names.shift
@@ -175,12 +175,12 @@ module Asciidoctor
         end
         n[:tag] == "clause" or
           warn "ISO style: Document must contain at least one clause"
-        n == { tag: "clause", title: "范围" } and
-          warn "ISO style: 范围 must occur before 术语和定义"
+        (n == { tag: "clause", title: "范围" }) &&
+          warn("ISO style: 范围 must occur before 术语和定义")
         n = names.shift or return
         while n[:tag] == "clause"
-          n[:title] == "范围" and
-            warn "ISO style: 范围 must occur before 术语和定义"
+          (n[:title] == "范围") &&
+            warn("ISO style: 范围 must occur before 术语和定义")
           n[:title] == "符号、代号和缩略语" and
             warn "ISO style: 符号、代号和缩略语 must occur "\
             "right after Terms and Definitions"

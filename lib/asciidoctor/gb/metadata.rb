@@ -24,7 +24,7 @@ module Asciidoctor
         intro.nil? || set_metadata(:docmaintitlezh, intro.text + "&mdash;")
         set_metadata(:docsubtitlezh, main.text)
         partnum = partnumber ? "#{part_label(partnumber, 'zh')}: " : ""
-        part.nil? || set_metadata(:docparttitlezh, 
+        part.nil? || set_metadata(:docparttitlezh,
                                   "&mdash;#{partnum} #{part.text}")
       end
 
@@ -36,7 +36,7 @@ module Asciidoctor
         intro.nil? || set_metadata(:docmaintitleen, intro.text + "&mdash;")
         set_metadata(:docsubtitleen, main.text)
         partnum = partnumber ? "#{part_label(partnumber, 'en')}: " : ""
-        part.nil? || set_metadata(:docparttitleen, 
+        part.nil? || set_metadata(:docparttitleen,
                                   "&mdash;#{partnum} #{part.text}")
       end
 
@@ -62,7 +62,7 @@ module Asciidoctor
       end
 
       def docidentifier(gbscope, gbprefix, gbmandate)
-        docnum = get_metadata()[:docnumber]
+        docnum = get_metadata[:docnumber]
         dn = if gbscope == "local"
                "DB#{mandate_suffix(gbprefix, gbmandate)}/#{docnum}".
                  gsub(%r{/([TZ])/}, "/\\1 ")
@@ -87,12 +87,9 @@ module Asciidoctor
         when "db" then "gb-standard-db"
         when "gb" then "gb-standard-gb"
         when "gjb" then "gb-standard-gjb"
-        when "gjb" then "gb-standard-gjb"
         when "gm" then "gb-standard-gm"
         when "jjf" then "gb-standard-jjf"
         when "zb" then "gb-standard-zb"
-        else
-          nil
         end
       end
 
@@ -116,42 +113,43 @@ module Asciidoctor
           "<span style='font-size:36pt;font-weight:bold'>#{prefix}</span>"
         else
           logo += ".gif"
-          system "cp #{fileloc(File.join("html/gb-logos", logo))}  #{logo}"
+          system "cp #{fileloc(File.join('html/gb-logos', logo))}  #{logo}"
           "<img width='113' height='56' src='#{logo}' alt='#{prefix}'>"
         end
       end
 
       def format_agency(agency, format)
-        if agency.is_a?(Array)
-          ret = "<table><tr><td>#{agency[0]}</td><td rowspan='#{agency.size}'>发布</td></tr>"
-          agency[1..-1].each { |a| ret += "<tr><td>#{a}</td></tr>" }
-          ret += "</table>"
-          if format == :word
-            ret.gsub!(/<table>/, "<table width='100%'>")
-          end
-          ret
-        else
-          agency
-        end
+        return agency unless agency.is_a?(Array)
+        ret = "<table><tr><td>#{agency[0]}</td>"\
+          "<td rowspan='#{agency.size}'>发布</td></tr>"
+        agency[1..-1].each { |a| ret += "<tr><td>#{a}</td></tr>" }
+        ret += "</table>"
+        ret.gsub!(/<table>/, "<table width='100%'>") if format == :word
+        ret
       end
 
       def termref_render(x)
-        parts = x.split(%r{(\s*\[MODIFICATION\]|,)}m)        
+        parts = x.split(%r{(\s*\[MODIFICATION\]|,)}m)
         parts[1] = "，定义" if parts.size > 1 && parts[1] == ","
         parts.map do |p|
-          /\s*\[MODIFICATION\]/.match?(p) ? ", 改写 &mdash; " : p 
+          /\s*\[MODIFICATION\]/.match?(p) ? ", 改写 &mdash; " : p
         end.join.sub(/\A\s*/m, "【").sub(/\s*\z/m, "】")
+      end
+
+      def termref_resolve(docxml)
+        docxml.split(%r{(\[TERMREF\]|\[/TERMREF\])}).each_slice(4).
+          map do |a|
+          a.size < 3 ? a[0] : a[0] + termref_render(a[2])
+        end.join
       end
 
       def populate_template(docxml, format)
         meta = get_metadata
         logo = format_logo(meta[:gbprefix], format)
-        docxml = docxml.split(%r{(\[TERMREF\]|\[/TERMREF\])}).each_slice(4).
-          map do |a|
-          a.size < 3 ? a[0] : a[0] + termref_render(a[2])
-        end.join
+        docxml = termref_resolve(docxml)
         docxml.gsub!(/\s*\[ISOSECTION\]/, ", ?~Z?~I")
-        meta[:standard_agency_formatted] = format_agency(meta[:standard_agency], format)
+        meta[:standard_agency_formatted] =
+          format_agency(meta[:standard_agency], format)
         meta[:standard_logo] = logo
         template = Liquid::Template.parse(docxml)
         template.render(meta.map { |k, v| [k.to_s, v] }.to_h)
