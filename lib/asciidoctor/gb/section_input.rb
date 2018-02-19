@@ -18,8 +18,9 @@ module Asciidoctor
       def term_def_parse(attrs, xml, node, title)
         @term_def = true
         xml.terms **attr_code(attrs) do |xml_section|
-          if title == "terms, definitions, symbols and abbreviations" # TODO: Chinese
-            title = "Terms, Definitions, Symbols and Abbreviations" # TODO: Chinese
+          if title.downcase == "terms, definitions, symbols and abbreviations" || 
+              title == "术语、定义、符号、代号和缩略语"
+            title = "术语、定义、符号、代号和缩略语"
           else
             title = "术语和定义"
           end
@@ -74,7 +75,9 @@ module Asciidoctor
           when "范围", "scope" then scope_parse(a, xml, node)
           when "规范性引用文件", "normative references"
             norm_ref_parse(a, xml, node)
-          when "术语和定义", "terms and definitions"
+          when "术语和定义", "terms and definitions", 
+            "术语、定义、符号、代号和缩略语",
+            "terms, definitions, symbols and abbreviations"
             term_def_parse(a, xml, node, node.title.downcase)
           when "符号、代号和缩略语", "symbols and abbreviated terms"
             symbols_parse(a, xml, node)
@@ -134,19 +137,19 @@ module Asciidoctor
 
       # spec of permissible section sequence
       SEQ = [
-        { msg: "Initial section must be (content) Foreword",
+        { msg: "Initial section must be (content) 前言",
           val:  [{ tag: "foreword", title: "前言" }], },
-      { msg: "Prefatory material must be followed by (clause) Scope",
+      { msg: "Prefatory material must be followed by (clause) 范围",
         val:  [{ tag: "introduction", title: "引言" },
                { tag: "clause", title: "范围" }], },
-      { msg: "Prefatory material must be followed by (clause) Scope",
+      { msg: "Prefatory material must be followed by (clause) 范围",
         val: [{ tag: "clause", title: "范围" }], },
-      { msg: "Normative References must be followed by "\
-        "Terms and Definitions",
+      { msg: "规范性引用文件 must be followed by "\
+        "术语和定义",
         val: [
           { tag: "terms", title: "术语和定义" },
           { tag: "terms",
-            title: "Terms, Definitions, Symbols and Abbreviations" } # TODO: Chinese
+            title: "术语、定义、符号、代号和缩略语" }
         ] },
       ]
 
@@ -172,14 +175,14 @@ module Asciidoctor
         end
         n[:tag] == "clause" or
           warn "ISO style: Document must contain at least one clause"
-        n == { tag: "clause", title: "Scope" } and
-          warn "ISO style: Scope must occur before Terms and Definitions"
+        n == { tag: "clause", title: "范围" } and
+          warn "ISO style: 范围 must occur before 术语和定义"
         n = names.shift or return
         while n[:tag] == "clause"
           n[:title] == "范围" and
-            warn "ISO style: Scope must occur before Terms and Definitions"
+            warn "ISO style: 范围 must occur before 术语和定义"
           n[:title] == "符号、代号和缩略语" and
-            warn "ISO style: Symbols and Abbreviations must occur "\
+            warn "ISO style: 符号、代号和缩略语 must occur "\
             "right after Terms and Definitions"
           n = names.shift or return
         end
@@ -190,10 +193,10 @@ module Asciidoctor
           n = names.shift or return
         end
         n == { tag: "references", title: "规范性引用文件" } or
-          warn "ISO style: Document must include (references) Normative References"
+          warn "ISO style: Document must include (references) 规范性引用文件"
         n = names.shift
         n == { tag: "references", title: "参考文献" } or
-          warn "ISO style: Final section must be (references) Bibliography"
+          warn "ISO style: Final section must be (references) 参考文献"
         names.empty? or
           warn "ISO style: There are sections after the final Bibliography"
       end

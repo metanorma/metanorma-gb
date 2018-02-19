@@ -26,7 +26,7 @@ module Asciidoctor
       end
 
       def formula_where(dl, out)
-        out.p { |p| p << "where" } # TODO: Chinese
+        out.p { |p| p << "式中" }
         parse(dl, out)
       end
 
@@ -41,7 +41,7 @@ module Asciidoctor
 
       def deprecated_term_parse(node, out)
         out.p **{ class: "AltTerms" } do |p|
-          p << "DEPRECATED: #{node.text}" #TODO: Chinese
+          p << "被取代: #{node.text}"
         end
       end
 
@@ -56,25 +56,24 @@ module Asciidoctor
         end
       end
 
-      # TODO
       LOCALITY = {
-        section: "section",
-        clause: "clause",
-        part: "part",
-        paragraph: "paragraph",
-        chapter: "chapter",
-        page: "page",
+        section: "条",
+        clause: "条",
+        part: "部分",
+        paragraph: "段",
+        chapter: "章",
+        page: "页",
       }.freeze
 
       def eref_localities(r)
         ret = ""
         r.each do |r|
           if r["type"] == "whole"
-            ret += ", Whole of text"
+            ret += ", 全部"
           else
-            ret += ", #{LOCALITY[r["type"].to_sym]}"
             ref = r.at(ns("./reference"))
-            ret += " #{ref.text}" if ref
+            ret += ", 第#{ref.text}" if ref
+            ret += "#{LOCALITY[r["type"].to_sym]}"
           end
         end
         ret
