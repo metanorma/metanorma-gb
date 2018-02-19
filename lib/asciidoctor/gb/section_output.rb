@@ -15,7 +15,7 @@ module Asciidoctor
         q = "./*/references[title = '规范性引用文件']"
         (f = isoxml.at(ns(q))) || return
         out.div do |div|
-          clause_name("2.", "规范性引用文件", div, false)
+          clause_name("2.", "规范性引用文件", div, false, nil)
           norm_ref_preface(f, div)
           biblio_list(f, div, false)
         end
@@ -37,7 +37,7 @@ module Asciidoctor
       def scope(isoxml, out)
         f = isoxml.at(ns("//clause[title = '范围']")) || return
         out.div do |div|
-          clause_name("1", "范围", div, false)
+          clause_name("1", "范围", div, false, nil)
           f.elements.each do |e|
             parse(e, div) unless e.name == "title"
           end
@@ -47,7 +47,7 @@ module Asciidoctor
       def terms_defs(isoxml, out)
         f = isoxml.at(ns("//terms")) || return
         out.div do |div|
-          clause_name("3", "术语和定义", div, false)
+          clause_name("3", "术语和定义", div, false, nil)
           f.elements.each do |e|
             parse(e, div) unless e.name == "title"
           end
@@ -57,7 +57,7 @@ module Asciidoctor
       def symbols_abbrevs(isoxml, out)
         f = isoxml.at(ns("//symbols-abbrevs")) || return
         out.div do |div|
-          clause_name("4", "符号、代号和缩略语", div, false)
+          clause_name("4", "符号、代号和缩略语", div, false, nil)
           f.elements.each do |e|
             parse(e, div) unless e.name == "title"
           end
@@ -66,13 +66,11 @@ module Asciidoctor
 
       def introduction(isoxml, out)
         f = isoxml.at(ns("//introduction")) || return
+              num = f.at(ns(".//subsection")) ? "0." : nil
         title_attr = { class: "IntroTitle" }
         page_break(out)
-        out.div **{ class: "Section3" } do |div|
-          div.h1 **attr_code(title_attr) do |h1|
-          h1 << "引言"
-          insert_tab(h1, 1)
-          end
+        out.div **{ class: "Section3", id: f["id"] } do |div|
+          clause_name(num, "引言", div, false, title_attr)
           f.elements.each do |e|
             if e.name == "patent-notice"
               e.elements.each { |e1| parse(e1, div) }
@@ -103,7 +101,7 @@ module Asciidoctor
             c.elements.each do |c1|
               if c1.name == "title"
                 clause_name("#{get_anchors()[c['id']][:label]}.",
-                            c1.text, s, c["inline-header"])
+                            c1.text, s, c["inline-header"], nil)
               else
                 parse(c1, s)
               end
