@@ -7,7 +7,8 @@ image:https://codeclimate.com/github/riboseinc/asciidoctor-gb/badges/gpa.svg["Co
 Gem for generating https://en.wikipedia.org/wiki/Guobiao_standards[Guibiao standards]
 (Chinese national standards), using Asciidoc. This gem inherits from 
 https://github.com/riboseinc/asciidoctor-iso, a gem used to generate ISO standards
-using Asciidoc. The two standards formats are closely aligned.
+using Asciidoc. The two standards formats are closely aligned. Refer to the ISO gem
+for guidance, including https://github.com/riboseinc/asciidoctor-iso/wiki/Guidance-for-authoring
 
 The Gem can also be used to generate Chinese local or sector standards, which have the 
 same format; the gem formats the title page to have the correct metadata displayed.
@@ -68,3 +69,5 @@ alt:[[en]#rough rice# [zh]#糙米#]
 Unfortunately no further markup is permitted within the +`[zh]#...#`+ and +`[en]#...#`+ 
 macros by Asciidoctor, and Asciidoctor does not correctly nest inline macros within other
 inline macros (so +`alt:[en:[_xyz_] zh:[xyz]`+  would not give correct behaviour either.)
+
+The gem also supports +`[zh-Hant]#...#`+ and +`[zh-Hans]#...#`+ to differentiate traditional and simplified script in ISOXML; `zh-Hant` is provisionally supported through changing font in the output.
