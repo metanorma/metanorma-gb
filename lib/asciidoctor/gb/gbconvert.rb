@@ -71,8 +71,10 @@ module Asciidoctor
           if r["type"] == "whole"
             ret += ", 全部"
           else
-            ref = r.at(ns("./reference"))
-            ret += ", 第#{ref.text}" if ref
+            refFrom = r.at(ns("./referenceFrom"))
+            refTo = r.at(ns("./referenceTo"))
+            ret += ", 第#{refFrom.text}" if refFrom
+            ret += "&ndash;#{refTo}" if refTo
             ret += "#{LOCALITY[r["type"].to_sym]}"
           end
         end
