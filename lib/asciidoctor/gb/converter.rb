@@ -145,6 +145,9 @@ module Asciidoctor
         end.join
       end
 
+      def termdef_boilerplate_cleanup(xmldoc)
+        nil
+      end
     end
   end
 end
