@@ -44,19 +44,40 @@ module Asciidoctor
         end
       end
 
+      def term_defs_boilerplate(div, source, term)
+        if source.nil? && term.nil?
+          div << "<p>本文件不提供术语和定义。</p>"
+        else
+          out = term_defs_boilerplate_cont(source, term)
+          div << out
+        end
+      end
+
+      def term_defs_boilerplate_cont(src, term)
+sources = sentence_join(src.map { |s| s["citeas"] })
+if src.nil?
+          "<p>下列术语和定义适用于本文件。</p>"
+        elsif term.nil?
+          "<p>#{sources} 界定的术语和定义适用于本文件。</p>"
+        else
+          "<p>#{sources} 界定的以及下列术语和定义适用于本文件。</p>"
+        end
+      end
+
       def terms_defs(isoxml, out)
         f = isoxml.at(ns("//terms")) || return
-        out.div do |div|
+        out.div **attr_code(id: f["id"]) do |div|
           clause_name("3", "术语和定义", div, false, nil)
+          term_defs_boilerplate(div, f.xpath(ns("./source")), f.at(ns(".//term")))
           f.elements.each do |e|
-            parse(e, div) unless e.name == "title"
+            parse(e, div) unless %w{title source}.include? e.name
           end
         end
       end
 
       def symbols_abbrevs(isoxml, out)
         f = isoxml.at(ns("//symbols-abbrevs")) || return
-        out.div do |div|
+        out.div **attr_code(id: f["id"], class: "Symbols") do |div|
           clause_name("4", "符号、代号和缩略语", div, false, nil)
           f.elements.each do |e|
             parse(e, div) unless e.name == "title"
@@ -66,7 +87,7 @@ module Asciidoctor
 
       def introduction(isoxml, out)
         f = isoxml.at(ns("//introduction")) || return
-              num = f.at(ns(".//subsection")) ? "0." : nil
+        num = f.at(ns(".//subsection")) ? "0." : nil
         title_attr = { class: "IntroTitle" }
         page_break(out)
         out.div **{ class: "Section3", id: f["id"] } do |div|
@@ -81,14 +102,14 @@ module Asciidoctor
         end
       end
 
-     # putting in tab so that ToC aligns
+      # putting in tab so that ToC aligns
       def foreword(isoxml, out)
         f = isoxml.at(ns("//foreword")) || return
         page_break(out)
         out.div do |s|
           s.h1 **{ class: "ForewordTitle" } do |h1|
-          h1 << "前言"
-          insert_tab(h1, 1)
+            h1 << "前言"
+            insert_tab(h1, 1)
           end
           f.elements.each { |e| parse(e, s) unless e.name == "title" }
         end

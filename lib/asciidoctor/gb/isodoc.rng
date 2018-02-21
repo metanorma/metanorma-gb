@@ -192,7 +192,7 @@
           <data type="ID"/>
         </attribute>
       </optional>
-      <attribute name="type">
+      <attribute name="obligation">
         <choice>
           <value>normative</value>
           <value>informative</value>
@@ -471,7 +471,9 @@
           <ref name="Alignments"/>
         </attribute>
       </optional>
-      <ref name="quote-source"/>
+      <optional>
+        <ref name="quote-source"/>
+      </optional>
       <optional>
         <ref name="quote-author"/>
       </optional>
@@ -1281,6 +1283,11 @@
           <value>chapter</value>
           <value>page</value>
           <value>whole</value>
+          <value>table</value>
+          <value>annex</value>
+          <value>figure</value>
+          <value>note</value>
+          <value>example</value>
         </choice>
       </attribute>
       <zeroOrMore>

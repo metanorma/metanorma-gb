@@ -14,20 +14,13 @@ module Asciidoctor
         end
         @biblio = true
       end
-
-      def term_def_parse(attrs, xml, node, title)
-        @term_def = true
-        xml.terms **attr_code(attrs) do |xml_section|
+      
+      def term_def_title(title)
           if title.downcase == "terms, definitions, symbols and abbreviations" ||
-              title == "术语、定义、符号、代号和缩略语"
-            title = "术语、定义、符号、代号和缩略语"
+              "术语、定义、符号、代号和缩略语"
           else
-            title = "术语和定义"
+            "术语和定义"
           end
-          xml_section.title { |t| t << title }
-          xml_section << node.content
-        end
-        @term_def = false
       end
 
       def norm_ref_parse(attrs, xml, node)

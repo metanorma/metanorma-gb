@@ -231,16 +231,58 @@
       <element name="sections">
         <ref name="clause"/>
         <ref name="terms"/>
+        <optional>
+          <ref name="symbols-abbrevs"/>
+        </optional>
         <oneOrMore>
           <ref name="clause"/>
         </oneOrMore>
       </element>
+    </define>
+    <define name="Content-Section">
+      <optional>
+        <attribute name="id">
+          <data type="ID"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="obligation">
+          <choice>
+            <value>normative</value>
+            <value>informative</value>
+          </choice>
+        </attribute>
+      </optional>
+      <optional>
+        <ref name="section-title"/>
+      </optional>
+      <choice>
+        <group>
+          <oneOrMore>
+            <ref name="BasicBlock"/>
+          </oneOrMore>
+          <zeroOrMore>
+            <ref name="note"/>
+          </zeroOrMore>
+        </group>
+        <oneOrMore>
+          <ref name="content-subsection"/>
+        </oneOrMore>
+      </choice>
     </define>
     <define name="references">
       <element name="references">
         <optional>
           <attribute name="id">
             <data type="ID"/>
+          </attribute>
+        </optional>
+        <optional>
+          <attribute name="obligation">
+            <choice>
+              <value>normative</value>
+              <value>informative</value>
+            </choice>
           </attribute>
         </optional>
         <optional>
@@ -262,22 +304,31 @@
           </attribute>
         </optional>
         <optional>
+          <attribute name="obligation">
+            <choice>
+              <value>normative</value>
+              <value>informative</value>
+            </choice>
+          </attribute>
+        </optional>
+        <optional>
           <ref name="section-title"/>
         </optional>
         <zeroOrMore>
-          <!-- boilerplate -->
-          <ref name="paragraph-with-footnote"/>
+          <ref name="termdocsource"/>
         </zeroOrMore>
-        <optional>
-          <ref name="ul"/>
-        </optional>
         <choice>
           <oneOrMore>
             <ref name="term"/>
           </oneOrMore>
-          <optional>
-            <ref name="terms"/>
-          </optional>
+          <group>
+            <zeroOrMore>
+              <ref name="terms"/>
+            </zeroOrMore>
+            <optional>
+              <ref name="symbols-abbrevs"/>
+            </optional>
+          </group>
         </choice>
       </element>
     </define>
@@ -334,7 +385,7 @@
           </attribute>
         </optional>
         <optional>
-          <attribute name="subtype">
+          <attribute name="obligation">
             <choice>
               <value>normative</value>
               <value>informative</value>
@@ -370,7 +421,7 @@
         <choice>
           <ref name="image"/>
           <oneOrMore>
-            <ref name="figure"/>
+            <ref name="subfigure"/>
           </oneOrMore>
         </choice>
         <zeroOrMore>
@@ -526,6 +577,14 @@
       <optional>
         <attribute name="inline-header">
           <data type="boolean"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="obligation">
+          <choice>
+            <value>normative</value>
+            <value>informative</value>
+          </choice>
         </attribute>
       </optional>
       <optional>
@@ -719,6 +778,14 @@
         </attribute>
       </optional>
       <optional>
+        <attribute name="obligation">
+          <choice>
+            <value>normative</value>
+            <value>informative</value>
+          </choice>
+        </attribute>
+      </optional>
+      <optional>
         <ref name="section-title"/>
       </optional>
       <zeroOrMore>
@@ -731,6 +798,40 @@
       <zeroOrMore>
         <ref name="clause-hanging-paragraph-with-footnote"/>
       </zeroOrMore>
+    </element>
+  </define>
+  <define name="subfigure">
+    <element name="figure">
+      <attribute name="id">
+        <data type="ID"/>
+      </attribute>
+      <optional>
+        <ref name="tname"/>
+      </optional>
+      <ref name="image"/>
+    </element>
+  </define>
+  <define name="termdocsource">
+    <element name="source">
+      <ref name="erefType"/>
+    </element>
+  </define>
+  <define name="symbols-abbrevs">
+    <element name="symbols-abbrevs">
+      <optional>
+        <attribute name="id">
+          <data type="ID"/>
+        </attribute>
+      </optional>
+      <optional>
+        <attribute name="obligation">
+          <choice>
+            <value>normative</value>
+            <value>informative</value>
+          </choice>
+        </attribute>
+      </optional>
+      <ref name="dl"/>
     </element>
   </define>
 </grammar>
