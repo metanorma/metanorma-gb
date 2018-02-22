@@ -15,12 +15,27 @@ module Asciidoctor
         @biblio = true
       end
       
-      def term_def_title(title)
-          if title.downcase == "terms, definitions, symbols and abbreviations" ||
-              "术语、定义、符号、代号和缩略语"
-          else
-            "术语和定义"
-          end
+      def term_def_subclause_parse(attrs, xml, node)
+        # subclause contains subclauses
+        sub = node.find_by(context: :section) {|s| s.level == node.level + 1 }
+        sub.empty? || (return term_def_parse(attrs, xml, node, false))
+        (node.title.downcase == "symbols and abbreviated terms" ||
+        node.title == "符号、代号和缩略语") &&
+          (return symbols_parse(attrs, xml, node))
+        xml.term **attr_code(attrs) do |xml_section|
+          xml_section.preferred { |name| name << node.title }
+          xml_section << node.content
+        end
+      end
+
+      def term_def_title(toplevel, node)
+        return node.title unless toplevel
+        sub = node.find_by(context: :section) do |s|
+          s.title.downcase == "symbols and abbreviated terms" ||
+          s.title == "符号、代号和缩略语"
+        end
+        return "术语和定义" if sub.empty?
+        "术语、定义、符号、代号和缩略语"
       end
 
       def norm_ref_parse(attrs, xml, node)
@@ -70,17 +85,17 @@ module Asciidoctor
             norm_ref_parse(a, xml, node)
           when "术语和定义", "terms and definitions",
             "术语、定义、符号、代号和缩略语",
-            "terms, definitions, symbols and abbreviations"
+            "terms, definitions, symbols and abbreviated terms"
+            @term_def = true
             term_def_parse(a, xml, node, node.title.downcase)
+            @term_def = false
           when "符号、代号和缩略语", "symbols and abbreviated terms"
             symbols_parse(a, xml, node)
           when "参考文献", "bibliography"
             bibliography_parse(a, xml, node)
           else
-            if @term_def
-              term_def_subclause_parse(a, xml, node)
-            elsif @biblio
-              bibliography_parse(a, xml, node)
+            if @term_def then term_def_subclause_parse(a, xml, node)
+            elsif @biblio then bibliography_parse(a, xml, node)
             elsif node.attr("style") == "appendix" && node.level == 1
               annex_parse(a, xml, node)
             else

@@ -2,7 +2,7 @@ require "isodoc"
 
 module Asciidoctor
   module Gb
-    # A {Converter} implementation that generates CSD output, and a document
+    # A {Converter} implementation that generates GB output, and a document
     # schema encapsulation of the document for validation
     class GbConvert < IsoDoc::Convert
       def initial_anchor_names(d)
@@ -10,15 +10,15 @@ module Asciidoctor
         section_names(d.at(ns("//clause[title = '范围' or title = 'Scope']")), "1", 1)
         section_names(d.at(ns(
           "//references[title = '规范性引用文件' or title = 'Normative References']")), "2", 1)
-        section_names(d.at(ns("//terms")), "3", 1)
+        section_names(d.at(ns("//sections/terms")), "3", 1)
         middle_section_asset_names(d)
       end
 
       def middle_section_asset_names(d)
         middle_sections = "//clause[title = '范围' or title = 'Scope'] | "\
           "//references[title = '规范性引用文件' "\
-          "or title = 'Normative References'] | //terms | "\
-          "//symbols-abbrevs | //clause[parent::sections]"
+          "or title = 'Normative References'] | //sections/terms | "\
+          "//sections/symbols-abbrevs | //clause[parent::sections]"
         sequential_asset_names(d.xpath(ns(middle_sections)))
       end
 
@@ -30,101 +30,101 @@ module Asciidoctor
         end
       end
 
+    def note_anchor_names(sections)
+      sections.each do |s|
+        notes = s.xpath(CHILD_NOTES_XPATH)
+        notes.each_with_index do |n, i|
+          next if @anchors[n["id"]]
+          next if n["id"].nil?
+          idx = notes.size == 1 ? "" : " #{i + 1}"
+          @anchors[n["id"]] = anchor_struct(idx, s, "注")
+        end
+        note_anchor_names(s.xpath(ns("./subsection")))
+      end
+    end
+
       def termnote_anchor_names(docxml)
         docxml.xpath(ns("//term[termnote]")).each do |t|
           t.xpath(ns("./termnote")).each_with_index do |n, i|
-            @anchors[n["id"]] = { label: "注 #{i + 1}",
+            @anchors[n["id"]] = { label: "注#{i + 1}",
                                   xref: "#{@anchors[t['id']][:xref]},"\
-                                  "注 #{i + 1}" }
+                                  "注#{i + 1}" }
           end
         end
       end
-
-      def table_note_anchor_names(docxml)
-        docxml.xpath(ns("//table[note]")).each do |t|
-          t.xpath(ns("./note")).each_with_index do |n, i|
-            @anchors[n["id"]] = { label: "注 #{i + 1}",
-                                  xref: "#{@anchors[t['id']][:xref]},"\
-                                  "注 #{i + 1}" }
-          end
+      
+          def example_anchor_names(sections)
+      sections.each do |s|
+        notes = s.xpath(CHILD_EXAMPLES_XPATH)
+        notes.each_with_index do |n, i|
+          next if @anchors[n["id"]]
+          idx = notes.size == 1 ? "" : " #{i + 1}"
+          @anchors[n["id"]] = anchor_struct(idx, s, "示例")
         end
+        example_anchor_names(s.xpath(ns("./subsection")))
       end
+    end
 
-      def sequential_figure_names(clause)
-        i = j = 0
-        clause.xpath(ns(".//figure")).each do |t|
-          if t.parent.name == "figure" then j += 1
-          else
-            j = 0
-            i += 1
-          end
-          label = "图 #{i}" + (j.zero? ? "" : "-#{j}")
-          @anchors[t["id"]] = { label: label, xref: label }
+    def sequential_figure_names(clause)
+      i = j = 0
+      clause.xpath(ns(".//figure")).each do |t|
+        if t.parent.name == "figure" then j += 1
+        else
+          j = 0
+          i += 1
         end
+        label = i.to_s + (j.zero? ? "" : "-#{j}")
+        @anchors[t["id"]] = anchor_struct(label, nil, "图")
       end
+    end
 
-      def sequential_asset_names(clause)
-        clause.xpath(ns(".//table")).each_with_index do |t, i|
-          @anchors[t["id"]] = { label: "表 #{i + 1}",
-                                xref: "表 #{i + 1}" }
-        end
-        sequential_figure_names(clause)
-        clause.xpath(ns(".//formula")).each_with_index do |t, i|
-          @anchors[t["id"]] = { label: (i + 1).to_s,
-                                xref: "公式 #{i + 1}" }
-        end
+    def sequential_asset_names(clause)
+      clause.xpath(ns(".//table")).each_with_index do |t, i|
+        @anchors[t["id"]] = anchor_struct(i + 1, nil, "表")
       end
+      sequential_figure_names(clause)
+      clause.xpath(ns(".//formula")).each_with_index do |t, i|
+        @anchors[t["id"]] = anchor_struct(i + 1, t, "公式")
+      end
+    end
 
-      def hierarchical_figure_names(clause, num)
-        i = j = 0
-        clause.xpath(ns(".//figure")).each do |t|
-          if t.parent.name == "figure"
-            j += 1
-          else
-            j = 0
-            i += 1
-          end
-          label = "图 #{num}.#{i}" + (j.zero? ? "" : "-#{j}")
-          @anchors[t["id"]] = { label: label, xref: label }
+    def hierarchical_figure_names(clause, num)
+      i = j = 0
+      clause.xpath(ns(".//figure")).each do |t|
+        if t.parent.name == "figure" then j += 1
+        else
+          j = 0
+          i += 1
         end
+        label = "#{num}.#{i}" + (j.zero? ? "" : "-#{j}")
+        @anchors[t["id"]] = anchor_struct(label, nil, "图")
       end
+    end
 
-      def hierarchical_asset_names(clause, num)
-        clause.xpath(ns(".//table")).each_with_index do |t, i|
-          @anchors[t["id"]] = { label: "表 #{num}.#{i + 1}",
-                                xref: "表 #{num}.#{i + 1}" }
-        end
-        hierarchical_figure_names(clause, num)
-        clause.xpath(ns(".//formula")).each_with_index do |t, i|
-          @anchors[t["id"]] = { label: "#{num}.#{i + 1}",
-                                xref: "公式 #{num}.#{i + 1}" }
-        end
+    def hierarchical_asset_names(clause, num)
+      clause.xpath(ns(".//table")).each_with_index do |t, i|
+        @anchors[t["id"]] = anchor_struct("#{num}.#{i + 1}", nil, "表")
       end
+      hierarchical_figure_names(clause, num)
+      clause.xpath(ns(".//formula")).each_with_index do |t, i|
+        @anchors[t["id"]] = anchor_struct("#{num}.#{i + 1}", t, "公式")
+      end
+    end
 
-      def section_names(clause, num, level)
-        @anchors[clause["id"]] = { label: num, xref: num.to_s,
-                                   level: level }
-        clause.xpath(ns("./subsection | ./term")).each_with_index do |c, i|
-          section_names1(c, "#{num}.#{i + 1}", level + 1)
-        end
+    def section_names(clause, num, lvl)
+      @anchors[clause["id"]] = { label: num, xref: "条#{num}", level: lvl }
+      clause.xpath(ns("./subsection | ./term  | ./terms | ./symbols-abbrevs")).
+        each_with_index do |c, i|
+        section_names1(c, "#{num}.#{i + 1}", lvl + 1)
       end
-
-      def section_names1(clause, num, level)
-        @anchors[clause["id"]] =
-          { label: num, level: level,
-            xref: clause.name == "term" ? num : num.to_s }
-        clause.xpath(ns("./subsection ")).
-          each_with_index do |c, i|
-          section_names1(c, "#{num}.#{i + 1}", level + 1)
-        end
-      end
+    end
 
       def annex_names(clause, num)
         obligation = "（非规范性）"
         obligation = "（规范性）" if clause["subtype"] == "normative"
         label = "<b>附录 #{num}</b><br/>#{obligation}"
         @anchors[clause["id"]] = { label: label,
-                                   xref: "附录 #{num}", level: 1 }
+                                   xref: "附录#{num}", level: 1 }
         clause.xpath(ns("./subsection")).each_with_index do |c, i|
           annex_names1(c, "#{num}.#{i + 1}", 2)
         end

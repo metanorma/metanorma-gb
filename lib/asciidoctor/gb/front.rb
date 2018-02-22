@@ -45,8 +45,8 @@ module Asciidoctor
         title = m[:title].empty? ? "[not supplied]" : m[:title]
         xml.relation **{ type: type } do |r|
           r.bibitem do |b|
-            b.docidentifier m[:code]
             b.title { |t| t << title }
+            b.docidentifier m[:code]
           end
         end
       end
@@ -57,10 +57,10 @@ module Asciidoctor
         title = m[:title].empty? ? "[not supplied]" : m[:title]
         xml.relation **{ type: "obsoletes" } do |r|
           r.bibitem do |b|
-            b.docidentifier m[:code]
             b.title { |t| t << title }
-            b.bpart node.attr("obsoletes-parts") if node.attr("obsoletes-parts")
+            b.docidentifier m[:code]
           end
+          r.bpart node.attr("obsoletes-parts") if node.attr("obsoletes-parts")
         end
       end
 
@@ -127,9 +127,9 @@ module Asciidoctor
         xml.script "Hans"
         metadata_status(node, xml)
         metadata_copyright(node, xml)
-        metadata_committee(node, xml)
         metadata_equivalence(node, xml)
         metadata_obsoletes(node, xml)
+        metadata_committee(node, xml)
         metadata_gbtype(node, xml)
         metadata_gblibraryids(node, xml)
       end

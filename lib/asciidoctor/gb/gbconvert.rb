@@ -16,8 +16,17 @@ module Asciidoctor
       def note_label(node)
         n = get_anchors()[node["id"]]
         return "注" if n.nil?
-        n[:label]
+        "注n[:label]"
       end
+
+    def figure_name_parse(node, div, name)
+      div.p **{ class: "FigureTitle", align: "center" } do |p|
+        p.b do |b|
+          b << "图#{get_anchors()[node['id']][:label]}"
+          b << "&nbsp;&mdash; #{name.text}" if name
+        end
+      end
+    end
 
       def figure_key(out)
         out.p do |p|
@@ -38,6 +47,12 @@ module Asciidoctor
         end
         dl
       end
+
+    def example_label(node)
+      n = get_anchors()[node["id"]]
+      return "示例" if n.nil? || n[:label].empty?
+      "示例#{n[:label]}"
+    end
 
       def deprecated_term_parse(node, out)
         out.p **{ class: "DeprecatedTerms" } do |p|
