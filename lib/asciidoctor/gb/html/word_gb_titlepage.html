@@ -56,9 +56,24 @@ page;mso-element-top:27.55pt;mso-height-rule:exactly'>
   lang=EN-US style='font-family:"Times New Roman",serif;mso-ascii-font-family:
   SimHei'>—</span><a name=StdNo2></a><span
   style='mso-bookmark:StdNo2'></span><span style='mso-bookmark:StdNo2'><span
-  lang=el style='mso-ansi-language:#0400;mso-fareast-language:#0400'>{{ docyear }}</span><span
+  lang=el style='mso-ansi-language:#0400;mso-fareast-language:#0400'>{{ docyear }}</span>
+      {%- if isostandard -%}
+       /<span style='font-family:"Times New Roman",serif;mso-ascii-font-family:
+  SimHei'>{{ isostandard }}</span>
+    {%- endif -%}
+<span
   lang=EN-US></span></span><span
   style='mso-bookmark:StdNo2'></span></p>
+      {% if obsoletes %}
+        <p class=2 style='margin-top:0cm;font-size:12.0pt'>
+    {% if obsoletes_part %}
+      部分代替
+    {% else %}
+      代替
+    {% endif %}
+    {{ obsoletes }}
+    </p>
+    {% endif %}
   <table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
    style='border-collapse:collapse;mso-table-layout-alt:fixed;border:none;
    mso-border-alt:solid black .5pt;mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
@@ -86,6 +101,17 @@ page;mso-element-top:27.55pt;mso-height-rule:exactly'>
   <p class=affd><a name=StdEnglishName></a><span
   style='mso-bookmark:StdEnglishName'><span lang=EN-US>{{ docmaintitleen }} {{ docsubtitleen }} {{ docparttitleen }}</span></span><span
   style='mso-bookmark:StdEnglishName'></span></p>
+    {% if isostandard %}
+  <p class=affd>
+      <span class="iso-document-code">({{ isostandard }}</span>
+      {% if isostandardtitle != "[not supplied]" %}
+      <span class="iso-title-first">{{ isostandardtitle }}</span>
+      {% endif %}
+      <span class="join">，</span>
+      <span class="iso-equivalence-code">{{ gbequivalence }})</span>
+  </p>
+    {% endif %}
+ 
   <p class=a0><a name=YZBS></a><span
   style='mso-bookmark:YZBS'><span lang=ZH-CN style='mso-no-proof:yes'>在提交反馈意见时，请将您知道的相关专利连同支持文件一并附上。</span><span
   lang=EN-US></span></span><span

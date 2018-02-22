@@ -105,13 +105,18 @@ module Asciidoctor
       def normref_cleanup(xmldoc)
         q = "//references[title = '规范性引用文件']"
         r = xmldoc.at(q)
+        if r.nil?
+          warn "You have no normative references!"
+          return
+        end
         r.elements.each do |n|
           n.remove unless ["title", "bibitem"].include? n.name
         end
       end
 
       def normref_validate(root)
-        f = root.at("//references[title = '规范性引用文件']")
+        f = root.at("//references[title = '规范性引用文件']") ||
+          return
         f.at("./references") &&
           warn("ISO style: normative references contains subsections")
       end

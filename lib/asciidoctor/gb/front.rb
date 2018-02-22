@@ -39,7 +39,29 @@ module Asciidoctor
       end
 
       def metadata_equivalence(node, xml)
-        xml.gbequivalence { |a| a << node.attr("equivalence") }
+        isostd = node.attr("iso-standard") || return
+        type = node.attr("equivalence") || "equivalent"
+        m = /^(?<code>[^,]+),?(?<title>.*)$/.match isostd
+        title = m[:title].empty? ? "[not supplied]" : m[:title]
+        xml.relation **{ type: type } do |r|
+          r.bibitem do |b|
+            b.docidentifier m[:code]
+            b.title { |t| t << title }
+          end
+        end
+      end
+
+      def metadata_obsoletes(node, xml)
+        std = node.attr("obsoletes") || return
+        m = /^(?<code>[^,]+),?(?<title>.*)$/.match std
+        title = m[:title].empty? ? "[not supplied]" : m[:title]
+        xml.relation **{ type: "obsoletes" } do |r|
+          r.bibitem do |b|
+            b.docidentifier m[:code]
+            b.title { |t| t << title }
+            b.bpart node.attr("obsoletes-parts") if node.attr("obsoletes-parts")
+          end
+        end
       end
 
       def get_scope(node)
@@ -107,6 +129,7 @@ module Asciidoctor
         metadata_copyright(node, xml)
         metadata_committee(node, xml)
         metadata_equivalence(node, xml)
+        metadata_obsoletes(node, xml)
         metadata_gbtype(node, xml)
         metadata_gblibraryids(node, xml)
       end

@@ -10,14 +10,6 @@
 
     <span class="coverpage-logo-text">{{ standard_class }}</span>
 
-    <!-- for local standards (DB, DB/T),
-      - XX is the location code
-      - XXXX the name of location
-    -->
-    <!--
-    <div class="coverpage-logo-db-img"> </div>
-    <span class="coverpage-logo-text">XXXX 地方标准</span>
-    -->
   </div>
 
   <div class="coverpage-doc-identity-first">
@@ -25,17 +17,26 @@
       <span class="docnumber">{{ docidentifier }}</span>
       <span class="docnumber-separator">-</span>
       <span class="docyear">{{ docyear }}</span>
+    {%- if isostandard and gbequivalence == "IDN" -%}
+       /<span class="docnumber">{{ isostandard }}</span>
+    {%- endif -%}
     </div>
 
     <div class="coverpage-doc-relations">
-      <span class="supercedes">代替</span>
-      <!--
+    {% if obsoletes %}
+    {% if obsoletes_part %}
       <span class="partially-supercedes">部分代替</span>
-      -->
+    {% else %}
+      <span class="supercedes">代替</span>
+    {% endif %}
+    <!--
       <ul>
         <li>GB/T XXXX-XXXX</li>
         <li>GB/T YYYY-YYYY</li>
       </ul>
+    -->
+    {{ obsoletes }}
+    {% endif %}
     </div>
   </div>
 
@@ -57,16 +58,18 @@
 
     <!-- for local standards (DB, DB/T), no relation to ISO standards -->
     <!-- if related to ISO standards -->
+    {% if isostandard %}
     <div class="coverpage-iso-relation">
       <span class="openparen">（</span>
-      <span class="iso-document-code">ISODOCCODE</span>
-      <span class="iso-title-first">ISOTITLEFIRST</span>
-      <span class="iso-title-second">ISOTITLESECOND</span>
-      <span class="iso-title-third">ISOTITLETHIRD</span>
+      <span class="iso-document-code">{{ isostandard }}</span>
+      {% if isostandardtitle != "[not supplied]" %}
+      <span class="iso-title-first">{{ isostandardtitle }}</span>
+      {% endif %}
       <span class="join">，</span>
       <span class="iso-equivalence-code">{{ gbequivalence }}</span>
       <span class="closeparen">）</span>
     </div>
+    {% endif %}
   </div>
 
   <div class="coverpage-stage-block">

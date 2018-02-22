@@ -14,7 +14,11 @@ module Asciidoctor
         set_metadata(:docsubtitleen, "")
         set_metadata(:docparttitleen, "")
         set_metadata(:gbequivalence, "")
+        set_metadata(:isostandard, nil)
+        set_metadata(:isostandardtitle, "")
         set_metadata(:doctitle, "XXXX")
+        set_metadata(:obsoletes, nil)
+        set_metadata(:obsoletes_part, nil)
       end
 
       def title(isoxml, _out)
@@ -55,8 +59,15 @@ module Asciidoctor
         gb_equivalence(isoxml)
       end
 
+      ISO_STD_XPATH = "//bibdata/relation[@type = 'equivalent' or "\
+        "@type = 'identical' or @type = 'nonequivalent']/bibitem".freeze
+
       def gb_equivalence(isoxml)
-        eq = isoxml.at(ns("//gbequivalence")) || return
+        isostdid = isoxml.at(ns("#{ISO_STD_XPATH}/docidentifier")) || return
+        set_metadata(:isostandard, isostdid.text)
+        isostdtitle = isoxml.at(ns("#{ISO_STD_XPATH}/title"))
+        set_metadata(:isostandardtitle, isostdtitle.text) if isostdtitle
+        eq = isoxml.at(ns("//bibdata/relation/@type"))
         case eq.text
         when "equivalent" then set_metadata(:gbequivalence, "EQV")
         when "nonequivalent" then set_metadata(:gbequivalence, "NEQ")

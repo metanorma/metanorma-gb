@@ -131,14 +131,14 @@ module Asciidoctor
         docxml
       end
 
-    def sentence_join(array)
-      return "" if array.nil? || array.empty?
-      if array.length == 1
-        result = array[0]
-      else
-        result = "#{array[0..-2].join('、 ')} 和 #{array.last}"
+      def sentence_join(array)
+        return "" if array.nil? || array.empty?
+        if array.length == 1
+          result = array[0]
+        else
+          result = "#{array[0..-2].join('、 ')} 和 #{array.last}"
+        end
       end
-    end
     end
   end
 end
