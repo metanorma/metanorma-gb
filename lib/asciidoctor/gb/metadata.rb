@@ -69,9 +69,9 @@ module Asciidoctor
         set_metadata(:isostandardtitle, isostdtitle.text) if isostdtitle
         eq = isoxml.at(ns("//bibdata/relation/@type"))
         case eq.text
-        when "equivalent" then set_metadata(:gbequivalence, "EQV")
+        when "equivalent" then set_metadata(:gbequivalence, "MOD")
         when "nonequivalent" then set_metadata(:gbequivalence, "NEQ")
-        when "identical" then set_metadata(:gbequivalence, "IDN")
+        when "identical" then set_metadata(:gbequivalence, "IDT")
         end
       end
 

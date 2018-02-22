@@ -57,7 +57,7 @@ page;mso-element-top:27.55pt;mso-height-rule:exactly'>
   SimHei'>—</span><a name=StdNo2></a><span
   style='mso-bookmark:StdNo2'></span><span style='mso-bookmark:StdNo2'><span
   lang=el style='mso-ansi-language:#0400;mso-fareast-language:#0400'>{{ docyear }}</span>
-      {%- if isostandard -%}
+    {%- if isostandard and gbequivalence == "IDT" -%}
        /<span style='font-family:"Times New Roman",serif;mso-ascii-font-family:
   SimHei'>{{ isostandard }}</span>
     {%- endif -%}
