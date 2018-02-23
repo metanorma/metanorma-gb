@@ -28,6 +28,16 @@ module Asciidoctor
       end
     end
 
+    def table_title_parse(node, out)
+      name = node.at(ns("./name"))
+        out.p **{ class: "TableTitle", align: "center" } do |p|
+          p.b do |b|
+            b << "表#{get_anchors()[node['id']][:label]}"
+            b << "&nbsp;&mdash; #{name.text}" if name
+          end
+        end
+    end
+
       def figure_key(out)
         out.p do |p|
           p.b { |b| b << "说明" }
