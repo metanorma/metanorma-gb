@@ -89,7 +89,7 @@ if src.nil?
         f = isoxml.at(ns("//introduction")) || return
         num = f.at(ns(".//subsection")) ? "0." : nil
         title_attr = { class: "IntroTitle" }
-        page_break(out)
+        # page_break(out)
         out.div **{ class: "Section3", id: f["id"] } do |div|
           h1 = clause_name(num, "引言", div, false, title_attr)
           f.elements.each do |e|
