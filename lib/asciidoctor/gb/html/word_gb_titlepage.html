@@ -112,6 +112,7 @@ page;mso-element-top:27.55pt;mso-height-rule:exactly'>
   </p>
     {% endif %}
  
+    {% if draft %}
   <p class=a0><a name=YZBS></a><span
   style='mso-bookmark:YZBS'><span lang=ZH-CN style='mso-no-proof:yes'>在提交反馈意见时，请将您知道的相关专利连同支持文件一并附上。</span><span
   lang=EN-US></span></span><span
@@ -146,17 +147,18 @@ page;mso-element-top:27.55pt;mso-height-rule:exactly'>
     src="gbt%2020984-draft.fld/image004.png" v:shapes="LB">--></span></span><![endif]></p>
     </td>
    </tr>
+   {% if revdate %}
    <tr style='mso-yfti-irow:1;mso-yfti-lastrow:yes'>
     <td width=657 valign=top style='width:492.75pt;border:none;padding:0cm 5.4pt 0cm 5.4pt'>
-   <!-- <p class=afff><a name=WCRQ></a><span
-    style='mso-bookmark:WCRQ'><span lang=ZH-CN>（本稿完成日期：</span><span lang=EN-US>2018</span><span
-    lang=ZH-CN>年</span><span lang=EN-US>1</span><span lang=ZH-CN>月）</span><span
+   <p class=afff><a name=WCRQ></a><span
+    style='mso-bookmark:WCRQ'><span lang=ZH-CN>（本稿完成日期：</span><span lang=EN-US>{{ revdate }}）</span><span
     lang=EN-US></span></span><span
-    style='mso-bookmark:WCRQ'></span></p> -->
-    <!-- CREATED DATE -->
+    style='mso-bookmark:WCRQ'></span></p> 
     </td>
    </tr>
+   {% endif %}
   </table>
+    {% endif %}
   </td>
  </tr>
 </table>

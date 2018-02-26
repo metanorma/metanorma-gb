@@ -74,11 +74,15 @@
 
   <div class="coverpage-stage-block">
     <span class="stage">{{ stageabbr }} Stage</span>
+    {% if draft %}
     <span class="stage-if-draft">（征求意见稿）</span>
-    <span class="revsion-if-draft">（本稿完成日期：20XX年XX月）</span>
+    {% if revdate %}
+    <span class="revision-if-draft">（本稿完成日期：{{ revdate }}）</span>
+    {% endif %}
     <span class="warning-if-draft">
     在提交反馈意见时，请将您知道的相关专利连同支持文件一并附上
     </span>
+    {% endif %}
   </div>
 
   <div class="coverpage-dates">
