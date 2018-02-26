@@ -7,11 +7,11 @@ module Asciidoctor
     class GbConvert < IsoDoc::Convert
       def init_metadata
         super
-        set_metadata(:docmaintitlezh, "XXXX")
-        set_metadata(:docsubtitlezh, "")
+        set_metadata(:docmaintitlezh, "")
+        set_metadata(:docsubtitlezh, "XXXX")
         set_metadata(:docparttitlezh, "")
-        set_metadata(:docmaintitleen, "XXXX")
-        set_metadata(:docsubtitleen, "")
+        set_metadata(:docmaintitleen, "")
+        set_metadata(:docsubtitleen, "XXXX")
         set_metadata(:docparttitleen, "")
         set_metadata(:gbequivalence, "")
         set_metadata(:isostandard, nil)
