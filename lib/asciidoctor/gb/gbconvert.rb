@@ -136,6 +136,7 @@ module Asciidoctor
 
       def cleanup(docxml)
         super
+        intro_cleanup(docxml)
         terms_cleanup(docxml)
       end
 
@@ -154,6 +155,15 @@ module Asciidoctor
         term_merge(docxml, "AltTerms")
         term_merge(docxml, "DeprecatedTerms")
         docxml
+      end
+      
+      def intro_cleanup(docxml)
+      # insert tab for purposes of ToC lining up
+      docxml.xpath("//h1[@class = 'IntroTitle']").each do |h1|
+      if h1.content == "引言"
+      h1.add_child('<span style="mso-tab-count:1">&#xA0; </span>')
+      end
+      end
       end
 
       def sentence_join(array)

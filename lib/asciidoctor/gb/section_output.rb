@@ -91,7 +91,7 @@ if src.nil?
         title_attr = { class: "IntroTitle" }
         page_break(out)
         out.div **{ class: "Section3", id: f["id"] } do |div|
-          clause_name(num, "引言", div, false, title_attr)
+          h1 = clause_name(num, "引言", div, false, title_attr)
           f.elements.each do |e|
             if e.name == "patent-notice"
               e.elements.each { |e1| parse(e1, div) }
