@@ -27,11 +27,12 @@ module Asciidoctor
         part = isoxml.at(ns("//title-part[@language='zh']"))
         partnumber = isoxml.at(ns("//project-number/@part"))
         intro.nil? || set_metadata(:docmaintitlezh, intro.text + "&mdash;")
-        set_metadata(:docsubtitlezh, main.text)
+        main.nil? || set_metadata(:docsubtitlezh, main.text)
         partnum = partnumber ? "#{part_label(partnumber, 'zh')}: " : ""
         part.nil? || set_metadata(:docparttitlezh,
                                   "&mdash;#{partnum} #{part.text}")
-        set_metadata(:doctitle, get_metadata[:docmaintitlezh] + main.text +
+        set_metadata(:doctitle, get_metadata[:docmaintitlezh] + 
+                     get_metadata[:docsubtitlezh] +
                      get_metadata[:docparttitlezh])
       end
 
@@ -41,7 +42,7 @@ module Asciidoctor
         part = isoxml.at(ns("//title-part[@language='en']"))
         partnumber = isoxml.at(ns("//project-number/@part"))
         intro.nil? || set_metadata(:docmaintitleen, intro.text + "&mdash;")
-        set_metadata(:docsubtitleen, main.text)
+        main.nil? || set_metadata(:docsubtitleen, main.text)
         partnum = partnumber ? "#{part_label(partnumber, 'en')}: " : ""
         part.nil? || set_metadata(:docparttitleen,
                                   "&mdash;#{partnum} #{part.text}")
