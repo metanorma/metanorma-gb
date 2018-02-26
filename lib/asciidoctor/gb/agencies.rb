@@ -132,10 +132,8 @@ module Asciidoctor
       end
 
       def mandate_suffix(prefix, mandate)
-        if prefix == "GB"
-          prefix += "/T" if mandate == "recommended"
-          prefix += "/Z" if mandate == "guide"
-        end
+        prefix += "/T" if mandate == "recommended"
+        prefix += "/Z" if mandate == "guide"
         prefix
       end
 
