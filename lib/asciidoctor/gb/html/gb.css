@@ -28,7 +28,7 @@ p.Biblio, li.Biblio, div.Biblio
 	line-height:12.0pt;
 	mso-pagination:widow-orphan;
 	font-size:11.0pt;
-	font-family:"Times New Roman",serif;
+	font-family:SimSun,serif;
 	mso-fareast-font-family:SimSun;
 	mso-bidi-font-family:"Source Sans Pro";
 	mso-ansi-language:EN-GB;}
@@ -46,7 +46,7 @@ p.FigureTitle
 	mso-pagination:widow-orphan;
 	tab-stops:20.15pt;
 	font-size:11.0pt;
-	font-family:"Times New Roman",serif;
+	font-family:SimSun,serif;
 	mso-fareast-font-family:SimSun;
 	mso-bidi-font-family:"Source Sans Pro";
 	mso-ansi-language:EN-GB;}
@@ -64,7 +64,7 @@ p.TableTitle
 	mso-pagination:widow-orphan;
 	tab-stops:20.15pt;
 	font-size:11.0pt;
-	font-family:"Times New Roman",serif;
+	font-family:SimSun,serif;
 	mso-fareast-font-family:SimSun;
 	mso-bidi-font-family:"Source Sans Pro";
 	mso-ansi-language:EN-GB;}
@@ -82,7 +82,7 @@ p.Note, div.Note, li.Note
 	tab-stops:20.15pt;
 	font-size:10.0pt;
 	mso-bidi-font-size:11.0pt;
-	font-family:"Times New Roman",serif;
+	font-family:SimSun,serif;
 	mso-fareast-font-family:SimSun;
 	mso-bidi-font-family:"Source Sans Pro";
 	mso-ansi-language:EN-GB;}
@@ -107,7 +107,7 @@ p.ANNEX, li.ANNEX, div.ANNEX
 	tab-stops:20.15pt;
 	font-size:14.0pt;
 	mso-bidi-font-size:11.0pt;
-	font-family:"Times New Roman",serif;
+	font-family:SimSun,serif;
 	mso-fareast-font-family:SimSun;
 	mso-bidi-font-family:"Source Sans Pro";
 	mso-ansi-language:EN-GB;
@@ -129,7 +129,7 @@ p.BiblioTitle, li.BiblioTitle, div.BiblioTitle
 	tab-stops:20.15pt;
 	font-size:14.0pt;
 	mso-bidi-font-size:11.0pt;
-	font-family:"Times New Roman",serif;
+	font-family:SimSun,serif;
 	mso-fareast-font-family:SimSun;
 	mso-bidi-font-family:"Source Sans Pro";
 	mso-ansi-language:EN-GB;
@@ -148,7 +148,7 @@ p.Definition, li.Definition, div.Definition
 	mso-pagination:widow-orphan;
 	tab-stops:20.15pt;
 	font-size:11.0pt;
-	font-family:"Times New Roman",serif;
+	font-family:SimSun,serif;
 	mso-fareast-font-family:SimSun;
 	mso-bidi-font-family:"Source Sans Pro";
 	mso-ansi-language:EN-GB;}
@@ -170,7 +170,7 @@ p.ForewordTitle, li.ForewordTitle, div.ForewordTitle, h1.ForewordTitle
 	tab-stops:20.15pt;
 	font-size:16.0pt;
 	mso-bidi-font-size:11.0pt;
-	font-family:"Times New Roman",serif;
+	font-family:SimSun,serif;
 	mso-fareast-font-family:SimHei;
 	mso-bidi-font-family:"Source Sans Pro";
 	mso-ansi-language:EN-GB;
@@ -194,7 +194,7 @@ p.IntroTitle, li.IntroTitle, div.IntroTitle, h1.IntroTitle
 	tab-stops:20.15pt;
 	font-size:16.0pt;
 	mso-bidi-font-size:11.0pt;
-	font-family:"Times New Roman",serif;
+	font-family:SimSun,serif;
 	mso-fareast-font-family:SimHei;
 	mso-bidi-font-family:"Source Sans Pro";
 	mso-ansi-language:EN-GB;
@@ -219,7 +219,7 @@ p.zzContents, li.zzContents, div.zzContents
 	tab-stops:20.15pt;
 	font-size:16.0pt;
 	mso-bidi-font-size:11.0pt;
-	font-family:"Times New Roman",serif;
+	font-family:SimSun,serif;
 	mso-fareast-font-family:SimHei;
 	mso-bidi-font-family:"Source Sans Pro";
 	mso-ansi-language:EN-GB;
@@ -240,7 +240,7 @@ p.zzCopyright, li.zzCopyright
 	padding:0cm;
 	mso-padding-alt:1.0pt 4.0pt 1.0pt 4.0pt;
 	font-size:11.0pt;
-	font-family:"Times New Roman",serif;
+	font-family:SimSun,serif;
 	mso-fareast-font-family:SimSun;
 	mso-bidi-font-family:"Source Sans Pro";
 	mso-ansi-language:EN-GB;}
@@ -283,7 +283,7 @@ p.zzSTDTitle, li.zzSTDTitle, div.zzSTDTitle
 	tab-stops:20.15pt;
 	font-size:16.0pt;
 	mso-bidi-font-size:11.0pt;
-	font-family:"Times New Roman",serif;
+	font-family:SimSun,serif;
 	mso-fareast-font-family:SimHei;
 	mso-bidi-font-family:"Source Sans Pro";
 	mso-ansi-language:EN-GB;
@@ -306,7 +306,7 @@ p.zzSTDTitle1, li.zzSTDTitle1, div.zzSTDTitle1
 	tab-stops:20.15pt;
 	font-size:16.0pt;
 	mso-bidi-font-size:11.0pt;
-	font-family:"Times New Roman",serif;
+	font-family:SimSun,serif;
 	mso-fareast-font-family:SimHei;
 	mso-bidi-font-family:"Source Sans Pro";
 	mso-ansi-language:EN-GB;
@@ -323,7 +323,7 @@ p.Quote, li.Quote, div.Quote
 	mso-pagination:widow-orphan;
 	tab-stops:20.15pt;
 	font-size:11.0pt;
-	font-family:"Times New Roman",serif;
+	font-family:SimSun,serif;
 	mso-fareast-font-family:SimSun;
 	mso-bidi-font-family:"Source Sans Pro";
 	mso-ansi-language:EN-GB;}
@@ -346,7 +346,7 @@ p.Admonition, li.Admonition, div.Admonition
 	font-family:"Calibri",sans-serif;
 	mso-ascii-font-family:Calibri;
 	mso-ascii-theme-font:minor-latin;
-	font-family:"Times New Roman",serif;
+	font-family:SimSun,serif;
 	mso-fareast-font-family:SimSun;
 	mso-hansi-font-family:Calibri;
 	mso-hansi-theme-font:minor-latin;
@@ -384,7 +384,7 @@ p.Formula, li.Formula, div.Formula
 	mso-pagination:widow-orphan;
 	tab-stops:right 487.45pt;
 	font-size:11.0pt;
-	font-family:"Times New Roman",serif;
+	font-family:SimSun,serif;
 	mso-fareast-font-family:SimSun;
 	mso-bidi-font-family:"Source Sans Pro";
 	mso-ansi-language:EN-GB;}
@@ -412,7 +412,7 @@ p.Formula, li.Formula, div.Formula
 	tab-stops:27.0pt 35.0pt;
 	font-size:10.5pt;
 	mso-bidi-font-size:10.0pt;
-	font-family:"Times New Roman",serif;
+	font-family:SimSun,serif;
 	mso-fareast-font-family:SimHei;
 	mso-ansi-language:EN-GB;
 	mso-fareast-language:ZH-CN;
@@ -477,7 +477,7 @@ table.MsoISOTable
 	mso-border-insideh:.75pt solid windowtext;
 	mso-border-insidev:.75pt solid windowtext;
 	font-size:10.0pt;
-	font-family:"Times New Roman",serif;
+	font-family:SimSun,serif;
 	mso-fareast-font-family:SimSun;}
 table.MsoISOTable tr
     {page-break-inside:avoid;}
@@ -504,7 +504,7 @@ table.MsoTableGrid
 	mso-para-margin-bottom:.0001pt;
 	mso-pagination:widow-orphan;
 	font-size:10.0pt;
-	font-family:"Times New Roman",serif;
+	font-family:SimSun,serif;
 	mso-fareast-font-family:SimSun;}
 td { page-break-inside:avoid; }
 tr { page-break-after:avoid; }

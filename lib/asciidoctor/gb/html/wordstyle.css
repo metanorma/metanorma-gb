@@ -100,7 +100,7 @@ p.MsoNormal, li.MsoNormal, div.MsoNormal
 	tab-stops:20.15pt;
 	font-size:10.5pt;
 	mso-bidi-font-size:12.0pt;
-	font-family:"Times New Roman",serif;
+	font-family:SimSun,serif;
 	mso-fareast-font-family:SimSun;
 	mso-font-kerning:1.0pt;
 	mso-ansi-language:EN-US;
@@ -118,7 +118,7 @@ p.MsoNormalUnindented, li.MsoNormalUnindented, div.MsoNormalUnindented
 	tab-stops:20.15pt;
 	font-size:10.5pt;
 	mso-bidi-font-size:12.0pt;
-	font-family:"Times New Roman",serif;
+	font-family:SimSun,serif;
 	mso-fareast-font-family:SimSun;
 	mso-font-kerning:1.0pt;
 	mso-ansi-language:EN-US;
@@ -135,7 +135,7 @@ p.MsoNormalIndent, li.MsoNormalIndent, div.MsoNormalIndent
 	tab-stops:20.15pt;
 	font-size:10.5pt;
 	mso-bidi-font-size:12.0pt;
-	font-family:"Times New Roman",serif;
+	font-family:SimSun,serif;
 	mso-fareast-font-family:SimSun;
 	mso-font-kerning:1.0pt;
 	mso-ansi-language:EN-US;}
@@ -154,15 +154,15 @@ p.MsoBlockText, li.MsoBlockText, div.MsoBlockText
 	mso-padding-alt:10.0pt 10.0pt 10.0pt 10.0pt;
 	font-size:10.5pt;
 	mso-bidi-font-size:12.0pt;
-	font-family:"Times New Roman",serif;
+	font-family:SimSun,serif;
 	mso-fareast-font-family:SimSun;
 	mso-font-kerning:1.0pt;
-	mso-ascii-font-family:Source Sans Pro;
+	mso-ascii-font-family:SimSun;
 	mso-ascii-theme-font:minor-latin;
 	mso-fareast-theme-font:minor-fareast;
 	mso-hansi-font-family:Calibri;
 	mso-hansi-theme-font:minor-latin;
-	mso-bidi-font-family:"Source Sans Pro";
+	mso-bidi-font-family:SimSun;
 	mso-bidi-theme-font:minor-bidi;
 	color:#4472C4;
 	mso-themecolor:accent1;
@@ -386,8 +386,8 @@ p.MsoToc1, li.MsoToc1, div.MsoToc1
 	tab-stops:20.15pt 36.0pt right dotted 462.05pt;
 	font-size:10.5pt;
 	font-family:SimSun;
-	mso-hansi-font-family:"Times New Roman";
-	mso-bidi-font-family:"Times New Roman";
+	mso-hansi-font-family:SimSun;
+	mso-bidi-font-family:SimSun;
 	mso-font-kerning:1.0pt;
 	mso-ansi-language:EN-US;
 	mso-fareast-language:ZH-CN;}
@@ -404,8 +404,8 @@ p.MsoToc2, li.MsoToc2, div.MsoToc2
 	tab-stops:20.15pt 36.0pt right dotted 462.05pt;
 	font-size:10.5pt;
 	font-family:SimSun;
-	mso-hansi-font-family:"Times New Roman";
-	mso-bidi-font-family:"Times New Roman";
+	mso-hansi-font-family:SimSun;
+	mso-bidi-font-family:SimSun;
 	mso-font-kerning:1.0pt;
 	mso-ansi-language:EN-US;
 	mso-fareast-language:ZH-CN;}
@@ -422,8 +422,8 @@ p.MsoToc3, li.MsoToc3, div.MsoToc3
 	tab-stops:20.15pt 36.0pt right dotted 462.05pt;
 	font-size:10.5pt;
 	font-family:SimSun;
-	mso-hansi-font-family:"Times New Roman";
-	mso-bidi-font-family:"Times New Roman";
+	mso-hansi-font-family:SimSun;
+	mso-bidi-font-family:SimSun;
 	mso-font-kerning:1.0pt;
 	mso-ansi-language:EN-US;
 	mso-fareast-language:ZH-CN;}
@@ -440,8 +440,8 @@ p.MsoToc4, li.MsoToc4, div.MsoToc4
 	tab-stops:20.15pt 36.0pt right dotted 462.05pt;
 	font-size:10.5pt;
 	font-family:SimSun;
-	mso-hansi-font-family:"Times New Roman";
-	mso-bidi-font-family:"Times New Roman";
+	mso-hansi-font-family:SimSun;
+	mso-bidi-font-family:SimSun;
 	mso-font-kerning:1.0pt;
 	mso-ansi-language:EN-US;
 	mso-fareast-language:ZH-CN;}
@@ -458,8 +458,8 @@ p.MsoToc5, li.MsoToc5, div.MsoToc5
 	tab-stops:20.15pt 36.0pt right dotted 462.05pt;
 	font-size:10.5pt;
 	font-family:SimSun;
-	mso-hansi-font-family:"Times New Roman";
-	mso-bidi-font-family:"Times New Roman";
+	mso-hansi-font-family:SimSun;
+	mso-bidi-font-family:SimSun;
 	mso-font-kerning:1.0pt;
 	mso-ansi-language:EN-US;
 	mso-fareast-language:ZH-CN;}
@@ -476,8 +476,8 @@ p.MsoToc6, li.MsoToc6, div.MsoToc6
 	tab-stops:20.15pt 36.0pt right dotted 462.05pt;
 	font-size:10.5pt;
 	font-family:SimSun;
-	mso-hansi-font-family:"Times New Roman";
-	mso-bidi-font-family:"Times New Roman";
+	mso-hansi-font-family:SimSun;
+	mso-bidi-font-family:SimSun;
 	mso-font-kerning:1.0pt;
 	mso-ansi-language:EN-US;
 	mso-fareast-language:ZH-CN;}
@@ -494,8 +494,8 @@ p.MsoToc7, li.MsoToc7, div.MsoToc7
 	tab-stops:20.15pt 36.0pt right dotted 462.05pt;
 	font-size:10.5pt;
 	font-family:SimSun;
-	mso-hansi-font-family:"Times New Roman";
-	mso-bidi-font-family:"Times New Roman";
+	mso-hansi-font-family:SimSun;
+	mso-bidi-font-family:SimSun;
 	mso-font-kerning:1.0pt;
 	mso-ansi-language:EN-US;
 	mso-fareast-language:ZH-CN;}
@@ -512,8 +512,8 @@ p.MsoToc8, li.MsoToc8, div.MsoToc8
 	tab-stops:20.15pt 36.0pt right dotted 462.05pt;
 	font-size:10.5pt;
 	font-family:SimSun;
-	mso-hansi-font-family:"Times New Roman";
-	mso-bidi-font-family:"Times New Roman";
+	mso-hansi-font-family:SimSun;
+	mso-bidi-font-family:SimSun;
 	mso-font-kerning:1.0pt;
 	mso-ansi-language:EN-US;
 	mso-fareast-language:ZH-CN;}
@@ -530,7 +530,7 @@ p.MsoToc9, li.MsoToc9, div.MsoToc9
 	mso-pagination:none;
 	tab-stops:20.15pt 36.0pt right dotted 462.05pt;
 	font-size:10.0pt;
-	font-family:"Times New Roman",serif;
+	font-family:SimSun,serif;
 	mso-fareast-font-family:SimSun;
 	mso-font-kerning:1.0pt;
 	mso-ansi-language:EN-US;
@@ -549,8 +549,8 @@ p.MsoHeader, li.MsoHeader, div.MsoHeader
 	tab-stops:center 207.7pt right 415.3pt;
 	font-size:10.5pt;
 	font-family:SimHei;
-	mso-hansi-font-family:"Times New Roman";
-	mso-bidi-font-family:"Times New Roman";
+	mso-hansi-font-family:SimHei;
+	mso-bidi-font-family:SimHei;
 	mso-ansi-language:EN-US;
 	mso-fareast-language:ZH-CN;
 	mso-no-proof:yes;}
@@ -567,8 +567,8 @@ p.MsoFooter, li.MsoFooter, div.MsoFooter
 	mso-pagination:widow-orphan;
 	font-size:9.0pt;
 	font-family:SimSun;
-	mso-hansi-font-family:"Times New Roman";
-	mso-bidi-font-family:"Times New Roman";
+	mso-hansi-font-family:SimSun;
+	mso-bidi-font-family:SimSun;
 	mso-ansi-language:EN-US;
 	mso-fareast-language:ZH-CN;}
 span.MsoFootnoteReference
@@ -587,9 +587,9 @@ p.MsoFootnoteText, li.MsoFootnoteText, div.MsoFootnoteText
 	mso-pagination:widow-orphan;
 	tab-stops:20.15pt;
 	font-size:10.0pt;
-	font-family:"Times New Roman",serif;
+	font-family:SimSun,serif;
 	mso-fareast-font-family:SimSun;
-	mso-bidi-font-family:"Source Sans Pro";
+	mso-bidi-font-family:SimSun;
 	mso-ansi-language:EN-GB;
 	mso-fareast-language:EN-US;}
 p.MsoBodyText, li.MsoBodyText, div.MsoBodyText
@@ -605,9 +605,9 @@ p.MsoBodyText, li.MsoBodyText, div.MsoBodyText
 	line-height:12.0pt;
 	mso-pagination:widow-orphan;
 	font-size:11.0pt;
-	font-family:"Source Sans Pro",sans-serif;
-	mso-fareast-font-family:"Source Sans Pro";
-	mso-bidi-font-family:"Source Sans Pro";
+	font-family:SimSun,serif;
+	mso-fareast-font-family:SimSun;
+	mso-bidi-font-family:SimSun;
 	mso-ansi-language:EN-GB;}
 a:link, span.MsoHyperlink
 	{mso-style-priority:99;
@@ -638,9 +638,8 @@ span.Heading1Char
 	mso-style-parent:"";
 	mso-style-link:"Heading 1";
 	mso-ansi-font-size:13.0pt;
-	font-family:"Times New Roman",serif;
-	font-family:"Source Sans Pro",sans-serif;
-	mso-ascii-font-family:Source Sans Pro;
+	font-family:SimHei,sans-serif;
+	mso-ascii-font-family:SimHei;
 	mso-fareast-font-family:SimHei;
 	mso-hansi-font-family:Cambria;
 	mso-ansi-language:EN-GB;
@@ -655,8 +654,8 @@ span.Heading2Char
 	mso-style-parent:"";
 	mso-style-link:"Heading 2";
 	mso-ansi-font-size:12.0pt;
-	font-family:"Source Sans Pro",sans-serif;
-	mso-ascii-font-family:Source Sans Pro;
+	font-family:SimHei,sans-serif;
+	mso-ascii-font-family:SimHei;
 	mso-fareast-font-family:SimHei;
 	mso-hansi-font-family:Cambria;
 	mso-ansi-language:EN-GB;
@@ -671,8 +670,8 @@ span.Heading3Char
 	mso-style-parent:"";
 	mso-style-link:"Heading 3";
 	mso-ansi-font-size:11.0pt;
-	font-family:"Source Sans Pro",sans-serif;
-	mso-ascii-font-family:Source Sans Pro;
+	font-family:SimHei,sans-serif;
+	mso-ascii-font-family:SimHei;
 	mso-fareast-font-family:SimHei;
 	mso-hansi-font-family:Cambria;
 	mso-ansi-language:EN-GB;
@@ -687,8 +686,8 @@ span.Heading4Char
 	mso-style-parent:"";
 	mso-style-link:"Heading 4";
 	mso-ansi-font-size:11.0pt;
-	font-family:"Source Sans Pro",sans-serif;
-	mso-ascii-font-family:Source Sans Pro;
+	font-family:SimHei,sans-serif;
+	mso-ascii-font-family:SimHei;
 	mso-fareast-font-family:SimHei;
 	mso-hansi-font-family:Cambria;
 	mso-ansi-language:EN-GB;
@@ -703,8 +702,8 @@ span.Heading5Char
 	mso-style-parent:"";
 	mso-style-link:"Heading 5";
 	mso-ansi-font-size:11.0pt;
-	font-family:"Source Sans Pro",sans-serif;
-	mso-ascii-font-family:Source Sans Pro;
+	font-family:SimHei,sans-serif;
+	mso-ascii-font-family:SimHei;
 	mso-fareast-font-family:SimHei;
 	mso-hansi-font-family:Cambria;
 	mso-ansi-language:EN-GB;
@@ -719,9 +718,9 @@ span.Heading6Char
 	mso-style-parent:"";
 	mso-style-link:"Heading 6";
 	mso-ansi-font-size:11.0pt;
-	font-family:"Source Sans Pro",sans-serif;
+	font-family:SimHei,sans-serif;
 	font-weight:normal;
-	mso-ascii-font-family:Source Sans Pro;
+	mso-ascii-font-family:SimHei;
 	mso-fareast-font-family:SimHei;
 	mso-hansi-font-family:Cambria;
 	mso-ansi-language:EN-GB;
@@ -745,9 +744,9 @@ p.a2, li.a2, div.a2
 	tab-stops:1.0cm 36.0pt;
 	font-size:13.0pt;
 	mso-bidi-font-size:11.0pt;
-	font-family:"Source Sans Pro",sans-serif;
+	font-family:SimSun,sans-serif;
 	mso-fareast-font-family:"SimSun";
-	mso-bidi-font-family:"Source Sans Pro";
+	mso-bidi-font-family:SimSun;
 	mso-ansi-language:EN-GB;
 	mso-fareast-language:ZH-CN;
 	font-weight:bold;
@@ -770,9 +769,9 @@ p.a3, li.a3, div.a3
 	tab-stops:20.15pt list 36.0pt;
 	font-size:12.0pt;
 	mso-bidi-font-size:11.0pt;
-	font-family:"Source Sans Pro",sans-serif;
-	mso-fareast-font-family:"SimSun";
-	mso-bidi-font-family:"Source Sans Pro";
+	font-family:SimSun,sans-serif;
+	mso-fareast-font-family:SimSun;
+	mso-bidi-font-family:SimSun;
 	mso-ansi-language:EN-GB;
 	mso-fareast-language:ZH-CN;
 	font-weight:bold;
@@ -794,9 +793,9 @@ p.a4, li.a4, div.a4
 	mso-list:l0 level4 lfo12;
 	tab-stops:20.15pt 44.0pt list 54.0pt;
 	font-size:11.0pt;
-	font-family:"Source Sans Pro",sans-serif;
+	font-family:SimSun,sans-serif;
 	mso-fareast-font-family:"SimSun";
-	mso-bidi-font-family:"Source Sans Pro";
+	mso-bidi-font-family:SimSun;
 	mso-ansi-language:EN-GB;
 	mso-fareast-language:ZH-CN;
 	font-weight:bold;
@@ -818,9 +817,9 @@ p.a5, li.a5, div.a5
 	mso-list:l0 level5 lfo12;
 	tab-stops:20.15pt list 54.0pt left 62.35pt 68.0pt;
 	font-size:11.0pt;
-	font-family:"Source Sans Pro",sans-serif;
+	font-family:SimSun,sans-serif;
 	mso-fareast-font-family:"SimSun";
-	mso-bidi-font-family:"Source Sans Pro";
+	mso-bidi-font-family:SimSun;
 	mso-ansi-language:EN-GB;
 	mso-fareast-language:ZH-CN;
 	font-weight:bold;
@@ -842,9 +841,9 @@ p.a6, li.a6, div.a6
 	mso-list:l0 level6 lfo12;
 	tab-stops:20.15pt 62.35pt 68.0pt list 72.0pt;
 	font-size:11.0pt;
-	font-family:"Source Sans Pro",sans-serif;
+	font-family:SimSun,sans-serif;
 	mso-fareast-font-family:"SimSun";
-	mso-bidi-font-family:"Source Sans Pro";
+	mso-bidi-font-family:SimSun;
 	mso-ansi-language:EN-GB;
 	mso-fareast-language:ZH-CN;
 	font-weight:bold;}
@@ -874,8 +873,8 @@ p.2, li.2, div.2
 	mso-element-anchor-lock:locked;
 	font-size:14.0pt;
 	font-family:SimHei;
-	mso-hansi-font-family:"Times New Roman";
-	mso-bidi-font-family:"Times New Roman";
+	mso-hansi-font-family:SimHei;
+	mso-bidi-font-family:SimHei;
 	mso-ansi-language:EN-US;
 	mso-fareast-language:ZH-CN;}
 p.ad, li.ad, div.ad
@@ -896,8 +895,8 @@ p.ad, li.ad, div.ad
 	font-size:10.5pt;
 	mso-bidi-font-size:10.0pt;
 	font-family:SimSun;
-	mso-hansi-font-family:"Times New Roman";
-	mso-bidi-font-family:"Times New Roman";
+	mso-hansi-font-family:SimSun;
+	mso-bidi-font-family:SimSun;
 	mso-ansi-language:EN-US;
 	mso-fareast-language:ZH-CN;}
 span.FooterChar
@@ -922,7 +921,7 @@ span.HeaderChar
 	mso-ansi-font-size:11.0pt;
 	mso-bidi-font-size:11.0pt;
 	mso-ansi-language:EN-GB;
-	font-family:"Times New Roman",serif;
+	font-family:SimSun,serif;
 	mso-fareast-font-family:SimSun;
 	font-weight:bold;
 	mso-bidi-font-weight:normal;}
@@ -936,7 +935,7 @@ span.BodyTextChar
 	mso-style-link:"Body Text";
 	mso-ansi-font-size:11.0pt;
 	mso-bidi-font-size:11.0pt;
-	font-family:"Times New Roman",serif;
+	font-family:SimSun,serif;
 	mso-fareast-font-family:SimSun;
 	mso-ansi-language:EN-GB;}
 p.MsoCommentText, li.MsoCommentText, div.MsoCommentText
@@ -952,9 +951,9 @@ p.MsoCommentText, li.MsoCommentText, div.MsoCommentText
 	mso-pagination:widow-orphan;
 	tab-stops:20.15pt;
 	font-size:12.0pt;
-	font-family:"Times New Roman",serif;
+	font-family:SimSun,serif;
 	mso-fareast-font-family:SimSun;
-	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-font-family:SimSun;
 	mso-ansi-language:EN-GB;
 	mso-fareast-language:EN-US;}
 span.MsoCommentReference
@@ -978,9 +977,9 @@ p.MsoCommentSubject, li.MsoCommentSubject, div.MsoCommentSubject
 	mso-pagination:widow-orphan;
 	tab-stops:20.15pt;
 	font-size:10.0pt;
-	font-family:"Times New Roman",serif;
+	font-family:SimHei,serif;
 	mso-fareast-font-family:SimHei;
-	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-font-family:SimHei;
 	mso-ansi-language:EN-GB;
 	mso-fareast-language:EN-US;}
 p.Tablebody, li.Tablebody, div.Tablebody
@@ -995,14 +994,14 @@ p.Tablebody, li.Tablebody, div.Tablebody
 	mso-pagination:widow-orphan;
 	font-size:10.0pt;
 	mso-bidi-font-size:11.0pt;
-	font-family:"Times New Roman",serif;
+	font-family:SimSun,serif;
 	mso-fareast-font-family:SimSun;
-	mso-bidi-font-family:"Source Sans Pro";
+	mso-bidi-font-family:SimSun;
 	mso-ansi-language:EN-GB;}
 .MsoChpDefault
 	{mso-style-type:export-only;
 	mso-default-props:yes;
-	mso-ascii-font-family:Source Sans Pro;
+	mso-ascii-font-family:SimSun;
 	mso-fareast-font-family:SimSun;
 	mso-hansi-font-family:Cambria;}
  /* Page Definitions */
@@ -1044,9 +1043,9 @@ div.WordSection1
 	text-indent:0cm;
 	mso-ansi-font-size:14.0pt;
 	mso-bidi-font-size:14.0pt;
-	font-family:"Times New Roman",serif;
+	font-family:SimSun,serif;
 	mso-fareast-font-family:SimSun;
-	mso-bidi-font-family:"Source Sans Pro";
+	mso-bidi-font-family:SimSun;
 	mso-ansi-font-weight:normal;
 	mso-ansi-font-style:normal;}
 @list l0:level2
@@ -1056,7 +1055,7 @@ div.WordSection1
 	mso-level-number-position:left;
 	margin-left:0cm;
 	text-indent:0cm;
-	mso-bidi-font-family:"Source Sans Pro";
+	mso-bidi-font-family:SimHei;
 	mso-ansi-font-weight:normal;
 	mso-ansi-font-style:normal;}
 @list l0:level3
@@ -1066,7 +1065,7 @@ div.WordSection1
 	mso-level-number-position:left;
 	margin-left:0cm;
 	text-indent:0cm;
-	mso-bidi-font-family:"Source Sans Pro";
+	mso-bidi-font-family:SimHei;
 	mso-ansi-font-weight:normal;
 	mso-ansi-font-style:normal;}
 @list l0:level4
@@ -1076,7 +1075,7 @@ div.WordSection1
 	mso-level-number-position:left;
 	margin-left:0cm;
 	text-indent:0cm;
-	mso-bidi-font-family:"Source Sans Pro";
+	mso-bidi-font-family:SimHei;
 	mso-ansi-font-weight:normal;
 	mso-ansi-font-style:normal;}
 @list l0:level5
@@ -1086,7 +1085,7 @@ div.WordSection1
 	mso-level-number-position:left;
 	margin-left:0cm;
 	text-indent:0cm;
-	mso-bidi-font-family:"Source Sans Pro";
+	mso-bidi-font-family:SimHei;
 	mso-ansi-font-weight:normal;
 	mso-ansi-font-style:normal;}
 @list l0:level6
@@ -1096,7 +1095,7 @@ div.WordSection1
 	mso-level-number-position:left;
 	margin-left:0cm;
 	text-indent:0cm;
-	mso-bidi-font-family:"Source Sans Pro";
+	mso-bidi-font-family:SimHei;
 	mso-ansi-font-weight:normal;
 	mso-ansi-font-style:normal;}
 @list l0:level7
@@ -1107,7 +1106,7 @@ div.WordSection1
 	mso-level-number-position:left;
 	margin-left:0cm;
 	text-indent:0cm;
-	mso-bidi-font-family:"Source Sans Pro";}
+	mso-bidi-font-family:SimHei;}
 @list l0:level8
 	{mso-level-reset-level:level2;
 	mso-level-suffix:space;
@@ -1116,7 +1115,7 @@ div.WordSection1
 	mso-level-number-position:left;
 	margin-left:0cm;
 	text-indent:0cm;
-	mso-bidi-font-family:"Source Sans Pro";}
+	mso-bidi-font-family:SimHei;}
 @list l0:level9
 	{mso-level-number-format:roman-lower;
 	mso-level-text:"\(%9\)";
@@ -1124,7 +1123,7 @@ div.WordSection1
 	mso-level-number-position:left;
 	margin-left:0cm;
 	text-indent:0cm;
-	mso-bidi-font-family:"Source Sans Pro";}
+	mso-bidi-font-family:SimHei;}
 @list l1
 	{mso-list-id:866942648;
 	mso-list-template-ids:-1756330000;}
@@ -1135,7 +1134,7 @@ div.WordSection1
 	mso-level-number-position:left;
 	margin-left:21.6pt;
 	text-indent:-21.6pt;
-	mso-bidi-font-family:"Source Sans Pro";
+	mso-bidi-font-family:SimHei;
 	mso-ansi-font-weight:normal;
 	mso-ansi-font-style:normal;}
 @list l1:level2
@@ -1145,7 +1144,7 @@ div.WordSection1
 	mso-level-number-position:left;
 	margin-left:0cm;
 	text-indent:0cm;
-	mso-bidi-font-family:"Source Sans Pro";
+	mso-bidi-font-family:SimHei;
 	mso-ansi-font-weight:normal;
 	mso-ansi-font-style:normal;}
 @list l1:level3
@@ -1155,7 +1154,7 @@ div.WordSection1
 	mso-level-number-position:left;
 	margin-left:0cm;
 	text-indent:0cm;
-	mso-bidi-font-family:"Source Sans Pro";
+	mso-bidi-font-family:SimHei;
 	mso-ansi-font-weight:normal;
 	mso-ansi-font-style:normal;}
 @list l1:level4
@@ -1165,7 +1164,7 @@ div.WordSection1
 	mso-level-number-position:left;
 	margin-left:0cm;
 	text-indent:0cm;
-	mso-bidi-font-family:"Source Sans Pro";
+	mso-bidi-font-family:SimHei;
 	mso-ansi-font-weight:normal;
 	mso-ansi-font-style:normal;}
 @list l1:level5
@@ -1175,7 +1174,7 @@ div.WordSection1
 	mso-level-number-position:left;
 	margin-left:0cm;
 	text-indent:0cm;
-	mso-bidi-font-family:"Source Sans Pro";
+	mso-bidi-font-family:SimHei;
 	mso-ansi-font-weight:normal;
 	mso-ansi-font-style:normal;}
 @list l1:level6
@@ -1185,7 +1184,7 @@ div.WordSection1
 	mso-level-number-position:left;
 	margin-left:0cm;
 	text-indent:0cm;
-	mso-bidi-font-family:"Source Sans Pro";
+	mso-bidi-font-family:SimHei;
 	mso-ansi-font-weight:normal;
 	mso-ansi-font-style:normal;}
 @list l1:level7
@@ -1194,21 +1193,21 @@ div.WordSection1
 	mso-level-number-position:left;
 	margin-left:0cm;
 	text-indent:0cm;
-	mso-bidi-font-family:"Source Sans Pro";}
+	mso-bidi-font-family:SimHei;}
 @list l1:level8
 	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.%8";
 	mso-level-tab-stop:90.0pt;
 	mso-level-number-position:left;
 	margin-left:0cm;
 	text-indent:0cm;
-	mso-bidi-font-family:"Source Sans Pro";}
+	mso-bidi-font-family:SimHei;}
 @list l1:level9
 	{mso-level-text:"%1\.%2\.%3\.%4\.%5\.%6\.%7\.%8\.%9";
 	mso-level-tab-stop:90.0pt;
 	mso-level-number-position:left;
 	margin-left:0cm;
 	text-indent:0cm;
-	mso-bidi-font-family:"Source Sans Pro";}
+	mso-bidi-font-family:SimHei;}
 p.afa, li.afa, div.afa
 	{mso-style-name:标准称谓;
 	mso-style-unhide:no;
@@ -1238,8 +1237,8 @@ p.afa, li.afa, div.afa
 	font-size:24.0pt;
 	mso-bidi-font-size:10.0pt;
 	font-family:SimSun;
-	mso-hansi-font-family:"Times New Roman";
-	mso-bidi-font-family:"Times New Roman";
+	mso-hansi-font-family:SimSun;
+	mso-bidi-font-family:SimSun;
 	letter-spacing:1.0pt;
 	mso-font-width:148%;
 	mso-ansi-language:EN-US;
@@ -1270,7 +1269,7 @@ p.af, li.af, div.af
 	mso-height-rule:exactly;
 	mso-element-anchor-lock:locked;
 	font-size:48.0pt;
-	font-family:"Times New Roman",serif;
+	font-family:SimSun,serif;
 	mso-fareast-font-family:SimSun;
 	mso-font-width:170%;
 	mso-ansi-language:EN-US;
@@ -1294,8 +1293,8 @@ p.affffd, li.affffd, div.affffd
 	mso-element-anchor-lock:locked;
 	font-size:10.5pt;
 	font-family:SimHei;
-	mso-hansi-font-family:"Times New Roman";
-	mso-bidi-font-family:"Times New Roman";
+	mso-hansi-font-family:SimHei;
+	mso-bidi-font-family:SimHei;
 	mso-ansi-language:EN-US;
 	mso-fareast-language:ZH-CN;}
 p.aff, li.aff, div.aff
@@ -1324,8 +1323,8 @@ p.aff, li.aff, div.aff
 	mso-element-anchor-lock:locked;
 	font-size:10.5pt;
 	font-family:SimSun;
-	mso-hansi-font-family:"Times New Roman";
-	mso-bidi-font-family:"Times New Roman";
+	mso-hansi-font-family:SimSun;
+	mso-bidi-font-family:SimSun;
 	mso-ansi-language:EN-US;
 	mso-fareast-language:ZH-CN;}
 p.affc, li.affc, div.affc
@@ -1351,8 +1350,8 @@ p.affc, li.affc, div.affc
 	font-size:26.0pt;
 	mso-bidi-font-size:10.0pt;
 	font-family:SimHei;
-	mso-hansi-font-family:"Times New Roman";
-	mso-bidi-font-family:"Times New Roman";
+	mso-hansi-font-family:SimHei;
+	mso-bidi-font-family:SimHei;
 	mso-ansi-language:EN-US;
 	mso-fareast-language:ZH-CN;}
 p.affd, li.affd, div.affd
@@ -1379,7 +1378,7 @@ p.affd, li.affd, div.affd
 	mso-height-rule:exactly;
 	mso-element-anchor-lock:locked;
 	font-size:14.0pt;
-	font-family:"Times New Roman",serif;
+	font-family:SimHei,serif;
 	mso-fareast-font-family:SimHei;
 	mso-ansi-language:EN-US;
 	mso-fareast-language:ZH-CN;}
@@ -1406,8 +1405,8 @@ p.affe, li.affe, div.affe
 	font-size:12.0pt;
 	mso-bidi-font-size:14.0pt;
 	font-family:SimSun;
-	mso-hansi-font-family:"Times New Roman";
-	mso-bidi-font-family:"Times New Roman";
+	mso-hansi-font-family:SimSun;
+	mso-bidi-font-family:SimSun;
 	mso-ansi-language:EN-US;
 	mso-fareast-language:ZH-CN;}
 p.afff, li.afff, div.afff
@@ -1435,8 +1434,8 @@ p.afff, li.afff, div.afff
 	font-size:10.5pt;
 	mso-bidi-font-size:14.0pt;
 	font-family:SimSun;
-	mso-hansi-font-family:"Times New Roman";
-	mso-bidi-font-family:"Times New Roman";
+	mso-hansi-font-family:SimSun;
+	mso-bidi-font-family:SimSun;
 	mso-ansi-language:EN-US;
 	mso-fareast-language:ZH-CN;}
 p.afffff4, li.afffff4, div.afffff4
@@ -1459,7 +1458,7 @@ p.afffff4, li.afffff4, div.afffff4
 	mso-element-anchor-lock:locked;
 	font-size:14.0pt;
 	mso-bidi-font-size:10.0pt;
-	font-family:"Times New Roman",serif;
+	font-family:SimHei,serif;
 	mso-fareast-font-family:SimHei;
 	mso-ansi-language:EN-US;
 	mso-fareast-language:ZH-CN;}
@@ -1484,7 +1483,7 @@ p.afffff5, li.afffff5, div.afffff5
 	mso-element-anchor-lock:locked;
 	font-size:14.0pt;
 	mso-bidi-font-size:10.0pt;
-	font-family:"Times New Roman",serif;
+	font-family:SimHei,serif;
 	mso-fareast-font-family:SimHei;
 	mso-ansi-language:EN-US;
 	mso-fareast-language:ZH-CN;}
@@ -1512,8 +1511,8 @@ p.aff7, li.aff7, div.aff7, p.aff7 td
 	font-size:14.0pt;
 	mso-bidi-font-size:10.0pt;
 	font-family:SimSun;
-	mso-hansi-font-family:"Times New Roman";
-	mso-bidi-font-family:"Times New Roman";
+	mso-hansi-font-family:SimSun;
+	mso-bidi-font-family:SimSun;
 	letter-spacing:1.0pt;
 	mso-font-width:135%;
 	mso-ansi-language:EN-US;
@@ -1545,8 +1544,8 @@ p.a0, li.a0, div.a0
 	mso-element-anchor-lock:locked;
 	font-size:14.0pt;
 	font-family:SimSun;
-	mso-hansi-font-family:"Times New Roman";
-	mso-bidi-font-family:"Times New Roman";
+	mso-hansi-font-family:SimSun;
+	mso-bidi-font-family:SimSun;
 	mso-ansi-language:EN-US;
 	mso-fareast-language:ZH-CN;}
 table.MsoNormalTable
@@ -1561,7 +1560,7 @@ table.MsoNormalTable
 	mso-para-margin-bottom:.0001pt;
 	mso-pagination:widow-orphan;
 	font-size:10.0pt;
-	font-family:"Times New Roman",serif;
+	font-family:SimSun,serif;
 	mso-fareast-font-family:SimSun;}
 p.Terms, li.Terms, div.Terms
 	{mso-style-name:"Term\(s\)";
@@ -1579,7 +1578,7 @@ p.Terms, li.Terms, div.Terms
 	font-size:11.0pt;
 	font-family:SimHei;
 	mso-fareast-font-family:SimHei;
-	mso-bidi-font-family:"Source Sans Pro";
+	mso-bidi-font-family:SimHei;
 	mso-ansi-language:EN-GB;
 	mso-bidi-font-weight:normal;}
 p.AltTerms, li.AltTerms, div.AltTerms
@@ -1596,9 +1595,9 @@ p.AltTerms, li.AltTerms, div.AltTerms
 	tab-stops:20.15pt;
 	text-indent:21.0pt;
 	font-size:11.0pt;
-	font-family:"Times New Roman",serif;
+	font-family:SimSun,serif;
 	mso-fareast-font-family:SimSun;
-	mso-bidi-font-family:"Source Sans Pro";
+	mso-bidi-font-family:SimSun;
 	mso-ansi-language:EN-GB;
 	mso-bidi-font-weight:normal;}
 p.DeprecatedTerms, li.DeprecatedTerms, div.DeprecatedTerms
@@ -1615,9 +1614,9 @@ p.DeprecatedTerms, li.DeprecatedTerms, div.DeprecatedTerms
         tab-stops:20.15pt;
 	text-indent:21.0pt;
         font-size:11.0pt;
-        font-family:"Times New Roman",serif;
+        font-family:SimSun,serif;
         mso-fareast-font-family:SimSun;
-        mso-bidi-font-family:"Source Sans Pro";
+        mso-bidi-font-family:SimSun;
         mso-ansi-language:EN-GB;
         mso-bidi-font-weight:normal;}
 p.TermNum, li.TermNum, div.TermNum
@@ -1640,7 +1639,7 @@ p.TermNum, li.TermNum, div.TermNum
 	font-size:11.0pt;
 	font-family:SimHei;
 	mso-fareast-font-family:SimHei;
-	mso-bidi-font-family:"Source Sans Pro";
+	mso-bidi-font-family:SimHei;
 	mso-ansi-language:EN-GB;
 	mso-bidi-font-weight:normal;}
 	/* may need to be revised */
@@ -1666,5 +1665,5 @@ br.pagebreak
     {page-break-before:always;
     mso-special-character:line-break;}
 body
-    {font-family:"Times New Roman",serif;
+    {font-family:SimSun,serif;
 	mso-fareast-font-family:SimSun;}
