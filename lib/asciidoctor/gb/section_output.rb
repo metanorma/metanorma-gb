@@ -54,8 +54,8 @@ module Asciidoctor
       end
 
       def term_defs_boilerplate_cont(src, term)
-sources = sentence_join(src.map { |s| s["citeas"] })
-if src.nil?
+        sources = sentence_join(src.map { |s| s["citeas"] })
+        if src.nil?
           "<p>下列术语和定义适用于本文件。</p>"
         elsif term.nil?
           "<p>#{sources} 界定的术语和定义适用于本文件。</p>"
@@ -108,12 +108,32 @@ if src.nil?
         page_break(out)
         out.div do |s|
           s.h1 **{ class: "ForewordTitle" } do |h1|
-            h1 << "前言"
-            insert_tab(h1, 1)
+            h1 << "前言&nbsp;"
+            # insert_tab(h1, 1)
           end
           f.elements.each { |e| parse(e, s) unless e.name == "title" }
         end
       end
+
+      def clause_name_header(num, title, div, header_class)
+        header_class = {} if header_class.nil?
+        div.h1 **attr_code(header_class) do |h1|
+          if num
+            h1 << num
+            h1 << "&nbsp;"
+          end
+          h1 << title
+        end
+        div.parent.at(".//h1")
+      end
+
+      def annex_name(annex, name, div)
+        div.h1 **{ class: "Annex" } do |t|
+          t << "#{get_anchors[annex['id']][:label]}<br/><br/>"
+          t << name.text
+        end
+      end
+
 
       def clause(isoxml, out)
         isoxml.xpath(ns("//clause[parent::sections]")).each do |c|
@@ -122,7 +142,7 @@ if src.nil?
             c.elements.each do |c1|
               if c1.name == "title"
                 clause_name("#{get_anchors()[c['id']][:label]}.",
-                            c1.text, s, c["inline-header"], nil)
+                            c1.text, s, c["inline-header"] == "true", nil)
               else
                 parse(c1, s)
               end

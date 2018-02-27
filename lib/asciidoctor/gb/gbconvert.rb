@@ -136,7 +136,7 @@ module Asciidoctor
 
       def cleanup(docxml)
         super
-        intro_cleanup(docxml)
+        # intro_cleanup(docxml)
         terms_cleanup(docxml)
       end
 
