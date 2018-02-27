@@ -17,21 +17,22 @@ same format; the gem formats the title page to have the correct metadata display
 
 === Document Attributes
 
-In the following, "GB standard" should be read to refer to any Chinese national, sector or local standard.
+In the following, "GB standard" should be read to refer to any Chinese national, sector or local standard. Asterisked document attributes are mandatory.
 
-`:title-intro-zh:, :title-main-zh:, :title-part-zh:`:: These are the title introduction, main title, and part title in Chinese. (They replace their French counterparts in asciidoctor-iso.)
+`:title-intro-zh:`, `:title-main-zh:`*, `:title-part-zh:`:: These are the title introduction, main title, and part title in Chinese. (They replace their French counterparts in asciidoctor-iso.)
+`:title-intro-en:`, `:title-main-en:`*, `:title-part-en:`:: These are the title introduction, main title, and part title in English. (They form the document subtitle, instead of the document title as in asciidoctor-iso.)
 `:technical-committee-type:`:: The type of the technical committee (`technical` or `provisional`).
 `:iso-standard`: A corresponding ISO standard that the GB standard relates to. Format is full document code, then optionally comma followed by document title; e.g. `ISO/IEC 27001:2013, Information security management systems`
 `:equivalence:`:: The relation of the GB standard to the corresponding ISO standard (`equivalent`, `identical`, `nonequivalent`). Defaults to `equivalent`.
 `:obsoletes`: A corresponding GB standard that this GB standard obsoletes. Format is full document code, then optionally comma followed by document title; e.g. `GB/T 22080-2008`
 `:obsoletes-parts:`: A list of bibliographic localities in the corresponding GB standard that this GB standard obsoletes. These are formatted the same way as the localities in citations; e.g. `clause 7-9, clause 11`
-`:scope:`:: The scope of the GB standard (`national`, `sector`, `professional`, `local`, `enterprise`).
-`:mandate:`:: The mandate of the GB standard (`mandatory`, `recommended`, `guidelines`).
-`:prefix:`:: The prefix classifying the GB standard. (Refer to https://github.com/riboseinc/gbdoc/blob/master/models/gb-standard-national-prefix.adoc, https://github.com/riboseinc/gbdoc/blob/master/models/gb-standard-sector-prefix.adoc, https://github.com/riboseinc/gbdoc/blob/master/models/gb-standard-local-prefix.adoc.)
-`:published-date`:: The date on which the GB standard was published.
-`:activated-date`:: The date on which the GB standard was activated.
-`:library-ics`:: The international categorisation number for the GB standard
-`:library-l`:: The L-identifier (library) for the GB standard
+`:scope:`:: The scope of the GB standard (`national`, `sector`, `professional`, `local`, `enterprise`). Defaults to `national`.
+`:mandate:`:: The mandate of the GB standard (`mandatory`, `recommended`, `guidelines`). Defaults to `mandatory`.
+`:prefix:*`:: The prefix classifying the GB standard. (Refer to https://github.com/riboseinc/gbdoc/blob/master/models/gb-standard-national-prefix.adoc, https://github.com/riboseinc/gbdoc/blob/master/models/gb-standard-sector-prefix.adoc, https://github.com/riboseinc/gbdoc/blob/master/models/gb-standard-local-prefix.adoc.)
+`:published-date`* :: The date on which the GB standard was published.
+`:activated-date`* :: The date on which the GB standard was activated.
+`:library-ics`* :: The international categorisation number for the GB standard
+`:library-l`* :: The L-identifier (library) for the GB standard
 
 === Language macros
 
