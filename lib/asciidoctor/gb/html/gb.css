@@ -417,12 +417,9 @@ p.Formula, li.Formula, div.Formula
 	mso-bidi-font-weight:normal;}
 @page WordSection1
 	{size:595.3pt 841.9pt;
-	margin:1.0in 1.25in 1.0in 1.25in;
-	mso-header-margin:0.59in;
-	mso-footer-margin:0.69in;
-	mso-even-header:url("file:///C:/Doc/FILENAME_files/header.html") eh1;
-	mso-header:url("file:///C:/Doc/FILENAME_files/header.html") h1;
-	mso-even-footer:url("file:///C:/Doc/FILENAME_files/header.html") ef1;
+	margin:39.7pt 53.85pt 1.0cm 53.85pt;
+	mso-header-margin:35.45pt;
+	mso-footer-margin:14.2pt;
 	mso-paper-source:0;}
 div.WordSection1
 	{page:WordSection1;}
@@ -431,7 +428,7 @@ div.WordSection1
 	margin:1.0in 1.25in 1.0in 1.25in;
 	mso-header-margin:0.59in;
 	mso-footer-margin:0.69in;
-	mso-page-numbers:roman-lower;
+	mso-page-numbers:roman-upper 1;
 	mso-even-header:url("file:///C:/Doc/FILENAME_files/header.html") eh2;
 	mso-header:url("file:///C:/Doc/FILENAME_files/header.html") h2;
 	mso-even-footer:url("file:///C:/Doc/FILENAME_files/header.html") ef2;
@@ -548,9 +545,7 @@ div.coverpage_warning
 a.TableFootnoteRef
         {mso-style-priority:99;
         vertical-align:super;}
-aside {
-          font-size:10.0pt;
-    }
+aside {font-size:10.0pt;}
 .Hant
     {font-family:PMingLiU;}
 div.example {
@@ -561,3 +556,38 @@ div.example {
 	margin:10pt;
 	mso-margin-alt:10.0pt 10.0pt 10.0pt 10.0pt;
 }
+p.leftpagenumber, li.leftpagenumber, div.leftpagenumber
+	{mso-style-name:leftpagenumber;
+	mso-style-priority:99;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:"";
+	margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:9.0pt;
+	font-family:SimSun,serif;
+	mso-fareast-font-family:SimSun;
+	mso-ansi-language:EN-US;
+	mso-fareast-language:ZH-CN;}
+p.rightpagenumber, li.rightpagenumber, div.rightpagenumber
+	{mso-style-name:rightpagenumber;
+	mso-style-priority:99;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:"";
+	margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	margin-bottom:.0001pt;
+	text-align:right;
+	mso-pagination:widow-orphan;
+	font-size:9.0pt;
+	font-family:SimSun,serif;
+	mso-fareast-font-family:SimSun;
+	mso-ansi-language:EN-US;
+	mso-fareast-language:ZH-CN;}
