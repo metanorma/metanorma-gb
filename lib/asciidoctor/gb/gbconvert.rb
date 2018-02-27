@@ -16,7 +16,7 @@ module Asciidoctor
       def note_label(node)
         n = get_anchors()[node["id"]]
         return "æ³¨" if n.nil?
-        "æ³#{¨n[:label]}"
+        "æ³¨#{n[:label]}"
       end
 
     def figure_name_parse(node, div, name)
