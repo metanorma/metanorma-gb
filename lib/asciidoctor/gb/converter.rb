@@ -38,7 +38,7 @@ module Asciidoctor
       def content_validate(doc)
         super
         bilingual_terms_validate(doc.root)
-        doc_converter.gbtype_validate(doc.root)
+        doc_converter(nil).gbtype_validate(doc.root)
       end
 
       def check_bilingual(t, element)
@@ -62,7 +62,7 @@ module Asciidoctor
         File.join(File.dirname(__FILE__), File.join("html", file))
       end
 
-      def doc_converter
+      def doc_converter(node)
         GbConvert.new(
           htmlstylesheet: html_doc_path("htmlstyle.css"),
           wordstylesheet: html_doc_path("wordstyle.css"),
@@ -72,6 +72,7 @@ module Asciidoctor
           wordcoverpage: html_doc_path("word_gb_titlepage.html"),
           htmlintropage: html_doc_path("html_gb_intro.html"),
           wordintropage: html_doc_path("word_gb_intro.html"),
+          i18nyaml: node&.attr("i18nyaml"),
         )
       end
 
@@ -162,6 +163,7 @@ module Asciidoctor
       \[(?<code>(ISO|IEC|#{GBCODE})[^0-9]*\s[0-9-]+):--\]</ref>,?\s?
       <fn[^>]*>\s*<p>(?<fn>[^\]]+)</p>\s*</fn>,?\s?(?<text>.*)$}xm
 
+      # TODO: all parts in ZH
       ISO_REF_ALL_PARTS = %r{^<ref\sid="(?<anchor>[^"]+)">
       \[(?<code>(ISO|IEC|#{GBCODE})[^0-9]*\s[0-9]+)\s\(all\sparts\)\]</ref>(<p>)?,?\s?
       (?<text>.*)(</p>)?$}xm

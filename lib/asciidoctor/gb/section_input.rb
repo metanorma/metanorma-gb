@@ -5,16 +5,6 @@ module Asciidoctor
     # schema encapsulation of the document for validation
     class Converter < ISO::Converter
 
-      def bibliography_parse(attrs, xml, node)
-        @biblio = true
-        xml.references **attr_code(attrs) do |xml_section|
-          title = node.level == 1 ? "参考文献" : node.title
-          xml_section.title { |t| t << title }
-          xml_section << node.content
-        end
-        @biblio = true
-      end
-      
       def term_def_subclause_parse(attrs, xml, node)
         # subclause contains subclauses
         sub = node.find_by(context: :section) {|s| s.level == node.level + 1 }
@@ -28,52 +18,10 @@ module Asciidoctor
         end
       end
 
-      def term_def_title(toplevel, node)
-        return node.title unless toplevel
-        sub = node.find_by(context: :section) do |s|
-          s.title.downcase == "symbols and abbreviated terms" ||
-          s.title == "符号、代号和缩略语"
-        end
-        return "术语和定义" if sub.empty?
-        "术语、定义、符号、代号和缩略语"
-      end
-
-      def norm_ref_parse(attrs, xml, node)
-        @norm_ref = true
-        xml.references **attr_code(attrs) do |xml_section|
-          xml_section.title { |t| t << "规范性引用文件" }
-          xml_section << node.content
-        end
-        @norm_ref = false
-      end
-
-      def introduction_parse(attrs, xml, node)
-        xml.introduction **attr_code(attrs) do |xml_section|
-          xml_section.title = "引言"
-          content = node.content
-          xml_section << content
-          introduction_style(node,
-                             ISO::Utils::flatten_rawtext(content).
-                             join("\n"))
-        end
-      end
-
-      def scope_parse(attrs, xml, node)
-        @scope = true
-        xml.clause **attr_code(attrs) do |xml_section|
-          xml_section.title { |t| t << "范围" }
-          content = node.content
-          xml_section << content
-          c = ISO::Utils::flatten_rawtext(content).join("\n")
-          scope_style(node, c)
-        end
-        @scope = false
-      end
-
       def section(node)
         a = { id: Asciidoctor::ISO::Utils::anchor_or_uuid(node) }
         noko do |xml|
-          case node.title.downcase
+          case sectiontype(node)
           when "引言" then
             if node.level == 1 then introduction_parse(a, xml, node)
             else
@@ -87,7 +35,7 @@ module Asciidoctor
             "术语、定义、符号、代号和缩略语",
             "terms, definitions, symbols and abbreviated terms"
             @term_def = true
-            term_def_parse(a, xml, node, node.title.downcase)
+            term_def_parse(a, xml, node, true)
             @term_def = false
           when "符号、代号和缩略语", "symbols and abbreviated terms"
             symbols_parse(a, xml, node)
@@ -105,6 +53,7 @@ module Asciidoctor
         end.join("\n")
       end
 
+=begin
       def preamble(node)
         noko do |xml|
           xml.foreword do |xml_abstract|
@@ -116,6 +65,7 @@ module Asciidoctor
           end
         end.join("\n")
       end
+=end
 
       def normref_cleanup(xmldoc)
         q = "//references[title = '规范性引用文件']"
