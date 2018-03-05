@@ -123,8 +123,8 @@ module Asciidoctor
         metadata_date(node, xml)
         metadata_author(node, xml)
         metadata_publisher(node, xml)
-        xml.language "zh"
-        xml.script "Hans"
+        xml.language (node.attr("language") || "zh")
+        xml.script (node.attr("script") || "Hans")
         metadata_status(node, xml)
         metadata_copyright(node, xml)
         metadata_equivalence(node, xml)
