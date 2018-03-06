@@ -72,15 +72,17 @@ p.Note, div.Note, li.Note
 	{mso-style-unhide:no;
 	mso-style-qformat:yes;
 	mso-style-parent:"";
-	margin-top:0cm;
-	margin-right:0cm;
-	margin-bottom:12.0pt;
-	margin-left:0cm;
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:36.3pt;
+	margin-bottom:.0001pt;
 	text-align:justify;
-	line-height:12.0pt;
+	text-justify:inter-ideograph;
 	mso-pagination:widow-orphan;
 	tab-stops:20.15pt;
-	font-size:10.0pt;
+	font-size:9.0pt;
+	text-autospace:none;
 	mso-bidi-font-size:11.0pt;
 	font-family:SimSun,serif;
 	mso-fareast-font-family:SimSun;
@@ -511,7 +513,8 @@ span.stem
 div.formula
     {tab-stops:right 487.45pt;}
 body 
-    {tab-interval:36.0pt;}
+    {tab-interval:21.0pt;
+    text-justify-trim:punctuation}
 dt
     {page-break-inside:avoid;
     page-break-after:avoid}
@@ -548,6 +551,7 @@ a.TableFootnoteRef
 aside {font-size:10.0pt;}
 .Hant
     {font-family:PMingLiU;}
+/*
 div.example {
 	border:solid black .25pt;
 	mso-border-alt:solid black .25pt;
@@ -556,6 +560,23 @@ div.example {
 	margin:10pt;
 	mso-margin-alt:10.0pt 10.0pt 10.0pt 10.0pt;
 }
+*/
+p.example, li.example, div.example
+	{mso-style-name:示例;  /* NAME: Example */
+	mso-style-unhide:no;
+	mso-style-parent:"";
+	mso-style-next:示例内容;
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	text-indent:18.15pt;
+	mso-pagination:none;
+	mso-list:l2 level1 lfo1;
+	font-size:9.0pt;
+	font-family:SimSun;
+	mso-hansi-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}
 p.leftpagenumber, li.leftpagenumber, div.leftpagenumber
 	{mso-style-name:leftpagenumber;
 	mso-style-priority:99;
@@ -591,3 +612,31 @@ p.rightpagenumber, li.rightpagenumber, div.rightpagenumber
 	mso-fareast-font-family:SimSun;
 	mso-ansi-language:EN-US;
 	mso-fareast-language:ZH-CN;}
+p.supersedes, li.supersedes, div.supersedes
+	{mso-style-name:封面标准代替信息;  /* NAME: Cover page standard "supercedes" information */
+	mso-style-unhide:no;
+	mso-style-parent:"";
+	margin-top:2.85pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	text-align:right;
+	line-height:14.0pt;
+	mso-line-height-rule:exactly;
+	mso-pagination:widow-orphan;
+	mso-element:frame;
+	mso-element-frame-width:457.0pt;
+	mso-element-frame-height:62.1pt;
+	mso-element-frame-hspace:14.2pt;
+	mso-element-wrap:around;
+	mso-element-anchor-vertical:page;
+	mso-element-anchor-horizontal:page;
+	mso-element-left:82.25pt;
+	mso-element-top:145.5pt;
+	mso-height-rule:exactly;
+	mso-element-anchor-lock:locked;
+	font-size:10.5pt;
+	font-family:SimSun;
+	mso-hansi-font-family:"Times New Roman";
+	mso-bidi-font-family:"Times New Roman";}

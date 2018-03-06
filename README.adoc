@@ -24,7 +24,7 @@ In the following, "GB standard" should be read to refer to any Chinese national,
 `:technical-committee-type:`:: The type of the technical committee (`technical` or `provisional`).
 `:iso-standard`: A corresponding ISO standard that the GB standard relates to. Format is full document code, then optionally comma followed by document title; e.g. `ISO/IEC 27001:2013, Information security management systems`
 `:equivalence:`:: The relation of the GB standard to the corresponding ISO standard (`equivalent`, `identical`, `nonequivalent`). Defaults to `equivalent`.
-`:obsoletes`: A corresponding GB standard that this GB standard obsoletes. Format is full document code, then optionally comma followed by document title; e.g. `GB/T 22080-2008`
+`:obsoletes`:: A corresponding GB standard that this GB standard obsoletes. Format is full document code, then optionally comma followed by document title; e.g. `GB/T 22080-2008`
 `:obsoletes-parts:`: A list of bibliographic localities in the corresponding GB standard that this GB standard obsoletes. These are formatted the same way as the localities in citations; e.g. `clause 7-9, clause 11`
 `:scope:`:: The scope of the GB standard (`national`, `sector`, `professional`, `local`, `enterprise`). Defaults to `national`.
 `:mandate:`:: The mandate of the GB standard (`mandatory`, `recommended`, `guidelines`). Defaults to `mandatory`.
