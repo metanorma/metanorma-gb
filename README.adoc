@@ -1,45 +1,105 @@
-= asciidoctor-gb
+= asciidoctor-gb: Authoring Chinese standards (GuoBiao, sector...) in AsciiDoc
 
 image:https://img.shields.io/gem/v/asciidoctor-gb.svg["Gem Version", link="https://rubygems.org/gems/asciidoctor-gb"]
 image:https://img.shields.io/travis/riboseinc/asciidoctor-gb/master.svg["Build Status", link="https://travis-ci.org/riboseinc/asciidoctor-gb"]
 image:https://codeclimate.com/github/riboseinc/asciidoctor-gb/badges/gpa.svg["Code Climate", link="https://codeclimate.com/github/riboseinc/asciidoctor-gb"]
 
-Gem for generating https://en.wikipedia.org/wiki/Guobiao_standards[Guibiao standards]
-(Chinese national standards), using Asciidoc. This gem inherits from 
-https://github.com/riboseinc/asciidoctor-iso, a gem used to generate ISO standards
-using Asciidoc. The two standards formats are closely aligned. Refer to the ISO gem
-for guidance, including https://github.com/riboseinc/asciidoctor-iso/wiki/Guidance-for-authoring
+Ruby gem for generating
+https://en.wikipedia.org/wiki/Guobiao_standards[Guibiao standards]
+(Chinese national standards), using AsciiDoc.
 
-The Gem can also be used to generate Chinese local or sector standards, which have the 
-same format; the gem formats the title page to have the correct metadata displayed.
+This gem implements the https://github.com/riboseinc/gbdoc[GbDoc] data model,
+which inherits from
+https://github.com/riboseinc/isodoc-models[IsoDoc and StandardDocument].
 
-== Differences from asciidoctor-iso
+The code of this gem inherits from
+https://github.com/riboseinc/asciidoctor-iso[asciidoctor-iso], a gem used to
+generate ISO standards using Asciidoc.
+
+The two standards formats are closely aligned. Refer to the ISO gem
+for guidance, including
+https://github.com/riboseinc/asciidoctor-iso/wiki/Guidance-for-authoring[IsoDoc: Guidance for authoring]
+
+The gem can also be used to generate Chinese local or sector standards, which
+have the same format; the gem formats the title page to have the correct
+metadata displayed.
+
+== Differences from `asciidoctor-iso`
 
 === Document Attributes
 
-In the following, "GB standard" should be read to refer to any Chinese national, sector or local standard. Asterisked document attributes are mandatory.
+In the following, "GB standard" should be read to refer to any Chinese
+national, sector or local standard. Asterisked document attributes are
+mandatory.
 
-`:title-intro-zh:`, `:title-main-zh:`*, `:title-part-zh:`:: These are the title introduction, main title, and part title in Chinese. (They replace their French counterparts in asciidoctor-iso.)
-`:title-intro-en:`, `:title-main-en:`*, `:title-part-en:`:: These are the title introduction, main title, and part title in English. (They form the document subtitle, instead of the document title as in asciidoctor-iso.)
-`:technical-committee-type:`:: The type of the technical committee (`technical` or `provisional`).
-`:iso-standard`: A corresponding ISO standard that the GB standard relates to. Format is full document code, then optionally comma followed by document title; e.g. `ISO/IEC 27001:2013, Information security management systems`
-`:equivalence:`:: The relation of the GB standard to the corresponding ISO standard (`equivalent`, `identical`, `nonequivalent`). Defaults to `equivalent`.
-`:obsoletes`:: A corresponding GB standard that this GB standard obsoletes. Format is full document code, then optionally comma followed by document title; e.g. `GB/T 22080-2008`
-`:obsoletes-parts:`: A list of bibliographic localities in the corresponding GB standard that this GB standard obsoletes. These are formatted the same way as the localities in citations; e.g. `clause 7-9, clause 11`
-`:scope:`:: The scope of the GB standard (`national`, `sector`, `professional`, `local`, `enterprise`). Defaults to `national`.
-`:mandate:`:: The mandate of the GB standard (`mandatory`, `recommended`, `guidelines`). Defaults to `mandatory`.
-`:prefix:*`:: The prefix classifying the GB standard. (Refer to https://github.com/riboseinc/gbdoc/blob/master/models/gb-standard-national-prefix.adoc, https://github.com/riboseinc/gbdoc/blob/master/models/gb-standard-sector-prefix.adoc, https://github.com/riboseinc/gbdoc/blob/master/models/gb-standard-local-prefix.adoc.)
-`:published-date:`* :: The date on which the GB standard was published.
-`:activated-date:`* :: The date on which the GB standard was activated.
-`:library-ics:`* :: The international categorisation number for the GB standard
-`:library-l:`* :: The L-identifier (library) for the GB standard
+`:title-intro-zh:`, `:title-main-zh:`*, `:title-part-zh:`::
+These are the title introduction, main title, and part title in Chinese.
+The intro and part titles are optional.
+(They replace their French counterparts in
+https://github.com/riboseinc/asciidoctor-iso[asciidoctor-iso].)
+
+`:title-intro-en:`, `:title-main-en:`*, `:title-part-en:`::
+These are the title introduction, main title, and part title in English.
+The intro and part titles are optional.
+(They form the document subtitle, instead of the document title as in
+https://github.com/riboseinc/asciidoctor-iso[asciidoctor-iso].)
+
+`:technical-committee-type:`::
+The type of the technical committee (`technical` or `provisional`).
+
+`:iso-standard:`::
+(optional) A corresponding ISO standard that the GB standard relates to. Format
+is full document code, then optionally comma followed by document title;
+e.g. `ISO/IEC 27001:2013, Information security management systems`
+
+`:equivalence:`::
+(optional, only valid if there is a corresponding `:iso-standard:`)
+The relation of the GB standard to the corresponding ISO standard
+(`equivalent`, `identical`, `nonequivalent`). Defaults to `equivalent`.
+
+`:obsoletes:`::
+(optional)
+A corresponding GB standard that this GB standard obsoletes. Format is full
+document code, then optionally comma followed by document title;
+e.g. `GB/T 22080-2008`
+
+`:obsoletes-parts:`::
+A list of bibliographic localities in the corresponding GB standard that this
+GB standard obsoletes. These are formatted the same way as the localities in
+citations; e.g. `clause 7-9, clause 11`
+
+`:scope:`::
+The scope of the GB standard (`national`, `sector`, `professional`, `local`,
+`enterprise`). Defaults to `national`.
+
+`:mandate:`::
+The mandate of the GB standard (`mandatory`, `recommended`, `guidelines`).
+Defaults to `mandatory`.
+
+`:prefix:`*::
+The prefix classifying the GB standard.
+(Refer to
+https://github.com/riboseinc/gbdoc/blob/master/models/gb-standard-national-prefix.adoc[GB National Standard Prefixes],
+https://github.com/riboseinc/gbdoc/blob/master/models/gb-standard-sector-prefix.adoc[GB Sector Standard Prefixes],
+https://github.com/riboseinc/gbdoc/blob/master/models/gb-standard-local-prefix.adoc[GB Local Standard Prefixes].)
+
+`:published-date:`* ::
+The date on which the GB standard was published.
+
+`:activated-date:`* ::
+The date on which the GB standard was activated.
+
+`:library-ics:`* ::
+The ICS (International Categorization for Standards) number for the GB standard.
+
+`:library-l:`* ::
+The L-identifier (library) for the GB standard.
 
 === Language macros
 
-In Terms and Definitions, preferred terms, alternate terms and deprecated
-terms are expected to be given in both Chinese and English. By default,
-the gem does this by detecting space-delimited runs of Han or Latin script
-text:
+In Terms and Definitions, preferred terms, alternate terms and deprecated terms
+are expected to be given in both Chinese and English. By default, the gem does
+this by detecting space-delimited runs of Han or Latin script text:
 
 [source,asciidoc]
 --
@@ -70,8 +130,12 @@ alt:[[en]#rough rice# [zh]#糙米#]
 <admitted language="zh">糙米</admitted> <admitted language="en">rough rice</admitted>
 --
 
-Unfortunately no further markup is permitted within the +`[zh]#...#`+ and +`[en]#...#`+ 
-macros by Asciidoctor, and Asciidoctor does not correctly nest inline macros within other
-inline macros (so +`alt:[en:[_xyz_] zh:[xyz]`+  would not give correct behaviour either.)
+Unfortunately no further markup is permitted within the +`[zh]#...#`+ and
++`[en]#...#`+ macros by Asciidoctor, and Asciidoctor does not correctly nest
+inline macros within other inline macros (so +`alt:[en:[_xyz_] zh:[xyz]`+
+would not give correct behaviour either.)
 
-The gem also supports +`[zh-Hant]#...#`+ and +`[zh-Hans]#...#`+ to differentiate traditional and simplified script in ISOXML; `zh-Hant` is provisionally supported through changing font in the output.
+The gem also supports +`[zh-Hant]#...#`+ and +`[zh-Hans]#...#`+ to
+differentiate traditional and simplified script in ISOXML; `zh-Hant` is
+provisionally supported through changing font in the output.
+
