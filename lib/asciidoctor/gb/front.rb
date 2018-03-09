@@ -109,11 +109,9 @@ module Asciidoctor
       def metadata_gblibraryids(node, xml)
         ics = node.attr("library-ics")
         l = node.attr("library-l")
-        if ics || l
-          xml.gblibraryids do |g|
-            xml.ics ics if ics
-            xml.l l if l
-          end
+        xml.ics ics if ics
+        l && xml.gblibraryids do |g|
+            xml.l l
         end
       end
 

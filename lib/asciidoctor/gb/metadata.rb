@@ -109,7 +109,7 @@ module Asciidoctor
       end
 
       def gb_library_identifier(isoxml)
-        ics = isoxml.at(ns("//gblibraryids/ics"))
+        ics = isoxml.at(ns("//bibdata/ics"))
         l = isoxml.at(ns("//gblibraryids/l"))
         set_metadata(:libraryid_ics, ics ? ics.text : "XXX")
         set_metadata(:libraryid_l, l ? l.text : "XXX")
