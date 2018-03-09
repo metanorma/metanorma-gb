@@ -53,20 +53,6 @@ module Asciidoctor
         end.join("\n")
       end
 
-=begin
-      def preamble(node)
-        noko do |xml|
-          xml.foreword do |xml_abstract|
-            xml_abstract.title { |t| t << "前言" }
-            content = node.content
-            xml_abstract << content
-            text = Asciidoctor::ISO::Utils::flatten_rawtext(content).join("\n")
-            foreword_style(node, text)
-          end
-        end.join("\n")
-      end
-=end
-
       def normref_cleanup(xmldoc)
         q = "//references[title = '规范性引用文件']"
         r = xmldoc.at(q)

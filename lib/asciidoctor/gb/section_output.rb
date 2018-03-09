@@ -33,6 +33,13 @@ module Asciidoctor
         end
       end
 
+      def term_defs_boilerplate(div, source, term)
+        if source.empty? && term.nil?
+          div << @no_terms_boilerplate
+        else
+          div << term_defs_boilerplate_cont(source, term)
+        end
+      end
     end
   end
 end
