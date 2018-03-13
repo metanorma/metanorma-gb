@@ -102,8 +102,12 @@ module Asciidoctor
       def metadata_date(node, xml)
         pubdate = node.attr("published-date")
         activdate = node.attr("activated-date")
-        xml.date(pubdate, **{ type: "published" }) if pubdate
-        xml.date(activdate, **{ type: "activated" }) if activdate
+        pubdate and xml.date **{ type: "published" } do |d|
+          d.from pubdate
+        end
+        activdate and xml.date **{ type: "activated" } do |d|
+          d.from activdate
+        end
       end
 
       def metadata_gblibraryids(node, xml)
