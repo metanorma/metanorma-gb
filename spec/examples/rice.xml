@@ -14,8 +14,12 @@
   <docidentifier>
     <project-number part="1">17301</project-number>
   </docidentifier>
-  <date type="published">2016-01-02</date>
-  <date type="activated">2016-04-02</date>
+  <date type="published">
+    <from>2016-01-02</from>
+  </date>
+  <date type="activated">
+    <from>2016-04-02</from>
+  </date>
   <contributor>
     <role type="author"/>
     <organization>
@@ -28,7 +32,7 @@
       <name>GB</name>
     </organization>
   </contributor>
-  <language>zh</language>
+  <language>en</language>
   <script>Hans</script>
   <status>
     <stage>30</stage>
@@ -43,190 +47,184 @@
     </owner>
   </copyright>
   <gbcommittee type="provisional">Food products</gbcommittee>
-  <gbequivalence>identical</gbequivalence>
   <gbtype>
     <gbscope>sector</gbscope>
     <gbprefix>NY</gbprefix>
     <gbmandate>recommended</gbmandate>
   </gbtype>
+  <ics>1322</ics>
   <gblibraryids>
-    <ics>1322</ics>
     <l>80</l>
   </gblibraryids>
 </bibdata><version>
   <edition>2</edition>
   <revision-date>2016-05-01</revision-date>
 </version>
-<foreword><title>前言</title><p id="_3aed3612-6ff4-4b8f-89f7-48444eabdb15">ISO (the International Organization for Standardization)
+<foreword obligation="informative"><title>Foreword</title><p id="_2316da84-5a41-4076-ac0d-149300980277">ISO (the International Organization for Standardization)
 is a worldwide federation of national standards bodies (ISO member bodies). The work of preparing International Standards is normally carried out through ISO technical committees. Each member body interested in a subject for which a technical committee has been established has the right to be represented on that committee. International organizations, governmental and non-governmental, in liaison with ISO, also take part in the work. ISO collaborates closely with the International Electrotechnical Commission (IEC) on all matters of electrotechnical standardization.</p>
-<p id="_109b7d7d-cb0d-41f0-97be-9c0f456d5f4e">The procedures used to develop this document and those intended for its further maintenance are described in the ISO/IEC Directives, Part 1. In particular the different approval criteria needed for the different types of ISO documents should be noted. This document was drafted in accordance with the editorial rules of the ISO/IEC Directives, Part 2 (see www.iso.org/directives).</p>
-<p id="_3bffc9e7-5610-458f-94a8-aee7c1242eee">Attention is drawn to the possibility that some of the elements of this document may be the subject of patent rights. ISO shall not be held responsible for identifying any or all such patent rights. Details of any patent rights identified during the development of the document will be in the Introduction and/or on the ISO list of patent declarations received (see www.iso.org/patents).</p>
-<p id="_fef33e6b-1a79-4a9e-84c6-aa315411c6cf">Any trade name used in this document is information given for the convenience of users and does not constitute an endorsement.</p>
-<p id="_d6e2dc22-d490-4f7f-b66e-1d385e8fd69f">For an explanation on the voluntary nature of standards, the meaning of ISO specific terms and expressions related to conformity assessment, as well as information about ISO’s adherence to the World Trade Organization (WTO) principles in the Technical Barriers to Trade (TBT) see the following URL: www.iso.org/iso/foreword.html.</p>
-<p id="_4b1b0ecc-c543-4936-8214-9c2aa4344a38">This document was prepared by Technical Committee ISO/TC 34, <em>Food products</em>, Subcommittee SC 4, <em>Cereals and pulses</em>.</p>
-<p id="_ebc97af8-de27-4564-8488-c43ccd918d73">This second edition cancels and replaces the first edition (ISO 17301-1:2009), which has been technically revised.</p>
-<p id="_d3a74f3c-c1ca-4630-9912-c15a77048c46">The main changes compared to the previous edition are:</p>
-<ul id="_0a72b2a0-31a9-41c1-b6cb-6cec393ec7b0">
+<p id="_c26b4c92-9c61-42bd-ab03-70b6b49b04d1">The procedures used to develop this document and those intended for its further maintenance are described in the ISO/IEC Directives, Part 1. In particular the different approval criteria needed for the different types of ISO documents should be noted. This document was drafted in accordance with the editorial rules of the ISO/IEC Directives, Part 2 (see www.iso.org/directives).</p>
+<p id="_5dfe838a-78b2-4847-ad4b-a4fe393125c3">Attention is drawn to the possibility that some of the elements of this document may be the subject of patent rights. ISO shall not be held responsible for identifying any or all such patent rights. Details of any patent rights identified during the development of the document will be in the Introduction and/or on the ISO list of patent declarations received (see www.iso.org/patents).</p>
+<p id="_12d79c70-90f9-45fa-be6a-48764da9ac30">Any trade name used in this document is information given for the convenience of users and does not constitute an endorsement.</p>
+<p id="_b2701c09-3aa4-4bdf-8dbd-56ef5bd3bad3">For an explanation on the voluntary nature of standards, the meaning of ISO specific terms and expressions related to conformity assessment, as well as information about ISO’s adherence to the World Trade Organization (WTO) principles in the Technical Barriers to Trade (TBT) see the following URL: www.iso.org/iso/foreword.html.</p>
+<p id="_1c43c6d9-1a1f-4a91-bfbf-3fbb854abb38">This document was prepared by Technical Committee ISO/TC 34, <em>Food products</em>, Subcommittee SC 4, <em>Cereals and pulses</em>.</p>
+<p id="_ba777b0f-3ba3-45e2-af42-3e76b978b20e">This second edition cancels and replaces the first edition (ISO 17301-1:2009), which has been technically revised.</p>
+<p id="_3632538d-546b-42d4-80fb-cd86b58daa37">The main changes compared to the previous edition are:</p>
+<ul id="_8a3a2103-ce06-49dc-b7ae-1581eabd8371">
   <li>
-    <p id="_28dfe18f-36c1-4400-919d-5dc3a759eb95">updated normative references;</p>
+    <p id="_a16e625d-ed94-434a-889a-551d05f55b50">updated normative references;</p>
   </li>
   <li>
-    <p id="_c35625f3-d27a-47d3-89d6-800d630d12dd">deletion of 4.3.</p>
+    <p id="_8ae319f7-f597-415b-a03a-1acbbdc2779b">deletion of 4.3.</p>
   </li>
 </ul>
-<p id="_8bae111f-628c-495d-abfe-584d2f09f264">A list of all parts in the ISO 17301 series can be found on the ISO website.</p></foreword><introduction id="_引言"><title>引言</title><p id="_bf509ad0-5576-44e2-8421-bf5dbeec6a3a">This document was developed in response to worldwide demand for minimum specifications for rice traded internationally, since most commercial bulks of grain, which have not been screened or aspirated, contain a proportion of other grains, weed seeds, chaff, straw, stones, sand, etc. The vegetable materials can have physical and biological properties which differ from those of the main constituent and can therefore affect the storage behaviour.</p>
-<p id="_b4c686d7-3390-4851-9fbd-24ad6333232d">Rice is a permanent host to a considerable microflora; most of these microorganisms are cosmopolitan, the majority are innocuous, but some produce harmful by-products. Microflora communities present on freshly harvested rice include many types of bacteria, moulds and yeasts. While the rice is ripening and its moisture content is falling, the number of field microorganisms, mainly bacteria, diminishes. When the rice is harvested, it is invaded by storage microorganisms and the field microflora gradually dies out. If the mass fraction of moisture (formerly expressed as moisture content) is less than 18 %, the microflora does not multiply, whereas above 18 % it does so rapidly. Thus, at harvest, the qualitative and the quantitative composition of the microflora depends more upon ecological factors than upon the variety of the rice. During transport and storage, additions to the microfloral population occur. Microorganisms on the rice at harvest tend to die out during storage and are replaced by microorganisms adapted to storage conditions.</p>
-<p id="_81417f30-9f8f-4e07-92b1-5604ced7c722">Storage losses have been estimated as being an average of 5 %, and as much as 30 %, especially in countries with climates favourable to the rapid development of agents of deterioration and where storage techniques are poorly developed, such as developing countries in the damp tropics. The magnitude of these figures highlights the need to promote throughout the world a rapid improvement in techniques of conservation.</p>
-<p id="_329b380c-518d-48db-b9ad-76b1a69840da">The International Organization for Standardization (ISO) draws attention to the fact that it is claimed that compliance with this document may involve the use of a patent concerning sample dividers given in <xref target="AnnexA"/> and shown in <xref target="figureA-1"/>.</p>
-<p id="_5d3c2ca3-d02b-4d2d-9d0a-6916115b0025">ISO takes no position concerning the evidence, validity and scope of this patent right.</p>
-<p id="_0ca90a02-917a-489f-bdd3-a32561515e46">The holder of this patent right has assured ISO that he/she is willing to negotiate licences under reasonable and non-discriminatory terms and conditions with applicants throughout the world. In this respect, the statement of the holder of this patent right is registered with ISO. Information may be obtained from:</p>
-<p align="left" id="_0edc3c80-8396-4d2a-a4f3-9e716feadc8c">Vache Equipment<br/>
+<p id="_419a0a8f-ab9c-44e1-8079-5d7a01a892e1">A list of all parts in the ISO 17301 series can be found on the ISO website.</p></foreword><introduction id="_引言" obligation="informative"><title>Introduction</title><p id="_9b7d0ec5-8614-4456-8730-ee0efd6ee281">This document was developed in response to worldwide demand for minimum specifications for rice traded internationally, since most commercial bulks of grain, which have not been screened or aspirated, contain a proportion of other grains, weed seeds, chaff, straw, stones, sand, etc. The vegetable materials can have physical and biological properties which differ from those of the main constituent and can therefore affect the storage behaviour.</p>
+<p id="_d9ed3d8b-af37-4015-8dd2-f55c216482e2">Rice is a permanent host to a considerable microflora; most of these microorganisms are cosmopolitan, the majority are innocuous, but some produce harmful by-products. Microflora communities present on freshly harvested rice include many types of bacteria, moulds and yeasts. While the rice is ripening and its moisture content is falling, the number of field microorganisms, mainly bacteria, diminishes. When the rice is harvested, it is invaded by storage microorganisms and the field microflora gradually dies out. If the mass fraction of moisture (formerly expressed as moisture content) is less than 18 %, the microflora does not multiply, whereas above 18 % it does so rapidly. Thus, at harvest, the qualitative and the quantitative composition of the microflora depends more upon ecological factors than upon the variety of the rice. During transport and storage, additions to the microfloral population occur. Microorganisms on the rice at harvest tend to die out during storage and are replaced by microorganisms adapted to storage conditions.</p>
+<p id="_8c2d1528-8f0f-4a84-9cdd-28a33c09ef5d">Storage losses have been estimated as being an average of 5 %, and as much as 30 %, especially in countries with climates favourable to the rapid development of agents of deterioration and where storage techniques are poorly developed, such as developing countries in the damp tropics. The magnitude of these figures highlights the need to promote throughout the world a rapid improvement in techniques of conservation.</p>
+<p id="_31697ecc-9ac9-42f8-a168-7ec134197285">The International Organization for Standardization (ISO) draws attention to the fact that it is claimed that compliance with this document may involve the use of a patent concerning sample dividers given in <xref target="AnnexA"/> and shown in <xref target="figureA-1"/>.</p>
+<p id="_aa9ec01b-915d-4431-bf8c-499ce40e5405">ISO takes no position concerning the evidence, validity and scope of this patent right.</p>
+<p id="_8fc9bb61-070d-4d6f-862e-04a7c3308e09">The holder of this patent right has assured ISO that he/she is willing to negotiate licences under reasonable and non-discriminatory terms and conditions with applicants throughout the world. In this respect, the statement of the holder of this patent right is registered with ISO. Information may be obtained from:</p>
+<p align="left" id="_9bb0fe3f-ed8f-49dd-b3d4-86b898152283">Vache Equipment<br/>
 Fictitious<br/>
 World<br/>
-<link target="mailto:gehf@vacheequipment.fic"/></p>
-<p id="_3d863d12-3b14-4f44-8ca8-70062e8e101a">Attention is drawn to the possibility that some of the elements of this document may be the subject of patent rights other than those identified above. ISO shall not be held responsible for identifying any or all such patent rights.</p></introduction><sections>
+</p>
+<p id="_de75e164-7cbf-4369-916d-9ca8e3e4b95e">Attention is drawn to the possibility that some of the elements of this document may be the subject of patent rights other than those identified above. ISO shall not be held responsible for identifying any or all such patent rights.</p></introduction><sections>
 
-<clause id="_范围"><title>范围</title><p id="_b57bc708-b304-4da5-aa00-1714bd0d9d28">This document specifies minimum requirements and test methods for rice (<em>Oryza sativa L.</em>).</p>
-<p id="_2e8f2039-6c44-4512-8789-d5d4a9acc13c">It is applicable to husked rice, husked parboiled rice, milled rice and milled parboiled rice, suitable for human consumption, directly or after reconditioning.</p>
-<p id="_e7af5130-c13f-4430-9b51-e239fd4fc495">It is not applicable to cooked rice products.</p></clause>
+<clause id="_范围" obligation="normative"><title>Scope</title><p id="_204ba3ee-3f7b-4424-84e1-2656a0d5bb83">This document specifies minimum requirements and test methods for rice (<em>Oryza sativa L.</em>).</p>
+<p id="_48266287-a6b5-4d7f-b36b-2ebde0baa643">It is applicable to husked rice, husked parboiled rice, milled rice and milled parboiled rice, suitable for human consumption, directly or after reconditioning.</p>
+<p id="_d1307d8b-fe68-4c8f-87e9-71d369eea198">It is not applicable to cooked rice products.</p></clause>
 
-<terms id="_术语和定义"><title>术语和定义</title><p id="_b5066281-ed43-4f83-a01b-36582f239298">For the purposes of this document, the following terms and definitions apply.</p>
-<p id="_5c794f1c-0c71-4ff7-952e-f98bae48e0e1">ISO and IEC maintain terminological databases for use in standardization at the following addresses:</p>
-<ul id="_81f3354f-25b2-4196-8556-0278ebb65751">
+<terms id="_术语和定义" obligation="normative"><title>Terms and Definitions</title><p id="_c6686ba2-0985-47a6-b298-6ddbf1505ca9">For the purposes of this document, the following terms and definitions apply.</p>
+<p id="_36eaf87b-5ef8-4fc5-a3be-816276792ea2">ISO and IEC maintain terminological databases for use in standardization at the following addresses:</p>
+<ul id="_29cd2a6f-25f9-4099-9d5b-b2761fa742d4">
   <li>
-    <p id="_274e57a1-47e5-424f-9578-8615cf6cb825">ISO Online browsing platform: available at <link target="http://www.iso.org/obp"/></p>
+    <p id="_b60d56e5-4c9e-47a0-ba7e-208c3bbcfb52">ISO Online browsing platform: available at </p>
   </li>
   <li>
-    <p id="_ab09db57-5701-4056-8d01-9377ebab60bb">IEC Electropedia: available at <link target="http://www.electropedia.org"/></p>
+    <p id="_1a704315-1120-4576-9ac8-f3c2d95ab27a">IEC Electropedia: available at </p>
   </li>
 </ul>
 <term id="paddy"><preferred language="en">paddy</preferred> <preferred language="zh">水稻</preferred>
   <admitted language="en">rough rice</admitted> <admitted language="zh">糙米</admitted>
 
-<definition><p id="_e8a16017-1c93-445c-a154-ad71b02b7cd8">rice retaining its husk after threshing</p></definition>
+<definition><p id="_e0974fe3-20ec-4392-aaed-4c8a9fd6a628">rice retaining its husk after threshing</p></definition>
 <termsource status="modified">
-  <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301"><locality type="section">
-    <reference>3.1</reference>
-  </locality></origin>
-  
+  <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301: 2011"/>
+  <modification>
+    <p id="_8b8ae047-1d35-4a86-b77c-8abb5c87eb12">3.1</p>
+  </modification>
 </termsource></term>
 <term id="husked_rice"><preferred language="zh"></preferred> <preferred language="en">husked rice</preferred>
   <deprecates language="zh"></deprecates> <deprecates language="en">cargo rice</deprecates>
 
-<definition><p id="_860f29d2-3cb6-43d4-b88c-1983f7916736"><em>paddy</em> (<xref target="paddy"/>) from which the husk only has been removed</p></definition>
-<termsource status="identical">
-  <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301"><locality type="section">
-    <reference>3.2</reference>
-  </locality></origin>
-  
+<definition><p id="_e364db51-2c91-4d84-8d99-80622e91d283"><em>paddy</em> (<xref target="paddy"/>) from which the husk only has been removed</p></definition>
+<termsource status="modified">
+  <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301: 2011"/>
   <modification>
-    <p id="_a29efb2b-7f1f-4a71-8c01-4808a3b9f5a2">The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here</p>
+    <p id="_6c9e6a21-da6d-41d4-bbaa-27442e4d32e8">3.2, The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here</p>
   </modification>
 </termsource></term>
 <term id="_milled_rice"><preferred language="zh"></preferred> <preferred language="en">milled rice</preferred>
   <admitted language="zh"></admitted> <admitted language="en">white rice</admitted>
 
-<definition><p id="_3c24a81b-a06c-4443-bea9-98c3dc3a1630"><em>husked rice</em> (<xref target="husked_rice"/>) from which almost all of the bran and embryo have been removed by milling</p></definition>
+<definition><p id="_cfa04137-9683-49fa-9dbf-43f4be7492b5"><em>husked rice</em> (<xref target="husked_rice"/>) from which almost all of the bran and embryo have been removed by milling</p></definition>
 <termsource status="modified">
-  <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301"><locality type="section">
-    <reference>3.3</reference>
-  </locality></origin>
-  
+  <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301: 2011"/>
+  <modification>
+    <p id="_bad9d160-79e8-4e07-b55b-cd320580f248">3.3</p>
+  </modification>
 </termsource></term>
 <term id="_parboiled_rice">
   <preferred language="zh"></preferred> <preferred language="en">parboiled rice</preferred>
-  <definition><p id="_9fed8d6a-8d45-4b3e-be5c-77262218bcf4">rice whose starch has been fully gelatinized by soaking <em>paddy</em> (<xref target="paddy"/>) rice or <em>husked rice</em> (<xref target="husked_rice"/>) in water followed by a heat treatment and a drying process</p></definition>
+  <definition><p id="_7cbd662e-0d8d-4ca2-9d68-5033ae082a57">rice whose starch has been fully gelatinized by soaking <em>paddy</em> (<xref target="paddy"/>) rice or <em>husked rice</em> (<xref target="husked_rice"/>) in water followed by a heat treatment and a drying process</p></definition>
 </term>
-<term id="_waxy_rice"><preferred language="zh"></preferred> <preferred language="en">waxy rice</preferred><definition><p id="_3c607f20-3d0f-4ad0-9510-acdc7040a8d2">variety of rice whose kernels have a white and opaque appearance</p></definition>
-<termnote id="_05f41c66-d37c-4af1-9a65-cf6e3c7d5ba0">
-  <p id="_05412e28-2cf9-4f6c-a623-b01e905ad242">The starch of waxy rice consists almost entirely of amylopectin. The kernels have a tendency to stick together after cooking.</p>
+<term id="_waxy_rice"><preferred language="zh"></preferred> <preferred language="en">waxy rice</preferred><definition><p id="_c0c6a589-f31f-4c45-baba-aacfe07b2483">variety of rice whose kernels have a white and opaque appearance</p></definition>
+<termnote id="_8b861ecd-20d3-4399-b331-435254d640b6">
+  <p id="_81f5d9c6-477a-4aff-878e-cf82ac7bf37d">The starch of waxy rice consists almost entirely of amylopectin. The kernels have a tendency to stick together after cooking.</p>
 </termnote></term>
 <term id="_extraneous_matter"><preferred language="zh"></preferred> <preferred language="en">extraneous matter</preferred><admitted language="zh"></admitted> <admitted language="en">EM</admitted>
 <domain>rice</domain>
-<definition><p id="_4068b410-9de8-45d6-af91-7235aaab4068">organic and inorganic components other than whole or broken kernels</p></definition>
-<termexample id="_4c239e8f-cd33-410a-9968-342362f9f133">
-  <p id="_ee187c70-bb73-4377-b3e3-1a704dddbbfb">Foreign seeds, husks, bran, sand, dust.</p>
+<definition><p id="_71b6812c-e4eb-427c-bc65-c4a0f3d3df26">organic and inorganic components other than whole or broken kernels</p></definition>
+<termexample id="_42c19e2d-bc22-48e5-8eea-b95c3977236b">
+  <p id="_a9368145-bdd6-4400-b32d-0c1d8724de1c">Foreign seeds, husks, bran, sand, dust.</p>
 </termexample></term>
 <term id="HDK"><preferred language="zh"></preferred> <preferred language="en">HDK</preferred>
   <admitted language="zh">-</admitted> <admitted language="en">heat-damaged kernel</admitted>
 
-<definition><p id="_ab63f71e-6a6b-475c-8835-7a84d8db7841">kernel, whole or broken, which has changed its normal colour as a result of heating</p></definition>
-<termnote id="_d93ef9b0-0ce3-4ac1-81a7-e02265da2684">
-  <p id="_cff2a771-75aa-4a16-a0d1-87445f705c70">This category includes whole or broken kernels that are yellow due to alteration. Parboiled rice in a batch of non-parboiled rice is also included in this category.</p>
+<definition><p id="_264dec4f-39f9-4f4b-9532-0baaa0e7026e">kernel, whole or broken, which has changed its normal colour as a result of heating</p></definition>
+<termnote id="_10666fc3-b0de-4a06-980c-4c032802b517">
+  <p id="_eebdeb00-10a0-42bf-822b-c66192086990">This category includes whole or broken kernels that are yellow due to alteration. Parboiled rice in a batch of non-parboiled rice is also included in this category.</p>
 </termnote></term>
 <term id="_damaged_kernel">
   <preferred language="zh"></preferred> <preferred language="en">damaged kernel</preferred>
-  <definition><p id="_426dad2c-79e6-4242-a65b-ba14ce27dee8">kernel, whole or broken, showing obvious deterioration due to moisture, pests, disease or other causes, but excluding <em>HDK</em> (<xref target="HDK"/>)</p></definition>
+  <definition><p id="_66d8c12d-4459-4cc8-85ce-a87466673804">kernel, whole or broken, showing obvious deterioration due to moisture, pests, disease or other causes, but excluding <em>HDK</em> (<xref target="HDK"/>)</p></definition>
 </term>
 <term id="_immature_kernel"><preferred language="zh"></preferred> <preferred language="en">immature kernel</preferred>
   <admitted language="zh"></admitted> <admitted language="en">unripe kernel</admitted>
 
-<definition><p id="_69d52fb7-b480-43f3-a746-300004011cb2">kernel, whole or broken, which is unripe and/or underdeveloped</p></definition></term>
-<term id="_husked_rice_yield"><preferred language="zh"></preferred> <preferred language="en">husked rice yield</preferred><definition><p id="_bc79c272-56a7-40a4-9c66-5d27ee38600e">amount of husked rice obtained from paddy</p></definition>
+<definition><p id="_40ef0903-a3c2-40eb-b4d7-8293a273de63">kernel, whole or broken, which is unripe and/or underdeveloped</p></definition></term>
+<term id="_husked_rice_yield"><preferred language="zh"></preferred> <preferred language="en">husked rice yield</preferred><definition><p id="_e74f2a10-244f-4471-bebb-f4cb7c8a9126">amount of husked rice obtained from paddy</p></definition>
 <termsource status="modified">
-  <origin bibitemid="ISO6646" type="inline" citeas="ISO 6646"><locality type="section">
-    <reference>3.1</reference>
-  </locality></origin>
-  
+  <origin bibitemid="ISO6646" type="inline" citeas="ISO 6646"/>
+  <modification>
+    <p id="_cc7bddda-1b47-4cc1-9fe8-b4699d7d4848">3.1</p>
+  </modification>
 </termsource></term>
-<term id="_nitrogen_content"><preferred language="zh"></preferred> <preferred language="en">nitrogen content</preferred><definition><p id="_39c3a702-d2d5-472e-ac1e-45599ef56842">quantity of nitrogen determined after application of the procedure described</p></definition>
-<termnote id="_43796ecc-05c9-4611-b2fd-b3906d41be4c">
-  <p id="_9437fb0a-d7e4-450e-8e3c-e29156aaecd2">It is expressed as a mass fraction of dry product, as a percentage.</p>
+<term id="_nitrogen_content"><preferred language="zh"></preferred> <preferred language="en">nitrogen content</preferred><definition><p id="_3d60113d-f83b-4f3a-9227-2f4040054c38">quantity of nitrogen determined after application of the procedure described</p></definition>
+<termnote id="_31acf20d-bf4a-4e28-a283-872dc078c315">
+  <p id="_6334aa9e-720e-421b-84fe-a29f8c39d4d3">It is expressed as a mass fraction of dry product, as a percentage.</p>
 </termnote>
 <termsource status="modified">
-  <origin bibitemid="ISO20483" type="inline" citeas="ISO 20483"><locality type="section">
-    <reference>3.1</reference>
-  </locality></origin>
-  
+  <origin bibitemid="ISO20483" type="inline" citeas="ISO 20483: 2013"/>
+  <modification>
+    <p id="_2b7ff35e-c1c5-4a6e-947f-77c12c4a528f">3.1</p>
+  </modification>
 </termsource></term>
-<term id="_crude_protein_content"><preferred language="zh"></preferred> <preferred language="en">crude protein content</preferred><definition><p id="_5447d6f1-4b1c-4204-aade-02f3b490e88d">quantity of crude protein obtained from the nitrogen content as determined by applying the specified method, calculated by multiplying this content by an appropriate factor depending on the type of cereal or pulse</p></definition>
-<termnote id="_cc37fc84-34da-4497-b911-cd716caa62bc">
-  <p id="_81f2883a-24c1-4eb5-bd45-d9936166cdea">It is expressed as a mass fraction of dry product, as a percentage.</p>
+<term id="_crude_protein_content"><preferred language="zh"></preferred> <preferred language="en">crude protein content</preferred><definition><p id="_f1a5f405-5cc6-40c7-94c0-5b548bae1295">quantity of crude protein obtained from the nitrogen content as determined by applying the specified method, calculated by multiplying this content by an appropriate factor depending on the type of cereal or pulse</p></definition>
+<termnote id="_ced3edde-e26e-438e-9af6-aa0eea585329">
+  <p id="_e47faab9-12f1-4fe8-a8cf-8fb8e70773cb">It is expressed as a mass fraction of dry product, as a percentage.</p>
 </termnote>
 <termsource status="modified">
-  <origin bibitemid="ISO20483" type="inline" citeas="ISO 20483"><locality type="section">
-    <reference>3.2</reference>
-  </locality></origin>
-  
+  <origin bibitemid="ISO20483" type="inline" citeas="ISO 20483: 2013"/>
+  <modification>
+    <p id="_8dfeb4ed-9b14-44b7-88a2-7f5c14e02ee4">3.2</p>
+  </modification>
 </termsource></term>
-<term id="gelatinization"><preferred language="zh"></preferred> <preferred language="en">gelatinization</preferred><definition><p id="_8ad2ec43-6e6d-438b-adde-70efcd51cd8f">hydration process conferring the jelly-like state typical of the coagulated colloids, which are named gels, on kernels</p></definition>
-<termnote id="_b0a73266-00c8-4373-8b81-558ddd07ad66">
-  <p id="_fb40f8bd-3036-4ed6-bf22-f7890d5f9776">See <xref target="figureC-1"/>.</p>
+<term id="gelatinization"><preferred language="zh"></preferred> <preferred language="en">gelatinization</preferred><definition><p id="_7db26adb-02cc-4390-b908-43a7570232b8">hydration process conferring the jelly-like state typical of the coagulated colloids, which are named gels, on kernels</p></definition>
+<termnote id="_84e03c44-1d7c-4c28-8fd4-c3d14bc50344">
+  <p id="_bfb64b8d-692b-4381-ba31-5dc4bb2a96e9">See <xref target="figureC-1"/>.</p>
 </termnote>
 <termsource status="modified">
-  <origin bibitemid="ISO14864" type="inline" citeas="ISO 14864"><locality type="section">
-    <reference>3.1</reference>
-  </locality></origin>
-  
+  <origin bibitemid="ISO14864" type="inline" citeas="ISO 14864: 1998"/>
+  <modification>
+    <p id="_43301ac4-1f45-4722-b67c-e19d25a6b3ba">3.1</p>
+  </modification>
 </termsource></term>
-<term id="gel_state"><preferred language="zh"></preferred> <preferred language="en">gel state</preferred><definition><p id="_81e752d5-d810-42e0-ab44-183feb021bef">condition reached as a consequence of <em>gelatinization</em> (<xref target="gelatinization"/>), when the kernel is fully transparent and absolutely free from whitish and opaque granules after being pressed between two glass sheets</p></definition>
+<term id="gel_state"><preferred language="zh"></preferred> <preferred language="en">gel state</preferred><definition><p id="_68cd162f-145e-4255-b655-c7cfab59e689">condition reached as a consequence of <em>gelatinization</em> (<xref target="gelatinization"/>), when the kernel is fully transparent and absolutely free from whitish and opaque granules after being pressed between two glass sheets</p></definition>
 <termsource status="modified">
-  <origin bibitemid="ISO14864" type="inline" citeas="ISO 14864"><locality type="section">
-    <reference>3.2</reference>
-  </locality></origin>
-  
+  <origin bibitemid="ISO14864" type="inline" citeas="ISO 14864: 1998"/>
+  <modification>
+    <p id="_244151e0-b510-4e96-a151-6a81d2e2ce47">3.2</p>
+  </modification>
 </termsource></term>
-<term id="_gelatinization_time"><preferred language="zh"></preferred> <preferred language="en">gelatinization time</preferred><definition><p id="_2f65847c-3c2f-4f0a-b6aa-391b85fa44ac">
-  <stem type="AsciiMath">t_90</stem>
-</p><p id="_88ee6547-3344-415b-818c-cb11e44737b3">time necessary for 90 % of the kernels to pass from their natural state to the <em>gel state</em> (<xref target="gel_state"/>)</p></definition>
-
+<term id="_gelatinization_time"><preferred language="zh"></preferred> <preferred language="en">gelatinization time</preferred><admitted language="zh"><stem type="AsciiMath">_90</stem></admitted> <admitted language="en"><stem type="AsciiMath">t_90</stem></admitted>
+<definition><p id="_9bbce76b-59d0-4c19-b74b-22a90bf18796">time necessary for 90 % of the kernels to pass from their natural state to the <em>gel state</em> (<xref target="gel_state"/>)</p></definition>
 <termsource status="modified">
-  <origin bibitemid="ISO14864" type="inline" citeas="ISO 14864"><locality type="section">
-    <reference>3.3</reference>
-  </locality></origin>
-  
+  <origin bibitemid="ISO14864" type="inline" citeas="ISO 14864: 1998"/>
+  <modification>
+    <p id="_704ca47c-a55f-4d88-86c3-a02e96a16f77">3.3</p>
+  </modification>
 </termsource></term></terms>
-<clause id="_specifications"><title>Specifications</title><subsection id="_general_organoleptic_and_health_characteristics"><title>General, organoleptic and health characteristics</title><p id="_f882951c-370d-4478-b2a5-7117804141bd">Kernels of rice, whether parboiled, husked or milled, and whether whole or broken, shall be sound, clean and free from foreign odours or odour which indicates deterioration.</p>
-<p id="_0de24b2c-45f8-4bd7-821a-3623c59ebe91">The levels of additives and pesticide residues and other contaminants shall not exceed the maximum limits permitted in the country of destination.</p>
-<p id="_d2c1c81b-795c-495a-ab03-af38342085eb">The presence of living insects which are visible to the naked eye is not permitted. This should be determined before separating the bulk sample into test samples.</p></subsection>
-<subsection id="_physical_and_chemical_characteristics"><title>Physical and chemical characteristics</title><subsection id="_8c6420e4-5171-45ab-aa09-222de001ad5c"><title/><p id="_ff488a0f-f1ff-464b-8996-2b64bef9e3c7">The mass fraction of moisture, determined in accordance with <eref type="inline" bibitemid="ISO712" citeas="ISO 712"/>, using an oven complying with the requirements of <eref type="inline" bibitemid="IEC61010-2" citeas="IEC 61010-2"/>, shall not be greater than 15 %.<fn reference="1">
-  <p id="_6c07091a-046d-4f2a-b574-7e82372731b4">Formerly denoted as 15 % (m/m).</p>
+<clause id="_specifications" inline-header="false" obligation="normative"><title>Specifications</title><subsection id="_general_organoleptic_and_health_characteristics" inline-header="false" obligation="normative"><title>General, organoleptic and health characteristics</title><p id="_c199d92f-e8dd-48e5-a269-1a02447eb6fe">Kernels of rice, whether parboiled, husked or milled, and whether whole or broken, shall be sound, clean and free from foreign odours or odour which indicates deterioration.</p>
+<p id="_0ed22e10-3592-44ef-ae47-f9d669bf5620">The levels of additives and pesticide residues and other contaminants shall not exceed the maximum limits permitted in the country of destination.</p>
+<p id="_155f98a6-0c11-48d0-b541-59219287c15c">The presence of living insects which are visible to the naked eye is not permitted. This should be determined before separating the bulk sample into test samples.</p></subsection>
+<subsection id="_physical_and_chemical_characteristics" inline-header="false" obligation="normative"><title>Physical and chemical characteristics</title><subsection id="_79cf157c-d394-4823-b2a5-073ba9c8e536" inline-header="false" obligation="normative"><p id="_108f94ca-2c7b-4ce7-90fa-b5564b0202fe">The mass fraction of moisture, determined in accordance with <eref type="inline" bibitemid="ISO712" citeas="ISO 712"/>, using an oven complying with the requirements of <eref type="inline" bibitemid="IEC61010-2" citeas="IEC 61010-2: 1998"/>, shall not be greater than 15 %.<fn reference="2">
+  <p id="_0e5e4341-ae86-4299-814e-1256ef1fb6b6">Formerly denoted as 15 % (m/m).</p>
 </fn></p>
-<p id="_53860e7a-9610-46df-a255-f5dbef91ea6a">The mass fraction of extraneous matter and defective kernels in husked and milled rice, whether or not parboiled, determined in accordance with <xref target="AnnexA"/>, shall not be greater than the values specified in <xref target="table1"/>.</p>
-<note id="_95ec8632-1c46-45ae-a0a0-f1fde4e758c0">
-  <p id="_fb4fc472-25c1-457e-a348-781a5bef291d">Lower mass fractions of moisture are sometimes needed for certain destinations depending on the climate, duration of transport and storage. For further details, see <eref type="inline" bibitemid="ISO6322-1" citeas="ISO 6322-1"/>, <eref type="inline" bibitemid="ISO6322-2" citeas="ISO 6322-2"/> and <eref type="inline" bibitemid="ISO6322-3" citeas="ISO 6322-3"/>.</p>
+<p id="_e6703987-64ec-417a-b27b-982617adda58">The mass fraction of extraneous matter and defective kernels in husked and milled rice, whether or not parboiled, determined in accordance with <xref target="AnnexA"/>, shall not be greater than the values specified in <xref target="table1"/>.</p>
+<note id="_b7a69026-43e2-4d1f-9870-2d50edcf8894">
+  <p id="_a852407a-045f-4126-b1fd-3d4102cea003">Lower mass fractions of moisture are sometimes needed for certain destinations depending on the climate, duration of transport and storage. For further details, see <eref type="inline" bibitemid="ISO6322-1" citeas="ISO 6322-1"/>, <eref type="inline" bibitemid="ISO6322-2" citeas="ISO 6322-2"/> and <eref type="inline" bibitemid="ISO6322-3" citeas="ISO 6322-3"/>.</p>
 </note></subsection>
-<subsection id="_2"><title/><p id="_ee613229-e4b6-4750-85d9-a1fbedf78c24">The defect tolerance for the categories considered, and determined in accordance with the method given in <xref target="AnnexA"/>, shall not exceed the limits given in <xref target="table1"/>.</p>
+<subsection id="_2" inline-header="false" obligation="normative"><p id="_a6a7037a-01db-40f0-bddf-08b8bbcadfba">The defect tolerance for the categories considered, and determined in accordance with the method given in <xref target="AnnexA"/>, shall not exceed the limits given in <xref target="table1"/>.</p>
 <table id="table1">
   <name>Maximum permissible mass fraction of defects</name>
   <thead>
@@ -245,7 +243,7 @@ World<br/>
     
     <tr>
       <td align="left">Extraneous matter: organic<fn reference="a">
-  <p id="_fd9adc2d-69aa-463d-a95c-a6f7563ffeb8">Organic extraneous matter includes foreign seeds, husks, bran, parts of straw, etc.</p>
+  <p id="_6eed8c5b-4bf3-4ee4-a8e1-b912162ce4fd">Organic extraneous matter includes foreign seeds, husks, bran, parts of straw, etc.</p>
 </fn></td>
       <td align="center">1,0</td>
       <td align="center">0,5</td>
@@ -254,7 +252,7 @@ World<br/>
     </tr>
     <tr>
       <td align="left">Extraneous matter: inorganic<fn reference="b">
-  <p id="_c092bc31-facf-4fa6-89af-0723ae713cfc">Inorganic extraneous matter includes stones, sand, dust, etc.</p>
+  <p id="_b56e164a-1544-4bc4-b1dd-7806b1dcc297">Inorganic extraneous matter includes stones, sand, dust, etc.</p>
 </fn></td>
       <td align="center">0,5</td>
       <td align="center">0,5</td>
@@ -306,11 +304,11 @@ World<br/>
     <tr>
       <td align="left">HDK</td>
       <td align="center">2,0<fn reference="c">
-  <p id="_e9d8184b-da99-4586-bca8-29181285883f">The maximum permissible mass fraction of defects shall be determined with respect to the mass fraction obtained after milling.</p>
+  <p id="_578d00f1-af68-4f75-b8d9-04461a7d22c5">The maximum permissible mass fraction of defects shall be determined with respect to the mass fraction obtained after milling.</p>
 </fn></td>
       <td align="center">2,0</td>
       <td align="center">2,0<fn reference="c">
-  <p id="_532559f9-0864-42de-8575-1b4f67c83365">The maximum permissible mass fraction of defects shall be determined with respect to the mass fraction obtained after milling.</p>
+  <p id="_290b6b71-f66f-44f4-b79a-334309511174">The maximum permissible mass fraction of defects shall be determined with respect to the mass fraction obtained after milling.</p>
 </fn></td>
       <td align="center">2,0</td>
     </tr>
@@ -331,7 +329,7 @@ World<br/>
     <tr>
       <td align="left">Chalky kernels</td>
       <td align="center">5,0<fn reference="c">
-  <p id="_4177a3c6-312d-47a1-80c0-5d700437bd35">The maximum permissible mass fraction of defects shall be determined with respect to the mass fraction obtained after milling.</p>
+  <p id="_4b104e64-dd99-4a6c-bbcb-c5f147ddd1c2">The maximum permissible mass fraction of defects shall be determined with respect to the mass fraction obtained after milling.</p>
 </fn></td>
       <td align="center">5,0</td>
       <td align="center">Not applicable</td>
@@ -342,7 +340,7 @@ World<br/>
       <td align="center">12,0</td>
       <td align="center">12,0</td>
       <td align="center">12,0<fn reference="c">
-  <p id="_00af8a04-dea7-44a0-ba86-09a0e204b749">The maximum permissible mass fraction of defects shall be determined with respect to the mass fraction obtained after milling.</p>
+  <p id="_2da1cc50-3a1a-4f6b-94e0-bc4fdc0f42f7">The maximum permissible mass fraction of defects shall be determined with respect to the mass fraction obtained after milling.</p>
 </fn></td>
       <td align="center">12,0</td>
     </tr>
@@ -351,7 +349,7 @@ World<br/>
       <td align="center">Not applicable</td>
       <td align="center">Not applicable</td>
       <td align="center">11,0<fn reference="c">
-  <p id="_5998559d-2653-4093-8bfd-17cfae08ca6b">The maximum permissible mass fraction of defects shall be determined with respect to the mass fraction obtained after milling.</p>
+  <p id="_df4702b6-7ef1-478a-94b8-07d7bb663335">The maximum permissible mass fraction of defects shall be determined with respect to the mass fraction obtained after milling.</p>
 </fn></td>
       <td align="center">11,0</td>
     </tr>
@@ -365,11 +363,11 @@ World<br/>
     <tr>
       <td align="left">Waxy rice</td>
       <td align="center">1,0<fn reference="c">
-  <p id="_91f1b46b-41b9-4c8d-9156-fc77c7795d01">The maximum permissible mass fraction of defects shall be determined with respect to the mass fraction obtained after milling.</p>
+  <p id="_df9d9a48-4e69-4e50-8381-4a88a4f432b1">The maximum permissible mass fraction of defects shall be determined with respect to the mass fraction obtained after milling.</p>
 </fn></td>
       <td align="center">1,0</td>
       <td align="center">1,0<fn reference="c">
-  <p id="_f500c8a8-27d5-4a5b-8555-abf08824fb96">The maximum permissible mass fraction of defects shall be determined with respect to the mass fraction obtained after milling.</p>
+  <p id="_6cdef901-2a7d-4ea0-aeeb-cf7cb533dd8f">The maximum permissible mass fraction of defects shall be determined with respect to the mass fraction obtained after milling.</p>
 </fn></td>
       <td align="center">1,0</td>
     </tr>
@@ -377,319 +375,319 @@ World<br/>
   <tfoot>
     <tr>
       <td colspan="5" align="left">
-        <p id="_c72b64ad-74bd-403b-93f7-297093798cac">Live insects shall not be present. Dead insects shall be included in extraneous matter.</p>
+        <p id="_01b49df1-08de-49bd-b05c-28d42e3a406f">Live insects shall not be present. Dead insects shall be included in extraneous matter.</p>
       </td>
     </tr>
   </tfoot>
-<note id="_b7eb9cac-ed4f-443e-96f5-d1bcf5ef38c4">
-  <p id="_774dd61b-3346-462a-8bb0-c49a09083b83">This table is based on <eref type="inline" bibitemid="ISO7301" citeas="ISO 7301"/>, Table 1.</p>
-</note><note id="_a8257115-9042-41db-8c82-1c16c032ed20">
-  <p id="_c789bb86-fad0-494c-ae75-92c63f462203">Some commercial contracts require information in addition to that provided in this table.</p>
-</note><note id="_9b11d99b-931b-40ef-91df-de3bfa1c7082">
-  <p id="_70c4dce7-f5a5-4c54-a2ad-4e976cf94cfd">Only full red husked (cargo) rice is considered in this table.</p>
+<note id="_2f5f2ede-92a2-48a9-b770-e73b2abb4d1e">
+  <p id="_3d8a4c75-59a8-4a1b-ac96-3598af55fec3">This table is based on <eref type="inline" bibitemid="ISO7301" citeas="ISO 7301: 2011"/>, Table 1.</p>
+</note><note id="_6c959523-3fb2-467b-afd8-dde6d0b83dbf">
+  <p id="_50b2a17e-f9b3-4679-9493-eed06a18dd44">Some commercial contracts require information in addition to that provided in this table.</p>
+</note><note id="_f2fbb979-2de5-4704-8aab-a7875e38fb46">
+  <p id="_bf6ebad7-4783-4104-bc09-0de145ac019d">Only full red husked (cargo) rice is considered in this table.</p>
 </note></table>
 
 
 </subsection></subsection></clause>
-<clause id="clause5">
+<clause id="clause5" inline-header="false" obligation="normative">
   <title>Sampling</title>
-  <p id="_245929f5-77c4-43f6-8870-2ffa85ac6229">Sampling shall be carried out in accordance with <eref type="inline" bibitemid="ISO24333" citeas="ISO 24333"/>, Clause 5.</p>
+  <p id="_5ec282d1-dbb1-4d6c-b42b-9f29a120f07d">Sampling shall be carried out in accordance with <eref type="inline" bibitemid="ISO24333" citeas="ISO 24333: 2009"/>, Clause 5.</p>
 </clause>
-<clause id="_test_methods"><title>Test methods</title><subsection id="_moisture_content">
+<clause id="_test_methods" inline-header="false" obligation="normative"><title>Test methods</title><subsection id="_moisture_content" inline-header="false" obligation="normative">
   <title>Moisture content</title>
-  <p id="_3bb23a96-c714-4d4d-92f8-37b6967ff9dd">Determine the mass fraction of moisture in accordance with the method specified in <eref type="inline" bibitemid="ISO712" citeas="ISO 712"/>.</p>
+  <p id="_d810c28c-c186-434f-b5d2-ab1b8ecc0874">Determine the mass fraction of moisture in accordance with the method specified in <eref type="inline" bibitemid="ISO712" citeas="ISO 712"/>.</p>
 </subsection>
-<subsection id="_waxy_rice_content">
+<subsection id="_waxy_rice_content" inline-header="false" obligation="normative">
   <title>Waxy rice content</title>
-  <p id="_e67e9c20-1aa3-4f4f-a25b-f898c34707c1">Determine the mass fraction of waxy rice. <xref target="AnnexB"/> gives an example of a suitable method.</p>
+  <p id="_f298ac05-3650-4f7c-a055-3714e38ba236">Determine the mass fraction of waxy rice. <xref target="AnnexB"/> gives an example of a suitable method.</p>
 </subsection>
-<subsection id="_nitrogen_content_and_crude_protein_content"><title>Nitrogen content and crude protein content</title><p id="_598232d3-9f90-4ce8-aadc-9f0bc1ffddd4">Determine the nitrogen content and crude protein content in accordance with either <eref type="inline" bibitemid="ISO16634" citeas="ISO 16634"/>, Clause 9, or <eref type="inline" bibitemid="ISO20483" citeas="ISO 20483"/>. For details on the determination of protein content using the Kjeldahl method, see Reference <eref type="inline" bibitemid="ref12" citeas="[12]"/> in the Bibliography. For details concerning the use of the Dumas method, see References <eref type="inline" bibitemid="ref10" citeas="[10]"/> and <eref type="inline" bibitemid="ref16" citeas="[16]"/>.</p>
-<p id="_c24c76f5-f3ce-4378-97d8-4694ead7f8cf">Calculate the crude protein content of the dry product by multiplying the value of the nitrogen content by the conversion factor specified in <eref type="inline" bibitemid="ISO20483" citeas="ISO 20483"/>, Annex C and Table C.1, that is adapted to the type of cereals or pulses <eref type="footnote" bibitemid="ref13" citeas="[13]"/><eref type="footnote" bibitemid="ref14" citeas="[14]"/> and to their use.</p></subsection>
-<subsection id="_gelatinization_time_2"><title>Gelatinization time</title><p id="_eec76af8-f4be-44a4-a1d3-d9d6dfd91abb">Determine the gelatinization time, <stem type="AsciiMath">t_90</stem>, for rice kernels during cooking. An example of a typical curve is given in <xref target="figureC-1"/>. Three typical stages of gelatinization are shown in <xref target="figureC-2"/>.</p>
-<p id="_a38e27ea-fbc5-4559-b2a3-3650024a3e84">Report the results as specified in <xref target="clause7"/>.</p></subsection>
-<subsection id="_husked_rice_yield_2"><title>Husked rice yield</title><subsection id="_determination"><title>Determination</title><admonition id="_30e24723-03dc-4045-bf04-545c416b0a5d" type="caution">
-  <p id="_7bc71e15-2faa-4a13-a65f-fd7293e0498d">Only use paddy or parboiled rice for the determination of husked rice yield.</p>
+<subsection id="_nitrogen_content_and_crude_protein_content" inline-header="false" obligation="normative"><title>Nitrogen content and crude protein content</title><p id="_475a90ce-0fba-49ee-94d5-98973438bd8f">Determine the nitrogen content and crude protein content in accordance with either <eref type="inline" bibitemid="ISO16634" citeas="ISO 16634: --"/>, Clause 9, or <eref type="inline" bibitemid="ISO20483" citeas="ISO 20483: 2013"/>. For details on the determination of protein content using the Kjeldahl method, see Reference <eref type="inline" bibitemid="ref12" citeas="[12]"/> in the Bibliography. For details concerning the use of the Dumas method, see References <eref type="inline" bibitemid="ref10" citeas="[10]"/> and <eref type="inline" bibitemid="ref16" citeas="[16]"/>.</p>
+<p id="_b785e5c4-92cb-45bc-99a2-9f84d2a7ccd0">Calculate the crude protein content of the dry product by multiplying the value of the nitrogen content by the conversion factor specified in <eref type="inline" bibitemid="ISO20483" citeas="ISO 20483: 2013"/>, Annex C and Table C.1, that is adapted to the type of cereals or pulses <eref type="footnote" bibitemid="ref13" citeas="[13]"/><eref type="footnote" bibitemid="ref14" citeas="[14]"/> and to their use.</p></subsection>
+<subsection id="_gelatinization_time_2" inline-header="false" obligation="normative"><title>Gelatinization time</title><p id="_f5e185c2-ef2d-4829-94ba-14ec6603dd75">Determine the gelatinization time, <stem type="AsciiMath">t_90</stem>, for rice kernels during cooking. An example of a typical curve is given in <xref target="figureC-1"/>. Three typical stages of gelatinization are shown in <xref target="figureC-2"/>.</p>
+<p id="_2f4b89a8-8d5c-40bd-8d08-daf5853961e1">Report the results as specified in <xref target="clause7"/>.</p></subsection>
+<subsection id="_husked_rice_yield_2" inline-header="false" obligation="normative"><title>Husked rice yield</title><subsection id="_determination" inline-header="false" obligation="normative"><title>Determination</title><admonition id="_aceffabc-eda6-49e6-bca2-4ee3abd78ec7" type="caution">
+  <p id="_f7c041e7-18ab-4682-abf1-9fa55094793a">Only use paddy or parboiled rice for the determination of husked rice yield.</p>
 </admonition>
-<p id="_3e959419-3bd2-4715-b42b-95d29f2e92bf">Determine the husked rice yield in accordance with <eref type="inline" bibitemid="ISO6646" citeas="ISO 6646"/>.</p></subsection>
-<subsection id="_precision"><title>Precision</title><subsection id="_interlaboratory_test">
+<p id="_53631361-18f6-42ad-8f78-22b7a46bcee3">Determine the husked rice yield in accordance with <eref type="inline" bibitemid="ISO6646" citeas="ISO 6646"/>.</p></subsection>
+<subsection id="_precision" inline-header="false" obligation="normative"><title>Precision</title><subsection id="_interlaboratory_test" inline-header="false" obligation="normative">
   <title>Interlaboratory test</title>
-  <p id="_a38138b4-364c-460f-b2bd-2fde8d34c687">The results of an interlaboratory test are given in <xref target="AnnexD"/> for information</p>
+  <p id="_bf60e5e6-6c8c-43c0-9b5a-c95a736cb2ce">The results of an interlaboratory test are given in <xref target="AnnexD"/> for information</p>
 </subsection>
-<subsection id="_repeatability"><title>Repeatability</title><p id="_f37c61cb-01db-4ad8-963e-a04839a9fb2c">The absolute difference between two independent single test results, obtained using the same method on identical test material in the same laboratory by the same operator using the same equipment within a short interval of time, shall not exceed the arithmetic mean of the values for <stem type="AsciiMath">r</stem> obtained from the interlaboratory study for husked rice in more than 5 % of cases:</p>
-<formula id="_0b33a361-868c-4604-a4cb-b8bf22471430">
+<subsection id="_repeatability" inline-header="false" obligation="normative"><title>Repeatability</title><p id="_1fd84eac-72bc-492d-b0e3-efac605b2eac">The absolute difference between two independent single test results, obtained using the same method on identical test material in the same laboratory by the same operator using the same equipment within a short interval of time, shall not exceed the arithmetic mean of the values for <stem type="AsciiMath">r</stem> obtained from the interlaboratory study for husked rice in more than 5 % of cases:</p>
+<formula id="_df35da1f-564f-4905-8c2d-54368758f001">
   <stem type="AsciiMath">r = 1 %</stem>
-<dl id="_be14956a-8cf9-416c-bc51-41288cfa751a">
+<dl id="_731edc3e-e895-4cff-b2d5-41ad39b6d536">
   <dt>
     <stem type="AsciiMath">r</stem>
   </dt>
   <dd>
-    <p id="_fd05a45f-9132-4403-af11-1db884d7106c">is the repeatability limit.</p>
+    <p id="_126ebd71-a50f-4749-967b-0dcb49ccf350">is the repeatability limit.</p>
   </dd>
 </dl></formula>
 
 </subsection>
-<subsection id="_reproducibility"><title>Reproducibility</title><p id="_ad0c311d-0415-46c1-be51-e80b47ee8fc4">The absolute difference between two single test results, obtained using the same method on identical test material in different laboratories by different operators using different equipment, shall not exceed the arithmetic mean of the values for <stem type="AsciiMath">R</stem> obtained from the interlaboratory study in more than 5 % of cases:</p>
-<formula id="_83ba025b-df27-4f6b-a5c3-ca4fa33eb541">
+<subsection id="_reproducibility" inline-header="false" obligation="normative"><title>Reproducibility</title><p id="_71ad9742-5ee9-43c2-9b96-0e854e61459d">The absolute difference between two single test results, obtained using the same method on identical test material in different laboratories by different operators using different equipment, shall not exceed the arithmetic mean of the values for <stem type="AsciiMath">R</stem> obtained from the interlaboratory study in more than 5 % of cases:</p>
+<formula id="_88b2a0d0-b3d7-46ce-821e-72a6d5f24947">
   <stem type="AsciiMath">R = 3 %</stem>
-<dl id="_f818e212-8aa2-4bbc-bfc6-100107987d3c">
+<dl id="_751265fb-626b-48ca-a233-215d611e5138">
   <dt>
     <stem type="AsciiMath">R</stem>
   </dt>
   <dd>
-    <p id="_259d7b83-bb06-4a0a-82e2-a6a322c9c612">is the reproducibility limit.</p>
+    <p id="_93dbd514-d35b-48ed-8157-d8e5ccbcd6c2">is the reproducibility limit.</p>
   </dd>
 </dl></formula>
 
 </subsection></subsection></subsection></clause>
-<clause id="clause7"><title>Test report</title><p id="_e01bb08f-3324-4804-afb7-d1f26545d975">For each test method, the test report shall specify the following:</p>
-<ol id="_ba7e0e14-5d6f-48d5-8d16-490f465ca244" type="alphabet">
+<clause id="clause7" inline-header="false" obligation="normative"><title>Test report</title><p id="_3f15d456-c374-4582-908a-0997f7f80399">For each test method, the test report shall specify the following:</p>
+<ol id="_a4f798d4-3fbc-4f21-bc3d-091a4491c380" type="alphabet">
   <li>
-    <p id="_618b13be-a478-42b9-b90e-8480f7bfabd3">all information necessary for the complete identification of the sample;</p>
+    <p id="_3e7cc95f-521e-4f34-9510-22552e79cbda">all information necessary for the complete identification of the sample;</p>
   </li>
   <li>
-    <p id="_fe42d082-d3cb-4667-a9c7-7f2f1a6f514b">a reference to this document (i.e. ISO 17301-1);</p>
+    <p id="_fc16f28a-3bcf-4dc8-9ab2-debd32a0aedd">a reference to this document (i.e. ISO 17301-1);</p>
   </li>
   <li>
-    <p id="_4acb2223-b7c6-42fc-afb2-ec04d825a7c1">the sampling method used;</p>
+    <p id="_3081fa6a-7829-4658-89c9-8e2bb3fd6017">the sampling method used;</p>
   </li>
   <li>
-    <p id="_dfb9f14c-e412-4394-b6a2-6dea8ae3f875">the test method used;</p>
+    <p id="_94b4e6b1-f183-4afa-858d-d3fbda287382">the test method used;</p>
   </li>
   <li>
-    <p id="_33b5d733-c89e-4b83-b611-a47527664672">the test result(s) obtained or, if the repeatability has been checked, the final quoted result obtained;</p>
+    <p id="_58e2cda2-2634-4320-9b53-34db15c01650">the test result(s) obtained or, if the repeatability has been checked, the final quoted result obtained;</p>
   </li>
   <li>
-    <p id="_63510281-12f1-48ba-9a0b-2eeed44de639">all operating details not specified in this document, or regarded as optional, together with details of any incidents which may have influenced the test result(s);</p>
+    <p id="_d5534a59-cccf-4275-91fa-c362cb59fb8b">all operating details not specified in this document, or regarded as optional, together with details of any incidents which may have influenced the test result(s);</p>
   </li>
   <li>
-    <p id="_e0afd459-b586-4d09-867a-7faaca616238">any unusual features (anomalies) observed during the test;</p>
+    <p id="_facd879c-0d43-4117-98d7-874caa1a4726">any unusual features (anomalies) observed during the test;</p>
   </li>
   <li>
-    <p id="_cbea385c-3b9c-42b9-8575-422d2d13d2fc">the date of the test.</p>
+    <p id="_153ca8a0-80b4-439a-96f2-bd61bbbebb1e">the date of the test.</p>
   </li>
 </ol></clause>
-<clause id="_packaging"><title>Packaging</title><p id="_b91a137d-4126-4263-810a-176fb50d171d">The packaging shall not transmit any odour or flavour to the product and shall not contain substances which may damage the product or constitute a health risk.</p>
-<p id="_dc0ab38b-f2b8-4f5e-843f-a7959fdd9f36">If bags are used, they shall comply with the requirements of <xref target="ISO8531-1"/>, Clause 9, or <eref type="inline" bibitemid="ISO8351-2" citeas="ISO 8351-2"/>, as appropriate.</p></clause>
-<clause id="_marking">
+<clause id="_packaging" inline-header="false" obligation="normative"><title>Packaging</title><p id="_6f8260d7-3a30-478c-b363-e98dbda9e782">The packaging shall not transmit any odour or flavour to the product and shall not contain substances which may damage the product or constitute a health risk.</p>
+<p id="_7ddc41ae-29de-4027-8efd-02906f216f2b">If bags are used, they shall comply with the requirements of <xref target="ISO8531-1"/>, Clause 9, or <eref type="inline" bibitemid="ISO8351-2" citeas="ISO 8351-2"/>, as appropriate.</p></clause>
+<clause id="_marking" inline-header="false" obligation="normative">
   <title>Marking</title>
-  <p id="_33436612-2195-4328-b96e-73e8f083ea64">The packages shall be marked or labelled as required by the country of destination.</p>
+  <p id="_0033dbed-0e32-4e68-904b-9fb9e68b5dde">The packages shall be marked or labelled as required by the country of destination.</p>
 </clause>
 
 
 
 
-</sections><annex id="AnnexA" subtype="normative"><title>Determination of defects</title><subsection id="_principle">
+</sections><annex id="AnnexA" inline-header="false" obligation="normative"><title>Determination of defects</title><subsection id="_principle" inline-header="false" obligation="normative">
   <title>Principle</title>
-  <p id="_3ba51f7f-0d7c-4379-ac03-457cb854c171">Extraneous matter, broken kernels, damaged kernels and other kinds of rice are separated manually according to the following types: husked rice, milled rice, husked parboiled rice and milled parboiled rice. Each type is then weighed.</p>
+  <p id="_0d6e0fc5-3993-424c-baea-147268406430">Extraneous matter, broken kernels, damaged kernels and other kinds of rice are separated manually according to the following types: husked rice, milled rice, husked parboiled rice and milled parboiled rice. Each type is then weighed.</p>
 </subsection>
-<subsection id="_apparatus"><title>Apparatus</title><p id="_aec721ef-a159-4bd1-8972-e21a4406f4d7">The usual laboratory apparatus and, in particular, the following.</p>
-<subsection id="AnnexA-2-1" inline-header="true">
+<subsection id="_apparatus" inline-header="false" obligation="normative"><title>Apparatus</title><p id="_3173c708-8387-4315-9b6e-72bcb0f4d23a">The usual laboratory apparatus and, in particular, the following.</p>
+<subsection id="AnnexA-2-1" inline-header="true" obligation="normative">
   <title>Sample divider,</title>
-  <p id="_709daa50-c8c2-4087-8240-583987e58d70">consisting of a conical sample divider or multiple-slot sample divider with a distribution system, e.g. "Split-it-right" sample divider, such as that shown in <xref target="figureA-1"/>.</p>
+  <p id="_9bce4b13-c05a-41b4-acb9-304a24d08b0c">consisting of a conical sample divider or multiple-slot sample divider with a distribution system, e.g. "Split-it-right" sample divider, such as that shown in <xref target="figureA-1"/>.</p>
 </subsection>
-<subsection id="_sieve" inline-header="true">
+<subsection id="_sieve" inline-header="true" obligation="normative">
   <title>Sieve,</title>
-  <p id="_cd1052f0-3c8c-4057-9217-89820b47e59b">with round perforations of diameter 1,4 mm.</p>
+  <p id="_34194448-0e82-4434-8daa-44ed82ea00d9">with round perforations of diameter 1,4 mm.</p>
 </subsection>
-<subsection id="_tweezers" inline-header="true">
+<subsection id="_tweezers" inline-header="true" obligation="normative">
   <title>Tweezers.</title>
 </subsection>
-<subsection id="_scalpel" inline-header="true">
+<subsection id="_scalpel" inline-header="true" obligation="normative">
   <title>Scalpel.</title>
 </subsection>
-<subsection id="_paintbrush" inline-header="true">
+<subsection id="_paintbrush" inline-header="true" obligation="normative">
   <title>Paintbrush.</title>
 </subsection>
-<subsection id="AnnexA-2-6" inline-header="true">
+<subsection id="AnnexA-2-6" inline-header="true" obligation="normative">
   <title>Steel bowls,</title>
-  <p id="_88fd11e6-f605-40fd-9631-38df7d1425ba">of diameter 100 mm ± 5 mm; seven per test sample.</p>
+  <p id="_dd67e58b-2a53-4e5e-b24b-6750209c1c88">of diameter 100 mm ± 5 mm; seven per test sample.</p>
 </subsection>
-<subsection id="_balance" inline-header="true">
+<subsection id="_balance" inline-header="true" obligation="normative">
   <title>Balance,</title>
-  <p id="_93ea38e4-9a66-4521-8792-995ece97e36e">which can be read to the nearest 0,01 g.</p>
+  <p id="_168e2f82-ccd3-4645-b9b9-24911132067b">which can be read to the nearest 0,01 g.</p>
 </subsection></subsection>
-<subsection id="_sampling">
+<subsection id="_sampling" inline-header="false" obligation="normative">
   <title>Sampling</title>
-  <p id="_bf1f12a8-a2c4-4284-9d78-8affca3e90ab">See <xref target="clause5"/>.</p>
+  <p id="_28bbeab4-ad54-45da-9fdf-0173c54a5a0c">See <xref target="clause5"/>.</p>
 </subsection>
-<subsection id="_procedure">
+<subsection id="_procedure" inline-header="false" obligation="normative">
   <title>Procedure</title>
-  <subsection id="AnnexA-4-1"><title>Preparation of test sample</title><p id="_e3c763a5-f554-4275-b8e3-1e9b61e42a36">Carefully mix the laboratory sample to make it as uniform as possible, then proceed to reduce it, using a divider (<xref target="AnnexA-2-1"/>), until a quantity of about 30 g is obtained.</p>
-<p id="_67db96dc-44ef-48aa-ac10-1820c964dd93">All parts of kernels which get stuck in the perforations of a sieve should be considered to be retained by the sieve.</p>
+  <subsection id="AnnexA-4-1" inline-header="false" obligation="normative"><title>Preparation of test sample</title><p id="_a05de7fa-c2f4-4067-b9ad-92a8760bb0ac">Carefully mix the laboratory sample to make it as uniform as possible, then proceed to reduce it, using a divider (<xref target="AnnexA-2-1"/>), until a quantity of about 30 g is obtained.</p>
+<p id="_0572669d-48dc-4317-ba73-77dcde41f364">All parts of kernels which get stuck in the perforations of a sieve should be considered to be retained by the sieve.</p>
 <figure id="figureA-1">
   <name>Split-it-right sample divider</name>
-  <image src="rice_images/rice_image1.png" id="_81a8dd8f-3811-4855-b024-fa87d49a0891" imagetype="PNG"/>
+  <image src="rice_images/rice_image1.png" id="_10fd4864-4ccb-4768-b863-7a310703f822" imagetype="PNG"/>
 </figure></subsection>
 </subsection>
-<subsection id="_determination_2"><title>Determination</title><p id="_dece9adb-02e7-4970-9a40-8fbf86606626">Weigh, to the nearest 0,1 g, one of the test samples obtained in accordance with <xref target="AnnexA-4-1"/> and separate the different defects into the bowls (<xref target="AnnexA-2-6"/>). When a kernel has several defects, classify it in the defect category for which the maximum permissible value is the lowest (see <xref target="table1"/>).</p>
-<p id="_a11e3590-958a-4b05-8e69-2c19169ef122">Weigh, to the nearest 0,01 g, the fractions so obtained.</p></subsection>
-<subsection id="_calculation"><title>Calculation</title><p id="_835ca0a6-8a3d-473f-9dde-c9b996437b2b">Express the mass fraction of each defect using Formula (<xref target="formulaA-1"/>):</p>
+<subsection id="_determination_2" inline-header="false" obligation="normative"><title>Determination</title><p id="_843645a6-6445-45de-928c-19651d8ac847">Weigh, to the nearest 0,1 g, one of the test samples obtained in accordance with <xref target="AnnexA-4-1"/> and separate the different defects into the bowls (<xref target="AnnexA-2-6"/>). When a kernel has several defects, classify it in the defect category for which the maximum permissible value is the lowest (see <xref target="table1"/>).</p>
+<p id="_339dfdbf-e6fa-4a5c-8feb-eb8dce9eb907">Weigh, to the nearest 0,01 g, the fractions so obtained.</p></subsection>
+<subsection id="_calculation" inline-header="false" obligation="normative"><title>Calculation</title><p id="_c06b2ec0-f8e1-404e-be2b-e9680734822f">Express the mass fraction of each defect using Formula (<xref target="formulaA-1"/>):</p>
 <formula id="formulaA-1">
   <stem type="AsciiMath">w = (m_D) / (m_s)</stem>
-<dl id="_743e5bad-04c1-419d-83af-34d18ab30e43">
+<dl id="_587bcaac-feaa-4401-a452-2f9d3f21a1ba">
   <dt>
     <stem type="AsciiMath">w</stem>
   </dt>
   <dd>
-    <p id="_15b1d9f1-193e-4ce3-86d2-45351ecfbabd">is the mass fraction of grains with a particular defect in the test sample;</p>
+    <p id="_702af87f-e643-4c30-9734-30058356a516">is the mass fraction of grains with a particular defect in the test sample;</p>
   </dd>
   <dt>
     <stem type="AsciiMath">m_D</stem>
   </dt>
   <dd>
-    <p id="_e8fcfb9f-8272-452d-aa0e-4c2584e41f78">is the mass, in grams, of grains with that defect;</p>
+    <p id="_d34c52dc-9981-4787-a0cf-50ffbe5bf7dc">is the mass, in grams, of grains with that defect;</p>
   </dd>
   <dt>
     <stem type="AsciiMath">m_S</stem>
   </dt>
   <dd>
-    <p id="_7ba83414-afd3-4a31-a22c-2d9102a50c5f">is the mass, in grams, of the test sample.</p>
+    <p id="_993ba0e9-706e-4c97-a05d-b2cf67e69e2b">is the mass, in grams, of the test sample.</p>
   </dd>
 </dl></formula>
 
 </subsection>
-<subsection id="_test_report">
+<subsection id="_test_report" inline-header="false" obligation="normative">
   <title>Test report</title>
-  <p id="_67979752-e204-4f93-a0a2-a8b42d219b10">Report the results as specified in <xref target="clause7"/>.</p>
-</subsection></annex><annex id="AnnexB" subtype="informative"><title>Determination of the waxy rice content of parboiled rice</title><subsection id="_principle_2">
+  <p id="_3e5a99a5-34e5-44a2-92be-bab2e46796ec">Report the results as specified in <xref target="clause7"/>.</p>
+</subsection></annex><annex id="AnnexB" inline-header="false" obligation="normative"><title>Determination of the waxy rice content of parboiled rice</title><subsection id="_principle_2" inline-header="false" obligation="normative">
   <title>Principle</title>
-  <p id="_87f00819-b375-4de5-b969-b046f1a9ae00">Waxy rice kernels have a reddish brown colour when stained in an iodine solution, while non-waxy rice kernels show a dark blue colour.</p>
+  <p id="_90a2339a-9cdf-417b-ae21-53232497ec9f">Waxy rice kernels have a reddish brown colour when stained in an iodine solution, while non-waxy rice kernels show a dark blue colour.</p>
 </subsection>
-<subsection id="_apparatus_2"><title>Apparatus</title><p id="_d3b0bd0a-c30b-4cab-b6b5-78bb9de97adb">The usual laboratory apparatus and, in particular, the following.</p>
-<subsection id="AnnexB-2-1" inline-header="true">
+<subsection id="_apparatus_2" inline-header="false" obligation="normative"><title>Apparatus</title><p id="_17b4cdd2-30e9-4a00-8d49-d3d9f5324d4a">The usual laboratory apparatus and, in particular, the following.</p>
+<subsection id="AnnexB-2-1" inline-header="true" obligation="normative">
   <title>Balance,</title>
-  <p id="_289c5140-4756-4614-8f80-f7ff330af88a">capable of weighing to the nearest 0,01 g.</p>
+  <p id="_138bb4e2-cdb9-4907-b833-ee22f6c726b9">capable of weighing to the nearest 0,01 g.</p>
 </subsection>
-<subsection id="AnnexB-2-2" inline-header="true">
+<subsection id="AnnexB-2-2" inline-header="true" obligation="normative">
   <title>Glass beaker,</title>
-  <p id="_91bea3f8-f195-43b3-87ea-10b51450e7a8">of capacity 250 ml.</p>
+  <p id="_007f1744-2441-4ea5-8a2d-93433a83b69b">of capacity 250 ml.</p>
 </subsection>
-<subsection id="AnnexB-2-3" inline-header="true">
+<subsection id="AnnexB-2-3" inline-header="true" obligation="normative">
   <title>Small white colour bowls,</title>
-  <p id="_378328c1-955f-4d08-9de4-063257c46681">or any white colour container of a suitable size.</p>
+  <p id="_d152badd-1c83-4425-9c8e-b6b455ee3b92">or any white colour container of a suitable size.</p>
 </subsection>
-<subsection id="AnnexB-2-4" inline-header="true">
+<subsection id="AnnexB-2-4" inline-header="true" obligation="normative">
   <title>Wire sieve,</title>
-  <p id="_4e0cab93-ca0d-4bb1-9cf1-29d54e523cc8">with long rounded apertures of (1 mm <stem type="AsciiMath">{:(+0.02),(0):}</stem> mm) × (20 mm <stem type="AsciiMath">{:(+2),(-1):}</stem> mm).</p>
+  <p id="_a470bfe2-d8fb-4a41-998c-e181199d5110">with long rounded apertures of (1 mm <stem type="AsciiMath">{:(+0.02),(0):}</stem> mm) × (20 mm <stem type="AsciiMath">{:(+2),(-1):}</stem> mm).</p>
 </subsection>
-<subsection id="AnnexB-2-5" inline-header="true">
+<subsection id="AnnexB-2-5" inline-header="true" obligation="normative">
   <title>Stirrer rod.</title>
 </subsection>
-<subsection id="AnnexB-2-6" inline-header="true">
+<subsection id="AnnexB-2-6" inline-header="true" obligation="normative">
   <title>Tweezers or forceps.</title>
 </subsection>
-<subsection id="AnnexB-2-7" inline-header="true">
+<subsection id="AnnexB-2-7" inline-header="true" obligation="normative">
   <title>Tissue paper.</title>
 </subsection></subsection>
-<subsection id="_reagents"><title>Reagents</title><admonition id="_e59f1d2f-9eac-42a6-a637-9b1032b490c2" type="warning">
-  <p id="_6b70905d-4d0e-4b6e-bd8c-efca52991698">Direct contact of iodine with skin can cause lesions so care should be taken in handling iodine. Iodine vapour is very irritating to eyes and mucous membranes.</p>
+<subsection id="_reagents" inline-header="false" obligation="normative"><title>Reagents</title><admonition id="_4257a15a-afb1-4ee0-a041-463e7d96c171" type="warning">
+  <p id="_3104ed90-850a-43a0-807c-60493ee72b6f">Direct contact of iodine with skin can cause lesions so care should be taken in handling iodine. Iodine vapour is very irritating to eyes and mucous membranes.</p>
 </admonition>
-<subsection id="AnnexB-3-1" inline-header="true">
+<subsection id="AnnexB-3-1" inline-header="true" obligation="normative">
   <title>Deionized water,</title>
-  <p id="_9503b9e7-1037-4ee7-b7ef-adef94100adb">Grade 3 quality as specified in <eref type="inline" bibitemid="ISO3696" citeas="ISO 3696"/>.</p>
+  <p id="_e75d1bfb-57fe-48aa-840c-7bc0aed6b01f">Grade 3 quality as specified in <eref type="inline" bibitemid="ISO3696" citeas="ISO 3696"/>.</p>
 </subsection>
-<subsection id="AnnexB-3-2" inline-header="true">
+<subsection id="AnnexB-3-2" inline-header="true" obligation="normative">
   <title>Iodine stock solution,</title>
-  <p id="_74a60e81-8ca4-4ef6-a1d0-5f2f4254f2f7">containing a mass fraction of 4,1 % iodine and 6,3 % potassium iodide in deionized water such as Lugols.<fn reference="2">
-  <p id="_2b6cdd4b-e525-4bee-904c-573bf5854e32">Lugols is an example of a suitable product available commercially. This information is given for the convenience of users of this document and does not constitute an endorsement by ISO of this product.</p>
+  <p id="_de5ca168-755f-4ab5-a217-c4d1e30de579">containing a mass fraction of 4,1 % iodine and 6,3 % potassium iodide in deionized water such as Lugols.<fn reference="12">
+  <p id="_e95301ff-b3fb-43ad-a67d-75497bb828c6">Lugols is an example of a suitable product available commercially. This information is given for the convenience of users of this document and does not constitute an endorsement by ISO of this product.</p>
 </fn></p>
 </subsection>
-<subsection id="AnnexB-3-3" inline-header="true"><title>Iodine working solution,</title><p id="_fe3e04d5-e12f-480e-bc3b-6cfd438ca6ef">obtained by diluting the stock solution (<xref target="AnnexB-3-2"/>) two times (by volume) with deionized water (<xref target="AnnexB-3-1"/>).</p>
-<p id="_b66b6924-38a0-4db8-b847-b0fb569f5941">Prepare fresh daily.</p></subsection></subsection>
-<subsection id="_sampling_2">
+<subsection id="AnnexB-3-3" inline-header="true" obligation="normative"><title>Iodine working solution,</title><p id="_705bd2ea-4713-4dba-8e88-00a925c48345">obtained by diluting the stock solution (<xref target="AnnexB-3-2"/>) two times (by volume) with deionized water (<xref target="AnnexB-3-1"/>).</p>
+<p id="_90684969-a8e5-4d8f-a665-439937a70a08">Prepare fresh daily.</p></subsection></subsection>
+<subsection id="_sampling_2" inline-header="false" obligation="normative">
   <title>Sampling</title>
-  <p id="_d8b712c0-1438-432d-b664-94bd03ac1d52">Sampling shall be carried out in accordance with <xref target="clause5"/>.</p>
+  <p id="_67130390-32ed-464a-b284-c870779c4445">Sampling shall be carried out in accordance with <xref target="clause5"/>.</p>
 </subsection>
-<subsection id="_determination_3"><title>Determination</title><subsection id="_3">
-  <title/>
-  <p id="_1266fce3-5249-4926-a9ca-b965487e1160">Weigh a portion of about 100 g of milled rice and put it into a glass beaker (<xref target="AnnexB-2-2"/>).</p>
+<subsection id="_determination_3" inline-header="false" obligation="normative"><title>Determination</title><subsection id="_3" inline-header="false" obligation="normative">
+  
+  <p id="_33b9e4ad-b838-4cb2-820f-2176a878c550">Weigh a portion of about 100 g of milled rice and put it into a glass beaker (<xref target="AnnexB-2-2"/>).</p>
 </subsection>
-<subsection id="_4">
-  <title/>
-  <p id="_afccb10d-a0b2-4be5-bcdf-4c8a67789616">Add enough iodine working solution (<xref target="AnnexB-3-3"/>) to soak the kernels, and stir (<xref target="AnnexB-2-5"/>) until all the kernels are submerged under the solution. Let the kernels soak in the solution for 30 s.</p>
+<subsection id="_4" inline-header="false" obligation="normative">
+  
+  <p id="_fff5edbf-2b6f-49f5-b337-a03d562cc0f3">Add enough iodine working solution (<xref target="AnnexB-3-3"/>) to soak the kernels, and stir (<xref target="AnnexB-2-5"/>) until all the kernels are submerged under the solution. Let the kernels soak in the solution for 30 s.</p>
 </subsection>
-<subsection id="_5">
-  <title/>
-  <p id="_d54fb5f8-d2dc-4cf2-9837-9615708aaa46">Pour the rice and solution into a wire sieve (<xref target="AnnexB-2-4"/>), and shake the basket slightly in order to drain out the solution. Then place the wire sieve on a piece of tissue paper (<xref target="AnnexB-2-7"/>) to absorb the excess liquid.</p>
+<subsection id="_5" inline-header="false" obligation="normative">
+  
+  <p id="_16f29028-7acd-435c-8992-511970cb536e">Pour the rice and solution into a wire sieve (<xref target="AnnexB-2-4"/>), and shake the basket slightly in order to drain out the solution. Then place the wire sieve on a piece of tissue paper (<xref target="AnnexB-2-7"/>) to absorb the excess liquid.</p>
 </subsection>
-<subsection id="_6">
-  <title/>
-  <p id="_92bfbadf-08ca-4d8b-88ee-1cbc7fd48ad6">Pour the stained kernels into a bowl (<xref target="AnnexB-2-3"/>). Using tweezers or forceps (<xref target="AnnexB-2-6"/>), separate the reddish brown kernels of waxy rice from the dark blue kernels of non-waxy rice.</p>
+<subsection id="_6" inline-header="false" obligation="normative">
+  
+  <p id="_e3f14986-1565-4ae1-8f7e-af83d8446871">Pour the stained kernels into a bowl (<xref target="AnnexB-2-3"/>). Using tweezers or forceps (<xref target="AnnexB-2-6"/>), separate the reddish brown kernels of waxy rice from the dark blue kernels of non-waxy rice.</p>
 </subsection>
-<subsection id="_7">
-  <title/>
-  <p id="_779df017-1b64-4365-b335-de1b7a496b1a">Weigh the waxy rice portion (<stem type="AsciiMath">m_1</stem>) and the non-waxy rice portion (<stem type="AsciiMath">m_2</stem>) to the nearest 0,1 g.</p>
+<subsection id="_7" inline-header="false" obligation="normative">
+  
+  <p id="_884d692c-6d70-460e-8394-416efcf8307d">Weigh the waxy rice portion (<stem type="AsciiMath">m_1</stem>) and the non-waxy rice portion (<stem type="AsciiMath">m_2</stem>) to the nearest 0,1 g.</p>
 </subsection></subsection>
-<subsection id="_calculation_2"><title>Calculation</title><p id="_6459b484-d6e4-4f20-a8f4-b5fec4460466">Calculate the mass fraction, expressed as a percentage, of the waxy rice, <stem type="AsciiMath">w_(wax)</stem>, using Formula (<xref target="formulaB-1"/>):</p>
+<subsection id="_calculation_2" inline-header="false" obligation="normative"><title>Calculation</title><p id="_69c473b8-200c-46a9-b9ca-58b71b7fa10b">Calculate the mass fraction, expressed as a percentage, of the waxy rice, <stem type="AsciiMath">w_(wax)</stem>, using Formula (<xref target="formulaB-1"/>):</p>
 <formula id="formulaB-1">
   <stem type="AsciiMath">w_(wax) = (m_1) / (m_1 + m_2) xx 100</stem>
-<dl id="_2f9dac41-88b8-4ef4-82ae-155af4074fcf">
+<dl id="_4fba99fb-317f-49a8-9677-40401ce6b303">
   <dt>
     <stem type="AsciiMath">m_1</stem>
   </dt>
   <dd>
-    <p id="_94f28bef-7b81-44e5-9ad3-4fe3a0ee8687">is the mass, expressed in grams, of the waxy rice portion;</p>
+    <p id="_0c74e428-b34f-42ab-ad27-61d3664e6c50">is the mass, expressed in grams, of the waxy rice portion;</p>
   </dd>
   <dt>
     <stem type="AsciiMath">m_2</stem>
   </dt>
   <dd>
-    <p id="_7c7c994f-e90c-4427-ab9f-ab84679bdeda">is the mass, expressed in grams, of the non-waxy rice portion.</p>
+    <p id="_c994c34a-5bb4-4f9a-adeb-efce99026856">is the mass, expressed in grams, of the non-waxy rice portion.</p>
   </dd>
 </dl></formula>
 
 </subsection>
-<subsection id="_test_report_2">
+<subsection id="_test_report_2" inline-header="false" obligation="normative">
   <title>Test report</title>
-  <p id="_4b9161fe-6a45-4a6e-bd4e-d4d4eb9738ba">Report the results as specified in <xref target="clause7"/>, giving the results calculated using Formula (<xref target="formulaB-1"/>).</p>
-</subsection></annex><annex id="AnnexC" subtype="informative"><title>Gelatinization</title><p id="_ed67ff80-1290-482f-aa42-6f248da5d4e1"><xref target="figureC-1"/> gives an example of a typical gelatinization curve. <xref target="figureC-2"/> shows the three stages of gelatinization.</p>
+  <p id="_eb81beab-62b1-48a4-b088-56a41840e7b7">Report the results as specified in <xref target="clause7"/>, giving the results calculated using Formula (<xref target="formulaB-1"/>).</p>
+</subsection></annex><annex id="AnnexC" inline-header="false" obligation="normative"><title>Gelatinization</title><p id="_0b729b0b-4f2e-4384-a6a5-194c5fd18fbe"><xref target="figureC-1"/> gives an example of a typical gelatinization curve. <xref target="figureC-2"/> shows the three stages of gelatinization.</p>
 <figure id="figureC-1">
   <name>Typical gelatinization curve</name>
-  <image src="rice_images/rice_image2.png" id="_66c3d37a-e19c-4bef-9b47-e2501db1a506" imagetype="PNG"/>
+  <image src="rice_images/rice_image2.png" id="_e535804d-22d2-436d-a8ef-2727c05e02ab" imagetype="PNG"/>
 <fn reference="a">
-  <p id="_9180e39b-d661-4069-a70e-88289108060f">The time <stem type="AsciiMath">t_90</stem> was estimated to be 18,2 min for this example.</p>
-</fn><dl id="_d01f8610-7029-483a-b42b-77eb63b073c8">
+  <p id="_f2108476-d62d-48f0-8d0e-b687e6ff80d0">The time <stem type="AsciiMath">t_90</stem> was estimated to be 18,2 min for this example.</p>
+</fn><dl id="_6ff73acb-0066-42d6-a20e-47b064c2015f">
   <dt>
     <stem type="AsciiMath">w</stem>
   </dt>
   <dd>
-    <p id="_0735cce5-9fb1-42f8-99a4-c35bd413593f">mass fraction of gelatinized kernels, expressed in per cent</p>
+    <p id="_c0825106-79f3-4d88-9787-822a357a325d">mass fraction of gelatinized kernels, expressed in per cent</p>
   </dd>
   <dt>
     <stem type="AsciiMath">t</stem>
   </dt>
   <dd>
-    <p id="_d8e10bce-cfd1-4252-b52e-045ff3e124a7">cooking time, expressed in minutes</p>
+    <p id="_0d9cc85b-f116-4cc9-89aa-ae7e4e6ec6ef">cooking time, expressed in minutes</p>
   </dd>
   <dt>
     <stem type="AsciiMath">t_90</stem>
   </dt>
   <dd>
-    <p id="_6f45d82c-b037-4b42-bd8e-53832fd1fc46">time required to gelatinize 90 % of the kernels</p>
+    <p id="_baeb79ea-7e1b-454c-8cc5-4e53ee53bdaa">time required to gelatinize 90 % of the kernels</p>
   </dd>
   <dt>P</dt>
   <dd>
-    <p id="_28cea7b0-56a4-4567-b411-e03c99595aea">point of the curve corresponding to a cooking time of <stem type="AsciiMath">t_90</stem></p>
+    <p id="_7bf829b3-063c-4b15-b52f-281a3905f9fd">point of the curve corresponding to a cooking time of <stem type="AsciiMath">t_90</stem></p>
   </dd>
-</dl><note id="_8ea1e9fe-8f4c-47e4-b41b-9869004c9052">
-  <p id="_b1b86b8e-075a-4909-b548-ee8d1c57722d">These results are based on a study carried out on three different types of kernel.</p>
+</dl><note id="_892259a6-4661-4f39-b286-0f55db06893a">
+  <p id="_40eab951-57b6-46c3-a7b4-af4ce8d8d126">These results are based on a study carried out on three different types of kernel.</p>
 </note></figure>
 
 
 
 
-<figure id="figureC-2"><figure id="_f7e44ed0-7827-479d-a599-99b5a10d54f3">
+<figure id="figureC-2"><figure id="_2a4322f2-48af-4c8a-9e56-9e2b28e0e570">
   <name>Initial stages: No grains are fully gelatinized (ungelatinized starch granules are visible inside the kernels)</name>
-  <image src="rice_images/rice_image3_1.png" id="_1fc2068f-8b9e-44ef-a438-c6f7e7df0ffb" imagetype="PNG"/>
+  <image src="rice_images/rice_image3_1.png" id="_a2b8d1e8-a62e-4604-bb73-11f88a65683d" imagetype="PNG"/>
 </figure>
-<figure id="_6b9b1c0b-63f4-4eb3-8f82-0c8b819ece31">
+<figure id="_15c67d58-61ce-44db-9965-d79a500ba664">
   <name>Intermediate stages: Some fully gelatinized kernels are visible</name>
-  <image src="rice_images/rice_image3_2.png" id="_df72ba72-9c55-480f-b378-3054ce3254da" imagetype="PNG"/>
+  <image src="rice_images/rice_image3_2.png" id="_0a17de05-b1ee-491e-9a3f-0e428da8e7c5" imagetype="PNG"/>
 </figure>
-<figure id="_9ac83d52-738e-4359-90ad-77c64a032f93">
+<figure id="_34c1d38b-aac2-46bb-8da9-167781e04980">
   <name>Final stages: All kernels are fully gelatinized</name>
-  <image src="rice_images/rice_image3_3.png" id="_9122a8a2-64e1-4fb8-9b1c-e224f3c04370" imagetype="PNG"/>
-</figure></figure></annex><annex id="AnnexD" subtype="informative"><title>Results of interlaboratory test for husked rice yields</title><p id="_23c76d8d-40ad-4ea5-8b86-aaea6692a1d7">An interlaboratory test <eref type="inline" bibitemid="ref15" citeas="[15]"/> was carried out by the ENR [Rice Research Centre (Italy)] in accordance with <eref type="inline" bibitemid="ISO5725-1" citeas="ISO 5725-1"/> and <eref type="inline" bibitemid="ISO5725-2" citeas="ISO 5725-2"/>, with the participation of 15 laboratories. Each laboratory carried out three determinations on four different types of kernel. The statistical results are shown in <xref target="tableD-1"/>.</p>
+  <image src="rice_images/rice_image3_3.png" id="_8e289abc-96d5-4fb2-8e8a-116677c6fc65" imagetype="PNG"/>
+</figure></figure></annex><annex id="AnnexD" inline-header="false" obligation="normative"><title>Results of interlaboratory test for husked rice yields</title><p id="_d3c7bc8a-864d-47d3-a5df-f2cb8f4038f5">An interlaboratory test <eref type="inline" bibitemid="ref15" citeas="[15]"/> was carried out by the ENR [Rice Research Centre (Italy)] in accordance with <eref type="inline" bibitemid="ISO5725-1" citeas="ISO 5725-1"/> and <eref type="inline" bibitemid="ISO5725-2" citeas="ISO 5725-2"/>, with the participation of 15 laboratories. Each laboratory carried out three determinations on four different types of kernel. The statistical results are shown in <xref target="tableD-1"/>.</p>
 <table id="tableD-1">
   <name>Repeatability and reproducibility of husked rice yield</name>
   <tbody>
@@ -700,7 +698,7 @@ World<br/>
     <tr>
       <td align="left">Arborio</td>
       <td align="center">Drago<fn reference="a">
-  <p id="_c2f975dd-d796-4153-99d9-4aef54d94d4f">Parboiled rice.</p>
+  <p id="_41c28837-06eb-458d-8714-349faab91340">Parboiled rice.</p>
 </fn></td>
       <td align="center">Balilla</td>
       <td align="center">Thaibonnet</td>
@@ -762,14 +760,15 @@ World<br/>
       <td align="center">6,06</td>
     </tr>
   </tbody>
-</table></annex><references id="_规范性引用文件"><title>规范性引用文件</title>
+</table></annex><references id="_规范性引用文件" obligation="informative"><title>Normative References</title><p id="_581c44e0-72b7-42ac-b549-6ca0e9725994">The following documents are referred to in the text in such a way that some or all of their content constitutes requirements of this document. For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments) applies.</p>
 <bibitem id="ISO712" type="standard">
   <title format="text/plain">Cereals and cereal products — Determination of moisture content — Reference method</title>
   <docidentifier>ISO 712</docidentifier>
   <contributor>
     <role type="publisher"/>
     <organization>
-      <name>ISO</name>
+      <name>International Organization for Standardization</name>
+      <abbreviation>ISO</abbreviation>
     </organization>
   </contributor>
 </bibitem><bibitem id="ISO6646" type="standard">
@@ -778,17 +777,21 @@ World<br/>
   <contributor>
     <role type="publisher"/>
     <organization>
-      <name>ISO</name>
+      <name>International Organization for Standardization</name>
+      <abbreviation>ISO</abbreviation>
     </organization>
   </contributor>
 </bibitem><bibitem id="ISO8351-1" type="standard">
   <title format="text/plain">Packaging — Method of specification for sacks — Part 1: Paper sacks</title>
   <docidentifier>ISO 8351-1</docidentifier>
-  <date type="published">1994</date>
+  <date type="published">
+    <from>1994</from>
+  </date>
   <contributor>
     <role type="publisher"/>
     <organization>
-      <name>ISO</name>
+      <name>International Organization for Standardization</name>
+      <abbreviation>ISO</abbreviation>
     </organization>
   </contributor>
 </bibitem><bibitem id="ISO8351-2" type="standard">
@@ -797,49 +800,60 @@ World<br/>
   <contributor>
     <role type="publisher"/>
     <organization>
-      <name>ISO</name>
+      <name>International Organization for Standardization</name>
+      <abbreviation>ISO</abbreviation>
     </organization>
   </contributor>
 </bibitem><bibitem id="ISO16634" type="standard">
   <title format="text/plain">Cereals, pulses, milled cereal products, oilseeds and animal feeding stuffs — Determination of the total nitrogen content by combustion according to the Dumas principle and calculation of the crude protein content</title>
   <docidentifier>ISO 16634</docidentifier>
-  <date type="published">--</date>
+  <date type="published">
+    <from>--</from>
+  </date>
   <contributor>
     <role type="publisher"/>
     <organization>
-      <name>ISO</name>
+      <name>International Organization for Standardization</name>
+      <abbreviation>ISO</abbreviation>
     </organization>
   </contributor>
-  <note format="text/plain" reference="3">ISO DATE: Under preparation. (Stage at the time of publication ISO/DIS 16634)</note>
+  <note format="text/plain" reference="1">ISO DATE: Under preparation. (Stage at the time of publication ISO/DIS 16634)</note>
 </bibitem><bibitem id="ISO20483" type="standard">
   <title format="text/plain">Cereals and pulses — Determination of the nitrogen content and calculation of the crude protein content — Kjeldahl method</title>
   <docidentifier>ISO 20483</docidentifier>
-  <date type="published">2013</date>
+  <date type="published">
+    <from>2013</from>
+  </date>
   <contributor>
     <role type="publisher"/>
     <organization>
-      <name>ISO</name>
+      <name>International Organization for Standardization</name>
+      <abbreviation>ISO</abbreviation>
     </organization>
   </contributor>
 </bibitem><bibitem id="ISO24333" type="standard">
   <title format="text/plain">Cereals and cereal products — Sampling</title>
   <docidentifier>ISO 24333</docidentifier>
-  <date type="published">2009</date>
+  <date type="published">
+    <from>2009</from>
+  </date>
   <contributor>
     <role type="publisher"/>
     <organization>
-      <name>ISO</name>
+      <name>International Organization for Standardization</name>
+      <abbreviation>ISO</abbreviation>
     </organization>
   </contributor>
-</bibitem></references><references id="_参考文献">
-  <title>参考文献</title>
+</bibitem></references><references id="_参考文献" obligation="informative">
+  <title>Bibliography</title>
   <bibitem id="ISO3696" type="standard">
   <title format="text/plain">Water for analytical laboratory use — Specification and test methods</title>
   <docidentifier>ISO 3696</docidentifier>
   <contributor>
     <role type="publisher"/>
     <organization>
-      <name>ISO</name>
+      <name>International Organization for Standardization</name>
+      <abbreviation>ISO</abbreviation>
     </organization>
   </contributor>
 </bibitem>
@@ -849,7 +863,8 @@ World<br/>
   <contributor>
     <role type="publisher"/>
     <organization>
-      <name>ISO</name>
+      <name>International Organization for Standardization</name>
+      <abbreviation>ISO</abbreviation>
     </organization>
   </contributor>
 </bibitem>
@@ -859,7 +874,8 @@ World<br/>
   <contributor>
     <role type="publisher"/>
     <organization>
-      <name>ISO</name>
+      <name>International Organization for Standardization</name>
+      <abbreviation>ISO</abbreviation>
     </organization>
   </contributor>
 </bibitem>
@@ -869,7 +885,8 @@ World<br/>
   <contributor>
     <role type="publisher"/>
     <organization>
-      <name>ISO</name>
+      <name>International Organization for Standardization</name>
+      <abbreviation>ISO</abbreviation>
     </organization>
   </contributor>
 </bibitem>
@@ -879,7 +896,8 @@ World<br/>
   <contributor>
     <role type="publisher"/>
     <organization>
-      <name>ISO</name>
+      <name>International Organization for Standardization</name>
+      <abbreviation>ISO</abbreviation>
     </organization>
   </contributor>
 </bibitem>
@@ -889,45 +907,55 @@ World<br/>
   <contributor>
     <role type="publisher"/>
     <organization>
-      <name>ISO</name>
+      <name>International Organization for Standardization</name>
+      <abbreviation>ISO</abbreviation>
     </organization>
   </contributor>
 </bibitem>
   <bibitem id="ISO7301" type="standard">
   <title format="text/plain">Rice — Specification</title>
   <docidentifier>ISO 7301</docidentifier>
-  <date type="published">2011</date>
+  <date type="published">
+    <from>2011</from>
+  </date>
   <contributor>
     <role type="publisher"/>
     <organization>
-      <name>ISO</name>
+      <name>International Organization for Standardization</name>
+      <abbreviation>ISO</abbreviation>
     </organization>
   </contributor>
 </bibitem>
   <bibitem id="ISO14864" type="standard">
   <title format="text/plain">Rice — Evaluation of gelatinization time of kernels during cooking</title>
   <docidentifier>ISO 14864</docidentifier>
-  <date type="published">1998</date>
+  <date type="published">
+    <from>1998</from>
+  </date>
   <contributor>
     <role type="publisher"/>
     <organization>
-      <name>ISO</name>
+      <name>International Organization for Standardization</name>
+      <abbreviation>ISO</abbreviation>
     </organization>
   </contributor>
 </bibitem>
   <bibitem id="IEC61010-2" type="standard">
   <title format="text/plain">Safety requirements for electric equipment for measurement, control, and laboratory use — Part 2: Particular requirements for laboratory equipment for the heating of material</title>
   <docidentifier>IEC 61010-2</docidentifier>
-  <date type="published">1998</date>
+  <date type="published">
+    <from>1998</from>
+  </date>
   <contributor>
     <role type="publisher"/>
     <organization>
-      <name>ISO</name>
+      <name>International Electrotechnical Commission</name>
+      <abbreviation>IEC</abbreviation>
     </organization>
   </contributor>
 </bibitem>
   <bibitem id="ref10">
-  <formattedref format="application/x-isodoc+xml"><smallcap>Standard No I.C.C 167</smallcap>. <em>Determination of the protein content in cereal and cereal products for food and animal feeding stuffs according to the Dumas combustion method</em> (see <link target="http://www.icc.or.at"/>)</formattedref>
+  <formattedref format="application/x-isodoc+xml"><smallcap>Standard No I.C.C 167</smallcap>. <em>Determination of the protein content in cereal and cereal products for food and animal feeding stuffs according to the Dumas combustion method</em> (see )</formattedref>
   <docidentifier>[10]</docidentifier>
 </bibitem>
   <bibitem id="ref11">

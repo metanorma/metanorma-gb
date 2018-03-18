@@ -62,8 +62,22 @@ module Asciidoctor
         File.join(File.dirname(__FILE__), File.join("html", file))
       end
 
-      def doc_converter(node)
+      def html_converter(node)
         GbConvert.new(
+          htmlstylesheet: html_doc_path("htmlstyle.css"),
+          wordstylesheet: html_doc_path("wordstyle.css"),
+          standardstylesheet: html_doc_path("gb.css"),
+          header: html_doc_path("header.html"),
+          htmlcoverpage: html_doc_path("html_gb_titlepage.html"),
+          wordcoverpage: html_doc_path("word_gb_titlepage.html"),
+          htmlintropage: html_doc_path("html_gb_intro.html"),
+          wordintropage: html_doc_path("word_gb_intro.html"),
+          i18nyaml: node&.attr("i18nyaml"),
+        )
+      end
+
+      def doc_converter(node)
+        GbWordConvert.new(
           htmlstylesheet: html_doc_path("htmlstyle.css"),
           wordstylesheet: html_doc_path("wordstyle.css"),
           standardstylesheet: html_doc_path("gb.css"),
