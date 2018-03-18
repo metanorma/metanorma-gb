@@ -57,9 +57,20 @@ module Asciidoctor
         end
       end
 
+      def deprecated_single_label(docxml)
+        docxml.xpath("//p[@class = 'Terms']").each do |t|
+          t.xpath("//p[@class = 'DeprecatedTerms']").each_with_index do |d, i|
+            next if i == 0
+            d.children.first.content =
+              d.children.first.content.sub(/^#{@deprecated_lbl}:\s*/, "")
+          end
+        end
+      end
+
       def terms_cleanup(docxml)
         term_merge(docxml, "Terms")
         term_merge(docxml, "AltTerms")
+        deprecated_single_label(docxml)
         term_merge(docxml, "DeprecatedTerms")
         docxml
       end
@@ -70,6 +81,13 @@ module Asciidoctor
           if h1.content == "引言"
             h1.add_child('<span style="mso-tab-count:1">&#xA0; </span>')
           end
+        end
+      end
+
+      def deprecated_term_parse(node, out)
+        out.p **{ class: "DeprecatedTerms" } do |p|
+          p << l10n("#{@deprecated_lbl}: ")
+          node.children.each { |c| parse(c, p) }
         end
       end
 

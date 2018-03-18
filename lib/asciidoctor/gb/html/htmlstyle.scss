@@ -5,7 +5,7 @@ html {
 body { 
   font-size: 1em;
   margin: 0;
-  font-family: "SimSun",serif;
+  font-family: $bodyfont;
 }
 
 h1 {
@@ -171,7 +171,7 @@ p.MsoCommentText, li.MsoCommentText, div.MsoCommentText
         line-height:12.0pt;
         tab-stops:20.15pt;
         font-size:12.0pt;
-        font-family:"Cambria",serif;
+        font-family:$bodyfont;
       }
 p.MsoCommentSubject, li.MsoCommentSubject, div.MsoCommentSubject
 {
@@ -183,7 +183,7 @@ p.MsoCommentSubject, li.MsoCommentSubject, div.MsoCommentSubject
         line-height:12.0pt;
         tab-stops:20.15pt;
         font-size:10.0pt;
-        font-family:"Cambria",serif;
+        font-family:$headerfont;
         font-weight:bold;}
 
 .coverpage-logo-text {
@@ -200,18 +200,18 @@ p.MsoCommentSubject, li.MsoCommentSubject, div.MsoCommentSubject
 
 .coverpage-title-zh {
         font-size:26pt;
-        font-family:SimHei,sans-serif;
+        font-family:$headerfont;
 }
 .coverpage-title-en {
         font-size:14pt;
-        font-family:SimHei,sans-serif;
+        font-family:$headerfont;
 }
 .coverpage-iso-relation {
         font-size:14pt;
 }
 .coverpage-dates {
         font-size:14.0pt;
-        font-family:SimHei,sans-serif;
+        font-family:$headerfont;
 }
 .coverpage_footer {
         font-size:14.0pt;
