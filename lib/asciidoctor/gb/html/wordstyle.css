@@ -836,7 +836,7 @@ p.MsoFooter, li.MsoFooter, div.MsoFooter
 	mso-ansi-language:EN-US;
 	mso-fareast-language:ZH-CN;}
 p.a1, li.a1, div.a1
-	{mso-style-name:标准书脚_奇数页;  /* NAME: Standard Footer, Odd pages */
+	{mso-style-name:标准书脚_奇数页;  //  NAME: Standard Footer, Odd pages 
 	mso-style-unhide:no;
 	mso-style-parent:"";
 	margin-top:6.0pt;
@@ -1239,8 +1239,8 @@ p.a6, li.a6, div.a6
 	mso-ansi-language:EN-GB;
 	mso-fareast-language:ZH-CN;
 	font-weight:bold;}
-p.2, li.2, div.2
-	{mso-style-name:封面标准号2; /* NAME: Cover page Standard Number 2 */
+p.x2, li.x2, div.x2
+	{mso-style-name:封面标准号2; //  NAME: Cover page Standard Number 2 
 	mso-style-unhide:no;
 	mso-style-parent:"";
 	margin-top:17.85pt;
@@ -1391,7 +1391,7 @@ p.Tablebody, li.Tablebody, div.Tablebody
 	mso-bidi-font-family:SimSun;
 	mso-ansi-language:EN-GB;}
 ul li, ul li p, ul li div, ul li .MsoNormal
-	{mso-style-name:列项——（一级）;  /* NAME: List item (level 1) */ ??
+	{mso-style-name:列项——（一级）;  // NAME: List item (level 1) */ ??
 	mso-style-unhide:no;
 	mso-style-parent:"";
 	margin-top:0in;
@@ -1410,7 +1410,7 @@ ul li, ul li p, ul li div, ul li .MsoNormal
 	mso-hansi-font-family:"Times New Roman";
 	mso-bidi-font-family:"Times New Roman";}
 ul li li, ul li li p, ul li li div, ul li li .MsoNormal
-	{mso-style-name:列项●（二级）;  /* NAME: List item (level 2) */ ??
+	{mso-style-name:列项●（二级）;  //  NAME: List item (level 2)  ??
 	mso-style-unhide:no;
 	mso-style-parent:"";
 	margin-top:0in;
@@ -1430,7 +1430,7 @@ ul li li, ul li li p, ul li li div, ul li li .MsoNormal
 	mso-hansi-font-family:"Times New Roman";
 	mso-bidi-font-family:"Times New Roman";}
 ul li li li, ul li li li p, ul li li li div, ul li li .MsoNormal
-	{mso-style-name:列项◆（三级）;  /* NAME: List item (level 3) */ ??
+	{mso-style-name:列项◆（三级）;  //  NAME: List item (level 3)  ??
 	mso-style-unhide:no;
 	margin-top:0in;
 	margin-right:0in;
@@ -1449,7 +1449,7 @@ ul li li li, ul li li li p, ul li li li div, ul li li .MsoNormal
 	mso-bidi-font-family:"Times New Roman";
 	mso-font-kerning:1.0pt;}
 ol li, ol li p, ol li div, ol li .MsoNormal
-	{mso-style-name:字母编号列项（一级）;  /* NAME: Alphabetical list item (level 1) */ ??
+	{mso-style-name:字母编号列项（一级）;  //  NAME: Alphabetical list item (level 1)  ??
 	mso-style-unhide:no;
 	mso-style-parent:"";
 	margin-top:0in;
@@ -1469,7 +1469,7 @@ ol li, ol li p, ol li div, ol li .MsoNormal
 	mso-hansi-font-family:"Times New Roman";
 	mso-bidi-font-family:"Times New Roman";}
 ol li li, ol li li p, ol li li div, ol li li .MsoNormal
-	{mso-style-name:数字编号列项（二级）;  /* NAME: Numerical List Item (level 2) */ ??
+	{mso-style-name:数字编号列项（二级）;  //  NAME: Numerical List Item (level 2)  ??
 	mso-style-unhide:no;
 	mso-style-parent:"";
 	margin-top:0in;
@@ -1489,7 +1489,7 @@ ol li li, ol li li p, ol li li div, ol li li .MsoNormal
 	mso-hansi-font-family:"Times New Roman";
 	mso-bidi-font-family:"Times New Roman";}
 ol li li li, ol li li li p, ol li li li div, ol li li li .MsoNormal
-	{mso-style-name:编号列项（三级）;  /* NAME: Numerical List item (level 3) */ ??
+	{mso-style-name:编号列项（三级）;  //  NAME: Numerical List item (level 3)  ??
 	mso-style-unhide:no;
 	mso-style-parent:"";
 	margin-top:0in;
@@ -1530,7 +1530,7 @@ ol li li li, ol li li li p, ol li li li div, ol li li li .MsoNormal
 	{mso-level-number-format:alpha-upper;
 	mso-level-style-link:ANNEX;
 	mso-level-suffix:none;
-	mso-level-text:Annex\00A0%1;
+	mso-level-text:"Annex\00A0%1";
 	mso-level-tab-stop:none;
 	mso-level-number-position:left;
 	margin-left:0cm;
@@ -1623,7 +1623,7 @@ ol li li li, ol li li li p, ol li li li div, ol li li li .MsoNormal
 	mso-list-template-ids:-1756330000;}
 @list l1:level1
 	{mso-level-style-link:"Heading 1";
-	mso-level-text:%1　;
+	mso-level-text:"%1　";
 	mso-level-tab-stop:21.6pt;
 	mso-level-number-position:left;
 	margin-left:0in;
@@ -1771,7 +1771,7 @@ ol li li li, ol li li li p, ol li li li div, ol li li li .MsoNormal
 	{mso-level-number-format:none;
 	mso-level-style-link:列项——（一级）;
 	mso-level-suffix:none;
-	mso-level-text:%1——;
+	mso-level-text:"%1—";
 	mso-level-tab-stop:none;
 	mso-level-number-position:left;
 	margin-left:41.65pt;
@@ -1907,7 +1907,7 @@ ol li li li, ol li li li p, ol li li li div, ol li li li .MsoNormal
 	margin-left:209.95pt;
 	text-indent:-20.95pt;}
 p.afa, li.afa, div.afa
-	{mso-style-name:标准称谓; /* NAME: Standard Name */
+	{mso-style-name:标准称谓; //  NAME: Standard Name 
 	mso-style-unhide:no;
 	mso-style-parent:"";
 	mso-style-next:Normal;
@@ -1943,7 +1943,7 @@ p.afa, li.afa, div.afa
 	mso-fareast-language:ZH-CN;
 	font-weight:bold;}
 p.af, li.af, div.af
-	{mso-style-name:标准标志; /* NAME: Standard Logo */
+	{mso-style-name:标准标志; //  NAME: Standard Logo 
 	mso-style-unhide:no;
 	mso-style-parent:"";
 	mso-style-next:Normal;
@@ -1975,7 +1975,7 @@ p.af, li.af, div.af
 	font-weight:bold;
 	mso-bidi-font-weight:normal;}
 p.affffd, li.affffd, div.affffd
-	{mso-style-name:文献分类号; /* NAME: Category number of document */
+	{mso-style-name:文献分类号; //  NAME: Category number of document 
 	mso-style-unhide:no;
 	mso-style-parent:"";
 	margin:0cm;
@@ -1996,7 +1996,7 @@ p.affffd, li.affffd, div.affffd
 	mso-ansi-language:EN-US;
 	mso-fareast-language:ZH-CN;}
 p.aff, li.aff, div.aff
-	{mso-style-name:封面标准代替信息; /* NAME: Cover page standard "supercedes" information */
+	{mso-style-name:封面标准代替信息; //  NAME: Cover page standard "supercedes" information 
 	mso-style-unhide:no;
 	mso-style-parent:"";
 	margin-top:2.85pt;
@@ -2026,7 +2026,7 @@ p.aff, li.aff, div.aff
 	mso-ansi-language:EN-US;
 	mso-fareast-language:ZH-CN;}
 p.affc, li.affc, div.affc
-	{mso-style-name:封面标准名称;  /* NAME: Cover page standard name */
+	{mso-style-name:封面标准名称;  //  NAME: Cover page standard name 
 	mso-style-unhide:no;
 	mso-style-parent:"";
 	margin:0cm;
@@ -2053,7 +2053,7 @@ p.affc, li.affc, div.affc
 	mso-ansi-language:EN-US;
 	mso-fareast-language:ZH-CN;}
 p.affd, li.affd, div.affd
-	{mso-style-name:封面标准英文名称; /* NAME: Cover page standard English name */
+	{mso-style-name:封面标准英文名称; //  NAME: Cover page standard English name 
 	mso-style-unhide:no;
 	mso-style-parent:封面标准名称;
 	margin-top:18.5pt;
@@ -2081,7 +2081,7 @@ p.affd, li.affd, div.affd
 	mso-ansi-language:EN-US;
 	mso-fareast-language:ZH-CN;}
 p.affe, li.affe, div.affe
-	{mso-style-name:封面标准文稿类别; /* NAME: Cover page standard draft type */
+	{mso-style-name:封面标准文稿类别; //  NAME: Cover page standard draft type 
 	mso-style-unhide:no;
 	mso-style-parent:封面一致性程度标识;
 	margin-top:22.0pt;
@@ -2108,7 +2108,7 @@ p.affe, li.affe, div.affe
 	mso-ansi-language:EN-US;
 	mso-fareast-language:ZH-CN;}
 p.afff, li.afff, div.afff
-	{mso-style-name:封面标准文稿编辑信息; /* NAME: Cover page standard draft editorial information */
+	{mso-style-name:封面标准文稿编辑信息; //  NAME: Cover page standard draft editorial information 
 	mso-style-unhide:no;
 	mso-style-parent:封面标准文稿类别;
 	margin-top:9.0pt;
@@ -2136,7 +2136,7 @@ p.afff, li.afff, div.afff
 	mso-bidi-font-family:SimSun;
 	mso-ansi-language:EN-US;
 	mso-fareast-language:ZH-CN;}
-p.afffff4, li.afffff4, div.afffff4  /* NAME: Other publishing date */
+p.afffff4, li.afffff4, div.afffff4  //  NAME: Other publishing date 
 	{mso-style-name:其他发布日期;
 	mso-style-unhide:no;
 	mso-style-parent:发布日期;
@@ -2186,7 +2186,7 @@ p.afffff5, li.afffff5, div.afffff5
 	mso-ansi-language:EN-US;
 	mso-fareast-language:ZH-CN;}
 p.aff7, li.aff7, div.aff7, p.aff7 td 
-	{mso-style-name:发布部门; /* NAME: Publishing Department */
+	{mso-style-name:发布部门; //  NAME: Publishing Department 
 	mso-style-unhide:no;
 	mso-style-parent:"";
 	mso-style-next:段;
@@ -2218,7 +2218,7 @@ p.aff7, li.aff7, div.aff7, p.aff7 td
 	font-weight:bold;
 	mso-bidi-font-weight:normal;}
 p.a0, li.a0, div.a0
-	{mso-style-name:封面一致性程度标识; /* NAME: Cover page "identicality" level label */
+	{mso-style-name:封面一致性程度标识; //  NAME: Cover page "identicality" level label 
 	mso-style-unhide:no;
 	mso-style-parent:封面标准英文名称;
 	margin-top:22.0pt;

@@ -64,27 +64,19 @@ module Asciidoctor
 
       def html_converter(node)
         GbConvert.new(
-          htmlstylesheet: html_doc_path("htmlstyle.css"),
-          wordstylesheet: html_doc_path("wordstyle.css"),
-          standardstylesheet: html_doc_path("gb.css"),
-          header: html_doc_path("header.html"),
+          htmlstylesheet: generate_css(html_doc_path("htmlstyle.css")),
+          standardstylesheet: generate_css(html_doc_path("gb.css")),
           htmlcoverpage: html_doc_path("html_gb_titlepage.html"),
-          wordcoverpage: html_doc_path("word_gb_titlepage.html"),
           htmlintropage: html_doc_path("html_gb_intro.html"),
-          wordintropage: html_doc_path("word_gb_intro.html"),
           i18nyaml: node&.attr("i18nyaml"),
         )
       end
 
       def doc_converter(node)
         GbWordConvert.new(
-          htmlstylesheet: html_doc_path("htmlstyle.css"),
-          wordstylesheet: html_doc_path("wordstyle.css"),
-          standardstylesheet: html_doc_path("gb.css"),
-          header: html_doc_path("header.html"),
-          htmlcoverpage: html_doc_path("html_gb_titlepage.html"),
+          wordstylesheet: generate_css(html_doc_path("wordstyle.css")),
+          standardstylesheet: generate_css(html_doc_path("gb.css")),
           wordcoverpage: html_doc_path("word_gb_titlepage.html"),
-          htmlintropage: html_doc_path("html_gb_intro.html"),
           wordintropage: html_doc_path("word_gb_intro.html"),
           i18nyaml: node&.attr("i18nyaml"),
         )
