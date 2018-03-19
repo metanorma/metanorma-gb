@@ -64,8 +64,8 @@ module Asciidoctor
 
       def html_converter(node)
         GbConvert.new(
-          htmlstylesheet: generate_css(html_doc_path("htmlstyle.scss")),
-          standardstylesheet: generate_css(html_doc_path("gb.scss")),
+          htmlstylesheet: generate_css(html_doc_path("htmlstyle.scss"), true),
+          standardstylesheet: generate_css(html_doc_path("gb.scss"), true),
           htmlcoverpage: html_doc_path("html_gb_titlepage.html"),
           htmlintropage: html_doc_path("html_gb_intro.html"),
           i18nyaml: node&.attr("i18nyaml"),
@@ -74,8 +74,8 @@ module Asciidoctor
 
       def doc_converter(node)
         GbWordConvert.new(
-          wordstylesheet: generate_css(html_doc_path("wordstyle.scss")),
-          standardstylesheet: generate_css(html_doc_path("gb.scss")),
+          wordstylesheet: generate_css(html_doc_path("wordstyle.scss"), false),
+          standardstylesheet: generate_css(html_doc_path("gb.scss"), false),
           wordcoverpage: html_doc_path("word_gb_titlepage.html"),
           wordintropage: html_doc_path("word_gb_intro.html"),
           i18nyaml: node&.attr("i18nyaml"),
@@ -85,10 +85,10 @@ module Asciidoctor
       def default_fonts(node)
         b = node.attr("body-font") ||
           (node.attr("script") == "Hans" ? '"SimSun",serif' :
-          node.attr("script") == "Latn" ? '"Cambria",serif' : '"SimSun",serif' )
+           node.attr("script") == "Latn" ? '"Cambria",serif' : '"SimSun",serif' )
         h = node.attr("header-font") ||
           (node.attr("script") == "Hans" ? '"SimHei",sans-serif' :
-          node.attr("script") == "Latn" ? '"Cambria",serif' : '"SimHei",sans-serif' )
+           node.attr("script") == "Latn" ? '"Cambria",serif' : '"SimHei",sans-serif' )
         m = node.attr("monospace-font") || '"Courier New",monospace'
         "$bodyfont: #{b};\n$headerfont: #{h};\n$monospacefont: #{m};\n"
       end
