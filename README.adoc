@@ -90,7 +90,7 @@ The date on which the GB standard was published.
 The date on which the GB standard was activated.
 
 `:library-ics:`* ::
-The ICS (International Categorization for Standards) number for the GB standard.
+The ICS (International Categorization for Standards) number for the GB standard. There may be more than one ICS for a document; if so, they should be comma-delimited.
 
 `:library-l:`* ::
 The L-identifier (library) for the GB standard.
