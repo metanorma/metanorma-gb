@@ -69,7 +69,7 @@ module Asciidoctor
         f = root.at("//references[title = '规范性引用文件']") ||
           return
         f.at("./references") &&
-          warn("ISO style: normative references contains subsections")
+          warn("ISO style: normative references contains subclauses")
       end
 
       def symbols_validate(root)
