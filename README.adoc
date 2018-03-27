@@ -76,24 +76,27 @@ The scope of the GB standard (`national`, `sector`, `professional`, `local`,
 The mandate of the GB standard (`mandatory`, `recommended`, `guidelines`).
 Defaults to `mandatory`.
 
-`:prefix:`*::
+`:prefix:`::
 The prefix classifying the GB standard.
 (Refer to
 https://github.com/riboseinc/gbdoc/blob/master/models/gb-standard-national-prefix.adoc[GB National Standard Prefixes],
 https://github.com/riboseinc/gbdoc/blob/master/models/gb-standard-sector-prefix.adoc[GB Sector Standard Prefixes],
 https://github.com/riboseinc/gbdoc/blob/master/models/gb-standard-local-prefix.adoc[GB Local Standard Prefixes].)
 
-`:published-date:`* ::
+`:published-date:`::
 The date on which the GB standard was published.
 
-`:activated-date:`* ::
+`:activated-date:`::
 The date on which the GB standard was activated.
 
-`:library-ics:`* ::
+`:library-ics:`::
 The ICS (International Categorization for Standards) number for the GB standard. There may be more than one ICS for a document; if so, they should be comma-delimited. (Unlike the case for ISO, the ICS identifier is output to the front page of the GB standard.)
 
-`:library-l:`* ::
-The L-identifier (library) for the GB standard.
+`:library-ccs:`::
+The CCS (Chinese Categorization Scheme) code for the GB standard.
+
+`:plan-number`:
+The Plan Number (计划单号) for the GB standard.
 
 === Language macros
 

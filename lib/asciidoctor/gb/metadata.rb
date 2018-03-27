@@ -111,9 +111,11 @@ module Asciidoctor
       def gb_library_identifier(isoxml)
         ics = []
         isoxml.xpath(ns("//bibdata/ics")).each { |i| ics << i.text }
-        l = isoxml.at(ns("//gblibraryids/l"))
+        l = isoxml.at(ns("//gblibraryids/ccs"))
+        p = isoxml.at(ns("//gblibraryids/plan"))
         set_metadata(:libraryid_ics, ics.empty? ? "XXX" : ics.join(", "))
-        set_metadata(:libraryid_l, l ? l.text : "XXX")
+        set_metadata(:libraryid_ccs, l ? l.text : "XXX")
+        set_metadata(:libraryid_plan, p ? p.text : "XXX")
       end
 
       def part_label(partnumber, lang)

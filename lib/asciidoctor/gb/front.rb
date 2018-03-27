@@ -111,8 +111,10 @@ module Asciidoctor
       end
 
       def metadata_gblibraryids(node, xml)
-        l = node.attr("library-l")
-        l && xml.gblibraryids { |g| xml.l l }
+        l = node.attr("library-ccs")
+        l && xml.gblibraryids { |g| xml.ccs l }
+        l = node.attr("library-plan")
+        l && xml.gblibraryids { |g| xml.plan l }
       end
 
       def metadata(node, xml)
