@@ -111,11 +111,12 @@ module Asciidoctor
 
       def gb_library_identifier(isoxml)
         ics = []
+        ccs = []
         isoxml.xpath(ns("//bibdata/ics")).each { |i| ics << i.text }
-        l = isoxml.at(ns("//gblibraryids/ccs"))
-        p = isoxml.at(ns("//gblibraryids/plan"))
+        isoxml.xpath(ns("//bibdata/ccs")).each { |i| ccs << i.text }
+        p = isoxml.at(ns("//bibdata/plannumber"))
         set_metadata(:libraryid_ics, ics.empty? ? "XXX" : ics.join(", "))
-        set_metadata(:libraryid_ccs, l ? l.text : "XXX")
+        set_metadata(:libraryid_ccs, ccs.empty? ? "XXX" : ccs.join(", "))
         set_metadata(:libraryid_plan, p ? p.text : "XXX")
       end
 

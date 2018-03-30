@@ -10,11 +10,29 @@ module Asciidoctor
         end
       end
 
-      def metadata_publisher(_node, xml)
+      def metadata_publisher(node, xml)
         xml.contributor do |c|
           c.role **{ type: "publisher" }
           c.organization do |a|
-            a.name "GB"
+            a.name (node.attr("publisher") || "GB")
+          end
+        end
+      end
+
+      def metadata_authority(node, xml)
+        xml.contributor do |c|
+          c.role **{ type: "authority" }
+          c.organization do |a|
+            a.name (node.attr("authority") || "GB")
+          end
+        end
+      end
+
+      def metadata_proposer(node, xml)
+        xml.contributor do |c|
+          c.role **{ type: "proposer" }
+          c.organization do |a|
+            a.name (node.attr("proposer") || "GB")
           end
         end
       end
@@ -90,48 +108,72 @@ module Asciidoctor
         mandate
       end
 
+      def get_topic(node)
+        unless topic = node.attr("topic")
+          topic = "basic"
+          warn "GB: no topic supplied, defaulting to basic"
+        end
+        topic
+      end
+
       def metadata_gbtype(node, xml)
         xml.gbtype do |t|
           scope, prefix = get_prefix(node)
           t.gbscope { |s| s << scope }
           t.gbprefix { |p| p << prefix }
           t.gbmandate { |m| m << get_mandate(node) }
+          t.gbtopic { |t| t << get_topic(node) }
         end
       end
 
-      def metadata_date(node, xml)
-        pubdate = node.attr("published-date")
-        activdate = node.attr("activated-date")
-        pubdate and xml.date **{ type: "published" } do |d|
-          d.from pubdate
+      def metadata_date1(node, xml, type)
+        date = node.attr("#{type}-date")
+        date and xml.date **{ type: type } do |d|
+          d.from date
         end
-        activdate and xml.date **{ type: "activated" } do |d|
-          d.from activdate
+      end
+
+      DATETYPES = %w{
+        published accessed created activated obsoleted confirmed
+        updated issued
+      }.freeze
+
+      def metadata_date(node, xml)
+        DATETYPES.each do |t|
+          metadata_date1(node, xml, t)
         end
       end
 
       def metadata_gblibraryids(node, xml)
-        l = node.attr("library-ccs")
-        l && xml.gblibraryids { |g| xml.ccs l }
+        ccs = node.attr("library-ccs")
+        ccs and ccs.split(/, ?/).each do |l|
+          xml.ccs { |c| c << l }
+        end
         l = node.attr("library-plan")
-        l && xml.gblibraryids { |g| xml.plan l }
+        l && xml.plannumber { |plan| plan << l }
+      end
+
+      def metadata_contributors(node, xml)
+        metadata_author(node, xml)
+        metadata_publisher(node, xml)
+        metadata_authority(node, xml)
+        metadata_proposer(node, xml)
       end
 
       def metadata(node, xml)
         title node, xml
         metadata_id(node, xml)
         metadata_date(node, xml)
-        metadata_author(node, xml)
-        metadata_publisher(node, xml)
+        metadata_contributors(node, xml)
         xml.language (node.attr("language") || "zh")
         xml.script (node.attr("script") || "Hans")
         metadata_status(node, xml)
         metadata_copyright(node, xml)
         metadata_equivalence(node, xml)
         metadata_obsoletes(node, xml)
+        metadata_ics(node, xml)
         metadata_committee(node, xml)
         metadata_gbtype(node, xml)
-        metadata_ics(node, xml)
         metadata_gblibraryids(node, xml)
       end
 
