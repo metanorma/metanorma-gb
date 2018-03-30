@@ -95,7 +95,7 @@ The ICS (International Categorization for Standards) number for the GB standard.
 `:library-ccs:`::
 The CCS (Chinese Categorization Scheme) code for the GB standard.
 
-`:plan-number`::
+`:plan-number:`::
 The Plan Number (计划单号) for the GB standard.
 
 === Language macros

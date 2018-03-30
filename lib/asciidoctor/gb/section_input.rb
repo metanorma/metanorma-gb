@@ -97,16 +97,18 @@ module Asciidoctor
         "术语和定义",
         val: [
           { tag: "terms", title: "术语和定义" },
+          { tag: "clause", title: "术语和定义" },
+          { tag: "clause",
+            title: "术语、定义、符号、代号和缩略语" },
           { tag: "terms",
             title: "术语、定义、符号、代号和缩略语" }
         ] },
       ]
 
       SECTIONS_XPATH =
-        " //foreword | //introduction | //sections/terms | "\
-        "//symbols-abbrevs | //sections/clause | ./references | ./annex "\
+        "//foreword | //introduction | //sections/terms | .//annex | "\
+        "//definitions | //sections/clause | //references[not(parent::clause)] | "\
         "//clause[descendant::references][not(parent::clause)]".freeze
-
 
       def sections_sequence_validate(root)
         f = root.xpath(SECTIONS_XPATH)
@@ -119,31 +121,33 @@ module Asciidoctor
         end
         names = seqcheck(names, SEQ[3][:msg], SEQ[3][:val]) || return
         n = names.shift
-        if n == { tag: "clause", title: "符号、代号和缩略语" }
-          n = names.shift
+        if n == { tag: "definitions", title: nil }
+          n = names.shift || return
         end
         unless n
           warn "ISO style: Document must contain at least one clause"
           return
         end
         n[:tag] == "clause" or
-          warn "ISO style: Document must contain at least one clause"
+          warn "ISO style: Document must contain clause after Terms and Definitions"
         (n == { tag: "clause", title: "范围" }) &&
           warn("ISO style: 范围 must occur before 术语和定义")
         n = names.shift or return
         while n[:tag] == "clause"
           (n[:title] == "范围") &&
             warn("ISO style: 范围 must occur before 术语和定义")
-          n[:title] == "符号、代号和缩略语" and
-            warn "ISO style: 符号、代号和缩略语 must occur "\
-            "right after Terms and Definitions"
           n = names.shift or return
         end
         unless n[:tag] == "annex" or n[:tag] == "references"
           warn "ISO style: Only annexes and references can follow clauses"
         end
         while n[:tag] == "annex"
-          n = names.shift or return
+          n = names.shift
+          if n.nil?
+            warn("ISO style: Document must include (references) "\
+                 "Normative References")
+            return
+          end
         end
         n == { tag: "references", title: "规范性引用文件" } or
           warn "ISO style: Document must include (references) 规范性引用文件"
