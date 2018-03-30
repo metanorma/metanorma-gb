@@ -112,18 +112,20 @@ page;mso-element-top:27.55pt;mso-height-rule:exactly'>
   </p>
     {% endif %}
  
-    {% if draft %}
+    {% if stage and stage < 60 %}
+    {% if stage == 30 %}
   <p class=a0><a name=YZBS></a><span
   style='mso-bookmark:YZBS'><span lang=ZH-CN style='mso-no-proof:yes'>在提交反馈意见时，请将您知道的相关专利连同支持文件一并附上。</span><span
   lang=EN-US></span></span><span
   style='mso-bookmark:YZBS'></span></p>
+    {% endif %}
   <table class=MsoNormalTable border=1 cellspacing=0 cellpadding=0
    style='border-collapse:collapse;mso-table-layout-alt:fixed;border:none;
    mso-border-alt:solid black .5pt;mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
    mso-border-insideh:.5pt solid black;mso-border-insidev:.5pt solid black'>
    <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes'>
     <td width=657 valign=top style='width:492.75pt;border:none;padding:0cm 5.4pt 0cm 5.4pt'>
-    <p class=affe><span lang=ZH-CN>（征求意见稿）</span><!--[if gte vml 1]><v:rect
+    <p class=affe><span lang=ZH-CN>（{{ stageabbr }}）</span><!--[if gte vml 1]><v:rect
      id="RQ" o:spid="_x0000_s1029" alt="" style='position:absolute;left:0;
      text-align:left;margin-left:173.3pt;margin-top:45.15pt;width:150pt;
      height:20pt;z-index:-251658752;mso-wrap-style:square;mso-wrap-edited:f;

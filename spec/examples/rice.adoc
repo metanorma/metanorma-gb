@@ -37,7 +37,9 @@
 :table-caption: Table
 :example-caption: Figure
 :library-ics: 1322
-:library-l: 80
+:library-css: L 80
+:lang: en
+:script: Latn
 
 .前言 
 ISO (the International Organization for Standardization) 

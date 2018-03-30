@@ -53,7 +53,7 @@ module Asciidoctor
         set_metadata(:committee, gbcommittee.text)
       end
 
-      def id(isoxml, _out)
+      def docid(isoxml, _out)
         super
         gb_identifier(isoxml)
         gb_library_identifier(isoxml)
@@ -174,16 +174,23 @@ module Asciidoctor
       end
 
       STAGE_ABBRS = {
-        "00": "PWI",
-        "10": "NWIP",
-        "20": "WD",
-        "30": "CD",
-        "40": "DIS",
-        "50": "FDIS",
-        "60": "IS",
+        "00": "新工作项目建议",
+        "10": "新工作项目",
+        "20": "标准草案征求意见稿",
+        "30": "标准草案送审稿",
+        "40": "标准草案报批稿",
+        "50": "标准出版稿",
+        "60": "国家标准",
         "90": "(Review)",
         "95": "(Withdrawal)",
       }.freeze
+    
+    def stage_abbrev(stage, iter, draft)
+      stage = STAGE_ABBRS[stage.to_sym] || "??"
+      stage = "#{iter.text}次#{stage}" if iter
+      stage = "Pre" + stage if draft&.text =~ /^0\./
+      stage
+    end
     end
   end
 end
