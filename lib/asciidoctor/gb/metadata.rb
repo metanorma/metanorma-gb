@@ -98,6 +98,7 @@ module Asciidoctor
       end
 
       def standard_logo(gbprefix)
+        return nil unless gbprefix
         case gbprefix.downcase
         when "db" then "gb-standard-db"
         when "gb" then "gb-standard-gb"
@@ -184,13 +185,13 @@ module Asciidoctor
         "90": "(Review)",
         "95": "(Withdrawal)",
       }.freeze
-    
-    def stage_abbrev(stage, iter, draft)
-      stage = STAGE_ABBRS[stage.to_sym] || "??"
-      stage = "#{iter.text}次#{stage}" if iter
-      stage = "Pre" + stage if draft&.text =~ /^0\./
-      stage
-    end
+
+      def stage_abbrev(stage, iter, draft)
+        stage = STAGE_ABBRS[stage.to_sym] || "??"
+        stage = "#{iter.text}次#{stage}" if iter
+        stage = "Pre" + stage if draft&.text =~ /^0\./
+        stage
+      end
     end
   end
 end
