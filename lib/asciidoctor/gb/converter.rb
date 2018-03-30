@@ -191,6 +191,22 @@ module Asciidoctor
         matched3 = ISO_REF_ALL_PARTS.match item
         [matched, matched2, matched3]
       end
+
+      def cleanup(xmldoc)
+        super
+        copyright_cleanup(xmldoc)
+        xmldoc
+      end
+
+      def copyright_cleanup(xmldoc)
+        scope = xmldoc.at("//gbscope")&.text || return
+        prefix = xmldoc.at("//gbprefix")&.text  || return
+        mandate = xmldoc.at("//gbmandate")&.text || "mandatory"
+        warn "#{scope} #{prefix} #{mandate}\n"
+        agency = GbConvert.new({}).standard_agency(scope, prefix, mandate)
+        owner = xmldoc.at("//copyright/owner/organization/name")
+        owner.content = agency
+      end
     end
   end
 end

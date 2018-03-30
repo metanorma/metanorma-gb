@@ -125,6 +125,12 @@ The party which proposed the standard.
 `:authority:`::
 The authority which sponsored the standard.
 
+`:author:`::
+The individuals who drafted the standard.
+
+`:author-committee:`::
+The committees which drafted the standard.
+
 === Language macros
 
 In Terms and Definitions, preferred terms, alternate terms and deprecated terms

@@ -1,38 +1,28 @@
 module Asciidoctor
   module Gb
     class Converter < ISO::Converter
-      def metadata_author(_node, xml)
-        xml.contributor do |c|
-          c.role **{ type: "author" }
-          c.organization do |a|
-            a.name "GB"
+      def metadata_author(node, xml)
+        author = node.attr("author") || return
+        author.split(/, ?/).each do |author|
+          xml.contributor do |c|
+            c.role **{ type: "author" }
+            c.person do |p|
+              p.name do |n|
+                n.surname author
+              end
+            end
           end
         end
       end
 
-      def metadata_publisher(node, xml)
-        xml.contributor do |c|
-          c.role **{ type: "publisher" }
-          c.organization do |a|
-            a.name (node.attr("publisher") || "GB")
-          end
-        end
-      end
-
-      def metadata_authority(node, xml)
-        xml.contributor do |c|
-          c.role **{ type: "authority" }
-          c.organization do |a|
-            a.name (node.attr("authority") || "GB")
-          end
-        end
-      end
-
-      def metadata_proposer(node, xml)
-        xml.contributor do |c|
-          c.role **{ type: "proposer" }
-          c.organization do |a|
-            a.name (node.attr("proposer") || "GB")
+      def metadata_contributor1(node, xml, type, role)
+        contrib = node.attr(type) || "GB"
+        contrib.split(/, ?/).each do |c|
+          xml.contributor do |x|
+            x.role **{ type: role }
+            x.organization do |a|
+              a.name { |n| n << c }
+            end
           end
         end
       end
@@ -155,9 +145,10 @@ module Asciidoctor
 
       def metadata_contributors(node, xml)
         metadata_author(node, xml)
-        metadata_publisher(node, xml)
-        metadata_authority(node, xml)
-        metadata_proposer(node, xml)
+        metadata_contributor1(node, xml, "author-committee", "author")
+        metadata_contributor1(node, xml, "publisher", "publisher")
+        metadata_contributor1(node, xml, "authority", "authority")
+        metadata_contributor1(node, xml, "proposer", "proposer")
       end
 
       def metadata(node, xml)
