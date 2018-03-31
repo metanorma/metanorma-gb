@@ -164,7 +164,7 @@ module Asciidoctor
       end
 
       def populate_template(docxml, format)
-        meta = get_metadata
+        meta = get_metadata.merge(@labels)
         logo = format_logo(meta[:gbprefix], format)
         docxml = termref_resolve(docxml)
         docxml.gsub!(/\s*\[ISOSECTION\]/, ", ?~Z?~I")
