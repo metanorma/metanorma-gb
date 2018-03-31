@@ -13,7 +13,14 @@ module Asciidoctor
       end
 
       def generate_header(filename, dir)
-        super
+        return unless @header
+        template = Liquid::Template.parse(File.read(@header, encoding: "UTF-8"))
+        meta = get_metadata
+        meta[:filename] = filename
+        params = meta.map { |k, v| [k.to_s, v] }.to_h
+        File.open("header.html", "w") do |f|
+          f.write(template.render(params))
+        end
         system "cp #{fileloc(File.join('html', 'blank.png'))} blank.png"
       end
 

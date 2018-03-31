@@ -78,6 +78,7 @@ module Asciidoctor
           standardstylesheet: generate_css(html_doc_path("gb.scss"), false),
           wordcoverpage: html_doc_path("word_gb_titlepage.html"),
           wordintropage: html_doc_path("word_gb_intro.html"),
+          header: html_doc_path("header.html"),
           i18nyaml: node&.attr("i18nyaml"),
         )
       end
