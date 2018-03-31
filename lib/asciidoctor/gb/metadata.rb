@@ -1,4 +1,5 @@
 require "isodoc"
+require "twitter_cldr"
 
 module Asciidoctor
   module Gb
@@ -189,7 +190,7 @@ module Asciidoctor
 
       def stage_abbrev(stage, iter, draft)
         stage = STAGE_ABBRS[stage.to_sym] || "??"
-        stage = "#{iter.text}次#{stage}" if iter
+        stage = "#{iter.text.to_i.localize(:zh).spellout}次#{stage}" if iter
         stage = "Pre" + stage if draft&.text =~ /^0\./
         stage
       end

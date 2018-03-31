@@ -36,6 +36,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "ruby-xslt"
   spec.add_dependency "thread_safe"
   spec.add_dependency "uuidtools"
+  spec.add_dependency "twitter_cldr"
   spec.add_dependency "asciidoctor-iso"
   spec.add_dependency "isodoc"
 
