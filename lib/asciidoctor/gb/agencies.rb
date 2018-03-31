@@ -156,11 +156,12 @@ module Asciidoctor
         case scope
         when "national"
           NATIONAL&.dig(gb_mandate_suffix(prefix, mandate).to_sym,
-                        :admin) || "XXXX"
+                        :admin) || nil
         when "sector"
-          SECTOR&.dig(prefix.to_sym, :admin) || "XXXX"
+          SECTOR&.dig(prefix.to_sym, :admin) || nil
         when "local"
-          "#{LOCAL&.dig(prefix.to_sym) || 'XXXX'}质量技术检测局"
+          LOCAL&.dig(prefix.to_sym) ?
+          "#{LOCAL&.dig(prefix.to_sym)}质量技术检测局" : nil
         when "enterprise" then "ENTERPRISE STANDARD" # TODO
         when "professional" then "PROFESSIONAL STANDARD" # TODO
         end

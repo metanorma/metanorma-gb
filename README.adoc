@@ -116,8 +116,11 @@ The CCS (Chinese Categorization Scheme) code for the GB standard. See https://gi
 `:plan-number:`::
 The Plan Number (计划单号) for the GB standard.
 
+`:issuer:`::
+The issuer of the standard. This is the authority which authors, manages, and issues the standard. The issuer appears on the standard frontispiece. By default, the issuer is inferred from the prefix of the standard; this attribute overrides the value inferred from the prefix.
+
 `:publisher:`::
-The publisher of the standard. This is distinct from the issuer, the authority which authors, manages, and issues the standard; the issuing authority is inferred from the prefix of the standard, and appears on the standard frontispiece.
+The publisher of the standard, which distributes the standard. This is distinct from the issuer, the authority which authors, manages, and issues the standard.
 
 `:proposer:`::
 The party which proposed the standard.

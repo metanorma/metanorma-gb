@@ -194,18 +194,27 @@ module Asciidoctor
 
       def cleanup(xmldoc)
         super
-        copyright_cleanup(xmldoc)
+        contributor_cleanup(xmldoc)
         xmldoc
       end
 
-      def copyright_cleanup(xmldoc)
-        scope = xmldoc.at("//gbscope")&.text || return
-        prefix = xmldoc.at("//gbprefix")&.text  || return
+      def contributor_cleanup(xmldoc)
+        issuer = xmldoc.at("//bibdata/contributor[role/@type = 'issuer']/organization/name")
+        scope = xmldoc.at("//gbscope")&.text
+        prefix = xmldoc.at("//gbprefix")&.text
         mandate = xmldoc.at("//gbmandate")&.text || "mandatory"
-        warn "#{scope} #{prefix} #{mandate}\n"
-        agency = GbConvert.new({}).standard_agency(scope, prefix, mandate)
+        agency = issuer.content
+        agency = GbConvert.new({}).standard_agency(scope, prefix, mandate) if agency == "GB"
+        agency = "GB" unless agency
         owner = xmldoc.at("//copyright/owner/organization/name")
         owner.content = agency
+        owner = xmldoc.at("//contributor[role/@type = 'issuer']/organization/name")
+        owner.content = agency
+        xmldoc.xpath("//gbcommittee").each do |c|
+          xmldoc.at("//bibdata/contributor").next = 
+            "<contributor><role type='technical-committee'/><organization>"\
+            "<name>#{c.text}</name></organization></contributor>"
+        end
       end
     end
   end

@@ -149,6 +149,7 @@ module Asciidoctor
         metadata_contributor1(node, xml, "publisher", "publisher")
         metadata_contributor1(node, xml, "authority", "authority")
         metadata_contributor1(node, xml, "proposer", "proposer")
+        metadata_contributor1(node, xml, "issuer", "issuer")
       end
 
       def metadata(node, xml)
