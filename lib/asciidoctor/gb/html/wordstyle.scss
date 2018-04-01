@@ -272,7 +272,7 @@ p.MsoNormalUnindented, li.MsoNormalUnindented, div.MsoNormalUnindented
 	margin-bottom:.0001pt;
 	text-align:justify;
 	text-justify:inter-ideograph;
-	text-indent:21.0pt;
+	text-indent:0.0pt;
 	mso-pagination:widow-orphan;
 	tab-stops:20.15pt;
 	font-size:10.5pt;
@@ -1928,15 +1928,15 @@ p.afa, li.afa, div.afa
 	mso-element-wrap:around;
 	mso-element-anchor-vertical:page;
 	mso-element-anchor-horizontal:page;
-	mso-element-left:70.95pt;
+	mso-element-left:2.0cm;
 	mso-element-top:114.3pt;
 	mso-height-rule:exactly;
 	mso-element-anchor-lock:locked;
 	font-size:24.0pt;
 	mso-bidi-font-size:10.0pt;
-	font-family:$bodyfont;
-	mso-hansi-font-family:$bodyfont;
-	mso-bidi-font-family:$bodyfont;
+	font-family:SimSun;
+	mso-hansi-font-family:SimSun;
+	mso-bidi-font-family:SimSun;
 	letter-spacing:1.0pt;
 	mso-font-width:148%;
 	mso-ansi-language:EN-US;
@@ -1958,11 +1958,11 @@ p.af, li.af, div.af
 	mso-element:frame;
 	mso-element-frame-width:127.3pt;
 	mso-element-frame-height:69.45pt;
-	mso-element-frame-hspace:9.05pt;
-	mso-element-frame-vspace:9.05pt;
+	/*mso-element-frame-hspace:9.05pt;*/
+	/*mso-element-frame-vspace:9.05pt;*/
 	mso-element-wrap:around;
 	mso-element-anchor-horizontal:margin;
-	mso-element-left:326.1pt;
+	/*mso-element-left:326.1pt;*/
 	mso-element-top:19.9pt;
 	mso-height-rule:exactly;
 	mso-element-anchor-lock:locked;
