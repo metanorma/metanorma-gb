@@ -135,14 +135,14 @@ module Asciidoctor
         else
           logo += ".gif"
           system "cp #{fileloc(File.join('html/gb-logos', logo))}  #{logo}"
-          "<img width='113' height='56' src='#{logo}' alt='#{prefix}'>"
+          "<img width='113' height='56' src='#{logo}' alt='#{prefix}'></img>"
         end
       end
 
       def format_agency(agency, format)
         return agency unless agency.is_a?(Array)
         ret = "<table><tr><td>#{agency[0]}</td>"\
-          "<td rowspan='#{agency.size}'>发布</td></tr>"
+          "<td rowspan='#{agency.size}' width='5%'>发布</td></tr>"
         agency[1..-1].each { |a| ret += "<tr><td>#{a}</td></tr>" }
         ret += "</table>"
         ret.gsub!(/<table>/, "<table width='100%'>") if format == :word
