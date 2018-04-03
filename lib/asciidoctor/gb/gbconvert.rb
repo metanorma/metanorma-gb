@@ -91,6 +91,55 @@ module Asciidoctor
         end
       end
 
+
+      def format_logo(prefix, _format)
+        logo = standard_logo(prefix)
+        if logo.nil?
+          "<span style='font-size:36pt;font-weight:bold'>#{prefix}</span>"
+        else
+          logo += ".gif"
+          system "cp #{fileloc(File.join('html/gb-logos', logo))}  #{logo}"
+          "<img width='113' height='56' src='#{logo}' alt='#{prefix}'></img>"
+        end
+      end
+
+      def format_agency(agency, format)
+        return agency unless agency.is_a?(Array)
+        ret = "<table><tr><td>#{agency[0]}</td>"\
+          "<td rowspan='#{agency.size}' width='5%'>发布</td></tr>"
+        agency[1..-1].each { |a| ret += "<tr><td>#{a}</td></tr>" }
+        ret += "</table>"
+        ret.gsub!(/<table>/, "<table width='100%'>") if format == :word
+        ret
+      end
+
+      def termref_render(x)
+        parts = x.split(%r{(\s*\[MODIFICATION\]|,)}m)
+        parts[1] = "，定义" if parts.size > 1 && parts[1] == ","
+        parts.map do |p|
+          /\s*\[MODIFICATION\]/.match?(p) ? ", 改写 &mdash; " : p
+        end.join.sub(/\A\s*/m, "【").sub(/\s*\z/m, "】")
+      end
+
+      def termref_resolve(docxml)
+        docxml.split(%r{(\[TERMREF\]|\[/TERMREF\])}).each_slice(4).
+          map do |a|
+          a.size < 3 ? a[0] : a[0] + termref_render(a[2])
+        end.join
+      end
+
+      def populate_template(docxml, format)
+        meta = get_metadata.merge(@labels)
+        logo = format_logo(meta[:gbprefix], format)
+        docxml = termref_resolve(docxml)
+        docxml.gsub!(/\s*\[ISOSECTION\]/, ", ?~Z?~I")
+        meta[:standard_agency_formatted] =
+          format_agency(meta[:standard_agency], format)
+        meta[:standard_logo] = logo
+        template = Liquid::Template.parse(docxml)
+        template.render(meta.map { |k, v| [k.to_s, v] }.to_h)
+      end
+
       def toWord(result, filename, dir)
         result = from_xhtml(word_cleanup(to_xhtml(result)))
         result = populate_template(result, :word)

@@ -54,6 +54,46 @@ module Asciidoctor
         set_metadata(:committee, gbcommittee.text)
       end
 
+      STAGE_ABBRS_CN = {
+        "00": "新工作项目建议",
+        "10": "新工作项目",
+        "20": "标准草案工作组讨论稿",
+        "30": "标准草案征求意见稿",
+        "40": "标准草案送审稿",
+        "50": "标准草案报批稿",
+        "60": "国家标准",
+        "90": "(Review)",
+        "95": "(Withdrawal)",
+      }.freeze
+
+      def stage_abbrev_cn(stage, iter, draft)
+        stage = STAGE_ABBRS_CN[stage.to_sym] || "??"
+        stage = "#{iter.text.to_i.localize(:zh).spellout}次#{stage}" if iter
+        stage = "Pre" + stage if draft&.text =~ /^0\./
+        stage
+      end
+
+      def docstatus(isoxml, _out)
+        docstatus = isoxml.at(ns("//status/stage"))
+        if docstatus
+          set_metadata(:stage, docstatus.text)
+          abbr = stage_abbrev_cn(docstatus.text, isoxml.at(ns("//status/iteration")),
+                              isoxml.at(ns("//version/draft")))
+          set_metadata(:stageabbr, abbr)
+        end
+      end
+
+      def docid1(isoxml, _out)
+        dn = docnumber(isoxml)
+        docstatus = get_metadata[:stage]
+        if docstatus
+          abbr = stage_abbrev(docstatus, isoxml.at(ns("//status/iteration")),
+                            isoxml.at(ns("//version/draft")))
+          (docstatus.to_i < 60) && dn = abbr + " " + dn
+        end
+        set_metadata(:docnumber, dn)
+      end
+
       def docid(isoxml, _out)
         docid1(isoxml, _out)
         gb_identifier(isoxml)
@@ -126,94 +166,6 @@ module Asciidoctor
         when "en" then "Part #{partnumber}"
         when "zh" then "第#{partnumber}部"
         end
-      end
-
-      def format_logo(prefix, _format)
-        logo = standard_logo(prefix)
-        if logo.nil?
-          "<span style='font-size:36pt;font-weight:bold'>#{prefix}</span>"
-        else
-          logo += ".gif"
-          system "cp #{fileloc(File.join('html/gb-logos', logo))}  #{logo}"
-          "<img width='113' height='56' src='#{logo}' alt='#{prefix}'></img>"
-        end
-      end
-
-      def format_agency(agency, format)
-        return agency unless agency.is_a?(Array)
-        ret = "<table><tr><td>#{agency[0]}</td>"\
-          "<td rowspan='#{agency.size}' width='5%'>发布</td></tr>"
-        agency[1..-1].each { |a| ret += "<tr><td>#{a}</td></tr>" }
-        ret += "</table>"
-        ret.gsub!(/<table>/, "<table width='100%'>") if format == :word
-        ret
-      end
-
-      def termref_render(x)
-        parts = x.split(%r{(\s*\[MODIFICATION\]|,)}m)
-        parts[1] = "，定义" if parts.size > 1 && parts[1] == ","
-        parts.map do |p|
-          /\s*\[MODIFICATION\]/.match?(p) ? ", 改写 &mdash; " : p
-        end.join.sub(/\A\s*/m, "【").sub(/\s*\z/m, "】")
-      end
-
-      def termref_resolve(docxml)
-        docxml.split(%r{(\[TERMREF\]|\[/TERMREF\])}).each_slice(4).
-          map do |a|
-          a.size < 3 ? a[0] : a[0] + termref_render(a[2])
-        end.join
-      end
-
-      def populate_template(docxml, format)
-        meta = get_metadata.merge(@labels)
-        logo = format_logo(meta[:gbprefix], format)
-        docxml = termref_resolve(docxml)
-        docxml.gsub!(/\s*\[ISOSECTION\]/, ", ?~Z?~I")
-        meta[:standard_agency_formatted] =
-          format_agency(meta[:standard_agency], format)
-        meta[:standard_logo] = logo
-        template = Liquid::Template.parse(docxml)
-        template.render(meta.map { |k, v| [k.to_s, v] }.to_h)
-      end
-
-      STAGE_ABBRS_CN = {
-        "00": "新工作项目建议",
-        "10": "新工作项目",
-        "20": "标准草案征求意见稿",
-        "30": "标准草案送审稿",
-        "40": "标准草案报批稿",
-        "50": "标准出版稿",
-        "60": "国家标准",
-        "90": "(Review)",
-        "95": "(Withdrawal)",
-      }.freeze
-
-      def stage_abbrev_cn(stage, iter, draft)
-        stage = STAGE_ABBRS_CN[stage.to_sym] || "??"
-        stage = "#{iter.text.to_i.localize(:zh).spellout}次#{stage}" if iter
-        stage = "Pre" + stage if draft&.text =~ /^0\./
-        stage
-      end
-
-      def docstatus(isoxml, _out)
-        docstatus = isoxml.at(ns("//status/stage"))
-        if docstatus
-          set_metadata(:stage, docstatus.text)
-          abbr = stage_abbrev_cn(docstatus.text, isoxml.at(ns("//status/iteration")),
-                              isoxml.at(ns("//version/draft")))
-          set_metadata(:stageabbr, abbr)
-        end
-      end
-
-      def docid1(isoxml, _out)
-        dn = docnumber(isoxml)
-        docstatus = get_metadata[:stage]
-        if docstatus
-          abbr = stage_abbrev(docstatus, isoxml.at(ns("//status/iteration")),
-                            isoxml.at(ns("//version/draft")))
-          (docstatus.to_i < 60) && dn = abbr + " " + dn
-        end
-        set_metadata(:docnumber, dn)
       end
     end
   end
