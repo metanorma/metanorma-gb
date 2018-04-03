@@ -8,7 +8,7 @@
  mso-position-horizontal:absolute;mso-position-horizontal-relative:text;
  mso-position-vertical:absolute;mso-position-vertical-relative:text;
  mso-width-percent:0;mso-height-percent:0;mso-width-relative:page;
- mso-height-relative:page' from="0,24.69cm" to="17.00cm,24.69cm"  strokecolor="#080000" strokeweight="1pt">
+ mso-height-relative:page' from="0,24.7cm" to="17.00cm,24.7cm"  strokecolor="#080000" strokeweight="1pt">
  <o:lock v:ext="edit" shapetype="f"/>
 </v:line><![endif]--></p>
 
@@ -21,7 +21,7 @@
  mso-position-horizontal:absolute;mso-position-horizontal-relative:text;
  mso-position-vertical:absolute;mso-position-vertical-relative:text;
  mso-width-percent:0;mso-height-percent:0;mso-width-relative:page;
- mso-height-relative:page' from="0,6.00cm" to="17.00cm,6.00cm"  strokecolor="#080000" strokeweight="1pt">
+ mso-height-relative:page' from="0,6.11cm" to="17.00cm,6.11cm"  strokecolor="#080000" strokeweight="1pt">
  <o:lock v:ext="edit" shapetype="f"/>
 </v:line><![endif]--></p>
 
@@ -76,7 +76,7 @@ top:-5px;'>
 
 <!--[if gte vml 1]><v:shape
  id="fmFrame2" o:spid="_x0000_s1029" type="#_x0000_t202" alt="" style='position:absolute;
- left:0;text-align:left;margin-left:0;margin-top:2.81cm;width:17.00cm;height:1.09cm;
+ left:0;text-align:left;margin-left:0;margin-top:2.81cm;width:17.00cm;height:0.80cm;
  z-index:251653632;mso-wrap-style:square;mso-wrap-edited:f;mso-width-percent:0;
  mso-height-percent:0;mso-position-horizontal-relative:margin;
  mso-position-vertical-relative:margin;mso-width-percent:0;
@@ -113,8 +113,8 @@ width:263494454px;height:28675px'>
 
 <!--[if gte vml 1]><v:shape
  id="fmFrame3" o:spid="_x0000_s1031" type="#_x0000_t202" alt="文本框: GB/T XXXX—XXXX&#13;&#10;&#13;&#10;"
- style='position:absolute;left:0;text-align:left;margin-left:0;margin-top:4.40cm;
- width:16.85cm;height:4.64cm;z-index:251655680;mso-wrap-style:square;
+ style='position:absolute;left:0;text-align:left;margin-left:0;margin-top:4.00cm;
+ width:16.50cm;height:4.64cm;z-index:251655680;mso-wrap-style:square;
  mso-wrap-edited:f;mso-width-percent:0;mso-height-percent:0;
  mso-position-horizontal-relative:margin;mso-position-vertical-relative:margin;
  mso-width-percent:0;mso-height-percent:0;v-text-anchor:top' stroked="f">
@@ -175,6 +175,71 @@ width:263494454px;height:28675px'>
 
 </span><![endif]>
 
+
+<!--[if gte vml 1]><v:shape id="fmFrame4" o:spid="_x0000_s1032"
+ type="#_x0000_t202" alt="" style='position:absolute;left:0;text-align:left;
+ margin-left:-5.25pt;margin-top:10.5cm;width:16.58cm;height:12.40cm;z-index:251656704;
+ mso-wrap-style:square;mso-wrap-edited:f;mso-width-percent:0;
+ mso-height-percent:0;mso-position-horizontal-relative:margin;
+ mso-position-vertical-relative:margin;mso-width-percent:0;
+ mso-height-percent:0;v-text-anchor:top' stroked="f">
+ <v:textbox style='mso-next-textbox:#fmFrame4' inset="0,0,0,0"/>
+ <w:wrap anchorx="margin" anchory="margin"/>
+ <w:anchorlock/>
+</v:shape><![endif]--><![if !vml]><span style='mso-ignore:vglayout;position:
+absolute;z-index:251656704;left:0px;margin-left:-15px;margin-top:245px;
+width:263494459px;height:28675px'>
+
+<table cellpadding=0 cellspacing=0>
+ <tr>
+  <td width=263494459 height=28675 bgcolor=white style='vertical-align:top;
+  background:white'><![endif]><![if !mso]><span style='position:absolute;
+  mso-ignore:vglayout;left:0pt;z-index:251656704'>
+  <table cellpadding=0 cellspacing=0 width="100%">
+   <tr>
+    <td><![endif]>
+    <div v:shape="fmFrame4" style='padding:0pt 0pt 0pt 0pt' class=shape>
+    <p class=standard_name><span lang=ZH-CN>{{ docmaintitlezh }} {{ docsubtitlezh }} {{ docparttitlezh }}</span><span lang=EN-US style='mso-bidi-font-size:26.0pt'><o:p></o:p></span></p>
+    <p class=standard_name_english style='margin-top:0cm;line-height:32.0pt;mso-line-height-rule:
+    exactly'><span lang=EN-US>{{ docmaintitleen }} {{ docsubtitleen }} {{ docparttitleen }}</span></p>
+
+    {% if isostandard %}
+  <p class=identicality_label>
+      <span class="iso-document-code">({{ isostandard }}</span>
+      {% if isostandardtitle != "[not supplied]" %}
+      <span class="iso-title-first">{{ isostandardtitle }}</span>
+      {% endif %}
+      <span class="join">，</span>
+      <span class="iso-equivalence-code">{{ gbequivalence }})</span>
+  </p>
+    {% endif %}
+    {% if stage and stage < 60 %}
+    <p class=draft_type><span lang=EN-US><span style='mso-spacerun:yes'> </span></span><span
+    lang=ZH-CN>（{{ stageabbr }}）</span></p>
+  <p class=draft_type>
+    {% if stage == 30 %}
+  <a name=YZBS></a><span
+  style='mso-bookmark:YZBS'><span lang=ZH-CN style='mso-no-proof:yes'>在提交反馈意见时，请将您知道的相关专利连同支持文件一并附上。</span><span
+  lang=EN-US></span></span><span
+  style='mso-bookmark:YZBS'></span>
+    {% endif %}
+  </p>
+    <p class=draft_editorial><span lang=EN-US>
+       {% if revdate %}
+    <span lang=ZH-CN>（本稿完成日期：</span><span lang=EN-US>{{ revdate }}）</span>
+       {% endif %}
+   </span></p>
+        {% endif %}
+
+    </div>
+    <![if !mso]></td>
+   </tr>
+  </table>
+  </span><![endif]><![if !mso & !vml]>&nbsp;<![endif]><![if !vml]></td>
+ </tr>
+</table>
+
+</span><![endif]>
 
 
 <!--[if gte vml 1]><v:shape id="fmFrame6" o:spid="_x0000_s1034"
@@ -245,73 +310,7 @@ width:263494454px;height:28675px'>
  </tr>
 </table>
 
-</span><![endif]><!--[if gte vml 1]><v:shape id="fmFrame4" o:spid="_x0000_s1032"
- type="#_x0000_t202" alt="" style='position:absolute;left:0;text-align:left;
- margin-left:-5.25pt;margin-top:8.80cm;width:16.58cm;height:14.10cm;z-index:251656704;
- mso-wrap-style:square;mso-wrap-edited:f;mso-width-percent:0;
- mso-height-percent:0;mso-position-horizontal-relative:margin;
- mso-position-vertical-relative:margin;mso-width-percent:0;
- mso-height-percent:0;v-text-anchor:top' stroked="f">
- <v:textbox style='mso-next-textbox:#fmFrame4' inset="0,0,0,0"/>
- <w:wrap anchorx="margin" anchory="margin"/>
- <w:anchorlock/>
-</v:shape><![endif]--><![if !vml]><span style='mso-ignore:vglayout;position:
-absolute;z-index:251656704;left:0px;margin-left:-15px;margin-top:245px;
-width:263494459px;height:28675px'>
-
-<table cellpadding=0 cellspacing=0>
- <tr>
-  <td width=263494459 height=28675 bgcolor=white style='vertical-align:top;
-  background:white'><![endif]><![if !mso]><span style='position:absolute;
-  mso-ignore:vglayout;left:0pt;z-index:251656704'>
-  <table cellpadding=0 cellspacing=0 width="100%">
-   <tr>
-    <td><![endif]>
-    <div v:shape="fmFrame4" style='padding:0pt 0pt 0pt 0pt' class=shape>
-    <p class=standard_name><span lang=ZH-CN>{{ docmaintitlezh }} {{ docsubtitlezh }} {{ docparttitlezh }}</span><span lang=EN-US style='mso-bidi-font-size:26.0pt'><o:p></o:p></span></p>
-    <p class=standard_name_english style='margin-top:0cm;line-height:32.0pt;mso-line-height-rule:
-    exactly'><span lang=EN-US>{{ docmaintitleen }} {{ docsubtitleen }} {{ docparttitleen }}</span></p>
-
-    {% if isostandard %}
-  <p class=identicality_label>
-      <span class="iso-document-code">({{ isostandard }}</span>
-      {% if isostandardtitle != "[not supplied]" %}
-      <span class="iso-title-first">{{ isostandardtitle }}</span>
-      {% endif %}
-      <span class="join">，</span>
-      <span class="iso-equivalence-code">{{ gbequivalence }})</span>
-  </p>
-    {% endif %}
-    {% if stage and stage < 60 %}
-    <p class=draft_type><span lang=EN-US><span style='mso-spacerun:yes'> </span></span><span
-    lang=ZH-CN>（{{ stageabbr }}）</span></p>
-  <p class=draft_type>
-    {% if stage == 30 %}
-  <a name=YZBS></a><span
-  style='mso-bookmark:YZBS'><span lang=ZH-CN style='mso-no-proof:yes'>在提交反馈意见时，请将您知道的相关专利连同支持文件一并附上。</span><span
-  lang=EN-US></span></span><span
-  style='mso-bookmark:YZBS'></span>
-    {% endif %}
-  </p>
-    <p class=draft_editorial><span lang=EN-US>
-       {% if revdate %}
-    <span lang=ZH-CN>（本稿完成日期：</span><span lang=EN-US>{{ revdate }}）</span>
-       {% endif %}
-   </span></p>
-        {% endif %}
-
-    </div>
-    <![if !mso]></td>
-   </tr>
-  </table>
-  </span><![endif]><![if !mso & !vml]>&nbsp;<![endif]><![if !vml]></td>
- </tr>
-</table>
-
-</span><![endif]><span style='mso-bookmark:SectionMark4'><span
-style='mso-bookmark:SectionMark0'></span></span>
-
-
+</span><![endif]>
 
 
 <!--[if gte vml 1]><v:shapetype
@@ -319,8 +318,8 @@ style='mso-bookmark:SectionMark0'></span></span>
  <v:stroke joinstyle="miter"/>
  <v:path gradientshapeok="t" o:connecttype="rect"/>
 </v:shapetype><v:shape id="fmFrame7" o:spid="_x0000_s1035" type="#_x0000_t202"
- alt="" style='position:absolute;left:0;text-align:left;margin-left:0.74cm;
- margin-top:25.30cm;width:16.26cm;height:1.66cm;z-index:251659776;
+ alt="" style='position:absolute;left:0;text-align:left;margin-left:0.0cm;
+ margin-top:25.00cm;width:17.00cm;height:1.7cm;z-index:251659776;
  mso-wrap-style:square;mso-wrap-edited:f;mso-width-percent:0;
  mso-height-percent:0;mso-position-horizontal-relative:margin;
  mso-position-vertical-relative:margin;mso-width-percent:0;
