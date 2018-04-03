@@ -55,7 +55,7 @@ module Asciidoctor
       end
 
       def docid(isoxml, _out)
-        super
+        docid1(isoxml, _out)
         gb_identifier(isoxml)
         gb_library_identifier(isoxml)
         gb_equivalence(isoxml)
@@ -176,7 +176,7 @@ module Asciidoctor
         template.render(meta.map { |k, v| [k.to_s, v] }.to_h)
       end
 
-      STAGE_ABBRS = {
+      STAGE_ABBRS_CN = {
         "00": "新工作项目建议",
         "10": "新工作项目",
         "20": "标准草案征求意见稿",
@@ -188,11 +188,32 @@ module Asciidoctor
         "95": "(Withdrawal)",
       }.freeze
 
-      def stage_abbrev(stage, iter, draft)
-        stage = STAGE_ABBRS[stage.to_sym] || "??"
+      def stage_abbrev_cn(stage, iter, draft)
+        stage = STAGE_ABBRS_CN[stage.to_sym] || "??"
         stage = "#{iter.text.to_i.localize(:zh).spellout}次#{stage}" if iter
         stage = "Pre" + stage if draft&.text =~ /^0\./
         stage
+      end
+
+      def docstatus(isoxml, _out)
+        docstatus = isoxml.at(ns("//status/stage"))
+        if docstatus
+          set_metadata(:stage, docstatus.text)
+          abbr = stage_abbrev_cn(docstatus.text, isoxml.at(ns("//status/iteration")),
+                              isoxml.at(ns("//version/draft")))
+          set_metadata(:stageabbr, abbr)
+        end
+      end
+
+      def docid1(isoxml, _out)
+        dn = docnumber(isoxml)
+        docstatus = get_metadata[:stage]
+        if docstatus
+          abbr = stage_abbrev(docstatus, isoxml.at(ns("//status/iteration")),
+                            isoxml.at(ns("//version/draft")))
+          (docstatus.to_i < 60) && dn = abbr + " " + dn
+        end
+        set_metadata(:docnumber, dn)
       end
     end
   end
