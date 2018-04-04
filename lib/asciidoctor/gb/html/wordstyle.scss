@@ -2184,7 +2184,7 @@ p.activated_date, li.activated_date, div.activated_date
 	mso-fareast-font-family:SimHei;
 	mso-ansi-language:EN-US;
 	mso-fareast-language:ZH-CN;}
-p.standard_agency, li.standard_agency, div.standard_agency, p.standard_agency td 
+p.standard_agency, li.standard_agency, div.standard_agency, p.standard_agency td, td.standard_agency
 	{mso-style-name:发布部门; //  NAME: Publishing Department 
 	mso-style-unhide:no;
 	mso-style-parent:"";
@@ -2193,6 +2193,7 @@ p.standard_agency, li.standard_agency, div.standard_agency, p.standard_agency td
 	margin-bottom:.0001pt;
 	text-align:center;
 	mso-pagination:widow-orphan;
+	/*
 	mso-element:frame;
 	mso-element-frame-width:13.11cm;
 	mso-element-frame-height:1.03cm;
@@ -2202,6 +2203,7 @@ p.standard_agency, li.standard_agency, div.standard_agency, p.standard_agency td
 	mso-element-anchor-horizontal:margin;
 	mso-element-left:center;
 	mso-element-top:25.40cm;
+	*/
 	mso-height-rule:exactly;
 	mso-element-anchor-lock:locked;
 	font-size:14.0pt;
