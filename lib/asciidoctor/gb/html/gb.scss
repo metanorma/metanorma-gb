@@ -45,10 +45,10 @@ p.FigureTitle
 	page-break-before:avoid;
 	mso-pagination:widow-orphan;
 	tab-stops:20.15pt;
-	font-size:11.0pt;
-	font-family:$bodyfont;
-	mso-fareast-font-family:$bodyfont;
-	mso-bidi-font-family:$bodyfont;
+	font-size:10.5pt;
+	font-family:$headerfont;
+	mso-fareast-font-family:$headerfont;
+	mso-bidi-font-family:$headerfont;
 	mso-ansi-language:EN-GB;}
 p.TableTitle
 	{mso-style-unhide:no;
@@ -63,10 +63,10 @@ p.TableTitle
 	line-height:12.0pt;
 	mso-pagination:widow-orphan;
 	tab-stops:20.15pt;
-	font-size:11.0pt;
-	font-family:$bodyfont;
-	mso-fareast-font-family:$bodyfont;
-	mso-bidi-font-family:$bodyfont;
+	font-size:10.5pt;
+	font-family:$headerfont;
+	mso-fareast-font-family:$headerfont;
+	mso-bidi-font-family:$headerfont;
 	mso-ansi-language:EN-GB;}
 p.Note, div.Note, li.Note
 	{mso-style-unhide:no;
@@ -154,30 +154,6 @@ p.Definition, li.Definition, div.Definition
 	mso-fareast-font-family:$bodyfont;
 	mso-bidi-font-family:$bodyfont;
 	mso-ansi-language:EN-GB;}
-p.zzContents, li.zzContents, div.zzContents
-	{mso-style-name:zzContents;
-	mso-style-noshow:yes;
-	mso-style-unhide:no;
-	mso-style-next:"TOC 1";
-	margin-top:48.0pt;
-	margin-right:0cm;
-	margin-bottom:15.5pt;
-	margin-left:0cm;
-	text-align:center;
-	line-height:15.5pt;
-	mso-line-height-rule:exactly;
-	page-break-before:always;
-	mso-pagination:widow-orphan;
-	page-break-after:avoid;
-	mso-hyphenate:none;
-	tab-stops:20.15pt;
-	font-size:16.0pt;
-	mso-bidi-font-size:11.0pt;
-	font-family:$headerfont;
-	mso-fareast-font-family:$headerfont;
-	mso-bidi-font-family:$headerfont;
-	mso-ansi-language:EN-GB;
-	mso-bidi-font-weight:normal;}
 p.zzCopyright, li.zzCopyright
 	{mso-style-name:zzCopyright;
 	mso-style-noshow:yes;
@@ -533,3 +509,8 @@ table.dl
 	margin-right:0cm;
 	margin-bottom:11.0pt;
 	margin-left:20.15pt;}
+span.note_label, span.example_label
+{
+font-size: 9.0pt;
+font-family:$headerfont;
+}

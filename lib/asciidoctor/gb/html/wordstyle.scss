@@ -420,7 +420,7 @@ h1.Section3
 	mso-list:l1 level1 lfo6;
 	mso-hyphenate:none;
 	tab-stops:20.15pt;
-	font-size:16.0pt;
+	font-size:10.5pt;
 	mso-bidi-font-size:10.0pt;
 	font-family:$headerfont;
 	mso-fareast-font-family:$headerfont;
@@ -488,6 +488,35 @@ p.ForewordTitle, li.ForewordTitle, div.ForewordTitle, h1.ForewordTitle
 	mso-ansi-language:EN-GB;
 	mso-fareast-language:ZH-CN;
 	mso-bidi-font-weight:normal;}
+p.zzContents, li.zzContents, div.zzContents
+	{mso-style-name:zzContents;
+	mso-style-noshow:yes;
+	mso-style-unhide:no;
+	margin-top:0.7cm;
+    mso-element:frame;
+    mso-element-wrap:no-wrap-beside;
+    mso-element-anchor-vertical:paragraph;
+    mso-element-left:center;
+	margin-right:0cm;
+	margin-bottom:0.9cm;
+	margin-left:0cm;
+	text-align:center;
+	line-height:15.5pt;
+	page-break-before:always;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:1;
+	mso-hyphenate:none;
+	tab-stops:20.15pt;
+	font-size:16.0pt;
+	mso-bidi-font-size:11.0pt;
+	font-family:$headerfont;
+	mso-fareast-font-family:$headerfont;
+	mso-bidi-font-family:$headerfont;
+	mso-ansi-language:EN-GB;
+	mso-fareast-language:ZH-CN;
+	mso-bidi-font-weight:normal;
+	mso-style-next:"TOC 1";}
 p.IntroTitle, li.IntroTitle, div.IntroTitle, h1.IntroTitle
 	{mso-style-name:"Intro Title";
 	mso-style-noshow:yes;
@@ -1991,8 +2020,8 @@ p.standard_number, li.standard_number, div.standard_number
 	mso-line-break-override:restrictions;
 	font-size:14.0pt;
 	mso-bidi-font-size:10.0pt;
-	font-family:"Times New Roman",serif;
-	mso-fareast-font-family:SimSun;
+	font-family:$headerfont;
+	mso-fareast-font-family:$headerfont;
 	mso-ansi-language:EN-US;
 	mso-fareast-language:ZH-CN;}
 p.ics_container, li.ics_container, div.ics_container
@@ -2012,9 +2041,9 @@ p.ics_container, li.ics_container, div.ics_container
 	text-autospace:none;
 	font-size:10.5pt;
 	mso-bidi-font-size:10.0pt;
-	font-family:$bodyfont;
-	mso-hansi-font-family:$bodyfont;
-	mso-bidi-font-family:$bodyfont;
+	font-family:$headerfont;
+	mso-hansi-font-family:$headerfont;
+	mso-bidi-font-family:$headerfont;
 	mso-ansi-language:EN-US;
 	mso-fareast-language:ZH-CN;}
 p.standard_class, li.standard_class, div.standard_class
@@ -2163,9 +2192,9 @@ p.supercedes_container, li.supercedes_container, div.supercedes_container
 	mso-height-rule:exactly;
 	mso-element-anchor-lock:locked;
 	font-size:10.5pt;
-	font-family:SimSun;
-	mso-hansi-font-family:SimSun;
-	mso-bidi-font-family:SimSun;
+	font-family:$bodyfont;
+	mso-hansi-font-family:$bodyfont;
+	mso-bidi-font-family:$bodyfont;
 	mso-ansi-language:EN-US;
 	mso-fareast-language:ZH-CN;}
 p.standard_name, li.standard_name, div.standard_name
@@ -2189,9 +2218,9 @@ p.standard_name, li.standard_name, div.standard_name
 	mso-element-anchor-lock:locked;
 	font-size:26.0pt;
 	mso-bidi-font-size:10.0pt;
-	font-family:SimHei;
-	mso-hansi-font-family:"Times New Roman";
-	mso-bidi-font-family:"Times New Roman";
+	font-family:$headerfont;
+	mso-hansi-font-family:$headerfont;
+	mso-bidi-font-family:$headerfont;
 	mso-ansi-language:EN-US;
 	mso-fareast-language:ZH-CN;}
 p.standard_name_english, li.standard_name_english, div.standard_name_english
@@ -2209,8 +2238,8 @@ p.standard_name_english, li.standard_name_english, div.standard_name_english
 	mso-pagination:none;
 	font-size:14.0pt;
 	mso-bidi-font-size:10.0pt;
-	font-family:"Times New Roman",serif;
-	mso-fareast-font-family:SimSun;
+	font-family:$headerfont;
+	mso-fareast-font-family:$headerfont;
 	mso-ansi-language:EN-US;
 	mso-fareast-language:ZH-CN;}
 p.draft_type, li.draft_type, div.draft_type
@@ -2272,8 +2301,8 @@ p.publish_date, li.publish_date, div.publish_date  //  NAME: Other publishing da
 	mso-element-anchor-lock:locked;
 	font-size:14.0pt;
 	mso-bidi-font-size:10.0pt;
-	font-family:"Times New Roman",serif;
-	mso-fareast-font-family:SimHei;
+	font-family:$headerfont;
+	mso-fareast-font-family:$headerfont;
 	mso-ansi-language:EN-US;
 	mso-fareast-language:ZH-CN;}
 p.activated_date, li.activated_date, div.activated_date
@@ -2296,8 +2325,8 @@ p.activated_date, li.activated_date, div.activated_date
 	mso-element-anchor-lock:locked;
 	font-size:14.0pt;
 	mso-bidi-font-size:10.0pt;
-	font-family:"Times New Roman",serif;
-	mso-fareast-font-family:SimHei;
+	font-family:$headerfont;
+	mso-fareast-font-family:$headerfont;
 	mso-ansi-language:EN-US;
 	mso-fareast-language:ZH-CN;}
 p.standard_agency, li.standard_agency, div.standard_agency, p.standard_agency td, td.standard_agency

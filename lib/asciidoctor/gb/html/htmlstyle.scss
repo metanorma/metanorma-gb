@@ -254,3 +254,16 @@ p.IntroTitle, li.IntroTitle, div.IntroTitle, h1.IntroTitle {
 	tab-stops:27.0pt 35.0pt;
 	font-size:10.5pt;
 	font-family:$headerfont;}
+p.zzContents, li.zzContents, div.zzContents
+	{
+	margin-top:48.0pt;
+	margin-right:0cm;
+	margin-bottom:15.5pt;
+	margin-left:0cm;
+	text-align:center;
+	line-height:15.5pt;
+	page-break-before:always;
+	page-break-after:avoid;
+	tab-stops:20.15pt;
+	font-size:16.0pt;
+	font-family:$headerfont;}
