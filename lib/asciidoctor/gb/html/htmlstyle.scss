@@ -216,3 +216,41 @@ p.MsoCommentSubject, li.MsoCommentSubject, div.MsoCommentSubject
 .coverpage_footer {
         font-size:14.0pt;
 }
+
+p.ForewordTitle, li.ForewordTitle, div.ForewordTitle, h1.ForewordTitle {
+  margin-top: 1.5cm;
+  margin-right: 0cm;
+  margin-bottom: 1.2cm;
+  margin-left: 0cm;
+  text-align: center;
+  line-height: 15.5pt;
+  tab-stops: 20.15pt;
+  font-size: 16.0pt;
+  font-family: $headerfont;
+}
+p.IntroTitle, li.IntroTitle, div.IntroTitle, h1.IntroTitle {
+  margin-top: 1.5cm;
+  margin-right: 0cm;
+  margin-bottom: 1.2cm;
+  margin-left: 0cm;
+  text-align: center;
+  line-height: 15.5pt;
+  tab-stops: 20.15pt;
+  font-size: 16.0pt;
+  font-family: $headerfont;
+}
+.h2Annex
+    {
+    margin-top:7.8pt;
+	margin-right:0cm;
+	margin-bottom:7.8pt;
+	margin-left:0cm;
+	text-indent:0cm;
+	line-height:12.5pt;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:2;
+	mso-hyphenate:none;
+	tab-stops:27.0pt 35.0pt;
+	font-size:10.5pt;
+	font-family:$headerfont;}
