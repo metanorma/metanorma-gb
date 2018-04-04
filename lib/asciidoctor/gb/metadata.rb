@@ -136,6 +136,7 @@ module Asciidoctor
         set_metadata(:standard_class, standard_class(scope, prefix, mandate))
         set_metadata(:standard_agency, standard_agency(scope, prefix, mandate))
         set_metadata(:gbprefix, scope == "local" ? "DB" : prefix)
+        set_metadata(:gbscope, scope)
       end
 
       def standard_logo(gbprefix)

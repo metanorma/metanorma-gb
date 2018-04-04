@@ -91,15 +91,22 @@ module Asciidoctor
         end
       end
 
+      def local_logo_suffix(scope)
+        return "" if scope != "local"
+        local = get_metadata[:docidentifier][2,2]
+        "<span style='font-size:60pt;font-weight:bold'>#{local}</span>"
+      end
 
-      def format_logo(prefix, _format)
+      def format_logo(prefix, scope, _format)
         logo = standard_logo(prefix)
         if logo.nil?
           "<span style='font-size:36pt;font-weight:bold'>#{prefix}</span>"
         else
           logo += ".gif"
           system "cp #{fileloc(File.join('html/gb-logos', logo))}  #{logo}"
-          "<img width='113' height='56' src='#{logo}' alt='#{prefix}'></img>"
+          local = local_logo_suffix(scope)
+          "<img width='113' height='56' src='#{logo}' alt='#{prefix}'></img>"\
+            "#{local}"
         end
       end
 
@@ -129,7 +136,7 @@ module Asciidoctor
 
       def populate_template(docxml, format)
         meta = get_metadata.merge(@labels)
-        logo = format_logo(meta[:gbprefix], format)
+        logo = format_logo(meta[:gbprefix], meta[:gbscope], format)
         docxml = termref_resolve(docxml)
         docxml.gsub!(/\s*\[ISOSECTION\]/, ", ?~Z?~I")
         meta[:standard_agency_formatted] =
