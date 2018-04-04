@@ -94,7 +94,7 @@ module Asciidoctor
       def local_logo_suffix(scope)
         return "" if scope != "local"
         local = get_metadata[:docidentifier][2,2]
-        "<span style='font-size:60pt;font-weight:bold'>#{local}</span>"
+        "<span style='font-weight:bold'>#{local}</span>"
       end
 
       def format_logo(prefix, scope, _format)

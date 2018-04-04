@@ -2074,9 +2074,9 @@ p.standard_class, li.standard_class, div.standard_class
 	mso-element-anchor-lock:locked;
 	font-size:18.0pt;
 	mso-bidi-font-size:10.0pt;
-	font-family:SimSun;
-	mso-hansi-font-family:"Times New Roman";
-	mso-bidi-font-family:"Times New Roman";
+	font-family:$titlefont;
+	mso-hansi-font-family:$titlefont;
+	mso-bidi-font-family:$titlefont;
 	letter-spacing:1.0pt;
 	mso-font-width:148%;
 	mso-ansi-language:EN-US;
@@ -2106,7 +2106,6 @@ p.standard_logo, li.standard_logo, div.standard_logo
 	mso-element-top:0.30cm;
 	mso-height-rule:exactly;
 	mso-element-anchor-lock:locked;
-	font-size:48.0pt;
 	font-family:$bodyfont;
 	mso-fareast-font-family:$bodyfont;
 	mso-font-width:170%;
@@ -2138,7 +2137,9 @@ p.standard_logo_local, li.standard_logo_local, div.standard_logo_local
 	mso-element-top:0.30cm;
 	mso-height-rule:exactly;
 	mso-element-anchor-lock:locked;
-	font-size:60.0pt;
+	font-size:72.0pt;
+	line-height:70.0pt;
+	mso-line-height-rule:exactly;
 	font-family:$bodyfont;
 	mso-fareast-font-family:$bodyfont;
 	mso-font-width:170%;
@@ -2353,9 +2354,9 @@ p.standard_agency, li.standard_agency, div.standard_agency, p.standard_agency td
 	mso-element-anchor-lock:locked;
 	font-size:14.0pt;
 	mso-bidi-font-size:10.0pt;
-	font-family:SimSun;
-	mso-hansi-font-family:"Times New Roman";
-	mso-bidi-font-family:"Times New Roman";
+	font-family:$titlefont;
+	mso-hansi-font-family:$titlefont;
+	mso-bidi-font-family:$titlefont;
 	letter-spacing:1.0pt;
 	mso-font-width:135%;
 	mso-ansi-language:EN-US;

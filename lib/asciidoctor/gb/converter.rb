@@ -91,7 +91,9 @@ module Asciidoctor
           (node.attr("script") == "Hans" ? '"SimHei",sans-serif' :
            node.attr("script") == "Latn" ? '"Cambria",serif' : '"SimHei",sans-serif' )
         m = node.attr("monospace-font") || '"Courier New",monospace'
-        "$bodyfont: #{b};\n$headerfont: #{h};\n$monospacefont: #{m};\n"
+        scope = node.attr("scope") || "national"
+        t = scope == "national" ? '"SimSun",serif' : '"SimHei",sans-serif'
+        "$bodyfont: #{b};\n$headerfont: #{h};\n$monospacefont: #{m};\n$titlefont: #{t};\n"
       end
 
       def termdef_cleanup(xmldoc)
