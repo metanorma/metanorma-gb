@@ -89,10 +89,11 @@ module Asciidoctor
            node.attr("script") == "Latn" ? '"Cambria",serif' : '"SimSun",serif' )
         h = node.attr("header-font") ||
           (node.attr("script") == "Hans" ? '"SimHei",sans-serif' :
-           node.attr("script") == "Latn" ? '"Cambria",serif' : '"SimHei",sans-serif' )
+           node.attr("script") == "Latn" ? '"Calibri",sans-serif' : '"SimHei",sans-serif' )
         m = node.attr("monospace-font") || '"Courier New",monospace'
         scope = node.attr("scope") || "national"
-        t = scope == "national" ? '"SimSun",serif' : '"SimHei",sans-serif'
+        t = node.attr("title-font") ||
+          scope == "national" ? '"SimSun",serif' : '"SimHei",sans-serif'
         "$bodyfont: #{b};\n$headerfont: #{h};\n$monospacefont: #{m};\n$titlefont: #{t};\n"
       end
 

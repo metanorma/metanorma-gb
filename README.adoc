@@ -24,6 +24,10 @@ The gem can also be used to generate Chinese local or sector standards, which
 have the same format; the gem formats the title page to have the correct
 metadata displayed.
 
+The gem generates Word and HTML output. The Word output of the gem is strictly
+aligned to the GB/T 1.1 specification, including the fonts and font sizes
+prescribed, and the measurements for element positioning on the page.
+
 == Differences from `asciidoctor-iso`
 
 === Document Attributes
@@ -134,6 +138,11 @@ The individuals who drafted the standard.
 `:author-committee:`::
 The committees which drafted the standard.
 
+`:title-font:`::
+The font to use for the standard class and issuer on the (Word) cover page; described in GB/T 1.1 as 
+"custom font". If not provided, the font is inferred from the scope of the standard, aligning
+with existing practice: SimSun for national scope, SimHei for all other scopes.
+
 === Language macros
 
 In Terms and Definitions, preferred terms, alternate terms and deprecated terms
@@ -177,4 +186,22 @@ would not give correct behaviour either.)
 The gem also supports `+[zh-Hant]#...#+` and `+[zh-Hans]#...#+` to
 differentiate traditional and simplified script in ISOXML; `zh-Hant` is
 provisionally supported through changing font in the output.
+
+== Caveats
+
+The Word output is meticulously aligned to the GB/T 1.1 specification, which is highly
+prescriptive on the positioning of elements on the page. This means that the Word output
+uses http://www.addbalance.com/word/frames_textboxes.htm[frames] and 
+https://en.wikipedia.org/wiki/Vector_Markup_Language[VML] extensively, as the best mechanism 
+Word HTNL has to ensure precise positioning of elements. However, the use of frames
+makes Word documents more cumbersome to edit; it is envisaged that the bulk of document
+editing should be happening in Asciidoctor, with Word treated as a write-only output format.
+
+The use of VML and frames is mostly confined to the cover page, which is the most heavily
+prescribed by GB/T 1.1. However, Word as of 2016 suppresses space before a paragraph
+after a page break (though not a section break--which means that the Foreword, Introduction,
+Document Title, Annex and Bibliography titles would all either lose their mandated initial
+space in Word, or else would all have to be treated as separate sections. For that reason,
+those headings are instead treated by this geam as frames (in-line with their following text),
+which preserve their initial spacing.
 
