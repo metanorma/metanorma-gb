@@ -68,19 +68,41 @@ p.TableTitle
 	mso-fareast-font-family:$headerfont;
 	mso-bidi-font-family:$headerfont;
 	mso-ansi-language:EN-GB;}
-p.Note, div.Note, li.Note
+p.Note, li.Note
 	{mso-style-unhide:no;
 	mso-style-qformat:yes;
 	mso-style-parent:"";
 	margin-top:0in;
 	margin-right:0in;
 	margin-bottom:0in;
-	margin-left:36.3pt;
+	margin-left:45.0pt;
+	tab-stops:20.15pt;
+	text-indent:-18.0pt;
 	margin-bottom:.0001pt;
 	text-align:justify;
 	text-justify:inter-ideograph;
 	mso-pagination:widow-orphan;
+	font-size:9.0pt;
+	text-autospace:none;
+	mso-bidi-font-size:11.0pt;
+	font-family:$bodyfont;
+	mso-fareast-font-family:$bodyfont;
+	mso-bidi-font-family:$bodyfont;
+	mso-ansi-language:EN-GB;}
+p.TableFootnote, li.TableFootnote
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:"";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:36.0pt;
 	tab-stops:20.15pt;
+	text-indent:-9.0pt;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	mso-pagination:widow-orphan;
 	font-size:9.0pt;
 	text-autospace:none;
 	mso-bidi-font-size:11.0pt;

@@ -743,7 +743,8 @@ p.MsoToc1, li.MsoToc1, div.MsoToc1
 	tab-stops:right dotted 462.05pt;
 	font-size:10.5pt;
 	mso-font-kerning:1.0pt;
-	font-family:$bodyfont;
+    line-height:150%;
+    font-family:$bodyfont;
 	mso-hansi-font-family:"Times New Roman";
 	mso-bidi-font-family:$bodyfont;
 	mso-ansi-language:EN-US;
@@ -762,6 +763,7 @@ p.MsoToc2, li.MsoToc2, div.MsoToc2
 	tab-stops:right dotted 462.05pt;
 	font-size:10.5pt;
 	mso-font-kerning:1.0pt;
+    line-height:150%;
 	font-family:$bodyfont;
 	mso-hansi-font-family:"Times New Roman";
 	mso-bidi-font-family:$bodyfont;
@@ -775,7 +777,7 @@ p.MsoToc3, li.MsoToc3, div.MsoToc3
 	margin-top:0cm;
 	margin-right:0cm;
 	margin-bottom:0cm;
-	margin-left:31.5pt;
+	margin-left:21.0pt;
 	margin-bottom:.0001pt;
 	mso-para-margin-top:0cm;
 	mso-para-margin-right:0cm;
@@ -788,6 +790,7 @@ p.MsoToc3, li.MsoToc3, div.MsoToc3
 	tab-stops:right dotted 462.05pt;
 	font-size:10.5pt;
 	mso-font-kerning:1.0pt;
+    line-height:150%;
 	font-family:$bodyfont;
 	mso-bidi-font-family:$bodyfont;
 	mso-ansi-language:EN-US;
@@ -800,7 +803,7 @@ p.MsoToc4, li.MsoToc4, div.MsoToc4
 	margin-top:0cm;
 	margin-right:0cm;
 	margin-bottom:0cm;
-	margin-left:52.5pt;
+	margin-left:31.5pt;
 	margin-bottom:.0001pt;
 	mso-para-margin-top:0cm;
 	mso-para-margin-right:0cm;
@@ -813,6 +816,7 @@ p.MsoToc4, li.MsoToc4, div.MsoToc4
 	tab-stops:right dotted 462.05pt;
 	font-size:10.5pt;
 	mso-font-kerning:1.0pt;
+    line-height:150%;
 	font-family:$bodyfont;
 	mso-bidi-font-family:$bodyfont;
 	mso-ansi-language:EN-US;
@@ -825,7 +829,7 @@ p.MsoToc5, li.MsoToc5, div.MsoToc5
 	margin-top:0cm;
 	margin-right:0cm;
 	margin-bottom:0cm;
-	margin-left:52.5pt;
+	margin-left:42pt;
 	margin-bottom:.0001pt;
 	mso-para-margin-top:0cm;
 	mso-para-margin-right:0cm;
@@ -838,6 +842,7 @@ p.MsoToc5, li.MsoToc5, div.MsoToc5
 	tab-stops:right dotted 462.05pt;
 	font-size:10.5pt;
 	mso-font-kerning:1.0pt;
+    line-height:150%;
 	font-family:$bodyfont;
 	mso-bidi-font-family:$bodyfont;
 	mso-ansi-language:EN-US;
@@ -863,6 +868,7 @@ p.MsoToc6, li.MsoToc6, div.MsoToc6
 	tab-stops:right dotted 462.05pt;
 	font-size:10.5pt;
 	mso-font-kerning:1.0pt;
+    line-height:150%;
 	font-family:$bodyfont;
 	mso-bidi-font-family:$bodyfont;
 	mso-ansi-language:EN-US;
@@ -875,7 +881,7 @@ p.MsoToc7, li.MsoToc7, div.MsoToc7
 	margin-top:0cm;
 	margin-right:0cm;
 	margin-bottom:0cm;
-	margin-left:52.5pt;
+	margin-left:63pt;
 	margin-bottom:.0001pt;
 	mso-para-margin-top:0cm;
 	mso-para-margin-right:0cm;
@@ -888,6 +894,7 @@ p.MsoToc7, li.MsoToc7, div.MsoToc7
 	tab-stops:right dotted 462.05pt;
 	font-size:10.5pt;
 	mso-font-kerning:1.0pt;
+    line-height:150%;
 	font-family:$bodyfont;
 	mso-bidi-font-family:$bodyfont;
 	mso-ansi-language:EN-US;
@@ -900,7 +907,7 @@ p.MsoToc8, li.MsoToc8, div.MsoToc8
 	margin-top:0cm;
 	margin-right:0cm;
 	margin-bottom:0cm;
-	margin-left:52.5pt;
+	margin-left:73.5pt;
 	margin-bottom:.0001pt;
 	mso-para-margin-top:0cm;
 	mso-para-margin-right:0cm;
@@ -913,6 +920,7 @@ p.MsoToc8, li.MsoToc8, div.MsoToc8
 	tab-stops:right dotted 462.05pt;
 	font-size:10.5pt;
 	mso-font-kerning:1.0pt;
+    line-height:150%;
 	font-family:$bodyfont;
 	mso-bidi-font-family:$bodyfont;
 	mso-ansi-language:EN-US;
@@ -925,7 +933,7 @@ p.MsoToc9, li.MsoToc9, div.MsoToc9
 	margin-top:0cm;
 	margin-right:0cm;
 	margin-bottom:0cm;
-	margin-left:52.5pt;
+	margin-left:84pt;
 	margin-bottom:.0001pt;
 	mso-para-margin-top:0cm;
 	mso-para-margin-right:0cm;
@@ -938,6 +946,7 @@ p.MsoToc9, li.MsoToc9, div.MsoToc9
 	tab-stops:right dotted 462.05pt;
 	font-size:10.5pt;
 	mso-font-kerning:1.0pt;
+    line-height:150%;
 	font-family:$bodyfont;
 	mso-bidi-font-family:$bodyfont;
 	mso-ansi-language:EN-US;
@@ -1121,9 +1130,9 @@ p.MsoFootnoteText, li.MsoFootnoteText, div.MsoFootnoteText
 	margin-top:0cm;
 	margin-right:0cm;
 	margin-bottom:0cm;
-	margin-left:36.0pt;
+	margin-left:45.0pt;
 	margin-bottom:.0001pt;
-	text-indent:-17.85pt;
+	text-indent:-27.00pt;
 	mso-pagination:none;
 	tab-stops:20.15pt;
 	font-size:9.0pt;
@@ -1546,6 +1555,13 @@ ul li li li, ul li li li p, ul li li li div, ul li li .MsoNormal
 	mso-hansi-font-family:"Times New Roman";
 	mso-bidi-font-family:"Times New Roman";
 	mso-font-kerning:1.0pt;}
+ol
+	{margin-bottom:0cm;
+	margin-left:0cm;}
+ul
+	{margin-bottom:0cm;
+	margin-left:0cm;}
+
 ol li, ol li p, ol li div, ol li .MsoNormal
 	{mso-style-name:字母编号列项（一级）;  //  NAME: Alphabetical list item (level 1)  ??
 	mso-style-unhide:no;
@@ -1811,7 +1827,7 @@ ol li li li, ol li li li p, ol li li li div, ol li li li .MsoNormal
 	mso-level-text:"%1\)";
 	mso-level-tab-stop:0in;
 	mso-level-number-position:left;
-	text-indent:-17.85pt;}
+	text-indent:-27.0pt;}
 @list l9:level2
 	{mso-level-number-format:alpha-lower;
 	mso-level-text:"%2\)";

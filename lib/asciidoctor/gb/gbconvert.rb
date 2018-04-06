@@ -51,7 +51,7 @@ module Asciidoctor
         docxml.xpath("//p[@class = '#{term_class}']").each do |t|
           t1 = t.next_element || next
           if t1.name == "p" && t1["class"] == term_class
-            t.add_child(" ")
+            t.add_child("&#x3000;")
             t.add_child(t1.remove.children)
           end
         end
