@@ -13,6 +13,15 @@ module Asciidoctor
         super
       end
 
+      def middle(isoxml, out)
+        super
+        end_line(isoxml, out)
+      end
+
+      def end_line(_isoxml, out)
+        out.hr **{ width: "25%" }
+      end
+
       def error_parse(node, out)
         # catch elements not defined in ISO
         case node.name

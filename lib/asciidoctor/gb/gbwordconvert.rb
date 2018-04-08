@@ -4,13 +4,26 @@ module Asciidoctor
   module Gb
     # A {Converter} implementation that generates GB output, and a document
     # schema encapsulation of the document for validation
-    
+
     class GbWordConvert < GbConvert
       include IsoDoc::WordConvertModule
 
       def initialize(options)
         super
       end
+
+      ENDLINE = <<~END.freeze
+      <v:line id="_x0000_s1026"
+ alt="" style='position:absolute;left:0;text-align:left;z-index:251662848;
+ mso-wrap-edited:f;mso-width-percent:0;mso-height-percent:0;
+ mso-width-percent:0;mso-height-percent:0' from="6.375cm,20.95pt" to="10.625cm,20.95pt"
+ strokeweight="1.5pt"/>
+      END
+
+      def end_line(_isoxml, out)
+        out.parent.add_child(ENDLINE)
+      end
+
 
       def generate_header(filename, dir)
         return unless @header
