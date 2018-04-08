@@ -38,7 +38,7 @@ p.FigureTitle
 	mso-style-parent:"";
 	margin-top:0cm;
 	margin-right:0cm;
-	margin-bottom:6.0pt;
+	margin-bottom:12.0pt;
 	margin-left:0cm;
 	text-align:center;
 	line-height:12.0pt;
@@ -56,7 +56,7 @@ p.TableTitle
 	mso-style-parent:"";
 	margin-top:0cm;
 	margin-right:0cm;
-	margin-bottom:6.0pt;
+	margin-bottom:12.0pt;
 	margin-left:0cm;
 	text-align:center;
 	page-break-after:avoid;
@@ -68,16 +68,19 @@ p.TableTitle
 	mso-fareast-font-family:$headerfont;
 	mso-bidi-font-family:$headerfont;
 	mso-ansi-language:EN-GB;}
-p.Note, li.Note
+p.Note, li.Note, td.Note
 	{mso-style-unhide:no;
 	mso-style-qformat:yes;
 	mso-style-parent:"";
 	margin-top:0in;
 	margin-right:0in;
 	margin-bottom:0in;
-	margin-left:45.0pt;
 	tab-stops:20.15pt;
+	/*
+	margin-left:45.0pt;
 	text-indent:-18.0pt;
+	*/
+	margin-left:0pt;
 	margin-bottom:.0001pt;
 	text-align:justify;
 	text-justify:inter-ideograph;
@@ -331,7 +334,7 @@ p.Formula, li.Formula, div.Formula
 	margin-left:20.15pt;
 	line-height:12.0pt;
 	mso-pagination:widow-orphan;
-	tab-stops:right 487.45pt;
+	tab-stops:center 212.65pt right 487.45pt;
 	font-size:11.0pt;
 	font-family:$bodyfont;
 	mso-fareast-font-family:$bodyfont;
@@ -397,7 +400,7 @@ span.stem
     font-style:
     italic;}
 div.formula
-    {tab-stops:right 487.45pt;}
+    {tab-stops:center 212.65pt right 487.45pt;}
 body 
     {tab-interval:21.0pt;
     text-justify-trim:punctuation}
@@ -447,7 +450,10 @@ div.example {
 	mso-margin-alt:10.0pt 10.0pt 10.0pt 10.0pt;
 }
 */
-p.example, li.example, div.example
+table.example, table.Note {
+    margin-left: 21.0pt;
+}
+p.example, li.example, div.example, td.example, td.example p
 	{mso-style-name:示例;  /* NAME: Example */
 	mso-style-unhide:no;
 	mso-style-parent:"";
@@ -456,9 +462,9 @@ p.example, li.example, div.example
 	margin-bottom:.0001pt;
 	text-align:justify;
 	text-justify:inter-ideograph;
-	text-indent:18.15pt;
+	/* text-indent:18.15pt;
+	mso-list:l2 level1 lfo1; */
 	mso-pagination:none;
-	mso-list:l2 level1 lfo1;
 	font-size:9.0pt;
 	font-family:$bodyfont;
 	mso-hansi-font-family:$bodyfont;
@@ -531,8 +537,15 @@ table.dl
 	margin-right:0cm;
 	margin-bottom:11.0pt;
 	margin-left:20.15pt;}
-span.note_label, span.example_label
+span.note_label, span.example_label, td.example_label, td.note_label
 {
 font-size: 9.0pt;
 font-family:$headerfont;
+}
+p.dl {
+    margin-left:0pt;
+	font-size:10.5pt;
+}
+div.figure {
+    margin-top:12pt;
 }
