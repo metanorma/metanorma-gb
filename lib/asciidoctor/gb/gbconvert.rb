@@ -76,7 +76,7 @@ module Asciidoctor
 
       def spaerdruck(x, return_on_br)
         x.traverse do |n|
-          n.text? and n.content = n.text.gsub(/./, "\\1\u00a0\u00a0")
+          n.text? and n.content = n.text.gsub(/(.)/, "\\1\u00a0\u00a0")
           return_on_br and n.element? and n.name == "br" and return
         end
       end
