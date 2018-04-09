@@ -482,6 +482,9 @@
           <value>created</value>
           <value>activated</value>
           <value>obsoleted</value>
+          <value>confirmed</value>
+          <value>updated</value>
+          <value>issued</value>
         </choice>
       </attribute>
       <ref name="bfrom"/>
