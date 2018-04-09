@@ -98,7 +98,7 @@ The date on which the GB standard was issued (authorised for publication by the 
 `:published-date:`::
 The date on which the GB standard was published (distributed by the publisher).
 
-`:activated-date:`::
+`:implemented-date:`::
 The date on which the GB standard became active.
 
 `:created-date:`::

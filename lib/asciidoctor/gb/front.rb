@@ -141,7 +141,7 @@ module Asciidoctor
         end
       end
 
-      DATETYPES = %w{ published accessed created activated obsoleted
+      DATETYPES = %w{ published accessed created implemented obsoleted
                       confirmed updated issued 
       }.freeze
 
