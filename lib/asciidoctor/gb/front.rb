@@ -93,7 +93,7 @@ module Asciidoctor
       end
 
       def get_mandate(node)
-        node.attr("mandate") && return node.attr("mandate")
+        node.attr("mandate") and return node.attr("mandate")
         if %r{/}.match? node.attr("prefix")
           m = node.attr("prefix").split(%{/})
           mandate = m[1] == "T" ? "recommended" :
