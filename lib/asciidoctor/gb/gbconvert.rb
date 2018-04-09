@@ -82,7 +82,7 @@ module Asciidoctor
 
       def title_cleanup(docxml)
         @script == "Hans" or return
-        docxml.xpath("//*[@class = 'zzContents' or @class = 'ForewordTitle' or"\
+        docxml.xpath("//*[@class = 'zzContents' or @class = 'ForewordTitle' or "\
                      "@class = 'IntroTitle] | "\
                      "h1[@class = 'Sections3']").each do |x|
           spaerdruck(x, false)
