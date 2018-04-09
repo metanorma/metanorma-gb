@@ -200,18 +200,17 @@ width:263494459px;height:28675px'>
    <tr>
     <td><![endif]>
     <div v:shape="fmFrame4" style='padding:0pt 0pt 0pt 0pt' class=shape>
-    <p class=standard_name><span lang=ZH-CN>{{ docmaintitlezh }} {{ docsubtitlezh }} {{ docparttitlezh }}</span><span lang=EN-US style='mso-bidi-font-size:26.0pt'><o:p></o:p></span></p>
+    <p class=standard_name><span lang=ZH-CN>{{ docmaintitlezh }}{{ docsubtitlezh }}{{ docparttitlezh }}</span><span lang=EN-US style='mso-bidi-font-size:26.0pt'><o:p></o:p></span></p>
     <p class=standard_name_english style='margin-top:1.0cm;margin-bottom:1.0cm;mso-line-height-rule:
-    exactly'><span lang=EN-US>{{ docmaintitleen }} {{ docsubtitleen }} {{ docparttitleen }}</span></p>
+    exactly'><span lang=EN-US>{{ docmaintitleen }}{{ docsubtitleen }}{{ docparttitleen }}</span></p>
 
     {% if isostandard %}
   <p class=identicality_label>
       <span class="iso-document-code">({{ isostandard }}</span>
-      {% if isostandardtitle != "[not supplied]" %}
+      {%- if isostandardtitle != "[not supplied]" -%}
       <span class="iso-title-first">{{ isostandardtitle }}</span>
-      {% endif %}
-      <span class="join">，</span>
-      <span class="iso-equivalence-code">{{ gbequivalence }})</span>
+      {%- endif -%}
+      <span class="join">，</span><span class="iso-equivalence-code">{{ gbequivalence }})</span>
   </p>
     {% endif %}
     {% if stage and stage < 60 %}

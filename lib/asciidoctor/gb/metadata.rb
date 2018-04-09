@@ -27,11 +27,11 @@ module Asciidoctor
         main = isoxml.at(ns("//title-main[@language='zh']"))
         part = isoxml.at(ns("//title-part[@language='zh']"))
         partnumber = isoxml.at(ns("//project-number/@part"))
-        intro.nil? || set_metadata(:docmaintitlezh, intro.text + "&nbsp; ")
+        intro.nil? || set_metadata(:docmaintitlezh, intro.text + "&nbsp;")
         main.nil? || set_metadata(:docsubtitlezh, main.text)
-        partnum = partnumber ? "#{part_label(partnumber, 'zh')}: " : ""
+        partnum = partnumber ? "#{part_label(partnumber, 'zh')}:" : ""
         part.nil? || set_metadata(:docparttitlezh,
-                                  " &nbsp;#{partnum} #{part.text}")
+                                  "&nbsp;#{partnum}#{part.text}")
         set_metadata(:doctitle, get_metadata[:docmaintitlezh] + 
                      get_metadata[:docsubtitlezh] +
                      get_metadata[:docparttitlezh])
@@ -167,7 +167,7 @@ module Asciidoctor
       def part_label(partnumber, lang)
         case lang
         when "en" then "Part #{partnumber}"
-        when "zh" then "第#{partnumber}部"
+        when "zh" then "第#{partnumber}部分"
         end
       end
     end
