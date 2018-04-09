@@ -90,6 +90,7 @@ module Asciidoctor
         docxml.xpath("//h1[@class = 'Annex']").each do |x|
           spaerdruck(x, true)
         end
+        docxml
       end
 
       def term_merge(docxml, term_class)
