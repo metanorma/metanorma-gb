@@ -48,8 +48,8 @@ top:-5px;'>
    <tr>
     <td><![endif]>
     <div v:shape="fmFrame1" style='padding:0pt 0pt 0pt 0pt' class=shape>
-    <p class=ccs_container><span lang=EN-US>ICS {{ libraryid_ics }}</span></p>
-    <p class=ccs_container><span lang=EN-US>{{ libraryid_ccs }}</span></p>
+    <p class=ccs_container><span class="ccs_label">ICS</span> <span class="ccs">{{ libraryid_ics }}</span></p>
+    <p class=ccs_container><span class="ccs_label">{{ libraryid_ccs | slice: 0 }}</span><span class="ccs_label">{{ libraryid_ccs | slice: 1,libraryid_ccs.size }}</span></p>
     </div>
     <![if !mso]></td>
    </tr>

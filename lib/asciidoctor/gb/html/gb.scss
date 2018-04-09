@@ -550,3 +550,10 @@ p.dl {
 div.figure {
     margin-top:12pt;
 }
+span.ccs_label {
+    font-weight: bold;
+    font-family: $bodyfont;
+}
+span.ccs {
+    font-family: $headerfont;
+}
