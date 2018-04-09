@@ -84,10 +84,10 @@ module Asciidoctor
         @script == "Hans" or return
         docxml.xpath("//*[@class = 'zzContents' or @class = 'ForewordTitle' or "\
                      "@class = 'IntroTitle] | "\
-                     "h1[@class = 'Sections3']").each do |x|
+                     "//h1[@class = 'Sections3']").each do |x|
           spaerdruck(x, false)
         end
-        docxml.xpath("h1[@class = 'Annex']").each do |x|
+        docxml.xpath("//h1[@class = 'Annex']").each do |x|
           spaerdruck(x, true)
         end
       end
