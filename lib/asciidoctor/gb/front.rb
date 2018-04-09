@@ -1,6 +1,20 @@
 module Asciidoctor
   module Gb
     class Converter < ISO::Converter
+      def standard_type(node)
+        type = node.attr("mandate") || "mandatory"
+        type = "standard" if type == "mandatory"
+        type = "recommendation" if type == "recommended"
+        type
+      end
+
+      def front(node, xml)
+        xml.bibdata **attr_code(type: standard_type(node)) do |b|
+          metadata node, b
+        end
+        metadata_version(node, xml)
+      end
+
       def metadata_author(node, xml)
         author = node.attr("author") || return
         author.split(/, ?/).each do |author|
@@ -73,11 +87,9 @@ module Asciidoctor
       end
 
       def get_scope(node)
-        unless scope = node.attr("scope")
-          scope = "national"
-          warn "GB: no scope supplied, defaulting to National"
-        end
-        scope
+        node.attr("scope") and return node.attr("scope")
+        warn "GB: no scope supplied, defaulting to National"
+        "national"
       end
 
       def get_prefix(node)
@@ -107,11 +119,9 @@ module Asciidoctor
       end
 
       def get_topic(node)
-        unless topic = node.attr("topic")
-          topic = "basic"
-          warn "GB: no topic supplied, defaulting to basic"
-        end
-        topic
+        node.attr("topic") and return node.attr("topic")
+        warn "GB: no topic supplied, defaulting to basic"
+        "basic"
       end
 
       def metadata_gbtype(node, xml)
@@ -131,9 +141,8 @@ module Asciidoctor
         end
       end
 
-      DATETYPES = %w{
-        published accessed created activated obsoleted confirmed
-        updated issued
+      DATETYPES = %w{ published accessed created activated obsoleted
+                      confirmed updated issued 
       }.freeze
 
       def metadata_date(node, xml)
@@ -193,28 +202,6 @@ module Asciidoctor
               t1 << node.attr("title-part-#{lang}")
             end
           end
-        end
-      end
-
-      def title_intro_validate(root)
-        title_intro_en = root.at("//title-intro[@language='en']")
-        title_intro_zh = root.at("//title-intro[@language='zh']")
-        if title_intro_en.nil? && !title_intro_zh.nil?
-          warn "No English Title Intro!"
-        end
-        if !title_intro_en.nil? && title_intro_zh.nil?
-          warn "No Chinese Title Intro!"
-        end
-      end
-
-      def title_part_validate(root)
-        title_part_en = root.at("//title-part[@language='en']")
-        title_part_zh = root.at("//title-part[@language='zh']")
-        if title_part_en.nil? && !title_part_zh.nil?
-          warn "No English Title Part!"
-        end
-        if !title_part_en.nil? && title_part_zh.nil?
-          warn "No Chinese Title Part!"
         end
       end
     end

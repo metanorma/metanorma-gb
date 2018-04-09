@@ -3,6 +3,7 @@ require_relative "./xref_gen.rb"
 require_relative "./metadata.rb"
 require_relative "./agencies.rb"
 require_relative "./section_output.rb"
+require_relative "./block_output.rb"
 
 module Asciidoctor
   module Gb
@@ -54,6 +55,7 @@ module Asciidoctor
         super
         terms_cleanup(docxml)
         formula_cleanup(docxml)
+        title_cleanup(docxml)
       end
 
       def formula_cleanup(docxml)
@@ -69,6 +71,25 @@ module Asciidoctor
           p["class"] = "Note"
         end
         docxml
+      end
+
+      def spaerdruck(x, return_on_br)
+        x.traverse do |n|
+          n.text? and n.content = n.text.gsub(/./, "\\1&nbsp;nbsp;")
+          return_on_br and n.element? and n.name == "br" and return
+        end
+      end
+
+      def title_cleanup(docxml)
+        @script == "Hans" or return
+        docxml.xpath("//*[@class = 'zzContents' or @class = 'ForewordTitle' or"\
+                     "@class = 'IntroTitle] | "\
+                     "h1[@class = 'Sections3']").each do |x|
+          spaerdruck(x, false)
+        end
+        docxml.xpath("h1[@class = 'Annex']").each do |x|
+          spaerdruck(x, true)
+        end
       end
 
       def term_merge(docxml, term_class)
@@ -156,85 +177,6 @@ module Asciidoctor
           map do |a|
           a.size < 3 ? a[0] : a[0] + termref_render(a[2])
         end.join
-      end
-
-      def formula_parse(node, out)
-        out.div **attr_code(id: node["id"], class: "formula") do |div|
-          insert_tab(div, 1)
-          parse(node.at(ns("./stem")), out)
-          insert_tab(div, 1)
-          div << "(#{get_anchors[node['id']][:label]})"
-        end
-        formula_where(node.at(ns("./dl")), out)
-      end
-
-      def formula_where(dl, out)
-        return unless dl
-        out.p { |p| p << @where_lbl }
-        formula_dl_parse(dl, out)
-      end
-
-      def formula_dl_parse(node, out)
-        out.table **{ class: "dl" } do |v|
-          node.elements.each_slice(2) do |dt, dd|
-            v.tr do |tr|
-              tr.td **{ valign: "top", align: "left" } do |term|
-                dt_parse(dt, term)
-              end
-              tr.td **{ valign: "top" } { |td| td << "&mdash;" }
-              tr.td **{ valign: "top" } do |listitem|
-                dd.children.each { |n| parse(n, listitem) }
-              end
-            end
-          end
-        end
-      end
-
-      EXAMPLE_TBL_ATTR =
-        { valign: "top", class: "example_label",
-          style: "padding:2pt 2pt 2pt 2pt" }.freeze
-
-      def example_parse(node, out)
-        out.table **attr_code(id: node["id"], class: "example") do |t|
-          t.tr do |tr|
-            tr.td **EXAMPLE_TBL_ATTR do |td|
-              td << l10n(example_label(node) + ":")
-            end
-            tr.td **{ valign: "top" } do |td|
-              node.children.each { |n| parse(n, td) }
-            end
-          end
-        end
-      end
-
-      def note_parse(node, out)
-        @note = true
-        out.table **attr_code(id: node["id"], class: "Note") do |t|
-          t.tr do |tr|
-            tr.td **EXAMPLE_TBL_ATTR do |td|
-              td << l10n(note_label(node) + ":")
-            end
-            tr.td **{ valign: "top", class: "Note" } do |td|
-              node.children.each { |n| parse(n, td) }
-            end
-          end
-        end
-        @note = false
-      end
-
-      def termnote_parse(node, out)
-        @note = true
-        out.table **attr_code(id: node["id"], class: "Note") do |t|
-          t.tr do |tr|
-            tr.td **EXAMPLE_TBL_ATTR do |td|
-              td << l10n("#{get_anchors[node['id']][:label]}:")
-            end
-            tr.td **{ valign: "top", class: "Note" } do |td|
-              node.children.each { |n| parse(n, td) }
-            end
-          end
-        end
-        @note = false
       end
 
       def populate_template(docxml, format)
