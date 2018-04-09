@@ -89,6 +89,8 @@ The prefix classifying the GB standard.
 https://github.com/riboseinc/gbdoc/blob/master/models/gb-standard-national-prefix.adoc[GB National Standard Prefixes],
 https://github.com/riboseinc/gbdoc/blob/master/models/gb-standard-sector-prefix.adoc[GB Sector Standard Prefixes],
 https://github.com/riboseinc/gbdoc/blob/master/models/gb-standard-local-prefix.adoc[GB Local Standard Prefixes].)
+Any `/Z` or `/T` suffix (indicating "recommended" and "guidelines" mandate) is 
+ignored unless the `:mandate:` attribute is not given.
 
 `:issued-date:`::
 The date on which the GB standard was issued (authorised for publication by the issuing authority).

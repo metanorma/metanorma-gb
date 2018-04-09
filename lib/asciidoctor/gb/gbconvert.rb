@@ -198,7 +198,7 @@ module Asciidoctor
         out.table **attr_code(id: node["id"], class: "example") do |t|
           t.tr do |tr|
             tr.td **EXAMPLE_TBL_ATTR do |td|
-              td << example_label(node)
+              td << l10n(example_label(node) + ":")
             end
             tr.td **{ valign: "top" } do |td|
               node.children.each { |n| parse(n, td) }
@@ -212,7 +212,7 @@ module Asciidoctor
         out.table **attr_code(id: node["id"], class: "Note") do |t|
           t.tr do |tr|
             tr.td **EXAMPLE_TBL_ATTR do |td|
-              td << note_label(node)
+              td << l10n(note_label(node) + ":")
             end
             tr.td **{ valign: "top", class: "Note" } do |td|
               node.children.each { |n| parse(n, td) }
@@ -227,7 +227,7 @@ module Asciidoctor
         out.table **attr_code(id: node["id"], class: "Note") do |t|
           t.tr do |tr|
             tr.td **EXAMPLE_TBL_ATTR do |td|
-              td << "#{get_anchors[node['id']][:label]}: "
+              td << l10n("#{get_anchors[node['id']][:label]}:")
             end
             tr.td **{ valign: "top", class: "Note" } do |td|
               node.children.each { |n| parse(n, td) }

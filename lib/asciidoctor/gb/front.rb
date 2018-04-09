@@ -82,7 +82,9 @@ module Asciidoctor
 
       def get_prefix(node)
         scope = get_scope(node)
-        unless prefix = node.attr("prefix")
+        if prefix = node.attr("prefix")
+          prefix.gsub!(%r{/.*$}, "")
+        else
           prefix = "GB"
           scope = "national"
           warn "GB: no prefix supplied, defaulting to GB"
@@ -91,7 +93,13 @@ module Asciidoctor
       end
 
       def get_mandate(node)
-        unless mandate = node.attr("mandate")
+        node.attr("mandate") && return node.attr("mandate")
+        if %r{/}.match? node.attr("prefix")
+          m = node.attr("prefix").split(%{/})
+          mandate = m[1] == "T" ? "recommended" :
+            m[1] == "Z" ? "guidelines" : nil
+        end
+        if mandate.nil?
           mandate = "mandatory"
           warn "GB: no mandate supplied, defaulting to mandatory"
         end
