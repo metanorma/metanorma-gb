@@ -22,7 +22,7 @@ module Asciidoctor
         a = { id: Asciidoctor::ISO::Utils::anchor_or_uuid(node) }
         noko do |xml|
           case sectiontype(node)
-          when "引言" then
+          when "引言", "introduction" then
             if node.level == 1 then introduction_parse(a, xml, node)
             else
               clause_parse(a, xml, node)
