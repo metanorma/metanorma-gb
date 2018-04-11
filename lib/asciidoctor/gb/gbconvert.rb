@@ -162,13 +162,13 @@ module Asciidoctor
       def format_agency(agency, format)
         return agency unless agency.is_a?(Array)
         if agency == ["中华人民共和国国家质量监督检验检疫总局", "中国国家标准化管理委员会"]
-        logo = "gb-issuer-default.gif"
-        system "cp #{fileloc(File.join('html/gb-logos', logo))}  #{logo}"
-        return "<img src='#{logo}' alt='#{agency.join(",")}'/></img>"
+          logo = "gb-issuer-default.gif"
+          system "cp #{fileloc(File.join('html/gb-logos', logo))}  #{logo}"
+          return "<img src='#{logo}' alt='#{agency.join(",")}'></img>"
         end
         format_agency1(agency, format)
-    end
-        
+      end
+
       def format_agency1(agency, format)
         ret = "<table>"
         agency.each { |a| ret += "<tr><td>#{a}</td></tr>" }
