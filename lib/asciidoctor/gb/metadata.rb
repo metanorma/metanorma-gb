@@ -142,9 +142,9 @@ module Asciidoctor
         prefix = isoxml.at(ns("//gbprefix"))&.text || "XXX"
         docyear = isoxml&.at(ns("//copyright/from"))&.text
         docidentifier(scope, prefix, mandate, docyear)
-        issuer = isoxml.at(ns("//bibdata/contributor[role/@type = 'issuer']/"\
-                              "organization/name"))
-        set_metadata(:issuer, issuer.text)
+        issuer = isoxml&.at(ns("//bibdata/contributor[role/@type = 'issuer']/"\
+                               "organization/name"))&.text || "GB"
+        set_metadata(:issuer, issuer)
         set_metadata(:standard_class, standard_class(scope, prefix, mandate))
         set_metadata(:standard_agency, standard_agency(scope, prefix, mandate))
         set_metadata(:gbprefix, scope == "local" ? "DB" : prefix)
