@@ -121,7 +121,7 @@ module Asciidoctor
         "local": "DB",
         "social": "T",
         "enterprise": "Q",
-      }.prefix
+      }.freeze
 
       def docidentifier(gbscope, gbprefix, gbmandate, docyear)
         docnum = get_metadata[:docnumber]
