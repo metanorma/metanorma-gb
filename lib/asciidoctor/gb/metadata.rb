@@ -131,7 +131,7 @@ module Asciidoctor
                  "#{docnum}".gsub(%r{/([TZ])/}, "/\\1 ")
              when "social", "enterprise"
                "#{mandate_suffix(SCOPEPFX[scope.to_sym], mandate)}/"\
-                 "#{prefix} #{docnum}".gsub(%r{/([TZ])/}, "/\\1 ")
+                 "#{prefix} #{docnum}"
              else
                "#{mandate_suffix(prefix, mandate)}&#x2002;#{docnum}"
              end
@@ -147,9 +147,6 @@ module Asciidoctor
         docidentifier(scope, prefix, mandate, docyear)
         issuer = isoxml&.at(ns("//bibdata/contributor[role/@type = 'issuer']/"\
                                "organization/name"))&.text || "GB"
-        warn ns("//bibdata/contributor[role/@type = 'issuer']/"\
-                               "organization/name")
-        warn issuer
         set_metadata(:issuer, issuer)
         set_metadata(:standard_class, standard_class(scope, prefix, mandate))
         set_metadata(:standard_agency, standard_agency(scope, prefix, mandate))
