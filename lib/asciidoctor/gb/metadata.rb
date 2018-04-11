@@ -117,21 +117,20 @@ module Asciidoctor
         end
       end
 
-      SCOPEPREFIX = {
-        "local": "DB",
-        "social": "T",
-        "enterprise": "Q",
+      SCOPEPFX = {
+        local: "DB",
+        social: "T",
+        enterprise: "Q",
       }.freeze
 
-      def docidentifier(gbscope, gbprefix, gbmandate, docyear)
+      def docidentifier(scope, prefix, mandate, docyear)
         docnum = get_metadata[:docnumber]
-        warn "#{gbscope}: #{SCOPEPREFIX[gbscope]}"
-        dn = case gbscope 
+        dn = case scope 
              when "local", "social", "enterprise"
-               "#{SCOPEPREFIX[gbscope]}#{mandate_suffix(gbprefix, gbmandate)}/"\
+               "#{SCOPEPFX[scope.to_sym]}#{mandate_suffix(prefix, mandate)}/"\
                  "#{docnum}".gsub(%r{/([TZ])/}, "/\\1 ")
              else
-               "#{mandate_suffix(gbprefix, gbmandate)}&#x2002;#{docnum}"
+               "#{mandate_suffix(prefix, mandate)}&#x2002;#{docnum}"
              end
         dn += "&mdash;#{docyear}" if docyear
         set_metadata(:docidentifier, dn)
