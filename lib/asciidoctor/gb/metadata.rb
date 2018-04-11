@@ -125,6 +125,7 @@ module Asciidoctor
 
       def docidentifier(gbscope, gbprefix, gbmandate, docyear)
         docnum = get_metadata[:docnumber]
+        warn "#{gbscope}: #{SCOPEPREFIX[gbscope]}"
         dn = case gbscope 
              when "local", "social", "enterprise"
                "#{SCOPEPREFIX[gbscope]}#{mandate_suffix(gbprefix, gbmandate)}/"\
