@@ -78,7 +78,7 @@ module Asciidoctor
         if docstatus
           set_metadata(:stage, docstatus.text)
           abbr = stage_abbrev_cn(docstatus.text, isoxml.at(ns("//status/iteration")),
-                              isoxml.at(ns("//version/draft")))
+                                 isoxml.at(ns("//version/draft")))
           set_metadata(:stageabbr, abbr)
         end
       end
@@ -88,7 +88,7 @@ module Asciidoctor
         docstatus = get_metadata[:stage]
         if docstatus
           abbr = stage_abbrev(docstatus, isoxml.at(ns("//status/iteration")),
-                            isoxml.at(ns("//version/draft")))
+                              isoxml.at(ns("//version/draft")))
           (docstatus.to_i < 60) && dn = abbr + " " + dn
         end
         set_metadata(:docnumber, dn)
@@ -117,11 +117,18 @@ module Asciidoctor
         end
       end
 
+      SCOPEPREFIX = {
+        "local": "DB",
+        "social": "T",
+        "enterprise": "Q",
+      }.prefix
+
       def docidentifier(gbscope, gbprefix, gbmandate, docyear)
         docnum = get_metadata[:docnumber]
-        dn = if gbscope == "local"
-               "DB#{mandate_suffix(gbprefix, gbmandate)}/#{docnum}".
-                 gsub(%r{/([TZ])/}, "/\\1 ")
+        dn = case gbscope 
+             when "local", "social", "enterprise"
+               "#{SCOPEPREFIX[gbscope]}#{mandate_suffix(gbprefix, gbmandate)}/"\
+                 "#{docnum}".gsub(%r{/([TZ])/}, "/\\1 ")
              else
                "#{mandate_suffix(gbprefix, gbmandate)}&#x2002;#{docnum}"
              end
@@ -135,6 +142,9 @@ module Asciidoctor
         prefix = isoxml.at(ns("//gbprefix"))&.text || "XXX"
         docyear = isoxml&.at(ns("//copyright/from"))&.text
         docidentifier(scope, prefix, mandate, docyear)
+        issuer = isoxml.at(ns("//bibdata/contributor[role/@type = 'issuer']/"\
+                              "organization/name"))
+        set_metadata(:issuer, issuer.text)
         set_metadata(:standard_class, standard_class(scope, prefix, mandate))
         set_metadata(:standard_agency, standard_agency(scope, prefix, mandate))
         set_metadata(:gbprefix, scope == "local" ? "DB" : prefix)

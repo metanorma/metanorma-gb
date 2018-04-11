@@ -88,9 +88,11 @@ The prefix classifying the GB standard.
 (Refer to
 https://github.com/riboseinc/gbdoc/blob/master/models/gb-standard-national-prefix.adoc[GB National Standard Prefixes],
 https://github.com/riboseinc/gbdoc/blob/master/models/gb-standard-sector-prefix.adoc[GB Sector Standard Prefixes],
-https://github.com/riboseinc/gbdoc/blob/master/models/gb-standard-local-prefix.adoc[GB Local Standard Prefixes].)
+https://github.com/riboseinc/gbdoc/blob/master/models/gb-standard-local-prefix.adoc[GB Local Standard Prefixes],
+https://github.com/riboseinc/asciidoctor-gb/issues/54[GB Social and Enterprise Standard Prefixes].)
 Any `/Z` or `/T` suffix (indicating "recommended" and "guidelines" mandate) is 
-ignored unless the `:mandate:` attribute is not given.
+ignored unless the `:mandate:` attribute is not given. Any `Q/` or `T/` prefix for social and enterprise
+standards is ignored unless the `:scope:` attribute is not given.
 
 `:issued-date:`::
 The date on which the GB standard was issued (authorised for publication by the issuing authority).
@@ -123,7 +125,7 @@ The CCS (Chinese Categorization Scheme) code for the GB standard. See https://gi
 The Plan Number (计划单号) for the GB standard.
 
 `:issuer:`::
-The issuer of the standard. This is the authority which authors, manages, and issues the standard. The issuer appears on the standard frontispiece. By default, the issuer is inferred from the prefix of the standard; this attribute overrides the value inferred from the prefix.
+The issuer of the standard. This is the authority which authors, manages, and issues the standard. For social standards, this is the social group; for enterprise standards, this is the company. The issuer appears on the standard frontispiece. By default, the issuer is inferred from the prefix of the standard; this attribute overrides the value inferred from the prefix. It is required for social and entperprise standards.
 
 `:publisher:`::
 The publisher of the standard, which distributes the standard. This is distinct from the issuer, the authority which authors, manages, and issues the standard.

@@ -147,7 +147,10 @@ module Asciidoctor
           :industry) || 'XXXX'}行业标准"
         when "local"
           "#{LOCAL&.dig(prefix.to_sym) || 'XXXX'}地方标准"
-          when "enterprise" then "ENTERPRISE STANDARD" # TODO
+          when "enterprise" 
+            issuer = get_metadata[:issuer]
+            "#{issuer}企业标准"
+          when "social" then "团体标准"
           when "professional" then "PROFESSIONAL STANDARD" # TODO
           end
       end
@@ -161,8 +164,9 @@ module Asciidoctor
           SECTOR&.dig(prefix.to_sym, :admin) || nil
         when "local"
           LOCAL&.dig(prefix.to_sym) ?
-          "#{LOCAL&.dig(prefix.to_sym)}质量技术检测局" : nil
-        when "enterprise" then "ENTERPRISE STANDARD" # TODO
+            "#{LOCAL&.dig(prefix.to_sym)}质量技术检测局" : nil
+        when "enterprise", "social"
+          get_metadata[:issuer]
         when "professional" then "PROFESSIONAL STANDARD" # TODO
         end
       end

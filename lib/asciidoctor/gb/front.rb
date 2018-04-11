@@ -88,6 +88,11 @@ module Asciidoctor
 
       def get_scope(node)
         node.attr("scope") and return node.attr("scope")
+        if %r{^[TQ]/}.match? node.attr("prefix")
+          m = node.attr("prefix").split(%{/})
+          mandate = m[0] == "T" ? "social" :
+            m[0] == "Q" ? "enterprise" : nil
+        end
         warn "GB: no scope supplied, defaulting to National"
         "national"
       end
@@ -95,7 +100,8 @@ module Asciidoctor
       def get_prefix(node)
         scope = get_scope(node)
         if prefix = node.attr("prefix")
-          prefix.gsub!(%r{/.*$}, "")
+          prefix.gsub!(%r{/[TZ]$}, "")
+          prefix.gsub!(%r{^[TQ]/([TZ]/)?}, "")
         else
           prefix = "GB"
           scope = "national"
@@ -106,11 +112,9 @@ module Asciidoctor
 
       def get_mandate(node)
         node.attr("mandate") and return node.attr("mandate")
-        if %r{/}.match? node.attr("prefix")
-          m = node.attr("prefix").split(%{/})
-          mandate = m[1] == "T" ? "recommended" :
-            m[1] == "Z" ? "guidelines" : nil
-        end
+        p = node.attr("prefix")
+        mandate = %r{/T}.match?(p) ? "recommended" :
+          %r{/Z}.match?(p) ? "guidelines" : nil
         if mandate.nil?
           mandate = "mandatory"
           warn "GB: no mandate supplied, defaulting to mandatory"
