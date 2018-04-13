@@ -288,8 +288,7 @@ module Asciidoctor
         when "sector"
           SECTOR&.dig(@lang, prefix.to_sym, :admin) || nil
         when "local"
-          LOCAL&.dig(@lang, prefix.to_sym) ?
-            "#{LOCAL&.dig(@lang, prefix.to_sym)}#{@labels["local_issuer"]}" : nil
+            "#{LOCAL&.dig(@lang, prefix.to_sym) || 'XXXX'}#{@labels["local_issuer"]}" 
         when "enterprise", "social"
           get_metadata[:issuer]
         when "professional" then "PROFESSIONAL STANDARD" # TODO
