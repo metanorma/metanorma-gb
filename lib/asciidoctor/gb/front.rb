@@ -102,6 +102,7 @@ module Asciidoctor
         if prefix = node.attr("prefix")
           prefix.gsub!(%r{/[TZ]$}, "")
           prefix.gsub!(%r{^[TQ]/([TZ]/)?}, "")
+          prefix.gsub!(/^DB/, "") if scope == "local"
         else
           prefix = "GB"
           scope = "national"

@@ -35,7 +35,7 @@ module Asciidoctor
       end
 
       def set_doctitle
-        if @language == "zh"
+        if @lang == "zh"
           set_metadata(:doctitle, get_metadata[:docmaintitlezh] + 
                        get_metadata[:docsubtitlezh] +
                        get_metadata[:docparttitlezh])
@@ -77,7 +77,7 @@ module Asciidoctor
       }.freeze
 
       def stage_abbrev_cn(stage, iter, draft)
-        return stage_abbrev(stage, iter, draft) if @language != "zh"
+        return stage_abbrev(stage, iter, draft) if @lang != "zh"
         stage = STAGE_ABBRS_CN[stage.to_sym] || "??"
         stage = "#{iter.text.to_i.localize(:zh).spellout}次#{stage}" if iter
         stage = "Pre" + stage if draft&.text =~ /^0\./
@@ -198,7 +198,7 @@ module Asciidoctor
       def bibdate(isoxml, _out)
         super
         m = get_metadata
-        if @language == "zh"
+        if @lang == "zh"
           set_metadata(:labelled_publisheddate, m[:publisheddate] + " " +
                        @labels["publicationdate_lbl"])
           set_metadata(:labelled_activateddate, m[:activateddate] + " " +
