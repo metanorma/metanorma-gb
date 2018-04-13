@@ -32,9 +32,18 @@ module Asciidoctor
         partnum = partnumber ? "#{part_label(partnumber, 'zh')}:" : ""
         part.nil? || set_metadata(:docparttitlezh,
                                   "&nbsp;#{partnum}#{part.text}")
-        set_metadata(:doctitle, get_metadata[:docmaintitlezh] + 
-                     get_metadata[:docsubtitlezh] +
-                     get_metadata[:docparttitlezh])
+      end
+
+      def set_doctitle
+        if @language == "zh"
+          set_metadata(:doctitle, get_metadata[:docmaintitlezh] + 
+                       get_metadata[:docsubtitlezh] +
+                       get_metadata[:docparttitlezh])
+        else
+          set_metadata(:doctitle, get_metadata[:docmaintitleen] + 
+                       get_metadata[:docsubtitleen] +
+                       get_metadata[:docparttitleen])
+        end
       end
 
       def subtitle(isoxml, _out)
@@ -47,6 +56,7 @@ module Asciidoctor
         partnum = partnumber ? "#{part_label(partnumber, 'en')}: " : ""
         part.nil? || set_metadata(:docparttitleen,
                                   "&mdash;#{partnum} #{part.text}")
+        set_doctitle
       end
 
       def author(isoxml, _out)

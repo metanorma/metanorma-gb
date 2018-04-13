@@ -210,7 +210,7 @@ width:263494459px;height:28675px'>
       {%- if isostandardtitle != "[not supplied]" -%}
       <span class="iso-title-first">{{ isostandardtitle }}</span>
       {%- endif -%}
-      <span class="join">，</span><span class="iso-equivalence-code">{{ gbequivalence }})</span>
+      <span class="join">{%if language == "zh" %}，{% else %}, {% endif %}</span><span class="iso-equivalence-code">{{ gbequivalence }})</span>
   </p>
     {% endif %}
     {% if stage and stage < 60 %}
