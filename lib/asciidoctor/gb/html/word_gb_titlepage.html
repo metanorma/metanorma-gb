@@ -219,14 +219,14 @@ width:263494459px;height:28675px'>
   <p class=draft_type>
     {% if stage == 30 %}
   <a name=YZBS></a><span
-  style='mso-bookmark:YZBS'><span lang=ZH-CN style='mso-no-proof:yes'>在提交反馈意见时，请将您知道的相关专利连同支持文件一并附上。</span><span
+  style='mso-bookmark:YZBS'><span lang=ZH-CN style='mso-no-proof:yes'>{{ patent_request }}</span><span
   lang=EN-US></span></span><span
   style='mso-bookmark:YZBS'></span>
     {% endif %}
   </p>
     <p class=draft_editorial><span lang=EN-US>
        {% if revdate %}
-    <span lang=ZH-CN>（本稿完成日期：</span><span lang=EN-US>{{ revdate }}）</span>
+    <span lang=ZH-CN>（{{ completion_date }}</span><span lang=EN-US>{{ revdate }}）</span>
        {% endif %}
    </span></p>
         {% endif %}
@@ -244,7 +244,7 @@ width:263494459px;height:28675px'>
 
 <!--[if gte vml 1]><v:shape id="fmFrame6" o:spid="_x0000_s1034"
  type="#_x0000_t202" alt="" style='position:absolute;left:0;text-align:left;
- margin-left:11.40cm;margin-top:23.79cm;width:5.61cm;height:0.87cm;z-index:251658752;
+ margin-left:9.40cm;margin-top:23.79cm;width:7.61cm;height:0.87cm;z-index:251658752;
  mso-wrap-style:square;mso-wrap-edited:f;mso-width-percent:0;
  mso-height-percent:0;mso-position-horizontal-relative:margin;
  mso-position-vertical-relative:margin;mso-width-percent:0;
@@ -344,14 +344,21 @@ width:263494433px;height:28675px'>
      fixed;mso-padding-alt:0cm;'>
      <tr style='mso-yfti-irow:0;mso-yfti-firstrow:yes;mso-yfti-lastrow:yes;
       height:1.38cm'>
+      {% if language == "en" %}
+            <td valign=middle style='padding:0cm 0.3cm 0cm {% if gbscope == "national" %}0.5cm{% else %}1.0cm{% endif %}'><p class=standard_agency style='text-align:justify;text-justify:distribute-all-lines;
+      layout-grid-mode:char;mso-layout-grid-align:none'>Issued by:</p></td>
+      {% endif %}
       <td valign=middle style='padding:0cm;
       height:1.38cm'>
       <p class=standard_agency style='text-align:justify;text-justify:distribute-all-lines;
       layout-grid-mode:char;mso-layout-grid-align:none'>{{ standard_agency_formatted }}</p>
             </td>
+            {% if language == "zh" %}
             <td valign=middle style='padding:0cm 0.3cm 0cm {% if gbscope == "national" %}0.5cm{% else %}1.0cm{% endif %}'><p class=standard_agency style='text-align:justify;text-justify:distribute-all-lines;
       layout-grid-mode:char;mso-layout-grid-align:none'>发</p></td><td valign=middle><p class=standard_agency style='text-align:justify;text-justify:distribute-all-lines;
-      layout-grid-mode:char;mso-layout-grid-align:none'>布</p></td></tr></table>
+      layout-grid-mode:char;mso-layout-grid-align:none'>布</p></td>
+            {% endif %}
+      </tr></table>
      </tr>
     </table>
     
