@@ -67,6 +67,7 @@ module Asciidoctor
       }.freeze
 
       def stage_abbrev_cn(stage, iter, draft)
+        return stage_abbrev(stage, iter, draft) if @language != "zh"
         stage = STAGE_ABBRS_CN[stage.to_sym] || "??"
         stage = "#{iter.text.to_i.localize(:zh).spellout}次#{stage}" if iter
         stage = "Pre" + stage if draft&.text =~ /^0\./
