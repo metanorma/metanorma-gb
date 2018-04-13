@@ -189,14 +189,14 @@ module Asciidoctor
         m = get_metadata
         if @language == "zh"
           set_metadata(:labelled_publisheddate, m[:publisheddate] + " " +
-                       @labels[:publicationdate_lbl])
+                       @labels["publicationdate_lbl"])
           set_metadata(:labelled_activateddate, m[:activateddate] + " " +
-                       @labels[:implementationdate_lbl])
+                       @labels["implementationdate_lbl"])
         else
-          set_metadata(:labelled_publisheddate, @labels[:publicationdate_lbl] +
+          set_metadata(:labelled_publisheddate, @labels["publicationdate_lbl"] +
                        ": " + m[:publisheddate])
           set_metadata(:labelled_implementeddate,
-                       @labels[:implementationdate_lbl] + ": " +
+                       @labels["implementationdate_lbl"] + ": " +
                        m[:implementeddate])
         end
       end
