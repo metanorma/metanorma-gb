@@ -201,7 +201,7 @@ module Asciidoctor
         if @lang == "zh"
           set_metadata(:labelled_publisheddate, m[:publisheddate] + " " +
                        @labels["publicationdate_lbl"])
-          set_metadata(:labelled_implementeddate, m[:activateddate] + " " +
+          set_metadata(:labelled_implementeddate, m[:implementeddate] + " " +
                        @labels["implementationdate_lbl"])
         else
           set_metadata(:labelled_publisheddate, @labels["publicationdate_lbl"] +

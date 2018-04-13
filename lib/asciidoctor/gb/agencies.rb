@@ -155,11 +155,11 @@ module Asciidoctor
       },
       "en" => {
         GB: { name: "National standard",
-              admin: ["General Administration of Quality Supervision, Inspection and Quarantine", "Standardization Administration of China"] },
+              admin: "General Administration of Quality Supervision, Inspection and Quarantine; Standardization Administration of China" },
       "GB/T": { name: "National standard (Recommended)",
-              admin: ["General Administration of Quality Supervision, Inspection and Quarantine", "Standardization Administration of China"] },
+              admin: "General Administration of Quality Supervision, Inspection and Quarantine; Standardization Administration of China" },
       "GB/Z": { name: "Standardized guidelines",
-              admin: ["General Administration of Quality Supervision, Inspection and Quarantine", "Standardization Administration of China"] },
+              admin: "General Administration of Quality Supervision, Inspection and Quarantine; Standardization Administration of China" },
       GBZ: { name: "National occupational health standards", admin: "Ministry of Health" },
       GJB: { name: "National military standards", admin: "Chinese People’s Liberation Army Equipment Headquarters" },
       GBn: { name: "National internal standards", admin: "" },
@@ -288,7 +288,7 @@ module Asciidoctor
         when "sector"
           SECTOR&.dig(@lang, prefix.to_sym, :admin) || nil
         when "local"
-          LOCAL&.dig(prefix.to_sym) ?
+          LOCAL&.dig(@lang, prefix.to_sym) ?
             "#{LOCAL&.dig(@lang, prefix.to_sym)}#{@labels["local_issuer"]}" : nil
         when "enterprise", "social"
           get_metadata[:issuer]

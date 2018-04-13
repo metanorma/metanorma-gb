@@ -65,7 +65,8 @@ module Asciidoctor
         m = node.attr("monospace-font") || '"Courier New",monospace'
         scope = node.attr("scope") || "national"
         t = node.attr("title-font") ||
-          scope == "national" ? '"SimSun",serif' : '"SimHei",sans-serif'
+          scope == "national" ? (node.attr("script") == "Hans" ? '"SimSun",serif' : '"Cambria",serif') :
+          (node.attr("script") == "Hans" ? '"SimHei",sans-serif' : '"Calibri",sans-serif' )
         "$bodyfont: #{b};\n$headerfont: #{h};\n$monospacefont: #{m};\n$titlefont: #{t};\n"
       end
 
