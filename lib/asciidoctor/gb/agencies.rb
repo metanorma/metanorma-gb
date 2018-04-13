@@ -262,9 +262,9 @@ module Asciidoctor
       def standard_class(scope, prefix, mandate)
         case scope
         when "national"
-        #warn @language
-        #warn gb_mandate_suffix(prefix, mandate).to_sym
-        #warn NATIONAL&.dig(@lang, gb_mandate_suffix(prefix, mandate).to_sym)
+        warn @lang
+        warn gb_mandate_suffix(prefix, mandate).to_sym
+        warn NATIONAL&.dig(@lang, gb_mandate_suffix(prefix, mandate).to_sym)
           NATIONAL&.dig(@lang, gb_mandate_suffix(prefix, mandate).to_sym,
                         :name) || "XXXX"
         when "sector"        
