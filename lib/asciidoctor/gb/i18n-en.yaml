@@ -4,3 +4,9 @@ supercedes_lbl: Supercedes
 partly_supercedes_lbl: Partly Supercedes
 patent_request: When submitting feedback, please attach any relevant patents that you are aware of, together with supporting documents.
 completion_date: 'Completion date for this manuscript: '
+PRC: "People's Republic of China "
+industry_standard: " Industry Standard"
+local_standard: " Local Standard"
+local_issuer: " Quality and Technical Inspection Bureau"
+enterprise_standard: " Enterprise Standard"
+social_standard: Social Standard

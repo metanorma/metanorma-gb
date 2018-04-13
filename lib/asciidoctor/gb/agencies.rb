@@ -3,7 +3,7 @@ require "isodoc"
 module Asciidoctor
   module Gb
     class GbConvert < IsoDoc::Convert
-      SECTOR = {
+      SECTOR = { "zh" : {
         AQ: { industry: "安全生产", admin: "国家安全生产管理局" },
         BB: { industry: "包装", admin: "国家发改委" },
         CB: { industry: "船舶", admin: "国防科学工业委员会" },
@@ -68,9 +68,77 @@ module Asciidoctor
         YY: { industry: "医药", admin: "国家食品药品监督管理局" },
         YZ: { industry: "邮政", admin: "国家邮政局" },
         ZY: { industry: "中医药", admin: "国家中医药管理局" },
+      }, 
+      "en": {
+        AQ: { industry: "Production Safety", admin: "State Administration of Work Safety" },
+        BB: { industry: "Packaging", admin: "China National Packaging Industry Corporation" },
+        CB: { industry: "Ships", admin: "National Defense Commission" },
+        CH: { industry: "Surveying and Mapping", admin: "National Bureau of Surveying and Mapping" },
+        CJ: { industry: "Town Construction", admin: "Ministry of Construction" },
+        CY: { industry: "News Publishing", admin: "State Press and Publication Administration" },
+        DA: { industry: "Archiving", admin: "National Archival Bureau" },
+        DB: { industry: "Seismology", admin: "National Seismological Bureau" },
+        DL: { industry: "Electricity", admin: "State Economic and Trade Commission" },
+        DZ: { industry: "Geological and Mineral Products", admin: "Ministry of Land and Resources" },
+        EJ: { industry: "Nuclear Industry", admin: "National Defense Commission" },
+        FZ: { industry: "Textile", admin: "State Economic and Trade Commission" },
+        GA: { industry: "Public Safety", admin: "Ministry of Public Security" },
+        GH: { industry: "Supply and Marketing", admin: "China Federation of Supply and Marketing Cooperatives" },
+        GM: { industry: "Cryptography", admin: "State Administration Of Cryptography" },
+        GY: { industry: "Radio, Film and Television", admin: "State Administration of Radio, Film and Television" },
+        HB: { industry: "Aviation", admin: "National Defense Commission" },
+        HG: { industry: "Chemical Industry", admin: "State Economic and Trade Commission" },
+        HJ: { industry: "Environmental Protection", admin: "State Environmental Protection Administration" },
+        HS: { industry: "Customs", admin: "General Administration of Customs" },
+        HY: { industry: "Oceanography", admin: "State Oceanic Administration" },
+        JB: { industry: "Mechanical Engineering", admin: "State Economic and Trade Commission" },
+        JC: { industry: "Building Materials", admin: "State Economic and Trade Commission" },
+        JG: { industry: "Construction Industry", admin: "Ministry of Construction" },
+        JR: { industry: "Financial", admin: "People’s Bank of China" },
+        JT: { industry: "Traffic", admin: "Ministry of Communications" },
+        JY: { industry: "Education", admin: "Ministry of Education" },
+        LB: { industry: "Tourism", admin: "National Tourism Bureau" },
+        LD: { industry: "Labor and Work Safety", admin: "Ministry of Labor and Social Security" },
+        LS: { industry: "Food", admin: "National Food Administration" },
+        LY: { industry: "Forestry", admin: "State Forestry Administration" },
+        MH: { industry: "Civil Aviation", admin: "Civil Aviation Administration" },
+        MT: { industry: "Coal", admin: "State Economic and Trade Commission" },
+        MZ: { industry: "Civil Affairs", admin: "Ministry of Civil Affairs" },
+        NY: { industry: "Agriculture", admin: "Ministry of Agriculture" },
+        QB: { industry: "Light Industry", admin: "State Economic and Trade Commission" },
+        QC: { industry: "Automotive", admin: "State Economic and Trade Commission" },
+        QJ: { industry: "Aerospace", admin: "National Defense Commission" },
+        QX: { industry: "Meteorological", admin: "China Meteorological Administration" },
+        SB: { industry: "Domestic Business", admin: "Ministry of Commerce" },
+        SC: { industry: "Aquatic Products", admin: "Ministry of Agriculture" },
+        SH: { industry: "Petrochemical", admin: "State Economic and Trade Commission" },
+        SJ: { industry: "Electronics", admin: "Ministry of Information Industry" },
+        SL: { industry: "Water Resources", admin: "Ministry of Water Resources" },
+        SN: { industry: "Inspection", admin: "General Administration of Quality Supervision, Inspection and Quarantine" },
+        SY: { industry: "Natural Gas", admin: "State Economic and Trade Commission" },
+        TB: { industry: "Rail Transport", admin: "Ministry of Railways" },
+        TD: { industry: "Land Management", admin: "Ministry of Land and Resources" },
+        TJ: { industry: "Railway Traffic", admin: "Ministry of Railways Standards" },
+        TY: { industry: "Sports", admin: "National Department of Sport" },
+        WB: { industry: "Materials Management", admin: "State Economic and Trade Commission" },
+        WH: { industry: "Culture", admin: "Ministry of Culture" },
+        WJ: { industry: "Ordnance", admin: "National Defense Commission" },
+        WM: { industry: "Foreign Trade", admin: "Ministry of Foreign Trade and Economic Cooperation" },
+        WS: { industry: "Health", admin: "Ministry of Health" },
+        WW: { industry: "Cultural Relics Protection", admin: "National Heritage Board" },
+        XB: { industry: "Rare Earths", admin: "State Planning Commission Rare Earths Office" },
+        YB: { industry: "Ferrous Metallurgy", admin: "State Economic and Trade Commission" },
+        YC: { industry: "Tobacco", admin: "State Tobacco Monopoly Bureau" },
+        YD: { industry: "Communication", admin: "Ministry of Information Industry" },
+        YS: { industry: "Non-Ferrous Metallurgy", admin: "State Economic and Trade Commission" },
+        YY: { industry: "Medicine", admin: "State Food and Drug Administration" },
+        YZ: { industry: "Postal", admin: "State Post Office" },
+        ZY: { industry: "Chinese Medicine", admin: "State Administration of Traditional Chinese Medicine" },
+      }
       }.freeze
 
       NATIONAL = {
+      "zh": {
         GB: { name: "中华人民共和国国家标准",
               admin: ["中华人民共和国国家质量监督检验检疫总局", "中国国家标准化管理委员会"] },
       "GB/T": { name: "中华人民共和国国家标准",
@@ -84,9 +152,26 @@ module Asciidoctor
       GWPB: { name: "中华人民共和国国家污染物排放标准", admin: "" },
       JJF: { name: "中华人民共和国国家计量技术规范", admin: "中华人民共和国国家质量监督检验检疫总局" },
       JJG: { name: "中华人民共和国国家计量检定规程", admin: "中华人民共和国国家质量监督检验检疫总局" },
+      },
+      "en": {
+        GB: { name: "National standard",
+              admin: ["General Administration of Quality Supervision, Inspection and Quarantine", "Standardization Administration of China"] },
+      "GB/T": { name: "National standard (Recommended)",
+              admin: ["General Administration of Quality Supervision, Inspection and Quarantine", "Standardization Administration of China"] },
+      "GB/Z": { name: "Standardized guidelines",
+              admin: ["General Administration of Quality Supervision, Inspection and Quarantine", "Standardization Administration of China"] },
+      GBZ: { name: "National occupational health standards", admin: "Ministry of Health" },
+      GJB: { name: "National military standards", admin: "Chinese People’s Liberation Army Equipment Headquarters" },
+      GBn: { name: "National internal standards", admin: "" },
+      GHZB: { name: "National environmental quality standards", admin: "" },                                                                                                                  GWKB: { name: "National Environmental Protection Standards", admin: "Ministry of Environmental Protection" },
+      GWPB: { name: "National pollutant discharge standards", admin: "" },
+      JJF: { name: "National calibration specifications", admin: "General Administration of Quality Supervision, Inspection and Quarantine" },
+      JJG: { name: "National calibration verification regulations", admin: "General Administration of Quality Supervision, Inspection and Quarantine" },
+      }
       }.freeze
 
       LOCAL = {
+      "zh" : {
         "11": "北京市",
         "12": "天津市",
         "13": "河北省",
@@ -121,6 +206,43 @@ module Asciidoctor
         "71": "台湾省",
         "81": "香港特别行政区",
         "82": "澳门特别行政区",
+      }, 
+      "en" : {
+        "11": "Beijing City",
+        "12": "Tianjin",
+        "13": "Hebei Province",
+        "14": "Shanxi Province",
+        "15": "Inner Mongolia Autonomous Region",
+        "21": "Liaoning Province",
+        "22": "Jilin Province",
+        "23": "Heilongjiang Province",
+        "31": "Shanghai",
+        "32": "Jiangsu Province",
+        "33": "Zhejiang Province",
+        "34": "Anhui Province",
+        "35": "Fujian Province",
+        "36": "Jiangxi Province",
+        "37": "Shandong Province",
+        "41": "Henan Province",
+        "42": "Hubei Province",
+        "43": "Hunan Province",
+        "44": "Guangdong Province",
+        "45": "Guangxi Zhuang Autonomous Region",
+        "46": "Hainan",
+        "50": "Chongqing",
+        "51": "Sichuan Province",
+        "52": "Guizhou Province",
+        "53": "Yunnan Province",
+        "54": "Tibet Autonomous Region",
+        "61": "Shaanxi Province",
+        "62": "Gansu Province",
+        "63": "Qinghai Province",
+        "64": "Ningxia Hui Autonomous Region",
+        "65": "Xinjiang Uygur Autonomous Region",
+        "71": "Taiwan Province",
+        "81": "Hong Kong Special Administrative Region",
+        "82": "Macao Special Administrative Region",
+      }
       }.freeze
 
       def gb_mandate_suffix(prefix, mandate)
@@ -140,17 +262,17 @@ module Asciidoctor
       def standard_class(scope, prefix, mandate)
         case scope
         when "national"
-          NATIONAL&.dig(gb_mandate_suffix(prefix, mandate).to_sym,
+          NATIONAL&.dig(@language, gb_mandate_suffix(prefix, mandate).to_sym,
                         :name) || "XXXX"
-        when "sector"
-          "中华人民共和国#{SECTOR&.dig(prefix.to_sym,
-          :industry) || 'XXXX'}行业标准"
+        when "sector"        
+          "#{@labels["PRC"]}#{SECTOR&.dig(@language, prefix.to_sym, 
+          :industry) || 'XXXX'}#{@labels["industry_standard"]}"
         when "local"
-          "#{LOCAL&.dig(prefix.to_sym) || 'XXXX'}地方标准"
+          "#{LOCAL&.dig(@language, prefix.to_sym) || 'XXXX'}#{@labels["local_standard"]}"
           when "enterprise" 
             issuer = get_metadata[:issuer]
-            "#{issuer}企业标准"
-          when "social" then "团体标准"
+            "#{issuer}#{@labels["enterprise_standard"]}"
+          when "social" then @labels["social_standard"]
           when "professional" then "PROFESSIONAL STANDARD" # TODO
           end
       end
@@ -158,13 +280,13 @@ module Asciidoctor
       def standard_agency(scope, prefix, mandate)
         case scope
         when "national"
-          NATIONAL&.dig(gb_mandate_suffix(prefix, mandate).to_sym,
+          NATIONAL&.dig(@language, gb_mandate_suffix(prefix, mandate).to_sym,
                         :admin) || nil
         when "sector"
-          SECTOR&.dig(prefix.to_sym, :admin) || nil
+          SECTOR&.dig(@language, prefix.to_sym, :admin) || nil
         when "local"
           LOCAL&.dig(prefix.to_sym) ?
-            "#{LOCAL&.dig(prefix.to_sym)}质量技术检测局" : nil
+            "#{LOCAL&.dig(@language, prefix.to_sym)}#{@labels["local_issuer"]}" : nil
         when "enterprise", "social"
           get_metadata[:issuer]
         when "professional" then "PROFESSIONAL STANDARD" # TODO
@@ -176,13 +298,13 @@ module Asciidoctor
         prefix = root.at("//gbprefix")&.text
         case scope
         when "national"
-          NATIONAL.has_key?(prefix.to_sym) ||
+          NATIONAL.dig(@language, prefix.to_sym) ||
             warn("GB: #{prefix} is not a recognised national prefix")
         when "sector"
-          SECTOR.has_key?(prefix.to_sym) ||
+          SECTOR.dig(@language, prefix.to_sym) ||
             warn("GB: #{prefix} is not a recognised sector prefix")
         when "local"
-          LOCAL.has_key?(prefix.to_sym) ||
+          LOCAL.dig(@language, prefix.to_sym) ||
             warn("GB: #{prefix} is not a recognised local prefix")
         end
       end
