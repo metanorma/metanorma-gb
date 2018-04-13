@@ -183,6 +183,22 @@ module Asciidoctor
         when "zh" then "第#{partnumber}部分"
         end
       end
+
+      def bibdate(isoxml, _out)
+        super
+        m = get_metadata
+        if @language == "zh"
+          set_metadata(:labelled_publisheddate,
+                       m[:publisheddate] + " " + m[:publicationdate_lbl])
+          set_metadata(:labelled_activateddate,
+                       m[:activateddate] + " " + m[:implementationdate_lbl])
+        else
+          set_metadata(:labelled_publisheddate,
+                       m[:publicationdate_lbl] + ": " + m[:publisheddate])
+          set_metadata(:labelled_implementeddate,
+                       m[:implementationdate_lbl] + ": " + m[:implementeddate])
+        end
+      end
     end
   end
 end

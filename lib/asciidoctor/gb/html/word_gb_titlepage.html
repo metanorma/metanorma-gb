@@ -153,9 +153,9 @@ width:263494454px;height:28675px'>
     src="blank.png" v:shapes="DT">-->
 
     {% if obsoletes_part %}
-      部分代替
+      {{ partly_supercedes_lbl }}
     {% else %}
-      代替
+      {{ supercedes_lbl }}
     {% endif %}
     {{ obsoletes }}
     
@@ -266,7 +266,7 @@ width:263494131px;height:28675px'>
    <tr>
     <td><![endif]>
     <div v:shape="fmFrame6" style='padding:0pt 0pt 0pt 0pt' class=shape>
-    <p class=activated_date>{{ implementeddate }} 实施</p>
+    <p class=activated_date>{{ labelled_implementeddate }}</p>
     </div>
     <![if !mso]></td>
    </tr>
@@ -299,7 +299,7 @@ width:263494454px;height:28675px'>
    <tr>
     <td><![endif]>
     <div v:shape="fmFrame5" style='padding:0pt 0pt 0pt 0pt' class=shape>
-    <p class=publish_date>{{ publisheddate }} 发布</p>
+    <p class=publish_date>{{ labelled_publisheddate }}</p>
     </div>
     <![if !mso]></td>
    </tr>

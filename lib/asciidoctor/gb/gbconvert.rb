@@ -1,4 +1,5 @@
 require "isodoc"
+require_relative "./i18n.rb"
 require_relative "./gbcleanup.rb"
 require_relative "./xref_gen.rb"
 require_relative "./metadata.rb"
