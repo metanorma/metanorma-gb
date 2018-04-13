@@ -200,9 +200,9 @@ width:263494459px;height:28675px'>
    <tr>
     <td><![endif]>
     <div v:shape="fmFrame4" style='padding:0pt 0pt 0pt 0pt' class=shape>
-    <p class=standard_name><span lang=ZH-CN>{{ docmaintitlezh }}{{ docsubtitlezh }}{{ docparttitlezh }}</span><span lang=EN-US style='mso-bidi-font-size:26.0pt'><o:p></o:p></span></p>
+    <p class=standard_name><span lang=ZH-CN>{%if language == "zh" %}{{ docmaintitlezh }}{{ docsubtitlezh }}{{ docparttitlezh }}{% else %}<span class="en">{{ docmaintitleen }}{{ docsubtitleen }}{{ docparttitleen }}</span>{% endif %}</span><span lang=EN-US style='mso-bidi-font-size:26.0pt'><o:p></o:p></span></p>
     <p class=standard_name_english style='margin-top:1.0cm;margin-bottom:1.0cm;mso-line-height-rule:
-    exactly'><span lang=EN-US>{{ docmaintitleen }}{{ docsubtitleen }}{{ docparttitleen }}</span></p>
+    exactly'><span lang=EN-US>{%if language == "zh" %}{{ docmaintitleen }}{{ docsubtitleen }}{{ docparttitleen }}{% else %}<span class="zh">{{ docmaintitlezh }}{{ docsubtitlezh }}{{ docparttitlezh }}</span>{% endif %}</span></p>
 
     {% if isostandard %}
   <p class=identicality_label>
