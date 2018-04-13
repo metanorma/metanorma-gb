@@ -262,16 +262,16 @@ module Asciidoctor
       def standard_class(scope, prefix, mandate)
         case scope
         when "national"
-        warn @language
-        warn gb_mandate_suffix(prefix, mandate).to_sym
-        warn NATIONAL&.dig(@language, gb_mandate_suffix(prefix, mandate).to_sym)
-          NATIONAL&.dig(@language, gb_mandate_suffix(prefix, mandate).to_sym,
+        #warn @language
+        #warn gb_mandate_suffix(prefix, mandate).to_sym
+        #warn NATIONAL&.dig(@lang, gb_mandate_suffix(prefix, mandate).to_sym)
+          NATIONAL&.dig(@lang, gb_mandate_suffix(prefix, mandate).to_sym,
                         :name) || "XXXX"
         when "sector"        
-          "#{@labels["PRC"]}#{SECTOR&.dig(@language, prefix.to_sym, 
+          "#{@labels["PRC"]}#{SECTOR&.dig(@lang, prefix.to_sym, 
           :industry) || 'XXXX'}#{@labels["industry_standard"]}"
         when "local"
-          "#{LOCAL&.dig(@language, prefix.to_sym) || 'XXXX'}#{@labels["local_standard"]}"
+          "#{LOCAL&.dig(@lang, prefix.to_sym) || 'XXXX'}#{@labels["local_standard"]}"
           when "enterprise" 
             issuer = get_metadata[:issuer]
             "#{issuer}#{@labels["enterprise_standard"]}"
@@ -283,13 +283,13 @@ module Asciidoctor
       def standard_agency(scope, prefix, mandate)
         case scope
         when "national"
-          NATIONAL&.dig(@language, gb_mandate_suffix(prefix, mandate).to_sym,
+          NATIONAL&.dig(@lang, gb_mandate_suffix(prefix, mandate).to_sym,
                         :admin) || nil
         when "sector"
-          SECTOR&.dig(@language, prefix.to_sym, :admin) || nil
+          SECTOR&.dig(@lang, prefix.to_sym, :admin) || nil
         when "local"
           LOCAL&.dig(prefix.to_sym) ?
-            "#{LOCAL&.dig(@language, prefix.to_sym)}#{@labels["local_issuer"]}" : nil
+            "#{LOCAL&.dig(@lang, prefix.to_sym)}#{@labels["local_issuer"]}" : nil
         when "enterprise", "social"
           get_metadata[:issuer]
         when "professional" then "PROFESSIONAL STANDARD" # TODO
@@ -301,13 +301,13 @@ module Asciidoctor
         prefix = root.at("//gbprefix")&.text
         case scope
         when "national"
-          NATIONAL.dig(@language, prefix.to_sym) ||
+          NATIONAL.dig(@lang, prefix.to_sym) ||
             warn("GB: #{prefix} is not a recognised national prefix")
         when "sector"
-          SECTOR.dig(@language, prefix.to_sym) ||
+          SECTOR.dig(@lang, prefix.to_sym) ||
             warn("GB: #{prefix} is not a recognised sector prefix")
         when "local"
-          LOCAL.dig(@language, prefix.to_sym) ||
+          LOCAL.dig(@lang, prefix.to_sym) ||
             warn("GB: #{prefix} is not a recognised local prefix")
         end
       end
