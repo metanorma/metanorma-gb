@@ -3,7 +3,7 @@ require "isodoc"
 module Asciidoctor
   module Gb
     class GbConvert < IsoDoc::Convert
-      SECTOR = { "zh" : {
+      SECTOR = { "zh" => {
         AQ: { industry: "安全生产", admin: "国家安全生产管理局" },
         BB: { industry: "包装", admin: "国家发改委" },
         CB: { industry: "船舶", admin: "国防科学工业委员会" },
@@ -69,7 +69,7 @@ module Asciidoctor
         YZ: { industry: "邮政", admin: "国家邮政局" },
         ZY: { industry: "中医药", admin: "国家中医药管理局" },
       }, 
-      "en": {
+      "en" => {
         AQ: { industry: "Production Safety", admin: "State Administration of Work Safety" },
         BB: { industry: "Packaging", admin: "China National Packaging Industry Corporation" },
         CB: { industry: "Ships", admin: "National Defense Commission" },
@@ -138,7 +138,7 @@ module Asciidoctor
       }.freeze
 
       NATIONAL = {
-      "zh": {
+      "zh" => {
         GB: { name: "中华人民共和国国家标准",
               admin: ["中华人民共和国国家质量监督检验检疫总局", "中国国家标准化管理委员会"] },
       "GB/T": { name: "中华人民共和国国家标准",
@@ -153,7 +153,7 @@ module Asciidoctor
       JJF: { name: "中华人民共和国国家计量技术规范", admin: "中华人民共和国国家质量监督检验检疫总局" },
       JJG: { name: "中华人民共和国国家计量检定规程", admin: "中华人民共和国国家质量监督检验检疫总局" },
       },
-      "en": {
+      "en" => {
         GB: { name: "National standard",
               admin: ["General Administration of Quality Supervision, Inspection and Quarantine", "Standardization Administration of China"] },
       "GB/T": { name: "National standard (Recommended)",
@@ -171,7 +171,7 @@ module Asciidoctor
       }.freeze
 
       LOCAL = {
-      "zh" : {
+      "zh" => {
         "11": "北京市",
         "12": "天津市",
         "13": "河北省",
@@ -207,7 +207,7 @@ module Asciidoctor
         "81": "香港特别行政区",
         "82": "澳门特别行政区",
       }, 
-      "en" : {
+      "en" => {
         "11": "Beijing City",
         "12": "Tianjin",
         "13": "Hebei Province",
