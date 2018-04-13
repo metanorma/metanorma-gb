@@ -180,8 +180,9 @@ module Asciidoctor
         scope = xmldoc.at("//gbscope")&.text
         prefix = xmldoc.at("//gbprefix")&.text
         mandate = xmldoc.at("//gbmandate")&.text || "mandatory"
+        lang = xmldoc.at("//language")&.text
         agency = issuer.content
-        agency = GbConvert.new({}).standard_agency(scope, prefix, mandate) if agency == "GB"
+        agency = GbConvert.new({}).standard_agency1(scope, prefix, mandate) if agency == "GB"
         agency = "GB" unless agency
         owner = xmldoc.at("//copyright/owner/organization/name")
         owner.content = agency

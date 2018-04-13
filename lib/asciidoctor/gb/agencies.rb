@@ -262,9 +262,6 @@ module Asciidoctor
       def standard_class(scope, prefix, mandate)
         case scope
         when "national"
-        warn @lang
-        warn gb_mandate_suffix(prefix, mandate).to_sym
-        warn NATIONAL&.dig(@lang, gb_mandate_suffix(prefix, mandate).to_sym)
           NATIONAL&.dig(@lang, gb_mandate_suffix(prefix, mandate).to_sym,
                         :name) || "XXXX"
         when "sector"        
@@ -278,6 +275,21 @@ module Asciidoctor
           when "social" then @labels["social_standard"]
           when "professional" then "PROFESSIONAL STANDARD" # TODO
           end
+      end
+
+      def standard_agency1(scope, prefix, mandate)
+        case scope
+        when "national"
+          NATIONAL&.dig(@lang, gb_mandate_suffix(prefix, mandate).to_sym,
+                        :admin) || nil
+        when "sector"
+          SECTOR&.dig(@lang, prefix.to_sym, :admin) || nil
+        when "local"
+            LOCAL&.dig(@lang, prefix.to_sym) || nil 
+        when "enterprise", "social"
+          get_metadata[:issuer] || nil
+        when "professional" then "PROFESSIONAL STANDARD" # TODO
+        end
       end
 
       def standard_agency(scope, prefix, mandate)
