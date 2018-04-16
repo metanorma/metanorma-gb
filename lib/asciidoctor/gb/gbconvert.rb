@@ -83,7 +83,6 @@ module Asciidoctor
           @files_to_delete << logo
           "<img width='113' height='56' src='#{logo}' alt='#{prefix}'></img>"\
             "#{local}"
-        end
       end
 
       def format_agency(agency, format)
