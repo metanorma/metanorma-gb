@@ -72,17 +72,26 @@ module Asciidoctor
 
       def termdef_cleanup(xmldoc)
         super
-        termdef_localisedstr(xmldoc)
+        localisedstr(xmldoc)
       end
 
       ROMAN_TEXT = /\s*[a-z\u00c0-\u00d6\u00d8-\u00f0\u0100-\u0240]/i
       HAN_TEXT = /\s*[\u4e00-\u9fff]+/
 
-      def termdef_localisedstr(xmldoc)
-        xmldoc.xpath("//admitted | //deprecates | //preferred").each do |zh|
+      LOCALISED_ELEMS = "//admitted | //deprecates | //preferred | //prefix | "\
+        "//initial | //addition | //surname | //forename | //name | "\
+        "//abbreviation | //role/description | //affiliation/description | "\
+        "//bibdata/item | //bibitem/title | //bibdata/formattedref | "\
+        "//bibitem/formattedref | //bibdata/note | //bibitem/note | "\
+        "//bibdata/abstract | //bibitem/note ".freeze
+
+      MUST_LOCALISE_ELEMS = %w{admitted deprecates preferred}.freeze
+
+      def localisedstr(xmldoc)
+        xmldoc.xpath(LOCALISED_ELEMS).each do |zh|
           if zh.at("./string")
             extract_localisedstrings(zh)
-          else
+          elsif MUST_LOCALISE_ELEMS.include? zh.name
             duplicate_localisedstrings(zh)
           end
         end
