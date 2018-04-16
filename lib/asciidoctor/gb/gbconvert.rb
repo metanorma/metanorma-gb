@@ -72,9 +72,15 @@ module Asciidoctor
         if logo.nil?
           "<span style='font-size:36pt;font-weight:bold'>#{prefix}</span>"
         else
+          format_logo1(logo, prefix, scope)
+        end
+      end
+
+      def format_logo1(logo, prefix, scope)
           logo += ".gif"
           system "cp #{fileloc(File.join('html/gb-logos', logo))}  #{logo}"
           local = local_logo_suffix(scope)
+          @files_to_delete << logo
           "<img width='113' height='56' src='#{logo}' alt='#{prefix}'></img>"\
             "#{local}"
         end
