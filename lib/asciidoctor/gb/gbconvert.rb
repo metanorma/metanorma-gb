@@ -51,6 +51,7 @@ module Asciidoctor
       def generate_header(filename, dir)
         super
         system "cp #{fileloc(File.join('html', 'blank.png'))} blank.png"
+        @files_to_delete << "blank.png"
       end
 
       def deprecated_term_parse(node, out)
