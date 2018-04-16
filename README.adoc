@@ -166,7 +166,7 @@ alt:[rough rice 糙米]
 However if there is script mixing in a term -- if the Chinese term contains
 a Latin script acronym or a mathematical expression, for example -- the
 Chinese term will not be detected correctly. To address this, the formatting macros
-+`[zh]#...#`+ and +`[en]#...#`+ are used. If they are present, then the content
+`+[zh]#...#+` and `+[en]#...#+` are used. If they are present, then the content
 of those macros is treated as the Chinese and English equivalents of the
 parent node instead:
 
@@ -186,6 +186,33 @@ Unfortunately no further markup is permitted within the `+[zh]#...#+` and
 `+[en]#...#+` macros by Asciidoctor, and Asciidoctor does not correctly nest
 inline macros within other inline macros (so `+alt:[en:[_xyz_] zh:[xyz]+`
 would not give correct behaviour either.)
+
+Localisation strings can be used anywhere else in the document where the
+grammar permits localised strings (notably in bibliographic data). For example,
+a bibliographic title can be given in two languages as follows. (Note that formatting appears outside the language macros.)
+
+[source,asciidoc]
+--
+[[[ISO7301,ISO 7301:2011]]], _[zh]#大米 - 规格# [en]#Rice -- Specification#_
+--
+
+[source,xml]
+--
+  <bibitem id="ISO7301" type="standard">
+   <title language="zh">大米 - 规格</title> <title language="en">Rice&#x2011;Specification</title>
+  <docidentifier>ISO 7301</docidentifier>
+  <date type="published">
+    <from>2011</from>
+  </date>
+  <contributor>
+    <role type="publisher"/>
+    <organization>
+      <name>International Organization for Standardization</name>
+      <abbreviation>ISO</abbreviation>
+    </organization>
+  </contributor>
+</bibitem>
+--
 
 The gem also supports `+[zh-Hant]#...#+` and `+[zh-Hans]#...#+` to
 differentiate traditional and simplified script in ISOXML; `zh-Hant` is
