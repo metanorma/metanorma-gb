@@ -130,15 +130,6 @@ module Asciidoctor
         template = Liquid::Template.parse(docxml)
         template.render(meta.map { |k, v| [k.to_s, v] }.to_h)
       end
-
-      def toWord(result, filename, dir)
-        result = from_xhtml(word_cleanup(to_xhtml(result)))
-        result = populate_template(result, :word)
-        Html2Doc.process(result, filename: filename, stylesheet: @wordstylesheet,
-                         header_file: "header.html", dir: dir,
-                         asciimathdelims: [@openmathdelim, @closemathdelim],
-                         liststyles: {ul: "l7", ol: "l10"})
-      end
     end
   end
 end

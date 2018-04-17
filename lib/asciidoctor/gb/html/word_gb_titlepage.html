@@ -99,17 +99,9 @@ width:263494454px;height:28675px'>
   <table cellpadding=0 cellspacing=0 width="100%">
    <tr>
     <td><![endif]>
-    <div v:shape="fmFrame2" style='padding:0pt 0pt 0pt 0pt' class=shape>
-    {%- if language == "en" -%}
-    <p class=standard_class style='text-align:center'>
-    {%- else -%}
-    <p class=standard_class>
-    {%- endif -%}
-    {%- if language == "en" -%}
-    <span style="font-size:10.5pt">
-    {%- else -%}
-    <span>
-    {%- endif -%}{{ standard_class }}</span></p>
+    <div v:shape="fmFrame2" style='padding:0pt 0pt 0pt 0pt' class=shape>    
+    <p class=standard_class {%- if language == "en" -%}style='text-align:center'{%- endif -%}>
+    <span {%- if language == "en" -%}style="font-size:10.5pt"{%- endif -%}>{{ standard_class }}</span></p>
     </div>
     <![if !mso]></td>
    </tr>
@@ -359,13 +351,8 @@ width:263494433px;height:28675px'>
       {% endif %}
       <td valign=middle style='padding:0cm;
       height:1.38cm'>
-      {%- if language == "en" -%}
-      <p class=standard_agency style='text-align:center;font-size:10.5pt'>
-      {%- else -%}
-      <p class=standard_agency style='text-align:justify;text-justify:distribute-all-lines;
-      layout-grid-mode:char;mso-layout-grid-align:none'>
-      {%- endif -%}
-      {{ standard_agency_formatted }}</p>
+      <p class=standard_agency {%- if language == "en" -%}style='text-align:center;font-size:10.5pt'{%- else -%}style='text-align:justify;text-justify:distribute-all-lines;
+      layout-grid-mode:char;mso-layout-grid-align:none'{%- endif -%}>{{ standard_agency_formatted }}</p>
             </td>
             {% if language == "zh" %}
             <td valign=middle style='padding:0cm 0.3cm 0cm {% if gbscope == "national" %}0.5cm{% else %}1.0cm{% endif %}'><p class=standard_agency style='text-align:justify;text-justify:distribute-all-lines;
