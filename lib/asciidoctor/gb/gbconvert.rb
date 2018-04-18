@@ -109,7 +109,7 @@ module Asciidoctor
         parts[1] = "，定义" if parts.size > 1 && parts[1] == ","
         parts.map do |p|
           /\s*\[MODIFICATION\]/.match?(p) ? ", 改写 &mdash; " : p
-        end.join.sub(/\A\s*/m, "【").sub(/\s*\z/m, "】")
+        end.join.sub(/\A\s*/m, l10n("[")).sub(/\s*\z/m, l10n("]"))
       end
 
       def termref_resolve(docxml)
