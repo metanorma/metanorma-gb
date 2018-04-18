@@ -87,7 +87,7 @@ module Asciidoctor
       def docstatus(isoxml, _out)
         docstatus = isoxml.at(ns("//status/stage"))
         if docstatus
-          set_metadata(:stage, docstatus.text)
+          set_metadata(:stage, docstatus.text.to_i)
           abbr = stage_abbrev_cn(docstatus.text, isoxml.at(ns("//status/iteration")),
                                  isoxml.at(ns("//version/draft")))
           set_metadata(:stageabbr, abbr)
