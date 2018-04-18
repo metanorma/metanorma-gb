@@ -106,9 +106,9 @@ module Asciidoctor
 
       def termref_render(x)
         parts = x.split(%r{(\s*\[MODIFICATION\]|,)}m)
-        parts[1] = "，定义" if parts.size > 1 && parts[1] == ","
+        parts[1] = l10n(", #{@source_lbl}") if parts.size > 1 && parts[1] == ","
         parts.map do |p|
-          /\s*\[MODIFICATION\]/.match?(p) ? ", 改写 &mdash; " : p
+          /\s*\[MODIFICATION\]/.match?(p) ? l10n(", #{@modified_lbl} &mdash; ") : p
         end.join.sub(/\A\s*/m, l10n("[")).sub(/\s*\z/m, l10n("]"))
       end
 
@@ -123,7 +123,6 @@ module Asciidoctor
         meta = get_metadata.merge(@labels)
         logo = format_logo(meta[:gbprefix], meta[:gbscope], format)
         docxml = termref_resolve(docxml)
-        docxml.gsub!(/\s*\[ISOSECTION\]/, ", ?~Z?~I")
         meta[:standard_agency_formatted] =
           format_agency(meta[:standard_agency], format)
         meta[:standard_logo] = logo
