@@ -25,7 +25,6 @@ module Asciidoctor
         out.parent.add_child(ENDLINE)
       end
 
-
       def generate_header(filename, dir)
         return unless @header
         template = Liquid::Template.parse(File.read(@header, encoding: "UTF-8"))
@@ -49,6 +48,11 @@ module Asciidoctor
           x.replace(x.children) if x.name == "a"
         end
         from_xhtml(h1)
+      end
+
+      def word_intro(docxml)
+        super
+        title_cleanup(docxml.at('//div[@class="WordSection2"]'))
       end
 
       def toWord(result, filename, dir)
