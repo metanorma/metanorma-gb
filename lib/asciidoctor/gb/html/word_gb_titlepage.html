@@ -100,8 +100,8 @@ width:263494454px;height:28675px'>
    <tr>
     <td><![endif]>
     <div v:shape="fmFrame2" style='padding:0pt 0pt 0pt 0pt' class=shape>    
-    <p class=standard_class {%- if language == "en" -%}style='text-align:center'{%- endif -%}>
-    <span {%- if language == "en" -%}style="font-size:10.5pt"{%- endif -%}>{{ standard_class }}</span></p>
+    <p class=standard_class {% if language == "en" %}style='text-align:center'{% endif %}>
+    <span {% if language == "en" %}style="font-size:10.5pt"{%- endif -%}>{{ standard_class }}</span></p>
     </div>
     <![if !mso]></td>
    </tr>
