@@ -98,7 +98,7 @@ module Asciidoctor
         dn = docnumber(isoxml)
         docstatus = get_metadata[:stage]
         if docstatus
-          abbr = stage_abbrev(docstatus, isoxml.at(ns("//status/iteration")),
+          abbr = stage_abbrev(docstatus.to_s, isoxml.at(ns("//status/iteration")),
                               isoxml.at(ns("//version/draft")))
           (docstatus.to_i < 60) && dn = abbr + " " + dn
         end
