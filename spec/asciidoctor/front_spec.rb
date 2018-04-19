@@ -17,7 +17,7 @@ RSpec.describe Asciidoctor::Gb do
       :scope: national
       :topic: Radio
       :published-date: 2018-01-01
-      :library-css: 12, 34
+      :library-ccs: 12, 34
       :library-plan: AB
       :author-committee: AC
       :publisher: P
@@ -133,6 +133,8 @@ RSpec.describe Asciidoctor::Gb do
            <gbmandate>mandatory</gbmandate>
            <gbtopic>Radio</gbtopic>
          </gbtype>
+         <ccs>12</ccs>
+         <ccs>34</ccs>
          <plannumber>AB</plannumber>
        </bibdata>
        <sections/>
