@@ -26,4 +26,86 @@ def strip_guid(x)
   x.gsub(%r{ id="_[^"]+"}, ' id="_"').gsub(%r{ target="_[^"]+"}, ' target="_"')
 end
 
+ASCIIDOC_BLANK_HDR = <<~"HDR"
+      = Document title
+      Author
+      :docfile: test.adoc
+      :nodoc:
+      :novalid:
 
+HDR
+
+BLANK_HDR = <<~"HDR"
+       <?xml version="1.0" encoding="UTF-8"?>
+       <gb-standard xmlns="http://riboseinc.com/gbstandard">
+       <bibdata type="standard">
+         <title>
+
+         </title>
+         <title>
+
+         </title>
+         <docidentifier>
+           <project-number/>
+         </docidentifier>
+         <contributor>
+           <role type="author"/>
+           <person>
+             <name>
+               <surname>Author</surname>
+             </name>
+           </person>
+         </contributor><contributor><role type="technical-committee"/><organization><name/></organization></contributor>
+         <contributor>
+           <role type="author"/>
+           <organization>
+             <name>GB</name>
+           </organization>
+         </contributor>
+         <contributor>
+           <role type="publisher"/>
+           <organization>
+             <name>GB</name>
+           </organization>
+         </contributor>
+         <contributor>
+           <role type="authority"/>
+           <organization>
+             <name>GB</name>
+           </organization>
+         </contributor>
+         <contributor>
+           <role type="proposer"/>
+           <organization>
+             <name>GB</name>
+           </organization>
+         </contributor>
+         <contributor>
+           <role type="issuer"/>
+           <organization>
+             <name>General Administration of Quality Supervision, Inspection and Quarantine; Standardization Administration of China</name>
+           </organization>
+         </contributor>
+         <language>zh</language>
+         <script>Hans</script>
+         <status>
+           <stage>60</stage>
+           <substage>60</substage>
+         </status>
+         <copyright>
+           <from>2018</from>
+           <owner>
+             <organization>
+               <name>General Administration of Quality Supervision, Inspection and Quarantine; Standardization Administration of China</name>
+             </organization>
+           </owner>
+         </copyright>
+         <gbcommittee/>
+         <gbtype>
+           <gbscope>national</gbscope>
+           <gbprefix>GB</gbprefix>
+           <gbmandate>mandatory</gbmandate>
+           <gbtopic>basic</gbtopic>
+         </gbtype>
+       </bibdata>
+HDR

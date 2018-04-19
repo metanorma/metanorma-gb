@@ -11,4 +11,15 @@ RSpec.describe Asciidoctor::Gb do
     expect(File.exist?("spec/examples/rice.html")).to be true
   end
 
+  it "processes a blank document" do
+    expect(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)).to be_equivalent_to <<~"OUTPUT"
+    #{ASCIIDOC_BLANK_HDR}
+    INPUT
+    #{BLANK_HDR}
+<sections/>
+</gb-standard>
+    OUTPUT
+  end
+
+
 end
