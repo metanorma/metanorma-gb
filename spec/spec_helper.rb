@@ -93,7 +93,7 @@ BLANK_HDR = <<~"HDR"
            <substage>60</substage>
          </status>
          <copyright>
-           <from>2018</from>
+           <from>#{Date.today.year}</from>
            <owner>
              <organization>
                <name>General Administration of Quality Supervision, Inspection and Quarantine; Standardization Administration of China</name>
