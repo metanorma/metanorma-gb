@@ -1,5 +1,14 @@
+require "simplecov"
+SimpleCov.start do
+  add_filter "/spec/"
+end
+
 require "bundler/setup"
+require "asciidoctor"
 require "asciidoctor/gb"
+require "asciidoctor-gb"
+require "rspec/matchers"
+require "equivalent-xml"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
@@ -12,3 +21,9 @@ RSpec.configure do |config|
     c.syntax = :expect
   end
 end
+
+def strip_guid(x)
+  x.gsub(%r{ id="_[^"]+"}, ' id="_"').gsub(%r{ target="_[^"]+"}, ' target="_"')
+end
+
+
