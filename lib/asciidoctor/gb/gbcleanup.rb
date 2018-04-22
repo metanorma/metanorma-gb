@@ -56,12 +56,11 @@ module Asciidoctor
       end
 
       def deprecated_single_label(docxml)
-        docxml.xpath("//p[@class = 'Terms']").each do |t|
-          t.xpath("//p[@class = 'DeprecatedTerms']").each_with_index do |d, i|
-            next if i == 0
-            d.children.first.content =
-              d.children.first.content.sub(/^#{@deprecated_lbl}:\s*/, "")
-          end
+        docxml.xpath("//p[@class = 'DeprecatedTerms']").each do |d|
+          t1 = d.previous_element
+          next unless t1 && t1.name == "p" && t1["class"] == "DeprecatedTerms"
+          d.children.first.content =
+            d.children.first.content.sub(/^#{@deprecated_lbl}:\s*/, "")
         end
       end
 
@@ -73,6 +72,7 @@ module Asciidoctor
         docxml
       end
 
+=begin
       def intro_cleanup(docxml)
         # insert tab for purposes of ToC lining up
         docxml.xpath("//h1[@class = 'IntroTitle']").each do |h1|
@@ -81,6 +81,7 @@ module Asciidoctor
           end
         end
       end
+=end
     end
   end
 end
