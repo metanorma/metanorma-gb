@@ -48,3 +48,13 @@ RSpec.describe "warns when missing topic" do
     INPUT
 end
 
+RSpec.describe "GB references is not a Non-ISO reference in Normative References" do
+  specify { expect { Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) }.not_to output(%r{non-ISO/IEC reference not expected as normative}).to_stderr }
+  #{VALIDATING_BLANK_HDR}
+
+  [bibliography]
+  == Normative References
+  * [[[XYZ,NY 121]]] _Standard_
+  INPUT
+end
+

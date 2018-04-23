@@ -157,7 +157,7 @@ module Asciidoctor
       GBCODE = "((AQ|BB|CB|CH|CJ|CY|DA|DB|DL|DZ|EJ|FZ|GA|GH|GM|GY|HB|HG|"\
         "HJ|HS|HY|JB|JC|JG|JR|JT|JY|LB|LD|LS|LY|MH|MT|MZ|NY|QB|QC|QJ|"\
         "QZ|SB|SC|SH|SJ|SN|SY|TB|TD|TJ|TY|WB|WH|WJ|WM|WS|WW|XB|YB|YC|"\
-        "YD|YS|YY|YZ|ZY|GB|GBZ|GJB|GBn|GHZB|GWKB|GWPB|JJF|JJG)(/Z|/T)?)"
+        "YD|YS|YY|YZ|ZY|GB|GBZ|GJB|GBn|GHZB|GWKB|GWPB|JJF|JJG|Q|T)(/Z|/T)?)"
 
       ISO_REF = %r{^<ref\sid="(?<anchor>[^"]+)">
       \[(?<code>(ISO|IEC|#{GBCODE})[^0-9]*\s[0-9-]+)(:(?<year>[0-9]+))?\]</ref>,?\s
@@ -167,7 +167,6 @@ module Asciidoctor
       \[(?<code>(ISO|IEC|#{GBCODE})[^0-9]*\s[0-9-]+):--\]</ref>,?\s?
       <fn[^>]*>\s*<p>(?<fn>[^\]]+)</p>\s*</fn>,?\s?(?<text>.*)$}xm
 
-      # TODO: all parts in ZH
       ISO_REF_ALL_PARTS = %r{^<ref\sid="(?<anchor>[^"]+)">
       \[(?<code>(ISO|IEC|#{GBCODE})[^0-9]*\s[0-9]+)\s\(all\sparts\)\]</ref>(<p>)?,?\s?
       (?<text>.*)(</p>)?$}xm
@@ -176,6 +175,7 @@ module Asciidoctor
         matched = ISO_REF.match item
         matched2 = ISO_REF_NO_YEAR.match item
         matched3 = ISO_REF_ALL_PARTS.match item
+        warn "MATCHED: #{matched}"
         [matched, matched2, matched3]
       end
 
