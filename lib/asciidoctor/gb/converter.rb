@@ -56,17 +56,18 @@ module Asciidoctor
       end
 
       def default_fonts(node)
+        script = node.attr("script") || "Hans"
         b = node.attr("body-font") ||
-          (node.attr("script") == "Hans" ? '"SimSun",serif' :
-           node.attr("script") == "Latn" ? '"Cambria",serif' : '"SimSun",serif' )
+          (script == "Hans" ? '"SimSun",serif' :
+           script == "Latn" ? '"Cambria",serif' : '"SimSun",serif' )
         h = node.attr("header-font") ||
-          (node.attr("script") == "Hans" ? '"SimHei",sans-serif' :
-           node.attr("script") == "Latn" ? '"Calibri",sans-serif' : '"SimHei",sans-serif' )
+          (script == "Hans" ? '"SimHei",sans-serif' :
+           script == "Latn" ? '"Calibri",sans-serif' : '"SimHei",sans-serif' )
         m = node.attr("monospace-font") || '"Courier New",monospace'
         scope = node.attr("scope") || "national"
         t = node.attr("title-font") ||
-          scope == "national" ? (node.attr("script") == "Hans" ? '"SimSun",serif' : '"Cambria",serif') :
-          (node.attr("script") == "Hans" ? '"SimHei",sans-serif' : '"Calibri",sans-serif' )
+          (scope == "national" ? (script != "Hans" ? '"Cambria",serif' : '"SimSun",serif' ) :
+          (script == "Hans" ? '"SimHei",sans-serif' : '"Calibri",sans-serif' ))
         "$bodyfont: #{b};\n$headerfont: #{h};\n$monospacefont: #{m};\n$titlefont: #{t};\n"
       end
 
