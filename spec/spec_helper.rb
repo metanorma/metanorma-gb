@@ -27,7 +27,9 @@ def strip_guid(x)
 end
 
 def htmlencode(x)
-  HTMLEntities.new.encode(x, :hexadecimal).gsub(/&#x3e;/, ">").gsub(/&#x22;/, '"').gsub(/&#x3c;/, "<").gsub(/&#x26;/, '&')
+  HTMLEntities.new.encode(x, :hexadecimal).gsub(/&#x3e;/, ">").
+    gsub(/&#x22;/, '"').gsub(/&#x3c;/, "<").gsub(/&#x26;/, '&').
+    gsub(/\\u(....)/) { |s| "&#x#{$1.downcase};" }
 end
 
 ASCIIDOC_BLANK_HDR = <<~"HDR"
