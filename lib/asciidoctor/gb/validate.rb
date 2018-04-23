@@ -31,11 +31,11 @@ module Asciidoctor
              JB JC JG JR JT JY LB LD LS LY MH MT MZ NY QB QC QJ QX SB SC SH
              SJ SL SN SY TB TD TJ TY WB WH WJ WM WS WW XB YB YC YD YS YY YZ
              ZY).include? prefix or
-            warn("#{prefix} is not a legal sector standard prefix")
+             warn("#{prefix} is not a legal sector standard prefix")
         when "local"
           %w(11 12 13 14 15 21 22 23 31 32 33 34 35 36 37 41 42 43 44 45 46
              50 51 52 53 54 61 62 63 64 65 71 81 82 end).include? prefix or
-            warn("#{prefix} is not a legal local standard prefix")
+             warn("#{prefix} is not a legal local standard prefix")
         when "national"
           %w(GB GBZ GJB GBn GHZB GWPB JJF JJG).include? prefix or
             warn("#{prefix} is not a legal national standard prefix")

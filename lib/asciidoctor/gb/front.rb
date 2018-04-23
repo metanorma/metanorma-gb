@@ -88,11 +88,12 @@ module Asciidoctor
 
       def get_scope(node)
         node.attr("scope") and return node.attr("scope")
-        if %r{^[TQ]/}.match? node.attr("prefix")
-          m = node.attr("prefix").split(%{/})
-          mandate = m[0] == "T" ? "social" :
-            m[0] == "Q" ? "enterprise" : nil
-        end
+        scope = if %r{^[TQ]/}.match? node.attr("prefix")
+                  m = node.attr("prefix").split(%{/})
+                  mandate = m[0] == "T" ? "social" :
+                    m[0] == "Q" ? "enterprise" : nil
+                end
+        return scope unless scope.nil?
         warn "GB: no scope supplied, defaulting to National"
         "national"
       end

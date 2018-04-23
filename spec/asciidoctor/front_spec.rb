@@ -229,7 +229,7 @@ RSpec.describe Asciidoctor::Gb do
          </relation>
          <gbcommittee/>
          <gbtype>
-           <gbscope>national</gbscope>
+           <gbscope>social</gbscope>
            <gbprefix>AAA</gbprefix>
            <gbmandate>recommendation</gbmandate>
            <gbtopic>basic</gbtopic>
@@ -316,7 +316,7 @@ RSpec.describe Asciidoctor::Gb do
          </copyright>
          <gbcommittee/>
          <gbtype>
-           <gbscope>national</gbscope>
+           <gbscope>enterprise</gbscope>
            <gbprefix>BBB</gbprefix>
            <gbmandate>mandatory</gbmandate>
            <gbtopic>basic</gbtopic>

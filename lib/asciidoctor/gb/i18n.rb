@@ -11,7 +11,7 @@ module Asciidoctor
               YAML.load_file(File.join(File.dirname(__FILE__),
                                        "i18n-zh-Hans.yaml"))
             else
-              YAML.load_file(File.join(File.dirname(__FILE__), "i18n-en.yaml"))
+              YAML.load_file(File.join(File.dirname(__FILE__), "i18n-zh-Hans.yaml"))
             end
         @labels = @labels.merge(y)
       end
