@@ -54,7 +54,7 @@ module Asciidoctor
       end
 
       def normref_cleanup(xmldoc)
-        q = "//references[title = '规范性引用文件']"
+        q = "//references[title = '规范性引用文件' or title = 'Normative References']"
         r = xmldoc.at(q)
         if r.nil?
           warn "You have no normative references!"
@@ -66,14 +66,14 @@ module Asciidoctor
       end
 
       def normref_validate(root)
-        f = root.at("//references[title = '规范性引用文件']") ||
+        f = root.at("//references[title = '规范性引用文件' or title = 'Normative References']") ||
           return
         f.at("./references") &&
           warn("ISO style: normative references contains subclauses")
       end
 
       def symbols_validate(root)
-        f = root.at("//clause[title = '符号、代号和缩略语']")
+        f = root.at("//clause[title = '符号、代号和缩略语' or title = 'Symbols and Abbreviated Terms']")
         return if f.nil?
         f.elements do |e|
           unless e.name == "dl"
@@ -112,7 +112,7 @@ module Asciidoctor
 
       def sections_sequence_validate(root)
         f = root.xpath(SECTIONS_XPATH)
-        names = f.map { |s| { tag: s.name, title: s.at("./title").text } }
+        names = f.map { |s| { tag: s.name, title: s&.at("./title")&.text } }
         names = seqcheck(names, SEQ[0][:msg], SEQ[0][:val]) || return
         n = names[0]
         names = seqcheck(names, SEQ[1][:msg], SEQ[1][:val]) || return
