@@ -53,37 +53,6 @@ module Asciidoctor
         end.join("\n")
       end
 
-      def normref_cleanup(xmldoc)
-        q = "//references[title = '规范性引用文件' or title = 'Normative References']"
-        r = xmldoc.at(q)
-        if r.nil?
-          warn "You have no normative references!"
-          return
-        end
-        r.elements.each do |n|
-          n.remove unless ["title", "bibitem"].include? n.name
-        end
-      end
-
-      def normref_validate(root)
-        f = root.at("//references[title = '规范性引用文件' or title = 'Normative References']") ||
-          return
-        f.at("./references") &&
-          warn("ISO style: normative references contains subclauses")
-      end
-
-      def symbols_validate(root)
-        f = root.at("//clause[title = '符号、代号和缩略语' or title = 'Symbols and Abbreviated Terms']")
-        return if f.nil?
-        f.elements do |e|
-          unless e.name == "dl"
-            warn "ISO style: Symbols and Abbreviations can only contain "\
-              "a definition list"
-            return
-          end
-        end
-      end
-
       # spec of permissible section sequence
       SEQ = [
         { msg: "Initial section must be (content) 前言",
