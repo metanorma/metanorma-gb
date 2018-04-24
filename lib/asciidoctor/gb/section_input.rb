@@ -53,6 +53,7 @@ module Asciidoctor
         end.join("\n")
       end
 
+=begin
       # spec of permissible section sequence
       SEQ = [
         { msg: "Initial section must be (content) 前言",
@@ -126,6 +127,7 @@ module Asciidoctor
         names.empty? or
           warn "ISO style: There are sections after the final Bibliography"
       end
+=end
     end
   end
 end
