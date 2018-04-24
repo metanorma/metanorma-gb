@@ -200,6 +200,131 @@ RSpec.describe Asciidoctor::Gb do
     OUTPUT
   end
 
+  it "does not strip any initial boilerplate from terms and definitions" do
+    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
+      #{ASCIIDOC_BLANK_HDR}
+      == Terms and Definitions
+
+      I am boilerplate
+
+      * So am I
+
+      === Time
+
+      This paragraph is extraneous
+    INPUT
+    #{BLANK_HDR}
+              <sections>
+         <terms id="_" obligation="normative"><title>Terms and Definitions</title><p id="_">I am boilerplate</p>
+       <ul id="_">
+         <li>
+           <p id="_">So am I</p>
+         </li>
+       </ul>
+       <term id="_">
+         <preferred language="zh"></preferred> <preferred language="en">Time</preferred>
+         <definition><p id="_">This paragraph is extraneous</p></definition>
+       </term></terms>
+       </sections>
+       </gb-standard>
+    OUTPUT
+  end
+
+  it "processes ISO inline_quoted formatting" do
+    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
+      #{ASCIIDOC_BLANK_HDR}
+      
+      _emphasis_
+      *strong*
+      `monospace`
+      "double quote"
+      'single quote'
+      super^script^
+      sub~script~
+      stem:[a_90]
+      stem:[<mml:math><mml:msub xmlns:mml="http://www.w3.org/1998/Math/MathML" xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math"> <mml:mrow> <mml:mrow> <mml:mi mathvariant="bold-italic">F</mml:mi> </mml:mrow> </mml:mrow> <mml:mrow> <mml:mrow> <mml:mi mathvariant="bold-italic">&#x391;</mml:mi> </mml:mrow> </mml:mrow> </mml:msub> </mml:math>]
+      [alt]#alt#
+      [deprecated]#deprecated#
+      [domain]#domain#
+      [strike]#strike#
+      [smallcap]#smallcap#
+    INPUT
+    #{BLANK_HDR}
+    
+       <sections>
+         <em>emphasis</em>
+       <strong>strong</strong>
+       <tt>monospace</tt>
+       "double quote"
+       'single quote'
+       super<sup>script</sup>
+       sub<sub>script</sub>
+       <stem type="AsciiMath">a_90</stem>
+       <stem type="MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub> <mrow> <mrow> <mi mathvariant="bold-italic">F</mi> </mrow> </mrow> <mrow> <mrow> <mi mathvariant="bold-italic">Α</mi> </mrow> </mrow> </msub> </math></stem>
+       <admitted language="zh"></admitted> <admitted language="en">alt</admitted>
+       <deprecates language="zh"></deprecates> <deprecates language="en">deprecated</deprecates>
+       <domain>domain</domain>
+       <strike>strike</strike>
+       <smallcap>smallcap</smallcap>
+       </sections>
+       </gb-standard>
+    OUTPUT
+  end
+
+  it "processes GB inline_quoted formatting" do
+    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
+    #{ASCIIDOC_BLANK_HDR}
+    
+    [en]#en#
+    [zh]#zh#
+    [zh-Hans]#zh-Hans#
+    [zh-Hant]#zh-Hant#
+    INPUT
+    #{BLANK_HDR}
+       <sections>
+       <p id="_"><string language="en">en</string>
+       <string language="zh">zh</string>
+       <string language="zh" script="Hans">zh-Hans</string>
+       <string language="zh" script="Hant">zh-Hant</string></p>
+       </sections>
+       </gb-standard>
+    OUTPUT
+  end
+
+  it "extracts localised strings by content" do
+    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
+    #{ASCIIDOC_BLANK_HDR}
+    [deprecated]#deprecated 被取代#
+    INPUT
+    #{BLANK_HDR}
+       <sections>
+       <deprecates language="zh">被取代</deprecates> <deprecates language="en">deprecated</deprecates>
+       </sections>
+       </gb-standard>
+    OUTPUT
+  end
+
+  it "extracts tagged localised strings" do
+    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
+      #{ASCIIDOC_BLANK_HDR}
+      [bibliography]
+      == Bibliography
+
+      * [[[xiso123,XISO 123]]] _a_ [zh]#A# [en]#B#
+    INPUT
+       #{BLANK_HDR}
+<sections>
+         
+       </sections><bibliography><references id="_" obligation="informative">
+         <title>Bibliography</title>
+         <bibitem id="xiso123">
+         <em>a</em> <formattedref language="zh">A</formattedref> <formattedref language="en">B</formattedref>
+         <docidentifier>XISO 123</docidentifier>
+       </bibitem>
+       </references></bibliography>
+       </gb-standard>
+    OUTPUT
+  end
 
 
 end

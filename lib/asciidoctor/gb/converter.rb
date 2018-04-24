@@ -120,34 +120,20 @@ module Asciidoctor
       end
 
       def inline_quoted(node)
-        noko do |xml|
-          case node.type
-          when :emphasis then xml.em node.text
-          when :strong then xml.strong node.text
-          when :monospaced then xml.tt node.text
-          when :double then xml << "\"#{node.text}\""
-          when :single then xml << "'#{node.text}'"
-          when :superscript then xml.sup node.text
-          when :subscript then xml.sub node.text
-          when :asciimath then xml.stem node.text, **{ type: "AsciiMath" }
+        ret = noko do |xml|
+          case node.role
+          when "en" then xml.string node.text, **{ language: "en" }
+          when "zh" then xml.string node.text, **{ language: "zh" }
+          when "zh-Hans"
+            xml.string node.text, **{ language: "zh", script: "Hans" }
+          when "zh-Hant"
+            xml.string node.text, **{ language: "zh", script: "Hant" }
           else
-            case node.role
-            when "alt" then xml.admitted { |a| a << node.text }
-            when "deprecated" then xml.deprecates { |a| a << node.text }
-            when "domain" then xml.domain { |a| a << node.text }
-            when "strike" then xml.strike node.text
-            when "smallcap" then xml.smallcap node.text
-            when "en" then xml.string node.text, **{ language: "en" }
-            when "zh" then xml.string node.text, **{ language: "zh" }
-            when "zh-Hans"
-              xml.string node.text, **{ language: "zh", script: "Hans" }
-            when "zh-Hant"
-              xml.string node.text, **{ language: "zh", script: "Hant" }
-            else
-              xml << node.text
-            end
+            nil
           end
         end.join
+        return ret unless ret.nil? or ret.empty?
+        super
       end
 
       def termdef_boilerplate_cleanup(xmldoc)
@@ -175,7 +161,6 @@ module Asciidoctor
         matched = ISO_REF.match item
         matched2 = ISO_REF_NO_YEAR.match item
         matched3 = ISO_REF_ALL_PARTS.match item
-        warn "MATCHED: #{matched}"
         [matched, matched2, matched3]
       end
 
