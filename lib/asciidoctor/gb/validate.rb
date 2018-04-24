@@ -18,7 +18,7 @@ module Asciidoctor
 
       def prefix_validate(root)
         prefix = root&.at("//gbprefix")&.text
-        scope = root&.at("//scope")&.text
+        scope = root&.at("//gbscope")&.text
         case scope
         when "social"
           /^[A-Za-z]{3}$/.match? prefix or
@@ -45,7 +45,7 @@ module Asciidoctor
       def issuer_validate(root)
         issuer = root&.at("//bibdata/contributor[role/@type = 'issuer']/"\
                           "organization/name")&.text
-        scope = root&.at("//scope")&.text
+        scope = root&.at("//gbscope")&.text
         if %w(enterprise social).include?(scope) && issuer == "GB"
           warn "No issuer provided for #{scope} standard"
         end
