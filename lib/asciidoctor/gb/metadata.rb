@@ -61,7 +61,7 @@ module Asciidoctor
 
       def author(isoxml, _out)
         gbcommittee = isoxml.at(ns("//bibdata/gbcommittee"))
-        set_metadata(:committee, gbcommittee.text)
+        set_metadata(:committee, gbcommittee&.text)
       end
 
       STAGE_ABBRS_CN = {
