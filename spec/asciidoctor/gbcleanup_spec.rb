@@ -75,7 +75,7 @@ RSpec.describe Asciidoctor::Gb::GbConvert do
   end
 
   it "cleans up terms" do
-    gbc = Asciidoctor::Gb::GbConvert.new()
+    gbc = Asciidoctor::Gb::GbConvert.new({})
     docxml, filename, dir = gbc.convert_init(<<~"INPUT", "test", true)
     <gb-standard xmlns="http://riboseinc.com/gbstandard">
 <bibdata>
