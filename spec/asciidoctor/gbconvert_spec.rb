@@ -201,6 +201,47 @@ RSpec.describe Asciidoctor::Gb::GbConvert do
     OUTPUT
   end
 
+    it "processes modified term source" do
+    system "rm -f test.html"
+    Asciidoctor::Gb::GbConvert.new({htmlstylesheet: "lib/asciidoctor/gb/html/htmlstyle.scss"}).convert_file(<<~"INPUT", "test", false)
+            <gb-standard xmlns="http://riboseinc.com/gbstandard">
+            <bibdata>
+              <language>zh</language>
+  <script>Hans</script>
+</bibdata>
+                <sections>
+    <terms id="_terms_and_definitions" obligation="normative"><title>Terms and Definitions</title>
+    <term id="paddy"><preferred>paddy</preferred><admitted>paddy rice</admitted>
+<admitted>rough rice</admitted>
+<definition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p></definition>
+<termsource status="modified">
+  <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301: 2011"><locality type="clause"><referenceFrom>3.1</referenceFrom></locality></origin>
+    <modification>
+    <p id="_e73a417d-ad39-417d-a4c8-20e4e2529489">The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here</p>
+  </modification>
+</termsource>
+</term>
+    </terms></sections>
+
+        </gb-standard>
+    INPUT
+    html = File.read("test.html", encoding: "utf-8").sub(/^.*<div class="WordSection3">/m, '<div class="WordSection3">').
+      sub(%r{<script.*$}m, "")
+    expect(htmlencode(html.gsub(/"#[a-f0-9-]+"/, "#_"))).to be_equivalent_to <<~"OUTPUT"
+           <div class="WordSection3">
+               <p class="zzSTDTitle1">XXXX</p>
+               <div id="_terms_and_definitions"><h1>1.&#x3000;&#x672F;&#x8BED;&#x548C;&#x5B9A;&#x4E49;</h1><p>&#x4E0B;&#x5217;&#x672F;&#x8BED;&#x548C;&#x5B9A;&#x4E49;&#x9002;&#x7528;&#x4E8E;&#x672C;&#x6587;&#x4EF6;&#x3002;</p>
+       <h2 class="TermNum" id="paddy">1.1</h2><p class="Terms" style="text-align:left;">paddy</p><p class="AltTerms" style="text-align:left;">paddy rice&#x3000;rough rice</p>
+
+       <p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p>
+       <p>&#x3010;<a href="#ISO7301">ISO 7301: 2011&#x3001;&#x7B2C;3.1&#x6761;</a>&#x3001;&#x6539;&#x5199;&mdash;The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here&#x3011;</p>
+       </div>
+               <hr width="25%" />
+             </div>
+    OUTPUT
+  end
+
+
   it "processes logo for social" do
     system "rm -f test.doc"
     system "rm -f test.html"
@@ -313,7 +354,6 @@ RSpec.describe Asciidoctor::Gb::GbConvert do
     html = File.read("test.html", encoding: "utf-8").sub(/^.*<div class="WordSection1">/m, '<div class="WordSection1">').
       sub(%r{<div class="WordSection2".*$}m, "")
     expect(html.gsub(/"#[a-f0-9-]+"/, "#_")).to match(%r{<div class="coverpage_footer">\s*State Administration Of Cryptography\s*</div>})
-
   end
 
   it "processes agency name, GB" do
@@ -337,8 +377,30 @@ RSpec.describe Asciidoctor::Gb::GbConvert do
     html = File.read("test.html", encoding: "utf-8").sub(/^.*<div class="WordSection1">/m, '<div class="WordSection1">').
       sub(%r{<div class="WordSection2".*$}m, "")
     expect(htmlencode(html.gsub(/"#[a-f0-9-]+"/, "#_"))).to match(%r{<div class="coverpage_footer">\s*<img src='gb-issuer-default.gif' alt='&#x4e2d;&#x534e;&#x4eba;&#x6c11;&#x5171;&#x548c;&#x56fd;&#x56fd;&#x5bb6;&#x8d28;&#x91cf;&#x76d1;&#x7763;&#x68c0;&#x9a8c;&#x68c0;&#x75ab;&#x603b;&#x5c40;,&#x4e2d;&#x56fd;&#x56fd;&#x5bb6;&#x6807;&#x51c6;&#x5316;&#x7ba1;&#x7406;&#x59d4;&#x5458;&#x4f1a;'></img>\s*</div>})
-
-
   end
+
+    it "processes agency name, GB" do
+    system "rm -f test.doc"
+    system "rm -f test.html"
+    Asciidoctor::Gb::GbConvert.new({htmlstylesheet: "lib/asciidoctor/gb/html/htmlstyle.scss", htmlcoverpage: "lib/asciidoctor/gb/html/html_gb_titlepage.html"}).
+      convert_file(<<~"INPUT", "test", false)
+      <gb-standard xmlns="http://riboseinc.com/gbstandard">
+      <bibdata>
+      <language>zh</language>
+      <script>Hans</script>
+        <gbtype>
+    <gbscope>national</gbscope>
+        <gbprefix>GB</gbprefix>
+  </gbtype>
+      </bibdata>
+      <sections>
+      </sections>
+      </gb-standard>
+    INPUT
+    html = File.read("test.html", encoding: "utf-8").sub(/^.*<div class="WordSection1">/m, '<div class="WordSection1">').
+      sub(%r{<div class="WordSection2".*$}m, "")
+    expect(htmlencode(html.gsub(/"#[a-f0-9-]+"/, "#_"))).to match(%r{<div class="coverpage_footer">\s*<img src='gb-issuer-default.gif' alt='&#x4e2d;&#x534e;&#x4eba;&#x6c11;&#x5171;&#x548c;&#x56fd;&#x56fd;&#x5bb6;&#x8d28;&#x91cf;&#x76d1;&#x7763;&#x68c0;&#x9a8c;&#x68c0;&#x75ab;&#x603b;&#x5c40;,&#x4e2d;&#x56fd;&#x56fd;&#x5bb6;&#x6807;&#x51c6;&#x5316;&#x7ba1;&#x7406;&#x59d4;&#x5458;&#x4f1a;'></img>\s*</div>})
+  end
+
 
 end
