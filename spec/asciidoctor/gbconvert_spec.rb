@@ -124,4 +124,221 @@ RSpec.describe Asciidoctor::Gb::GbConvert do
        </html>
     OUTPUT
   end
+
+  it "processes string tag" do
+    expect(Asciidoctor::Gb::GbConvert.new({}).convert_file(<<~"INPUT", "test", true)).to be_equivalent_to <<~"OUTPUT"
+            <gb-standard xmlns="http://riboseinc.com/gbstandard">
+    <preface><foreword>
+  <p id="_f06fd0d1-a203-4f3d-a515-0bdba0f8d83f">
+  <string script="Hant"><em>Hello</em></string>
+  <string script="Hans"><em>Hello</em></string>
+  </p>
+    </foreword></preface>
+    </gb-standard>
+    INPUT
+           <html xmlns:epub="http://www.idpf.org/2007/ops">
+         <head>
+           <title>test</title>
+           <body lang="EN-US" link="blue" vlink="#954F72">
+             <div class="WordSection1">
+               <p>&#160;</p>
+             </div>
+             <br/>
+             <div class="WordSection2">
+               <br/>
+               <div>
+                 <h1 class="ForewordTitle">Foreword&#160;</h1>
+                 <p id="_f06fd0d1-a203-4f3d-a515-0bdba0f8d83f">
+       <span class="Hant"><i>Hello</i></span>
+       <i>Hello</i>
+       </p>
+               </div>
+               <p>&#160;</p>
+             </div>
+             <br/>
+             <div class="WordSection3">
+               <p class="zzSTDTitle1">XXXX</p>
+               <hr width="25%"/>
+             </div>
+           </body>
+         </head>
+       </html>
+    OUTPUT
+  end
+
+  it "processes deprecated term" do
+    system "rm -f test.html"
+    Asciidoctor::Gb::GbConvert.new({htmlstylesheet: "lib/asciidoctor/gb/html/htmlstyle.scss"}).convert_file(<<~"INPUT", "test", false)
+            <gb-standard xmlns="http://riboseinc.com/gbstandard">
+            <bibdata>
+              <language>zh</language>
+  <script>Hans</script>
+</bibdata>
+                <sections>
+    <terms id="_terms_and_definitions" obligation="normative"><title>Terms and Definitions</title>
+    <term id="paddy"><preferred>paddy</preferred><admitted>paddy rice</admitted>
+<admitted>rough rice</admitted>
+<deprecates>cargo rice</deprecates>
+<definition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p></definition>
+</term>
+    </terms></sections>
+
+        </gb-standard>
+    INPUT
+    html = File.read("test.html").sub(/^.*<div class="WordSection3">/m, '<div class="WordSection3">').
+      sub(%r{<script.*$}m, "")
+    expect(html.gsub(/"#[a-f0-9-]+"/, "#_")).to be_equivalent_to <<~"OUTPUT"
+           <div class="WordSection3">
+               <p class="zzSTDTitle1">XXXX</p>
+               <div id="_terms_and_definitions"><h1>1.&#x3000;&#x672F;&#x8BED;&#x548C;&#x5B9A;&#x4E49;</h1><p>&#x4E0B;&#x5217;&#x672F;&#x8BED;&#x548C;&#x5B9A;&#x4E49;&#x9002;&#x7528;&#x4E8E;&#x672C;&#x6587;&#x4EF6;&#x3002;</p>
+       <h2 class="TermNum" id="paddy">1.1</h2><p class="Terms" style="text-align:left;">paddy</p><p class="AltTerms" style="text-align:left;">paddy rice&#x3000;rough rice</p>
+
+       <p class="DeprecatedTerms">&#x88AB;&#x53D6;&#x4EE3;&#xFF1A;cargo rice</p>
+       <p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p>
+       </div>
+               <hr width="25%" />
+             </div>
+    OUTPUT
+  end
+
+  it "processes logo for social" do
+    system "rm -f test.doc"
+    system "rm -f test.html"
+    Asciidoctor::Gb::GbConvert.new({htmlstylesheet: "lib/asciidoctor/gb/html/htmlstyle.scss", htmlcoverpage: "lib/asciidoctor/gb/html/html_gb_titlepage.html"}).
+      convert_file(<<~"INPUT", "test", false)
+      <gb-standard xmlns="http://riboseinc.com/gbstandard">
+      <bibdata>
+      <language>zh</language>
+      <script>Hans</script>
+        <gbtype>
+    <gbscope>social</gbscope>
+  </gbtype>
+      </bibdata>
+      <sections>
+      </sections>
+      </gb-standard>
+    INPUT
+    html = File.read("test.html", encoding: "utf-8").sub(/^.*<div class="WordSection1">/m, '<div class="WordSection1">').
+      sub(%r{<div class="WordSection2".*$}m, "")
+    expect(html.gsub(/"#[a-f0-9-]+"/, "#_")).to match(%r{<div class="coverpage-logo-gb-img"></div>})
+  end
+
+  it "processes logo for local" do
+    system "rm -f test.doc"
+    system "rm -f test.html"
+    Asciidoctor::Gb::GbConvert.new({htmlstylesheet: "lib/asciidoctor/gb/html/htmlstyle.scss", htmlcoverpage: "lib/asciidoctor/gb/html/html_gb_titlepage.html"}).
+      convert_file(<<~"INPUT", "test", false)
+      <gb-standard xmlns="http://riboseinc.com/gbstandard">
+      <bibdata>
+      <language>zh</language>
+      <script>Hans</script>
+        <gbtype>
+    <gbscope>local</gbscope>
+        <gbprefix>81</gbprefix>
+  </gbtype>
+      </bibdata>
+      <sections>
+      </sections>
+      </gb-standard>
+    INPUT
+    html = File.read("test.html", encoding: "utf-8").sub(/^.*<div class="WordSection1">/m, '<div class="WordSection1">').
+      sub(%r{<div class="WordSection2".*$}m, "")
+    expect(html.gsub(/"#[a-f0-9-]+"/, "#_")).to match(%r{<div class="coverpage-logo-gb-img"><img width='113' height='56' src='gb-standard-db.gif' alt='DB'></img><span style='font-weight:bold'>81</span></div>})
+  end
+
+  it "processes logo for sector, no available logo" do
+    system "rm -f test.doc"
+    system "rm -f test.html"
+    Asciidoctor::Gb::GbConvert.new({htmlstylesheet: "lib/asciidoctor/gb/html/htmlstyle.scss", htmlcoverpage: "lib/asciidoctor/gb/html/html_gb_titlepage.html"}).
+      convert_file(<<~"INPUT", "test", false)
+      <gb-standard xmlns="http://riboseinc.com/gbstandard">
+      <bibdata>
+      <language>zh</language>
+      <script>Hans</script>
+        <gbtype>
+    <gbscope>sector</gbscope>
+        <gbprefix>NY</gbprefix>
+  </gbtype>
+      </bibdata>
+      <sections>
+      </sections>
+      </gb-standard>
+    INPUT
+    html = File.read("test.html", encoding: "utf-8").sub(/^.*<div class="WordSection1">/m, '<div class="WordSection1">').
+      sub(%r{<div class="WordSection2".*$}m, "")
+    expect(html.gsub(/"#[a-f0-9-]+"/, "#_")).to match(%r{<div class="coverpage-logo-gb-img"><span style='font-size:36pt;font-weight:bold'>NY</span></div>})
+  end
+
+  it "processes logo for sector with available logo" do
+    system "rm -f test.doc"
+    system "rm -f test.html"
+    Asciidoctor::Gb::GbConvert.new({htmlstylesheet: "lib/asciidoctor/gb/html/htmlstyle.scss", htmlcoverpage: "lib/asciidoctor/gb/html/html_gb_titlepage.html"}).
+      convert_file(<<~"INPUT", "test", false)
+      <gb-standard xmlns="http://riboseinc.com/gbstandard">
+      <bibdata>
+      <language>zh</language>
+      <script>Hans</script>
+        <gbtype>
+    <gbscope>sector</gbscope>
+        <gbprefix>GM</gbprefix>
+  </gbtype>
+      </bibdata>
+      <sections>
+      </sections>
+      </gb-standard>
+    INPUT
+    html = File.read("test.html", encoding: "utf-8").sub(/^.*<div class="WordSection1">/m, '<div class="WordSection1">').
+      sub(%r{<div class="WordSection2".*$}m, "")
+    expect(html.gsub(/"#[a-f0-9-]+"/, "#_")).to match(%r{<div class="coverpage-logo-gb-img"><img width='113' height='56' src='gb-standard-gm.gif' alt='GM'></img></div>})
+  end
+
+  it "processes agency name" do
+    system "rm -f test.doc"
+    system "rm -f test.html"
+    Asciidoctor::Gb::GbConvert.new({htmlstylesheet: "lib/asciidoctor/gb/html/htmlstyle.scss", htmlcoverpage: "lib/asciidoctor/gb/html/html_gb_titlepage.html"}).
+      convert_file(<<~"INPUT", "test", false)
+      <gb-standard xmlns="http://riboseinc.com/gbstandard">
+      <bibdata>
+      <language>en</language>
+      <script>Latn</script>
+        <gbtype>
+    <gbscope>sector</gbscope>
+        <gbprefix>GM</gbprefix>
+  </gbtype>
+      </bibdata>
+      <sections>
+      </sections>
+      </gb-standard>
+    INPUT
+    html = File.read("test.html", encoding: "utf-8").sub(/^.*<div class="WordSection1">/m, '<div class="WordSection1">').
+      sub(%r{<div class="WordSection2".*$}m, "")
+    expect(html.gsub(/"#[a-f0-9-]+"/, "#_")).to match(%r{<div class="coverpage_footer">\s*State Administration Of Cryptography\s*</div>})
+
+  end
+
+  it "processes agency name, GB" do
+    system "rm -f test.doc"
+    system "rm -f test.html"
+    Asciidoctor::Gb::GbConvert.new({htmlstylesheet: "lib/asciidoctor/gb/html/htmlstyle.scss", htmlcoverpage: "lib/asciidoctor/gb/html/html_gb_titlepage.html"}).
+      convert_file(<<~"INPUT", "test", false)
+      <gb-standard xmlns="http://riboseinc.com/gbstandard">
+      <bibdata>
+      <language>zh</language>
+      <script>Hans</script>
+        <gbtype>
+    <gbscope>national</gbscope>
+        <gbprefix>GB</gbprefix>
+  </gbtype>
+      </bibdata>
+      <sections>
+      </sections>
+      </gb-standard>
+    INPUT
+    html = File.read("test.html", encoding: "utf-8").sub(/^.*<div class="WordSection1">/m, '<div class="WordSection1">').
+      sub(%r{<div class="WordSection2".*$}m, "")
+    expect(htmlencode(html.gsub(/"#[a-f0-9-]+"/, "#_"))).to match(%r{<div class="coverpage_footer">\s*<img src='gb-issuer-default.gif' alt='&#x4e2d;&#x534e;&#x4eba;&#x6c11;&#x5171;&#x548c;&#x56fd;&#x56fd;&#x5bb6;&#x8d28;&#x91cf;&#x76d1;&#x7763;&#x68c0;&#x9a8c;&#x68c0;&#x75ab;&#x603b;&#x5c40;,&#x4e2d;&#x56fd;&#x56fd;&#x5bb6;&#x6807;&#x51c6;&#x5316;&#x7ba1;&#x7406;&#x59d4;&#x5458;&#x4f1a;'></img>\s*</div>})
+
+
+  end
+
 end

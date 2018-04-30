@@ -48,12 +48,6 @@ module Asciidoctor
         File.join(File.dirname(__FILE__), loc)
       end
 
-      def generate_header(filename, dir)
-        super
-        system "cp #{fileloc(File.join('html', 'blank.png'))} blank.png"
-        @files_to_delete << "blank.png"
-      end
-
       def deprecated_term_parse(node, out)
         out.p **{ class: "DeprecatedTerms" } do |p|
           p << l10n("#{@deprecated_lbl}: ")
