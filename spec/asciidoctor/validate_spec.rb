@@ -249,6 +249,28 @@ RSpec.describe "warns about no Chinese title intro" do
   INPUT
 end
 
+RSpec.describe "warns about no English main title" do
+  specify { expect { Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) }.to output(%r{No English Title!}).to_stderr }
+   = Document title
+   Author
+   :docfile: test.adoc
+   :nodoc:
+   :title-main-zh: Title
+
+  INPUT
+end
+
+RSpec.describe "warns about no Chinese main title" do
+  specify { expect { Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) }.to output(%r{No Chinese Title!}).to_stderr }
+   = Document title
+   Author
+   :docfile: test.adoc
+   :nodoc:
+   :title-main-en: Title
+
+  INPUT
+end
+
 RSpec.describe "warns about no English title part" do
   specify { expect { Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) }.to output(%r{No English Title Part!}).to_stderr }
    = Document title

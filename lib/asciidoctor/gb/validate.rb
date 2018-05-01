@@ -79,6 +79,17 @@ module Asciidoctor
         end
       end
 
+      def title_main_validate(root)
+        title_main_en = root.at("//title-main[@language='en']")
+        title_main_zh = root.at("//title-main[@language='zh']")
+        if title_main_en.nil? && !title_main_zh.nil?
+          warn "No English Title!"
+        end
+        if !title_main_en.nil? && title_main_zh.nil?
+          warn "No Chinese Title!"
+        end
+      end
+
       def title_part_validate(root)
         title_part_en = root.at("//title-part[@language='en']")
         title_part_zh = root.at("//title-part[@language='zh']")
