@@ -192,21 +192,33 @@ module Asciidoctor
         metadata_gblibraryids(node, xml)
       end
 
+      def title_intro(node, lang, t, at)
+        node.attr("title-intro-#{lang}") and
+          t.title_intro **attr_code(at) do |t1|
+          t1 << asciidoc_sub(node.attr("title-intro-#{lang}"))
+        end
+      end
+
+      def title_main(node, lang, t, at)
+        t.title_main **attr_code(at) do |t1|
+          t1 << asciidoc_sub(node.attr("title-main-#{lang}"))
+        end
+      end
+
+      def title_part(node, lang, t, at)
+        node.attr("title-part-#{lang}") and
+          t.title_part **attr_code(at) do |t1|
+          t1 << asciidoc_sub(node.attr("title-part-#{lang}"))
+        end
+      end
+
       def title(node, xml)
         ["en", "zh"].each do |lang|
           xml.title do |t|
             at = { language: lang, format: "plain" }
-            node.attr("title-intro-#{lang}") and
-              t.title_intro **attr_code(at) do |t1|
-              t1 << node.attr("title-intro-#{lang}")
-            end
-            t.title_main **attr_code(at) do |t1|
-              t1 << node.attr("title-main-#{lang}")
-            end
-            node.attr("title-part-#{lang}") and
-              t.title_part **attr_code(at) do |t1|
-              t1 << node.attr("title-part-#{lang}")
-            end
+            title_intro(node, lang, t, at)
+            title_main(node, lang, t, at)
+            title_part(node, lang, t, at)
           end
         end
       end
