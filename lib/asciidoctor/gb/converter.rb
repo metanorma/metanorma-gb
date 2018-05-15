@@ -36,8 +36,8 @@ module Asciidoctor
 
       def html_converter(node)
         GbConvert.new(
-          htmlstylesheet: generate_css(html_doc_path("htmlstyle.scss"), true),
-          standardstylesheet: generate_css(html_doc_path("gb.scss"), true),
+          htmlstylesheet: generate_css(html_doc_path("htmlstyle.scss"), true, @fontheader),
+          standardstylesheet: generate_css(html_doc_path("gb.scss"), true, @fontheader),
           htmlcoverpage: html_doc_path("html_gb_titlepage.html"),
           htmlintropage: html_doc_path("html_gb_intro.html"),
           i18nyaml: node&.attr("i18nyaml"),
@@ -46,8 +46,8 @@ module Asciidoctor
 
       def doc_converter(node)
         GbWordConvert.new(
-          wordstylesheet: generate_css(html_doc_path("wordstyle.scss"), false),
-          standardstylesheet: generate_css(html_doc_path("gb.scss"), false),
+          wordstylesheet: generate_css(html_doc_path("wordstyle.scss"), false, @fontheader),
+          standardstylesheet: generate_css(html_doc_path("gb.scss"), false, @fontheader),
           wordcoverpage: html_doc_path("word_gb_titlepage.html"),
           wordintropage: html_doc_path("word_gb_intro.html"),
           header: html_doc_path("header.html"),
@@ -69,6 +69,21 @@ module Asciidoctor
           (scope == "national" ? (script != "Hans" ? '"Cambria",serif' : '"SimSun",serif' ) :
           (script == "Hans" ? '"SimHei",sans-serif' : '"Calibri",sans-serif' ))
         "$bodyfont: #{b};\n$headerfont: #{h};\n$monospacefont: #{m};\n$titlefont: #{t};\n"
+      end
+
+      def document(node)
+        init(node)
+        ret = makexml(node).to_xml(indent: 2)
+        filename = node.attr("docfile").gsub(/\.adoc$/, "").gsub(%r{^.*/}, "")
+        File.open(filename, "w") { |f| f.write(ret) }
+        unless node.attr("nodoc")
+          #html_converter_alt(node).convert(filename + ".xml")
+          #system "mv #{filename}.html #{filename}_alt.html"
+          html_converter(node).convert(filename + ".xml")
+          doc_converter(node).convert(filename + ".xml")
+        end
+        @files_to_delete.each { |f| system "rm #{f}" }
+        ret
       end
 
       def termdef_cleanup(xmldoc)

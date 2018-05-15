@@ -11,15 +11,7 @@ RSpec.describe Asciidoctor::Gb::GbConvert do
     </foreword></preface>
     </gb-standard>
     INPUT
-           <html xmlns:epub="http://www.idpf.org/2007/ops">
-         <head>
-           <title>test</title>
-           <body lang="EN-US" link="blue" vlink="#954F72">
-             <div class="WordSection1">
-               <p>&#160;</p>
-             </div>
-             <br/>
-             <div class="WordSection2">
+    #{HTML_HDR}
                <br/>
                <div>
                  <h1 class="ForewordTitle">Foreword&#160;</h1>
@@ -32,15 +24,10 @@ RSpec.describe Asciidoctor::Gb::GbConvert do
                    </tr>
                  </table>
                </div>
-               <p>&#160;</p>
-             </div>
-             <br/>
-             <div class="WordSection3">
                <p class="zzSTDTitle1">XXXX</p>
                <hr width="25%"/>
              </div>
            </body>
-         </head>
        </html>
     OUTPUT
   end
@@ -55,15 +42,7 @@ RSpec.describe Asciidoctor::Gb::GbConvert do
     </foreword></preface>
     </gb-standard>
 INPUT
-       <html xmlns:epub="http://www.idpf.org/2007/ops">
-         <head>
-           <title>test</title>
-           <body lang="EN-US" link="blue" vlink="#954F72">
-             <div class="WordSection1">
-               <p>&#160;</p>
-             </div>
-             <br/>
-             <div class="WordSection2">
+    #{HTML_HDR}
                <br/>
                <div>
                  <h1 class="ForewordTitle">Foreword&#160;</h1>
@@ -76,15 +55,10 @@ INPUT
                    </tr>
                  </table>
                </div>
-               <p>&#160;</p>
-             </div>
-             <br/>
-             <div class="WordSection3">
                <p class="zzSTDTitle1">XXXX</p>
                <hr width="25%"/>
              </div>
            </body>
-         </head>
        </html>
     OUTPUT
   end
@@ -102,15 +76,7 @@ INPUT
     </foreword></preface>
     </gb-standard>
 INPUT
-       <html xmlns:epub="http://www.idpf.org/2007/ops">
-         <head>
-           <title>test</title>
-           <body lang="EN-US" link="blue" vlink="#954F72">
-             <div class="WordSection1">
-               <p>&#160;</p>
-             </div>
-             <br/>
-             <div class="WordSection2">
+    #{HTML_HDR}
                <br/>
                <div>
                  <h1 class="ForewordTitle">Foreword&#160;</h1>
@@ -131,15 +97,10 @@ INPUT
                    </tr>
                  </table>
                </div>
-               <p>&#160;</p>
-             </div>
-             <br/>
-             <div class="WordSection3">
                <p class="zzSTDTitle1">XXXX</p>
                <hr width="25%"/>
              </div>
            </body>
-         </head>
        </html>
     OUTPUT
   end
@@ -155,15 +116,7 @@ INPUT
     </foreword></preface>
     </gb-standard>
     INPUT
-           <html xmlns:epub="http://www.idpf.org/2007/ops">
-         <head>
-           <title>test</title>
-           <body lang="EN-US" link="blue" vlink="#954F72">
-             <div class="WordSection1">
-               <p>&#160;</p>
-             </div>
-             <br/>
-             <div class="WordSection2">
+        #{HTML_HDR}
                <br/>
                <div>
                  <h1 class="ForewordTitle">Foreword&#160;</h1>
@@ -177,15 +130,10 @@ INPUT
                    </tr>
                  </table>
                </div>
-               <p>&#160;</p>
-             </div>
-             <br/>
-             <div class="WordSection3">
                <p class="zzSTDTitle1">XXXX</p>
                <hr width="25%"/>
              </div>
            </body>
-         </head>
        </html>
     OUTPUT
   end
@@ -205,15 +153,7 @@ INPUT
     </foreword></preface>
     </gb-standard>
     INPUT
-       <html xmlns:epub="http://www.idpf.org/2007/ops">
-         <head>
-           <title>test</title>
-           <body lang="EN-US" link="blue" vlink="#954F72">
-             <div class="WordSection1">
-               <p>&#160;</p>
-             </div>
-             <br/>
-             <div class="WordSection2">
+        #{HTML_HDR}
                <br/>
                <div>
                  <h1 class="ForewordTitle">Foreword&#160;</h1>
@@ -228,15 +168,10 @@ INPUT
                    </tr>
                  </table>
                </div>
-               <p>&#160;</p>
-             </div>
-             <br/>
-             <div class="WordSection3">
                <p class="zzSTDTitle1">XXXX</p>
                <hr width="25%"/>
              </div>
            </body>
-         </head>
        </html>
     OUTPUT
   end
@@ -251,15 +186,7 @@ INPUT
     </foreword></preface>
     </gb-standard>
     INPUT
-           <html xmlns:epub="http://www.idpf.org/2007/ops">
-         <head>
-           <title>test</title>
-           <body lang="EN-US" link="blue" vlink="#954F72">
-             <div class="WordSection1">
-               <p>&#160;</p>
-             </div>
-             <br/>
-             <div class="WordSection2">
+        #{HTML_HDR}
                <br/>
                <div>
                  <h1 class="ForewordTitle">Foreword&#160;</h1>
@@ -272,15 +199,10 @@ INPUT
                    </tr>
                  </table>
                </div>
-               <p>&#160;</p>
-             </div>
-             <br/>
-             <div class="WordSection3">
                <p class="zzSTDTitle1">XXXX</p>
                <hr width="25%"/>
              </div>
            </body>
-         </head>
        </html>
     OUTPUT
   end
@@ -299,15 +221,7 @@ INPUT
     </foreword></preface>
     </gb-standard>
     INPUT
-           <html xmlns:epub="http://www.idpf.org/2007/ops">
-         <head>
-           <title>test</title>
-           <body lang="EN-US" link="blue" vlink="#954F72">
-             <div class="WordSection1">
-               <p>&#160;</p>
-             </div>
-             <br/>
-             <div class="WordSection2">
+        #{HTML_HDR}
                <br/>
                <div>
                  <h1 class="ForewordTitle">Foreword&#160;</h1>
@@ -328,15 +242,10 @@ INPUT
                    </tr>
                  </table>
                </div>
-               <p>&#160;</p>
-             </div>
-             <br/>
-             <div class="WordSection3">
                <p class="zzSTDTitle1">XXXX</p>
                <hr width="25%"/>
              </div>
            </body>
-         </head>
        </html>
     OUTPUT
   end
@@ -358,15 +267,7 @@ INPUT
     </foreword></preface>
     </gb-standard>
     INPUT
-           <html xmlns:epub="http://www.idpf.org/2007/ops">
-         <head>
-           <title>test</title>
-           <body lang="EN-US" link="blue" vlink="#954F72">
-             <div class="WordSection1">
-               <p>&#160;</p>
-             </div>
-             <br/>
-             <div class="WordSection2">
+        #{HTML_HDR}
                <br/>
                <div>
                  <h1 class="ForewordTitle">Foreword&#160;</h1>
@@ -384,15 +285,10 @@ INPUT
                    </tr>
                  </table>
                </div>
-               <p>&#160;</p>
-             </div>
-             <br/>
-             <div class="WordSection3">
                <p class="zzSTDTitle1">XXXX</p>
                <hr width="25%"/>
              </div>
            </body>
-         </head>
        </html>
     OUTPUT
   end
@@ -417,19 +313,7 @@ INPUT
 </sections>
 </gb-standard>
     INPUT
-           <html xmlns:epub="http://www.idpf.org/2007/ops">
-         <head>
-           <title>test</title>
-           <body lang="EN-US" link="blue" vlink="#954F72">
-             <div class="WordSection1">
-               <p>&#160;</p>
-             </div>
-             <br/>
-             <div class="WordSection2">
-               <p>&#160;</p>
-             </div>
-             <br/>
-             <div class="WordSection3">
+        #{HTML_HDR}
                <p class="zzSTDTitle1">XXXX</p>
                <div id="_terms_and_definitions"><h1>1.&#12288;Terms and Definitions</h1><p>For the purposes of this document,
            the following terms and definitions apply.</p>
@@ -446,7 +330,6 @@ INPUT
                <hr width="25%"/>
              </div>
            </body>
-         </head>
        </html>
 OUTPUT
     end

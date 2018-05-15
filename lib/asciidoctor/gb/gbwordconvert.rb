@@ -50,10 +50,17 @@ module Asciidoctor
         from_xhtml(h1)
       end
 
-      def word_intro(docxml)
-        super
+      def word_cleanup(docxml)
+        word_preface(docxml)
+        word_annex_cleanup(docxml)
         title_cleanup(docxml.at('//div[@class="WordSection2"]'))
+        docxml
       end
+
+      #def word_intro(docxml)
+      #super
+      #title_cleanup(docxml.at('//div[@class="WordSection2"]'))
+      #end
 
       def toWord(result, filename, dir)
         result = populate_template(result, :word)

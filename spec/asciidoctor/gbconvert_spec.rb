@@ -76,15 +76,7 @@ RSpec.describe Asciidoctor::Gb::GbConvert do
 </bibliography>
     </gb-standard>
     INPUT
-          <html xmlns:epub="http://www.idpf.org/2007/ops">
-         <head>
-           <title>test</title>
-           <body lang="EN-US" link="blue" vlink="#954F72">
-             <div class="WordSection1">
-               <p>&#160;</p>
-             </div>
-             <br/>
-             <div class="WordSection2">
+    #{HTML_HDR}
                <br/>
                <div>
                  <h1 class="ForewordTitle">Foreword&#160;</h1>
@@ -94,16 +86,12 @@ RSpec.describe Asciidoctor::Gb::GbConvert do
          <a href="#ref10">[10]</a>
          </p>
                </div>
-               <p>&#160;</p>
-             </div>
-             <br/>
-             <div class="WordSection3">
                <p class="zzSTDTitle1">XXXX</p>
                <div>
                  <h1>1.&#12288;Normative References</h1>
                  <p>The following documents are referred to in the text in such a way that some or all of their content constitutes requirements of this document. For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments) applies.</p>
                  <p id="ISO712">ISO 712, <i> Cereals and cereal products</i></p>
-                 <p id="ISO16634">ISO 16634:All Parts: --<a href="#ftn1" epub:type="footnote"><sup>1</sup></a>, <i> Cereals, pulses, milled cereal products, oilseeds and animal feeding stuffs</i></p>
+                 <p id="ISO16634">ISO 16634:All Parts: --<a rel="footnote" href="#fn:1" epub:type="footnote"><sup>1</sup></a>, <i> Cereals, pulses, milled cereal products, oilseeds and animal feeding stuffs</i></p>
                  <p id="ISO20483">ISO 20483: 2013&#8211;2014, <i> Cereals and pulses</i></p>
                  <p id="ref1" class="Biblio">ICC 167, <span style="font-variant:small-caps;">Standard No I.C.C 167</span>. <i>Determination of the protein content in cereal and cereal products for food and animal feeding stuffs according to the Dumas combustion method</i> (see <a href="http://www.icc.or.at">http://www.icc.or.at</a>)</p>
                </div>
@@ -115,12 +103,11 @@ RSpec.describe Asciidoctor::Gb::GbConvert do
                  <p id="ref11" class="Biblio">[3]&#160; IETF RFC 10,<span style="font-variant:small-caps;">Standard No I.C.C 167</span>. <i>Determination of the protein content in cereal and cereal products for food and animal feeding stuffs according to the Dumas combustion method</i> (see <a href="http://www.icc.or.at">http://www.icc.or.at</a>)</p>
                </div>
                <hr width="25%"/>
-               <aside id="ftn1" class="footnote">
+               <aside id="fn:1" class="footnote">
          <p>Under preparation. (Stage at the time of publication ISO/DIS 16634)</p>
        </aside>
              </div>
            </body>
-         </head>
        </html>
     OUTPUT
   end
@@ -136,15 +123,7 @@ RSpec.describe Asciidoctor::Gb::GbConvert do
     </foreword></preface>
     </gb-standard>
     INPUT
-           <html xmlns:epub="http://www.idpf.org/2007/ops">
-         <head>
-           <title>test</title>
-           <body lang="EN-US" link="blue" vlink="#954F72">
-             <div class="WordSection1">
-               <p>&#160;</p>
-             </div>
-             <br/>
-             <div class="WordSection2">
+    #{HTML_HDR}
                <br/>
                <div>
                  <h1 class="ForewordTitle">Foreword&#160;</h1>
@@ -153,15 +132,10 @@ RSpec.describe Asciidoctor::Gb::GbConvert do
        <i>Hello</i>
        </p>
                </div>
-               <p>&#160;</p>
-             </div>
-             <br/>
-             <div class="WordSection3">
                <p class="zzSTDTitle1">XXXX</p>
                <hr width="25%"/>
              </div>
            </body>
-         </head>
        </html>
     OUTPUT
   end
@@ -185,10 +159,10 @@ RSpec.describe Asciidoctor::Gb::GbConvert do
 
         </gb-standard>
     INPUT
-    html = File.read("test.html").sub(/^.*<div class="WordSection3">/m, '<div class="WordSection3">').
-      sub(%r{<script.*$}m, "")
+    html = File.read("test.html").sub(/^.*<main class="WordSection3">/m, '<main class="WordSection3">').
+      sub(%r{</main>.*$}m, "</main>")
     expect(html.gsub(/"#[a-f0-9-]+"/, "#_")).to be_equivalent_to <<~"OUTPUT"
-           <div class="WordSection3">
+           <main class="WordSection3"><button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
                <p class="zzSTDTitle1">XXXX</p>
                <div id="_terms_and_definitions"><h1>1.&#x3000;&#x672F;&#x8BED;&#x548C;&#x5B9A;&#x4E49;</h1><p>&#x4E0B;&#x5217;&#x672F;&#x8BED;&#x548C;&#x5B9A;&#x4E49;&#x9002;&#x7528;&#x4E8E;&#x672C;&#x6587;&#x4EF6;&#x3002;</p>
        <h2 class="TermNum" id="paddy">1.1</h2><p class="Terms" style="text-align:left;">paddy</p><p class="AltTerms" style="text-align:left;">paddy rice&#x3000;rough rice</p>
@@ -197,7 +171,7 @@ RSpec.describe Asciidoctor::Gb::GbConvert do
        <p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p>
        </div>
                <hr width="25%" />
-             </div>
+             </main>
     OUTPUT
   end
 
@@ -225,10 +199,10 @@ RSpec.describe Asciidoctor::Gb::GbConvert do
 
         </gb-standard>
     INPUT
-    html = File.read("test.html", encoding: "utf-8").sub(/^.*<div class="WordSection3">/m, '<div class="WordSection3">').
-      sub(%r{<script.*$}m, "")
+    html = File.read("test.html", encoding: "utf-8").sub(/^.*<main class="WordSection3">/m, '<main class="WordSection3">').
+      sub(%r{</main>.*$}m, "</main>")
     expect(htmlencode(html.gsub(/"#[a-f0-9-]+"/, "#_"))).to be_equivalent_to <<~"OUTPUT"
-           <div class="WordSection3">
+           <main class="WordSection3"><button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
                <p class="zzSTDTitle1">XXXX</p>
                <div id="_terms_and_definitions"><h1>1.&#x3000;&#x672F;&#x8BED;&#x548C;&#x5B9A;&#x4E49;</h1><p>&#x4E0B;&#x5217;&#x672F;&#x8BED;&#x548C;&#x5B9A;&#x4E49;&#x9002;&#x7528;&#x4E8E;&#x672C;&#x6587;&#x4EF6;&#x3002;</p>
        <h2 class="TermNum" id="paddy">1.1</h2><p class="Terms" style="text-align:left;">paddy</p><p class="AltTerms" style="text-align:left;">paddy rice&#x3000;rough rice</p>
@@ -237,7 +211,7 @@ RSpec.describe Asciidoctor::Gb::GbConvert do
        <p>&#x3010;<a href="#ISO7301">ISO 7301: 2011&#x3001;&#x7B2C;3.1&#x6761;</a>&#x3001;&#x6539;&#x5199;&mdash;The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here&#x3011;</p>
        </div>
                <hr width="25%" />
-             </div>
+             </main>
     OUTPUT
   end
 
