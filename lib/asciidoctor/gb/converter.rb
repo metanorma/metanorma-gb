@@ -34,6 +34,7 @@ module Asciidoctor
         File.join(File.dirname(__FILE__), File.join("html", file))
       end
 
+=begin
       def html_converter(node)
         GbConvert.new(
           htmlstylesheet: generate_css(html_doc_path("htmlstyle.scss"), true, @fontheader),
@@ -54,6 +55,33 @@ module Asciidoctor
           i18nyaml: node&.attr("i18nyaml"),
         )
       end
+=end
+
+      def html_converter(node)
+        node.nil? ? IsoDoc::Gb::Convert.new({}) :
+          IsoDoc::Gb::Convert.new(
+            script: node.attr("script"),
+            bodyfont: node.attr("body-font"),
+            headerfont: node.attr("header-font"),
+            monospacefont: node.attr("monospace-font"),
+            titlefont: node.attr("title-font"),
+            i18nyaml: node.attr("i18nyaml"),
+            scope: node.attr("scope"),
+        )
+      end
+
+      def doc_converter(node)
+        node.nil? ? IsoDoc::Gb::WordConvert.new({}) :
+        IsoDoc::Gb::WordConvert.new(
+          script: node.attr("script"),
+          bodyfont: node.attr("body-font"),
+          headerfont: node.attr("header-font"),
+          monospacefont: node.attr("monospace-font"),
+          titlefont: node.attr("title-font"),
+          i18nyaml: node.attr("i18nyaml"),
+          scope: node.attr("scope"),
+        )
+      end
 
       def default_fonts(node)
         script = node.attr("script") || "Hans"
@@ -67,7 +95,7 @@ module Asciidoctor
         scope = node.attr("scope") || "national"
         t = node.attr("title-font") ||
           (scope == "national" ? (script != "Hans" ? '"Cambria",serif' : '"SimSun",serif' ) :
-          (script == "Hans" ? '"SimHei",sans-serif' : '"Calibri",sans-serif' ))
+           (script == "Hans" ? '"SimHei",sans-serif' : '"Calibri",sans-serif' ))
         "$bodyfont: #{b};\n$headerfont: #{h};\n$monospacefont: #{m};\n$titlefont: #{t};\n"
       end
 

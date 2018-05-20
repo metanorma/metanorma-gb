@@ -1,4 +1,5 @@
 require "isodoc"
+require_relative "./gbconvert"
 
 module IsoDoc
   module Gb
@@ -7,9 +8,19 @@ module IsoDoc
 
     class WordConvert < IsoDoc::Gb::Convert
       include IsoDoc::WordConvertModule
+      def html_doc_path(file)
+        File.join(File.dirname(__FILE__), File.join("html", file))
+      end
 
       def initialize(options)
         super
+        @wordstylesheet = generate_css(html_doc_path("wordstyle.scss"), false, default_fonts(options))
+        @standardstylesheet = generate_css(html_doc_path("gb.scss"), false, default_fonts(options))
+        @header = html_doc_path("header.html")
+        @wordcoverpage = html_doc_path("word_gb_titlepage.html")
+        @wordintropage = html_doc_path("word_gb_intro.html")
+        @ulstyle = "l7"
+        @olstyle = "l10"
       end
 
       ENDLINE = <<~END.freeze
@@ -62,6 +73,7 @@ module IsoDoc
       #title_cleanup(docxml.at('//div[@class="WordSection2"]'))
       #end
 
+=begin
       def toWord(result, filename, dir)
         result = populate_template(result, :word)
         result = from_xhtml(word_cleanup(to_xhtml(result)))
@@ -71,6 +83,7 @@ module IsoDoc
                          asciimathdelims: [@openmathdelim, @closemathdelim],
                          liststyles: {ul: "l7", ol: "l10"})
       end
+=end
     end
   end
 end

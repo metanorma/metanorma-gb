@@ -7,13 +7,38 @@ require_relative "./agencies.rb"
 require_relative "./section_output.rb"
 require_relative "./block_output.rb"
 
-module Asciidoctor
+module IsoDoc
   module Gb
     # A {Converter} implementation that generates GB output, and a document
     # schema encapsulation of the document for validation
-    class GbConvert < IsoDoc::Convert
+    class Convert < IsoDoc::Convert
+      def default_fonts(options)
+        script = options[:script] || "Hans"
+        b = options[:bodyfont] ||
+          (script == "Hans" ? '"SimSun",serif' :
+           script == "Latn" ? '"Cambria",serif' : '"SimSun",serif' )
+        h = options[:headerfont] ||
+          (script == "Hans" ? '"SimHei",sans-serif' :
+           script == "Latn" ? '"Calibri",sans-serif' : '"SimHei",sans-serif' )
+        m = options[:monospacefont] || '"Courier New",monospace'
+        scope = options[:scope] || "national"
+        t = options[:titlefont] ||
+          (scope == "national" ? (script != "Hans" ? '"Cambria",serif' : '"SimSun",serif' ) :
+           (script == "Hans" ? '"SimHei",sans-serif' : '"Calibri",sans-serif' ))
+        "$bodyfont: #{b};\n$headerfont: #{h};\n$monospacefont: #{m};\n$titlefont: #{t};\n"
+      end
+
       def initialize(options)
         super
+        @htmlstylesheet = generate_css(html_doc_path("htmlstyle.scss"), true, default_fonts(options))
+        @standardstylesheet = generate_css(html_doc_path("gb.scss"), true, default_fonts(options))
+        @htmlcoverpage = html_doc_path("html_gb_titlepage.html")
+        @htmlintropage = html_doc_path("html_gb_intro.html")
+        @scripts = html_doc_path("scripts.html")
+      end
+
+      def html_doc_path(file)
+        File.join(File.dirname(__FILE__), File.join("html", file))
       end
 
       def middle(isoxml, out)
@@ -72,12 +97,12 @@ module Asciidoctor
       end
 
       def format_logo1(logo, prefix, scope)
-          logo += ".gif"
-          system "cp #{fileloc(File.join('html/gb-logos', logo))}  #{logo}"
-          local = local_logo_suffix(scope)
-          @files_to_delete << logo
-          "<img width='113' height='56' src='#{logo}' alt='#{prefix}'></img>"\
-            "#{local}"
+        logo += ".gif"
+        system "cp #{fileloc(File.join('html/gb-logos', logo))}  #{logo}"
+        local = local_logo_suffix(scope)
+        @files_to_delete << logo
+        "<img width='113' height='56' src='#{logo}' alt='#{prefix}'></img>"\
+          "#{local}"
       end
 
       def format_agency(agency, format)
