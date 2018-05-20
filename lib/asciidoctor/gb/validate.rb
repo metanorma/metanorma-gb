@@ -21,7 +21,7 @@ module Asciidoctor
         scope = root&.at("//gbscope")&.text
         case scope
         when "social"
-          /^[A-Za-z]{3}$/.match? prefix or
+          /^[A-Za-z]{3,6}$/.match? prefix or
             warn("#{prefix} is improperly formatted for social standards")
         when "enterprise"
           /^[A-Z0-9]{3,}$/.match? prefix or
