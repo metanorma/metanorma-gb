@@ -1,0 +1,556 @@
+p.Sourcecode, li.Sourcecode, div.Sourcecode, pre.Sourcecode
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:"";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:12.0pt;
+	margin-left:0cm;
+	text-align:left;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	tab-stops:20.15pt;
+	font-size:9.0pt;
+	font-family:$monospacefont;
+	mso-fareast-font-family:Calibri;
+	mso-bidi-font-family:"Courier New";
+	mso-ansi-language:EN-GB;}
+p.Biblio, li.Biblio, div.Biblio
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:"";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:12.0pt;
+    margin-left:33.15pt;
+    text-indent:-33.15pt;
+    tab-stops: 33.15pt;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	font-size:11.0pt;
+	font-family:$bodyfont;
+	mso-fareast-font-family:$bodyfont;
+	mso-bidi-font-family:$bodyfont;
+	mso-ansi-language:EN-GB;}
+p.FigureTitle
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:"";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:12.0pt;
+	margin-left:0cm;
+	text-align:center;
+	line-height:12.0pt;
+	page-break-before:avoid;
+	mso-pagination:widow-orphan;
+	tab-stops:20.15pt;
+	font-size:10.5pt;
+	font-family:$headerfont;
+	mso-fareast-font-family:$headerfont;
+	mso-bidi-font-family:$headerfont;
+	mso-ansi-language:EN-GB;}
+p.TableTitle
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:"";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:12.0pt;
+	margin-left:0cm;
+	text-align:center;
+	page-break-after:avoid;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	tab-stops:20.15pt;
+	font-size:10.5pt;
+	font-family:$headerfont;
+	mso-fareast-font-family:$headerfont;
+	mso-bidi-font-family:$headerfont;
+	mso-ansi-language:EN-GB;}
+p.Note, li.Note, td.Note
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:"";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	tab-stops:20.15pt;
+	/*
+	margin-left:45.0pt;
+	text-indent:-18.0pt;
+	*/
+	margin-left:0pt;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	mso-pagination:widow-orphan;
+	font-size:9.0pt;
+	text-autospace:none;
+	mso-bidi-font-size:11.0pt;
+	font-family:$bodyfont;
+	mso-fareast-font-family:$bodyfont;
+	mso-bidi-font-family:$bodyfont;
+	mso-ansi-language:EN-GB;}
+p.TableFootnote, li.TableFootnote
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:"";
+	margin-top:0in;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:36.0pt;
+	tab-stops:20.15pt;
+	text-indent:-9.0pt;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	mso-pagination:widow-orphan;
+	font-size:9.0pt;
+	text-autospace:none;
+	mso-bidi-font-size:11.0pt;
+	font-family:$bodyfont;
+	mso-fareast-font-family:$bodyfont;
+	mso-bidi-font-family:$bodyfont;
+	mso-ansi-language:EN-GB;}
+p.ANNEX, li.ANNEX, div.ANNEX
+	{mso-style-name:ANNEX;
+	mso-style-priority:10;
+	mso-style-unhide:no;
+	mso-style-next:Normal;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:24.0pt;
+	margin-left:0cm;
+	text-align:center;
+	text-indent:0cm;
+	line-height:15.5pt;
+	mso-line-height-rule:exactly;
+	page-break-before:always;
+	mso-pagination:widow-orphan;
+	page-break-after:avoid;
+	mso-outline-level:1;
+	mso-list:l0 level1 lfo12;
+	tab-stops:20.15pt;
+	font-size:14.0pt;
+	mso-bidi-font-size:11.0pt;
+	font-family:$headerfont;
+	mso-fareast-font-family:$headerfont;
+	mso-bidi-font-family:$headerfont;
+	mso-ansi-language:EN-GB;
+	mso-fareast-language:ZH-CN;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+p.BiblioTitle, li.BiblioTitle, div.BiblioTitle
+	{mso-style-name:"Biblio Title";
+	mso-style-noshow:yes;
+	mso-style-unhide:no;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:15.5pt;
+	margin-left:0cm;
+	text-align:center;
+	line-height:15.5pt;
+	mso-pagination:widow-orphan;
+	mso-outline-level:1;
+	tab-stops:20.15pt;
+	font-size:14.0pt;
+	mso-bidi-font-size:11.0pt;
+	font-family:$headerfont;
+	mso-fareast-font-family:$headerfont;
+	mso-bidi-font-family:$headerfont;
+	mso-ansi-language:EN-GB;
+	font-weight:bold;
+	mso-bidi-font-weight:normal;}
+p.Definition, li.Definition, div.Definition
+	{mso-style-name:Definition;
+	mso-style-priority:9;
+	mso-style-unhide:no;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:12.0pt;
+	margin-left:0cm;
+	text-align:justify;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	tab-stops:20.15pt;
+	font-size:11.0pt;
+	font-family:$bodyfont;
+	mso-fareast-font-family:$bodyfont;
+	mso-bidi-font-family:$bodyfont;
+	mso-ansi-language:EN-GB;}
+p.zzCopyright, li.zzCopyright
+	{mso-style-name:zzCopyright;
+	mso-style-noshow:yes;
+	mso-style-unhide:no;
+	mso-style-next:Normal;
+	margin-top:0cm;
+	margin-right:14.2pt;
+	margin-bottom:12.0pt;
+	margin-left:14.2pt;
+	text-align:justify;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	tab-stops:20.15pt 25.7pt 481.15pt;
+	padding:0cm;
+	mso-padding-alt:1.0pt 4.0pt 1.0pt 4.0pt;
+	font-size:11.0pt;
+	font-family:$bodyfont;
+	mso-fareast-font-family:$bodyfont;
+	mso-bidi-font-family:$bodyfont;
+	mso-ansi-language:EN-GB;}
+div.zzCopyright
+    {mso-element:para-border-div;
+    border:solid windowtext 1.0pt;
+    mso-border-top-alt:solid windowtext .5pt;
+    mso-border-left-alt:solid windowtext .5pt;
+    mso-border-right-alt:solid windowtext .5pt;
+    mso-border-bottom-alt:solid windowtext .5pt;
+    padding:1.0pt 4.0pt 0cm 4.0pt;
+    margin-left:5.1pt;
+    margin-right:5.1pt;}
+p.zzCopyright_address
+    {margin-top:0cm;
+	margin-right:14.2pt;
+	margin-bottom:0.0pt;
+	margin-left:14.2pt;
+    mso-layout-grid-align:none;
+    text-autospace:none;
+	padding-left:20pt;
+	mso-padding-alt-left:20pt;
+    font-size:10.0pt;
+	text-align:left;
+    mso-bidi-font-size:11.0pt;}
+p.zzSTDTitle, li.zzSTDTitle, div.zzSTDTitle
+	{mso-style-name:zzSTDTitle;
+	mso-style-noshow:yes;
+	mso-style-unhide:no;
+	mso-style-next:Normal;
+	margin-top:20.0pt;
+	margin-right:0cm;
+	margin-bottom:38.0pt;
+	margin-left:0cm;
+	line-height:17.5pt;
+	text-align:center;
+	mso-line-height-rule:exactly;
+	mso-pagination:widow-orphan;
+	mso-hyphenate:none;
+	tab-stops:20.15pt;
+	font-size:16.0pt;
+	mso-bidi-font-size:11.0pt;
+	font-family:$headerfont;
+	mso-fareast-font-family:$headerfont;
+	mso-bidi-font-family:$headerfont;
+	mso-ansi-language:EN-GB;
+	mso-bidi-font-weight:normal;}
+p.zzSTDTitle1, li.zzSTDTitle1, div.zzSTDTitle1
+	{mso-style-name:zzSTDTitle;
+	mso-style-noshow:yes;
+	mso-style-unhide:no;
+	mso-style-next:Normal;
+	margin-top:0pt;
+	margin-right:0cm;
+	margin-bottom:18.0pt;
+	margin-left:0cm;
+	line-height:17.5pt;
+	text-align:center;
+	mso-line-height-rule:exactly;
+	mso-pagination:widow-orphan;
+	mso-hyphenate:none;
+	tab-stops:20.15pt;
+	font-size:16.0pt;
+	mso-bidi-font-size:11.0pt;
+	font-family:$headerfont;
+	mso-fareast-font-family:$headerfont;
+	mso-bidi-font-family:$headerfont;
+	mso-ansi-language:EN-GB;
+	mso-bidi-font-weight:normal;}
+p.Quote, li.Quote, div.Quote
+	{mso-style-priority:99;
+	margin-top:0cm;
+	margin-right:36.0pt;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	text-align:justify;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	tab-stops:20.15pt;
+	font-size:10.5pt;
+	font-family:$bodyfont;
+	mso-fareast-font-family:$bodyfont;
+	mso-bidi-font-family:$bodyfont;
+	mso-ansi-language:EN-GB;}
+p.QuoteAttribution
+        {text-align:right;}
+p.Admonition, li.Admonition, div.Admonition
+	{mso-style-priority:99;
+	mso-pagination:widow-orphan;
+	border:none;
+	padding:0cm;
+	font-size:10.5pt;
+	font-family:$bodyfont;
+	mso-ascii-font-family:$bodyfont;
+	mso-ascii-theme-font:minor-latin;
+	mso-fareast-font-family:$bodyfont;
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:$bodyfont;
+	mso-hansi-theme-font:minor-latin;
+	mso-bidi-font-family:$bodyfont;
+	mso-bidi-theme-font:minor-bidi;
+    font-weight:bold;
+	mso-ansi-language:EN-GB;}
+p.Code, li.Code, div.Code
+	{mso-style-name:Code;
+	mso-style-priority:16;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	line-height:10.0pt;
+	mso-pagination:widow-orphan;
+	tab-stops:20.15pt;
+	font-size:9.0pt;
+	mso-bidi-font-size:11.0pt;
+	font-family:$monospacefont;
+	mso-fareast-font-family:Calibri;
+	mso-bidi-font-family:"Source Sans Pro";
+	mso-ansi-language:EN-GB;}
+p.Formula, li.Formula, div.Formula
+	{mso-style-name:Formula;
+	mso-style-noshow:yes;
+	mso-style-unhide:no;
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:11.0pt;
+	margin-left:20.15pt;
+	line-height:12.0pt;
+	mso-pagination:widow-orphan;
+	tab-stops:center 212.65pt right 487.45pt;
+	font-size:11.0pt;
+	font-family:$bodyfont;
+	mso-fareast-font-family:$bodyfont;
+	mso-bidi-font-family:$bodyfont;
+	mso-ansi-language:EN-GB;}
+ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+table.MsoISOTable
+	{mso-style-name:"Table ISO";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-parent:"";
+	mso-padding-alt:0cm 2.85pt 0cm 2.85pt;
+	mso-para-margin:0cm;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	margin-bottom:12.0pt;
+	border-collapse:collapse;
+	mso-table-layout-alt:fixed;
+	border:solid windowtext 2pt;
+	mso-border-alt:solid windowtext 2pt;
+	mso-yfti-tbllook:480;
+	mso-border-insideh:.75pt solid windowtext;
+	mso-border-insidev:.75pt solid windowtext;
+	font-size:10.0pt;
+	font-family:$bodyfont;
+	mso-fareast-font-family:$bodyfont;}
+table.MsoISOTable tr
+    {page-break-inside:avoid;}
+table.MsoISOTable th
+    {border:solid windowtext 1pt;
+    mso-border-alt:solid windowtext 1pt;
+    padding:0cm 2.85pt 0cm 2.85pt;}
+table.MsoISOTable td
+    {border:solid windowtext 1pt;
+    mso-border-alt:solid windowtext 1pt;
+    padding:0cm 2.85pt 0cm 2.85pt;}
+table.MsoTableGrid
+	{mso-style-name:"Table Grid";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-priority:39;
+	mso-style-unhide:no;
+	border:solid windowtext 1.0pt;
+	mso-border-alt:solid windowtext .5pt;
+	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-border-insideh:.5pt solid windowtext;
+	mso-border-insidev:.5pt solid windowtext;
+	mso-para-margin:0cm;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:$bodyfont;
+	mso-fareast-font-family:$bodyfont;}
+td { page-break-inside:avoid; }
+tr { page-break-after:avoid; }
+span.stem
+    {font-family:"Cambria Math",serif;
+    mso-ascii-font-family:"Cambria Math";
+    font-style:
+    italic;}
+div.formula
+    {tab-stops:center 212.65pt right 487.45pt;}
+body 
+    {tab-interval:21.0pt;
+    text-justify-trim:punctuation}
+dt
+    {page-break-inside:avoid;
+    page-break-after:avoid}
+.coverpage_docnumber
+    {text-align:center;
+    font-size:14.0pt;
+    font-weight:bold;}
+.coverpage_techcommittee
+    {text-align:center;}
+.coverpage_docstage
+    {text-align:center;
+    font-size:30.0pt;
+    color:#485094;}
+div.coverpage_warning
+    {mso-element:para-border-div;
+    border:solid windowtext 1.0pt #485094; 
+    mso-border-alt:solid windowtext .5pt;
+    padding:1.0pt 4.0pt 1.0pt 4.0pt #485094;
+    margin-left:4.25pt;
+    margin-right:4.25pt}
+.coverpage_warning
+    {color:#485094;
+    font-size:10.0pt;}
+.coverpage_footer
+    {text-align:center;
+    font-family:$headerfont;}
+.coverpage_footer table
+    {text-align:left;
+    margin-left:auto; 
+    margin-right:auto;}
+a.TableFootnoteRef
+        {mso-style-priority:99;
+        vertical-align:super;}
+aside {font-size:10.0pt;}
+.Hant
+    {font-family:PMingLiU;}
+/*
+div.example {
+	border:solid black .25pt;
+	mso-border-alt:solid black .25pt;
+	padding:10pt;
+	mso-padding-alt:10.0pt 10.0pt 10.0pt 10.0pt;
+	margin:10pt;
+	mso-margin-alt:10.0pt 10.0pt 10.0pt 10.0pt;
+}
+*/
+table.example, table.Note {
+    margin-left: 21.0pt;
+}
+p.example, li.example, div.example, td.example, td.example p
+	{mso-style-name:示例;  /* NAME: Example */
+	mso-style-unhide:no;
+	mso-style-parent:"";
+	mso-style-next:示例内容;
+	margin:0in;
+	margin-bottom:.0001pt;
+	text-align:justify;
+	text-justify:inter-ideograph;
+	/* text-indent:18.15pt;
+	mso-list:l2 level1 lfo1; */
+	mso-pagination:none;
+	font-size:9.0pt;
+	font-family:$bodyfont;
+	mso-hansi-font-family:$bodyfont;
+	mso-bidi-font-family:$bodyfont;}
+p.leftpagenumber, li.leftpagenumber, div.leftpagenumber
+	{mso-style-name:leftpagenumber;
+	mso-style-priority:99;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:"";
+	margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:9.0pt;
+	font-family:$bodyfont;
+	mso-fareast-font-family:$bodyfont;
+	mso-ansi-language:EN-US;
+	mso-fareast-language:ZH-CN;}
+p.rightpagenumber, li.rightpagenumber, div.rightpagenumber
+	{mso-style-name:rightpagenumber;
+	mso-style-priority:99;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:"";
+	margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	margin-bottom:.0001pt;
+	text-align:right;
+	mso-pagination:widow-orphan;
+	font-size:9.0pt;
+	font-family:$bodyfont;
+	mso-fareast-font-family:$bodyfont;
+	mso-ansi-language:EN-US;
+	mso-fareast-language:ZH-CN;}
+p.supersedes, li.supersedes, div.supersedes
+	{mso-style-name:封面标准代替信息;  /* NAME: Cover page standard "supercedes" information */
+	mso-style-unhide:no;
+	mso-style-parent:"";
+	margin-top:2.85pt;
+	margin-right:0in;
+	margin-bottom:0in;
+	margin-left:0in;
+	margin-bottom:.0001pt;
+	text-align:right;
+	line-height:14.0pt;
+	mso-line-height-rule:exactly;
+	mso-pagination:widow-orphan;
+	mso-element:frame;
+	mso-element-frame-width:457.0pt;
+	mso-element-frame-height:62.1pt;
+	mso-element-frame-hspace:14.2pt;
+	mso-element-wrap:around;
+	mso-element-anchor-vertical:page;
+	mso-element-anchor-horizontal:page;
+	mso-element-left:82.25pt;
+	mso-element-top:145.5pt;
+	mso-height-rule:exactly;
+	mso-element-anchor-lock:locked;
+	font-size:10.5pt;
+	font-family:$bodyfont;
+	mso-hansi-font-family:$bodyfont;
+	mso-bidi-font-family:$bodyfont;}
+table.dl
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:11.0pt;
+	margin-left:20.15pt;}
+span.note_label, span.example_label, td.example_label, td.note_label
+{
+font-size: 9.0pt;
+font-family:$headerfont;
+}
+p.dl {
+    margin-left:0pt;
+	font-size:10.5pt;
+}
+div.figure {
+    margin-top:12pt;
+}
+span.ccs_label {
+    font-weight: bold;
+    font-family: $bodyfont;
+}
+span.ccs {
+    font-family: $headerfont;
+}
+span.zh {
+    font-family: SimSun,serif;
+}
+span.en {
+    font-family: Cambria,serif;
+}

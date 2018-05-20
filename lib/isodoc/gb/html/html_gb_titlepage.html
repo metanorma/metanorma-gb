@@ -1,0 +1,99 @@
+<div class="coverpage">
+
+  <div class="coverpage-category">
+    <span class="category-1">ICS {{ libraryid_ics }} </span>
+    <span class="category-2">{{ libraryid_ccs }}</span>
+  </div>
+
+  <div class="coverpage-logo">
+    <div class="coverpage-logo-gb-img">{{ standard_logo }}</div>
+
+    <span class="coverpage-logo-text">{{ standard_class }}</span>
+
+  </div>
+
+  <div class="coverpage-doc-identity-first">
+    <div class="doc-number">
+      <span class="docnumber">{{ docidentifier }}</span>
+      <span class="docnumber-separator">-</span>
+      <span class="docyear">{{ docyear }}</span>
+    {%- if isostandard and gbequivalence == "IDT" -%}
+       /<span class="docnumber">{{ isostandard }}</span>
+    {%- endif -%}
+    </div>
+
+    <div class="coverpage-doc-relations">
+    {% if obsoletes %}
+    {% if obsoletes_part %}
+      <span class="partially-supercedes">部分代替</span>
+    {% else %}
+      <span class="supercedes">代替</span>
+    {% endif %}
+    <!--
+      <ul>
+        <li>GB/T XXXX-XXXX</li>
+        <li>GB/T YYYY-YYYY</li>
+      </ul>
+    -->
+    {{ obsoletes }}
+    {% endif %}
+    </div>
+  </div>
+
+  <hr/>
+
+  <div class="coverpage-doc-identity-second">
+    <div class="coverpage-title-zh">
+      <span class="title-first">{{ docmaintitlezh }}</span>
+      <span class="title-second">{{ docsubtitlezh }}</span>
+      <span class="title-third"> {{ docpartitlezh }}</span>
+    </div>
+
+    <!-- for local standards (DB, DB/T), no en title -->
+    <div class="coverpage-title-en">
+      <span class="title-first">{{ docmaintitleen }}</span>
+      <span class="title-second">{{ docsubtitleen }}</span>
+      <span class="title-third">{{ docpartitleen }}</span>
+    </div>
+
+    <!-- for local standards (DB, DB/T), no relation to ISO standards -->
+    <!-- if related to ISO standards -->
+    {% if isostandard %}
+    <div class="coverpage-iso-relation">
+      <span class="openparen">（</span>
+      <span class="iso-document-code">{{ isostandard }}</span>
+      {% if isostandardtitle != "[not supplied]" %}
+      <span class="iso-title-first">{{ isostandardtitle }}</span>
+      {% endif %}
+      <span class="join">，</span>
+      <span class="iso-equivalence-code">{{ gbequivalence }}</span>
+      <span class="closeparen">）</span>
+    </div>
+    {% endif %}
+  </div>
+
+  <div class="coverpage-stage-block" lang="{{ language }}">
+    {% if stage and stage < 60 %}
+    <span class="stage-if-draft">（{{ stageabbr }}）</span>
+    {% if revdate %}
+    <span class="revision-if-draft">（本稿完成日期：{{ revdate }}）</span>
+    {% endif %}
+    {% if stage == 30 %}
+    <span class="warning-if-draft">
+    在提交反馈意见时，请将您知道的相关专利连同支持文件一并附上
+    </span>
+    {% endif %}
+    {% endif %}
+  </div>
+
+  <div class="coverpage-dates">
+    <span class="date-publish">{{ publisheddate }} 发布</span>
+    <span class="date-active">{{ activateddate }} 实施</span>
+  </div>
+
+  <div class="coverpage_footer">
+    {{ standard_agency_formatted }}
+  </div>
+
+</div>
+
