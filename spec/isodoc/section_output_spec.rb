@@ -1,8 +1,8 @@
 require "spec_helper"
 
-RSpec.describe Asciidoctor::Gb::GbConvert do
+RSpec.describe IsoDoc::Gb::Convert do
   it "processes empty terms & definitions" do
-    expect(Asciidoctor::Gb::GbConvert.new({}).convert_file(<<~"INPUT", "test", true)).to be_equivalent_to <<~"OUTPUT"
+          expect(IsoDoc::Gb::Convert.new({}).convert_file(<<~"INPUT", "test", true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>")).to be_equivalent_to <<~"OUTPUT"
         <gb-standard xmlns="http://riboseinc.com/gbstandard">
         <bibdata>
         <language>zh</language>
@@ -14,10 +14,6 @@ RSpec.describe Asciidoctor::Gb::GbConvert do
         </sections>
     </gb-standard>
     INPUT
-           <html xmlns:epub="http://www.idpf.org/2007/ops">
-         <head>
-           <title>test</title>
-           </head>
            <body lang="EN-US" link="blue" vlink="#954F72">
              <div class="WordSection1">
                <p>&#160;</p>
@@ -34,12 +30,11 @@ RSpec.describe Asciidoctor::Gb::GbConvert do
                <hr width="25%"/>
              </div>
            </body>
-       </html>
     OUTPUT
   end
 
     it "processes clause names" do
-    expect(Asciidoctor::Gb::GbConvert.new({}).convert_file(<<~"INPUT", "test", true)).to be_equivalent_to <<~"OUTPUT"
+          expect(IsoDoc::Gb::Convert.new({}).convert_file(<<~"INPUT", "test", true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>")).to be_equivalent_to <<~"OUTPUT"
         <gb-standard xmlns="http://riboseinc.com/gbstandard">
         <bibdata>
         <language>en</language>
@@ -55,10 +50,6 @@ RSpec.describe Asciidoctor::Gb::GbConvert do
         </sections>
     </gb-standard>
     INPUT
-           <html xmlns:epub="http://www.idpf.org/2007/ops">
-         <head>
-           <title>test</title>
-           </head>
            <body lang="EN-US" link="blue" vlink="#954F72">
              <div class="WordSection1">
                <p>&#160;</p>
@@ -82,12 +73,11 @@ RSpec.describe Asciidoctor::Gb::GbConvert do
                <hr width="25%"/>
              </div>
            </body>
-       </html>
     OUTPUT
   end
 
         it "processes annex names" do
-    expect(Asciidoctor::Gb::GbConvert.new({}).convert_file(<<~"INPUT", "test", true)).to be_equivalent_to <<~"OUTPUT"
+          expect(IsoDoc::Gb::Convert.new({}).convert_file(<<~"INPUT", "test", true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>")).to be_equivalent_to <<~"OUTPUT"
         <gb-standard xmlns="http://riboseinc.com/gbstandard">
         <bibdata>
         <language>en</language>
@@ -98,10 +88,6 @@ RSpec.describe Asciidoctor::Gb::GbConvert do
         </annex> 
     </gb-standard>
     INPUT
-           <html xmlns:epub="http://www.idpf.org/2007/ops">
-         <head>
-           <title>test</title>
-           </head>
            <body lang="EN-US" link="blue" vlink="#954F72">
              <div class="WordSection1">
                <p>&#160;</p>
@@ -120,7 +106,6 @@ RSpec.describe Asciidoctor::Gb::GbConvert do
                <hr width="25%"/>
              </div>
            </body>
-       </html>
     OUTPUT
   end
 

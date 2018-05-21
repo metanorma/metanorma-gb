@@ -125,10 +125,6 @@ BLANK_HDR = <<~"HDR"
 HDR
 
 HTML_HDR = <<~HDR
-       <html xmlns:epub="http://www.idpf.org/2007/ops">
-         <head>
-           <title>test</title>
-         </head>
          <body lang="EN-US" link="blue" vlink="#954F72">
            <div class="WordSection1">
              <p>&#160;</p>

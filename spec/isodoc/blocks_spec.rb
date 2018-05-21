@@ -1,8 +1,9 @@
 require "spec_helper"
 
-RSpec.describe Asciidoctor::Gb::GbConvert do
+RSpec.describe IsoDoc::Gb::Convert do
   it "processes unlabelled notes" do
-    expect(Asciidoctor::Gb::GbConvert.new({}).convert_file(<<~"INPUT", "test", true)).to be_equivalent_to <<~"OUTPUT"
+                  expect(IsoDoc::Gb::Convert.new({}).convert_file(<<~"INPUT", "test", true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>")).to be_equivalent_to <<~"OUTPUT"
+
         <gb-standard xmlns="http://riboseinc.com/gbstandard">
     <preface><foreword>
     <note>
@@ -33,7 +34,7 @@ RSpec.describe Asciidoctor::Gb::GbConvert do
   end
 
   it "processes labelled notes" do
-    expect(Asciidoctor::Gb::GbConvert.new({}).convert_file(<<~"INPUT", "test", true)).to be_equivalent_to <<~"OUTPUT"
+                  expect(IsoDoc::Gb::Convert.new({}).convert_file(<<~"INPUT", "test", true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>")).to be_equivalent_to <<~"OUTPUT"
         <gb-standard xmlns="http://riboseinc.com/gbstandard">
     <preface><foreword>
     <note id="note1">
@@ -64,7 +65,7 @@ INPUT
   end
 
   it "processes sequences of notes" do
-    expect(Asciidoctor::Gb::GbConvert.new({}).convert_file(<<~"INPUT", "test", true)).to be_equivalent_to <<~"OUTPUT"
+                  expect(IsoDoc::Gb::Convert.new({}).convert_file(<<~"INPUT", "test", true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>")).to be_equivalent_to <<~"OUTPUT"
         <gb-standard xmlns="http://riboseinc.com/gbstandard">
     <preface><foreword>
     <note id="note1">
@@ -106,7 +107,7 @@ INPUT
   end
 
   it "processes multi-para notes" do
-    expect(Asciidoctor::Gb::GbConvert.new({}).convert_file(<<~"INPUT", "test", true)).to be_equivalent_to <<~"OUTPUT"
+                  expect(IsoDoc::Gb::Convert.new({}).convert_file(<<~"INPUT", "test", true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>")).to be_equivalent_to <<~"OUTPUT"
         <gb-standard xmlns="http://riboseinc.com/gbstandard">
     <preface><foreword>
     <note>
@@ -139,7 +140,7 @@ INPUT
   end
 
   it "processes non-para notes" do
-    expect(Asciidoctor::Gb::GbConvert.new({}).convert_file(<<~"INPUT", "test", true)).to be_equivalent_to <<~"OUTPUT"
+                  expect(IsoDoc::Gb::Convert.new({}).convert_file(<<~"INPUT", "test", true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>")).to be_equivalent_to <<~"OUTPUT"
         <gb-standard xmlns="http://riboseinc.com/gbstandard">
     <preface><foreword>
     <note>
@@ -177,7 +178,7 @@ INPUT
   end
 
   it "processes examples" do
-    expect(Asciidoctor::Gb::GbConvert.new({}).convert_file(<<~"INPUT", "test", true)).to be_equivalent_to <<~"OUTPUT"
+                  expect(IsoDoc::Gb::Convert.new({}).convert_file(<<~"INPUT", "test", true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>")).to be_equivalent_to <<~"OUTPUT"
         <gb-standard xmlns="http://riboseinc.com/gbstandard">
     <preface><foreword>
     <example id="samplecode">
@@ -209,7 +210,7 @@ INPUT
 
 
   it "processes sequences of examples" do
-    expect(Asciidoctor::Gb::GbConvert.new({}).convert_file(<<~"INPUT", "test", true)).to be_equivalent_to <<~"OUTPUT"
+                  expect(IsoDoc::Gb::Convert.new({}).convert_file(<<~"INPUT", "test", true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>")).to be_equivalent_to <<~"OUTPUT"
         <gb-standard xmlns="http://riboseinc.com/gbstandard">
     <preface><foreword>
     <example id="samplecode">
@@ -251,7 +252,7 @@ INPUT
   end
 
   it "processes formulae" do
-    expect(Asciidoctor::Gb::GbConvert.new({}).convert_file(<<~"INPUT", "test", true)).to be_equivalent_to <<~"OUTPUT"
+                  expect(IsoDoc::Gb::Convert.new({}).convert_file(<<~"INPUT", "test", true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>")).to be_equivalent_to <<~"OUTPUT"
         <gb-standard xmlns="http://riboseinc.com/gbstandard">
     <preface><foreword>
     <formula id="_be9158af-7e93-4ee2-90c5-26d31c181934">
@@ -294,7 +295,7 @@ INPUT
   end
 
     it "processes term notes" do
-    expect(Asciidoctor::Gb::GbConvert.new({}).convert_file(<<~"INPUT", "test", true)).to be_equivalent_to <<~"OUTPUT"
+                  expect(IsoDoc::Gb::Convert.new({}).convert_file(<<~"INPUT", "test", true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>")).to be_equivalent_to <<~"OUTPUT"
         <gb-standard xmlns="http://riboseinc.com/gbstandard">
     <sections>
     <terms id="_terms_and_definitions" obligation="normative"><title>Terms and Definitions</title>

@@ -1,8 +1,8 @@
 require "spec_helper"
 
-RSpec.describe Asciidoctor::Gb::GbConvert do
+RSpec.describe IsoDoc::Gb::Convert do
   it "cleans up formulas" do
-    expect(Asciidoctor::Gb::GbConvert.new({}).cleanup(Nokogiri::XML(<<~"INPUT")).to_s).to be_equivalent_to <<~"OUTPUT"
+    expect(IsoDoc::Gb::Convert.new({}).cleanup(Nokogiri::XML(<<~"INPUT")).to_s).to be_equivalent_to <<~"OUTPUT"
     <html>
     <body>
       <table class="dl">
@@ -23,7 +23,7 @@ RSpec.describe Asciidoctor::Gb::GbConvert do
   end
 
   it "cleans up examples" do
-    expect(Asciidoctor::Gb::GbConvert.new({}).cleanup(Nokogiri::XML(<<~"INPUT")).to_s).to be_equivalent_to <<~"OUTPUT"
+    expect(IsoDoc::Gb::Convert.new({}).cleanup(Nokogiri::XML(<<~"INPUT")).to_s).to be_equivalent_to <<~"OUTPUT"
     <html>
     <body>
       <table class="Note">
@@ -44,7 +44,7 @@ RSpec.describe Asciidoctor::Gb::GbConvert do
   end
 
   it "cleans up titles" do
-    gbc = Asciidoctor::Gb::GbConvert.new({})
+    gbc = IsoDoc::Gb::Convert.new({})
     docxml, filename, dir = gbc.convert_init(<<~"INPUT", "test", true)
     <gb-standard xmlns="http://riboseinc.com/gbstandard">
 <bibdata>
@@ -75,7 +75,7 @@ RSpec.describe Asciidoctor::Gb::GbConvert do
   end
 
   it "cleans up terms" do
-    gbc = Asciidoctor::Gb::GbConvert.new({})
+    gbc = IsoDoc::Gb::Convert.new({})
     docxml, filename, dir = gbc.convert_init(<<~"INPUT", "test", true)
     <gb-standard xmlns="http://riboseinc.com/gbstandard">
 <bibdata>
@@ -109,7 +109,7 @@ RSpec.describe Asciidoctor::Gb::GbConvert do
 
     it "populates Word ToC" do
     system "rm -f test.doc"
-    Asciidoctor::Gb::GbWordConvert.new({wordstylesheet: "lib/asciidoctor/gb/html/wordstyle.scss", wordintropage: "lib/asciidoctor/gb/html/word_gb_intro.html"}).convert_file(<<~"INPUT", "test", false)
+    IsoDoc::Gb::WordConvert.new({wordstylesheet: "lib/asciidoctor/gb/html/wordstyle.scss", wordintropage: "lib/asciidoctor/gb/html/word_gb_intro.html"}).convert_file(<<~"INPUT", "test", false)
         <gb-standard xmlns="http://riboseinc.com/gbstandard">
         <sections>
                <clause inline-header="false" obligation="normative"><title>Clause 4</title><clause id="N" inline-header="false" obligation="normative">

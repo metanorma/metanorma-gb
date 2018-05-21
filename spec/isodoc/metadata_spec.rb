@@ -3,9 +3,9 @@ require "spec_helper"
 require "nokogiri"
 require "htmlentities"
 
-RSpec.describe Asciidoctor::Gb::GbConvert do
+RSpec.describe IsoDoc::Gb::Convert do
   it "processes IsoXML metadata in Chinese" do
-    gbc = Asciidoctor::Gb::GbConvert.new({})
+    gbc = IsoDoc::Gb::Convert.new({})
     docxml, filename, dir = gbc.convert_init(<<~"INPUT", "test", true)
     <gb-standard xmlns="http://riboseinc.com/gbstandard">
 <bibdata type="recommendation">
@@ -109,7 +109,7 @@ RSpec.describe Asciidoctor::Gb::GbConvert do
   end
 
   it "processes IsoXML metadata in English" do
-    gbc = Asciidoctor::Gb::GbConvert.new({})
+    gbc = IsoDoc::Gb::Convert.new({})
     docxml, filename, dir = gbc.convert_init(<<~"INPUT", "test", true)
         <gb-standard xmlns="http://riboseinc.com/gbstandard">
 <bibdata type="recommendation">
@@ -214,7 +214,7 @@ RSpec.describe Asciidoctor::Gb::GbConvert do
   end
 
   it "defaulst to processesing IsoXML metadata in Chinese" do
-    gbc = Asciidoctor::Gb::GbConvert.new({})
+    gbc = IsoDoc::Gb::Convert.new({})
     docxml, filename, dir = gbc.convert_init(<<~"INPUT", "test", true)
     <gb-standard xmlns="http://riboseinc.com/gbstandard">
 <bibdata type="recommendation">
@@ -319,7 +319,7 @@ RSpec.describe Asciidoctor::Gb::GbConvert do
 
 
   it "processes equivalent ISO doc; no part number; draft > 1; no iteration; published status; local scope" do
-    gbc = Asciidoctor::Gb::GbConvert.new({})
+    gbc = IsoDoc::Gb::Convert.new({})
     docxml, filename, dir = gbc.convert_init(<<~"INPUT", "test", true)
     <gb-standard xmlns="http://riboseinc.com/gbstandard">
 <bibdata type="recommendation">
@@ -422,7 +422,7 @@ RSpec.describe Asciidoctor::Gb::GbConvert do
   end
 
   it "processes non-equivalent ISO doc; no part number; draft > 1; no iteration; published status; enterprise scope" do
-    gbc = Asciidoctor::Gb::GbConvert.new({})
+    gbc = IsoDoc::Gb::Convert.new({})
     docxml, filename, dir = gbc.convert_init(<<~"INPUT", "test", true)
     <gb-standard xmlns="http://riboseinc.com/gbstandard">
 <bibdata type="recommendation">
@@ -525,7 +525,7 @@ RSpec.describe Asciidoctor::Gb::GbConvert do
   end
 
   it "processes non-equivalent ISO doc; no part number; draft > 1; no iteration; published status; national scope" do
-    gbc = Asciidoctor::Gb::GbConvert.new({})
+    gbc = IsoDoc::Gb::Convert.new({})
     docxml, filename, dir = gbc.convert_init(<<~"INPUT", "test", true)
     <gb-standard xmlns="http://riboseinc.com/gbstandard">
 <bibdata type="recommendation">
@@ -628,7 +628,7 @@ RSpec.describe Asciidoctor::Gb::GbConvert do
   end
 
   it "processes non-equivalent ISO doc; no part number; draft > 1; no iteration; published status; social scope" do
-    gbc = Asciidoctor::Gb::GbConvert.new({})
+    gbc = IsoDoc::Gb::Convert.new({})
     docxml, filename, dir = gbc.convert_init(<<~"INPUT", "test", true)
     <gb-standard xmlns="http://riboseinc.com/gbstandard">
 <bibdata type="recommendation">

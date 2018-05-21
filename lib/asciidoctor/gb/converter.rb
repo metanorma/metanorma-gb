@@ -1,7 +1,6 @@
 require "asciidoctor"
-require "asciidoctor/gb/version"
-require "asciidoctor/gb/gbconvert"
 require "asciidoctor/iso/converter"
+require "asciidoctor/gb/version"
 require_relative "./section_input.rb"
 require_relative "./front.rb"
 require_relative "./validate.rb"
@@ -220,7 +219,7 @@ module Asciidoctor
         mandate = xmldoc.at("//gbmandate")&.text || "mandatory"
         lang = xmldoc.at("//language")&.text
         agency = issuer.content
-        agency = GbConvert.new({}).standard_agency1(scope, prefix, mandate) if agency == "GB"
+        agency = IsoDoc::Gb::Convert.new({}).standard_agency1(scope, prefix, mandate) if agency == "GB"
         agency = "GB" unless agency
         owner = xmldoc.at("//copyright/owner/organization/name")
         owner.content = agency
