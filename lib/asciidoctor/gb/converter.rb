@@ -33,29 +33,6 @@ module Asciidoctor
         File.join(File.dirname(__FILE__), File.join("html", file))
       end
 
-=begin
-      def html_converter(node)
-        GbConvert.new(
-          htmlstylesheet: generate_css(html_doc_path("htmlstyle.scss"), true, @fontheader),
-          standardstylesheet: generate_css(html_doc_path("gb.scss"), true, @fontheader),
-          htmlcoverpage: html_doc_path("html_gb_titlepage.html"),
-          htmlintropage: html_doc_path("html_gb_intro.html"),
-          i18nyaml: node&.attr("i18nyaml"),
-        )
-      end
-
-      def doc_converter(node)
-        GbWordConvert.new(
-          wordstylesheet: generate_css(html_doc_path("wordstyle.scss"), false, @fontheader),
-          standardstylesheet: generate_css(html_doc_path("gb.scss"), false, @fontheader),
-          wordcoverpage: html_doc_path("word_gb_titlepage.html"),
-          wordintropage: html_doc_path("word_gb_intro.html"),
-          header: html_doc_path("header.html"),
-          i18nyaml: node&.attr("i18nyaml"),
-        )
-      end
-=end
-
       def html_converter(node)
         node.nil? ? IsoDoc::Gb::Convert.new({}) :
           IsoDoc::Gb::Convert.new(
