@@ -1,6 +1,7 @@
 require "asciidoctor"
 require "asciidoctor/iso/converter"
 require "asciidoctor/gb/version"
+require "isodoc/gb/gbconvert"
 require_relative "./section_input.rb"
 require_relative "./front.rb"
 require_relative "./validate.rb"
