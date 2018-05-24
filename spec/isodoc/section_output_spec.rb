@@ -2,7 +2,7 @@ require "spec_helper"
 
 RSpec.describe IsoDoc::Gb::Convert do
   it "processes empty terms & definitions" do
-          expect(IsoDoc::Gb::Convert.new({}).convert_file(<<~"INPUT", "test", true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>")).to be_equivalent_to <<~"OUTPUT"
+          expect(IsoDoc::Gb::Convert.new({}).convert("test", <<~"INPUT", true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>")).to be_equivalent_to <<~"OUTPUT"
         <gb-standard xmlns="http://riboseinc.com/gbstandard">
         <bibdata>
         <language>zh</language>
@@ -34,7 +34,7 @@ RSpec.describe IsoDoc::Gb::Convert do
   end
 
     it "processes clause names" do
-          expect(IsoDoc::Gb::Convert.new({}).convert_file(<<~"INPUT", "test", true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>")).to be_equivalent_to <<~"OUTPUT"
+          expect(IsoDoc::Gb::Convert.new({}).convert("test", <<~"INPUT", true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>")).to be_equivalent_to <<~"OUTPUT"
         <gb-standard xmlns="http://riboseinc.com/gbstandard">
         <bibdata>
         <language>en</language>
@@ -77,7 +77,7 @@ RSpec.describe IsoDoc::Gb::Convert do
   end
 
         it "processes annex names" do
-          expect(IsoDoc::Gb::Convert.new({}).convert_file(<<~"INPUT", "test", true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>")).to be_equivalent_to <<~"OUTPUT"
+          expect(IsoDoc::Gb::Convert.new({}).convert("test", <<~"INPUT", true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>")).to be_equivalent_to <<~"OUTPUT"
         <gb-standard xmlns="http://riboseinc.com/gbstandard">
         <bibdata>
         <language>en</language>

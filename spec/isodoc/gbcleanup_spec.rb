@@ -109,7 +109,7 @@ RSpec.describe IsoDoc::Gb::Convert do
 
     it "populates Word ToC" do
     system "rm -f test.doc"
-    IsoDoc::Gb::WordConvert.new({wordstylesheet: "lib/asciidoctor/gb/html/wordstyle.scss", wordintropage: "lib/asciidoctor/gb/html/word_gb_intro.html"}).convert_file(<<~"INPUT", "test", false)
+    IsoDoc::Gb::WordConvert.new({wordstylesheet: "lib/asciidoctor/gb/html/wordstyle.scss", wordintropage: "lib/asciidoctor/gb/html/word_gb_intro.html"}).convert("test", <<~"INPUT", false)
         <gb-standard xmlns="http://riboseinc.com/gbstandard">
         <sections>
                <clause inline-header="false" obligation="normative"><title>Clause 4</title><clause id="N" inline-header="false" obligation="normative">
