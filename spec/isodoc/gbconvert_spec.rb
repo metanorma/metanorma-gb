@@ -158,6 +158,43 @@ RSpec.describe IsoDoc::Gb::Convert do
     OUTPUT
   end
 
+    it "does not supply terms boilerplate if prefatory content is already there" do
+    system "rm -f test.html"
+    IsoDoc::Gb::Convert.new({htmlstylesheet: "lib/asciidoctor/gb/html/htmlstyle.scss"}).convert("test", <<~"INPUT", false)
+            <gb-standard xmlns="http://riboseinc.com/gbstandard">
+            <bibdata>
+              <language>zh</language>
+  <script>Hans</script>
+</bibdata>
+                <sections>
+    <terms id="_terms_and_definitions" obligation="normative"><title>Terms and Definitions</title>
+    <p>Prefatory content</p>
+    <term id="paddy"><preferred>paddy</preferred><admitted>paddy rice</admitted>
+<admitted>rough rice</admitted>
+<deprecates>cargo rice</deprecates>
+<definition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p></definition>
+</term>
+    </terms></sections>
+
+        </gb-standard>
+    INPUT
+    html = File.read("test.html", encoding: "utf-8").sub(/^.*<main class="WordSection3">/m, '<main class="WordSection3">').
+      sub(%r{</main>.*$}m, "</main>")
+    expect(html.gsub(/"#[a-f0-9-]+"/, "#_")).to be_equivalent_to <<~"OUTPUT"
+           <main class="WordSection3"><button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+               <p class="zzSTDTitle1">XXXX</p>
+               <div id="_terms_and_definitions"><h1>1.&#x3000;&#x672F;&#x8BED;&#x548C;&#x5B9A;&#x4E49;</h1><p>&#x4E0B;&#x5217;&#x672F;&#x8BED;&#x548C;&#x5B9A;&#x4E49;&#x9002;&#x7528;&#x4E8E;&#x672C;&#x6587;&#x4EF6;&#x3002;</p>
+               <p>Prefatory content</p>
+       <h2 class="TermNum" id="paddy">1.1</h2><p class="Terms" style="text-align:left;">paddy</p><p class="AltTerms" style="text-align:left;">paddy rice&#x3000;rough rice</p>
+
+       <p class="DeprecatedTerms">&#x88AB;&#x53D6;&#x4EE3;&#xFF1A;cargo rice</p>
+       <p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p>
+       </div>
+               <hr width="25%" />
+             </main>
+    OUTPUT
+  end
+
   it "processes deprecated term" do
     system "rm -f test.html"
     IsoDoc::Gb::Convert.new({htmlstylesheet: "lib/asciidoctor/gb/html/htmlstyle.scss"}).convert("test", <<~"INPUT", false)
@@ -183,6 +220,13 @@ RSpec.describe IsoDoc::Gb::Convert do
            <main class="WordSection3"><button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
                <p class="zzSTDTitle1">XXXX</p>
                <div id="_terms_and_definitions"><h1>1.&#x3000;&#x672F;&#x8BED;&#x548C;&#x5B9A;&#x4E49;</h1><p>&#x4E0B;&#x5217;&#x672F;&#x8BED;&#x548C;&#x5B9A;&#x4E49;&#x9002;&#x7528;&#x4E8E;&#x672C;&#x6587;&#x4EF6;&#x3002;</p>
+                      <p>ISO&#x548C;IEC&#x7528;&#x4E8E;&#x6807;&#x51C6;&#x5316;&#x7684;&#x672F;&#x8BED;&#x6570;&#x636E;&#x5E93;&#x5730;&#x5740;&#x5982;&#x4E0B;&#xFF1A;</p>
+       <ul>
+       <li> <p>ISO&#x5728;&#x7EBF;&#x6D4F;&#x89C8;&#x5E73;&#x53F0;:
+         &#x4F4D;&#x4E8E;<a href="http://www.iso.org/obp">http://www.iso.org/obp</a></p> </li>
+       <li> <p>IEC Electropedia:
+         &#x4F4D;&#x4E8E;<a href="http://www.electropedia.org">http://www.electropedia.org</a>
+       </p> </li> </ul>
        <h2 class="TermNum" id="paddy">1.1</h2><p class="Terms" style="text-align:left;">paddy</p><p class="AltTerms" style="text-align:left;">paddy rice&#x3000;rough rice</p>
 
        <p class="DeprecatedTerms">&#x88AB;&#x53D6;&#x4EE3;&#xFF1A;cargo rice</p>
@@ -223,6 +267,13 @@ RSpec.describe IsoDoc::Gb::Convert do
            <main class="WordSection3"><button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
                <p class="zzSTDTitle1">XXXX</p>
                <div id="_terms_and_definitions"><h1>1.&#x3000;&#x672F;&#x8BED;&#x548C;&#x5B9A;&#x4E49;</h1><p>&#x4E0B;&#x5217;&#x672F;&#x8BED;&#x548C;&#x5B9A;&#x4E49;&#x9002;&#x7528;&#x4E8E;&#x672C;&#x6587;&#x4EF6;&#x3002;</p>
+                      <p>ISO&#x548C;IEC&#x7528;&#x4E8E;&#x6807;&#x51C6;&#x5316;&#x7684;&#x672F;&#x8BED;&#x6570;&#x636E;&#x5E93;&#x5730;&#x5740;&#x5982;&#x4E0B;&#xFF1A;</p>
+       <ul>
+       <li> <p>ISO&#x5728;&#x7EBF;&#x6D4F;&#x89C8;&#x5E73;&#x53F0;:
+         &#x4F4D;&#x4E8E;<a href="http://www.iso.org/obp">http://www.iso.org/obp</a></p> </li>
+       <li> <p>IEC Electropedia:
+         &#x4F4D;&#x4E8E;<a href="http://www.electropedia.org">http://www.electropedia.org</a>
+       </p> </li> </ul>
        <h2 class="TermNum" id="paddy">1.1</h2><p class="Terms" style="text-align:left;">paddy</p><p class="AltTerms" style="text-align:left;">paddy rice&#x3000;rough rice</p>
 
        <p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p>

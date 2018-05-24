@@ -205,9 +205,40 @@ RSpec.describe Asciidoctor::Gb do
     OUTPUT
   end
 
-  it "does not strip any initial boilerplate from terms and definitions" do
+    it "strips any initial boilerplate from terms and definitions" do
     expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
       #{ASCIIDOC_BLANK_HDR}
+      == Terms and Definitions
+
+      I am boilerplate
+
+      * So am I
+
+      === Time
+
+      This paragraph is extraneous
+    INPUT
+    #{BLANK_HDR}
+              <sections>
+         <terms id="_" obligation="normative"><title>Terms and Definitions</title>
+       <term id="_">
+         <preferred language="zh"></preferred> <preferred language="en">Time</preferred>
+         <definition><p id="_">This paragraph is extraneous</p></definition>
+       </term></terms>
+       </sections>
+       </gb-standard>
+    OUTPUT
+  end
+
+    it "does not strip any initial boilerplate from terms and definitions if keep-boilerplate attribute" do
+    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
+      = Document title
+      Author
+      :docfile: test.adoc
+      :nodoc:
+      :novalid:
+      :keep-boilerplate:
+
       == Terms and Definitions
 
       I am boilerplate

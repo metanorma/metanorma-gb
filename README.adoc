@@ -147,6 +147,12 @@ The font to use for the standard class and issuer on the (Word) cover page; desc
 "custom font". If not provided, the font is inferred from the scope of the standard, aligning
 with existing practice: SimSun for national scope, SimHei for all other scopes.
 
+`:keep-boilerplate:`::
+
+If absent (default), any paragraphs supplied at the start of the Terms and Definitions
+section are deleted, and replaced with standard boilerplate. If present, any such
+paragraphs in the text are retained.
+
 === Language macros
 
 In Terms and Definitions, preferred terms, alternate terms and deprecated terms

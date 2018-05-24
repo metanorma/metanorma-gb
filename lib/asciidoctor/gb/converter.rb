@@ -21,6 +21,7 @@ module Asciidoctor
       def makexml(node)
         result = ["<?xml version='1.0' encoding='UTF-8'?>\n<gb-standard>"]
         @draft = node.attributes.has_key?("draft")
+        @keepboilerplate = node.attributes.has_key?("keep-boilerplate")
         result << noko { |ixml| front node, ixml }
         result << noko { |ixml| middle node, ixml }
         result << "</gb-standard>"
@@ -156,7 +157,8 @@ module Asciidoctor
       end
 
       def termdef_boilerplate_cleanup(xmldoc)
-        nil
+        return if @keepboilerplate
+        super
       end
 
       GBCODE = "((AQ|BB|CB|CH|CJ|CY|DA|DB|DL|DZ|EJ|FZ|GA|GH|GM|GY|HB|HG|"\

@@ -44,12 +44,13 @@ module IsoDoc
         end
       end
 
-      def term_defs_boilerplate(div, source, term)
+      def term_defs_boilerplate(div, source, term, preface)
         if source.empty? && term.nil?
           div << @no_terms_boilerplate
         else
           div << term_defs_boilerplate_cont(source, term)
         end
+        div << @term_def_boilerplate unless preface
       end
     end
   end

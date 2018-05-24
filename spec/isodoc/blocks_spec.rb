@@ -318,6 +318,15 @@ INPUT
                <p class="zzSTDTitle1">XXXX</p>
                <div id="_terms_and_definitions"><h1>1.&#12288;Terms and Definitions</h1><p>For the purposes of this document,
            the following terms and definitions apply.</p>
+                  <p>ISO and IEC maintain terminological databases for use in
+       standardization at the following addresses:</p>
+
+       <ul>
+       <li> <p>ISO Online browsing platform: available at
+         <a href="http://www.iso.org/obp">http://www.iso.org/obp</a></p> </li>
+       <li> <p>IEC Electropedia: available at
+         <a href="http://www.electropedia.org">http://www.electropedia.org</a>
+       </p> </li> </ul>
        <p class="TermNum" id="paddy">1.1</p><p class="Terms" style="text-align:left;">paddy</p><p class="AltTerms" style="text-align:left;">paddy rice</p>
        <p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p>
        <table id="_671a1994-4783-40d0-bc81-987d06ffb74e" class="Note"><tr><td valign="top" class="example_label" style="padding:2pt 2pt 2pt 2pt">Note 1 to entry:</td><td valign="top" class="Note">
