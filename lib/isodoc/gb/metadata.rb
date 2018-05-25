@@ -129,9 +129,9 @@ module IsoDoc
       end
 
       SCOPEPFX = {
-        local: "DB",
-        social: "T",
-        enterprise: "Q",
+        :local => "DB",
+        "social-group".to_sym => "T",
+        :enterprise => "Q",
       }.freeze
 
       def docidentifier(scope, prefix, mandate, docyear)
@@ -140,7 +140,7 @@ module IsoDoc
              when "local"
                "#{SCOPEPFX[scope.to_sym]}#{mandate_suffix(prefix, mandate)}/"\
                  "#{docnum}".gsub(%r{/([TZ])/}, "/\\1 ")
-             when "social", "enterprise"
+             when "social-group", "enterprise"
                "#{mandate_suffix(SCOPEPFX[scope.to_sym], mandate)}/"\
                  "#{prefix} #{docnum}"
              else

@@ -229,7 +229,7 @@ RSpec.describe Asciidoctor::Gb do
          </relation>
          <gbcommittee/>
          <gbtype>
-           <gbscope>social</gbscope>
+           <gbscope>social-group</gbscope>
            <gbprefix>AAA</gbprefix>
            <gbmandate>recommendation</gbmandate>
            <gbtopic>basic</gbtopic>

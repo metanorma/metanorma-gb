@@ -272,7 +272,7 @@ module IsoDoc
           when "enterprise" 
             issuer = get_metadata[:issuer]
             "#{issuer}#{@labels["enterprise_standard"]}"
-          when "social" then @labels["social_standard"]
+          when "social-group" then @labels["social_standard"]
           when "professional" then "PROFESSIONAL STANDARD" # TODO
           end
       end
@@ -286,7 +286,7 @@ module IsoDoc
           SECTOR&.dig(@lang, prefix.to_sym, :admin) || nil
         when "local"
           LOCAL&.dig(@lang, prefix.to_sym) || nil 
-        when "enterprise", "social"
+        when "enterprise", "social-group"
           get_metadata[:issuer] || nil
         when "professional" then "PROFESSIONAL STANDARD" # TODO
         end
@@ -301,7 +301,7 @@ module IsoDoc
           SECTOR&.dig(@lang, prefix.to_sym, :admin) || nil
         when "local"
           "#{LOCAL&.dig(@lang, prefix.to_sym) || 'XXXX'}#{@labels["local_issuer"]}" 
-        when "enterprise", "social"
+        when "enterprise", "social-group"
           get_metadata[:issuer]
         when "professional" then "PROFESSIONAL STANDARD" # TODO
         end

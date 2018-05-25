@@ -713,7 +713,7 @@ RSpec.describe IsoDoc::Gb::Convert do
   <plannumber>XYZ</plannumber>
   <gbcommittee type="provisional">Food products</gbcommittee>
   <gbtype>
-    <gbscope>social</gbscope>
+    <gbscope>social-group</gbscope>
     <gbprefix>BBB</gbprefix>
     <gbmandate>recommended</gbmandate>
     <gbtopic>basic</gbtopic>
@@ -726,7 +726,7 @@ RSpec.describe IsoDoc::Gb::Convert do
 </gb-standard>
     INPUT
     expect(htmlencode(Hash[gbc.info(docxml, nil).sort].to_s)).to be_equivalent_to <<~"OUTPUT"
-           {:accesseddate=>"2016-01-03", :committee=>"Food products", :confirmeddate=>"XXX", :createddate=>"2016-01-05", :docidentifier=>"T/T/BBB 17301&mdash;2016", :docmaintitleen=>"Cereals and pulses&mdash;", :docmaintitlezh=>"Cereals1&nbsp;", :docnumber=>"17301", :docparttitleen=>"&mdash; Rice", :docparttitlezh=>"&nbsp;Rice1", :docsubtitleen=>"Specifications and test methods", :docsubtitlezh=>"Specifications1", :doctitle=>"Cereals1&nbsp;Specifications1&nbsp;Rice1", :doctype=>"Recommendation", :docyear=>"2016", :draft=>"1", :draftinfo=>"&#xff08;&#x7a3f;1&#x3001;2016-05-01&#xff09;", :editorialgroup=>[], :gbequivalence=>"NEQ", :gbprefix=>"BBB", :gbscope=>"social", :implementeddate=>"2016-01-04", :isostandard=>"ISO 123", :isostandardtitle=>"Rice Model document", :issueddate=>"XXX", :issuer=>"Ministry of Agriculture", :labelled_implementeddate=>"2016-01-04 &#x5b9e;&#x65bd;", :labelled_publisheddate=>"2016-01-02 &#x53d1;&#x5e03;", :libraryid_ccs=>"A 01, A 02", :libraryid_ics=>"1322", :libraryid_plan=>"XYZ", :obsoleteddate=>"XXX", :obsoletes=>nil, :obsoletes_part=>nil, :publisheddate=>"2016-01-02", :revdate=>"2016-05-01", :sc=>"XXXX", :secretariat=>"XXXX", :stage=>60, :stageabbr=>"&#x56fd;&#x5bb6;&#x6807;&#x51c6;", :standard_agency=>"Ministry of Agriculture", :standard_class=>"&#x56e2;&#x4f53;&#x6807;&#x51c6;", :tc=>"XXXX", :updateddate=>"XXX", :wg=>"XXXX"}
+           {:accesseddate=>"2016-01-03", :committee=>"Food products", :confirmeddate=>"XXX", :createddate=>"2016-01-05", :docidentifier=>"T/T/BBB 17301&mdash;2016", :docmaintitleen=>"Cereals and pulses&mdash;", :docmaintitlezh=>"Cereals1&nbsp;", :docnumber=>"17301", :docparttitleen=>"&mdash; Rice", :docparttitlezh=>"&nbsp;Rice1", :docsubtitleen=>"Specifications and test methods", :docsubtitlezh=>"Specifications1", :doctitle=>"Cereals1&nbsp;Specifications1&nbsp;Rice1", :doctype=>"Recommendation", :docyear=>"2016", :draft=>"1", :draftinfo=>"&#xff08;&#x7a3f;1&#x3001;2016-05-01&#xff09;", :editorialgroup=>[], :gbequivalence=>"NEQ", :gbprefix=>"BBB", :gbscope=>"social-group", :implementeddate=>"2016-01-04", :isostandard=>"ISO 123", :isostandardtitle=>"Rice Model document", :issueddate=>"XXX", :issuer=>"Ministry of Agriculture", :labelled_implementeddate=>"2016-01-04 &#x5b9e;&#x65bd;", :labelled_publisheddate=>"2016-01-02 &#x53d1;&#x5e03;", :libraryid_ccs=>"A 01, A 02", :libraryid_ics=>"1322", :libraryid_plan=>"XYZ", :obsoleteddate=>"XXX", :obsoletes=>nil, :obsoletes_part=>nil, :publisheddate=>"2016-01-02", :revdate=>"2016-05-01", :sc=>"XXXX", :secretariat=>"XXXX", :stage=>60, :stageabbr=>"&#x56fd;&#x5bb6;&#x6807;&#x51c6;", :standard_agency=>"Ministry of Agriculture", :standard_class=>"&#x56e2;&#x4f53;&#x6807;&#x51c6;", :tc=>"XXXX", :updateddate=>"XXX", :wg=>"XXXX"}
     OUTPUT
   end
 

@@ -77,7 +77,7 @@ RSpec.describe "warns about improper social standard prefix" do
   Author
   :docfile: test.adoc
   :nodoc:
-  :scope: social
+  :scope: social-group
   :prefix: ABCDEFG
 
   INPUT

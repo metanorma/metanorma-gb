@@ -87,7 +87,7 @@ module IsoDoc
       end
 
       def format_logo(prefix, scope, _format)
-        return "" if %w(enterprise social).include? scope
+        return "" if %w(enterprise social-group).include? scope
         logo = standard_logo(prefix)
         if logo.nil?
           "<span style='font-size:36pt;font-weight:bold'>#{prefix}</span>"

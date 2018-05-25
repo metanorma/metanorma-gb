@@ -90,7 +90,7 @@ module Asciidoctor
         node.attr("scope") and return node.attr("scope")
         scope = if %r{^[TQ]/}.match? node.attr("prefix")
                   m = node.attr("prefix").split(%{/})
-                  mandate = m[0] == "T" ? "social" :
+                  mandate = m[0] == "T" ? "social-group" :
                     m[0] == "Q" ? "enterprise" : nil
                 end
         return scope unless scope.nil?

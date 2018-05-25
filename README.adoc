@@ -74,7 +74,7 @@ citations; e.g. `clause 7-9, clause 11`
 
 `:scope:`::
 The scope of the GB standard (`national`, `sector`, `professional`, `local`,
-`enterprise`). Defaults to `national`.
+`enterprise`, `social-group`). Defaults to `national`.
 
 `:mandate:`::
 The mandate of the GB standard (`mandatory`, `recommended`, `guidelines`).

@@ -295,7 +295,7 @@ RSpec.describe IsoDoc::Gb::Convert do
       <language>zh</language>
       <script>Hans</script>
         <gbtype>
-    <gbscope>social</gbscope>
+    <gbscope>social-group</gbscope>
   </gbtype>
       </bibdata>
       <sections>
