@@ -51,7 +51,7 @@ RSpec.describe Asciidoctor::Gb do
            <project-number/>
          </docidentifier>
          <date type="published">
-           <from>2018-01-01</from>
+           <on>2018-01-01</on>
          </date>
          <contributor>
            <role type="author"/>

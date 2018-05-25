@@ -143,7 +143,7 @@ module Asciidoctor
       def metadata_date1(node, xml, type)
         date = node.attr("#{type}-date")
         date and xml.date **{ type: type } do |d|
-          d.from date
+          d.on date
         end
       end
 
