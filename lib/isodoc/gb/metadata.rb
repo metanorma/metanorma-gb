@@ -5,7 +5,7 @@ module IsoDoc
   module Gb
     # A {Converter} implementation that generates GB output, and a document
     # schema encapsulation of the document for validation
-    class Convert < IsoDoc::Convert
+    class Common < IsoDoc::Common
       def init_metadata
         super
         set_metadata(:docmaintitlezh, "")

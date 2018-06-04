@@ -2,7 +2,7 @@ require "yaml"
 
 module IsoDoc
   module Gb
-    class Convert < IsoDoc::Convert
+    class Common < IsoDoc::Common
       def i18n_init(lang, script)
         super
         y = if lang == "en"

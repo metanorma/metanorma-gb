@@ -11,36 +11,7 @@ module IsoDoc
   module Gb
     # A {Converter} implementation that generates GB output, and a document
     # schema encapsulation of the document for validation
-    class Convert < IsoDoc::Convert
-      def default_fonts(options)
-        script = options[:script] || "Hans"
-        b = options[:bodyfont] ||
-          (script == "Hans" ? '"SimSun",serif' :
-           script == "Latn" ? '"Cambria",serif' : '"SimSun",serif' )
-        h = options[:headerfont] ||
-          (script == "Hans" ? '"SimHei",sans-serif' :
-           script == "Latn" ? '"Calibri",sans-serif' : '"SimHei",sans-serif' )
-        m = options[:monospacefont] || '"Courier New",monospace'
-        scope = options[:scope] || "national"
-        t = options[:titlefont] ||
-          (scope == "national" ? (script != "Hans" ? '"Cambria",serif' : '"SimSun",serif' ) :
-           (script == "Hans" ? '"SimHei",sans-serif' : '"Calibri",sans-serif' ))
-        "$bodyfont: #{b};\n$headerfont: #{h};\n$monospacefont: #{m};\n$titlefont: #{t};\n"
-      end
-
-      def initialize(options)
-        super
-        @htmlstylesheet = generate_css(html_doc_path("htmlstyle.scss"), true, default_fonts(options))
-        @standardstylesheet = generate_css(html_doc_path("gb.scss"), true, default_fonts(options))
-        @htmlcoverpage = html_doc_path("html_gb_titlepage.html")
-        @htmlintropage = html_doc_path("html_gb_intro.html")
-        @scripts = html_doc_path("scripts.html")
-      end
-
-      def html_doc_path(file)
-        File.join(File.dirname(__FILE__), File.join("html", file))
-      end
-
+    class Common < IsoDoc::Common
       def middle(isoxml, out)
         super
         end_line(isoxml, out)

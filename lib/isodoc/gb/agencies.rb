@@ -2,7 +2,7 @@ require "isodoc"
 
 module IsoDoc
   module Gb
-    class Convert < IsoDoc::Convert
+    class Common < IsoDoc::Common
       SECTOR = { "zh" => {
         AQ: { industry: "安全生产", admin: "国家安全生产管理局" },
         BB: { industry: "包装", admin: "国家发改委" },

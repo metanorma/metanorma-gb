@@ -1,6 +1,6 @@
 module IsoDoc
   module Gb
-    class Convert < IsoDoc::Convert
+    class Common < IsoDoc::Common
       def cleanup(docxml)
         super
         terms_cleanup(docxml)

@@ -1,6 +1,6 @@
 module IsoDoc
   module Gb
-    class Convert < IsoDoc::Convert
+    class Common < IsoDoc::Common
       # putting in tab so that ToC aligns
       def foreword(isoxml, out)
         f = isoxml.at(ns("//foreword")) || return

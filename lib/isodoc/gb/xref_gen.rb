@@ -4,7 +4,7 @@ module Isodoc
   module Gb
     # A {Converter} implementation that generates GB output, and a document
     # schema encapsulation of the document for validation
-    class Convert < IsoDoc::Convert
+    class Common < IsoDoc::Common
       def reference_names(ref)
       isopub = ref.at(ns(ISO_PUBLISHER_XPATH))
       docid = ref.at(ns("./docidentifier"))

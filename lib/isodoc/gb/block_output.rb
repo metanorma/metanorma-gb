@@ -2,7 +2,7 @@ module IsoDoc
   module Gb
     # A {Converter} implementation that generates GB output, and a document
     # schema encapsulation of the document for validation
-    class Convert < IsoDoc::Convert
+    class Common < IsoDoc::Common
       def formula_parse(node, out)
         out.div **attr_code(id: node["id"], class: "formula") do |div|
           insert_tab(div, 1)
