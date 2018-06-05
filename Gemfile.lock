@@ -31,7 +31,7 @@ GEM
       nokogiri (>= 1.4.3)
     ffi (1.9.25)
     formatador (0.2.5)
-    gbbib (0.1.0)
+    gbbib (0.1.1)
       cnccs
       iso-bib-item
     guard (2.14.2)
