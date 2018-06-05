@@ -1,3 +1,5 @@
+require "gbbib"
+
 module Asciidoctor
   module Gb
 
@@ -53,6 +55,19 @@ module Asciidoctor
             end
           end
         end.join("\n")
+      end
+
+      # @param xml [Nokogiri::XML::Builder]
+      # @param code [String]
+      def fetch_ref(xml, code, _year, **opts)
+        warn "fetching #{code}..."
+        result = Gbbib::GbBibliography.search code
+        hit = result.first
+        if hit&.title&.match(%r{^[^\s]+\s[\d-]+}).to_s == code
+          # hit.fetch.to_xml xml, opts
+          xml.parent.add_child hit.fetch.to_xml(xml, opts)
+          xml
+        end
       end
 
 =begin

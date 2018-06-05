@@ -271,7 +271,7 @@ RSpec.describe Asciidoctor::Gb do
   it "processes ISO inline_quoted formatting" do
     expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
       #{ASCIIDOC_BLANK_HDR}
-      
+
       _emphasis_
       *strong*
       `monospace`
@@ -288,7 +288,7 @@ RSpec.describe Asciidoctor::Gb do
       [smallcap]#smallcap#
     INPUT
     #{BLANK_HDR}
-    
+
        <sections>
          <em>emphasis</em>
        <strong>strong</strong>
@@ -312,7 +312,7 @@ RSpec.describe Asciidoctor::Gb do
   it "processes GB inline_quoted formatting" do
     expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
     #{ASCIIDOC_BLANK_HDR}
-    
+
     [en]#en#
     [zh]#zh#
     [zh-Hans]#zh-Hans#
@@ -352,7 +352,7 @@ RSpec.describe Asciidoctor::Gb do
     INPUT
        #{BLANK_HDR}
 <sections>
-         
+
        </sections><bibliography><references id="_" obligation="informative">
          <title>Bibliography</title>
          <bibitem id="xiso123">
@@ -364,5 +364,44 @@ RSpec.describe Asciidoctor::Gb do
     OUTPUT
   end
 
+  it "fetch references" do
+    expect(Gbbib::GbBibliography).to receive(:search).and_wrap_original do |m, *args|
+      expect(args[0]).to be_instance_of String
+      file = "spec/asciidoctor/examples/#{args[0].gsub(/[\/\s-]/, '_')}.xml"
 
+      bib_item = double :bib_item
+      expect(bib_item).to receive(:to_xml) do |xml, opts|
+        expect(xml).to be_instance_of Nokogiri::XML::Builder
+        expect(opts).to be_instance_of Hash
+        unless File.exist? file
+          res = m.call(args[0])
+          File.write file, res.first.fetch.to_xml
+        end
+        File.read file
+      end
+
+      hit = double :hit
+      expect(hit).to receive(:fetch).and_return bib_item
+      expect(hit).to receive(:title).and_return args[0]
+
+      result = double :result
+      expect(result).to receive(:first).and_return hit
+      result
+    end.exactly(3).times
+
+    input = <<~INPUT
+      #{ASCIIDOC_BLANK_HDR}
+      [bibliography]
+      == Bibliography
+
+      * [[[GBT2023,GB/T 20223-2006]]] _a_ [zh]#A# [en]#B#
+      * [[[JBT13368,JB/T 13368-2018]]] _a_ [zh]#A# [en]#B#
+      * [[[TGZAEPI001,T/GZAEPI 001-2018]]] _a_ [zh]#A# [en]#B#
+    INPUT
+    output = Asciidoctor.convert(input, backend: :gb, header_footer: true)
+
+    file = "spec/asciidoctor/examples/refs.xml"
+    File.write file, strip_guid(output) unless File.exist? file
+    expect(strip_guid(output)).to be_equivalent_to File.read file
+  end
 end

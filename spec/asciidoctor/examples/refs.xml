@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gb-standard xmlns="http://riboseinc.com/gbstandard">
+<bibdata type="standard">
+  <title>
+    
+  </title>
+  <title>
+    
+  </title>
+  <docidentifier>
+    <project-number/>
+  </docidentifier>
+  <contributor>
+    <role type="author"/>
+    <person>
+      <name>
+        <surname>Author</surname>
+      </name>
+    </person>
+  </contributor><contributor><role type="technical-committee"/><organization><name>广州环境保护产业协会</name></organization></contributor><contributor><role type="technical-committee"/><organization><name>国家发改委</name></organization></contributor><contributor><role type="technical-committee"/><organization><name>中国纤维检验局</name></organization></contributor><contributor><role type="technical-committee"/><organization><name/></organization></contributor>
+  <contributor>
+    <role type="author"/>
+    <organization>
+      <name>GB</name>
+    </organization>
+  </contributor>
+  <contributor>
+    <role type="publisher"/>
+    <organization>
+      <name>GB</name>
+    </organization>
+  </contributor>
+  <contributor>
+    <role type="authority"/>
+    <organization>
+      <name>GB</name>
+    </organization>
+  </contributor>
+  <contributor>
+    <role type="proposer"/>
+    <organization>
+      <name>GB</name>
+    </organization>
+  </contributor>
+  <contributor>
+    <role type="issuer"/>
+    <organization>
+      <name>General Administration of Quality Supervision, Inspection and Quarantine; Standardization Administration of China</name>
+    </organization>
+  </contributor>
+  <language>zh</language>
+  <script>Hans</script>
+  <status>
+    <stage>60</stage>
+    <substage>60</substage>
+  </status>
+  <copyright>
+    <from>2018</from>
+    <owner>
+      <organization>
+        <name>General Administration of Quality Supervision, Inspection and Quarantine; Standardization Administration of China</name>
+      </organization>
+    </owner>
+  </copyright>
+  <gbcommittee/>
+  <gbtype>
+    <gbscope>national</gbscope>
+    <gbprefix>GB</gbprefix>
+    <gbmandate>mandatory</gbmandate>
+    <gbtopic>basic</gbtopic>
+  </gbtype>
+</bibdata>
+<sections>
+  
+</sections><bibliography><references id="_" obligation="informative">
+  <title>Bibliography</title>
+  <bibitem type="standard" id="GBT2023">
+  <title format="text/plain" language="zh" script="Hans">棉短绒 --  -- </title>
+  <title format="text/plain" language="en" script="Latn">Cotton linter --  -- </title>
+  <source type="src">http://www.std.gov.cn/gb/search/gbDetailed?id=5DDA8BA00FC618DEE05397BE0A0A95A7</source>
+  <docidentifier>20223-2006</docidentifier>
+  <date type="published">
+    <on>2006</on>
+  </date>
+  <language>zh</language>
+  <script>Hans</script>
+  <status>obsoleted</status>
+  <ics>Natural fibres</ics>
+  <gbcommittee type="technical">中国纤维检验局</gbcommittee>
+  <gbtype>
+    <gbscope>national</gbscope>
+    <gbprefix>GB_national</gbprefix>
+    <gbmandate>recommended</gbmandate>
+  </gbtype>
+  <ccs>纤维作物与产品</ccs>
+</bibitem>
+  <bibitem type="standard" id="JBT13368">
+  <title format="text/plain" language="zh" script="Hans">叉车属具 软包夹 --  -- </title>
+  <source type="src">http://www.std.gov.cn/hb/search/stdHBDetailed?id=6BC3AD94A1728ABCE05397BE0A0A5667</source>
+  <docidentifier>13368-2018</docidentifier>
+  <date type="published">
+    <on>2018</on>
+  </date>
+  <language>zh</language>
+  <script>Hans</script>
+  <status>activated</status>
+  <ics>Industrial trucks</ics>
+  <gbcommittee type="technical">国家发改委</gbcommittee>
+  <gbtype>
+    <gbscope>sector</gbscope>
+    <gbprefix>JB_mechanical</gbprefix>
+    <gbmandate>recommended</gbmandate>
+  </gbtype>
+  <ccs>仓储设备、装卸机械</ccs>
+</bibitem>
+  <bibitem type="standard" id="TGZAEPI001">
+  <title format="text/plain" language="zh" script="Hans">环保型家用吸油烟机 --  -- </title>
+  <title format="text/plain" language="en" script="Latn">Environmental protection type household range hood --  -- </title>
+  <source type="src">http://www.ttbz.org.cn/StandardManage/Detail/22746</source>
+  <docidentifier>001</docidentifier>
+  <date type="published">
+    <on>2018</on>
+  </date>
+  <language>zh</language>
+  <script>Hans</script>
+  <status>activated</status>
+  <ics>Environment and environmental protection in general</ics>
+  <gbcommittee type="technical">广州环境保护产业协会</gbcommittee>
+  <gbtype>
+    <gbscope>social-group</gbscope>
+    <gbprefix>T</gbprefix>
+    <gbmandate>mandatory</gbmandate>
+  </gbtype>
+  <ccs>炊事机具、基础标准与通用方法</ccs>
+</bibitem>
+</references></bibliography>
+</gb-standard>
