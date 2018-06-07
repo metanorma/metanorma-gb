@@ -335,6 +335,8 @@ RSpec.describe Asciidoctor::Gb do
       :mandate: guide
       :nodoc:
       :novalid:
+      :language: en
+      :script: Latn
 
     INPUT
     <?xml version="1.0" encoding="UTF-8"?>
@@ -387,8 +389,8 @@ RSpec.describe Asciidoctor::Gb do
              <name>General Administration of Quality Supervision, Inspection and Quarantine; Standardization Administration of China</name>
            </organization>
          </contributor>
-         <language>zh</language>
-         <script>Hans</script>
+         <language>en</language>
+         <script>Latn</script>
          <status>
            <stage>60</stage>
            <substage>60</substage>
@@ -423,6 +425,8 @@ RSpec.describe Asciidoctor::Gb do
       :prefix: DB81/T
       :nodoc:
       :novalid:
+      :language: en
+      :script: Latn
 
     INPUT
     <?xml version="1.0" encoding="UTF-8"?>
@@ -475,8 +479,8 @@ RSpec.describe Asciidoctor::Gb do
              <name>Hong Kong Special Administrative Region</name>
            </organization>
          </contributor>
-         <language>zh</language>
-         <script>Hans</script>
+         <language>en</language>
+         <script>Latn</script>
          <status>
            <stage>60</stage>
            <substage>60</substage>

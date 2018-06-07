@@ -1,8 +1,12 @@
-require "isodoc"
-
 module IsoDoc
   module Gb
-    class Common < IsoDoc::Common
+    class Agencies
+      def initialize(lang, labels, issuer)
+        @lang = lang
+        @labels = labels
+        @issuer = issuer
+      end
+
       SECTOR = { "zh" => {
         AQ: { industry: "安全生产", admin: "国家安全生产管理局" },
         BB: { industry: "包装", admin: "国家发改委" },
@@ -270,8 +274,8 @@ module IsoDoc
         when "local"
           "#{LOCAL&.dig(@lang, prefix.to_sym) || 'XXXX'}#{@labels["local_standard"]}"
           when "enterprise" 
-            issuer = get_metadata[:issuer]
-            "#{issuer}#{@labels["enterprise_standard"]}"
+            #issuer = get_metadata[:issuer]
+            "#{@issuer}#{@labels["enterprise_standard"]}"
           when "social-group" then @labels["social_standard"]
           when "professional" then "PROFESSIONAL STANDARD" # TODO
           end
@@ -280,14 +284,17 @@ module IsoDoc
       def standard_agency1(scope, prefix, mandate)
         case scope
         when "national"
-          NATIONAL&.dig(@lang, gb_mandate_suffix(prefix, mandate).to_sym,
+          ret = NATIONAL&.dig(@lang, gb_mandate_suffix(prefix, mandate).to_sym,
                         :admin) || nil
+          ret = ret.join(" ") if ret && ret.is_a?(Array)
+          ret
         when "sector"
           SECTOR&.dig(@lang, prefix.to_sym, :admin) || nil
         when "local"
           LOCAL&.dig(@lang, prefix.to_sym) || nil 
         when "enterprise", "social-group"
-          get_metadata[:issuer] || nil
+          #get_metadata[:issuer] || nil
+          @issuer || nil
         when "professional" then "PROFESSIONAL STANDARD" # TODO
         end
       end
@@ -302,7 +309,8 @@ module IsoDoc
         when "local"
           "#{LOCAL&.dig(@lang, prefix.to_sym) || 'XXXX'}#{@labels["local_issuer"]}" 
         when "enterprise", "social-group"
-          get_metadata[:issuer]
+          #get_metadata[:issuer]
+          @issuer
         when "professional" then "PROFESSIONAL STANDARD" # TODO
         end
       end

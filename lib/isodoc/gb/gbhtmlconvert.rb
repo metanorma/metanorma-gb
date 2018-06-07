@@ -1,4 +1,8 @@
 require_relative "gbconvert"
+require_relative "agencies"
+require_relative "gbcleanup"
+require_relative "metadata"
+require_relative "gbhtmlrender"
 
 module IsoDoc
   module Gb
@@ -22,6 +26,7 @@ module IsoDoc
       end
 
       def initialize(options)
+        @common = IsoDoc::Gb::Common.new(options)
         super
         @htmlstylesheet = generate_css(html_doc_path("htmlstyle.scss"), true, default_fonts(options))
         @standardstylesheet = generate_css(html_doc_path("gb.scss"), true, default_fonts(options))
@@ -30,124 +35,39 @@ module IsoDoc
         @scripts = html_doc_path("scripts.html")
       end
 
+      def metadata_init(lang, script, labels)
+        @meta = Metadata.new(lang, script, labels)
+        @common = IsoDoc::Gb::Common.new(meta: @meta)
+      end
+
+            def cleanup(docxml)
+        @cleanup = Cleanup.new(@script, @deprecated_lbl)
+        super
+        @cleanup.cleanup(docxml)
+        docxml
+      end
+
+      def example_cleanup(docxml)
+        super
+        @cleanup.example_cleanup(docxml)
+      end
+
       def html_doc_path(file)
         File.join(File.dirname(__FILE__), File.join("html", file))
       end
 
-      def formula_parse(node, out)
-        Common::formula_parse(node, out)
-      end
-
-      def formula_where(dl, out)
-        Common::formula_where(dl, out)
-      end
-
-      def formula_dl_parse(node, out)
-        Common::formula_dl_parse(node, out)
-      end
-
-      def example_parse(node, out)
-        Common::formula_dl_parse(node, out)
-      end
-
-      def note_parse(node, out)
-        Common::def note_parse(node, out)
-      end
-
-      def termnote_parse(node, out)
-        Common::termnote_parse(node, out)
-      end
-
-      def cleanup(docxml)
-        Common::cleanup(docxml)
-      end
-
-      def example_cleanup(docxml)
-        Common::example_cleanup(docxml)
-      end
-
-      def middle(isoxml, out)
-        Common::middle(isoxml, out)
-      end
-
-      def error_parse(node, out)
-        Common::error_parse(node, out)
-      end
-
-      def deprecated_term_parse(node, out) 
-        Common::deprecated_term_parse(node, out)
-      end
-
-      def termref_render(x)
-        Common::termref_render(x)
-      end
-
-      def populate_template(docxml, format)
-        Common::populate_template(docxml, format)
-      end
-
       def i18n_init(lang, script)
-        Common::i18n_init(lang, script)
+        super
+        y = if lang == "en"
+              YAML.load_file(File.join(File.dirname(__FILE__), "i18n-en.yaml"))
+            elsif lang == "zh" && script == "Hans"
+              YAML.load_file(File.join(File.dirname(__FILE__),
+                                       "i18n-zh-Hans.yaml"))
+            else
+              YAML.load_file(File.join(File.dirname(__FILE__), "i18n-zh-Hans.yaml"))
+            end
+        @labels = @labels.merge(y)
       end
-
-      def init_metadata
-        Common::init_metadata
-      end
-
-      def title(isoxml, _out)
-        Common::title(isoxml, _out)
-      end
-
-      def subtitle(isoxml, _out)
-        Common::subtitle(isoxml, _out)
-      end
-
-      def author(isoxml, _out)
-        Common::author(isoxml, _out)
-      end
-
-      def docstatus(isoxml, _out)
-        Common::docstatus(isoxml, _out)
-      end
-
-      def docid(isoxml, _out)
-        Common::docid(isoxml, _out)
-      end
-
-      def part_label(partnumber, lang)
-        Common::part_label(partnumber, lang)
-      end
-
-      def bibdate(isoxml, _out)
-        Common::bibdate(isoxml, _out)
-      end
-
-      def foreword(isoxml, out)
-        Common::foreword(isoxml, out)
-      end
-
-      def clause_name(num, title, div, header_class)
-        Common::clause_name(num, title, div, header_class)
-      end
-
-      def clause_parse_title(node, div, c1, out)
-        Common::clause_parse_title(node, div, c1, out)
-      end
-
-      def annex_name(annex, name, div)
-        Common::annex_name(annex, name, div)
-      end
-
-      def term_defs_boilerplate(div, source, term, preface)
-        Common::term_defs_boilerplate(div, source, term, preface)
-      end
-
-      def reference_names(ref)
-        Common::reference_names(ref)
-      end
-
-
     end
   end
 end
-

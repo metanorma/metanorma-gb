@@ -238,6 +238,8 @@ RSpec.describe Asciidoctor::Gb do
       :nodoc:
       :novalid:
       :keep-boilerplate:
+      :language: en
+      :script: Latn
 
       == Terms and Definitions
 

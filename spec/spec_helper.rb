@@ -38,6 +38,8 @@ ASCIIDOC_BLANK_HDR = <<~"HDR"
       :docfile: test.adoc
       :nodoc:
       :novalid:
+      :language: en
+      :script: Latn
 
 HDR
 
@@ -100,8 +102,8 @@ BLANK_HDR = <<~"HDR"
              <name>General Administration of Quality Supervision, Inspection and Quarantine; Standardization Administration of China</name>
            </organization>
          </contributor>
-         <language>zh</language>
-         <script>Hans</script>
+         <language>en</language>
+         <script>Latn</script>
          <status>
            <stage>60</stage>
            <substage>60</substage>

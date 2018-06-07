@@ -13,7 +13,7 @@ module Asciidoctor
         bilingual_terms_validate(doc.root)
         issuer_validate(doc.root)
         prefix_validate(doc.root)
-        doc_converter(nil).gbtype_validate(doc.root)
+        @agencyclass.gbtype_validate(doc.root)
       end
 
       def prefix_validate(root)

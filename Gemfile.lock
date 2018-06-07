@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    asciidoctor-gb (0.2.3)
+    asciidoctor-gb (0.2.4)
       asciidoctor-iso (>= 0.7.9)
       twitter_cldr
 
@@ -12,11 +12,10 @@ GEM
       httpclient (~> 2.8, >= 2.8.3)
       json (>= 1.5.1)
     asciidoctor (1.5.7.1)
-    asciidoctor-iso (0.7.9)
+    asciidoctor-iso (0.8.1)
       asciidoctor (~> 1.5.7)
-      html2doc
       isobib (~> 0.1.4)
-      isodoc (~> 0.6.2)
+      isodoc (>= 0.7.0)
       ruby-jing
     asciimath (1.0.4)
     ast (2.4.0)
@@ -28,7 +27,7 @@ GEM
     docile (1.3.1)
     equivalent-xml (0.6.0)
       nokogiri (>= 1.4.3)
-    ffi (1.9.23)
+    ffi (1.9.25)
     formatador (0.2.5)
     guard (2.14.2)
       formatador (>= 0.2.4)
@@ -44,7 +43,7 @@ GEM
       guard (~> 2.1)
       guard-compat (~> 1.1)
       rspec (>= 2.99.0, < 4.0)
-    html2doc (0.7.1)
+    html2doc (0.8.0)
       asciimath
       htmlentities (~> 4.3.4)
       image_size
@@ -56,15 +55,15 @@ GEM
     htmlentities (4.3.4)
     httpclient (2.8.3)
     image_size (2.0.0)
-    iso-bib-item (0.1.3)
+    iso-bib-item (0.1.4)
       isoics (~> 0.1.6)
       nokogiri
     isobib (0.1.4)
       algoliasearch
       iso-bib-item (~> 0.1.2)
-    isodoc (0.6.2)
+    isodoc (0.7.0)
       asciimath
-      html2doc
+      html2doc (>= 0.7.1)
       htmlentities (~> 4.3.4)
       image_size
       liquid
@@ -76,6 +75,7 @@ GEM
       thread_safe
       uuidtools
     isoics (0.1.6)
+    jaro_winkler (1.5.1)
     json (2.1.0)
     liquid (4.0.0)
     listen (3.1.5)
@@ -121,7 +121,8 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.7.0)
     rspec-support (3.7.1)
-    rubocop (0.56.0)
+    rubocop (0.57.1)
+      jaro_winkler (~> 1.5.1)
       parallel (~> 1.10)
       parser (>= 2.5)
       powerpack (~> 0.1)
@@ -153,7 +154,7 @@ GEM
       tzinfo
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
-    unicode-display_width (1.3.3)
+    unicode-display_width (1.4.0)
     uuidtools (2.1.5)
 
 PLATFORMS

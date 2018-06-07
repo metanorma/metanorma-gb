@@ -198,8 +198,9 @@ module Asciidoctor
         mandate = xmldoc.at("//gbmandate")&.text || "mandatory"
         lang = xmldoc.at("//language")&.text
         agency = issuer.content
-        agency = IsoDoc::Gb::Convert.new({}).standard_agency1(scope, prefix, mandate) if agency == "GB"
-        agency = "GB" unless agency
+        @agencyclass = IsoDoc::Gb::Agencies.new(lang, {}, "")
+        agency = @agencyclass.standard_agency1(scope, prefix, mandate) if agency == "GB"
+        agency = "GB" if agency.nil? || agency.empty?
         owner = xmldoc.at("//copyright/owner/organization/name")
         owner.content = agency
         owner = xmldoc.at("//contributor[role/@type = 'issuer']/organization/name")

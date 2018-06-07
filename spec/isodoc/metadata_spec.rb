@@ -23,16 +23,16 @@ RSpec.describe IsoDoc::Gb::Convert do
     <project-number part="1">17301</project-number>
   </docidentifier>
   <date type="published">
-    <from>2016-01-02</from>
+    <on>2016-01-02</on>
   </date>
   <date type="accessed">
-    <from>2016-01-03</from>
+    <on>2016-01-03</on>
   </date>
   <date type="implemented">
-    <from>2016-01-04</from>
+    <on>2016-01-04</on>
   </date>
   <date type="created">
-    <from>2016-01-05</from>
+    <on>2016-01-05</on>
   </date>
   <contributor>
     <role type="author"/>
@@ -127,16 +127,16 @@ RSpec.describe IsoDoc::Gb::Convert do
     <project-number part="1">17301</project-number>
   </docidentifier>
   <date type="published">
-    <from>2016-01-02</from>
+    <on>2016-01-02</on>
   </date>
   <date type="accessed">
-    <from>2016-01-03</from>
+    <on>2016-01-03</on>
   </date>
   <date type="implemented">
-    <from>2016-01-04</from>
+    <on>2016-01-04</on>
   </date>
   <date type="created">
-    <from>2016-01-05</from>
+    <on>2016-01-05</on>
   </date>
   <contributor>
     <role type="author"/>
@@ -232,16 +232,16 @@ RSpec.describe IsoDoc::Gb::Convert do
     <project-number part="1">17301</project-number>
   </docidentifier>
   <date type="published">
-    <from>2016-01-02</from>
+    <on>2016-01-02</on>
   </date>
   <date type="accessed">
-    <from>2016-01-03</from>
+    <on>2016-01-03</on>
   </date>
   <date type="implemented">
-    <from>2016-01-04</from>
+    <on>2016-01-04</on>
   </date>
   <date type="created">
-    <from>2016-01-05</from>
+    <on>2016-01-05</on>
   </date>
   <contributor>
     <role type="author"/>
@@ -337,16 +337,16 @@ RSpec.describe IsoDoc::Gb::Convert do
     <project-number>17301</project-number>
   </docidentifier>
   <date type="published">
-    <from>2016-01-02</from>
+    <on>2016-01-02</on>
   </date>
   <date type="accessed">
-    <from>2016-01-03</from>
+    <on>2016-01-03</on>
   </date>
   <date type="implemented">
-    <from>2016-01-04</from>
+    <on>2016-01-04</on>
   </date>
   <date type="created">
-    <from>2016-01-05</from>
+    <on>2016-01-05</on>
   </date>
   <contributor>
     <role type="author"/>
@@ -440,16 +440,16 @@ RSpec.describe IsoDoc::Gb::Convert do
     <project-number>17301</project-number>
   </docidentifier>
   <date type="published">
-    <from>2016-01-02</from>
+    <on>2016-01-02</on>
   </date>
   <date type="accessed">
-    <from>2016-01-03</from>
+    <on>2016-01-03</on>
   </date>
   <date type="implemented">
-    <from>2016-01-04</from>
+    <on>2016-01-04</on>
   </date>
   <date type="created">
-    <from>2016-01-05</from>
+    <on>2016-01-05</on>
   </date>
   <contributor>
     <role type="author"/>
@@ -543,16 +543,16 @@ RSpec.describe IsoDoc::Gb::Convert do
     <project-number>17301</project-number>
   </docidentifier>
   <date type="published">
-    <from>2016-01-02</from>
+    <on>2016-01-02</on>
   </date>
   <date type="accessed">
-    <from>2016-01-03</from>
+    <on>2016-01-03</on>
   </date>
   <date type="implemented">
-    <from>2016-01-04</from>
+    <on>2016-01-04</on>
   </date>
   <date type="created">
-    <from>2016-01-05</from>
+    <on>2016-01-05</on>
   </date>
   <contributor>
     <role type="author"/>
@@ -646,16 +646,16 @@ RSpec.describe IsoDoc::Gb::Convert do
     <project-number>17301</project-number>
   </docidentifier>
   <date type="published">
-    <from>2016-01-02</from>
+    <on>2016-01-02</on>
   </date>
   <date type="accessed">
-    <from>2016-01-03</from>
+    <on>2016-01-03</on>
   </date>
   <date type="implemented">
-    <from>2016-01-04</from>
+    <on>2016-01-04</on>
   </date>
   <date type="created">
-    <from>2016-01-05</from>
+    <on>2016-01-05</on>
   </date>
   <contributor>
     <role type="author"/>

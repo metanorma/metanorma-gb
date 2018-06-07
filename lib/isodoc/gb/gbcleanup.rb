@@ -1,8 +1,12 @@
 module IsoDoc
   module Gb
-    class Common < IsoDoc::Common
+    class Cleanup
+      def initialize(script, deprecated_lbl)
+        @script = script
+        @deprecated_lbl = deprecated_lbl
+      end
+
       def cleanup(docxml)
-        super
         terms_cleanup(docxml)
         formula_cleanup(docxml)
         title_cleanup(docxml)
@@ -17,7 +21,6 @@ module IsoDoc
       end
 
       def example_cleanup(docxml)
-        super
         docxml.xpath("//table[@class = 'Note']//p[not(@class)]").each do |p|
           p["class"] = "Note"
         end

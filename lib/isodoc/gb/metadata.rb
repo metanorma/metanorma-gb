@@ -5,21 +5,21 @@ module IsoDoc
   module Gb
     # A {Converter} implementation that generates GB output, and a document
     # schema encapsulation of the document for validation
-    class Common < IsoDoc::Common
-      def init_metadata
+    class Metadata < IsoDoc::Metadata
+      def initialize(lang, script, labels)
         super
-        set_metadata(:docmaintitlezh, "")
-        set_metadata(:docsubtitlezh, "XXXX")
-        set_metadata(:docparttitlezh, "")
-        set_metadata(:docmaintitleen, "")
-        set_metadata(:docsubtitleen, "XXXX")
-        set_metadata(:docparttitleen, "")
-        set_metadata(:gbequivalence, "")
-        set_metadata(:isostandard, nil)
-        set_metadata(:isostandardtitle, "")
-        set_metadata(:doctitle, "XXXX")
-        set_metadata(:obsoletes, nil)
-        set_metadata(:obsoletes_part, nil)
+        set(:docmaintitlezh, "")
+        set(:docsubtitlezh, "XXXX")
+        set(:docparttitlezh, "")
+        set(:docmaintitleen, "")
+        set(:docsubtitleen, "XXXX")
+        set(:docparttitleen, "")
+        set(:gbequivalence, "")
+        set(:isostandard, nil)
+        set(:isostandardtitle, "")
+        set(:doctitle, "XXXX")
+        set(:obsoletes, nil)
+        set(:obsoletes_part, nil)
       end
 
       def title(isoxml, _out)
@@ -27,22 +27,22 @@ module IsoDoc
         main = isoxml.at(ns("//title-main[@language='zh']"))
         part = isoxml.at(ns("//title-part[@language='zh']"))
         partnumber = isoxml.at(ns("//project-number/@part"))
-        intro.nil? || set_metadata(:docmaintitlezh, intro.text + "&nbsp;")
-        main.nil? || set_metadata(:docsubtitlezh, main.text)
+        intro.nil? || set(:docmaintitlezh, intro.text + "&nbsp;")
+        main.nil? || set(:docsubtitlezh, main.text)
         partnum = partnumber ? "#{part_label(partnumber, 'zh')}:" : ""
-        part.nil? || set_metadata(:docparttitlezh,
+        part.nil? || set(:docparttitlezh,
                                   "&nbsp;#{partnum}#{part.text}")
       end
 
       def set_doctitle
         if @lang == "zh"
-          set_metadata(:doctitle, get_metadata[:docmaintitlezh] + 
-                       get_metadata[:docsubtitlezh] +
-                       get_metadata[:docparttitlezh])
+          set(:doctitle, get[:docmaintitlezh] + 
+                       get[:docsubtitlezh] +
+                       get[:docparttitlezh])
         else
-          set_metadata(:doctitle, get_metadata[:docmaintitleen] + 
-                       get_metadata[:docsubtitleen] +
-                       get_metadata[:docparttitleen])
+          set(:doctitle, get[:docmaintitleen] + 
+                       get[:docsubtitleen] +
+                       get[:docparttitleen])
         end
       end
 
@@ -51,17 +51,17 @@ module IsoDoc
         main = isoxml.at(ns("//title-main[@language='en']"))
         part = isoxml.at(ns("//title-part[@language='en']"))
         partnumber = isoxml.at(ns("//project-number/@part"))
-        intro.nil? || set_metadata(:docmaintitleen, intro.text + "&mdash;")
-        main.nil? || set_metadata(:docsubtitleen, main.text)
+        intro.nil? || set(:docmaintitleen, intro.text + "&mdash;")
+        main.nil? || set(:docsubtitleen, main.text)
         partnum = partnumber ? "#{part_label(partnumber, 'en')}: " : ""
-        part.nil? || set_metadata(:docparttitleen,
+        part.nil? || set(:docparttitleen,
                                   "&mdash;#{partnum} #{part.text}")
         set_doctitle
       end
 
       def author(isoxml, _out)
         gbcommittee = isoxml.at(ns("//bibdata/gbcommittee"))
-        set_metadata(:committee, gbcommittee&.text)
+        set(:committee, gbcommittee&.text)
       end
 
       STAGE_ABBRS_CN = {
@@ -87,22 +87,22 @@ module IsoDoc
       def docstatus(isoxml, _out)
         docstatus = isoxml.at(ns("//status/stage"))
         if docstatus
-          set_metadata(:stage, docstatus.text.to_i)
+          set(:stage, docstatus.text.to_i)
           abbr = stage_abbrev_cn(docstatus.text, isoxml.at(ns("//status/iteration")),
                                  isoxml.at(ns("//version/draft")))
-          set_metadata(:stageabbr, abbr)
+          set(:stageabbr, abbr)
         end
       end
 
       def docid1(isoxml, _out)
         dn = docnumber(isoxml)
-        docstatus = get_metadata[:stage]
+        docstatus = get[:stage]
         if docstatus
           abbr = stage_abbrev(docstatus.to_s, isoxml.at(ns("//status/iteration")),
                               isoxml.at(ns("//version/draft")))
           (docstatus.to_i < 60) && dn = abbr + " " + dn
         end
-        set_metadata(:docnumber, dn)
+        set(:docnumber, dn)
       end
 
       def docid(isoxml, _out)
@@ -117,14 +117,14 @@ module IsoDoc
 
       def gb_equivalence(isoxml)
         isostdid = isoxml.at(ns("#{ISO_STD_XPATH}/docidentifier")) || return
-        set_metadata(:isostandard, isostdid.text)
+        set(:isostandard, isostdid.text)
         isostdtitle = isoxml.at(ns("#{ISO_STD_XPATH}/title"))
-        set_metadata(:isostandardtitle, isostdtitle.text) if isostdtitle
+        set(:isostandardtitle, isostdtitle.text) if isostdtitle
         eq = isoxml.at(ns("//bibdata/relation/@type"))
         case eq.text
-        when "equivalent" then set_metadata(:gbequivalence, "MOD")
-        when "nonequivalent" then set_metadata(:gbequivalence, "NEQ")
-        when "identical" then set_metadata(:gbequivalence, "IDT")
+        when "equivalent" then set(:gbequivalence, "MOD")
+        when "nonequivalent" then set(:gbequivalence, "NEQ")
+        when "identical" then set(:gbequivalence, "IDT")
         end
       end
 
@@ -135,19 +135,19 @@ module IsoDoc
       }.freeze
 
       def docidentifier(scope, prefix, mandate, docyear)
-        docnum = get_metadata[:docnumber]
+        docnum = get[:docnumber]
         dn = case scope 
              when "local"
-               "#{SCOPEPFX[scope.to_sym]}#{mandate_suffix(prefix, mandate)}/"\
+               "#{SCOPEPFX[scope.to_sym]}#{@agencies.mandate_suffix(prefix, mandate)}/"\
                  "#{docnum}".gsub(%r{/([TZ])/}, "/\\1 ")
              when "social-group", "enterprise"
-               "#{mandate_suffix(SCOPEPFX[scope.to_sym], mandate)}/"\
+               "#{@agencies.mandate_suffix(SCOPEPFX[scope.to_sym], mandate)}/"\
                  "#{prefix} #{docnum}"
              else
-               "#{mandate_suffix(prefix, mandate)}&#x2002;#{docnum}"
+               "#{@agencies.mandate_suffix(prefix, mandate)}&#x2002;#{docnum}"
              end
         dn += "&mdash;#{docyear}" if docyear
-        set_metadata(:docidentifier, dn)
+        set(:docidentifier, dn)
       end
 
       def gb_identifier(isoxml)
@@ -155,14 +155,15 @@ module IsoDoc
         mandate = isoxml.at(ns("//gbmandate"))&.text || "mandatory"
         prefix = isoxml.at(ns("//gbprefix"))&.text || "XXX"
         docyear = isoxml&.at(ns("//copyright/from"))&.text
-        docidentifier(scope, prefix, mandate, docyear)
         issuer = isoxml&.at(ns("//bibdata/contributor[role/@type = 'issuer']/"\
                                "organization/name"))&.text || "GB"
-        set_metadata(:issuer, issuer)
-        set_metadata(:standard_class, standard_class(scope, prefix, mandate))
-        set_metadata(:standard_agency, standard_agency(scope, prefix, mandate))
-        set_metadata(:gbprefix, scope == "local" ? "DB" : prefix)
-        set_metadata(:gbscope, scope)
+        @agencies = Agencies.new(@lang, @labels, issuer)
+        docidentifier(scope, prefix, mandate, docyear)
+        set(:issuer, issuer)
+        set(:standard_class, @agencies.standard_class(scope, prefix, mandate))
+        set(:standard_agency, @agencies.standard_agency(scope, prefix, mandate))
+        set(:gbprefix, scope == "local" ? "DB" : prefix)
+        set(:gbscope, scope)
       end
 
       def standard_logo(gbprefix)
@@ -183,9 +184,9 @@ module IsoDoc
         isoxml.xpath(ns("//bibdata/ics")).each { |i| ics << i.text }
         isoxml.xpath(ns("//bibdata/ccs")).each { |i| ccs << i.text }
         p = isoxml.at(ns("//bibdata/plannumber"))
-        set_metadata(:libraryid_ics, ics.empty? ? "XXX" : ics.join(", "))
-        set_metadata(:libraryid_ccs, ccs.empty? ? "XXX" : ccs.join(", "))
-        set_metadata(:libraryid_plan, p ? p.text : "XXX")
+        set(:libraryid_ics, ics.empty? ? "XXX" : ics.join(", "))
+        set(:libraryid_ccs, ccs.empty? ? "XXX" : ccs.join(", "))
+        set(:libraryid_plan, p ? p.text : "XXX")
       end
 
       def part_label(partnumber, lang)
@@ -197,16 +198,16 @@ module IsoDoc
 
       def bibdate(isoxml, _out)
         super
-        m = get_metadata
+        m = get
         if @lang == "zh"
-          set_metadata(:labelled_publisheddate, m[:publisheddate] + " " +
+          set(:labelled_publisheddate, m[:publisheddate] + " " +
                        @labels["publicationdate_lbl"])
-          set_metadata(:labelled_implementeddate, m[:implementeddate] + " " +
+          set(:labelled_implementeddate, m[:implementeddate] + " " +
                        @labels["implementationdate_lbl"])
         else
-          set_metadata(:labelled_publisheddate, @labels["publicationdate_lbl"] +
+          set(:labelled_publisheddate, @labels["publicationdate_lbl"] +
                        ": " + m[:publisheddate])
-          set_metadata(:labelled_implementeddate,
+          set(:labelled_implementeddate,
                        @labels["implementationdate_lbl"] + ": " +
                        m[:implementeddate])
         end
