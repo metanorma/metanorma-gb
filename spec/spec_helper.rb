@@ -9,6 +9,7 @@ require "asciidoctor/gb"
 require "asciidoctor-gb"
 require "rspec/matchers"
 require "equivalent-xml"
+require "htmlentities"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

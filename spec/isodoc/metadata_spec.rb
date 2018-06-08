@@ -85,7 +85,7 @@ RSpec.describe IsoDoc::Gb::Convert do
     <title>Rice Model document</title>
   </bibitem>
   </relation>
-  <ics>1322</ics>
+  <ics><code>1322</code></ics>
   <ccs>A 01</ccs>
   <ccs>A 02</ccs>
   <plannumber>XYZ</plannumber>
@@ -189,7 +189,7 @@ RSpec.describe IsoDoc::Gb::Convert do
     <title>Rice Model document</title>
   </bibitem>
   </relation>
-  <ics>1322</ics>
+  <ics><code>1322</code></ics>
   <ccs>A 01</ccs>
   <ccs>A 02</ccs>
   <plannumber>XYZ</plannumber>
@@ -294,7 +294,7 @@ RSpec.describe IsoDoc::Gb::Convert do
     <title>Rice Model document</title>
   </bibitem>
   </relation>
-  <ics>1322</ics>
+  <ics><code>1322</code></ics>
   <ccs>A 01</ccs>
   <ccs>A 02</ccs>
   <plannumber>XYZ</plannumber>
@@ -398,7 +398,7 @@ RSpec.describe IsoDoc::Gb::Convert do
     <title>Rice Model document</title>
   </bibitem>
   </relation>
-  <ics>1322</ics>
+  <ics><code>1322</code></ics>
   <ccs>A 01</ccs>
   <ccs>A 02</ccs>
   <plannumber>XYZ</plannumber>
@@ -501,7 +501,7 @@ RSpec.describe IsoDoc::Gb::Convert do
     <title>Rice Model document</title>
   </bibitem>
   </relation>
-  <ics>1322</ics>
+  <ics><code>1322</code></ics>
   <ccs>A 01</ccs>
   <ccs>A 02</ccs>
   <plannumber>XYZ</plannumber>
@@ -604,7 +604,7 @@ RSpec.describe IsoDoc::Gb::Convert do
     <title>Rice Model document</title>
   </bibitem>
   </relation>
-  <ics>1322</ics>
+  <ics><code>1322</code></ics>
   <ccs>A 01</ccs>
   <ccs>A 02</ccs>
   <plannumber>XYZ</plannumber>
@@ -707,7 +707,7 @@ RSpec.describe IsoDoc::Gb::Convert do
     <title>Rice Model document</title>
   </bibitem>
   </relation>
-  <ics>1322</ics>
+  <ics><code>1322</code></ics>
   <ccs>A 01</ccs>
   <ccs>A 02</ccs>
   <plannumber>XYZ</plannumber>

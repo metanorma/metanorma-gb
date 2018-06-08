@@ -1,9 +1,6 @@
 require "isodoc"
-#require_relative "./i18n.rb"
 require_relative "./gbcleanup.rb"
-#require_relative "./xref_gen.rb"
 require_relative "./metadata.rb"
-#require_relative "./section_output.rb"
 
 module IsoDoc
   module Gb
@@ -36,7 +33,7 @@ module IsoDoc
         ret
       end
 
-            def format_logo(prefix, scope, _format)
+      def format_logo(prefix, scope, _format)
         return "" if %w(enterprise social-group).include? scope
         logo = @meta.standard_logo(prefix)
         if logo.nil?

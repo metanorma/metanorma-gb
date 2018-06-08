@@ -40,7 +40,7 @@ module IsoDoc
         @common = IsoDoc::Gb::Common.new(meta: @meta)
       end
 
-            def cleanup(docxml)
+      def cleanup(docxml)
         @cleanup = Cleanup.new(@script, @deprecated_lbl)
         super
         @cleanup.cleanup(docxml)

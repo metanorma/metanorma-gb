@@ -181,7 +181,7 @@ module IsoDoc
       def gb_library_identifier(isoxml)
         ics = []
         ccs = []
-        isoxml.xpath(ns("//bibdata/ics")).each { |i| ics << i.text }
+        isoxml.xpath(ns("//bibdata/ics/code")).each { |i| ics << i.text }
         isoxml.xpath(ns("//bibdata/ccs")).each { |i| ccs << i.text }
         p = isoxml.at(ns("//bibdata/plannumber"))
         set(:libraryid_ics, ics.empty? ? "XXX" : ics.join(", "))
