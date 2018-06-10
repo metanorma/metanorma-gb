@@ -77,16 +77,7 @@ RSpec.describe IsoDoc::Gb::Convert do
 </bibliography>
     </gb-standard>
     INPUT
-           <body lang="EN-US" link="blue" vlink="#954F72">
-           <div class="WordSection1">
-             <p>&#160;</p>
-           </div>
-           <br/>
-           <div class="WordSection2">
-             <p>&#160;</p>
-           </div>
-           <br/>
-           <div class="WordSection3">
+    #{HTML_HDR}
              <br/>
              <div>
                <h1 class="ForewordTitle">Foreword&#160;</h1>
@@ -133,16 +124,7 @@ RSpec.describe IsoDoc::Gb::Convert do
     </foreword></preface>
     </gb-standard>
     INPUT
-           <body lang="EN-US" link="blue" vlink="#954F72">
-           <div class="WordSection1">
-             <p>&#160;</p>
-           </div>
-           <br/>
-           <div class="WordSection2">
-             <p>&#160;</p>
-           </div>
-           <br/>
-           <div class="WordSection3">
+        #{HTML_HDR}
              <br/>
              <div>
                <h1 class="ForewordTitle">Foreword&#160;</h1>
@@ -178,10 +160,10 @@ RSpec.describe IsoDoc::Gb::Convert do
 
         </gb-standard>
     INPUT
-    html = File.read("test.html", encoding: "utf-8").sub(/^.*<main class="WordSection3">/m, '<main class="WordSection3">').
+    html = File.read("test.html", encoding: "utf-8").sub(/^.*<main class="main-section">/m, '<main class="main-section">').
       sub(%r{</main>.*$}m, "</main>")
     expect(html.gsub(/"#[a-f0-9-]+"/, "#_")).to be_equivalent_to <<~"OUTPUT"
-           <main class="WordSection3"><button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+           <main class="main-section"><button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
                <p class="zzSTDTitle1">XXXX</p>
                <div id="_terms_and_definitions"><h1>1.&#x3000;&#x672F;&#x8BED;&#x548C;&#x5B9A;&#x4E49;</h1><p>&#x4E0B;&#x5217;&#x672F;&#x8BED;&#x548C;&#x5B9A;&#x4E49;&#x9002;&#x7528;&#x4E8E;&#x672C;&#x6587;&#x4EF6;&#x3002;</p>
                <p>Prefatory content</p>
@@ -214,10 +196,10 @@ RSpec.describe IsoDoc::Gb::Convert do
 
         </gb-standard>
     INPUT
-    html = File.read("test.html", encoding: "utf-8").sub(/^.*<main class="WordSection3">/m, '<main class="WordSection3">').
+    html = File.read("test.html", encoding: "utf-8").sub(/^.*<main class="main-section">/m, '<main class="main-section">').
       sub(%r{</main>.*$}m, "</main>")
     expect(html.gsub(/"#[a-f0-9-]+"/, "#_")).to be_equivalent_to <<~"OUTPUT"
-           <main class="WordSection3"><button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+           <main class="main-section"><button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
                <p class="zzSTDTitle1">XXXX</p>
                <div id="_terms_and_definitions"><h1>1.&#x3000;&#x672F;&#x8BED;&#x548C;&#x5B9A;&#x4E49;</h1><p>&#x4E0B;&#x5217;&#x672F;&#x8BED;&#x548C;&#x5B9A;&#x4E49;&#x9002;&#x7528;&#x4E8E;&#x672C;&#x6587;&#x4EF6;&#x3002;</p>
                       <p>ISO&#x548C;IEC&#x7528;&#x4E8E;&#x6807;&#x51C6;&#x5316;&#x7684;&#x672F;&#x8BED;&#x6570;&#x636E;&#x5E93;&#x5730;&#x5740;&#x5982;&#x4E0B;&#xFF1A;</p>
@@ -261,10 +243,10 @@ RSpec.describe IsoDoc::Gb::Convert do
 
         </gb-standard>
     INPUT
-    html = File.read("test.html", encoding: "utf-8").sub(/^.*<main class="WordSection3">/m, '<main class="WordSection3">').
+    html = File.read("test.html", encoding: "utf-8").sub(/^.*<main class="main-section">/m, '<main class="main-section">').
       sub(%r{</main>.*$}m, "</main>")
     expect(htmlencode(html.gsub(/"#[a-f0-9-]+"/, "#_"))).to be_equivalent_to <<~"OUTPUT"
-           <main class="WordSection3"><button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+           <main class="main-section"><button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
                <p class="zzSTDTitle1">XXXX</p>
                <div id="_terms_and_definitions"><h1>1.&#x3000;&#x672F;&#x8BED;&#x548C;&#x5B9A;&#x4E49;</h1><p>&#x4E0B;&#x5217;&#x672F;&#x8BED;&#x548C;&#x5B9A;&#x4E49;&#x9002;&#x7528;&#x4E8E;&#x672C;&#x6587;&#x4EF6;&#x3002;</p>
                       <p>ISO&#x548C;IEC&#x7528;&#x4E8E;&#x6807;&#x51C6;&#x5316;&#x7684;&#x672F;&#x8BED;&#x6570;&#x636E;&#x5E93;&#x5730;&#x5740;&#x5982;&#x4E0B;&#xFF1A;</p>
@@ -302,8 +284,8 @@ RSpec.describe IsoDoc::Gb::Convert do
       </sections>
       </gb-standard>
     INPUT
-    html = File.read("test.html", encoding: "utf-8").sub(/^.*<div class="WordSection1">/m, '<div class="WordSection1">').
-      sub(%r{<div class="WordSection2".*$}m, "")
+    html = File.read("test.html", encoding: "utf-8").sub(/^.*<div class="title-section">/m, '<div class="title-section">').
+      sub(%r{<div class="prefatory-section".*$}m, "")
     expect(html.gsub(/"#[a-f0-9-]+"/, "#_")).to match(%r{<div class="coverpage-logo-gb-img"></div>})
   end
 
@@ -325,8 +307,8 @@ RSpec.describe IsoDoc::Gb::Convert do
       </sections>
       </gb-standard>
     INPUT
-    html = File.read("test.html", encoding: "utf-8").sub(/^.*<div class="WordSection1">/m, '<div class="WordSection1">').
-      sub(%r{<div class="WordSection2".*$}m, "")
+    html = File.read("test.html", encoding: "utf-8").sub(/^.*<div class="title-section">/m, '<div class="title-section">').
+      sub(%r{<div class="prefatory-section".*$}m, "")
     expect(html.gsub(/"#[a-f0-9-]+"/, "#_")).to match(%r{<div class="coverpage-logo-gb-img"><img width='113' height='56' src='gb-standard-db.gif' alt='DB'></img><span style='font-weight:bold'>81</span></div>})
   end
 
@@ -348,8 +330,8 @@ RSpec.describe IsoDoc::Gb::Convert do
       </sections>
       </gb-standard>
     INPUT
-    html = File.read("test.html", encoding: "utf-8").sub(/^.*<div class="WordSection1">/m, '<div class="WordSection1">').
-      sub(%r{<div class="WordSection2".*$}m, "")
+    html = File.read("test.html", encoding: "utf-8").sub(/^.*<div class="title-section">/m, '<div class="title-section">').
+      sub(%r{<div class="prefatory-section".*$}m, "")
     expect(html.gsub(/"#[a-f0-9-]+"/, "#_")).to match(%r{<div class="coverpage-logo-gb-img"><span style='font-size:36pt;font-weight:bold'>NY</span></div>})
   end
 
@@ -371,8 +353,8 @@ RSpec.describe IsoDoc::Gb::Convert do
       </sections>
       </gb-standard>
     INPUT
-    html = File.read("test.html", encoding: "utf-8").sub(/^.*<div class="WordSection1">/m, '<div class="WordSection1">').
-      sub(%r{<div class="WordSection2".*$}m, "")
+    html = File.read("test.html", encoding: "utf-8").sub(/^.*<div class="title-section">/m, '<div class="title-section">').
+      sub(%r{<div class="prefatory-section".*$}m, "")
     expect(html.gsub(/"#[a-f0-9-]+"/, "#_")).to match(%r{<div class="coverpage-logo-gb-img"><img width='113' height='56' src='gb-standard-gm.gif' alt='GM'></img></div>})
   end
 
@@ -394,8 +376,8 @@ RSpec.describe IsoDoc::Gb::Convert do
       </sections>
       </gb-standard>
     INPUT
-    html = File.read("test.html", encoding: "utf-8").sub(/^.*<div class="WordSection1">/m, '<div class="WordSection1">').
-      sub(%r{<div class="WordSection2".*$}m, "")
+    html = File.read("test.html", encoding: "utf-8").sub(/^.*<div class="title-section">/m, '<div class="title-section">').
+      sub(%r{<div class="prefatory-section".*$}m, "")
     expect(html.gsub(/"#[a-f0-9-]+"/, "#_")).to match(%r{<div class="coverpage_footer">\s*State Administration Of Cryptography\s*</div>})
   end
 
@@ -417,8 +399,8 @@ RSpec.describe IsoDoc::Gb::Convert do
       </sections>
       </gb-standard>
     INPUT
-    html = File.read("test.html", encoding: "utf-8").sub(/^.*<div class="WordSection1">/m, '<div class="WordSection1">').
-      sub(%r{<div class="WordSection2".*$}m, "")
+    html = File.read("test.html", encoding: "utf-8").sub(/^.*<div class="title-section">/m, '<div class="title-section">').
+      sub(%r{<div class="prefatory-section".*$}m, "")
     expect(htmlencode(html.gsub(/"#[a-f0-9-]+"/, "#_"))).to match(%r{<div class="coverpage_footer">\s*<img src='gb-issuer-default.gif' alt='&#x4e2d;&#x534e;&#x4eba;&#x6c11;&#x5171;&#x548c;&#x56fd;&#x56fd;&#x5bb6;&#x8d28;&#x91cf;&#x76d1;&#x7763;&#x68c0;&#x9a8c;&#x68c0;&#x75ab;&#x603b;&#x5c40;,&#x4e2d;&#x56fd;&#x56fd;&#x5bb6;&#x6807;&#x51c6;&#x5316;&#x7ba1;&#x7406;&#x59d4;&#x5458;&#x4f1a;'></img>\s*</div>})
   end
 
@@ -440,8 +422,8 @@ RSpec.describe IsoDoc::Gb::Convert do
       </sections>
       </gb-standard>
     INPUT
-    html = File.read("test.html", encoding: "utf-8").sub(/^.*<div class="WordSection1">/m, '<div class="WordSection1">').
-      sub(%r{<div class="WordSection2".*$}m, "")
+    html = File.read("test.html", encoding: "utf-8").sub(/^.*<div class="title-section">/m, '<div class="title-section">').
+      sub(%r{<div class="prefatory-section".*$}m, "")
     expect(htmlencode(html.gsub(/"#[a-f0-9-]+"/, "#_"))).to match(%r{<div class="coverpage_footer">\s*<img src='gb-issuer-default.gif' alt='&#x4e2d;&#x534e;&#x4eba;&#x6c11;&#x5171;&#x548c;&#x56fd;&#x56fd;&#x5bb6;&#x8d28;&#x91cf;&#x76d1;&#x7763;&#x68c0;&#x9a8c;&#x68c0;&#x75ab;&#x603b;&#x5c40;,&#x4e2d;&#x56fd;&#x56fd;&#x5bb6;&#x6807;&#x51c6;&#x5316;&#x7ba1;&#x7406;&#x59d4;&#x5458;&#x4f1a;'></img>\s*</div>})
   end
 

@@ -14,16 +14,7 @@ RSpec.describe IsoDoc::Gb::Convert do
         </sections>
     </gb-standard>
     INPUT
-           <body lang="EN-US" link="blue" vlink="#954F72">
-             <div class="WordSection1">
-               <p>&#160;</p>
-             </div>
-             <br/>
-             <div class="WordSection2">
-               <p>&#160;</p>
-             </div>
-             <br/>
-             <div class="WordSection3">
+      #{HTML_HDR}
                <p class="zzSTDTitle1">XXXX</p>
        <div id="H"><h1>1.&#12288;&#26415;&#35821;&#21644;&#23450;&#20041;</h1><p>&#26412;&#25991;&#20214;&#19981;&#25552;&#20379;&#26415;&#35821;&#21644;&#23450;&#20041;&#12290;</p>
               <p>ISO&#21644;IEC&#29992;&#20110;&#26631;&#20934;&#21270;&#30340;&#26415;&#35821;&#25968;&#25454;&#24211;&#22320;&#22336;&#22914;&#19979;&#65306;</p>
@@ -57,16 +48,7 @@ RSpec.describe IsoDoc::Gb::Convert do
         </sections>
     </gb-standard>
     INPUT
-           <body lang="EN-US" link="blue" vlink="#954F72">
-             <div class="WordSection1">
-               <p>&#160;</p>
-             </div>
-             <br/>
-             <div class="WordSection2">
-               <p>&#160;</p>
-             </div>
-             <br/>
-             <div class="WordSection3">
+    #{HTML_HDR}
                <p class="zzSTDTitle1">XXXX</p>
                      <div id="M">
         <h1>1.&#12288;Clause 4</h1>
@@ -95,16 +77,7 @@ RSpec.describe IsoDoc::Gb::Convert do
         </annex> 
     </gb-standard>
     INPUT
-           <body lang="EN-US" link="blue" vlink="#954F72">
-             <div class="WordSection1">
-               <p>&#160;</p>
-             </div>
-             <br/>
-             <div class="WordSection2">
-               <p>&#160;</p>
-             </div>
-             <br/>
-             <div class="WordSection3">
+    #{HTML_HDR}
                <p class="zzSTDTitle1">XXXX</p>
                <br/>
                <div id="P" class="Section3">

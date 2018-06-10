@@ -129,13 +129,13 @@ HDR
 
 HTML_HDR = <<~HDR
          <body lang="EN-US" link="blue" vlink="#954F72">
-           <div class="WordSection1">
+           <div class="title-section">
              <p>&#160;</p>
            </div>
            <br/>
-           <div class="WordSection2">
+           <div class="prefatory-section">
              <p>&#160;</p>
            </div>
            <br/>
-           <div class="WordSection3">
+           <div class="main-section">
 HDR
