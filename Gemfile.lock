@@ -4,6 +4,7 @@ PATH
     asciidoctor-gb (0.2.4)
       asciidoctor-iso (>= 0.7.9)
       gbbib
+      isodoc (>= 0.7.0)
       twitter_cldr
 
 GEM
@@ -103,7 +104,7 @@ GEM
     parallel (1.12.1)
     parser (2.5.1.0)
       ast (~> 2.4.0)
-    powerpack (0.1.1)
+    powerpack (0.1.2)
     pry (0.11.3)
       coderay (~> 1.1.0)
       method_source (~> 0.9.0)
@@ -126,7 +127,7 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.7.0)
     rspec-support (3.7.1)
-    rubocop (0.57.1)
+    rubocop (0.57.2)
       jaro_winkler (~> 1.5.1)
       parallel (~> 1.10)
       parser (>= 2.5)

@@ -28,6 +28,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "asciidoctor-iso", ">= 0.7.9"
   spec.add_dependency "gbbib"
+  spec.add_dependency "isodoc", ">= 0.7.0"
   spec.add_dependency "twitter_cldr"
 
   spec.add_development_dependency "bundler", "~> 1.15"
