@@ -26,7 +26,7 @@ module IsoDoc
               tr.td **{ valign: "top", align: "left" } do |term|
                 dt_parse(dt, term)
               end
-              tr.td **{ valign: "top" } { |td| td << "&mdash;" }
+              tr.td(**{ valign: "top" }) { |td| td << "&mdash;" }
               tr.td **{ valign: "top" } do |listitem|
                 dd.children.each { |n| parse(n, listitem) }
               end
