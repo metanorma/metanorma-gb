@@ -11,7 +11,6 @@ module IsoDoc
     # schema encapsulation of the document for validation
 
     class WordConvert < IsoDoc::WordConvert
-      #include IsoDoc::WordConvertModule
       def default_fonts(options)
         script = options[:script] || "Hans"
         b = options[:bodyfont] ||
