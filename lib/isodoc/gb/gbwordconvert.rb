@@ -105,6 +105,7 @@ module IsoDoc
         system "cp #{@common.fileloc(File.join('html', 'blank.png'))} blank.png"
         @files_to_delete << "blank.png"
         @files_to_delete << "header.html"
+        "header.html"
       end
 
       def header_strip(h)

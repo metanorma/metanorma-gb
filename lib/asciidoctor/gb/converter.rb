@@ -37,8 +37,8 @@ module Asciidoctor
       end
 
       def html_converter(node)
-        node.nil? ? IsoDoc::Gb::Convert.new({}) :
-          IsoDoc::Gb::Convert.new(
+        node.nil? ? IsoDoc::Gb::HtmlConvert.new({}) :
+          IsoDoc::Gb::HtmlConvert.new(
             script: node.attr("script"),
             bodyfont: node.attr("body-font"),
             headerfont: node.attr("header-font"),

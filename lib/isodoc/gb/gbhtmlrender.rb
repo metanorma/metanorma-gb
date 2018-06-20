@@ -2,7 +2,7 @@ module IsoDoc
   module Gb
     # A {Converter} implementation that generates GB output, and a document
     # schema encapsulation of the document for validation
-    class Convert < IsoDoc::Convert
+    class HtmlConvert < IsoDoc::HtmlConvert
       def formula_parse(node, out)
         out.div **attr_code(id: node["id"], class: "formula") do |div|
           insert_tab(div, 1)
@@ -89,7 +89,7 @@ module IsoDoc
 
       def end_line(_isoxml, out)
         out.hr **{ width: "25%" }
-      end 
+      end
 
       def error_parse(node, out)
         # catch elements not defined in ISO
@@ -110,7 +110,7 @@ module IsoDoc
         end
       end
 
-      def deprecated_term_parse(node, out) 
+      def deprecated_term_parse(node, out)
         out.p **{ class: "DeprecatedTerms" } do |p|
           p << l10n("#{@deprecated_lbl}: ")
           node.children.each { |c| parse(c, p) }
