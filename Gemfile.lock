@@ -1,22 +1,23 @@
 PATH
   remote: .
   specs:
-    asciidoctor-gb (0.2.4)
-      asciidoctor-iso (>= 0.7.9)
-      isodoc (>= 0.7.0)
+    asciidoctor-gb (0.3.0)
+      asciidoctor-iso (>= 0.9.0)
+      isodoc (>= 0.8.0)
       twitter_cldr
 
 GEM
   remote: https://rubygems.org/
   specs:
-    algoliasearch (1.22.0)
+    algoliasearch (1.23.2)
       httpclient (~> 2.8, >= 2.8.3)
       json (>= 1.5.1)
     asciidoctor (1.5.7.1)
-    asciidoctor-iso (0.8.1)
+    asciidoctor-iso (0.9.0)
       asciidoctor (~> 1.5.7)
-      isobib (~> 0.1.4)
-      isodoc (>= 0.7.0)
+      iso-bib-item (~> 0.1.6)
+      isobib (~> 0.1.6)
+      isodoc (>= 0.8)
       ruby-jing
     asciimath (1.0.4)
     ast (2.4.0)
@@ -57,14 +58,14 @@ GEM
     htmlentities (4.3.4)
     httpclient (2.8.3)
     image_size (2.0.0)
-    iso-bib-item (0.1.5)
+    iso-bib-item (0.1.6)
       duplicate
       isoics (~> 0.1.6)
       nokogiri
     isobib (0.1.6)
       algoliasearch
       iso-bib-item (~> 0.1.2)
-    isodoc (0.7.1)
+    isodoc (0.8)
       asciimath
       html2doc (>= 0.7.1)
       htmlentities (~> 4.3.4)
