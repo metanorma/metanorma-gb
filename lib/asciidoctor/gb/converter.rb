@@ -7,6 +7,7 @@ require_relative "./section_input.rb"
 require_relative "./front.rb"
 require_relative "./validate.rb"
 require "pp"
+require "byebug"
 
 module Asciidoctor
   module Gb
@@ -186,9 +187,21 @@ module Asciidoctor
       end
 
       def cleanup(xmldoc)
+        lang = xmldoc.at("//language")&.text
+        @agencyclass = IsoDoc::Gb::Agencies.new(lang, {}, "")
         super
         contributor_cleanup(xmldoc)
         xmldoc
+      end
+
+      def docidentifier_cleanup(xmldoc)
+        #byebug
+        id = xmldoc.at("//bibdata/docidentifier/project-number") or return
+        scope = xmldoc.at("//gbscope")&.text
+        prefix = xmldoc.at("//gbprefix")&.text
+        mandate = xmldoc.at("//gbmandate")&.text || "mandatory"
+        idtext = @agencyclass.docidentifier(scope, prefix, mandate, nil, id.text) || return
+        id.content = idtext.gsub(/\&#x2002;/, " ")
       end
 
       def contributor_cleanup(xmldoc)
@@ -196,9 +209,7 @@ module Asciidoctor
         scope = xmldoc.at("//gbscope")&.text
         prefix = xmldoc.at("//gbprefix")&.text
         mandate = xmldoc.at("//gbmandate")&.text || "mandatory"
-        lang = xmldoc.at("//language")&.text
         agency = issuer.content
-        @agencyclass = IsoDoc::Gb::Agencies.new(lang, {}, "")
         agency = @agencyclass.standard_agency1(scope, prefix, mandate) if agency == "GB"
         agency = "GB" if agency.nil? || agency.empty?
         owner = xmldoc.at("//copyright/owner/organization/name")

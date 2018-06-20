@@ -1,3 +1,4 @@
+
 module Asciidoctor
   module Gb
     class Converter < ISO::Converter
