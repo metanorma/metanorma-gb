@@ -1,8 +1,8 @@
 require "spec_helper"
 
-RSpec.describe IsoDoc::Gb::Convert do
+RSpec.describe IsoDoc::Gb::HtmlConvert do
   it "cleans up formulas" do
-    expect(IsoDoc::Gb::Convert.new({}).cleanup(Nokogiri::XML(<<~"INPUT")).to_s).to be_equivalent_to <<~"OUTPUT"
+    expect(IsoDoc::Gb::HtmlConvert.new({}).cleanup(Nokogiri::XML(<<~"INPUT")).to_s).to be_equivalent_to <<~"OUTPUT"
     <html>
     <body>
       <table class="dl">
@@ -23,7 +23,7 @@ RSpec.describe IsoDoc::Gb::Convert do
   end
 
   it "cleans up examples" do
-    expect(IsoDoc::Gb::Convert.new({}).cleanup(Nokogiri::XML(<<~"INPUT")).to_s).to be_equivalent_to <<~"OUTPUT"
+    expect(IsoDoc::Gb::HtmlConvert.new({}).cleanup(Nokogiri::XML(<<~"INPUT")).to_s).to be_equivalent_to <<~"OUTPUT"
     <html>
     <body>
       <table class="Note">
@@ -44,7 +44,7 @@ RSpec.describe IsoDoc::Gb::Convert do
   end
 
   it "cleans up titles" do
-    gbc = IsoDoc::Gb::Convert.new({})
+    gbc = IsoDoc::Gb::HtmlConvert.new({})
     docxml, filename, dir = gbc.convert_init(<<~"INPUT", "test", true)
     <gb-standard xmlns="http://riboseinc.com/gbstandard">
 <bibdata>
@@ -75,7 +75,7 @@ RSpec.describe IsoDoc::Gb::Convert do
   end
 
   it "cleans up terms" do
-    gbc = IsoDoc::Gb::Convert.new({})
+    gbc = IsoDoc::Gb::HtmlConvert.new({})
     docxml, filename, dir = gbc.convert_init(<<~"INPUT", "test", true)
     <gb-standard xmlns="http://riboseinc.com/gbstandard">
 <bibdata>
@@ -130,7 +130,7 @@ RSpec.describe IsoDoc::Gb::Convert do
     word = File.read("test.doc", encoding: "utf-8").sub(/^.*<div class="WordSection2">/m, '<div class="WordSection2">').
       sub(%r{<br clear="all" class="section"/>\s*<div class="WordSection3">.*$}m, "")
     expect(word.gsub(/_Toc\d\d+/, "_Toc")).to be_equivalent_to <<~'OUTPUT'
-    <div class="WordSection2"><p class="zzContents" style="margin-top:0cm">Table of Contents</p>
+    <div class="WordSection2"><p class="zzContents" style="margin-top:0cm">Table of contents</p>
        
        <p class="MsoToc1"><span lang="EN-GB" xml:lang="EN-GB"><span style="mso-element:field-begin"></span><span style="mso-spacerun:yes">&#xA0;</span>TOC
          \o "1-2" \h \z \u <span style="mso-element:field-separator"></span></span>

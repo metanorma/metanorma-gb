@@ -128,28 +128,6 @@ module IsoDoc
         end
       end
 
-      SCOPEPFX = {
-        :local => "DB",
-        "social-group".to_sym => "T",
-        :enterprise => "Q",
-      }.freeze
-
-      def docidentifier(scope, prefix, mandate, docyear)
-        docnum = get[:docnumber]
-        dn = case scope 
-             when "local"
-               "#{SCOPEPFX[scope.to_sym]}#{@agencies.mandate_suffix(prefix, mandate)}/"\
-                 "#{docnum}".gsub(%r{/([TZ])/}, "/\\1 ")
-             when "social-group", "enterprise"
-               "#{@agencies.mandate_suffix(SCOPEPFX[scope.to_sym], mandate)}/"\
-                 "#{prefix} #{docnum}"
-             else
-               "#{@agencies.mandate_suffix(prefix, mandate)}&#x2002;#{docnum}"
-             end
-        dn += "&mdash;#{docyear}" if docyear
-        set(:docidentifier, dn)
-      end
-
       def gb_identifier(isoxml)
         scope = isoxml.at(ns("//gbscope"))&.text || "national"
         mandate = isoxml.at(ns("//gbmandate"))&.text || "mandatory"
@@ -158,7 +136,7 @@ module IsoDoc
         issuer = isoxml&.at(ns("//bibdata/contributor[role/@type = 'issuer']/"\
                                "organization/name"))&.text || "GB"
         @agencies = Agencies.new(@lang, @labels, issuer)
-        docidentifier(scope, prefix, mandate, docyear)
+        set(:docidentifier, @agencies.docidentifier(scope, prefix, mandate, docyear, get[:docnumber]))
         set(:issuer, issuer)
         set(:standard_class, @agencies.standard_class(scope, prefix, mandate))
         set(:standard_agency, @agencies.standard_agency(scope, prefix, mandate))

@@ -123,6 +123,7 @@ RSpec.describe Asciidoctor::Gb do
       :script: Latn
       :scope: sector
       :prefix: NY
+      :docnumber: 123
       :technical-committee-type: Governance
       :technical-committee: Technical
 
@@ -138,7 +139,7 @@ RSpec.describe Asciidoctor::Gb do
 
          </title>
          <docidentifier>
-           <project-number/>
+           <project-number>NY 123</project-number>
          </docidentifier>
          <contributor>
            <role type="author"/>

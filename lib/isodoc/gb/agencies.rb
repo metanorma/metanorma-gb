@@ -315,6 +315,27 @@ module IsoDoc
         end
       end
 
+      SCOPEPFX = {
+        :local => "DB",
+        "social-group".to_sym => "T",
+        :enterprise => "Q",
+      }.freeze
+
+      def docidentifier(scope, prefix, mandate, docyear, docnum)
+        dn = case scope
+             when "local"
+               "#{SCOPEPFX[scope.to_sym]}#{mandate_suffix(prefix, mandate)}/"\
+                 "#{docnum}".gsub(%r{/([TZ])/}, "/\\1 ")
+             when "social-group", "enterprise"
+               "#{mandate_suffix(SCOPEPFX[scope.to_sym], mandate)}/"\
+                 "#{prefix} #{docnum}"
+             else
+               "#{mandate_suffix(prefix, mandate)}&#x2002;#{docnum}"
+             end
+        dn += "&mdash;#{docyear}" if docyear
+        dn
+      end
+
       def gbtype_validate(root)
         scope = root.at("//gbscope")&.text
         prefix = root.at("//gbprefix")&.text

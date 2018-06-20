@@ -30,6 +30,7 @@ RSpec.describe Asciidoctor::Gb do
       :title-intro-zh: Title 4
       :title-main-zh: Title 5
       :title-part-zh: Title 6
+      :docnumber: 123
       :nodoc:
       :novalid:
 
@@ -48,7 +49,7 @@ RSpec.describe Asciidoctor::Gb do
            <title-part language="zh" format="plain">Title 6</title-part>
          </title>
          <docidentifier>
-           <project-number/>
+           <project-number>GB 123</project-number>
          </docidentifier>
          <date type="published">
            <on>2018-01-01</on>
@@ -151,6 +152,7 @@ RSpec.describe Asciidoctor::Gb do
       :iso-standard: ISO 1012, Televisual Frequencies
       :equivalence: nonequivalent
       :prefix: T/AAA
+      :docnumber: 123
       :language: en
       :script: Latn
       :nodoc:
@@ -167,7 +169,7 @@ RSpec.describe Asciidoctor::Gb do
 
          </title>
          <docidentifier>
-           <project-number/>
+           <project-number>T/AAA 123</project-number>
          </docidentifier>
          <contributor>
            <role type="author"/>
@@ -246,6 +248,7 @@ RSpec.describe Asciidoctor::Gb do
       Author
       :docfile: test.adoc
       :prefix: Q/Z/BBB
+      :docnumber: 123
       :nodoc:
       :novalid:
 
@@ -260,7 +263,7 @@ RSpec.describe Asciidoctor::Gb do
 
          </title>
          <docidentifier>
-           <project-number/>
+           <project-number>Q/BBB 123</project-number>
          </docidentifier>
          <contributor>
            <role type="author"/>
@@ -333,6 +336,7 @@ RSpec.describe Asciidoctor::Gb do
       Author
       :docfile: test.adoc
       :mandate: guide
+      :docnumber: 123
       :nodoc:
       :novalid:
       :language: en
@@ -349,7 +353,7 @@ RSpec.describe Asciidoctor::Gb do
 
          </title>
          <docidentifier>
-           <project-number/>
+           <project-number>GB/Z 123</project-number>
          </docidentifier>
          <contributor>
            <role type="author"/>
@@ -423,6 +427,7 @@ RSpec.describe Asciidoctor::Gb do
       :docfile: test.adoc
       :scope: local
       :prefix: DB81/T
+      :docnumber: 123
       :nodoc:
       :novalid:
       :language: en
@@ -439,7 +444,7 @@ RSpec.describe Asciidoctor::Gb do
 
          </title>
          <docidentifier>
-           <project-number/>
+           <project-number>DB81/123</project-number>
          </docidentifier>
          <contributor>
            <role type="author"/>
@@ -513,6 +518,7 @@ RSpec.describe Asciidoctor::Gb do
       :docfile: test.adoc
       :scope: local
       :prefix: GB/Z
+      :docnumber: 123
       :nodoc:
       :novalid:
 
@@ -527,7 +533,7 @@ RSpec.describe Asciidoctor::Gb do
 
          </title>
          <docidentifier>
-           <project-number/>
+           <project-number>DBGB/123</project-number>
          </docidentifier>
          <contributor>
            <role type="author"/>
@@ -601,6 +607,7 @@ RSpec.describe Asciidoctor::Gb do
       :docfile: test.adoc
       :scope: local
       :prefix: GB
+      :docnumber: 123
       :nodoc:
       :novalid:
 
@@ -615,7 +622,7 @@ RSpec.describe Asciidoctor::Gb do
 
          </title>
          <docidentifier>
-           <project-number/>
+           <project-number>DBGB/123</project-number>
          </docidentifier>
          <contributor>
            <role type="author"/>

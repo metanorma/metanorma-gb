@@ -11,7 +11,6 @@ module IsoDoc
     # schema encapsulation of the document for validation
 
     class WordConvert < IsoDoc::WordConvert
-      #include IsoDoc::WordConvertModule
       def default_fonts(options)
         script = options[:script] || "Hans"
         b = options[:bodyfont] ||
@@ -106,6 +105,7 @@ module IsoDoc
         system "cp #{@common.fileloc(File.join('html', 'blank.png'))} blank.png"
         @files_to_delete << "blank.png"
         @files_to_delete << "header.html"
+        "header.html"
       end
 
       def header_strip(h)
