@@ -1,8 +1,8 @@
 require "spec_helper"
 
-RSpec.describe IsoDoc::Gb::Convert do
+RSpec.describe IsoDoc::Gb::HtmlConvert do
   it "cleans up formulas" do
-    expect(IsoDoc::Gb::Convert.new({}).cleanup(Nokogiri::XML(<<~"INPUT")).to_s).to be_equivalent_to <<~"OUTPUT"
+    expect(IsoDoc::Gb::HtmlConvert.new({}).cleanup(Nokogiri::XML(<<~"INPUT")).to_s).to be_equivalent_to <<~"OUTPUT"
     <html>
     <body>
       <table class="dl">
@@ -23,7 +23,7 @@ RSpec.describe IsoDoc::Gb::Convert do
   end
 
   it "cleans up examples" do
-    expect(IsoDoc::Gb::Convert.new({}).cleanup(Nokogiri::XML(<<~"INPUT")).to_s).to be_equivalent_to <<~"OUTPUT"
+    expect(IsoDoc::Gb::HtmlConvert.new({}).cleanup(Nokogiri::XML(<<~"INPUT")).to_s).to be_equivalent_to <<~"OUTPUT"
     <html>
     <body>
       <table class="Note">
@@ -44,7 +44,7 @@ RSpec.describe IsoDoc::Gb::Convert do
   end
 
   it "cleans up titles" do
-    gbc = IsoDoc::Gb::Convert.new({})
+    gbc = IsoDoc::Gb::HtmlConvert.new({})
     docxml, filename, dir = gbc.convert_init(<<~"INPUT", "test", true)
     <gb-standard xmlns="http://riboseinc.com/gbstandard">
 <bibdata>
@@ -75,7 +75,7 @@ RSpec.describe IsoDoc::Gb::Convert do
   end
 
   it "cleans up terms" do
-    gbc = IsoDoc::Gb::Convert.new({})
+    gbc = IsoDoc::Gb::HtmlConvert.new({})
     docxml, filename, dir = gbc.convert_init(<<~"INPUT", "test", true)
     <gb-standard xmlns="http://riboseinc.com/gbstandard">
 <bibdata>
