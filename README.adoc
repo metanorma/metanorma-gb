@@ -4,7 +4,9 @@ image:https://img.shields.io/gem/v/asciidoctor-gb.svg["Gem Version", link="https
 image:https://img.shields.io/travis/riboseinc/asciidoctor-gb/master.svg["Build Status", link="https://travis-ci.org/riboseinc/asciidoctor-gb"]
 image:https://codeclimate.com/github/riboseinc/asciidoctor-gb/badges/gpa.svg["Code Climate", link="https://codeclimate.com/github/riboseinc/asciidoctor-gb"]
 
-Ruby gem for generating
+== Functionality
+
+This gem generates
 https://en.wikipedia.org/wiki/Guobiao_standards[Guibiao standards]
 (Chinese national standards), using AsciiDoc.
 
@@ -24,9 +26,64 @@ The gem can also be used to generate Chinese local or sector standards, which
 have the same format; the gem formats the title page to have the correct
 metadata displayed.
 
-The gem generates Word and HTML output. The Word output of the gem is strictly
+The following outputs are generated.
+* (Optional) An HTML preview generated directly from the Asciidoctor document,
+using native Asciidoc formatting.
+** http://asciimath.org[AsciiMathML] is to be used for mathematical formatting.
+The gem uses the https://github.com/asciidoctor/asciimath[Ruby AsciiMath parser],
+which is syntactically stricter than the common MathJax processor;
+if you do not get expected results, try bracketting terms your in AsciiMathML
+expressions.
+* an XML representation of the document, intended as a document model for GB
+International Standards.
+* The XML representation is processed in turn to generate the following outputs
+as end deliverable GB standard drafts.
+** HTML
+** Word
+
+The Word output of the gem is strictly
 aligned to the GB/T 1.1 specification, including the fonts and font sizes
 prescribed, and the measurements for element positioning on the page.
+
+== Usage
+
+The preferred way to invoke this gem is via the `metanorma` script:
+
+[source,console]
+----
+$ metanorma --type gb a.adoc                   # output HTML and DOC
+$ metanorma --type gb --extensions html a.adoc # output just HTML
+$ metanorma --type gb --extensions doc a.adoc  # output just DOC
+$ metanorma --type gb --extensions xml a.adoc  # output GB XML
+----
+
+The gem translates the document into GB XML format, and then
+validates its output against the GB XML document model; errors are
+reported to console against the XML, and are intended for users to
+check that they have provided all necessary components of the
+document.
+
+The gem then converts the XML into HTML and DOC.
+
+The gem can also be invoked directly within asciidoctor, though this is deprecated:
+
+[source,console]
+----
+$ asciidoctor -b gb -r 'asciidoctor-gb' a.adoc  
+----
+
+=== Installation
+
+If you are using a Mac, the https://github.com/riboseinc/metanorma-macos-setup
+repository has instructions on setting up your machine to run Metanorma
+scripts such as this one. You need only run the following in a Terminal console:
+
+[source,console]
+----
+$ bash <(curl -s https://raw.githubusercontent.com/riboseinc/metanorma-macos-setup/master/metanorma-setup)
+$ gem install asciidoctor-gb
+----
+
 
 == Differences from `asciidoctor-iso`
 
