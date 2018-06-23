@@ -13,12 +13,60 @@ GEM
       httpclient (~> 2.8, >= 2.8.3)
       json (>= 1.5.1)
     asciidoctor (1.5.7.1)
+    asciidoctor-csand (0.3.0)
+      asciidoctor (~> 1.5.7)
+      asciidoctor-iso (>= 0.9.0)
+      asciimath
+      htmlentities (~> 4.3.4)
+      image_size
+      isodoc (>= 0.8.0)
+      mime-types
+      nokogiri
+      ruby-jing
+      ruby-xslt
+      thread_safe
+      uuidtools
+    asciidoctor-csd (0.4.0)
+      asciidoctor-iso (>= 0.9.0)
+      isodoc (>= 0.8.0)
     asciidoctor-iso (0.9.0)
       asciidoctor (~> 1.5.7)
       iso-bib-item (~> 0.1.6)
       isobib (~> 0.1.6)
       isodoc (>= 0.8)
       ruby-jing
+    asciidoctor-m3d (0.3.1)
+      asciidoctor (~> 1.5.7)
+      asciidoctor-iso (>= 0.9.0)
+      asciimath
+      htmlentities (~> 4.3.4)
+      image_size
+      isodoc (>= 0.8.0)
+      mime-types
+      nokogiri
+      ruby-jing
+      ruby-xslt
+      thread_safe
+      uuidtools
+    asciidoctor-rfc (0.9.0)
+      asciidoctor (~> 1.5.7)
+      htmlentities (~> 4.3.4)
+      nokogiri
+      ruby-jing
+      thread_safe
+    asciidoctor-rsd (0.3.1)
+      asciidoctor (~> 1.5.7)
+      asciidoctor-iso (>= 0.8.0)
+      asciimath
+      htmlentities (~> 4.3.4)
+      image_size
+      isodoc (>= 0.7.0)
+      mime-types
+      nokogiri
+      ruby-jing
+      ruby-xslt
+      thread_safe
+      uuidtools
     asciimath (1.0.4)
     ast (2.4.0)
     byebug (9.1.0)
@@ -58,7 +106,7 @@ GEM
     htmlentities (4.3.4)
     httpclient (2.8.3)
     image_size (2.0.0)
-    iso-bib-item (0.1.6)
+    iso-bib-item (0.1.7)
       duplicate
       isoics (~> 0.1.6)
       nokogiri
@@ -87,6 +135,15 @@ GEM
       rb-inotify (~> 0.9, >= 0.9.7)
       ruby_dep (~> 1.2)
     lumberjack (1.0.13)
+    metanorma (0.2.2)
+      asciidoctor-csand (>= 0.3.0)
+      asciidoctor-csd (>= 0.4.0)
+      asciidoctor-gb (>= 0.3.0)
+      asciidoctor-iso (>= 0.9.0)
+      asciidoctor-m3d (>= 0.3.1)
+      asciidoctor-rfc (>= 0.9.0)
+      asciidoctor-rsd (>= 0.3.0)
+      isodoc (>= 0.8.0)
     method_source (0.9.0)
     mime-types (3.1)
       mime-types-data (~> 3.2015)
@@ -171,6 +228,7 @@ DEPENDENCIES
   equivalent-xml (~> 0.6)
   guard (~> 2.14)
   guard-rspec (~> 4.7)
+  metanorma
   rake (~> 12.0)
   rspec (~> 3.6)
   rubocop (~> 0.50)

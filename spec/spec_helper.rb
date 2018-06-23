@@ -10,6 +10,8 @@ require "asciidoctor-gb"
 require "rspec/matchers"
 require "equivalent-xml"
 require "htmlentities"
+require "metanorma"
+require "metanorma/gb"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
