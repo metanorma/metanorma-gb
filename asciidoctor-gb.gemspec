@@ -27,6 +27,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency "asciidoctor-iso", ">= 0.9.0"
+  spec.add_dependency "gbbib"
   spec.add_dependency "isodoc", ">= 0.8.0"
   spec.add_dependency "twitter_cldr"
 

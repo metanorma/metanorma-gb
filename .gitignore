@@ -1,0 +1,9 @@
+coverage/
+.byebug_history
+.rspec_status
+.tmp.xml
+gb-issuer-default.gif
+gb.css
+htmlstyle.css
+test.html
+test.xml
