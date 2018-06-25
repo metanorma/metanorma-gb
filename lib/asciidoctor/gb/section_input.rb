@@ -59,16 +59,27 @@ module Asciidoctor
 
       # @param xml [Nokogiri::XML::Builder]
       # @param code [String]
-      def fetch_ref(xml, code, _year, **opts)
-        warn "fetching #{code}..."
-        result = Gbbib::GbBibliography.search code
-        hit = result.first
-        if hit&.title&.match(%r{^[^\s]+\s[\d-]+}).to_s == code
-          # hit.fetch.to_xml xml, opts
-          xml.parent.add_child hit.fetch.to_xml(xml, opts)
-          xml
-        end
-      end
+      #def fetch_ref(xml, code, _year, **opts)
+        #warn "fetching #{code}..."
+        #result = Gbbib::GbBibliography.search code
+        #hit = result.first
+        #if hit&.title&.match(%r{^[^\s]+\s[\d-]+}).to_s == code
+          ## hit.fetch.to_xml xml, opts
+          #xml.parent.add_child hit.fetch.to_xml(xml, opts)
+          #xml
+        #end
+      #end
+
+      #def fetch_ref1(code, year, opts)
+        #id = iso_id(code, year, opts[:all_parts])
+        #return nil if @bibliodb.nil? # signals we will not be using isobib
+        #@bibliodb[id] = Isobib::IsoBibliography.isobib_get(code, year, opts) unless @bibliodb[id]
+        #@local_bibliodb[id] = @bibliodb[id] if !@local_bibliodb.nil? &&
+          #!@local_bibliodb[id]
+        #return @local_bibliodb[id] unless @local_bibliodb.nil?
+        #@bibliodb[id]
+      #end
+
 
 =begin
       # spec of permissible section sequence
