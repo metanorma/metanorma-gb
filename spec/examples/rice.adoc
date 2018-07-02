@@ -12,7 +12,7 @@
 :title-main-zh: 规格和测试方法
 :title-part-zh: 白饭
 :doctype: international-standard
-:docstage: 30
+:docstage: 60
 :docsubstage: 92
 :technical-committee-number: 34
 :technical-committee: Food products
