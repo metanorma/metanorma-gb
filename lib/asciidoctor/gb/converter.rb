@@ -7,7 +7,7 @@ require_relative "./section_input.rb"
 require_relative "./front.rb"
 require_relative "./validate.rb"
 require "pp"
-require "byebug"
+# require "byebug"
 
 module Asciidoctor
   module Gb
@@ -135,7 +135,7 @@ module Asciidoctor
         en.traverse do |c|
           c.text? && c.content = c.text.gsub(HAN_TEXT, "").gsub(/^\s*/, "")
         end
-        zh.traverse do |c| 
+        zh.traverse do |c|
           c.text? && c.content = c.text.gsub(ROMAN_TEXT, "").gsub(/^\s*/, "")
         end
       end
@@ -217,7 +217,7 @@ module Asciidoctor
         owner = xmldoc.at("//contributor[role/@type = 'issuer']/organization/name")
         owner.content = agency
         xmldoc.xpath("//gbcommittee").each do |c|
-          xmldoc.at("//bibdata/contributor").next = 
+          xmldoc.at("//bibdata/contributor").next =
             "<contributor><role type='technical-committee'/><organization>"\
             "<name>#{c.text}</name></organization></contributor>"
         end
