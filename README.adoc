@@ -27,6 +27,7 @@ have the same format; the gem formats the title page to have the correct
 metadata displayed.
 
 The following outputs are generated.
+
 * (Optional) An HTML preview generated directly from the Asciidoctor document,
 using native Asciidoc formatting.
 ** http://asciimath.org[AsciiMathML] is to be used for mathematical formatting.
