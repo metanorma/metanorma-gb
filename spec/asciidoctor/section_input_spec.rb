@@ -68,12 +68,12 @@ RSpec.describe Asciidoctor::Gb do
        </clause>
      
        <terms id="_" obligation="normative">
-         <title>Terms and Definitions</title>
+         <title>Terms and definitions</title>
          <term id="_">
          <preferred language="zh">1</preferred> <preferred language="en">Term1</preferred>
        </term>
        </terms>
-       <clause id="_" obligation="normative"><title>Terms and Definitions</title><terms id="_" obligation="normative">
+       <clause id="_" obligation="normative"><title>Terms and definitions</title><terms id="_" obligation="normative">
          <title>Normal Terms</title>
          <term id="_">
          <preferred language="zh">2</preferred> <preferred language="en">Term2</preferred>

@@ -221,7 +221,7 @@ RSpec.describe Asciidoctor::Gb do
     INPUT
     #{BLANK_HDR}
               <sections>
-         <terms id="_" obligation="normative"><title>Terms and Definitions</title>
+         <terms id="_" obligation="normative"><title>Terms and definitions</title>
        <term id="_">
          <preferred language="zh"></preferred> <preferred language="en">Time</preferred>
          <definition><p id="_">This paragraph is extraneous</p></definition>
@@ -254,7 +254,7 @@ RSpec.describe Asciidoctor::Gb do
     INPUT
     #{BLANK_HDR}
               <sections>
-         <terms id="_" obligation="normative"><title>Terms and Definitions</title><p id="_">I am boilerplate</p>
+         <terms id="_" obligation="normative"><title>Terms and definitions</title><p id="_">I am boilerplate</p>
        <ul id="_">
          <li>
            <p id="_">So am I</p>
