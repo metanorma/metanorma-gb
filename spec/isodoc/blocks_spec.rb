@@ -20,7 +20,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
                    <tr>
                      <td valign="top" class="example_label" style="padding:2pt 2pt 2pt 2pt">NOTE:</td>
                      <td valign="top" class="Note">
-         <p class="Note" id="_f06fd0d1-a203-4f3d-a515-0bdba0f8d83f">These results are based on a study carried out on three different types of kernel.</p>
+         <p id="_f06fd0d1-a203-4f3d-a515-0bdba0f8d83f">These results are based on a study carried out on three different types of kernel.</p>
        </td>
                    </tr>
                  </table>
@@ -51,7 +51,7 @@ INPUT
                    <tr>
                      <td valign="top" class="example_label" style="padding:2pt 2pt 2pt 2pt">NOTE:</td>
                      <td valign="top" class="Note">
-         <p class="Note" id="_f06fd0d1-a203-4f3d-a515-0bdba0f8d83f">These results are based on a study carried out on three different types of kernel.</p>
+         <p id="_f06fd0d1-a203-4f3d-a515-0bdba0f8d83f">These results are based on a study carried out on three different types of kernel.</p>
        </td>
                    </tr>
                  </table>
@@ -85,7 +85,7 @@ INPUT
                    <tr>
                      <td valign="top" class="example_label" style="padding:2pt 2pt 2pt 2pt">NOTE  1:</td>
                      <td valign="top" class="Note">
-         <p class="Note" id="_f06fd0d1-a203-4f3d-a515-0bdba0f8d83f">These results are based on a study carried out on three different types of kernel.</p>
+         <p id="_f06fd0d1-a203-4f3d-a515-0bdba0f8d83f">These results are based on a study carried out on three different types of kernel.</p>
        </td>
                    </tr>
                  </table>
@@ -93,7 +93,7 @@ INPUT
                    <tr>
                      <td valign="top" class="example_label" style="padding:2pt 2pt 2pt 2pt">NOTE  2:</td>
                      <td valign="top" class="Note">
-         <p class="Note" id="_f06fd0d1-a203-4f3d-a515-0bdba0f8d83a">These results are based on a study carried out on three different types of kernel.</p>
+         <p id="_f06fd0d1-a203-4f3d-a515-0bdba0f8d83a">These results are based on a study carried out on three different types of kernel.</p>
        </td>
                    </tr>
                  </table>
@@ -125,8 +125,8 @@ INPUT
                    <tr>
                      <td valign="top" class="example_label" style="padding:2pt 2pt 2pt 2pt">NOTE:</td>
                      <td valign="top" class="Note">
-         <p class="Note" id="_f06fd0d1-a203-4f3d-a515-0bdba0f8d83f">These results are based on a study carried out on three different types of kernel.</p>
-         <p class="Note" id="_f06fd0d1-a203-4f3d-a515-0bdba0f8d83a">These results are based on a study carried out on three different types of kernel.</p>
+         <p id="_f06fd0d1-a203-4f3d-a515-0bdba0f8d83f">These results are based on a study carried out on three different types of kernel.</p>
+         <p id="_f06fd0d1-a203-4f3d-a515-0bdba0f8d83a">These results are based on a study carried out on three different types of kernel.</p>
        </td>
                    </tr>
                  </table>
@@ -162,7 +162,7 @@ INPUT
                    <tr>
                      <td valign="top" class="example_label" style="padding:2pt 2pt 2pt 2pt">NOTE:</td>
                      <td valign="top" class="Note">
-           <dl><dt><p class="Note">A</p></dt><dd><p class="Note">B</p></dd></dl>
+           <dl><dt><p>A</p></dt><dd><p>B</p></dd></dl>
            <ul>
            <li>C</li></ul>
        </td>
@@ -330,11 +330,11 @@ INPUT
        <p class="TermNum" id="paddy">1.1</p><p class="Terms" style="text-align:left;">paddy</p><p class="AltTerms" style="text-align:left;">paddy rice</p>
        <p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p>
        <table id="_671a1994-4783-40d0-bc81-987d06ffb74e" class="Note"><tr><td valign="top" class="example_label" style="padding:2pt 2pt 2pt 2pt">Note 1 to entry:</td><td valign="top" class="Note">
-         <p class="Note" id="_19830f33-e46c-42cc-94ca-a5ef101132d5">The starch of waxy rice consists almost entirely of amylopectin. The kernels have a tendency to stick together after cooking.</p>
+         <p id="_19830f33-e46c-42cc-94ca-a5ef101132d5">The starch of waxy rice consists almost entirely of amylopectin. The kernels have a tendency to stick together after cooking.</p>
        </td></tr></table>
        <table id="_671a1994-4783-40d0-bc81-987d06ffb74f" class="Note"><tr><td valign="top" class="example_label" style="padding:2pt 2pt 2pt 2pt">Note 2 to entry:</td><td valign="top" class="Note">
        <ul><li>A</li></ul>
-         <p class="Note" id="_19830f33-e46c-42cc-94ca-a5ef101132d5">The starch of waxy rice consists almost entirely of amylopectin. The kernels have a tendency to stick together after cooking.</p>
+         <p id="_19830f33-e46c-42cc-94ca-a5ef101132d5">The starch of waxy rice consists almost entirely of amylopectin. The kernels have a tendency to stick together after cooking.</p>
        </td></tr></table>
        </div>
                <hr width="25%"/>
