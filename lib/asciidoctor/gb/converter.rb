@@ -3,6 +3,7 @@ require "asciidoctor/iso/converter"
 require "asciidoctor/gb/version"
 require "isodoc/gb/gbconvert"
 require "isodoc/gb/gbwordconvert"
+require "gb_agencies"
 require_relative "./section_input.rb"
 require_relative "./front.rb"
 require_relative "./validate.rb"
@@ -188,7 +189,7 @@ module Asciidoctor
 
       def cleanup(xmldoc)
         lang = xmldoc.at("//language")&.text
-        @agencyclass = IsoDoc::Gb::Agencies.new(lang, {}, "")
+        @agencyclass = GbAgencies::Agencies.new(lang, {}, "")
         super
         contributor_cleanup(xmldoc)
         xmldoc

@@ -1,7 +1,7 @@
 require "isodoc"
 require_relative "gbconvert"
 require_relative "gbcleanup"
-require_relative "agencies"
+require "gb_agencies"
 require_relative "metadata"
 require_relative "gbwordrender"
 
@@ -29,7 +29,7 @@ module IsoDoc
 
       def metadata_init(lang, script, labels)
         @meta = Metadata.new(lang, script, labels)
-                @common = IsoDoc::Gb::Common.new(meta: @meta)
+        @common = IsoDoc::Gb::Common.new(meta: @meta)
       end
 
       def html_doc_path(file)
@@ -46,14 +46,20 @@ module IsoDoc
         @wordintropage = html_doc_path("word_gb_intro.html")
         @ulstyle = "l7"
         @olstyle = "l10"
+        @lang = "zh"
+        @script = "Hans"
       end
 
-            def metadata_init(lang, script, labels)
+      def metadata_init(lang, script, labels)
+        unless ["en", "zh"].include? lang
+          lang = "zh"
+          script = "Hans"
+        end
         @meta = Metadata.new(lang, script, labels)
         @common = IsoDoc::Gb::Common.new(meta: @meta)
       end
 
-            def cleanup(docxml)
+      def cleanup(docxml)
         @cleanup = Cleanup.new(@script, @deprecated_lbl)
         super
         @cleanup.cleanup(docxml)
@@ -127,23 +133,6 @@ module IsoDoc
         @cleanup.title_cleanup(docxml.at('//div[@class="WordSection2"]'))
         docxml
       end
-
-      #def word_intro(docxml)
-      #super
-      #title_cleanup(docxml.at('//div[@class="WordSection2"]'))
-      #end
-
-=begin
-      def toWord(result, filename, dir)
-        result = populate_template(result, :word)
-        result = from_xhtml(word_cleanup(to_xhtml(result)))
-        Html2Doc.process(result, filename: filename,
-                         stylesheet: @wordstylesheet,
-                         header_file: "header.html", dir: dir,
-                         asciimathdelims: [@openmathdelim, @closemathdelim],
-                         liststyles: {ul: "l7", ol: "l10"})
-      end
-=end
 
       def html_doc_path(file)
         File.join(File.dirname(__FILE__), File.join("html", file))

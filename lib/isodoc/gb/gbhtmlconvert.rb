@@ -1,5 +1,5 @@
 require_relative "gbconvert"
-require_relative "agencies"
+require "gb_agencies"
 require_relative "gbcleanup"
 require_relative "metadata"
 require_relative "gbhtmlrender"
@@ -33,9 +33,15 @@ module IsoDoc
         @htmlcoverpage = html_doc_path("html_gb_titlepage.html")
         @htmlintropage = html_doc_path("html_gb_intro.html")
         @scripts = html_doc_path("scripts.html")
+        @lang = "zh"
+        @script = "Hans"
       end
 
       def metadata_init(lang, script, labels)
+        unless ["en", "zh"].include? lang
+          lang = "zh"
+          script = "Hans"
+        end
         @meta = Metadata.new(lang, script, labels)
         @common = IsoDoc::Gb::Common.new(meta: @meta)
       end

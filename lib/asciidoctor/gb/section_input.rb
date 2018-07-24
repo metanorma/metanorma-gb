@@ -70,17 +70,6 @@ module Asciidoctor
         #end
       #end
 
-      #def fetch_ref1(code, year, opts)
-        #id = iso_id(code, year, opts[:all_parts])
-        #return nil if @bibdb.nil? # signals we will not be using isobib
-        #@bibdb[id] = Isobib::IsoBibliography.get(code, year, opts) unless @bibdb[id]
-        #@local_bibdb[id] = @bibdb[id] if !@local_bibdb.nil? &&
-          #!@local_bibdb[id]
-        #return @local_bibdb[id] unless @local_bibdb.nil?
-        #@bibdb[id]
-      #end
-
-
 =begin
       # spec of permissible section sequence
       SEQ = [

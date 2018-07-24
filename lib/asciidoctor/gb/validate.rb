@@ -13,7 +13,7 @@ module Asciidoctor
         bilingual_terms_validate(doc.root)
         issuer_validate(doc.root)
         prefix_validate(doc.root)
-        @agencyclass.gbtype_validate(doc.root)
+        @agencyclass.gbtype_validate(doc.root.at("//gbscope")&.text, doc.root.at("//gbprefix")&.text)
       end
 
       def prefix_validate(root)

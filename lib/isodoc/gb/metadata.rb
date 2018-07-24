@@ -135,7 +135,7 @@ module IsoDoc
         docyear = isoxml&.at(ns("//copyright/from"))&.text
         issuer = isoxml&.at(ns("//bibdata/contributor[role/@type = 'issuer']/"\
                                "organization/name"))&.text || "GB"
-        @agencies = Agencies.new(@lang, @labels, issuer)
+        @agencies = GbAgencies::Agencies.new(@lang, @labels, issuer)
         set(:docidentifier, @agencies.docidentifier(scope, prefix, mandate, docyear, get[:docnumber]))
         set(:issuer, issuer)
         set(:standard_class, @agencies.standard_class(scope, prefix, mandate))
