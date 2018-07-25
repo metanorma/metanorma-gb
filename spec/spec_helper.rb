@@ -46,6 +46,18 @@ ASCIIDOC_BLANK_HDR = <<~"HDR"
 
 HDR
 
+ISOBIB_BLANK_HDR = <<~"HDR"
+      = Document title
+      Author
+      :docfile: test.adoc
+      :nodoc:
+      :novalid:
+      :no-isobib-cache:
+      :language: en
+      :script: Latn
+
+HDR
+
 VALIDATING_BLANK_HDR = <<~"HDR"
       = Document title
       Author
@@ -141,3 +153,29 @@ HTML_HDR = <<~HDR
            <br/>
            <div class="main-section">
 HDR
+
+GBT20223 = <<~OUTPUT
+<bibitem type="standard" id="GB/T20223">
+  <title format="text/plain" language="zh" script="Hans">棉短绒</title>
+  <title format="text/plain" language="en" script="Latn">Cotton linter</title>
+  <uri type="src">http://www.std.gov.cn/gb/search/gbDetailed?id=5DDA8BA00FC618DEE05397BE0A0A95A7</uri>
+  <docidentifier>GB/T 20223</docidentifier>
+  <date type="published">
+    <on>2006</on>
+  </date>
+  <contributor>
+    <role type="publisher"/>
+    <organization>
+      <name>GB/T</name>
+      <abbreviation>GB/T</abbreviation>
+    </organization>
+  </contributor>
+  <language>zh</language>
+  <script>Hans</script>
+  <status>obsoleted</status>
+  <ics>
+    <code>59.060.10</code>
+    <text>Natural fibres</text>
+  </ics>
+</bibitem>
+      OUTPUT

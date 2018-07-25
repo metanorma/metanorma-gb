@@ -169,7 +169,7 @@ module Asciidoctor
         "YD|YS|YY|YZ|ZY|GB|GBZ|GJB|GBn|GHZB|GWKB|GWPB|JJF|JJG|Q|T)(/Z|/T)?)"
 
       ISO_REF = %r{^<ref\sid="(?<anchor>[^"]+)">
-      \[(?<code>(ISO|IEC|#{GBCODE})[^0-9]*\s[0-9-]+)(:(?<year>[0-9]+))?\]</ref>,?\s
+      \[(?<code>(ISO|IEC|#{GBCODE})[^0-9]*\s[0-9-]+?)([:-](?<year>[0-9]+))?\]</ref>,?\s
       (?<text>.*)$}xm
 
       ISO_REF_NO_YEAR = %r{^<ref\sid="(?<anchor>[^"]+)">
@@ -185,6 +185,16 @@ module Asciidoctor
         matched2 = ISO_REF_NO_YEAR.match item
         matched3 = ISO_REF_ALL_PARTS.match item
         [matched, matched2, matched3]
+      end
+
+      def fetch_ref(xml, code, year, **opts)
+        code = "GB Standard " + code if /^#{GBCODE}[^A-Za-z]/.match? code
+        hit = @bibdb&.fetch(code, year, opts)
+        return nil if hit.nil?
+        xml.parent.add_child(hit.to_xml)
+        xml
+      rescue Algolia::AlgoliaProtocolError
+        nil # Render reference without an Internet connection.
       end
 
       def cleanup(xmldoc)

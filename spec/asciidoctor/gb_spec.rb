@@ -364,5 +364,31 @@ RSpec.describe Asciidoctor::Gb do
        </gb-standard>
     OUTPUT
   end
-  
+
+    it "fetches simple GB reference" do
+    mock_gbbib_get_123
+    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
+      #{ISOBIB_BLANK_HDR}
+      [bibliography]
+      == Normative References
+
+      * [[[iso123,GB/T 20223-2006]]] _Standard_
+    INPUT
+      #{BLANK_HDR}
+      <sections>
+             </sections><bibliography><references id="_" obligation="informative">
+         <title>Normative References</title>
+    #{GBT20223.sub(%{id="GB/T20223"}, %{id="iso123"})}
+       </references></bibliography>
+       </iso-standard>
+    OUTPUT
+  end
+
+    private
+
+    def mock_gbbib_get_123
+            expect(Gbbib::GbBibliography).to receive(:get).with("GB/T 20223", "2006", {}) do
+      IsoBibItem.from_xml(GBT20223)
+    end
+    end
 end
