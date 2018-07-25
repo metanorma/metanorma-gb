@@ -35,7 +35,8 @@ RSpec.describe Metanorma::Gb::Processor do
   it "generates HTML from IsoDoc XML" do
     system "rm -f test.xml"
     processor.output(<<~"INPUT", "test.html", :html)
-               <gb-standard xmlns="http://riboseinc.com/isoxml">
+        <gb-standard xmlns="http://riboseinc.com/isoxml">
+               <bibdata> <language>en</language> <script>Latn</script> </bibdata>
        <sections>
        <terms id="H" obligation="normative"><title>Terms, Definitions, Symbols and Abbreviated Terms</title>
          <term id="J">

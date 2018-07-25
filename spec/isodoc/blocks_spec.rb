@@ -5,6 +5,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
                   expect(IsoDoc::Gb::HtmlConvert.new({}).convert("test", <<~"INPUT", true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>")).to be_equivalent_to <<~"OUTPUT"
 
         <gb-standard xmlns="http://riboseinc.com/gbstandard">
+                       <bibdata> <language>en</language> <script>Latn</script> </bibdata>
     <preface><foreword>
     <note>
   <p id="_f06fd0d1-a203-4f3d-a515-0bdba0f8d83f">These results are based on a study carried out on three different types of kernel.</p>
@@ -36,6 +37,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
   it "processes labelled notes" do
                   expect(IsoDoc::Gb::HtmlConvert.new({}).convert("test", <<~"INPUT", true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>")).to be_equivalent_to <<~"OUTPUT"
         <gb-standard xmlns="http://riboseinc.com/gbstandard">
+                       <bibdata> <language>en</language> <script>Latn</script> </bibdata>
     <preface><foreword>
     <note id="note1">
   <p id="_f06fd0d1-a203-4f3d-a515-0bdba0f8d83f">These results are based on a study carried out on three different types of kernel.</p>
@@ -67,6 +69,7 @@ INPUT
   it "processes sequences of notes" do
                   expect(IsoDoc::Gb::HtmlConvert.new({}).convert("test", <<~"INPUT", true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>")).to be_equivalent_to <<~"OUTPUT"
         <gb-standard xmlns="http://riboseinc.com/gbstandard">
+                       <bibdata> <language>en</language> <script>Latn</script> </bibdata>
     <preface><foreword>
     <note id="note1">
   <p id="_f06fd0d1-a203-4f3d-a515-0bdba0f8d83f">These results are based on a study carried out on three different types of kernel.</p>
@@ -109,6 +112,7 @@ INPUT
   it "processes multi-para notes" do
                   expect(IsoDoc::Gb::HtmlConvert.new({}).convert("test", <<~"INPUT", true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>")).to be_equivalent_to <<~"OUTPUT"
         <gb-standard xmlns="http://riboseinc.com/gbstandard">
+                       <bibdata> <language>en</language> <script>Latn</script> </bibdata>
     <preface><foreword>
     <note>
   <p id="_f06fd0d1-a203-4f3d-a515-0bdba0f8d83f">These results are based on a study carried out on three different types of kernel.</p>
@@ -142,6 +146,7 @@ INPUT
   it "processes non-para notes" do
                   expect(IsoDoc::Gb::HtmlConvert.new({}).convert("test", <<~"INPUT", true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>")).to be_equivalent_to <<~"OUTPUT"
         <gb-standard xmlns="http://riboseinc.com/gbstandard">
+                       <bibdata> <language>en</language> <script>Latn</script> </bibdata>
     <preface><foreword>
     <note>
     <dl>
@@ -180,6 +185,7 @@ INPUT
   it "processes examples" do
                   expect(IsoDoc::Gb::HtmlConvert.new({}).convert("test", <<~"INPUT", true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>")).to be_equivalent_to <<~"OUTPUT"
         <gb-standard xmlns="http://riboseinc.com/gbstandard">
+                       <bibdata> <language>en</language> <script>Latn</script> </bibdata>
     <preface><foreword>
     <example id="samplecode">
   <p>Hello</p>
@@ -212,6 +218,7 @@ INPUT
   it "processes sequences of examples" do
                   expect(IsoDoc::Gb::HtmlConvert.new({}).convert("test", <<~"INPUT", true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>")).to be_equivalent_to <<~"OUTPUT"
         <gb-standard xmlns="http://riboseinc.com/gbstandard">
+                       <bibdata> <language>en</language> <script>Latn</script> </bibdata>
     <preface><foreword>
     <example id="samplecode">
   <p>Hello</p>
@@ -254,6 +261,7 @@ INPUT
   it "processes formulae" do
                   expect(IsoDoc::Gb::HtmlConvert.new({}).convert("test", <<~"INPUT", true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>")).to be_equivalent_to <<~"OUTPUT"
         <gb-standard xmlns="http://riboseinc.com/gbstandard">
+                       <bibdata> <language>en</language> <script>Latn</script> </bibdata>
     <preface><foreword>
     <formula id="_be9158af-7e93-4ee2-90c5-26d31c181934">
   <stem type="AsciiMath">r = 1 %</stem>
@@ -297,6 +305,7 @@ INPUT
     it "processes term notes" do
                   expect(IsoDoc::Gb::HtmlConvert.new({}).convert("test", <<~"INPUT", true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>")).to be_equivalent_to <<~"OUTPUT"
         <gb-standard xmlns="http://riboseinc.com/gbstandard">
+                       <bibdata> <language>en</language> <script>Latn</script> </bibdata>
     <sections>
     <terms id="_terms_and_definitions" obligation="normative"><title>Terms and Definitions</title>
 

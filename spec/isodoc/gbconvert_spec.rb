@@ -5,6 +5,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
               expect(IsoDoc::Gb::HtmlConvert.new({}).convert("test", <<~"INPUT", true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>")).to be_equivalent_to <<~"OUTPUT"
 
             <gb-standard xmlns="http://riboseinc.com/gbstandard">
+                           <bibdata> <language>en</language> <script>Latn</script> </bibdata>
     <preface><foreword>
   <p id="_f06fd0d1-a203-4f3d-a515-0bdba0f8d83f">
   <eref bibitemid="ISO712"/>
@@ -117,6 +118,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
               expect(IsoDoc::Gb::HtmlConvert.new({}).convert("test", <<~"INPUT", true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>")).to be_equivalent_to <<~"OUTPUT"
 
             <gb-standard xmlns="http://riboseinc.com/gbstandard">
+                           <bibdata> <language>en</language> <script>Latn</script> </bibdata>
     <preface><foreword>
   <p id="_f06fd0d1-a203-4f3d-a515-0bdba0f8d83f">
   <string script="Hant"><em>Hello</em></string>
