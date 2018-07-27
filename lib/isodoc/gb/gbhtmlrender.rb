@@ -188,9 +188,11 @@ module IsoDoc
       end
 
       def term_defs_boilerplate(div, source, term, preface)
-        (source.empty? && term.nil?) and div << @no_terms_boilerplate or
-          div << term_defs_boilerplate_cont(source, term)
-        div << @term_def_boilerplate unless preface
+        unless preface
+          (source.empty? && term.nil?) and div << @no_terms_boilerplate or
+            div << term_defs_boilerplate_cont(source, term)
+        end
+        #div << @term_def_boilerplate unless preface
       end
 
       def reference_names(ref)
