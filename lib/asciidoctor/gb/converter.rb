@@ -51,16 +51,30 @@ module Asciidoctor
         )
       end
 
+      def html_compliant_converter(node)
+        node.nil? ? IsoDoc::Gb::HtmlConvert.new({}) :
+          IsoDoc::Gb::HtmlConvert.new(
+            script: node.attr("script"),
+            bodyfont: node.attr("body-font"),
+            headerfont: node.attr("header-font"),
+            monospacefont: node.attr("monospace-font"),
+            titlefont: node.attr("title-font"),
+            i18nyaml: node.attr("i18nyaml"),
+            scope: node.attr("scope"),
+            compliant: true,
+        )
+      end
+
       def doc_converter(node)
         node.nil? ? IsoDoc::Gb::WordConvert.new({}) :
-        IsoDoc::Gb::WordConvert.new(
-          script: node.attr("script"),
-          bodyfont: node.attr("body-font"),
-          headerfont: node.attr("header-font"),
-          monospacefont: node.attr("monospace-font"),
-          titlefont: node.attr("title-font"),
-          i18nyaml: node.attr("i18nyaml"),
-          scope: node.attr("scope"),
+          IsoDoc::Gb::WordConvert.new(
+            script: node.attr("script"),
+            bodyfont: node.attr("body-font"),
+            headerfont: node.attr("header-font"),
+            monospacefont: node.attr("monospace-font"),
+            titlefont: node.attr("title-font"),
+            i18nyaml: node.attr("i18nyaml"),
+            scope: node.attr("scope"),
         )
       end
 
@@ -86,6 +100,8 @@ module Asciidoctor
         unless node.attr("nodoc") || !node.attr("docfile")
           filename = node.attr("docfile").gsub(/\.adoc$/, "").gsub(%r{^.*/}, "")
           File.open(filename + ".xml", "w") { |f| f.write(ret) }
+          html_compliant_converter(node).convert(filename + ".xml")
+          system "mv #{filename}.html #{filename}_compliant.html"
           html_converter(node).convert(filename + ".xml")
           doc_converter(node).convert(filename + ".xml")
         end
@@ -169,7 +185,7 @@ module Asciidoctor
         "YD|YS|YY|YZ|ZY|GB|GBZ|GJB|GBn|GHZB|GWKB|GWPB|JJF|JJG|Q|T)(/Z|/T)?)"
 
       ISO_REF = %r{^<ref\sid="(?<anchor>[^"]+)">
-      \[(?<code>(ISO|IEC|#{GBCODE})[^0-9]*\s[0-9-]+?)([:-](?<year>[0-9]+))?\]</ref>,?\s
+      \[(?<code>(ISO|IEC|#{GBCODE})[^0-9]*\s[0-9-]+?)([:-](?<year>(19|20)[0-9][0-9]))?\]</ref>,?\s
       (?<text>.*)$}xm
 
       ISO_REF_NO_YEAR = %r{^<ref\sid="(?<anchor>[^"]+)">

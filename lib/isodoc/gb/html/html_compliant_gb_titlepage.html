@@ -1,14 +1,31 @@
-    <div id='toggle'> <span>•</span> </div>
+<div class="document-stage-band" id="{{ status | downcase }}-band">
+<p class="document-stage">{{ status }}</p> 
+    </div>
 
+    <div class="document-type-band" id="{{ doctype | downcase}}-band">
+      <p class="document-type">{{ doctype }}</p>
+    </div>
+
+<div id='toggle'> <span>•</span> </div>
+
+<header>
+<div class="title-section">
+<div class="coverpage">
+                  <div class="coverpage-header">
 
 
   <div class="coverpage-category">
-    <span class="category-1">ICS {{ libraryid_ics }} </span>
-    <span class="category-2">{{ libraryid_ccs }}</span>
+    <span class="category-1">{{ libraryid_ccs }}</span>
+    <span class="category-2">ICS {{ libraryid_ics }} </span>
   </div>
 
   <div class="coverpage-logo">
     <div class="coverpage-logo-gb-img">{{ standard_logo }}</div>
+  </div>
+
+  <div class="coverpage-logo-header">
+                                        <div>
+                                        <span class="coverpage-logo-text">
 
     <span class="coverpage-logo-text">{{ standard_class }}</span>
 
@@ -17,7 +34,6 @@
   <div class="coverpage-doc-identity-first">
     <div class="coverpage_docnumber">
       <span class="docnumber">{{ docidentifier }}</span>
-      <span class="docnumber-separator">
       {{ draftinfo }}
     {%- if isostandard and gbequivalence == "IDT" -%}
        /<span class="docnumber">{{ isostandard }}</span>
@@ -35,8 +51,12 @@
     {% endif %}
     </div>
   </div>
+  </div>
+                  </div>
+</div>
 
-  <hr/>
+                <div class="coverpage-banner">
+
 
   <div class="coverpage-doc-identity-second">
     <div class="coverpage-title-zh">
@@ -51,7 +71,16 @@
       <span class="title-second">{{ docsubtitleen }}</span>
       <span class="title-third">{{ docpartitleen }}</span>
     </div>
+  </div>
 
+  <div class="coverpage-dates">
+                          <span class="date-publish">{{ labelled_publisheddate }}</span>
+                          <span class="date-active">{{ labelled_implementeddate }}</span>
+                        </div>
+                </div>
+
+
+  <div class="coverpage-footer">
     <!-- for local standards (DB, DB/T), no relation to ISO standards -->
     <!-- if related to ISO standards -->
     {% if isostandard %}
@@ -66,7 +95,6 @@
       <span class="closeparen">）</span>
     </div>
     {% endif %}
-  </div>
 
   <div class="coverpage-stage-block" lang="{{ language }}">
     {% if stage and stage < 60 %}
@@ -82,13 +110,8 @@
     {% endif %}
   </div>
 
-  <div class="coverpage-dates">
-    <span class="date-publish">{{ labelled_publisheddate }}</span>
-    <span class="date-active">{{ labelled_implementeddate }}</span>
-  </div>
-
   <div class="coverpage_footer">
     {{ standard_agency_formatted }}
   </div>
-
-
+  </div>
+</header>

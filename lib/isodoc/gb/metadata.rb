@@ -91,6 +91,7 @@ module IsoDoc
           abbr = stage_abbrev_cn(docstatus.text, isoxml.at(ns("//status/iteration")),
                                  isoxml.at(ns("//version/draft")))
           set(:stageabbr, abbr)
+          set(:status, STAGE_ABBRS[docstatus.text.to_sym])
         end
       end
 
@@ -136,7 +137,8 @@ module IsoDoc
         issuer = isoxml&.at(ns("//bibdata/contributor[role/@type = 'issuer']/"\
                                "organization/name"))&.text || "GB"
         @agencies = GbAgencies::Agencies.new(@lang, @labels, issuer)
-        set(:docidentifier, @agencies.docidentifier(scope, prefix, mandate, docyear, get[:docnumber]))
+        #set(:docidentifier, @agencies.docidentifier(scope, prefix, mandate, docyear, get[:docnumber]))
+        set(:docidentifier, @agencies.docidentifier(nil, nil, nil, docyear, get[:docnumber]))
         set(:issuer, issuer)
         set(:standard_class, @agencies.standard_class(scope, prefix, mandate))
         set(:standard_agency, @agencies.standard_agency(scope, prefix, mandate))

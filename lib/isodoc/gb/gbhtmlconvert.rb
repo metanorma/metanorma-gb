@@ -28,9 +28,13 @@ module IsoDoc
       def initialize(options)
         @common = IsoDoc::Gb::Common.new(options)
         super
-        @htmlstylesheet = generate_css(html_doc_path("htmlstyle.scss"), true, default_fonts(options))
-        @standardstylesheet = generate_css(html_doc_path("gb.scss"), true, default_fonts(options))
-        @htmlcoverpage = html_doc_path("html_gb_titlepage.html")
+        if options[:compliant]
+          @htmlstylesheet = generate_css(html_doc_path("htmlcompliantstyle.scss"), true, default_fonts(options))
+          @htmlcoverpage = html_doc_path("html_compliant_gb_titlepage.html")
+        else
+          @htmlstylesheet = generate_css(html_doc_path("htmlstyle.scss"), true, default_fonts(options))
+          @htmlcoverpage = html_doc_path("html_gb_titlepage.html")
+        end
         @htmlintropage = html_doc_path("html_gb_intro.html")
         @scripts = html_doc_path("scripts.html")
         @lang = "zh"
