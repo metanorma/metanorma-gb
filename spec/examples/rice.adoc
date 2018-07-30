@@ -12,7 +12,7 @@
 :title-main-zh: 规格和测试方法
 :title-part-zh: 白饭
 :doctype: international-standard
-:docstage: 60
+:docstage: 30
 :docsubstage: 92
 :technical-committee-number: 34
 :technical-committee: Food products
@@ -40,6 +40,9 @@
 :library-css: L 80
 :lang: en
 :script: Latn
+:iso-standard: ISO 17301, Cereals and pulses -- Specifications and test methods
+:equivalence: identical
+:obsoletes: GB/T 22080-2008
 
 .前言 
 ISO (the International Organization for Standardization) 

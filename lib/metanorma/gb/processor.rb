@@ -13,6 +13,7 @@ module Metanorma
       def output_formats
         super.merge(
           html: "html",
+          compliant_html: "compliant.html",
           doc: "doc"
         )
       end
@@ -29,6 +30,8 @@ module Metanorma
         case format
         when :html
           IsoDoc::Gb::HtmlConvert.new(options).convert(outname, isodoc_node)
+        when :compliant_html
+          IsoDoc::Gb::HtmlConvert.new(options.merge(compliant: true)).convert(outname, isodoc_node)
         when :doc
           IsoDoc::Gb::WordConvert.new(options).convert(outname, isodoc_node)
         else

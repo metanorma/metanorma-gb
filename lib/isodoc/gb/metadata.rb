@@ -76,6 +76,18 @@ module IsoDoc
         "95": "(Withdrawal)",
       }.freeze
 
+      STATUS_CSS = {
+        "00": "working-draft",
+        "10": "working-draft",
+        "20": "working-draft",
+        "30": "committee-draft",
+        "40": "draft-standard",
+        "50": "draft-standard",
+        "60": "standard",
+        "90": "standard",
+        "95": "obsolete",
+      }
+
       def stage_abbrev_cn(stage, iter, draft)
         return stage_abbrev(stage, iter, draft) if @lang != "zh"
         stage = STAGE_ABBRS_CN[stage.to_sym] || "??"
@@ -91,7 +103,7 @@ module IsoDoc
           abbr = stage_abbrev_cn(docstatus.text, isoxml.at(ns("//status/iteration")),
                                  isoxml.at(ns("//version/draft")))
           set(:stageabbr, abbr)
-          set(:status, STAGE_ABBRS[docstatus.text.to_sym])
+          set(:status, STATUS_CSS[docstatus.text.to_sym])
         end
       end
 
@@ -181,15 +193,15 @@ module IsoDoc
         m = get
         if @lang == "zh"
           set(:labelled_publisheddate, m[:publisheddate] + " " +
-                       @labels["publicationdate_lbl"])
+              @labels["publicationdate_lbl"])
           set(:labelled_implementeddate, m[:implementeddate] + " " +
-                       @labels["implementationdate_lbl"])
+              @labels["implementationdate_lbl"])
         else
           set(:labelled_publisheddate, @labels["publicationdate_lbl"] +
-                       ": " + m[:publisheddate])
+              ": " + m[:publisheddate])
           set(:labelled_implementeddate,
-                       @labels["implementationdate_lbl"] + ": " +
-                       m[:implementeddate])
+              @labels["implementationdate_lbl"] + ": " +
+              m[:implementeddate])
         end
       end
     end

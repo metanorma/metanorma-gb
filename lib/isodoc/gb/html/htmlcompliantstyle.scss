@@ -135,7 +135,7 @@ table {
 
 .title-section {
     padding-left: 4em;
-    padding-top: 2em;
+    padding-top: 10mm;
 }
 
 .prefatory-section {
@@ -235,7 +235,7 @@ span.title {
 
 /* NEW */
 .coverpage-header {
-	height: 65mm;
+	height: 55mm;
 }
 
 /* NEW */
@@ -256,13 +256,13 @@ span.title {
   	display: flex;
 	flex-wrap: wrap;
 	justify-content: flex-end;
-	flex-direction: column;
+	/* flex-direction: column; */
 }
 
 /* NEW */
 .coverpage-logo-gb-img {
   float: right;
-  padding-right: 11mm;
+  padding-right: 0mm;
 }
 
 /* NEW */
@@ -306,7 +306,7 @@ span.title {
 }
 
 span.coverpage-logo-text {
-  font-size: 8mm;
+  font-size: 5mm;
   text-align: right;
   float: right;
   padding-bottom: 9mm;
@@ -318,7 +318,7 @@ span.coverpage-logo-text {
   font-size: 5mm;
   text-align: right;
   padding-right: 5mm;
-  font-weight: bold;
+  /*font-weight: bold; */
   padding-bottom: 1em;
   border-bottom: solid black 1px;
 }
@@ -341,7 +341,7 @@ span.title-second, span.title-third {
   text-align: center;
   width:100%;
   margin-top:2em;
-  display: none;
+  /* display: none; */
 }
 
 /* NEW */
@@ -373,31 +373,39 @@ span.date-active {
 }
 
 
-/*
 .coverpage-doc-relations {
         font-size:10.5pt;
 }
-*/
 
 .coverpage-title-zh {
     font-size: 8mm;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  flex-direction: column;
+  /* flex-direction: column; */
   font-family:$headerfont;
 }
 
 .coverpage-title-zh span {
-	padding-top: 10mm;
+	padding-top: 2mm;
 	font-size: 8mm;
 }
 
 .coverpage-title-en {
-    margin-top: 2em;
+    margin-top: 10mm;
     font-size: 5mm;
- /* display: none; */
+      display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
         font-family:$headerfont;
+}
+
+.coverpage-title-en span {
+  display: block;
+}
+
+.coverpage-title-en .title-first {
+  text-transform: uppercase;
 }
 
 /* NEW */
@@ -419,26 +427,27 @@ span.date-active {
 
 
 
-/*
 .coverpage-iso-relation {
         font-size:14pt;
+        margin-top: 10mm;
+        text-align: center;
 }
 
-*/
 
 .coverpage-dates {
   width:100%;
+  margin-top: 25mm;
   border-bottom: 1px solid #000;
-  font-size: 5mm;
+  font-size: 4.5mm;
   font-family:$headerfont;
 }
 
-.coverpage-footer {
+.coverpage_footer {
     text-align:center;
   font-size: 1em;
   font-weight: 600;
   width: 100%;
-  margin-top: 2em;
+  margin-top: 10mm;
 }
 
 /* NEW */
@@ -461,13 +470,14 @@ span.date-active {
 
 /* NEW */
 .coverpage-banner {
-	padding-top: 40mm;
+  padding-top: 5mm;
   margin-left:auto;
   margin-right:auto;
   width:auto;
   display:flex;
   flex-wrap: wrap;
   justify-content: center;
+  height: 177.5mm;
 }
 
   .copyright {
@@ -859,11 +869,11 @@ p.document-stage {
     height:160px;
 }
 
-#standard-band, #is-band {
+#standard-band {
     background-color: #0ac442;
 }
 
-#standard, #is {
+#standard {
     border-bottom: solid 3px #0ac442;
 }
 

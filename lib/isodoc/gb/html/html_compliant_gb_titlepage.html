@@ -9,7 +9,6 @@
 <div id='toggle'> <span>•</span> </div>
 
 <header>
-<div class="title-section">
 <div class="coverpage">
                   <div class="coverpage-header">
 
@@ -62,22 +61,16 @@
     <div class="coverpage-title-zh">
       <span class="title-first">{{ docmaintitlezh }}</span>
       <span class="title-second">{{ docsubtitlezh }}</span>
-      <span class="title-third"> {{ docpartitlezh }}</span>
+      <span class="title-third"> {{ docparttitlezh }}</span>
     </div>
 
     <!-- for local standards (DB, DB/T), no en title -->
     <div class="coverpage-title-en">
       <span class="title-first">{{ docmaintitleen }}</span>
       <span class="title-second">{{ docsubtitleen }}</span>
-      <span class="title-third">{{ docpartitleen }}</span>
+      <span class="title-third">{{ docparttitleen }}</span>
     </div>
   </div>
-
-  <div class="coverpage-dates">
-                          <span class="date-publish">{{ labelled_publisheddate }}</span>
-                          <span class="date-active">{{ labelled_implementeddate }}</span>
-                        </div>
-                </div>
 
 
   <div class="coverpage-footer">
@@ -98,20 +91,26 @@
 
   <div class="coverpage-stage-block" lang="{{ language }}">
     {% if stage and stage < 60 %}
-    <span class="stage-if-draft">（{{ stageabbr }}）</span>
-    {% if revdate %}
-    <span class="revision-if-draft">（{{completion_date}}：{{ revdate }}）</span>
-    {% endif %}
+    <span class="stage-if-draft">（{{ stageabbr }}）</span> <br/>
     {% if stage == 30 %}
     <div class="coverpage_warning">
     {{ patent_request }}
     </div>
     {% endif %}
+    {% if revdate %}
+    <span class="revision-if-draft">（{{completion_date}} {{ revdate }}）</span>
+    {% endif %}
     {% endif %}
   </div>
+  </div>
+                </div>
+                    <div class="coverpage-dates">
+                          <span class="date-publish">{{ labelled_publisheddate }}</span>
+                          <span class="date-active">{{ labelled_implementeddate }}</span>
+                        </div>
+
 
   <div class="coverpage_footer">
     {{ standard_agency_formatted }}
-  </div>
   </div>
 </header>
