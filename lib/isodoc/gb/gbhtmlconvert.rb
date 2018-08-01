@@ -33,7 +33,8 @@ module IsoDoc
           @htmlcoverpage = html_doc_path("html_compliant_gb_titlepage.html")
         else
           @htmlstylesheet = generate_css(html_doc_path("htmlstyle.scss"), true, default_fonts(options))
-          @htmlcoverpage = html_doc_path("html_gb_titlepage.html")
+          #@htmlcoverpage = html_doc_path("html_gb_titlepage.html")
+          @htmlcoverpage = html_doc_path("html_compliant_gb_titlepage.html")
         end
         @htmlintropage = html_doc_path("html_gb_intro.html")
         @scripts = html_doc_path("scripts.html")

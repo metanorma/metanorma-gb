@@ -45,7 +45,7 @@ module IsoDoc
 
       def local_logo_suffix(scope)
         return "" if scope != "local"
-        local = @meta.get[:docidentifier][2,2]
+        local = @meta.get[:gblocalcode]
         "<span style='font-weight:bold'>#{local}</span>"
       end
 

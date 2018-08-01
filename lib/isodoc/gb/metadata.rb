@@ -154,7 +154,12 @@ module IsoDoc
         set(:issuer, issuer)
         set(:standard_class, @agencies.standard_class(scope, prefix, mandate))
         set(:standard_agency, @agencies.standard_agency(scope, prefix, mandate))
-        set(:gbprefix, scope == "local" ? "DB" : prefix)
+        if scope == "local"
+          set(:gbprefix, "DB")
+          set(:gblocalcode, prefix)
+        else
+          set(:gbprefix, prefix)
+        end 
         set(:gbscope, scope)
       end
 
