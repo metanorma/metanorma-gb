@@ -161,7 +161,7 @@ module IsoDoc
         header_class = {} if header_class.nil?
         div.h1 **attr_code(header_class) do |h1|
           if num
-            h1 << num
+            h1 << "#{num}."
             h1 << "&#x3000;"
           end
           h1 << title

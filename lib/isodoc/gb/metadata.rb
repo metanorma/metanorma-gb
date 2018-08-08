@@ -37,12 +37,10 @@ module IsoDoc
       def set_doctitle
         if @lang == "zh"
           set(:doctitle, get[:docmaintitlezh] + 
-                       get[:docsubtitlezh] +
-                       get[:docparttitlezh])
+                       get[:docsubtitlezh] + get[:docparttitlezh])
         else
           set(:doctitle, get[:docmaintitleen] + 
-                       get[:docsubtitleen] +
-                       get[:docparttitleen])
+                       get[:docsubtitleen] + get[:docparttitleen])
         end
       end
 
@@ -63,6 +61,19 @@ module IsoDoc
         gbcommittee = isoxml.at(ns("//bibdata/gbcommittee"))
         set(:committee, gbcommittee&.text)
       end
+
+      # from ISO
+      STAGE_ABBRS = {
+        "00": "PWI",
+        "10": "NWIP",
+        "20": "WD",
+        "30": "CD",
+        "40": "DIS",
+        "50": "FDIS",
+        "60": "IS",
+        "90": "(Review)",
+        "95": "(Withdrawal)",
+      }.freeze
 
       STAGE_ABBRS_CN = {
         "00": "新工作项目建议",
@@ -87,6 +98,13 @@ module IsoDoc
         "90": "standard",
         "95": "obsolete",
       }
+
+      def stage_abbrev(stage, iter, draft)
+        stage = STAGE_ABBRS[stage.to_sym] || "??"
+        stage += iter.text if iter
+        stage = "Pre" + stage if draft&.text =~ /^0\./
+        stage
+      end
 
       def stage_abbrev_cn(stage, iter, draft)
         return stage_abbrev(stage, iter, draft) if @lang != "zh"

@@ -26,7 +26,7 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "asciidoctor-iso", ">= 0.9.0"
+  spec.add_dependency "asciidoctor-iso", "~> 0.10.0"
   spec.add_dependency "gbbib", "~> 0.2.2"
   spec.add_dependency "isodoc", ">= 0.8.0"
   spec.add_dependency "twitter_cldr"
