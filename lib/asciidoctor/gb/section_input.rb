@@ -21,7 +21,7 @@ module Asciidoctor
       end
 
       def section(node)
-        a = { id: Asciidoctor::ISO::Utils::anchor_or_uuid(node) }
+        a = { id: Asciidoctor::Standoc::Utils::anchor_or_uuid(node) }
         noko do |xml|
           case sectiontype(node)
           when "引言", "introduction" then

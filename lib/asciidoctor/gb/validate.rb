@@ -103,9 +103,9 @@ module Asciidoctor
 
       def norm_bibitem_style(root)
         root.xpath(NORM_BIBITEMS).each do |b|
-          if b.at(Asciidoctor::ISO::Cleanup::ISO_PUBLISHER_XPATH).nil?
+          if b.at(Asciidoctor::Standoc::Converter::ISO_PUBLISHER_XPATH).nil?
             unless /^#{GBCODE}(?![A-Z])/.match? b.at("./docidentifier").text
-              Asciidoctor::ISO::Utils::warning(b, NORM_ISO_WARN, b.text)
+              Asciidoctor::Standoc::Utils::warning(b, NORM_ISO_WARN, b.text)
             end
           end
         end
