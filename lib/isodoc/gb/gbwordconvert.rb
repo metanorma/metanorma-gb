@@ -32,13 +32,10 @@ module IsoDoc
         @common = IsoDoc::Gb::Common.new(meta: @meta)
       end
 
-      def html_doc_path(file)
-        File.join(File.dirname(__FILE__), File.join("html", file))
-      end
-
       def initialize(options)
         @common = IsoDoc::Gb::Common.new(options)
         super
+        @libdir = File.dirname(__FILE__)
         @wordstylesheet = generate_css(html_doc_path("wordstyle.scss"), false, default_fonts(options))
         @standardstylesheet = generate_css(html_doc_path("gb.scss"), false, default_fonts(options))
         @header = html_doc_path("header.html")
@@ -69,10 +66,6 @@ module IsoDoc
       def example_cleanup(docxml)
         super
         @cleanup.example_cleanup(docxml)
-      end
-
-      def html_doc_path(file)
-        File.join(File.dirname(__FILE__), File.join("html", file))
       end
 
       def i18n_init(lang, script)
@@ -132,10 +125,6 @@ module IsoDoc
         word_annex_cleanup(docxml)
         @cleanup.title_cleanup(docxml.at('//div[@class="WordSection2"]'))
         docxml
-      end
-
-      def html_doc_path(file)
-        File.join(File.dirname(__FILE__), File.join("html", file))
       end
     end
   end

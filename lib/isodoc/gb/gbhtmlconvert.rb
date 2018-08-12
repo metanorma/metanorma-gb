@@ -28,6 +28,7 @@ module IsoDoc
       def initialize(options)
         @common = IsoDoc::Gb::Common.new(options)
         super
+        @libdir = File.dirname(__FILE__)
         if options[:compliant]
           @htmlstylesheet = generate_css(html_doc_path("htmlcompliantstyle.scss"), true, default_fonts(options))
           @htmlcoverpage = html_doc_path("html_compliant_gb_titlepage.html")
@@ -61,10 +62,6 @@ module IsoDoc
       def example_cleanup(docxml)
         super
         @cleanup.example_cleanup(docxml)
-      end
-
-      def html_doc_path(file)
-        File.join(File.dirname(__FILE__), File.join("html", file))
       end
 
       def i18n_init(lang, script)

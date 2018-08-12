@@ -34,10 +34,6 @@ module Asciidoctor
         ret1
       end
 
-      def html_doc_path(file)
-        File.join(File.dirname(__FILE__), File.join("html", file))
-      end
-
       def html_converter(node)
         node.nil? ? IsoDoc::Gb::HtmlConvert.new({}) :
           IsoDoc::Gb::HtmlConvert.new(
