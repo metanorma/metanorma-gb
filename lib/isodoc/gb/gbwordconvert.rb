@@ -4,48 +4,52 @@ require_relative "gbcleanup"
 require "gb_agencies"
 require_relative "metadata"
 require_relative "gbwordrender"
+require "fileutils"
 
 module IsoDoc
   module Gb
     # A {Converter} implementation that generates GB output, and a document
     # schema encapsulation of the document for validation
-
     class WordConvert < IsoDoc::WordConvert
-      def default_fonts(options)
-        script = options[:script] || "Hans"
-        b = options[:bodyfont] ||
-          (script == "Hans" ? '"SimSun",serif' :
-           script == "Latn" ? '"Cambria",serif' : '"SimSun",serif' )
-        h = options[:headerfont] ||
-          (script == "Hans" ? '"SimHei",sans-serif' :
-           script == "Latn" ? '"Calibri",sans-serif' : '"SimHei",sans-serif' )
-        m = options[:monospacefont] || '"Courier New",monospace'
-        scope = options[:scope] || "national"
-        t = options[:titlefont] ||
-          (scope == "national" ? (script != "Hans" ? '"Cambria",serif' : '"SimSun",serif' ) :
-           (script == "Hans" ? '"SimHei",sans-serif' : '"Calibri",sans-serif' ))
-        "$bodyfont: #{b};\n$headerfont: #{h};\n$monospacefont: #{m};\n$titlefont: #{t};\n"
-      end
-
-      def metadata_init(lang, script, labels)
-        @meta = Metadata.new(lang, script, labels)
-        @common = IsoDoc::Gb::Common.new(meta: @meta)
-      end
-
       def initialize(options)
         @common = IsoDoc::Gb::Common.new(options)
-        super
         @libdir = File.dirname(__FILE__)
-        @wordstylesheet = generate_css(html_doc_path("wordstyle.scss"), false, default_fonts(options))
-        @standardstylesheet = generate_css(html_doc_path("gb.scss"), false, default_fonts(options))
-        @header = html_doc_path("header.html")
-        @wordcoverpage = html_doc_path("word_gb_titlepage.html")
-        @wordintropage = html_doc_path("word_gb_intro.html")
-        @ulstyle = "l7"
-        @olstyle = "l10"
+        super
         @lang = "zh"
         @script = "Hans"
       end
+        
+      def default_fonts(options)
+        script = options[:script] || "Hans"
+        scope = options[:scope] || "national"
+        {
+          bodyfont: (script == "Hans" ? '"SimSun",serif' : '"Cambria",serif'),
+          headerfont: (script == "Hans" ? '"SimHei",sans-serif' : '"Calibri",sans-serif'),
+          monospacefont: '"Courier New",monospace',
+          titlefont: (scope == "national" ? (script != "Hans" ? '"Cambria",serif' : '"SimSun",serif' ) :
+           (script == "Hans" ? '"SimHei",sans-serif' : '"Calibri",sans-serif' ))
+        }     
+      end     
+                
+      def default_file_locations(options)
+        {   
+          wordstylesheet: html_doc_path("wordstyle.scss"),
+          standardstylesheet: html_doc_path("gb.scss"),
+          header: html_doc_path("header.html"),
+          wordcoverpage: html_doc_path("word_gb_titlepage.html"),
+          wordintropage: html_doc_path("word_gb_intro.html"),
+          ulstyle: "l7",
+          olstyle: "l10",
+        }
+      end 
+          
+      def extract_fonts(options)
+        b = options[:bodyfont] || "Arial"
+        h = options[:headerfont] || "Arial"
+        m = options[:monospacefont] || "Courier"
+        t = options[:titlefont] || "Arial"
+        "$bodyfont: #{b};\n$headerfont: #{h};\n$monospacefont: #{m};\n$titlefont: #{t};\n"
+      end   
 
       def metadata_init(lang, script, labels)
         unless ["en", "zh"].include? lang
@@ -102,6 +106,7 @@ module IsoDoc
         params = meta.map { |k, v| [k.to_s, v] }.to_h
         File.open("header.html", "w") { |f| f.write(template.render(params)) }
         system "cp #{@common.fileloc(File.join('html', 'blank.png'))} blank.png"
+        FileUtils.cp @common.fileloc(File.join('html', 'blank.png')), "blank.png"
         @files_to_delete << "blank.png"
         @files_to_delete << "header.html"
         "header.html"

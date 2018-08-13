@@ -7,8 +7,6 @@ require "gb_agencies"
 require_relative "./section_input.rb"
 require_relative "./front.rb"
 require_relative "./validate.rb"
-require "pp"
-# require "byebug"
 
 module Asciidoctor
   module Gb
@@ -44,6 +42,10 @@ module Asciidoctor
             titlefont: node.attr("title-font"),
             i18nyaml: node.attr("i18nyaml"),
             scope: node.attr("scope"),
+            htmlstylesheet: node.attr("htmlstylesheet"),
+            htmlcoverpage: node.attr("htmlcoverpage"),
+            htmlintropage: node.attr("htmlintropage"),
+            scripts: node.attr("scripts"),
         )
       end
 
@@ -58,6 +60,10 @@ module Asciidoctor
             i18nyaml: node.attr("i18nyaml"),
             scope: node.attr("scope"),
             compliant: true,
+            htmlstylesheet: node.attr("htmlstylesheet"),
+            htmlcoverpage: node.attr("htmlcoverpage"),
+            htmlintropage: node.attr("htmlintropage"),
+            scripts: node.attr("scripts"),
         )
       end
 
@@ -71,23 +77,14 @@ module Asciidoctor
             titlefont: node.attr("title-font"),
             i18nyaml: node.attr("i18nyaml"),
             scope: node.attr("scope"),
+            wordstylesheet: node.attr("wordstylesheet"),
+            standardstylesheet: node.attr("standardstylesheet"),
+            header: node.attr("header"),
+            wordcoverpage: node.attr("wordcoverpage"),
+            wordintropage: node.attr("wordintropage"),
+            ulstyle: node.attr("ulstyle"),
+            olstyle: node.attr("olstyle"),
         )
-      end
-
-      def default_fonts(node)
-        script = node.attr("script") || "Hans"
-        b = node.attr("body-font") ||
-          (script == "Hans" ? '"SimSun",serif' :
-           script == "Latn" ? '"Cambria",serif' : '"SimSun",serif' )
-        h = node.attr("header-font") ||
-          (script == "Hans" ? '"SimHei",sans-serif' :
-           script == "Latn" ? '"Calibri",sans-serif' : '"SimHei",sans-serif' )
-        m = node.attr("monospace-font") || '"Courier New",monospace'
-        scope = node.attr("scope") || "national"
-        t = node.attr("title-font") ||
-          (scope == "national" ? (script != "Hans" ? '"Cambria",serif' : '"SimSun",serif' ) :
-           (script == "Hans" ? '"SimHei",sans-serif' : '"Calibri",sans-serif' ))
-        "$bodyfont: #{b};\n$headerfont: #{h};\n$monospacefont: #{m};\n$titlefont: #{t};\n"
       end
 
       def document(node)
@@ -218,7 +215,6 @@ module Asciidoctor
       end
 
       def docidentifier_cleanup(xmldoc)
-        #byebug
         id = xmldoc.at("//bibdata/docidentifier/project-number") or return
         scope = xmldoc.at("//gbscope")&.text
         prefix = xmldoc.at("//gbprefix")&.text

@@ -1,6 +1,7 @@
 require "isodoc"
 require_relative "./gbcleanup.rb"
 require_relative "./metadata.rb"
+require "fileutils"
 
 module IsoDoc
   module Gb
@@ -19,7 +20,8 @@ module IsoDoc
         return agency unless agency.is_a?(Array)
         if agency == ["中华人民共和国国家质量监督检验检疫总局", "中国国家标准化管理委员会"]
           logo = "gb-issuer-default.gif"
-          system "cp #{fileloc(File.join('html/gb-logos', logo))}  #{logo}"
+          #system "cp #{fileloc(File.join('html/gb-logos', logo))}  #{logo}"
+          FileUtils.cp fileloc(File.join('html/gb-logos', logo)), logo
           return "<img src='#{logo}' alt='#{agency.join(",")}'></img>"
         end
         format_agency1(agency, format)
@@ -52,7 +54,8 @@ module IsoDoc
 
       def format_logo1(logo, prefix, scope)
         logo += ".gif"
-        system "cp #{fileloc(File.join('html/gb-logos', logo))}  #{logo}"
+        #system "cp #{fileloc(File.join('html/gb-logos', logo))}  #{logo}"
+        FileUtils.cp fileloc(File.join('html/gb-logos', logo)), logo
         local = local_logo_suffix(scope)
         #@files_to_delete << logo
         "<img width='113' height='56' src='#{logo}' alt='#{prefix}'></img>"\

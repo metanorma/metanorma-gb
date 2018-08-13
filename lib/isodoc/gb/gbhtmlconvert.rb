@@ -9,38 +9,41 @@ module IsoDoc
     # A {Converter} implementation that generates GB output, and a document
     # schema encapsulation of the document for validation
     class HtmlConvert < IsoDoc::HtmlConvert
-      def default_fonts(options)
-        script = options[:script] || "Hans"
-        b = options[:bodyfont] ||
-          (script == "Hans" ? '"SimSun",serif' :
-           script == "Latn" ? '"Cambria",serif' : '"SimSun",serif' )
-        h = options[:headerfont] ||
-          (script == "Hans" ? '"SimHei",sans-serif' :
-           script == "Latn" ? '"Calibri",sans-serif' : '"SimHei",sans-serif' )
-        m = options[:monospacefont] || '"Courier New",monospace'
-        scope = options[:scope] || "national"
-        t = options[:titlefont] ||
-          (scope == "national" ? (script != "Hans" ? '"Cambria",serif' : '"SimSun",serif' ) :
-           (script == "Hans" ? '"SimHei",sans-serif' : '"Calibri",sans-serif' ))
-        "$bodyfont: #{b};\n$headerfont: #{h};\n$monospacefont: #{m};\n$titlefont: #{t};\n"
-      end
-
       def initialize(options)
         @common = IsoDoc::Gb::Common.new(options)
-        super
         @libdir = File.dirname(__FILE__)
-        if options[:compliant]
-          @htmlstylesheet = generate_css(html_doc_path("htmlcompliantstyle.scss"), true, default_fonts(options))
-          @htmlcoverpage = html_doc_path("html_compliant_gb_titlepage.html")
-        else
-          @htmlstylesheet = generate_css(html_doc_path("htmlstyle.scss"), true, default_fonts(options))
-          #@htmlcoverpage = html_doc_path("html_gb_titlepage.html")
-          @htmlcoverpage = html_doc_path("html_compliant_gb_titlepage.html")
-        end
-        @htmlintropage = html_doc_path("html_gb_intro.html")
-        @scripts = html_doc_path("scripts.html")
+        super
         @lang = "zh"
         @script = "Hans"
+      end
+
+      def default_fonts(options)
+        script = options[:script] || "Hans"
+        scope = options[:scope] || "national"
+        {
+          bodyfont: (script == "Hans" ? '"SimSun",serif' : '"Cambria",serif'),
+          headerfont: (script == "Hans" ? '"SimHei",sans-serif' : '"Calibri",sans-serif'),
+          monospacefont: '"Courier New",monospace',
+          titlefont: (scope == "national" ? (script != "Hans" ? '"Cambria",serif' : '"SimSun",serif' ) :
+           (script == "Hans" ? '"SimHei",sans-serif' : '"Calibri",sans-serif' ))
+        }
+      end
+
+      def default_file_locations(options)
+        {
+          htmlstylesheet: options[:compliant] ? html_doc_path("htmlcompliantstyle.scss") : html_doc_path("htmlstyle.scss"),
+          htmlcoverpage: html_doc_path("html_compliant_gb_titlepage.html"),
+          htmlintropage: html_doc_path("html_gb_intro.html"),
+          scripts: html_doc_path("scripts.html"),
+        }
+      end
+
+      def extract_fonts(options)
+        b = options[:bodyfont] || "Arial"
+        h = options[:headerfont] || "Arial"
+        m = options[:monospacefont] || "Courier"
+        t = options[:titlefont] || "Arial"
+        "$bodyfont: #{b};\n$headerfont: #{h};\n$monospacefont: #{m};\n$titlefont: #{t};\n"
       end
 
       def metadata_init(lang, script, labels)
