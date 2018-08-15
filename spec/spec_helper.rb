@@ -6,7 +6,7 @@ end
 require "bundler/setup"
 require "asciidoctor"
 require "asciidoctor/gb"
-require "asciidoctor-gb"
+require "metanorma-gb"
 require "rspec/matchers"
 require "equivalent-xml"
 require "htmlentities"
