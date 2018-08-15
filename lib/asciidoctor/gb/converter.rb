@@ -35,56 +35,21 @@ module Asciidoctor
       def html_converter(node)
         node.nil? ? IsoDoc::Gb::HtmlConvert.new({}) :
           IsoDoc::Gb::HtmlConvert.new(
-            script: node.attr("script"),
-            bodyfont: node.attr("body-font"),
-            headerfont: node.attr("header-font"),
-            monospacefont: node.attr("monospace-font"),
-            titlefont: node.attr("title-font"),
-            i18nyaml: node.attr("i18nyaml"),
-            scope: node.attr("scope"),
-            htmlstylesheet: node.attr("htmlstylesheet"),
-            htmlcoverpage: node.attr("htmlcoverpage"),
-            htmlintropage: node.attr("htmlintropage"),
-            scripts: node.attr("scripts"),
-        )
+            html_extract_attributes(node).merge(titlefont:
+                                                node.attr("title-font")))
       end
 
       def html_compliant_converter(node)
         node.nil? ? IsoDoc::Gb::HtmlConvert.new({}) :
-          IsoDoc::Gb::HtmlConvert.new(
-            script: node.attr("script"),
-            bodyfont: node.attr("body-font"),
-            headerfont: node.attr("header-font"),
-            monospacefont: node.attr("monospace-font"),
-            titlefont: node.attr("title-font"),
-            i18nyaml: node.attr("i18nyaml"),
-            scope: node.attr("scope"),
-            compliant: true,
-            htmlstylesheet: node.attr("htmlstylesheet"),
-            htmlcoverpage: node.attr("htmlcoverpage"),
-            htmlintropage: node.attr("htmlintropage"),
-            scripts: node.attr("scripts"),
-        )
+          IsoDoc::Gb::HtmlConvert.new(html_extract_attributes(node).
+                                      merge(compliant: true,
+                                            titlefont: node.attr("title-font")))
       end
 
       def doc_converter(node)
         node.nil? ? IsoDoc::Gb::WordConvert.new({}) :
-          IsoDoc::Gb::WordConvert.new(
-            script: node.attr("script"),
-            bodyfont: node.attr("body-font"),
-            headerfont: node.attr("header-font"),
-            monospacefont: node.attr("monospace-font"),
-            titlefont: node.attr("title-font"),
-            i18nyaml: node.attr("i18nyaml"),
-            scope: node.attr("scope"),
-            wordstylesheet: node.attr("wordstylesheet"),
-            standardstylesheet: node.attr("standardstylesheet"),
-            header: node.attr("header"),
-            wordcoverpage: node.attr("wordcoverpage"),
-            wordintropage: node.attr("wordintropage"),
-            ulstyle: node.attr("ulstyle"),
-            olstyle: node.attr("olstyle"),
-        )
+          IsoDoc::Gb::WordConvert.new(doc_extract_attributes(node).
+                                      merge(titlefont: node.attr("title-font")))
       end
 
       def document(node)
@@ -178,7 +143,8 @@ module Asciidoctor
         "YD|YS|YY|YZ|ZY|GB|GBZ|GJB|GBn|GHZB|GWKB|GWPB|JJF|JJG|Q|T)(/Z|/T)?)"
 
       ISO_REF = %r{^<ref\sid="(?<anchor>[^"]+)">
-      \[(?<code>(ISO|IEC|#{GBCODE})[^0-9]*\s[0-9-]+?)([:-](?<year>(19|20)[0-9][0-9]))?\]</ref>,?\s
+      \[(?<code>(ISO|IEC|#{GBCODE})[^0-9]*\s[0-9-]+?)
+      ([:-](?<year>(19|20)[0-9][0-9]))?\]</ref>,?\s
       (?<text>.*)$}xm
 
       ISO_REF_NO_YEAR = %r{^<ref\sid="(?<anchor>[^"]+)">
@@ -186,7 +152,8 @@ module Asciidoctor
       <fn[^>]*>\s*<p>(?<fn>[^\]]+)</p>\s*</fn>,?\s?(?<text>.*)$}xm
 
       ISO_REF_ALL_PARTS = %r{^<ref\sid="(?<anchor>[^"]+)">
-      \[(?<code>(ISO|IEC|#{GBCODE})[^0-9]*\s[0-9]+)\s\(all\sparts\)\]</ref>(<p>)?,?\s?
+      \[(?<code>(ISO|IEC|#{GBCODE})[^0-9]*\s[0-9]+)\s
+      \(all\sparts\)\]</ref>(<p>)?,?\s?
       (?<text>.*)(</p>)?$}xm
 
       def reference1_matches(item)
@@ -219,27 +186,38 @@ module Asciidoctor
         scope = xmldoc.at("//gbscope")&.text
         prefix = xmldoc.at("//gbprefix")&.text
         mandate = xmldoc.at("//gbmandate")&.text || "mandatory"
-        idtext = @agencyclass.docidentifier(scope, prefix, mandate, nil, id.text) || return
+        idtext = @agencyclass.docidentifier(scope, prefix, mandate,
+                                            nil, id.text) || return
         id.content = idtext.gsub(/\&#x2002;/, " ")
       end
 
-      def contributor_cleanup(xmldoc)
-        issuer = xmldoc.at("//bibdata/contributor[role/@type = 'issuer']/organization/name")
-        scope = xmldoc.at("//gbscope")&.text
-        prefix = xmldoc.at("//gbprefix")&.text
-        mandate = xmldoc.at("//gbmandate")&.text || "mandatory"
-        agency = issuer.content
-        agency = @agencyclass.standard_agency1(scope, prefix, mandate) if agency == "GB"
-        agency = "GB" if agency.nil? || agency.empty?
-        owner = xmldoc.at("//copyright/owner/organization/name")
-        owner.content = agency
-        owner = xmldoc.at("//contributor[role/@type = 'issuer']/organization/name")
-        owner.content = agency
+      def committee_cleanup(xmldoc)
         xmldoc.xpath("//gbcommittee").each do |c|
           xmldoc.at("//bibdata/contributor").next =
             "<contributor><role type='technical-committee'/><organization>"\
             "<name>#{c.text}</name></organization></contributor>"
         end
+      end
+
+      def agency_value(issuer, scope, prefix, mandate)
+        agency = issuer.content
+        agency == "GB" and
+          agency = @agencyclass.standard_agency1(scope, prefix, mandate)
+        agency = "GB" if agency.nil? || agency.empty?
+        agency
+      end
+
+      def contributor_cleanup(xmldoc)
+        issuer = xmldoc.at("//bibdata/contributor[role/@type = 'issuer']/"\
+                           "organization/name")
+        scope = xmldoc.at("//gbscope")&.text
+        prefix = xmldoc.at("//gbprefix")&.text
+        mandate = xmldoc.at("//gbmandate")&.text || "mandatory"
+        agency = agency_value(issuer, scope, prefix, mandate)
+        owner = xmldoc.at("//copyright/owner/organization/name")
+        owner.content = agency
+        issuer.content = agency
+        committee_cleanup(xmldoc)
       end
     end
   end

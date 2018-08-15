@@ -18,6 +18,7 @@ Gem::Specification.new do |spec|
 
   spec.homepage      = "https://github.com/riboseinc/asciidoctor-gb"
   spec.license       = "BSD-2-Clause"
+  spec.post_install_message = "The asciidoctor-gb gem has been deprecated and has been replaced by metanorma-gb"
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
     f.match(%r{^(test|spec|features)/})
