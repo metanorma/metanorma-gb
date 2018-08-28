@@ -159,6 +159,13 @@ module IsoDoc
         end
       end
 
+      def standard_class(scope, prefix, mandate)
+        standardclassimg = get[:standardclassimg]
+        ret = @agencies.standard_class(scope, prefix, mandate)
+        return "<img src='#{standardclassimg}' alt='#{ret}'></img>" if standardclassimg
+        ret
+      end
+
       def gb_identifier(isoxml)
         scope = isoxml.at(ns("//gbscope"))&.text || "national"
         mandate = isoxml.at(ns("//gbmandate"))&.text || "mandatory"
@@ -167,10 +174,9 @@ module IsoDoc
         issuer = isoxml&.at(ns("//bibdata/contributor[role/@type = 'issuer']/"\
                                "organization/name"))&.text || "GB"
         @agencies = GbAgencies::Agencies.new(@lang, @labels, issuer)
-        #set(:docidentifier, @agencies.docidentifier(scope, prefix, mandate, docyear, get[:docnumber]))
         set(:docidentifier, @agencies.docidentifier(nil, nil, nil, docyear, get[:docnumber]))
         set(:issuer, issuer)
-        set(:standard_class, @agencies.standard_class(scope, prefix, mandate))
+        set(:standard_class, standard_class(scope, prefix, mandate))
         set(:standard_agency, @agencies.standard_agency(scope, prefix, mandate))
         if scope == "local"
           set(:gbprefix, "DB")

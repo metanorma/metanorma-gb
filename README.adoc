@@ -211,6 +211,15 @@ If absent (default), any paragraphs supplied at the start of the Terms and Defin
 section are deleted, and replaced with standard boilerplate. If present, any such
 paragraphs in the text are retained.
 
+`:standard-logo-img:`::
+User-supplied graphic to overwrite the logo for the standard on the title page.
+
+`:standard-class-img:`::
+User-supplied graphic to overwrite the name of the standard class on the title page.
+
+`:standard-issuer-img:`::
+User-supplied graphic to overwrite the name of the standard issuer on the title page.
+
 === Language macros
 
 In Terms and Definitions, preferred terms, alternate terms and deprecated terms

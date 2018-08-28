@@ -32,24 +32,37 @@ module Asciidoctor
         ret1
       end
 
+      def gb_attributes(node)
+        {
+          standardlogoimg: node.attr("standard-logo-img"),
+          standardclassimg: node.attr("standard-class-img"),
+          standardissuerimg: node.attr("standard-issuer-img"),
+          titlefont: node.attr("title-font"),
+        }
+      end
+
+      def html_extract_attributes(node)
+        super.merge(gb_attributes(node))
+      end
+
+      def doc_extract_attributes(node)
+        super.merge(gb_attributes(node))
+      end
+
       def html_converter(node)
         node.nil? ? IsoDoc::Gb::HtmlConvert.new({}) :
-          IsoDoc::Gb::HtmlConvert.new(
-            html_extract_attributes(node).merge(titlefont:
-                                                node.attr("title-font")))
+          IsoDoc::Gb::HtmlConvert.new(html_extract_attributes(node))
       end
 
       def html_compliant_converter(node)
         node.nil? ? IsoDoc::Gb::HtmlConvert.new({}) :
           IsoDoc::Gb::HtmlConvert.new(html_extract_attributes(node).
-                                      merge(compliant: true,
-                                            titlefont: node.attr("title-font")))
+                                      merge(compliant: true))
       end
 
       def doc_converter(node)
         node.nil? ? IsoDoc::Gb::WordConvert.new({}) :
-          IsoDoc::Gb::WordConvert.new(doc_extract_attributes(node).
-                                      merge(titlefont: node.attr("title-font")))
+          IsoDoc::Gb::WordConvert.new(doc_extract_attributes(node))
       end
 
       def document(node)

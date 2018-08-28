@@ -13,8 +13,6 @@ RSpec.describe Asciidoctor::Gb do
 
       === Introduction Subsection
 
-      === Patent Notice
-
       == 范围
 
       Text

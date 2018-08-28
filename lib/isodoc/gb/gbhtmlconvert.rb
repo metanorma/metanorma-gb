@@ -11,6 +11,7 @@ module IsoDoc
     class HtmlConvert < IsoDoc::HtmlConvert
       def initialize(options)
         @common = IsoDoc::Gb::Common.new(options)
+        @standardclassimg = options[:standardclassimg]
         @libdir = File.dirname(__FILE__)
         super
         @lang = "zh"
@@ -52,7 +53,8 @@ module IsoDoc
           script = "Hans"
         end
         @meta = Metadata.new(lang, script, labels)
-        @common = IsoDoc::Gb::Common.new(meta: @meta)
+        @meta.set(:standardclassimg, @standardclassimg)
+        @common.meta = @meta
       end
 
       def cleanup(docxml)

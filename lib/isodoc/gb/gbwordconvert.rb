@@ -13,12 +13,13 @@ module IsoDoc
     class WordConvert < IsoDoc::WordConvert
       def initialize(options)
         @common = IsoDoc::Gb::Common.new(options)
+        @standardclassimg = options[:standardclassimg]
         @libdir = File.dirname(__FILE__)
         super
         @lang = "zh"
         @script = "Hans"
       end
-        
+
       def default_fonts(options)
         script = options[:script] || "Hans"
         scope = options[:scope] || "national"
@@ -27,10 +28,10 @@ module IsoDoc
           headerfont: (script == "Hans" ? '"SimHei",sans-serif' : '"Calibri",sans-serif'),
           monospacefont: '"Courier New",monospace',
           titlefont: (scope == "national" ? (script != "Hans" ? '"Cambria",serif' : '"SimSun",serif' ) :
-           (script == "Hans" ? '"SimHei",sans-serif' : '"Calibri",sans-serif' ))
+                      (script == "Hans" ? '"SimHei",sans-serif' : '"Calibri",sans-serif' ))
         }     
       end     
-                
+
       def default_file_locations(options)
         {   
           wordstylesheet: html_doc_path("wordstyle.scss"),
@@ -42,7 +43,7 @@ module IsoDoc
           olstyle: "l10",
         }
       end 
-          
+
       def extract_fonts(options)
         b = options[:bodyfont] || "Arial"
         h = options[:headerfont] || "Arial"
@@ -57,7 +58,8 @@ module IsoDoc
           script = "Hans"
         end
         @meta = Metadata.new(lang, script, labels)
-        @common = IsoDoc::Gb::Common.new(meta: @meta)
+        @meta.set(:standardclassimg, @standardclassimg)
+        @common.meta = @meta
       end
 
       def cleanup(docxml)

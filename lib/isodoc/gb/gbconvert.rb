@@ -8,8 +8,13 @@ module IsoDoc
     # A {Converter} implementation that generates GB output, and a document
     # schema encapsulation of the document for validation
     class Common < IsoDoc::Common
+      attr_accessor :meta
+
       def initialize(options)
         @meta = options[:meta]
+        @standardlogoimg = options[:standardlogoimg]
+        @standardclassimg = options[:standardclassimg]
+        @standardissuerimg = options[:standardissuerimg]
       end
 
       def fileloc(loc)
@@ -17,6 +22,7 @@ module IsoDoc
       end
 
       def format_agency(agency, format)
+        return "<img src='#{@standardissuerimg}' alt='#{agency.join(",")}'></img>" if @standardissuerimg
         return agency unless agency.is_a?(Array)
         if agency == ["中华人民共和国国家质量监督检验检疫总局", "中国国家标准化管理委员会"]
           logo = "gb-issuer-default.gif"
@@ -36,8 +42,9 @@ module IsoDoc
       end
 
       def format_logo(prefix, scope, _format)
-        return "" if %w(enterprise social-group).include? scope
         logo = @meta.standard_logo(prefix)
+        return format_logo1(logo, prefix, scope) if @standardlogoimg
+        return "" if %w(enterprise social-group).include? scope
         if logo.nil?
           "<span style='font-size:36pt;font-weight:bold'>#{prefix}</span>"
         else
@@ -53,10 +60,11 @@ module IsoDoc
 
 
       def format_logo1(logo, prefix, scope)
-        logo += ".gif"
-        #system "cp #{fileloc(File.join('html/gb-logos', logo))}  #{logo}"
-        FileUtils.cp fileloc(File.join('html/gb-logos', logo)), logo
         local = local_logo_suffix(scope)
+        return "<img width='113' height='56' src='#{@standardlogoimg}' alt='#{prefix}'></img>"\
+          "#{local}" if  @standardlogoimg
+        logo += ".gif"
+        FileUtils.cp fileloc(File.join('html/gb-logos', logo)), logo
         #@files_to_delete << logo
         "<img width='113' height='56' src='#{logo}' alt='#{prefix}'></img>"\
           "#{local}"

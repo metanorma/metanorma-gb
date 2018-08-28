@@ -111,6 +111,25 @@ RSpec.describe Asciidoctor::Gb do
     expect(html).to match(%r[\.standard_class[^{]+\{[^{]+font-family: Symbol;]m)
   end
 
+  it "uses specified images" do
+    system "rm -f test.html"
+        Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)
+      = Document title
+      Author
+      :docfile: test.adoc
+      :novalid:
+      :script: Hans
+      :standard-logo-img: spec/asciidoctor/examples/a.gif
+      :standard-class-img: spec/asciidoctor/examples/b.gif
+      :standard-issuer-img: spec/asciidoctor/examples/c.gif
+
+    INPUT
+    html = File.read("test.html", encoding: "utf-8")
+    expect(html).to include %{<div class="coverpage-logo-gb-img"><img width='113' height='56' src='spec/asciidoctor/examples/a.gif' alt='GB'></img></div>}
+    expect(html).to include %{<span class="coverpage-logo-text"><img src='spec/asciidoctor/examples/b.gif' alt='中华人民共和国国家标准'></img></span>}
+    expect(html).to include %{<img src='spec/asciidoctor/examples/c.gif' alt='中华人民共和国国家质量监督检验检疫总局,中国国家标准化管理委员会'></img>}
+  end
+
   it "does contributor cleanup" do
     system "rm -f test.doc"
     expect(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)).to be_equivalent_to <<~"OUTPUT"
