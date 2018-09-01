@@ -7,8 +7,9 @@ module Asciidoctor
     # schema encapsulation of the document for validation
     class Converter < ISO::Converter
 
+      # subclause contains subclauses
       def term_def_subclause_parse(attrs, xml, node)
-        # subclause contains subclauses
+        return clause_parse(attrs, xml, node) if node.role == "nonterm"
         sub = node.find_by(context: :section) {|s| s.level == node.level + 1 }
         sub.empty? || (return term_def_parse(attrs, xml, node, false))
         (node.title.downcase == "symbols and abbreviated terms" ||
