@@ -23,10 +23,10 @@ module IsoDoc
       end
 
       def title(isoxml, _out)
-        intro = isoxml.at(ns("//title-intro[@language='zh']"))
-        main = isoxml.at(ns("//title-main[@language='zh']"))
-        part = isoxml.at(ns("//title-part[@language='zh']"))
-        partnumber = isoxml.at(ns("//project-number/@part"))
+        intro = isoxml.at(ns("//bibdata//title-intro[@language='zh']"))
+        main = isoxml.at(ns("//bibdata//title-main[@language='zh']"))
+        part = isoxml.at(ns("//bibdata//title-part[@language='zh']"))
+        partnumber = isoxml.at(ns("//bibdata/docidentifier/project-number/@part"))
         intro.nil? || set(:docmaintitlezh, intro.text + "&nbsp;")
         main.nil? || set(:docsubtitlezh, main.text)
         partnum = partnumber ? "#{part_label(partnumber, 'zh')}:" : ""
@@ -45,10 +45,10 @@ module IsoDoc
       end
 
       def subtitle(isoxml, _out)
-        intro = isoxml.at(ns("//title-intro[@language='en']"))
-        main = isoxml.at(ns("//title-main[@language='en']"))
-        part = isoxml.at(ns("//title-part[@language='en']"))
-        partnumber = isoxml.at(ns("//project-number/@part"))
+        intro = isoxml.at(ns("//bibdata//title-intro[@language='en']"))
+        main = isoxml.at(ns("//bibdata//title-main[@language='en']"))
+        part = isoxml.at(ns("//bibdata//title-part[@language='en']"))
+        partnumber = isoxml.at(ns("//bibdata/docidentifier/project-number/@part"))
         intro.nil? || set(:docmaintitleen, intro.text + "&mdash;")
         main.nil? || set(:docsubtitleen, main.text)
         partnum = partnumber ? "#{part_label(partnumber, 'en')}: " : ""
@@ -115,10 +115,10 @@ module IsoDoc
       end
 
       def docstatus(isoxml, _out)
-        docstatus = isoxml.at(ns("//status/stage"))
+        docstatus = isoxml.at(ns("//bibdata/status/stage"))
         if docstatus
           set(:stage, docstatus.text.to_i)
-          abbr = stage_abbrev_cn(docstatus.text, isoxml.at(ns("//status/iteration")),
+          abbr = stage_abbrev_cn(docstatus.text, isoxml.at(ns("//bibdata/status/iteration")),
                                  isoxml.at(ns("//version/draft")))
           set(:stageabbr, abbr)
           set(:status, STATUS_CSS[docstatus.text.to_sym])
@@ -129,7 +129,7 @@ module IsoDoc
         dn = docnumber(isoxml)
         docstatus = get[:stage]
         if docstatus
-          abbr = stage_abbrev(docstatus.to_s, isoxml.at(ns("//status/iteration")),
+          abbr = stage_abbrev(docstatus.to_s, isoxml.at(ns("//bibdata/status/iteration")),
                               isoxml.at(ns("//version/draft")))
           (docstatus.to_i < 60) && dn = abbr + " " + dn
         end
@@ -167,10 +167,10 @@ module IsoDoc
       end
 
       def gb_identifier(isoxml)
-        scope = isoxml.at(ns("//gbscope"))&.text || "national"
-        mandate = isoxml.at(ns("//gbmandate"))&.text || "mandatory"
-        prefix = isoxml.at(ns("//gbprefix"))&.text || "XXX"
-        docyear = isoxml&.at(ns("//copyright/from"))&.text
+        scope = isoxml.at(ns("//bibdata/gbtype/gbscope"))&.text || "national"
+        mandate = isoxml.at(ns("//bibdata/gbtype/gbmandate"))&.text || "mandatory"
+        prefix = isoxml.at(ns("//bibdata/gbtype/gbprefix"))&.text || "XXX"
+        docyear = isoxml&.at(ns("//bibdata/copyright/from"))&.text
         issuer = isoxml&.at(ns("//bibdata/contributor[role/@type = 'issuer']/"\
                                "organization/name"))&.text || "GB"
         @agencies = GbAgencies::Agencies.new(@lang, @labels, issuer)
