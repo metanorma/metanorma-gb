@@ -81,6 +81,10 @@ module IsoDoc
             end
         @labels = @labels.merge(y)
       end
+
+      def omit_docid_prefix(prefix)
+        super || prefix == "Chinese Standard"
+      end
     end
   end
 end

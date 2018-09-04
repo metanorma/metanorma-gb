@@ -133,6 +133,10 @@ module IsoDoc
         @cleanup.title_cleanup(docxml.at('//div[@class="WordSection2"]'))
         docxml
       end
+
+      def omit_docid_prefix(prefix)
+        super || prefix == "Chinese Standard"
+      end
     end
   end
 end

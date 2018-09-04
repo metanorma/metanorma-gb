@@ -193,6 +193,7 @@ module IsoDoc
         #div << @term_def_boilerplate unless preface
       end
 
+=begin
       def reference_names(ref)
         isopub = ref.at(ns(ISO_PUBLISHER_XPATH))
         docid = ref.at(ns("./docidentifier"))
@@ -200,6 +201,7 @@ module IsoDoc
         reference = format_ref(docid.text, isopub, date)
         @anchors[ref["id"]] = { xref: reference }
       end
+=end
     end
   end
 end

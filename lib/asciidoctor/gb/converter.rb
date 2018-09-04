@@ -177,7 +177,7 @@ module Asciidoctor
       end
 
       def fetch_ref(xml, code, year, **opts)
-        code = "GB Standard " + code if /^#{GBCODE}[^A-Za-z]/.match? code
+        code = "CN(#{code})" if !/^CN\(/.match(code) && /^#{GBCODE}[^A-Za-z]/.match(code)
         hit = @bibdb&.fetch(code, year, opts)
         return nil if hit.nil?
         xml.parent.add_child(hit.to_xml)
