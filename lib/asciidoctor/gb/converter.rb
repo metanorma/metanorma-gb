@@ -1,6 +1,6 @@
 require "asciidoctor"
 require "asciidoctor/iso/converter"
-require "asciidoctor/gb/version"
+require "metanorma/gb/version"
 require "isodoc/gb/gbconvert"
 require "isodoc/gb/gbwordconvert"
 require "gb_agencies"
