@@ -160,7 +160,7 @@ module IsoDoc
       def clause_name(num, title, div, header_class)
         header_class = {} if header_class.nil?
         div.h1 **attr_code(header_class) do |h1|
-          if num
+          if num && !@suppressheadingnumbers
             h1 << "#{num}."
             h1 << "&#x3000;"
           end
@@ -174,7 +174,7 @@ module IsoDoc
           inline_header_title(out, node, c1)
         else
           div.send "h#{get_anchors[node['id']][:level]}" do |h|
-            h << "#{get_anchors[node['id']][:label]}.&#x3000;"
+            h << "#{get_anchors[node['id']][:label]}.&#x3000;" if !@suppressheadingnumbers
             c1.children.each { |c2| parse(c2, h) }
           end
         end
