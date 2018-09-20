@@ -20,6 +20,7 @@ RSpec.describe Asciidoctor::Gb do
       :library-ccs: 12, 34
       :library-plan: AB
       :author-committee: AC
+      :author-committee_2: BC
       :publisher: P
       :authority: Q
       :proposer: X
@@ -74,6 +75,12 @@ RSpec.describe Asciidoctor::Gb do
            <role type="author"/>
            <organization>
              <name>AC</name>
+           </organization>
+         </contributor>
+         <contributor>
+           <role type="author"/>
+           <organization>
+             <name>BC</name>
            </organization>
          </contributor>
          <contributor>

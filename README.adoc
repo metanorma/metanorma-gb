@@ -198,7 +198,7 @@ The authority which sponsored the standard.
 The individuals who drafted the standard.
 
 `:author-committee:`::
-The committees which drafted the standard.
+The committees which drafted the standard. (Also `:author-committee_2:`, `:author-committee_3:`...)
 
 `:title-font:`::
 The font to use for the standard class and issuer on the (Word) cover page; described in GB/T 1.1 as 

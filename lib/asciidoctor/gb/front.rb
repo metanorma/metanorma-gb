@@ -59,6 +59,14 @@ module Asciidoctor
         xml.gbcommittee **attr_code(attrs) do |a|
           a << node.attr("technical-committee")
         end
+        i = 2
+        while node.attr("technical-committee_#{i}") do
+          attrs = { type: node.attr("technical-committee-type_#{i}") }
+          xml.gbcommittee **attr_code(attrs) do |a|
+            a << node.attr("technical-committee_#{i}")
+          end
+          i += 1
+        end
       end
 
       def metadata_equivalence(node, xml)
@@ -170,6 +178,11 @@ module Asciidoctor
       def metadata_contributors(node, xml)
         metadata_author(node, xml)
         metadata_contributor1(node, xml, "author-committee", "author")
+        i = 2
+        while node.attr("author-committee_#{i}") do
+          metadata_contributor1(node, xml, "author-committee_#{i}", "author")
+          i += 1
+        end
         metadata_contributor1(node, xml, "publisher", "publisher")
         metadata_contributor1(node, xml, "authority", "authority")
         metadata_contributor1(node, xml, "proposer", "proposer")

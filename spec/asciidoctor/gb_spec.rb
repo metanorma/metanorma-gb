@@ -406,8 +406,8 @@ RSpec.describe Asciidoctor::Gb do
     private
 
     def mock_gbbib_get_123
-            expect(Gbbib::GbBibliography).to receive(:get).with("GB/T 20223", "2006", {}) do
-      IsoBibItem.from_xml(GBT20223)
-    end
+      expect(Gbbib::GbBibliography).to receive(:get).with("GB/T 20223", "2006", {}) do
+        IsoBibItem.from_xml(GBT20223)
+      end
     end
 end
