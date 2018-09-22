@@ -29,7 +29,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency "metanorma-iso", "~> 1.0.1"
-  spec.add_dependency "isodoc", "~> 0.9.0"
+  spec.add_dependency "isodoc", "~> 0.9.1"
   spec.add_dependency "twitter_cldr"
   spec.add_dependency "gb-agencies", "~> 0.0.1"
 
