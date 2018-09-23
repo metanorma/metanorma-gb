@@ -7,6 +7,7 @@ require "gb_agencies"
 require_relative "./section_input.rb"
 require_relative "./front.rb"
 require_relative "./validate.rb"
+require "fileutils"
 
 module Asciidoctor
   module Gb
@@ -72,11 +73,11 @@ module Asciidoctor
           filename = node.attr("docfile").gsub(/\.adoc$/, "").gsub(%r{^.*/}, "")
           File.open(filename + ".xml", "w") { |f| f.write(ret) }
           html_compliant_converter(node).convert(filename + ".xml")
-          system "mv #{filename}.html #{filename}_compliant.html"
+          FileUtils.mv "#{filename}.html", "#{filename}_compliant.html"
           html_converter(node).convert(filename + ".xml")
           doc_converter(node).convert(filename + ".xml")
         end
-        @files_to_delete.each { |f| system "rm #{f}" }
+        @files_to_delete.each { |f| FileUtils.rm f }
         ret
       end
 

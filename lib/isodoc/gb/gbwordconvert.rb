@@ -107,7 +107,6 @@ module IsoDoc
         meta[:filename] = filename
         params = meta.map { |k, v| [k.to_s, v] }.to_h
         File.open("header.html", "w") { |f| f.write(template.render(params)) }
-        system "cp #{@common.fileloc(File.join('html', 'blank.png'))} blank.png"
         FileUtils.cp @common.fileloc(File.join('html', 'blank.png')), "blank.png"
         @files_to_delete << "blank.png"
         @files_to_delete << "header.html"
