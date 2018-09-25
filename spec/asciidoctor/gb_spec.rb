@@ -1,15 +1,17 @@
 require "spec_helper"
+require "fileutils"
 
 RSpec.describe Asciidoctor::Gb do
   it "has a version number" do
     expect(Metanorma::Gb::VERSION).not_to be nil
   end
 
-  #it "generates output for the Rice document" do
-    #system "cd spec/examples; rm -f rice.doc; rm -f rice.html; asciidoctor --trace -b gb -r 'asciidoctor-gb' rice.adoc; cd ../.."
-    #expect(File.exist?("spec/examples/rice.doc")).to be true
-    #expect(File.exist?("spec/examples/rice.html")).to be true
-  #end
+  it "generates output for the Rice document" do
+    FileUtils.rm_f %w(spec/examples/rice.doc spec/examples/rice.html)
+    system "cd spec/examples; asciidoctor --trace -b gb -r 'metanorma-gb' rice.adoc; cd ../.."
+    expect(File.exist?("spec/examples/rice.doc")).to be true
+    expect(File.exist?("spec/examples/rice.html")).to be true
+  end
 
   it "processes a blank document" do
     expect(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)).to be_equivalent_to <<~"OUTPUT"
@@ -22,7 +24,7 @@ RSpec.describe Asciidoctor::Gb do
   end
 
   it "uses Roman fonts" do
-    system "rm -f test.doc"
+    FileUtils.rm_f "test.doc"
     Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)
       = Document title
       Author
@@ -39,7 +41,7 @@ RSpec.describe Asciidoctor::Gb do
   end
 
   it "uses Roman fonts, local scope" do
-    system "rm -f test.doc"
+    FileUtils.rm_f "test.doc"
     Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)
       = Document title
       Author
@@ -57,7 +59,7 @@ RSpec.describe Asciidoctor::Gb do
   end
 
   it "uses default Chinese fonts" do
-    system "rm -f test.doc"
+    FileUtils.rm_f "test.doc"
     Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)
       = Document title
       Author
@@ -73,7 +75,7 @@ RSpec.describe Asciidoctor::Gb do
   end
 
   it "uses Chinese fonts, local scope" do
-    system "rm -f test.doc"
+    FileUtils.rm_f "test.doc"
     Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)
       = Document title
       Author
@@ -91,7 +93,7 @@ RSpec.describe Asciidoctor::Gb do
   end
 
   it "uses specified fonts" do
-    system "rm -f test.doc"
+    FileUtils.rm_f "test.doc"
     Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)
       = Document title
       Author
@@ -112,7 +114,6 @@ RSpec.describe Asciidoctor::Gb do
   end
 
   it "uses specified images" do
-    system "rm -f test.html"
         Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)
       = Document title
       Author
@@ -131,7 +132,7 @@ RSpec.describe Asciidoctor::Gb do
   end
 
   it "does contributor cleanup" do
-    system "rm -f test.doc"
+    FileUtils.rm_f "test.doc"
     expect(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)).to be_equivalent_to <<~"OUTPUT"
       = Document title
       Author

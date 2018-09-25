@@ -1,4 +1,5 @@
 require "spec_helper"
+require "fileutils"
 
 RSpec.describe IsoDoc::Gb::HtmlConvert do
   it "processes IsoXML bibliographies" do
@@ -144,7 +145,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
   end
 
     it "does not supply terms boilerplate if prefatory content is already there" do
-    system "rm -f test.html"
+    FileUtils.rm_f "test.html"
     IsoDoc::Gb::HtmlConvert.new({htmlstylesheet: "lib/asciidoctor/gb/html/htmlstyle.scss"}).convert("test", <<~"INPUT", false)
             <gb-standard xmlns="http://riboseinc.com/gbstandard">
             <bibdata>
@@ -181,7 +182,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
   end
 
   it "processes deprecated term" do
-    system "rm -f test.html"
+    FileUtils.rm_f "test.html"
     IsoDoc::Gb::HtmlConvert.new({htmlstylesheet: "lib/asciidoctor/gb/html/htmlstyle.scss"}).convert("test", <<~"INPUT", false)
             <gb-standard xmlns="http://riboseinc.com/gbstandard">
             <bibdata>
@@ -216,7 +217,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
   end
 
     it "processes modified term source" do
-    system "rm -f test.html"
+    FileUtils.rm_f "test.html"
     IsoDoc::Gb::HtmlConvert.new({htmlstylesheet: "lib/asciidoctor/gb/html/htmlstyle.scss"}).convert("test", <<~"INPUT", false)
             <gb-standard xmlns="http://riboseinc.com/gbstandard">
             <bibdata>
@@ -257,8 +258,8 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
 
 
   it "processes logo for social" do
-    system "rm -f test.doc"
-    system "rm -f test.html"
+    FileUtils.rm_f "test.doc"
+    FileUtils.rm_f "test.html"
     IsoDoc::Gb::HtmlConvert.new({htmlstylesheet: "lib/asciidoctor/gb/html/htmlstyle.scss", htmlcoverpage: "lib/asciidoctor/gb/html/html_gb_titlepage.html"}).
       convert("test", <<~"INPUT", false)
       <gb-standard xmlns="http://riboseinc.com/gbstandard">
@@ -279,8 +280,8 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
   end
 
   it "processes logo for local" do
-    system "rm -f test.doc"
-    system "rm -f test.html"
+    FileUtils.rm_f "test.doc"
+    FileUtils.rm_f "test.html"
     IsoDoc::Gb::HtmlConvert.new({htmlstylesheet: "lib/asciidoctor/gb/html/htmlstyle.scss", htmlcoverpage: "lib/asciidoctor/gb/html/html_gb_titlepage.html"}).
       convert("test", <<~"INPUT", false)
       <gb-standard xmlns="http://riboseinc.com/gbstandard">
@@ -302,8 +303,8 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
   end
 
   it "processes logo for sector, no available logo" do
-    system "rm -f test.doc"
-    system "rm -f test.html"
+    FileUtils.rm_f "test.doc"
+    FileUtils.rm_f "test.html"
     IsoDoc::Gb::HtmlConvert.new({htmlstylesheet: "lib/asciidoctor/gb/html/htmlstyle.scss", htmlcoverpage: "lib/asciidoctor/gb/html/html_gb_titlepage.html"}).
       convert("test", <<~"INPUT", false)
       <gb-standard xmlns="http://riboseinc.com/gbstandard">
@@ -325,8 +326,8 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
   end
 
   it "processes logo for sector with available logo" do
-    system "rm -f test.doc"
-    system "rm -f test.html"
+    FileUtils.rm_f "test.doc"
+    FileUtils.rm_f "test.html"
     IsoDoc::Gb::HtmlConvert.new({htmlstylesheet: "lib/asciidoctor/gb/html/htmlstyle.scss", htmlcoverpage: "lib/asciidoctor/gb/html/html_gb_titlepage.html"}).
       convert("test", <<~"INPUT", false)
       <gb-standard xmlns="http://riboseinc.com/gbstandard">
@@ -348,8 +349,8 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
   end
 
   it "processes agency name" do
-    system "rm -f test.doc"
-    system "rm -f test.html"
+    FileUtils.rm_f "test.doc"
+    FileUtils.rm_f "test.html"
     IsoDoc::Gb::HtmlConvert.new({htmlstylesheet: "lib/asciidoctor/gb/html/htmlstyle.scss", htmlcoverpage: "lib/asciidoctor/gb/html/html_gb_titlepage.html"}).
       convert("test", <<~"INPUT", false)
       <gb-standard xmlns="http://riboseinc.com/gbstandard">
@@ -371,8 +372,8 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
   end
 
   it "processes agency name, GB" do
-    system "rm -f test.doc"
-    system "rm -f test.html"
+    FileUtils.rm_f "test.doc"
+    FileUtils.rm_f "test.html"
     IsoDoc::Gb::HtmlConvert.new({htmlstylesheet: "lib/asciidoctor/gb/html/htmlstyle.scss", htmlcoverpage: "lib/asciidoctor/gb/html/html_gb_titlepage.html"}).
       convert("test", <<~"INPUT", false)
       <gb-standard xmlns="http://riboseinc.com/gbstandard">
@@ -394,8 +395,8 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
   end
 
     it "processes agency name, GB" do
-    system "rm -f test.doc"
-    system "rm -f test.html"
+    FileUtils.rm_f "test.doc"
+    FileUtils.rm_f "test.html"
     IsoDoc::Gb::HtmlConvert.new({htmlstylesheet: "lib/asciidoctor/gb/html/htmlstyle.scss", htmlcoverpage: "lib/asciidoctor/gb/html/html_gb_titlepage.html"}).
       convert("test", <<~"INPUT", false)
       <gb-standard xmlns="http://riboseinc.com/gbstandard">
