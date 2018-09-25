@@ -3,7 +3,6 @@
 <html xmlns:epub="http://www.idpf.org/2007/ops">
   <head><style>
   <!--
-@charset "UTF-8";
 /*
     0 CSS RESET
 */
@@ -77,9 +76,6 @@ code, pre, tt, kbd, samp {
   font-family: "Courier New", monospace; }
 
 h1, h2, h3, h4, h5, h6, .h2Annex {
-  margin-top: 1.5em;
-  margin-bottom: 0.3em;
-  color: #000000;
   font-family: "Calibri", sans-serif; }
 
 dl {
@@ -101,12 +97,7 @@ footer, header, hgroup, menu, nav, section {
   display: block; }
 
 body {
-  line-height: 1;
-  margin: 0; }
-
-body {
-  margin-left: 298px;
-  margin-right: 2em; }
+  line-height: 1.3; }
 
 blockquote, q {
   quotes: none; }
@@ -120,45 +111,41 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
-/* Setting of the page size and margins */
-@page {
-  size: 210mm 297mm;
-  margin: 10mm 15mm 20mm 25mm; }
-
-.title-section {
-  padding-left: 4em;
-  padding-top: 10mm; }
-
-.prefatory-section {
-  padding: 0 3em 0 6em; }
-
-.prefatory-section, main {
-  margin: 0 1.5em; }
+body {
+  margin-left: 298px;
+  margin-right: 2em; }
 
 main {
   padding-left: 4em;
   padding-right: 2em; }
 
-.zzSTDTitle1, .MsoCommentText {
-  display: none; }
+.title-section, .prefatory-section {
+  padding-left: 4em;
+  padding-top: 2em; }
+
+.prefatory-section {
+  margin-bottom: 5em; }
 
 .doctitle-en, .doctitle-fr {
   margin-top: 2em;
   text-align: left; }
 
 .doctitle-en {
+  background-color: black;
   padding-left: 3em;
   margin-left: -3em;
   padding-top: 2em;
   padding-bottom: 2em; }
 
 .doctitle-en span {
-  font-size: 2em;
+  font-size: 1.5em;
   line-height: 1.5em;
-  display: block; }
+  font-weight: 900;
+  display: block;
+  color: white; }
 
 .doctitle-fr span {
-  font-size: 1.5em;
+  font-size: 1.2em;
   line-height: 1.2em;
   font-style: italic;
   display: block; }
@@ -172,156 +159,79 @@ span.title {
   margin-top: 2em;
   margin-bottom: 2em; }
 
-/*
 .coverpage_warning {
   border-top: solid 1px #f36f36;
   border-bottom: solid 1px #f36f36;
   margin: 1em 2em;
   color: #485094;
-  padding: 1em;
-}
-*/
-.coverpage_warning {
-  font-size: 0.9em;
-  font-style: italic;
-  padding-bottom: 1em; }
+  padding: 1em; }
 
-/*
 .coverpage_warning .title {
   color: #f36f36;
-  font-weight: 500;
-}
+  font-weight: 500; }
 
 .coverpage_warning .content {
-  font-style: italic;
-}
+  font-style: italic; }
 
 .coverpage_docnumber, .coverpage_techcommittee {
-    text-align: right;
-    font-size:0.9em;
-    line-height: 0.5em;
-}
-*/
+  text-align: right;
+  font-size: 14.0pt; }
+
 .coverpage {
   text-align: center;
-  /* margin: 2em 0; */ }
+  margin: 2em 0; }
 
-/* NEW */
-.coverpage-header {
-  height: 55mm; }
-
-/* NEW */
 .coverpage-category {
   float: left;
   text-align: left; }
 
-/* NEW */
-.coverpage-category span {
-  font-size: 0.9em;
-  font-family: "Calibri", sans-serif;
-  display: block; }
-
 .coverpage-logo {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  /* flex-direction: column; */ }
-
-/* NEW */
-.coverpage-logo-gb-img {
-  float: right;
-  padding-right: 0mm; }
-
-/* NEW */
-.coverpage-logo-gb-img img {
-  margin-bottom: 9mm;
-  float: right; }
-
-/* NEW */
-.coverpage-logo-header {
-  height: 42mm;
-  display: flex;
-  flex-direction: column; }
+  color: #485094; }
 
 .coverpage-tc-name {
+  color: #485094;
   font-size: 1.2em;
   line-height: 1.2em;
   margin: 0.25em 0; }
 
-/*
 .coverpage-doc-identity {
   background-color: #485094;
   color: white;
   font-size: 2em;
   line-height: 2em;
-  margin: 0.5em 0;
-}
-*/
+  margin: 0.5em 0; }
+
+.coverpage-doc-identity-first {
+  font-size: 5mm;
+  text-align: right;
+  padding-right: 5mm;
+  padding-bottom: 1em;
+  padding-top: 1em; }
+
 .coverpage-title {
   font-weight: 400; }
 
 .coverpage-title .title-second {
   display: none; }
 
-span.coverpage-logo-text {
-  font-size: 5mm;
-  text-align: right;
-  float: right;
-  padding-bottom: 9mm;
-  font-weight: bold; }
+.coverpage-logo-text {
+  font-size: 24.0pt; }
 
-/* NEW */
-.coverpage-doc-identity-first {
-  font-size: 5mm;
-  text-align: right;
-  padding-right: 5mm;
-  /*font-weight: bold; */
-  padding-bottom: 1em;
-  border-bottom: solid black 1px; }
-
-/* NEW */
-.title-first, .title-second, .title-third, .stage, .date-publish,
-.date-active, .coverpage_footer {
-  font-family: "Calibri", sans-serif; }
-
-/* NEW */
-/*
-span.title-second, span.title-third {
-	font-size: 5mm;
-}
-*/
 .coverpage-stage-block {
-  font-size: 1.25em;
+  font-style: italic;
   text-align: center;
-  width: 100%;
-  margin-top: 2em;
-  /* display: none; */ }
+  font-size: 1.25em;
+  font-weight: 600; }
 
-/* NEW */
-.coverpage-stage-block .stage {
-  display: block;
-  margin-top: 1em; }
-
-/* NEW */
-.coverpage-stage-block .coverpage-warning {
-  display: block;
-  margin-top: 1em; }
-
-/* NEW */
-.coverpage-warning {
-  font-size: 0.8em;
-  font-style: italic; }
-
-/* NEW */
 span.date-publish {
   float: left; }
 
-/* NEW */
 span.date-active {
   float: right; }
 
 .coverpage-doc-relations {
-  font-size: 10.5pt; }
+  font-size: 10.5pt;
+  padding-top: 0.5em; }
 
 .coverpage-title-zh {
   font-size: 8mm;
@@ -333,11 +243,11 @@ span.date-active {
 
 .coverpage-title-zh span {
   padding-top: 2mm;
-  font-size: 8mm; }
+  font-size: 28pt; }
 
 .coverpage-title-en {
   margin-top: 10mm;
-  font-size: 5mm;
+  font-size: 18pt;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -349,38 +259,21 @@ span.date-active {
 .coverpage-title-en .title-first {
   text-transform: uppercase; }
 
-/* NEW */
-.coverpage-warning {
-  border-top: solid 1px #f36f36;
-  border-bottom: solid 1px #f36f36;
-  margin: 1em 2em;
-  color: #485094;
-  padding: 1em; }
-
-/* NEW */
-.coverpage-warning .title {
-  color: #f36f36;
-  font-weight: 500; }
-
-/* NEW */
-.coverpage-warning .content {
-  font-style: italic; }
-
 .coverpage-iso-relation {
   font-size: 14pt;
   margin-top: 10mm;
   text-align: center; }
 
 .coverpage-dates {
+  font-size: 14.0pt;
   width: 100%;
   margin-top: 25mm;
-  border-bottom: 1px solid #000;
-  font-size: 4.5mm;
-  font-family: "Calibri", sans-serif; }
+  font-family: "Calibri", sans-serif;
+  border-bottom: 1px solid #000; }
 
 .coverpage_footer {
   text-align: center;
-  font-size: 1em;
+  font-size: 16pt;
   font-weight: 600;
   width: 100%;
   margin-top: 10mm; }
@@ -399,7 +292,6 @@ span.date-active {
 .coverpage_footer .publish {
   vertical-align: middle; }
 
-/* NEW */
 .coverpage-banner {
   padding-top: 5mm;
   margin-left: auto;
@@ -407,22 +299,16 @@ span.date-active {
   width: auto;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  height: 177.5mm; }
+  justify-content: center; }
 
-.copyright {
-  padding: 1em; }
-
-/*
 .copyright .name {
-    font-weight: 900;
-    padding-top: 1em;
-}
-*/
+  font-weight: 900;
+  padding-top: 1em; }
+
 .copyright .year, .copyright .message,
 .copyright .name, .copyright .address {
   margin-top: 1em;
-  /* line-height: 1.1em; */
+  line-height: 1.1em;
   display: block; }
 
 .copyright .message, .copyright .name,
@@ -436,45 +322,23 @@ span.date-active {
 .copyright .address {
   color: #485094; }
 
-p.MsoCommentText, li.MsoCommentText, div.MsoCommentText {
-  margin-top: 0cm;
-  margin-right: 0cm;
-  margin-bottom: 12.0pt;
-  margin-left: 0cm;
-  text-align: justify;
-  line-height: 12.0pt;
-  /* tab-stops: 20.15pt; */
-  font-size: 12.0pt;
-  font-family: "Cambria", serif; }
-
-p.MsoCommentSubject, li.MsoCommentSubject, div.MsoCommentSubject {
-  margin-top: 0cm;
-  margin-right: 0cm;
-  margin-bottom: 12.0pt;
-  margin-left: 0cm;
-  text-align: justify;
-  line-height: 12.0pt;
-  tab-stops: 20.15pt;
-  font-size: 10.0pt;
-  font-family: "Calibri", sans-serif;
-  font-weight: bold; }
-
 /* TYPOGRAPHY */
-a {
-  color: #000;
-  text-decoration: underline;
-  text-decoration-color: black; }
-
 h1 {
   font-size: 1.5em;
+  line-height: 2em;
+  color: #485094;
   font-weight: 400; }
 
 h2 {
   font-size: 1.3em;
+  line-height: 1.5em;
+  color: #485094;
   font-weight: 300; }
 
 h3 {
   font-size: 1.1em;
+  line-height: 1.3em;
+  color: #485094;
   font-weight: 300; }
 
 h1 {
@@ -485,18 +349,16 @@ h2 {
   margin-top: 2em;
   margin-bottom: 1em; }
 
-h1, h2, h3, h4, h5, h6 {
+h4, h5, h6 {
   line-height: 1.2; }
 
 h2 p {
   display: inline; }
 
 p {
-  font-size: 1em;
-  line-height: 1.4em;
-  margin-left: 2em;
   margin-top: 1em;
-  margin-bottom: 1em; }
+  margin-bottom: 1em;
+  line-height: 1.2em; }
 
 p.zzSTDTitle1 {
   font-weight: 700;
@@ -505,36 +367,37 @@ p.zzSTDTitle1 {
 span.obligation {
   font-weight: 400; }
 
-a:visited {
-  text-decoration: none; }
+a, a:visited {
+  text-decoration: none;
+  color: #485094; }
 
-/*
 a:hover {
   text-style: italic;
-  color: #485094;
-}
-*/
+  color: #485094; }
+
 nav a {
   color: black;
-  /* line-height: 1.2em; */ }
+  text-decoration: none;
+  line-height: 1.2em; }
 
 p.TermNum {
-  font-size: 1.3em;
-  font-weight: 300;
-  margin: 1em 0 0 0; }
+  color: #485094;
+  font-weight: 400;
+  margin: 0; }
 
 p.Terms {
-  font-size: 1.3em;
-  font-weight: 300;
-  margin: 0 0 1em 0; }
+  color: #485094;
+  font-weight: 400;
+  margin: 0; }
 
 p.AltTerms {
+  color: #485094;
   font-weight: 400;
   font-style: italic;
-  margin: 0;
-  margin-left: 2em; }
+  margin: 0; }
 
 p.DeprecatedTerms {
+  color: #485094;
   font-weight: 400;
   font-style: italic;
   margin: 0; }
@@ -550,13 +413,11 @@ p.DeprecatedTerms {
     font-size: 0.9em;
     overflow: auto;
     padding: 0 0 0 45px;
-    background-color: #f7f7f7;
-    line-height: 1.2em; }
+    background-color: #f7f7f7; }
   #toggle {
     position: fixed;
     height: 100%;
     width: 30px;
-    border-right: solid black 1px;
     background-color: black;
     color: white !important;
     cursor: pointer;
@@ -604,13 +465,11 @@ p.DeprecatedTerms {
   padding: 5px 10px; }
 
 #toc a {
-  color: #000000;
-  text-decoration: none !important;
-  display: block;
-  font-family: "Cambria", serif; }
+  text-decoration: none;
+  display: block; }
 
 #toc a:hover {
-  color: black; }
+  color: white; }
 
 #toc .h2 {
   padding-left: 30px; }
@@ -618,35 +477,37 @@ p.DeprecatedTerms {
 #toc .h3 {
   padding-left: 50px; }
 
-nav a {
-  text-decoration: none !important; }
-
 #toc .toc-active a {
-  color: black; }
+  color: white; }
+
+#toc .toc-active, #toc li:hover {
+  background: #1d1d1d;
+  box-shadow: inset -5px 0px 10px -5px #1d1d1d !important; }
+
+#toc li:hover a {
+  color: white; }
 
 /*
-#toc .toc-active, #toc li:hover {
-    background: #1d1d1d;
-    box-shadow: inset -5px 0px 10px -5px #1d1d1d!important;
+ul li {
+    list-style: none;
+  }
 
-}
+  ul > li > p:first-child:before {
+    content: "?~@~T";
+    display: inline-block;
+    width: 1em;
+    margin-left: -1.5em;
+    margin-right: 0.5em;
+  }
 */
-#toc li:hover a {
-  color: black; }
+li p {
+  /* display: inline-block; */
+  margin-bottom: 0.6em;
+  line-height: 1.2; }
 
 #toc li:before {
   content: " ";
   display: none; }
-
-::selection {
-  background: #1d1d1d;
-  /* WebKit/Blink Browsers */
-  color: white; }
-
-::-moz-selection {
-  background: #1d1d1d;
-  /* Gecko Browsers */
-  color: white; }
 
 /*
     Document types + stages
@@ -657,7 +518,8 @@ nav a {
   height: 100%;
   position: fixed;
   display: block;
-  z-index: 99; }
+  z-index: 99;
+  /*box-shadow: -5px 0px 10px #1d1d1d*/ }
 
 .document-stage-band {
   left: 0;
@@ -682,12 +544,6 @@ p.document-type, p.document-stage {
   font-size: 0.9em;
   font-weight: 400;
   letter-spacing: 0.05em;
-  /*
-    margin-top: 0px;
-    margin-bottom: 10px;
-    margin-right: 5px;
-    margin-left: 5px;
-    */
   margin: 0;
   margin-left: 6px;
   writing-mode: tb-rl;
@@ -697,14 +553,6 @@ p.document-type, p.document-stage {
   white-space: nowrap;
   display: block;
   bottom: 0; }
-
-p.document-type.zh, p.document-stage.zh {
-  -webkit-transform: rotate(0deg);
-  -moz-transform: rotate(0deg);
-  -o-transform: rotate(0deg);
-  margin-top: 10px;
-  letter-spacing: 0.1em;
-  font-size: 1em; }
 
 p.document-type {
   font-weight: 400;
@@ -737,6 +585,7 @@ p.document-stage {
   background-color: #48a0e7; }
 
 .coverpage-maturity {
+  font-family: 'Overpass', sans-serif;
   font-weight: 400;
   font-size: 1em;
   margin: 0 0 2em 0;
@@ -779,39 +628,14 @@ p.document-stage {
 ul, ol {
   margin-left: 2em; }
 
-ul {
-  padding-left: 1em; }
-
 #toc-list ul {
   margin-bottom: 0.25em; }
 
 #toc-list ul li {
   list-style-type: none; }
 
-ul > li {
-  list-style: none; }
-
-ul > li > p:first-child:before {
-  content: "—";
-  display: inline-block;
-  width: 1em;
-  margin-left: -1.5em;
-  margin-right: 0.5em; }
-
-li p {
-  display: inline-block;
-  margin-bottom: 0.6em;
-  line-height: 1.2; }
-
 /*
 3.4 Rules
-*/
-/*
-  div.rule {
-    width: 100%;
-    height: 1px;
-    background-color: #485094;
-    margin: 2em 0; }
 */
 .rule {
   width: 100%;
@@ -829,20 +653,20 @@ p.Biblio, p.NormRef {
 /*
 3.6 Source Code + figures
 */
-.Sourcecode, .figure {
-  font-family: "Courier New", monospace;
-  font-size: 0.9em;
+.Sourcecode {
+  font-family: "Courier New", monospace; }
+
+.figure, .Sourcecode {
+  background-color: #f7f7f7;
   line-height: 1.6em;
   padding: 1.5em;
-  background-color: #f7f7f7;
   margin: 2em 0 1em 0;
   overflow: auto; }
 
 .figure-title, .FigureTitle {
   font-weight: 700;
   font-size: 1em;
-  text-align: center;
-  font-family: "Calibri", sans-serif; }
+  text-align: center; }
 
 /*
 3.7 Notes
@@ -850,23 +674,18 @@ p.Biblio, p.NormRef {
 .Note, .note {
   background-color: #fff495;
   color: #47430c;
-  padding: 1.2em;
-  /*margin: 2em 0 1em 0;*/
+  padding: 0.5em;
   margin: 1.5em 0 1.5em 0;
-  /* text-align: left; */ }
+  text-align: left; }
 
-/*
 .Note p, .note p {
-    margin: 0;
-}
+  margin: 0; }
 
-*/
 /*
 3.8 Examples
 */
 .example {
   background-color: #e1eef1;
-  /*padding: 1.2em; */
   padding: 0.5em;
   margin: 2em 0 1em 0;
   text-align: left; }
@@ -879,9 +698,6 @@ p.Biblio, p.NormRef {
   text-transform: uppercase;
   text-align: center;
   margin-top: 0; }
-
-.example-title {
-  font-family: "Calibri", sans-serif; }
 
 /*
 3.9 Tables
@@ -909,25 +725,21 @@ td.header {
 p.TableTitle {
   text-align: center;
   margin-top: 2.5em;
-  font-weight: 400;
-  font-size: 1.1em;
-  font-family: "Calibri", sans-serif; }
+  font-weight: 800;
+  font-size: 1.1em; }
 
 .TableFootnote {
-  text-align: left !important;
-  list-style: lower-alpha; }
+  text-align: left !important; }
 
 /*
 3.10 Footnotes
 */
 a.footnote-number, a.TableFootnoteRef {
   vertical-align: super;
-  font-size: 0.8em;
-  text-decoration: none; }
+  font-size: 0.8em; }
 
-.footnote, .footnote a, a.TableFootnoteRef a {
-  font-size: 0.9em;
-  text-decoration: none; }
+.footnote {
+  font-size: 0.9em; }
 
 sup a {
   vertical-align: super;
@@ -978,14 +790,13 @@ ol > li > p:before {
 3.12 Formulas
 */
 .formula {
-  /* background-color: #f1f1f1; */
   background-color: #f7f7f7;
   padding: 1.5em;
   margin-top: 2em;
-  margin-bottom: 1em;
   text-align: center;
   margin-left: 20%;
-  margin-right: 20%; }
+  margin-right: 20%;
+  font-size: 0.9em; }
 
 /*
 Keywords
@@ -995,6 +806,7 @@ span.keyword {
 
 .Admonition, .admonition {
   background-color: #ffb3b3;
+  /* color: #47430c;*/
   padding: 0.5em;
   margin: 1.5em 0 1.5em 0;
   text-align: left; }
@@ -1407,7 +1219,7 @@ World<br />
 <p id="_2b55844c-c199-46a1-b60a-330ed0062a19">All parts of kernels which get stuck in the perforations of a sieve should be considered to be retained by the sieve.</p>
 <div id="figureA-1" class="figure">
 
-  <img src="rice_images/8cba5384-fe6f-4df6-a8c1-08de4f96a0e3.png" height="776" width="922" />
+  <img src="rice_images/a8589e7e-c0ac-4c24-aa1e-70540a8b0565.png" height="776" width="922" />
 <p class="FigureTitle" align="center">Figure A.1&#xA0;&#x2014; Split-it-right sample divider</p></div></div>
 </div>
         <div id="_determination_2"><h2>A.5.&#x3000;Determination</h2><p id="_d688dbdc-390d-4061-991c-ebb5b3f485b2">Weigh, to the nearest 0,1 g, one of the test samples obtained in accordance with <a href="#AnnexA-4-1">Annex A.4.1</a> and separate the different defects into the bowls (<a href="#AnnexA-2-6">Annex A.2.6</a>). When a kernel has several defects, classify it in the defect category for which the maximum permissible value is the lowest (see <a href="#table1">Table 1</a>).</p>
@@ -1526,8 +1338,8 @@ World<br />
         <p id="_126bc160-0685-4de1-9c0e-03914f1aa444"><a href="#figureC-1">Figure C.1</a> gives an example of a typical gelatinization curve. <a href="#figureC-2">Figure C.2</a> shows the three stages of gelatinization.</p>
         <div id="figureC-1" class="figure">
 
-  <img src="rice_images/e750832e-431e-45f1-91e7-2d8e979dfe6e.png" height="800" width="917" />
-<aside class="footnote"><div id="fn:f6c835f7-86d7-4c6d-bc8c-3aadcd6d6f97a">
+  <img src="rice_images/e9a92d56-3e85-4757-8a79-6516c72ca417.png" height="800" width="917" />
+<aside class="footnote"><div id="fn:57cfd079-17b3-4c64-8537-50fec3c7c38ba">
   
 </div></aside><p><b>Key</b></p><dl id="_29b22d56-4bd8-4f37-9186-fd1eb69e3445"><dt>
     <span class="stem">(#(w)#)</span>
@@ -1543,20 +1355,20 @@ World<br />
     <p id="_936e6762-e98b-46eb-93e0-793fd05308fd">time required to gelatinize 90 % of the kernels</p>
   </dd><dt><p>P</p></dt><dd>
     <p id="_50d70390-dd1b-451c-9493-b5fd721e50a2">point of the curve corresponding to a cooking time of <span class="stem">(#(t_90)#)</span></p>
-  </dd><dt><a id="f6c835f7-86d7-4c6d-bc8c-3aadcd6d6f97a" class="TableFootnoteRef">a&#xA0; </a></dt><dd><p id="_6e3d9591-e011-43f0-a91c-b2cc4d10de40">The time <span class="stem">(#(t_90)#)</span> was estimated to be 18,2 min for this example.</p></dd></dl><table id="_efaf6d06-367d-47a7-b501-4a2751a00c18" class="Note"><tr><td valign="top" class="example_label" style="padding:2pt 2pt 2pt 2pt">NOTE:</td><td valign="top" class="Note">
+  </dd><dt><a id="57cfd079-17b3-4c64-8537-50fec3c7c38ba" class="TableFootnoteRef">a&#xA0; </a></dt><dd><p id="_6e3d9591-e011-43f0-a91c-b2cc4d10de40">The time <span class="stem">(#(t_90)#)</span> was estimated to be 18,2 min for this example.</p></dd></dl><table id="_efaf6d06-367d-47a7-b501-4a2751a00c18" class="Note"><tr><td valign="top" class="example_label" style="padding:2pt 2pt 2pt 2pt">NOTE:</td><td valign="top" class="Note">
   <p id="_598b19b5-3e95-4070-9503-e70b9f86a125" class="Note">These results are based on a study carried out on three different types of kernel.</p>
 </td></tr></table><p class="FigureTitle" align="center">Figure C.1&#xA0;&#x2014; Typical gelatinization curve</p></div>
         <div id="figureC-2" class="figure"><div id="_eb4ebf09-6b5c-45be-86c8-fe92838fde6e" class="figure">
 
-  <img src="rice_images/33a84660-fb41-4897-8b6b-b8338f4241ff.png" height="728" width="828" />
+  <img src="rice_images/67a4e1d7-d77a-4835-94fa-6beaa1a135d2.png" height="728" width="828" />
 <p class="FigureTitle" align="center">Figure C.2-1&#xA0;&#x2014; Initial stages: No grains are fully gelatinized (ungelatinized starch granules are visible inside the kernels)</p></div>
 <div id="_b0c0c971-2eb5-4fe6-9359-0ff31cbf345d" class="figure">
 
-  <img src="rice_images/e06f02b1-739d-433e-93fd-075f6d81a8d4.png" height="704" width="726" />
+  <img src="rice_images/e61e563f-32e9-4145-ab45-e5084c68e935.png" height="704" width="726" />
 <p class="FigureTitle" align="center">Figure C.2-2&#xA0;&#x2014; Intermediate stages: Some fully gelatinized kernels are visible</p></div>
 <div id="_69c4bcb9-b39c-466f-826e-92ee18bffa26" class="figure">
 
-  <img src="rice_images/d97e8ec1-8ccf-409c-b760-daf6bb832430.png" height="738" width="744" />
+  <img src="rice_images/9ebbbdfb-a449-45bf-a942-56f3415bcf4d.png" height="738" width="744" />
 <p class="FigureTitle" align="center">Figure C.2-3&#xA0;&#x2014; Final stages: All kernels are fully gelatinized</p></div></div>
       </div>
       <br />

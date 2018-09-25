@@ -175,7 +175,7 @@ module IsoDoc
         else
           div.send "h#{get_anchors[node['id']][:level]}" do |h|
             h << "#{get_anchors[node['id']][:label]}.&#x3000;" if !@suppressheadingnumbers
-            c1.children.each { |c2| parse(c2, h) }
+            c1 && c1.children.each { |c2| parse(c2, h) }
           end
         end
       end
