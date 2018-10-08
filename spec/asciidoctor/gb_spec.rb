@@ -114,7 +114,7 @@ RSpec.describe Asciidoctor::Gb do
   end
 
   it "uses specified images" do
-        Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)
+    Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)
       = Document title
       Author
       :docfile: test.adoc

@@ -71,7 +71,7 @@ module Asciidoctor
         ret = makexml(node).to_xml(indent: 2)
         unless node.attr("nodoc") || !node.attr("docfile")
           filename = node.attr("docfile").gsub(/\.adoc$/, "").gsub(%r{^.*/}, "")
-          File.open(filename + ".xml", "w") { |f| f.write(ret) }
+          File.open(filename + ".xml", "w:utf-8") { |f| f.write(ret) }
           html_compliant_converter(node).convert(filename + ".xml")
           FileUtils.mv "#{filename}.html", "#{filename}_compliant.html"
           html_converter(node).convert(filename + ".xml")

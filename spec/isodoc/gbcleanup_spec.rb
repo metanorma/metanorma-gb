@@ -110,7 +110,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
 
     it "populates Word ToC" do
     FileUtils.rm_f "test.doc"
-    IsoDoc::Gb::WordConvert.new({wordstylesheet: "lib/asciidoctor/gb/html/wordstyle.scss", wordintropage: "lib/asciidoctor/gb/html/word_gb_intro.html"}).convert("test", <<~"INPUT", false)
+    IsoDoc::Gb::WordConvert.new({wordstylesheet: "lib/isodoc/gb/html/wordstyle.scss", wordintropage: "lib/isodoc/gb/html/word_gb_intro.html"}).convert("test", <<~"INPUT", false)
         <gb-standard xmlns="http://riboseinc.com/gbstandard">
                                    <bibdata> <language>en</language> <script>Latn</script> </bibdata>
         <sections>
