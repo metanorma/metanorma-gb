@@ -151,6 +151,7 @@ p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
         margin-right:0cm;
         margin-bottom:12.0pt;
         /* do not put in margin-left, it is specific to list level */
+        mso-add-space:auto;
         mso-pagination:widow-orphan;
         font-size:10.5pt;
         font-family:$bodyfont;
@@ -165,6 +166,7 @@ p.MsoListParagraphCxSpFirst, li.MsoListParagraphCxSpFirst, div.MsoListParagraphC
         margin-right:0cm;
         margin-bottom:12.0pt;
         /* do not put in margin-left, it is specific to list level */
+        mso-add-space:auto;
         mso-pagination:widow-orphan;
         font-size:10.5pt;
         font-family:$bodyfont;
@@ -179,6 +181,7 @@ p.MsoListParagraphCxSpMiddle, li.MsoListParagraphCxSpMiddle, div.MsoListParagrap
         margin-right:0cm;
         margin-bottom:12.0pt;
         /* do not put in margin-left, it is specific to list level */
+        mso-add-space:auto;
         mso-pagination:widow-orphan;
         font-size:10.5pt;
         font-family:$bodyfont;
@@ -193,6 +196,7 @@ p.MsoListParagraphCxSpLast, li.MsoListParagraphCxSpLast, div.MsoListParagraphCxS
         margin-right:0cm;
         margin-bottom:12.0pt;
         /* do not put in margin-left, it is specific to list level */
+        mso-add-space:auto;
         mso-pagination:widow-orphan;
         font-size:10.5pt;
         font-family:$bodyfont;
