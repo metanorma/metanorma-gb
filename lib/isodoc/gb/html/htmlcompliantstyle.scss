@@ -726,6 +726,13 @@ p.DeprecatedTerms {
     }
 }
 
+@media screen {
+  img { 
+      width: 100%;   
+      height: auto;
+  }
+}
+    
 
 #toc ul {
     margin: 0;
