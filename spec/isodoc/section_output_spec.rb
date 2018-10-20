@@ -108,7 +108,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
                <p class="zzSTDTitle1">XXXX</p>
                <br/>
                <div id="P" class="Section3">
-                 <h1 class="Annex"><b>Annex A</b><br/>(normative)<br/><br/>Annex</h1>
+                 <h1 class="Annex"><b>Annex A</b><br/>(normative)<br/><br/><b>Annex</b></h1>
                </div>
                <hr width="25%"/>
              </div>
