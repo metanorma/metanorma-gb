@@ -33,10 +33,10 @@ module Metanorma
         /\n:standard-issuer-img: (?<standardissuerimg>[^\n]+)\n/ =~ head
         /\n:title-font: (?<titlefont>[^\n]+)\n/ =~ head
         new_options = {
-          standardlogoimg: defined(standardlogoimg) ? standardlogoimg : nil,
-          standardclassimg: defined(standardclassimg) ? standardclassimg : nil,
-          standardissuerimg: defined(standardissuerimg) ? standardissuerimg : nil,
-          titlefont: defined(titlefont) ? titlefont : nil,
+          standardlogoimg: defined?(standardlogoimg) ? standardlogoimg : nil,
+          standardclassimg: defined?(standardclassimg) ? standardclassimg : nil,
+          standardissuerimg: defined?(standardissuerimg) ? standardissuerimg : nil,
+          titlefont: defined?(titlefont) ? titlefont : nil,
         }.reject { |_, val| val.nil? }
         super.merge(new_options)
       end

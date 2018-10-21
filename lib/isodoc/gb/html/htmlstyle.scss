@@ -565,7 +565,7 @@ p.DeprecatedTerms {
 }
 
 @media screen {
-  img { 
+  img:not(.logo) { 
       width: 100%;   
       height: auto;
   }
