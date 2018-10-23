@@ -191,6 +191,7 @@ module Asciidoctor
 
       def metadata(node, xml)
         title node, xml
+        metadata_source(node, xml)
         metadata_id(node, xml)
         metadata_date(node, xml)
         metadata_contributors(node, xml)
