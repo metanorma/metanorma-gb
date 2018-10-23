@@ -299,7 +299,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
     INPUT
     html = File.read("test.html", encoding: "utf-8").sub(/^.*<div class="title-section">/m, '<div class="title-section">').
       sub(%r{<div class="prefatory-section".*$}m, "")
-    expect(html.gsub(/"#[a-f0-9-]+"/, "#_")).to match(%r{<div class="coverpage-logo-gb-img"><img width='113' height='56' src='gb-standard-db.gif' alt='DB'></img><span style='font-weight:bold'>81</span></div>})
+    expect(html.gsub(/"#[a-f0-9-]+"/, "#_")).to match(%r{<div class="coverpage-logo-gb-img"><img class="logo" width="113" height="56" src="[^"]+" alt="DB" /><span style="font-weight:bold">81</span></div>})
   end
 
   it "processes logo for sector, no available logo" do
@@ -322,7 +322,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
     INPUT
     html = File.read("test.html", encoding: "utf-8").sub(/^.*<div class="title-section">/m, '<div class="title-section">').
       sub(%r{<div class="prefatory-section".*$}m, "")
-    expect(html.gsub(/"#[a-f0-9-]+"/, "#_")).to match(%r{<div class="coverpage-logo-gb-img"><span style='font-size:36pt;font-weight:bold'>NY</span></div>})
+    expect(html.gsub(/"#[a-f0-9-]+"/, "#_")).to match(%r{<div class="coverpage-logo-gb-img"><span style="font-size:36pt;font-weight:bold">NY</span></div>})
   end
 
   it "processes logo for sector with available logo" do
@@ -345,7 +345,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
     INPUT
     html = File.read("test.html", encoding: "utf-8").sub(/^.*<div class="title-section">/m, '<div class="title-section">').
       sub(%r{<div class="prefatory-section".*$}m, "")
-    expect(html.gsub(/"#[a-f0-9-]+"/, "#_")).to match(%r{<div class="coverpage-logo-gb-img"><img width='113' height='56' src='gb-standard-gm.gif' alt='GM'></img></div>})
+    expect(html.gsub(/"#[a-f0-9-]+"/, "#_")).to match(%r{<div class="coverpage-logo-gb-img"><img class="logo" width="113" height="56" src="[^"]+" alt="GM" /></div>})
   end
 
   it "processes agency name" do
@@ -391,7 +391,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
     INPUT
     html = File.read("test.html", encoding: "utf-8").sub(/^.*<div class="title-section">/m, '<div class="title-section">').
       sub(%r{<div class="prefatory-section".*$}m, "")
-    expect(htmlencode(html.gsub(/"#[a-f0-9-]+"/, "#_"))).to match(%r{<div class="coverpage_footer">\s*<img src='gb-issuer-default.gif' alt='&#x4e2d;&#x534e;&#x4eba;&#x6c11;&#x5171;&#x548c;&#x56fd;&#x56fd;&#x5bb6;&#x8d28;&#x91cf;&#x76d1;&#x7763;&#x68c0;&#x9a8c;&#x68c0;&#x75ab;&#x603b;&#x5c40;,&#x4e2d;&#x56fd;&#x56fd;&#x5bb6;&#x6807;&#x51c6;&#x5316;&#x7ba1;&#x7406;&#x59d4;&#x5458;&#x4f1a;'></img>\s*</div>})
+    expect(htmlencode(html.gsub(/"#[a-f0-9-]+"/, "#_"))).to match(%r{<div class="coverpage_footer">\s*<img class="logo" src="[^"]+" alt="&#x4E2D;&#x534E;&#x4EBA;&#x6C11;&#x5171;&#x548C;&#x56FD;&#x56FD;&#x5BB6;&#x8D28;&#x91CF;&#x76D1;&#x7763;&#x68C0;&#x9A8C;&#x68C0;&#x75AB;&#x603B;&#x5C40;,&#x4E2D;&#x56FD;&#x56FD;&#x5BB6;&#x6807;&#x51C6;&#x5316;&#x7BA1;&#x7406;&#x59D4;&#x5458;&#x4F1A;" width="680" height="90" />\s*</div>})
   end
 
     it "processes agency name, GB" do
@@ -414,8 +414,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
     INPUT
     html = File.read("test.html", encoding: "utf-8").sub(/^.*<div class="title-section">/m, '<div class="title-section">').
       sub(%r{<div class="prefatory-section".*$}m, "")
-    expect(htmlencode(html.gsub(/"#[a-f0-9-]+"/, "#_"))).to match(%r{<div class="coverpage_footer">\s*<img src='gb-issuer-default.gif' alt='&#x4e2d;&#x534e;&#x4eba;&#x6c11;&#x5171;&#x548c;&#x56fd;&#x56fd;&#x5bb6;&#x8d28;&#x91cf;&#x76d1;&#x7763;&#x68c0;&#x9a8c;&#x68c0;&#x75ab;&#x603b;&#x5c40;,&#x4e2d;&#x56fd;&#x56fd;&#x5bb6;&#x6807;&#x51c6;&#x5316;&#x7ba1;&#x7406;&#x59d4;&#x5458;&#x4f1a;'></img>\s*</div>})
+    expect(htmlencode(html.gsub(/"#[a-f0-9-]+"/, "#_"))).to match(%r{<div class="coverpage_footer">\s*<img class="logo" src="[^"]+" alt="&#x4E2D;&#x534E;&#x4EBA;&#x6C11;&#x5171;&#x548C;&#x56FD;&#x56FD;&#x5BB6;&#x8D28;&#x91CF;&#x76D1;&#x7763;&#x68C0;&#x9A8C;&#x68C0;&#x75AB;&#x603B;&#x5C40;,&#x4E2D;&#x56FD;&#x56FD;&#x5BB6;&#x6807;&#x51C6;&#x5316;&#x7BA1;&#x7406;&#x59D4;&#x5458;&#x4F1A;" width="680" height="90" />\s*</div>})
   end
-
 
 end

@@ -6,15 +6,14 @@ RSpec.describe Asciidoctor::Gb do
     expect(Metanorma::Gb::VERSION).not_to be nil
   end
 
-  it "generates output for the Rice document" do
-    FileUtils.rm_f %w(spec/examples/rice.doc spec/examples/rice.html)
-    #system "cd spec/examples; asciidoctor --trace -b gb -r 'metanorma-gb' rice.adoc; cd ../.."
-    FileUtils.cd "spec/examples"
-    Asciidoctor.convert_file "rice.adoc", {:attributes=>{"backend"=>"gb"}, :safe=>0, :header_footer=>true, :requires=>["metanorma-gb"], :failure_level=>4, :mkdirs=>true, :to_file=>nil}
-    FileUtils.cd "../.."
-    expect(File.exist?("spec/examples/rice.doc")).to be true
-    expect(File.exist?("spec/examples/rice.html")).to be true
-  end
+  #it "generates output for the Rice document" do
+    #FileUtils.rm_f %w(spec/examples/rice.doc spec/examples/rice.html)
+    #FileUtils.cd "spec/examples"
+    #Asciidoctor.convert_file "rice.adoc", {:attributes=>{"backend"=>"gb"}, :safe=>0, :header_footer=>true, :requires=>["metanorma-gb"], :failure_level=>4, :mkdirs=>true, :to_file=>nil}
+    #FileUtils.cd "../.."
+    #expect(File.exist?("spec/examples/rice.doc")).to be true
+    #expect(File.exist?("spec/examples/rice.html")).to be true
+  #end
 
   it "processes a blank document" do
     expect(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)).to be_equivalent_to <<~"OUTPUT"
@@ -129,9 +128,9 @@ RSpec.describe Asciidoctor::Gb do
 
     INPUT
     html = File.read("test.html", encoding: "utf-8")
-    expect(html).to include %{<div class="coverpage-logo-gb-img"><img width='113' height='56' src='spec/asciidoctor/examples/a.gif' alt='GB'></img></div>}
-    expect(html).to include %{<span class="coverpage-logo-text"><img src='spec/asciidoctor/examples/b.gif' alt='中华人民共和国国家标准'></img></span>}
-    expect(html).to include %{<img src='spec/asciidoctor/examples/c.gif' alt='中华人民共和国国家质量监督检验检疫总局,中国国家标准化管理委员会'></img>}
+    expect(html).to match %r{<div class="coverpage-logo-gb-img"><img class="logo" width="113" height="56" src="test_images/[^\.]+.gif" alt="GB" /></div>}
+    expect(html).to match %r{<span class="coverpage-logo-text"><img class="logo" src="test_images/[^\.]+.gif" alt="&#x4E2D;&#x534E;&#x4EBA;&#x6C11;&#x5171;&#x548C;&#x56FD;&#x56FD;&#x5BB6;&#x6807;&#x51C6;" width="18" height="18" /></span>}
+    expect(html).to match %r{<img class="logo" src="test_images/[^\.]+.gif" alt="&#x4E2D;&#x534E;&#x4EBA;&#x6C11;&#x5171;&#x548C;&#x56FD;&#x56FD;&#x5BB6;&#x8D28;&#x91CF;&#x76D1;&#x7763;&#x68C0;&#x9A8C;&#x68C0;&#x75AB;&#x603B;&#x5C40;,&#x4E2D;&#x56FD;&#x56FD;&#x5BB6;&#x6807;&#x51C6;&#x5316;&#x7BA1;&#x7406;&#x59D4;&#x5458;&#x4F1A;" width="18" height="18" />}
   end
 
   it "does contributor cleanup" do
