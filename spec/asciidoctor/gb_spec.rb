@@ -6,14 +6,14 @@ RSpec.describe Asciidoctor::Gb do
     expect(Metanorma::Gb::VERSION).not_to be nil
   end
 
-  #it "generates output for the Rice document" do
-    #FileUtils.rm_f %w(spec/examples/rice.doc spec/examples/rice.html)
-    #FileUtils.cd "spec/examples"
-    #Asciidoctor.convert_file "rice.adoc", {:attributes=>{"backend"=>"gb"}, :safe=>0, :header_footer=>true, :requires=>["metanorma-gb"], :failure_level=>4, :mkdirs=>true, :to_file=>nil}
-    #FileUtils.cd "../.."
-    #expect(File.exist?("spec/examples/rice.doc")).to be true
-    #expect(File.exist?("spec/examples/rice.html")).to be true
-  #end
+  it "generates output for the Rice document" do
+    FileUtils.rm_f %w(spec/examples/rice.doc spec/examples/rice.html)
+    FileUtils.cd "spec/examples"
+    Asciidoctor.convert_file "rice.adoc", {:attributes=>{"backend"=>"gb"}, :safe=>0, :header_footer=>true, :requires=>["metanorma-gb"], :failure_level=>4, :mkdirs=>true, :to_file=>nil}
+    FileUtils.cd "../.."
+    expect(File.exist?("spec/examples/rice.doc")).to be true
+    expect(File.exist?("spec/examples/rice.html")).to be true
+  end
 
   it "processes a blank document" do
     expect(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)).to be_equivalent_to <<~"OUTPUT"
