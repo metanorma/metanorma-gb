@@ -156,6 +156,7 @@ HDR
 
 GBT20223 = <<~OUTPUT
 <bibitem type="standard" id="GB/T20223">
+  <fetched>#{Date.today}</fetched>
   <title format="text/plain" language="zh" script="Hans">棉短绒</title>
   <title format="text/plain" language="en" script="Latn">Cotton linter</title>
   <uri type="src">http://www.std.gov.cn/gb/search/gbDetailed?id=5DDA8BA00FC618DEE05397BE0A0A95A7</uri>
@@ -177,5 +178,10 @@ GBT20223 = <<~OUTPUT
     <code>59.060.10</code>
     <text>Natural fibres</text>
   </ics>
+  <gbtype>
+  <gbscope/>
+  <gbprefix/>
+  <gbmandate/>
+</gbtype>
 </bibitem>
       OUTPUT

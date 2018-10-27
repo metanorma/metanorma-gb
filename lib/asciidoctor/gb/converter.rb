@@ -181,7 +181,7 @@ module Asciidoctor
         code = "CN(#{code})" if !/^CN\(/.match(code) && /^#{GBCODE}[^A-Za-z]/.match(code)
         hit = @bibdb&.fetch(code, year, opts)
         return nil if hit.nil?
-        xml.parent.add_child(hit.to_xml)
+        xml.parent.add_child(Asciidoctor::Standoc::Utils::smart_render_xml(hit))
         xml
       rescue Algolia::AlgoliaProtocolError
         nil # Render reference without an Internet connection.
