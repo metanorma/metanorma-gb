@@ -100,32 +100,6 @@ module IsoDoc
         out.parent.add_child(ENDLINE)
       end
 
-      def generate_header(filename, dir)
-        return unless @header
-        template = Liquid::Template.parse(File.read(@header, encoding: "UTF-8"))
-        meta = @meta.get
-        meta[:filename] = filename
-        params = meta.map { |k, v| [k.to_s, v] }.to_h
-        File.open("header.html", "w:utf-8") { |f| f.write(template.render(params)) }
-        FileUtils.cp @common.fileloc(File.join('html', 'blank.png')), "blank.png"
-        @files_to_delete << "blank.png"
-        @files_to_delete << "header.html"
-        "header.html"
-      end
-
-      def header_strip(h)
-        h = h.to_s.gsub(%r{<br/>}, " ").sub(/<\/?h[12][^>]*>/, "")
-        h1 = to_xhtml_fragment(h.dup)
-        h1.traverse do |x|
-          x.replace(" ") if x.name == "span" &&
-            /mso-tab-count/.match?(x["style"])
-          x.remove if x.name == "span" && x["class"] == "MsoCommentReference"
-          x.remove if x.name == "a" && x["epub:type"] == "footnote"
-          x.replace(x.children) if x.name == "a"
-        end
-        from_xhtml(h1)
-      end
-
       def word_cleanup(docxml)
         word_preface(docxml)
         word_annex_cleanup(docxml)

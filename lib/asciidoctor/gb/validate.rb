@@ -21,10 +21,10 @@ module Asciidoctor
         scope = root&.at("//gbscope")&.text
         case scope
         when "social-group"
-          /^[A-Za-z]{3,6}$/.match? prefix or
+          /^[A-Za-z]{3,6}$/.match(prefix) or
             warn("#{prefix} is improperly formatted for social standards")
         when "enterprise"
-          /^[A-Z0-9]{3,}$/.match? prefix or
+          /^[A-Z0-9]{3,}$/.match(prefix) or
             warn("#{prefix} is improperly formatted for enterprise standards")
         when "sector"
           %w(AQ BB CB CH CJ CY DA DB DL DZ EJ FZ GA GH GM GY HB HG HJ HS HY
@@ -104,7 +104,7 @@ module Asciidoctor
       def norm_bibitem_style(root)
         root.xpath(NORM_BIBITEMS).each do |b|
           if b.at(Asciidoctor::Standoc::Converter::ISO_PUBLISHER_XPATH).nil?
-            unless /^#{GBCODE}(?![A-Z])/.match? b.at("./docidentifier").text
+            unless /^#{GBCODE}(?![A-Z])/.match(b.at("./docidentifier").text)
               Asciidoctor::Standoc::Utils::warning(b, NORM_ISO_WARN, b.text)
             end
           end

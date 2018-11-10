@@ -152,27 +152,6 @@ Any `/Z` or `/T` suffix (indicating "recommended" and "guidelines" mandate) is
 ignored unless the `:mandate:` attribute is not given. Any `Q/` or `T/` prefix for social and enterprise
 standards is ignored unless the `:scope:` attribute is not given.
 
-`:issued-date:`::
-The date on which the GB standard was issued (authorised for publication by the issuing authority).
-
-`:published-date:`::
-The date on which the GB standard was published (distributed by the publisher).
-
-`:implemented-date:`::
-The date on which the GB standard became active.
-
-`:created-date:`::
-The date on which the first version of the GB standard was created.
-
-`:updated-date:`::
-The date on which the current version of the GB standard was updated.
-
-`:obsoleted-date:`::
-The date on which the GB standard was obsoleted/revoked.
-
-`:confirmed-date:`::
-The date on which the GB standard was reviewed and approved by the issuing authority.
-
 `:library-ics:`::
 The ICS (International Categorization for Standards) number for the GB standard. There may be more than one ICS for a document; if so, they should be comma-delimited. (Unlike the case for ISO, the ICS identifier is output to the front page of the GB standard.)
 

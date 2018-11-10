@@ -121,7 +121,7 @@ module IsoDoc
         parts = x.split(%r{(\s*\[MODIFICATION\]|,)}m)
         parts[1] = l10n(", #{@source_lbl}") if parts.size > 1 && parts[1] == ","
         parts.map do |p|
-          /\s*\[MODIFICATION\]/.match?(p) ? l10n(", #{@modified_lbl} &mdash; ") : p
+          /\s*\[MODIFICATION\]/.match(p) ? l10n(", #{@modified_lbl} &mdash; ") : p
         end.join.sub(/\A\s*/m, l10n("[")).sub(/\s*\z/m, l10n("]"))
       end
 

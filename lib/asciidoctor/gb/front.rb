@@ -97,7 +97,7 @@ module Asciidoctor
 
       def get_scope(node)
         node.attr("scope") and return node.attr("scope")
-        scope = if %r{^[TQ]/}.match? node.attr("prefix")
+        scope = if %r{^[TQ]/}.match node.attr("prefix")
                   m = node.attr("prefix").split(%{/})
                   mandate = m[0] == "T" ? "social-group" :
                     m[0] == "Q" ? "enterprise" : nil
@@ -124,8 +124,8 @@ module Asciidoctor
       def get_mandate(node)
         node.attr("mandate") and return node.attr("mandate")
         p = node.attr("prefix")
-        mandate = %r{/T}.match?(p) ? "recommended" :
-          %r{/Z}.match?(p) ? "guidelines" : nil
+        mandate = %r{/T}.match(p) ? "recommended" :
+          %r{/Z}.match(p) ? "guidelines" : nil
         if mandate.nil?
           mandate = "mandatory"
           warn "GB: no mandate supplied, defaulting to mandatory"
@@ -146,23 +146,6 @@ module Asciidoctor
           t.gbprefix { |p| p << prefix }
           t.gbmandate { |m| m << get_mandate(node) }
           t.gbtopic { |t| t << get_topic(node) }
-        end
-      end
-
-      def metadata_date1(node, xml, type)
-        date = node.attr("#{type}-date")
-        date and xml.date **{ type: type } do |d|
-          d.on date
-        end
-      end
-
-      DATETYPES = %w{ published accessed created implemented obsoleted
-                      confirmed updated issued 
-      }.freeze
-
-      def metadata_date(node, xml)
-        DATETYPES.each do |t|
-          metadata_date1(node, xml, t)
         end
       end
 
