@@ -620,7 +620,7 @@ ul li {
   }
 
   ul > li > p:first-child:before {
-    content: "?~@~T";
+    content: "\2014";
     display: inline-block;
     width: 1em;
     margin-left: -1.5em;
