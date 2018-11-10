@@ -49,9 +49,11 @@ RSpec.describe Asciidoctor::Gb do
            <title-main language="zh" format="plain">Title 5</title-main>
            <title-part language="zh" format="plain">Title 6</title-part>
          </title>
-         <docidentifier>
-           <project-number>GB 123</project-number>
-         </docidentifier>
+         <docidentifier type="gb">GB 123-1999</docidentifier>
+<docidentifier type="gb-structured">
+  <project-number>GB 123</project-number>
+</docidentifier>
+<docnumber>123</docnumber>
          <date type="published">
            <on>2018-01-01</on>
          </date>
@@ -175,9 +177,11 @@ RSpec.describe Asciidoctor::Gb do
          <title>
 
          </title>
-         <docidentifier>
-           <project-number>T/AAA 123</project-number>
-         </docidentifier>
+         <docidentifier type="gb">T/AAA 123</docidentifier>
+<docidentifier type="gb-structured">
+  <project-number>T/AAA 123</project-number>
+</docidentifier>
+<docnumber>123</docnumber>
          <contributor>
            <role type="author"/>
            <person>
@@ -269,9 +273,11 @@ RSpec.describe Asciidoctor::Gb do
          <title>
 
          </title>
-         <docidentifier>
-           <project-number>Q/BBB 123</project-number>
-         </docidentifier>
+         <docidentifier type="gb">Q/BBB 123</docidentifier>
+<docidentifier type="gb-structured">
+  <project-number>Q/BBB 123</project-number>
+</docidentifier>
+<docnumber>123</docnumber>
          <contributor>
            <role type="author"/>
            <person>
@@ -359,9 +365,11 @@ RSpec.describe Asciidoctor::Gb do
          <title>
 
          </title>
-         <docidentifier>
-           <project-number>GB/Z 123</project-number>
-         </docidentifier>
+         <docidentifier type="gb">GB/Z 123</docidentifier>
+<docidentifier type="gb-structured">
+  <project-number>GB/Z 123</project-number>
+</docidentifier>
+<docnumber>123</docnumber>
          <contributor>
            <role type="author"/>
            <person>
@@ -450,9 +458,11 @@ RSpec.describe Asciidoctor::Gb do
          <title>
 
          </title>
-         <docidentifier>
-           <project-number>DB81/123</project-number>
-         </docidentifier>
+         <docidentifier type="gb">DB81/123</docidentifier>
+<docidentifier type="gb-structured">
+  <project-number>DB81/123</project-number>
+</docidentifier>
+<docnumber>123</docnumber>
          <contributor>
            <role type="author"/>
            <person>
@@ -539,9 +549,11 @@ RSpec.describe Asciidoctor::Gb do
          <title>
 
          </title>
-         <docidentifier>
-           <project-number>DBGB/123</project-number>
-         </docidentifier>
+         <docidentifier type="gb">DBGB/123</docidentifier>
+<docidentifier type="gb-structured">
+  <project-number>DBGB/123</project-number>
+</docidentifier>
+<docnumber>123</docnumber>
          <contributor>
            <role type="author"/>
            <person>
@@ -628,9 +640,11 @@ RSpec.describe Asciidoctor::Gb do
          <title>
 
          </title>
-         <docidentifier>
-           <project-number>DBGB/123</project-number>
-         </docidentifier>
+         <docidentifier type="gb">DBGB/123</docidentifier>
+<docidentifier type="gb-structured">
+  <project-number>DBGB/123</project-number>
+</docidentifier>
+<docnumber>123</docnumber>
          <contributor>
            <role type="author"/>
            <person>

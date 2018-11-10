@@ -126,14 +126,8 @@ module IsoDoc
       end
 
       def docid1(isoxml, _out)
-        dn = docnumber(isoxml)
-        docstatus = get[:stage]
-        if docstatus
-          abbr = stage_abbrev(docstatus.to_s, isoxml.at(ns("//bibdata/status/iteration")),
-                              isoxml.at(ns("//version/draft")))
-          (docstatus.to_i < 60) && dn = abbr + " " + dn
-        end
-        set(:docnumber, dn)
+        dn = isoxml.at(ns("//bibdata/docidentifier[@type = 'gb']"))
+        set(:docnumber, dn&.text)
       end
 
       def docid(isoxml, _out)
@@ -174,7 +168,7 @@ module IsoDoc
         issuer = isoxml&.at(ns("//bibdata/contributor[role/@type = 'issuer']/"\
                                "organization/name"))&.text || "GB"
         @agencies = GbAgencies::Agencies.new(@lang, @labels, issuer)
-        set(:docidentifier, @agencies.docidentifier(nil, nil, nil, docyear, get[:docnumber]))
+        set(:docidentifier, get[:docnumber])
         set(:issuer, issuer)
         set(:standard_class, standard_class(scope, prefix, mandate))
         set(:standard_agency, @agencies.standard_agency(scope, prefix, mandate))

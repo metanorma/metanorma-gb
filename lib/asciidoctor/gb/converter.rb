@@ -178,7 +178,8 @@ module Asciidoctor
       end
 
       def fetch_ref(xml, code, year, **opts)
-        code = "CN(#{code})" if !/^CN\(/.match(code) && /^#{GBCODE}[^A-Za-z]/.match(code)
+        code = "CN(#{code})" if !/^CN\(/.match(code) &&
+          /^#{GBCODE}[^A-Za-z]/.match(code)
         hit = @bibdb&.fetch(code, year, opts)
         return nil if hit.nil?
         xml.parent.add_child(Asciidoctor::Standoc::Utils::smart_render_xml(hit))
@@ -196,13 +197,16 @@ module Asciidoctor
       end
 
       def docidentifier_cleanup(xmldoc)
-        id = xmldoc.at("//bibdata/docidentifier/project-number") or return
+        id = xmldoc.at("//bibdata/docidentifier[@type = 'gb']") or return
         scope = xmldoc.at("//gbscope")&.text
         prefix = xmldoc.at("//gbprefix")&.text
-        mandate = xmldoc.at("//gbmandate")&.text || "mandatory"
-        idtext = @agencyclass.docidentifier(scope, prefix, mandate,
-                                            nil, id.text) || return
-        id.content = idtext.gsub(/\&#x2002;/, " ")
+        mand = xmldoc.at("//gbmandate")&.text || "mandatory"
+        idtext = @agencyclass.docidentifier(scope, prefix, mand, nil, id.text)
+        id.content = idtext&.gsub(/\&#x2002;/, " ")
+        id = xmldoc.at("//bibdata/docidentifier[@type = 'gb-structured']/"\
+                       "project-number") or return
+        idtext = @agencyclass.docidentifier(scope, prefix, mand, nil, id.text)
+        id.content = idtext&.gsub(/\&#x2002;/, " ")
       end
 
       def committee_cleanup(xmldoc)

@@ -160,9 +160,11 @@ RSpec.describe Asciidoctor::Gb do
          <title>
 
          </title>
-         <docidentifier>
+         <docidentifier type="gb">NY 123</docidentifier>
+         <docidentifier type="gb-structured">
            <project-number>NY 123</project-number>
          </docidentifier>
+         <docnumber>123</docnumber>
          <contributor>
            <role type="author"/>
            <person>

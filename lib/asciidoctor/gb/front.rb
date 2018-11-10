@@ -172,6 +172,36 @@ module Asciidoctor
         metadata_contributor1(node, xml, "issuer", "issuer")
       end
 
+      def iso_id(node, xml)
+        return unless node.attr("docnumber")
+        part = node.attr("partnumber")
+        dn = add_id_parts(node.attr("docnumber"), part, nil)
+        dn = id_stage_prefix(dn, node)
+        xml.docidentifier dn, **attr_code(type: "gb")
+        xml.docidentifier **attr_code(type: "gb-structured") do |i|
+          i.project_number node.attr("docnumber"),
+            **attr_code(part: part)
+        end
+      end
+
+      def add_id_parts(dn, part, subpart)
+        dn += ".#{part}" if part
+        dn += ".#{subpart}" if subpart
+        dn
+      end
+
+      def id_stage_prefix(dn, node)
+        if node.attr("docstage") && node.attr("docstage").to_i < 60
+          abbr = IsoDoc::Gb::Metadata.new("en", "Latn", {}).
+            stage_abbrev(node.attr("docstage"), node.attr("iteration"),
+                         node.attr("draft"))
+          dn = "/#{abbr} #{dn}" # prefixes added in cleanup
+        else
+          dn += "-#{node.attr("copyright-year")}" if node.attr("copyright-year")
+        end
+        dn
+      end
+
       def metadata(node, xml)
         title node, xml
         metadata_source(node, xml)
