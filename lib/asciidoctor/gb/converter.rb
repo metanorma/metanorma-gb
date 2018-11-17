@@ -237,6 +237,10 @@ module Asciidoctor
         issuer.content = agency
         committee_cleanup(xmldoc)
       end
+
+      def omit_docid_prefix(prefix)
+        IsoDoc::Gb::HtmlConvert.new({}).omit_docid_prefix(prefix)
+      end
     end
   end
 end

@@ -393,12 +393,21 @@ RSpec.describe Asciidoctor::Gb do
     mock_gbbib_get_123
     expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
       #{ISOBIB_BLANK_HDR}
+      
+      <<iso123>>
+
       [bibliography]
       == Normative References
 
       * [[[iso123,GB/T 20223-2006]]] _Standard_
     INPUT
       #{BLANK_HDR}
+      <preface><foreword obligation="informative">
+  <title>Foreword</title>
+  <p id="_">
+  <eref type="inline" bibitemid="iso123" citeas="GB/T 20223"/>
+</p>
+</foreword></preface>
       <sections>
              </sections><bibliography><references id="_" obligation="informative">
          <title>Normative References</title>
