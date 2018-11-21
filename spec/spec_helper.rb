@@ -63,6 +63,7 @@ VALIDATING_BLANK_HDR = <<~"HDR"
       Author
       :docfile: test.adoc
       :nodoc:
+      :no-isobib:
 
 HDR
 
