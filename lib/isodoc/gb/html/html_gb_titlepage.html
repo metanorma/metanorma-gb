@@ -69,7 +69,7 @@
   </div>
 
   <div class="coverpage-stage-block" lang="{{ language }}">
-    {% if stage and stage < 60 %}
+    {% if unpublished %}
     <span class="stage-if-draft">（{{ stageabbr }}）</span>
     {% if revdate %}
     <span class="revision-if-draft">（{{completion_date}}：{{ revdate }}）</span>

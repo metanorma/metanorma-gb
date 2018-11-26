@@ -90,7 +90,7 @@
     {% endif %}
 
   <div class="coverpage-stage-block" lang="{{ language }}">
-    {% if stage and stage < 60 %}
+    {% if unpublished %}
     <span class="stage-if-draft">（{{ stageabbr }}）</span> <br/>
     {% if stage == 30 %}
     <div class="coverpage_warning">

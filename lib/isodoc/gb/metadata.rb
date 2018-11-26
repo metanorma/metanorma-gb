@@ -116,8 +116,10 @@ module IsoDoc
 
       def docstatus(isoxml, _out)
         docstatus = isoxml.at(ns("//bibdata/status/stage"))
+        set(:unpublished, false)
         if docstatus
           set(:stage, docstatus.text.to_i)
+          set(:unpublished, docstatus.text.to_i < 60)
           abbr = stage_abbrev_cn(docstatus.text, isoxml.at(ns("//bibdata/status/iteration")),
                                  isoxml.at(ns("//version/draft")))
           set(:stageabbr, abbr)
