@@ -99,6 +99,9 @@ These are the title introduction, main title, and part title in Chinese.
 The intro and part titles are optional.
 (They replace their French counterparts in
 https://github.com/riboseinc/metanorma-iso[metanorma-iso].)
+This and the other `:title-*` document attributes are used instead
+of the metanorma-standoc `:title:` attribute and the default Asciidoctor title
+(the first line of the document header, prefixed with `=`).
 
 `:title-intro-en:`, `:title-main-en:`*, `:title-part-en:`::
 These are the title introduction, main title, and part title in English.
