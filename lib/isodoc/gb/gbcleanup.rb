@@ -30,7 +30,7 @@ module IsoDoc
       def spaerdruck(x, return_on_br)
         x.traverse do |n|
           n.text? and n.content = n.text.gsub(/(.)/, "\\1\u00a0\u00a0").
-            gsub(/\u00a0+$/, "")
+            gsub(/\u00a0+$/, "").gsub(/</, "&lt;").gsub(/>/, "&gt;")
           return_on_br and n.element? and n.name == "br" and return
         end
       end

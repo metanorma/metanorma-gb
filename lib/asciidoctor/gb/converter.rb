@@ -116,16 +116,20 @@ module Asciidoctor
         elem.replace(elem.children)
       end
 
+      def text_clean(text)
+        text.gsub(/^\s*/, "").gsub(/</, "&lt;").gsub(/>/, "&gt;")
+      end
+
       def duplicate_localisedstrings(zh)
         en = zh.dup.remove
         zh.after(en).after(" ")
         zh["language"] = "zh"
         en["language"] = "en"
         en.traverse do |c|
-          c.text? && c.content = c.text.gsub(HAN_TEXT, "").gsub(/^\s*/, "")
+          c.text? && c.content = text_clean(c.text.gsub(HAN_TEXT, ""))
         end
         zh.traverse do |c|
-          c.text? && c.content = c.text.gsub(ROMAN_TEXT, "").gsub(/^\s*/, "")
+          c.text? && c.content = text_clean(c.text.gsub(ROMAN_TEXT, ""))
         end
       end
 
