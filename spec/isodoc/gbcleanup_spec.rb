@@ -130,7 +130,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
         </gb-standard>
     INPUT
     word = File.read("test.doc", encoding: "utf-8").sub(/^.*<div class="WordSection2">/m, '<div class="WordSection2">').
-      sub(%r{<br clear="all" class="section"/>\s*<div class="WordSection3">.*$}m, "")
+      sub(%r{<p class="MsoNormal">\s*<br clear="all" class="section"/>\s*</p>\s*<div class="WordSection3">.*$}m, "")
     expect(word.gsub(/_Toc\d\d+/, "_Toc")).to be_equivalent_to <<~'OUTPUT'
     <div class="WordSection2"><p class="zzContents" style="margin-top:0cm">Table of contents</p>
        

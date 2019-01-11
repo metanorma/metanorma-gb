@@ -210,7 +210,7 @@ RSpec.describe Asciidoctor::Gb do
            <substage>60</substage>
          </status>
          <copyright>
-           <from>2018</from>
+           <from>#{Date.today.year}</from>
            <owner>
              <organization>
                <name>Ministry of Agriculture</name>
