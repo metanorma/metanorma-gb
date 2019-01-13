@@ -1,7 +1,7 @@
 = metanorma-gb: Authoring Chinese standards (GuoBiao, sector...) in AsciiDoc
 
 image:https://img.shields.io/gem/v/metanorma-gb.svg["Gem Version", link="https://rubygems.org/gems/metanorma-gb"]
-image:https://img.shields.io/travis/riboseinc/metanorma-gb/master.svg["Build Status", link="https://travis-ci.org/riboseinc/metanorma-gb"]
+image:https://img.shields.io/travis/riboseinc/metanorma-gb/master.svg["Build Status", link="https://travis-ci.com/riboseinc/metanorma-gb"]
 image:https://codeclimate.com/github/riboseinc/metanorma-gb/badges/gpa.svg["Code Climate", link="https://codeclimate.com/github/riboseinc/metanorma-gb"]
 
 == Functionality
