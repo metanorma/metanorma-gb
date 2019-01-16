@@ -158,7 +158,7 @@ module IsoDoc
       def standard_class(scope, prefix, mandate)
         standardclassimg = get[:standardclassimg]
         ret = @agencies.standard_class(scope, prefix, mandate)
-        return "<img class='logo' src='#{standardclassimg}' alt='#{ret}'></img>" if standardclassimg
+        return "<img class='logo' src='#{@localdir}/#{standardclassimg}' alt='#{ret}'></img>" if standardclassimg
         ret
       end
 
