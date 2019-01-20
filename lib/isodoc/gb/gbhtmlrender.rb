@@ -39,17 +39,8 @@ module IsoDoc
         { valign: "top", class: "example_label",
           style: "padding:2pt 2pt 2pt 2pt" }.freeze
 
-      def example_parse(node, out)
-        out.table **attr_code(id: node["id"], class: "example") do |t|
-          t.tr do |tr|
-            tr.td **EXAMPLE_TBL_ATTR do |td|
-              td << l10n(example_label(node) + ":")
-            end
-            tr.td **{ valign: "top", class: "example" } do |td|
-              node.children.each { |n| parse(n, td) }
-            end
-          end
-        end
+      def example_label(node)
+        l10n(super + ":")
       end
 
       def note_parse(node, out)
@@ -183,8 +174,8 @@ module IsoDoc
         div.h1 **{ class: "Annex" } do |t|
           t << "#{get_anchors[annex['id']][:label]}<br/><br/>"
           t.b do |b|
-          name&.children&.each { |c2| parse(c2, b) }
-        end
+            name&.children&.each { |c2| parse(c2, b) }
+          end
         end
       end
 

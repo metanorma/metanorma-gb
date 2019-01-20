@@ -197,20 +197,14 @@ INPUT
                <br/>
                <div>
                  <h1 class="ForewordTitle">Foreword&#160;</h1>
-                 <table id="samplecode" class="example">
-                   <tr>
-                     <td valign="top" class="example_label" style="padding:2pt 2pt 2pt 2pt">EXAMPLE:</td>
-                     <td valign="top" class="example">
+                                <div id="samplecode" class="example"><p class="example-title">EXAMPLE:</p>
          <p>Hello</p>
-       </td>
-                   </tr>
-                 </table>
-               </div>
-               <p class="zzSTDTitle1">XXXX</p>
-               <hr width="25%"/>
+       </div>
              </div>
-           </body>
-       </html>
+             <p class="zzSTDTitle1">XXXX</p>
+             <hr width="25%"/>
+           </div>
+         </body>
     OUTPUT
   end
 
@@ -233,6 +227,89 @@ INPUT
                <br/>
                <div>
                  <h1 class="ForewordTitle">Foreword&#160;</h1>
+               <div id="samplecode" class="example"><p class="example-title">EXAMPLE  1:</p>
+         <p>Hello</p>
+       </div>
+               <div id="samplecode2" class="example"><p class="example-title">EXAMPLE  2:</p>
+         <p>Hello</p>
+       </div>
+             </div>
+             <p class="zzSTDTitle1">XXXX</p>
+             <hr width="25%"/>
+           </div>
+         </body>
+    OUTPUT
+  end
+
+    it "processes examples (Word)" do
+                  expect(IsoDoc::Gb::WordConvert.new({}).convert("test", <<~"INPUT", true).gsub(/^.*<body/m, "<body").gsub(%r{<div class="WordSection3".*}m, "")).to be_equivalent_to <<~"OUTPUT"
+        <gb-standard xmlns="http://riboseinc.com/gbstandard">
+                       <bibdata> <language>en</language> <script>Latn</script> </bibdata>
+    <preface><foreword>
+    <example id="samplecode">
+  <p>Hello</p>
+</example>
+    </foreword></preface>
+    </gb-standard>
+    INPUT
+    <body lang="EN-US" link="blue" vlink="#954F72">
+                  <div class="WordSection1">
+     <p>&#160;</p>
+   </div>
+   <p>
+     <br clear="all" class="section"/>
+   </p>
+   <div class="WordSection2">
+     <p>
+       <br clear="all" style="mso-special-character:line-break;page-break-before:always"/>
+     </p>
+     <div>
+                 <h1 class="ForewordTitle">Foreword&#160;</h1>
+                 <table id="samplecode" class="example">
+                   <tr>
+                     <td valign="top" class="example_label" style="padding:2pt 2pt 2pt 2pt">EXAMPLE:</td>
+                     <td valign="top" class="example">
+         <p>Hello</p>
+       </td>
+                   </tr>
+                 </table>
+               </div>
+                    <p>&#160;</p>
+   </div>
+   <p>
+     <br clear="all" class="section"/>
+   </p>
+    OUTPUT
+  end
+
+
+  it "processes sequences of examples (Word)" do
+                  expect(IsoDoc::Gb::WordConvert.new({}).convert("test", <<~"INPUT", true).gsub(/^.*<body/m, "<body").gsub(%r{<div class="WordSection3">.*}m, "")).to be_equivalent_to <<~"OUTPUT"
+        <gb-standard xmlns="http://riboseinc.com/gbstandard">
+                       <bibdata> <language>en</language> <script>Latn</script> </bibdata>
+    <preface><foreword>
+    <example id="samplecode">
+  <p>Hello</p>
+</example>
+    <example id="samplecode2">
+  <p>Hello</p>
+</example>
+    </foreword></preface>
+    </gb-standard>
+    INPUT
+    <body lang="EN-US" link="blue" vlink="#954F72">
+       <div class="WordSection1">
+     <p>&#160;</p>
+   </div>
+   <p>
+     <br clear="all" class="section"/>
+   </p>
+   <div class="WordSection2">
+     <p>
+       <br clear="all" style="mso-special-character:line-break;page-break-before:always"/>
+     </p>
+     <div>
+                 <h1 class="ForewordTitle">Foreword&#160;</h1>
                  <table id="samplecode" class="example">
                    <tr>
                      <td valign="top" class="example_label" style="padding:2pt 2pt 2pt 2pt">EXAMPLE  1:</td>
@@ -250,11 +327,11 @@ INPUT
                    </tr>
                  </table>
                </div>
-               <p class="zzSTDTitle1">XXXX</p>
-               <hr width="25%"/>
-             </div>
-           </body>
-       </html>
+                    <p>&#160;</p>
+   </div>
+   <p>
+     <br clear="all" class="section"/>
+   </p>
     OUTPUT
   end
 
