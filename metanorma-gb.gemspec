@@ -28,7 +28,7 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "metanorma-iso", "~> 1.0.1"
+  spec.add_dependency "metanorma-iso", "~> 1.1.0"
   spec.add_dependency "isodoc", "~> 0.9.1"
   spec.add_dependency "twitter_cldr"
   spec.add_dependency "gb-agencies", "~> 0.0.4"
