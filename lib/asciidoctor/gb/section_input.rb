@@ -12,6 +12,7 @@ module Asciidoctor
         return clause_parse(attrs, xml, node) if node.role == "nonterm"
         sub = node.find_by(context: :section) {|s| s.level == node.level + 1 }
         sub.empty? || (return term_def_parse(attrs, xml, node, false))
+        # TODO allow breakup of "symbols", "abbreviated terms"
         (node.title.downcase == "symbols and abbreviated terms" ||
         node.title == "符号、代号和缩略语") &&
           (return symbols_parse(attrs, xml, node))
