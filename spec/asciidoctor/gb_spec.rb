@@ -6,14 +6,14 @@ RSpec.describe Asciidoctor::Gb do
     expect(Metanorma::Gb::VERSION).not_to be nil
   end
 
-  it "generates output for the Rice document" do
-    FileUtils.rm_f %w(spec/examples/rice.doc spec/examples/rice.html)
-    FileUtils.cd "spec/examples"
-    Asciidoctor.convert_file "rice.adoc", {:attributes=>{"backend"=>"gb"}, :safe=>0, :header_footer=>true, :requires=>["metanorma-gb"], :failure_level=>4, :mkdirs=>true, :to_file=>nil}
-    FileUtils.cd "../.."
-    expect(File.exist?("spec/examples/rice.doc")).to be true
-    expect(File.exist?("spec/examples/rice.html")).to be true
-  end
+  #it "generates output for the Rice document" do
+  #  FileUtils.rm_f %w(spec/examples/rice.doc spec/examples/rice.html)
+  #  FileUtils.cd "spec/examples"
+  #  Asciidoctor.convert_file "rice.adoc", {:attributes=>{"backend"=>"gb"}, :safe=>0, :header_footer=>true, :requires=>["metanorma-gb"], :failure_level=>4, :mkdirs=>true, :to_file=>nil}
+  #  FileUtils.cd "../.."
+  #  expect(File.exist?("spec/examples/rice.doc")).to be true
+  #  expect(File.exist?("spec/examples/rice.html")).to be true
+  #end
 
   it "processes a blank document" do
     expect(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)).to be_equivalent_to <<~"OUTPUT"
@@ -322,7 +322,7 @@ RSpec.describe Asciidoctor::Gb do
        ‘single quote’
        super<sup>script</sup>
        sub<sub>script</sub>
-       <stem type="AsciiMath">a_90</stem>
+       <stem type="MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>a</mi><mn>90</mn></msub></math></stem>
        <stem type="MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub> <mrow> <mrow> <mi mathvariant="bold-italic">F</mi> </mrow> </mrow> <mrow> <mrow> <mi mathvariant="bold-italic">Α</mi> </mrow> </mrow> </msub> </math></stem>
        <admitted language="zh"></admitted> <admitted language="en">alt</admitted>
        <deprecates language="zh"></deprecates> <deprecates language="en">deprecated</deprecates>

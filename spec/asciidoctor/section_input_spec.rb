@@ -77,8 +77,8 @@ RSpec.describe Asciidoctor::Gb do
          <preferred language="zh">2</preferred> <preferred language="en">Term2</preferred>
        </term>
        </terms>
-       <definitions id="_"/></clause>
-       <definitions id="_"/>
+       <definitions id="_"><title>符号、代号和缩略语</title></definitions></clause>
+       <definitions id="_"><title>符号、代号和缩略语</title></definitions>
        <clause id="_" inline-header="false" obligation="normative"><title>Clause 4</title><clause id="_" inline-header="false" obligation="normative">
          <title>Introduction</title>
        </clause>
