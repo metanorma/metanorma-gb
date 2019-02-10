@@ -7,7 +7,7 @@ image:https://codeclimate.com/github/riboseinc/metanorma-gb/badges/gpa.svg["Code
 == Functionality
 
 This gem generates
-https://en.wikipedia.org/wiki/Guobiao_standards[Guibiao standards]
+https://en.wikipedia.org/wiki/Guobiao_standards[Guobiao standards]
 (Chinese national standards), using AsciiDoc.
 
 This gem implements the https://github.com/riboseinc/gbdoc[GbDoc] data model,
