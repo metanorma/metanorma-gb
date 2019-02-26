@@ -194,12 +194,12 @@ INPUT
     </gb-standard>
     INPUT
         #{HTML_HDR}
-               <br/>
-               <div>
-                 <h1 class="ForewordTitle">Foreword&#160;</h1>
-                                <div id="samplecode" class="example"><p class="example-title">EXAMPLE:</p>
-         <p>Hello</p>
-       </div>
+                     <br/>
+             <div>
+               <h1 class="ForewordTitle">Foreword&#160;</h1>
+               <div id="samplecode" class="example">
+                 <p><span class="example_label">EXAMPLE:</span>&#160; Hello</p>
+               </div>
              </div>
              <p class="zzSTDTitle1">XXXX</p>
              <hr width="25%"/>
@@ -224,15 +224,15 @@ INPUT
     </gb-standard>
     INPUT
         #{HTML_HDR}
-               <br/>
-               <div>
-                 <h1 class="ForewordTitle">Foreword&#160;</h1>
-               <div id="samplecode" class="example"><p class="example-title">EXAMPLE  1:</p>
-         <p>Hello</p>
-       </div>
-               <div id="samplecode2" class="example"><p class="example-title">EXAMPLE  2:</p>
-         <p>Hello</p>
-       </div>
+             <br/>
+             <div>
+               <h1 class="ForewordTitle">Foreword&#160;</h1>
+               <div id="samplecode" class="example">
+                 <p><span class="example_label">EXAMPLE  1:</span>&#160; Hello</p>
+               </div>
+               <div id="samplecode2" class="example">
+                 <p><span class="example_label">EXAMPLE  2:</span>&#160; Hello</p>
+               </div>
              </div>
              <p class="zzSTDTitle1">XXXX</p>
              <hr width="25%"/>
@@ -252,33 +252,28 @@ INPUT
     </foreword></preface>
     </gb-standard>
     INPUT
-    <body lang="EN-US" link="blue" vlink="#954F72">
-                  <div class="WordSection1">
-     <p>&#160;</p>
-   </div>
-   <p>
-     <br clear="all" class="section"/>
-   </p>
-   <div class="WordSection2">
-     <p>
-       <br clear="all" style="mso-special-character:line-break;page-break-before:always"/>
-     </p>
-     <div>
-                 <h1 class="ForewordTitle">Foreword&#160;</h1>
-                 <table id="samplecode" class="example">
-                   <tr>
-                     <td valign="top" class="example_label" style="padding:2pt 2pt 2pt 2pt">EXAMPLE:</td>
-                     <td valign="top" class="example">
-         <p>Hello</p>
-       </td>
-                   </tr>
-                 </table>
+          <body lang="EN-US" link="blue" vlink="#954F72">
+           <div class="WordSection1">
+             <p>&#160;</p>
+           </div>
+           <p>
+             <br clear="all" class="section"/>
+           </p>
+           <div class="WordSection2">
+             <p>
+               <br clear="all" style="mso-special-character:line-break;page-break-before:always"/>
+             </p>
+             <div>
+               <h1 class="ForewordTitle">Foreword&#160;</h1>
+               <div id="samplecode" class="example">
+                 <p><span class="example_label">EXAMPLE:</span><span style="mso-tab-count:1">&#160; </span>Hello</p>
                </div>
-                    <p>&#160;</p>
-   </div>
-   <p>
-     <br clear="all" class="section"/>
-   </p>
+             </div>
+             <p>&#160;</p>
+           </div>
+           <p>
+             <br clear="all" class="section"/>
+           </p>
     OUTPUT
   end
 
@@ -297,41 +292,31 @@ INPUT
     </foreword></preface>
     </gb-standard>
     INPUT
-    <body lang="EN-US" link="blue" vlink="#954F72">
-       <div class="WordSection1">
-     <p>&#160;</p>
-   </div>
-   <p>
-     <br clear="all" class="section"/>
-   </p>
-   <div class="WordSection2">
-     <p>
-       <br clear="all" style="mso-special-character:line-break;page-break-before:always"/>
-     </p>
-     <div>
-                 <h1 class="ForewordTitle">Foreword&#160;</h1>
-                 <table id="samplecode" class="example">
-                   <tr>
-                     <td valign="top" class="example_label" style="padding:2pt 2pt 2pt 2pt">EXAMPLE  1:</td>
-                     <td valign="top" class="example">
-         <p>Hello</p>
-       </td>
-                   </tr>
-                 </table>
-                 <table id="samplecode2" class="example">
-                   <tr>
-                     <td valign="top" class="example_label" style="padding:2pt 2pt 2pt 2pt">EXAMPLE  2:</td>
-                     <td valign="top" class="example">
-                     <p>Hello</p>
-       </td>
-                   </tr>
-                 </table>
+           <body lang="EN-US" link="blue" vlink="#954F72">
+           <div class="WordSection1">
+             <p>&#160;</p>
+           </div>
+           <p>
+             <br clear="all" class="section"/>
+           </p>
+           <div class="WordSection2">
+             <p>
+               <br clear="all" style="mso-special-character:line-break;page-break-before:always"/>
+             </p>
+             <div>
+               <h1 class="ForewordTitle">Foreword&#160;</h1>
+               <div id="samplecode" class="example">
+                 <p><span class="example_label">EXAMPLE  1:</span><span style="mso-tab-count:1">&#160; </span>Hello</p>
                </div>
-                    <p>&#160;</p>
-   </div>
-   <p>
-     <br clear="all" class="section"/>
-   </p>
+               <div id="samplecode2" class="example">
+                 <p><span class="example_label">EXAMPLE  2:</span><span style="mso-tab-count:1">&#160; </span>Hello</p>
+               </div>
+             </div>
+             <p>&#160;</p>
+           </div>
+           <p>
+             <br clear="all" class="section"/>
+           </p>
     OUTPUT
   end
 
