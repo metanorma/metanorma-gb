@@ -51,7 +51,7 @@ RSpec.describe Metanorma::Gb::Processor do
              <p class="zzSTDTitle1">XXXX</p>
              <div id="H"><h1>1.&#x3000;Terms and definitions</h1><p>For the purposes of this document,
            the following terms and definitions apply.</p>
-       <h2 class="TermNum" id="J">1.1</h2>
+       <h2 class="TermNum" id="J">1.1.</h2>
          <p class="Terms" style="text-align:left;">Term2</p>
        </div>
              <hr width="25%" />

@@ -389,7 +389,7 @@ INPUT
                <p class="zzSTDTitle1">XXXX</p>
                <div id="_terms_and_definitions"><h1>1.&#12288;Terms and definitions</h1><p>For the purposes of this document,
            the following terms and definitions apply.</p>
-       <p class="TermNum" id="paddy">1.1</p><p class="Terms" style="text-align:left;">paddy</p><p class="AltTerms" style="text-align:left;">paddy rice</p>
+       <p class="TermNum" id="paddy">1.1.</p><p class="Terms" style="text-align:left;">paddy</p><p class="AltTerms" style="text-align:left;">paddy rice</p>
        <p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p>
        <table id="_671a1994-4783-40d0-bc81-987d06ffb74e" class="Note"><tr><td valign="top" class="example_label" style="padding:2pt 2pt 2pt 2pt">Note 1 to entry:</td><td valign="top" class="Note">
          <p id="_19830f33-e46c-42cc-94ca-a5ef101132d5">The starch of waxy rice consists almost entirely of amylopectin. The kernels have a tendency to stick together after cooking.</p>
