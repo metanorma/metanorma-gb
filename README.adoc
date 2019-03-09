@@ -1,8 +1,8 @@
 = metanorma-gb: Authoring Chinese standards (GuoBiao, sector...) in AsciiDoc
 
 image:https://img.shields.io/gem/v/metanorma-gb.svg["Gem Version", link="https://rubygems.org/gems/metanorma-gb"]
-image:https://img.shields.io/travis/riboseinc/metanorma-gb/master.svg["Build Status", link="https://travis-ci.org/riboseinc/metanorma-gb"]
-image:https://codeclimate.com/github/riboseinc/metanorma-gb/badges/gpa.svg["Code Climate", link="https://codeclimate.com/github/riboseinc/metanorma-gb"]
+image:https://img.shields.io/travis/metanorma/metanorma-gb/master.svg["Build Status", link="https://travis-ci.org/metanorma/metanorma-gb"]
+image:https://codeclimate.com/github/metanorma/metanorma-gb/badges/gpa.svg["Code Climate", link="https://codeclimate.com/github/metanorma/metanorma-gb"]
 
 == Functionality
 
@@ -10,17 +10,17 @@ This gem generates
 https://en.wikipedia.org/wiki/Guobiao_standards[Guobiao standards]
 (Chinese national standards), using AsciiDoc.
 
-This gem implements the https://github.com/riboseinc/gbdoc[GbDoc] data model,
+This gem implements the https://github.com/metanorma/metanorma-model-gb[GbDoc] data model,
 which inherits from
-https://github.com/riboseinc/isodoc-models[IsoDoc and StandardDocument].
+https://github.com/metanorma/metanorma-model-standoc[StandardDocument document model].
 
 The code of this gem inherits from
-https://github.com/riboseinc/metanorma-iso[metanorma-iso], a gem used to
+https://github.com/metanorma/metanorma-iso[metanorma-iso], a gem used to
 generate ISO standards using Asciidoc.
 
 The two standards formats are closely aligned. Refer to the ISO gem
 for guidance, including
-https://github.com/riboseinc/metanorma-iso/wiki/Guidance-for-authoring[IsoDoc: Guidance for authoring]
+https://github.com/metanorma/metanorma-iso/wiki/Guidance-for-authoring[IsoDoc: Guidance for authoring]
 
 The gem can also be used to generate Chinese local or sector standards, which
 have the same format; the gem formats the title page to have the correct
@@ -75,13 +75,13 @@ $ asciidoctor -b gb -r 'metanorma-gb' a.adoc
 
 === Installation
 
-If you are using a Mac, the https://github.com/riboseinc/metanorma-macos-setup
+If you are using a Mac, the https://github.com/metanorma/metanorma-macos-setup
 repository has instructions on setting up your machine to run Metanorma
 scripts such as this one. You need only run the following in a Terminal console:
 
 [source,console]
 ----
-$ bash <(curl -s https://raw.githubusercontent.com/riboseinc/metanorma-macos-setup/master/metanorma-setup)
+$ bash <(curl -s https://raw.githubusercontent.com/metanorma/metanorma-macos-setup/master/metanorma-setup)
 $ gem install metanorma-gb
 ----
 
@@ -98,7 +98,7 @@ mandatory.
 These are the title introduction, main title, and part title in Chinese.
 The intro and part titles are optional.
 (They replace their French counterparts in
-https://github.com/riboseinc/metanorma-iso[metanorma-iso].)
+https://github.com/metanorma/metanorma-iso[metanorma-iso].)
 This and the other `:title-*` document attributes are used instead
 of the metanorma-standoc `:title:` attribute and the default Asciidoctor title
 (the first line of the document header, prefixed with `=`).
@@ -107,7 +107,7 @@ of the metanorma-standoc `:title:` attribute and the default Asciidoctor title
 These are the title introduction, main title, and part title in English.
 The intro and part titles are optional.
 (They form the document subtitle, instead of the document title as in
-https://github.com/riboseinc/metanorma-iso[metanorma-iso].)
+https://github.com/metanorma/metanorma-iso[metanorma-iso].)
 
 `:technical-committee-type:`::
 The type of the technical committee (`technical` or `provisional`).
@@ -147,10 +147,10 @@ The topic of the GB standard (`basic`, `health-and-safety`, `environment-protect
 `:prefix:`::
 The prefix classifying the GB standard.
 (Refer to
-https://github.com/riboseinc/gbdoc/blob/master/models/gb-standard-national-prefix.adoc[GB National Standard Prefixes],
-https://github.com/riboseinc/gbdoc/blob/master/models/gb-standard-sector-prefix.adoc[GB Sector Standard Prefixes],
-https://github.com/riboseinc/gbdoc/blob/master/models/gb-standard-local-prefix.adoc[GB Local Standard Prefixes],
-https://github.com/riboseinc/metanorma-gb/issues/54[GB Social and Enterprise Standard Prefixes].)
+https://github.com/metanorma/metanorma-model-gb/blob/master/models/gb-standard-national-prefix.adoc[GB National Standard Prefixes],
+https://github.com/metanorma/metanorma-model-gb/blob/master/models/gb-standard-sector-prefix.adoc[GB Sector Standard Prefixes],
+https://github.com/metanorma/metanorma-model-gb/blob/master/models/gb-standard-local-prefix.adoc[GB Local Standard Prefixes],
+https://github.com/metanorma/metanorma-gb/issues/54[GB Social and Enterprise Standard Prefixes].)
 Any `/Z` or `/T` suffix (indicating "recommended" and "guidelines" mandate) is 
 ignored unless the `:mandate:` attribute is not given. Any `Q/` or `T/` prefix for social and enterprise
 standards is ignored unless the `:scope:` attribute is not given.
@@ -159,7 +159,7 @@ standards is ignored unless the `:scope:` attribute is not given.
 The ICS (International Categorization for Standards) number for the GB standard. There may be more than one ICS for a document; if so, they should be comma-delimited. (Unlike the case for ISO, the ICS identifier is output to the front page of the GB standard.)
 
 `:library-ccs:`::
-The CCS (Chinese Categorization Scheme) code for the GB standard. See https://github.com/riboseinc/cn-ccs-codes
+The CCS (Chinese Categorization Scheme) code for the GB standard. See https://github.com/metanorma/cn-ccs-codes
 
 `:plan-number:`::
 The Plan Number (计划单号) for the GB standard.
@@ -312,12 +312,12 @@ GB. GB/T 19018-2017 has been used as the exemplar standard.
 
 The following area the areas where the gem's Word output aligns with or deviates from GB/T 1.1-2009.
 
-* https://github.com/riboseinc/metanorma-gb/issues/58[Measurements (GB/T 1.1 Annex I.)] The gem
+* https://github.com/metanorma/metanorma-gb/issues/58[Measurements (GB/T 1.1 Annex I.)] The gem
 scrupulously aligns with the measurements prescribed in GB/T, to a greater extent than the 2010
 template tool. As already noted, it makes extensive use of frames to ensure correct vertical positioning
 of headers, and of elements on the cover page.
 
-* https://github.com/riboseinc/metanorma-gb/issues/56[Fonts (GB/T 1.1 Annex J.)] The gem aligns
+* https://github.com/metanorma/metanorma-gb/issues/56[Fonts (GB/T 1.1 Annex J.)] The gem aligns
 with the fonts and font sizes prescribed in GB/T. (The only exception is the standard name, for which a
 point size of 72 is quite unrealistic: 26pt is used instead, in compliance with the preexisting Word 
 template.) For Simplified Chinese script, the gem uses by default SimSun as its "serif" font, and SimHei 
@@ -332,7 +332,7 @@ By default, this is the serif font for standards with national scope, and the sa
 all other scopes. All font selections can be overriden in the document attributes (`:bodyfont:`,
 `:headerfont:`, `:titlefont:`.)`
 
-* https://github.com/riboseinc/metanorma-gb/issues/57[Layout (GB/T 1.1 Clause 9.)]. The gem complies
+* https://github.com/metanorma/metanorma-gb/issues/57[Layout (GB/T 1.1 Clause 9.)]. The gem complies
 with GB/T 1.1, with the following exceptions where it follows ISO/IEC DIR 2-2016 practice instead:
 
 ** 9.3: There are no separate tables of figures, tables of tables, or tables of annexes. Table of Contents
@@ -345,7 +345,7 @@ does not follow this in its own references list.
 ** 9.5.3: Terms and Definitions is aligned with ISO/IEC DIR 2: there is provision for alternate and
 deprecated terms, and term sources are notated in brackets whether they are modified or direct citations
 from the source document, instead of being treated as a note in the latter case. 
-(https://github.com/riboseinc/metanorma-gb/issues/67) Clauses numbers are separated from the term
+(https://github.com/metanorma/metanorma-gb/issues/67) Clauses numbers are separated from the term
 source reference by a dash. References to terms defined elsewhere in the Terms and Definitions clause
 are accompanied with clause references.
 

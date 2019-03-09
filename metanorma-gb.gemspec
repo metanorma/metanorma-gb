@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
     Formerly known as asciidoctor-gb.
   DESCRIPTION
 
-  spec.homepage      = "https://github.com/riboseinc/metanorma-gb"
+  spec.homepage      = "https://github.com/metanorma/metanorma-gb"
   spec.license       = "BSD-2-Clause"
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
