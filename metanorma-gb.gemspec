@@ -32,6 +32,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "isodoc", "~> 0.9.1"
   spec.add_dependency "twitter_cldr"
   spec.add_dependency "gb-agencies", "~> 0.0.4"
+  spec.add_dependency "htmlentities", "~> 4.3.4"
 
   spec.add_development_dependency "bundler", "~> 2.0.1"
   spec.add_development_dependency "byebug", "~> 9.1"

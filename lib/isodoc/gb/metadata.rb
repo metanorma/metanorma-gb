@@ -1,5 +1,6 @@
 require "isodoc"
 require "twitter_cldr"
+require "htmlentities"
 
 module IsoDoc
   module Gb
@@ -110,7 +111,7 @@ module IsoDoc
         return stage_abbrev(stage, iter, draft) if @lang != "zh"
         stage = STAGE_ABBRS_CN[stage.to_sym] || "??"
         stage = "#{iter.text.to_i.localize(:zh).spellout}次#{stage}" if iter
-        stage = "Pre" + stage if draft&.text =~ /^0\./
+        stage = "Pre" + HTMLEntities.new.encode(stage, :hexadecimal) if draft&.text =~ /^0\./
         stage
       end
 
