@@ -110,7 +110,7 @@ module IsoDoc
       def stage_abbrev_cn(stage, iter, draft)
         return stage_abbrev(stage, iter, draft) if @lang != "zh"
         stage = STAGE_ABBRS_CN[stage.to_sym] || "??"
-        stage = "#{iter.text.to_i.localize(:zh).spellout}次#{stage}" if iter
+        stage = "#{iter.text.to_i.localize(:zh).spellout.force_encoding("UTF-8")}次#{stage}" if iter
         stage = "Pre" + HTMLEntities.new.encode(stage, :hexadecimal) if draft&.text =~ /^0\./
         stage
       end
