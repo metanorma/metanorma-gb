@@ -30,7 +30,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "metanorma-iso", "~> 1.1.0"
   spec.add_dependency "isodoc", "~> 0.9.1"
-  spec.add_dependency "twitter_cldr"
+  spec.add_dependency "twitter_cldr", "~> 4.4.4"
   spec.add_dependency "gb-agencies", "~> 0.0.4"
   spec.add_dependency "htmlentities", "~> 4.3.4"
 
