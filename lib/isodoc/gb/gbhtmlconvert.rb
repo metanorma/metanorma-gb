@@ -1,8 +1,6 @@
-require_relative "gbconvert"
-require "gb_agencies"
-require_relative "gbcleanup"
-require_relative "metadata"
+require_relative "gbbaseconvert"
 require_relative "gbhtmlrender"
+require "isodoc"
 
 module IsoDoc
   module Gb
@@ -39,52 +37,7 @@ module IsoDoc
         }
       end
 
-      def extract_fonts(options)
-        b = options[:bodyfont] || "Arial"
-        h = options[:headerfont] || "Arial"
-        m = options[:monospacefont] || "Courier"
-        t = options[:titlefont] || "Arial"
-        "$bodyfont: #{b};\n$headerfont: #{h};\n$monospacefont: #{m};\n$titlefont: #{t};\n"
-      end
-
-      def metadata_init(lang, script, labels)
-        unless ["en", "zh"].include? lang
-          lang = "zh"
-          script = "Hans"
-        end
-        @meta = Metadata.new(lang, script, labels)
-        @meta.set(:standardclassimg, @standardclassimg)
-        @common.meta = @meta
-      end
-
-      def cleanup(docxml)
-        @cleanup = Cleanup.new(@script, @deprecated_lbl)
-        super
-        @cleanup.cleanup(docxml)
-        docxml
-      end
-
-      def example_cleanup(docxml)
-        super
-        @cleanup.example_cleanup(docxml)
-      end
-
-      def i18n_init(lang, script)
-        super
-        y = if lang == "en"
-              YAML.load_file(File.join(File.dirname(__FILE__), "i18n-en.yaml"))
-            elsif lang == "zh" && script == "Hans"
-              YAML.load_file(File.join(File.dirname(__FILE__),
-                                       "i18n-zh-Hans.yaml"))
-            else
-              YAML.load_file(File.join(File.dirname(__FILE__), "i18n-zh-Hans.yaml"))
-            end
-        @labels = @labels.merge(y)
-      end
-
-      def omit_docid_prefix(prefix)
-        super || prefix == "Chinese Standard"
-      end
+      include BaseConvert
     end
   end
 end
