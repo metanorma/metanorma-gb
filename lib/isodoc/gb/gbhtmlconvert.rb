@@ -1,5 +1,4 @@
 require_relative "gbbaseconvert"
-require_relative "gbhtmlrender"
 require "isodoc"
 
 module IsoDoc
@@ -24,7 +23,7 @@ module IsoDoc
           headerfont: (script == "Hans" ? '"SimHei",sans-serif' : '"Calibri",sans-serif'),
           monospacefont: '"Courier New",monospace',
           titlefont: (scope == "national" ? (script != "Hans" ? '"Cambria",serif' : '"SimSun",serif' ) :
-           (script == "Hans" ? '"SimHei",sans-serif' : '"Calibri",sans-serif' ))
+                      (script == "Hans" ? '"SimHei",sans-serif' : '"Calibri",sans-serif' ))
         }
       end
 
@@ -35,6 +34,35 @@ module IsoDoc
           htmlintropage: html_doc_path("html_gb_intro.html"),
           scripts: html_doc_path("scripts.html"),
         }
+      end
+
+      def populate_template(docxml, format)
+        meta = @meta.get.merge(@labels)
+        logo = @common.format_logo(meta[:gbprefix], meta[:gbscope], format, @localdir)
+        logofile = @meta.standard_logo(meta[:gbprefix])
+        docxml = termref_resolve(docxml)
+        meta[:standard_agency_formatted] =
+          @common.format_agency(meta[:standard_agency], format, @localdir)
+        meta[:standard_logo] = logo
+        template = Liquid::Template.parse(docxml)
+        template.render(meta.map { |k, v| [k.to_s, v] }.to_h)
+      end
+
+      def annex_name(annex, name, div)
+        div.h1 **{ class: "Annex" } do |t|
+          t << "#{get_anchors[annex['id']][:label]}<br/><br/>"
+          t.b do |b|
+            name&.children&.each { |c2| parse(c2, b) }
+          end
+        end
+      end
+
+      def term_defs_boilerplate(div, source, term, preface)
+        unless preface
+          (source.empty? && term.nil?) and div << @no_terms_boilerplate or
+            div << term_defs_boilerplate_cont(source, term)
+        end
+        #div << @term_def_boilerplate unless preface
       end
 
       include BaseConvert
