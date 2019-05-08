@@ -19,27 +19,16 @@
 -->
 <grammar xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
   <include href="reqt.rng"/>
-  <include href="biblio.rng">
-    <define name="status">
-      <element name="status">
-        <choice>
-          <value>proposal</value>
-          <value>working_draft</value>
-          <value>committee_draft</value>
-          <value>draft_standard</value>
-          <value>final_draft</value>
-          <value>published</value>
-          <value>withdrawn</value>
-        </choice>
-      </element>
-    </define>
-  </include>
+  <include href="biblio.rng"/>
   <start>
     <ref name="standard-document"/>
   </start>
   <define name="standard-document">
     <element name="standard-document">
       <ref name="bibdata"/>
+      <optional>
+        <ref name="boilerplate"/>
+      </optional>
       <optional>
         <ref name="preface"/>
       </optional>
@@ -62,6 +51,42 @@
       <oneOrMore>
         <ref name="content"/>
       </oneOrMore>
+    </element>
+  </define>
+  <define name="boilerplate">
+    <element name="boilerplate">
+      <optional>
+        <ref name="copyright-statement"/>
+      </optional>
+      <optional>
+        <ref name="license-statement"/>
+      </optional>
+      <optional>
+        <ref name="legal-statement"/>
+      </optional>
+      <optional>
+        <ref name="feedback-statement"/>
+      </optional>
+    </element>
+  </define>
+  <define name="copyright-statement">
+    <element name="copyright-statement">
+      <ref name="Content-Section"/>
+    </element>
+  </define>
+  <define name="license-statement">
+    <element name="license-statement">
+      <ref name="Content-Section"/>
+    </element>
+  </define>
+  <define name="legal-statement">
+    <element name="legal-statement">
+      <ref name="Content-Section"/>
+    </element>
+  </define>
+  <define name="feedback-statement">
+    <element name="feedback-statement">
+      <ref name="Content-Section"/>
     </element>
   </define>
   <define name="sections">
@@ -534,6 +559,9 @@
         <data type="ID"/>
       </attribute>
       <optional>
+        <attribute name="alt"/>
+      </optional>
+      <optional>
         <ref name="tname"/>
       </optional>
       <optional>
@@ -868,6 +896,9 @@
       <attribute name="type">
         <ref name="ReferenceFormat"/>
       </attribute>
+      <optional>
+        <attribute name="alt"/>
+      </optional>
       <text/>
     </element>
   </define>
