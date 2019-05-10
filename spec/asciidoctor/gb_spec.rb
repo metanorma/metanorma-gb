@@ -217,6 +217,8 @@ RSpec.describe Asciidoctor::Gb do
              </organization>
            </owner>
          </copyright>
+         <ext>
+        <doctype>standard</doctype>
          <gbcommittee type="Governance">Technical</gbcommittee>
          <gbtype>
            <gbscope>sector</gbscope>
@@ -224,6 +226,7 @@ RSpec.describe Asciidoctor::Gb do
            <gbmandate>mandatory</gbmandate>
            <gbtopic>basic</gbtopic>
          </gbtype>
+         </ext>
        </bibdata>
        <sections/>
        </gb-standard>
@@ -413,7 +416,7 @@ RSpec.describe Asciidoctor::Gb do
          <title>Normative References</title>
     #{GBT20223.sub(%{id="GB/T20223"}, %{id="iso123"})}
        </references></bibliography>
-       </iso-standard>
+       </gb-standard>
     OUTPUT
     end
 

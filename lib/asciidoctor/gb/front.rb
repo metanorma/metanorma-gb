@@ -2,21 +2,14 @@
 module Asciidoctor
   module Gb
     class Converter < ISO::Converter
-      def standard_type(node)
+      def doctype(node)
         type = node.attr("mandate") || "mandatory"
         type = "standard" if type == "mandatory"
         type = "recommendation" if type == "recommended"
         type
       end
 
-      def front(node, xml)
-        xml.bibdata **attr_code(type: standard_type(node)) do |b|
-          metadata node, b
-        end
-        metadata_version(node, xml)
-      end
-
-      def metadata_author(node, xml)
+      def metadata_author_personal(node, xml)
         author = node.attr("author") || return
         author.split(/, ?/).each do |author|
           xml.contributor do |c|
@@ -55,6 +48,7 @@ module Asciidoctor
       end
 
       def metadata_committee(node, xml)
+        return unless node.attr("technical-committee")
         attrs = { type: node.attr("technical-committee-type") }
         xml.gbcommittee **attr_code(attrs) do |a|
           a << node.attr("technical-committee")
@@ -80,6 +74,11 @@ module Asciidoctor
             b.docidentifier m[:code]
           end
         end
+      end
+
+      def metadata_relations(node, xml)
+        metadata_equivalence(node, xml)
+        metadata_obsoletes(node, xml)
       end
 
       def metadata_obsoletes(node, xml)
@@ -158,14 +157,17 @@ module Asciidoctor
         l && xml.plannumber { |plan| plan << l }
       end
 
-      def metadata_contributors(node, xml)
-        metadata_author(node, xml)
+      def metadata_author(node, xml)
+        metadata_author_personal(node, xml)
         metadata_contributor1(node, xml, "author-committee", "author")
         i = 2
         while node.attr("author-committee_#{i}") do
           metadata_contributor1(node, xml, "author-committee_#{i}", "author")
           i += 1
         end
+      end
+
+      def metadata_publisher(node, xml)
         metadata_contributor1(node, xml, "publisher", "publisher")
         metadata_contributor1(node, xml, "authority", "authority")
         metadata_contributor1(node, xml, "proposer", "proposer")
@@ -202,20 +204,18 @@ module Asciidoctor
         dn
       end
 
-      def metadata(node, xml)
-        title node, xml
-        metadata_source(node, xml)
-        metadata_id(node, xml)
-        metadata_date(node, xml)
-        metadata_contributors(node, xml)
+      def metadata_language(node, xml)
         xml.language (node.attr("language") || "zh")
+      end
+
+      def metadata_script(node, xml)
         xml.script (node.attr("script") || "Hans")
-        metadata_status(node, xml)
-        metadata_copyright(node, xml)
-        metadata_equivalence(node, xml)
-        metadata_obsoletes(node, xml)
-        metadata_ics(node, xml)
+      end
+
+      def metadata_ext(node, xml)
+        metadata_doctype(node, xml)
         metadata_committee(node, xml)
+        metadata_ics(node, xml)
         metadata_gbtype(node, xml)
         metadata_gblibraryids(node, xml)
       end

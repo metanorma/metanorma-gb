@@ -266,9 +266,11 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
       <bibdata>
       <language>zh</language>
       <script>Hans</script>
+      <ext>
         <gbtype>
     <gbscope>social-group</gbscope>
   </gbtype>
+  </ext>
       </bibdata>
       <sections>
       </sections>
@@ -288,10 +290,12 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
       <bibdata>
       <language>zh</language>
       <script>Hans</script>
+      <ext>
         <gbtype>
     <gbscope>local</gbscope>
         <gbprefix>81</gbprefix>
   </gbtype>
+  </ext>
       </bibdata>
       <sections>
       </sections>
@@ -311,10 +315,12 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
       <bibdata>
       <language>zh</language>
       <script>Hans</script>
+      <ext>
         <gbtype>
     <gbscope>sector</gbscope>
         <gbprefix>NY</gbprefix>
   </gbtype>
+  </ext>
       </bibdata>
       <sections>
       </sections>
@@ -334,10 +340,12 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
       <bibdata>
       <language>zh</language>
       <script>Hans</script>
+      <ext>
         <gbtype>
     <gbscope>sector</gbscope>
         <gbprefix>GM</gbprefix>
   </gbtype>
+  </ext>
       </bibdata>
       <sections>
       </sections>
@@ -357,10 +365,12 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
       <bibdata>
       <language>en</language>
       <script>Latn</script>
+      <ext>
         <gbtype>
     <gbscope>sector</gbscope>
         <gbprefix>GM</gbprefix>
   </gbtype>
+  </ext>
       </bibdata>
       <sections>
       </sections>
@@ -380,10 +390,12 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
       <bibdata>
       <language>zh</language>
       <script>Hans</script>
+      <ext>
         <gbtype>
     <gbscope>national</gbscope>
         <gbprefix>GB</gbprefix>
   </gbtype>
+  </ext>
       </bibdata>
       <sections>
       </sections>
@@ -403,10 +415,12 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
       <bibdata>
       <language>zh</language>
       <script>Hans</script>
+      <ext>
         <gbtype>
     <gbscope>national</gbscope>
         <gbprefix>GB</gbprefix>
   </gbtype>
+  </ext>
       </bibdata>
       <sections>
       </sections>

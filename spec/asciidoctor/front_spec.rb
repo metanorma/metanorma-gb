@@ -136,6 +136,8 @@ RSpec.describe Asciidoctor::Gb do
            </bibitem>
            <locality type="section"><referenceFrom>3</referenceFrom><referenceTo>5</referenceTo></locality>
          </relation>
+         <ext>
+         <doctype>standard</doctype>
          <gbcommittee type="Governance">Technical</gbcommittee>
          <gbtype>
            <gbscope>national</gbscope>
@@ -146,6 +148,7 @@ RSpec.describe Asciidoctor::Gb do
          <ccs>12</ccs>
          <ccs>34</ccs>
          <plannumber>AB</plannumber>
+         </ext>
        </bibdata>
        <sections/>
        </gb-standard>
@@ -170,7 +173,7 @@ RSpec.describe Asciidoctor::Gb do
     INPUT
     <?xml version="1.0" encoding="UTF-8"?>
        <gb-standard xmlns="http://riboseinc.com/gbstandard">
-       <bibdata type="recommendation">
+       <bibdata type="standard">
          <title>
 
          </title>
@@ -189,7 +192,7 @@ RSpec.describe Asciidoctor::Gb do
                <surname>Author</surname>
              </name>
            </person>
-         </contributor><contributor><role type="technical-committee"/><organization><name/></organization></contributor>
+         </contributor>
          <contributor>
            <role type="author"/>
            <organization>
@@ -240,13 +243,15 @@ RSpec.describe Asciidoctor::Gb do
              <docidentifier>ISO 1012</docidentifier>
            </bibitem>
          </relation>
-         <gbcommittee/>
+         <ext>
+         <doctype>recommendation</doctype>
          <gbtype>
            <gbscope>social-group</gbscope>
            <gbprefix>AAA</gbprefix>
            <gbmandate>recommendation</gbmandate>
            <gbtopic>basic</gbtopic>
          </gbtype>
+         </ext>
        </bibdata>
        <sections/>
        </gb-standard>
@@ -285,7 +290,7 @@ RSpec.describe Asciidoctor::Gb do
                <surname>Author</surname>
              </name>
            </person>
-         </contributor><contributor><role type="technical-committee"/><organization><name/></organization></contributor>
+         </contributor>
          <contributor>
            <role type="author"/>
            <organization>
@@ -330,13 +335,15 @@ RSpec.describe Asciidoctor::Gb do
              </organization>
            </owner>
          </copyright>
-         <gbcommittee/>
+         <ext>
+         <doctype>standard</doctype>
          <gbtype>
            <gbscope>enterprise</gbscope>
            <gbprefix>BBB</gbprefix>
            <gbmandate>mandatory</gbmandate>
            <gbtopic>basic</gbtopic>
          </gbtype>
+         </ext>
        </bibdata>
        <sections/>
        </gb-standard>
@@ -358,7 +365,7 @@ RSpec.describe Asciidoctor::Gb do
     INPUT
     <?xml version="1.0" encoding="UTF-8"?>
        <gb-standard xmlns="http://riboseinc.com/gbstandard">
-       <bibdata type="guide">
+       <bibdata type="standard">
          <title>
 
          </title>
@@ -377,7 +384,7 @@ RSpec.describe Asciidoctor::Gb do
                <surname>Author</surname>
              </name>
            </person>
-         </contributor><contributor><role type="technical-committee"/><organization><name/></organization></contributor>
+         </contributor>
          <contributor>
            <role type="author"/>
            <organization>
@@ -422,13 +429,15 @@ RSpec.describe Asciidoctor::Gb do
              </organization>
            </owner>
          </copyright>
-         <gbcommittee/>
+         <ext>
+         <doctype>guide</doctype>
          <gbtype>
            <gbscope>national</gbscope>
            <gbprefix>GB</gbprefix>
            <gbmandate>guide</gbmandate>
            <gbtopic>basic</gbtopic>
          </gbtype>
+         </ext>
        </bibdata>
        <sections/>
        </gb-standard>
@@ -470,7 +479,7 @@ RSpec.describe Asciidoctor::Gb do
                <surname>Author</surname>
              </name>
            </person>
-         </contributor><contributor><role type="technical-committee"/><organization><name/></organization></contributor>
+         </contributor>
          <contributor>
            <role type="author"/>
            <organization>
@@ -515,13 +524,15 @@ RSpec.describe Asciidoctor::Gb do
              </organization>
            </owner>
          </copyright>
-         <gbcommittee/>
+         <ext>
+         <doctype>standard</doctype>
          <gbtype>
            <gbscope>local</gbscope>
            <gbprefix>81</gbprefix>
            <gbmandate>mandatory</gbmandate>
            <gbtopic>basic</gbtopic>
          </gbtype>
+         </ext>
        </bibdata>
        <sections/>
        </gb-standard>
@@ -561,7 +572,7 @@ RSpec.describe Asciidoctor::Gb do
                <surname>Author</surname>
              </name>
            </person>
-         </contributor><contributor><role type="technical-committee"/><organization><name/></organization></contributor>
+         </contributor>
          <contributor>
            <role type="author"/>
            <organization>
@@ -606,13 +617,15 @@ RSpec.describe Asciidoctor::Gb do
              </organization>
            </owner>
          </copyright>
-         <gbcommittee/>
+         <ext>
+         <doctype>standard</doctype>
          <gbtype>
            <gbscope>local</gbscope>
            <gbprefix>GB</gbprefix>
            <gbmandate>mandatory</gbmandate>
            <gbtopic>basic</gbtopic>
          </gbtype>
+         </ext>
        </bibdata>
        <sections/>
        </gb-standard>
@@ -652,7 +665,7 @@ RSpec.describe Asciidoctor::Gb do
                <surname>Author</surname>
              </name>
            </person>
-         </contributor><contributor><role type="technical-committee"/><organization><name/></organization></contributor>
+         </contributor>
          <contributor>
            <role type="author"/>
            <organization>
@@ -697,13 +710,15 @@ RSpec.describe Asciidoctor::Gb do
              </organization>
            </owner>
          </copyright>
-         <gbcommittee/>
+         <ext>
+         <doctype>standard</doctype>
          <gbtype>
            <gbscope>local</gbscope>
            <gbprefix>GB</gbprefix>
            <gbmandate>mandatory</gbmandate>
            <gbtopic>basic</gbtopic>
          </gbtype>
+         </ext>
        </bibdata>
        <sections/>
        </gb-standard>

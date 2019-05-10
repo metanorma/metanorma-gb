@@ -84,7 +84,7 @@ BLANK_HDR = <<~"HDR"
                <surname>Author</surname>
              </name>
            </person>
-         </contributor><contributor><role type="technical-committee"/><organization><name/></organization></contributor>
+         </contributor>
          <contributor>
            <role type="author"/>
            <organization>
@@ -129,13 +129,15 @@ BLANK_HDR = <<~"HDR"
              </organization>
            </owner>
          </copyright>
-         <gbcommittee/>
+         <ext>
+         <doctype>standard</doctype>
          <gbtype>
            <gbscope>national</gbscope>
            <gbprefix>GB</gbprefix>
            <gbmandate>mandatory</gbmandate>
            <gbtopic>basic</gbtopic>
          </gbtype>
+         </ext>
        </bibdata>
 HDR
 
@@ -172,14 +174,11 @@ GBT20223 = <<~OUTPUT
   <language>zh</language>
   <script>Hans</script>
   <status>obsoleted</status>
+  <!--
   <ics>
     <code>59.060.10</code>
     <text>Natural fibres</text>
   </ics>
-  <gbtype>
-  <gbscope/>
-  <gbprefix/>
-  <gbmandate/>
-</gbtype>
+  -->
 </bibitem>
       OUTPUT

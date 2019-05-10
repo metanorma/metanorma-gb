@@ -59,7 +59,7 @@ module IsoDoc
       end
 
       def author(isoxml, _out)
-        gbcommittee = isoxml.at(ns("//bibdata/gbcommittee"))
+        gbcommittee = isoxml.at(ns("//bibdata/ext/gbcommittee"))
         set(:committee, gbcommittee&.text)
       end
 
@@ -164,9 +164,9 @@ module IsoDoc
       end
 
       def gb_identifier(isoxml)
-        scope = isoxml.at(ns("//bibdata/gbtype/gbscope"))&.text || "national"
-        mandate = isoxml.at(ns("//bibdata/gbtype/gbmandate"))&.text || "mandatory"
-        prefix = isoxml.at(ns("//bibdata/gbtype/gbprefix"))&.text || "XXX"
+        scope = isoxml.at(ns("//bibdata/ext/gbtype/gbscope"))&.text || "national"
+        mandate = isoxml.at(ns("//bibdata/ext/gbtype/gbmandate"))&.text || "mandatory"
+        prefix = isoxml.at(ns("//bibdata/ext/gbtype/gbprefix"))&.text || "XXX"
         docyear = isoxml&.at(ns("//bibdata/copyright/from"))&.text
         issuer = isoxml&.at(ns("//bibdata/contributor[role/@type = 'issuer']/"\
                                "organization/name"))&.text || "GB"
@@ -199,9 +199,9 @@ module IsoDoc
       def gb_library_identifier(isoxml)
         ics = []
         ccs = []
-        isoxml.xpath(ns("//bibdata/ics/code")).each { |i| ics << i.text }
-        isoxml.xpath(ns("//bibdata/ccs")).each { |i| ccs << i.text }
-        p = isoxml.at(ns("//bibdata/plannumber"))
+        isoxml.xpath(ns("//bibdata/ext/ics/code")).each { |i| ics << i.text }
+        isoxml.xpath(ns("//bibdata/ext/ccs")).each { |i| ccs << i.text }
+        p = isoxml.at(ns("//bibdata/ext/plannumber"))
         set(:libraryid_ics, ics.empty? ? "XXX" : ics.join(", "))
         set(:libraryid_ccs, ccs.empty? ? "XXX" : ccs.join(", "))
         set(:libraryid_plan, p ? p.text : "XXX")
