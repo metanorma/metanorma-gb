@@ -39,16 +39,12 @@ RSpec.describe Asciidoctor::Gb do
      <?xml version="1.0" encoding="UTF-8"?>
        <gb-standard xmlns="http://riboseinc.com/gbstandard">
        <bibdata type="standard">
-         <title>
-           <title-intro language="en" format="plain">Title 1</title-intro>
-           <title-main language="en" format="plain">Title 2</title-main>
-           <title-part language="en" format="plain">Title 3</title-part>
-         </title>
-         <title>
-           <title-intro language="zh" format="plain">Title 4</title-intro>
-           <title-main language="zh" format="plain">Title 5</title-main>
-           <title-part language="zh" format="plain">Title 6</title-part>
-         </title>
+           <title type="title-intro" language="en" format="plain">Title 1</title>
+           <title type="title-main" language="en" format="plain">Title 2</title>
+           <title type="title-part" language="en" format="plain">Title 3</title>
+           <title type="title-intro" language="zh" format="plain">Title 4</title>
+           <title type="title-main" language="zh" format="plain">Title 5</title>
+           <title type="title-part" language="zh" format="plain">Title 6</title>
          <docidentifier type="gb">GB 123-1999</docidentifier>
 <docidentifier type="gb-structured">
   <project-number>GB 123</project-number>
@@ -174,12 +170,6 @@ RSpec.describe Asciidoctor::Gb do
     <?xml version="1.0" encoding="UTF-8"?>
        <gb-standard xmlns="http://riboseinc.com/gbstandard">
        <bibdata type="standard">
-         <title>
-
-         </title>
-         <title>
-
-         </title>
          <docidentifier type="gb">T/AAA 123</docidentifier>
 <docidentifier type="gb-structured">
   <project-number>T/AAA 123</project-number>
@@ -272,12 +262,6 @@ RSpec.describe Asciidoctor::Gb do
     <?xml version="1.0" encoding="UTF-8"?>
        <gb-standard xmlns="http://riboseinc.com/gbstandard">
        <bibdata type="standard">
-         <title>
-
-         </title>
-         <title>
-
-         </title>
          <docidentifier type="gb">Q/BBB 123</docidentifier>
 <docidentifier type="gb-structured">
   <project-number>Q/BBB 123</project-number>
@@ -366,12 +350,6 @@ RSpec.describe Asciidoctor::Gb do
     <?xml version="1.0" encoding="UTF-8"?>
        <gb-standard xmlns="http://riboseinc.com/gbstandard">
        <bibdata type="standard">
-         <title>
-
-         </title>
-         <title>
-
-         </title>
          <docidentifier type="gb">GB/Z 123</docidentifier>
 <docidentifier type="gb-structured">
   <project-number>GB/Z 123</project-number>
@@ -461,12 +439,6 @@ RSpec.describe Asciidoctor::Gb do
     <?xml version="1.0" encoding="UTF-8"?>
        <gb-standard xmlns="http://riboseinc.com/gbstandard">
        <bibdata type="standard">
-         <title>
-
-         </title>
-         <title>
-
-         </title>
          <docidentifier type="gb">DB81/123</docidentifier>
 <docidentifier type="gb-structured">
   <project-number>DB81/123</project-number>
@@ -554,12 +526,6 @@ RSpec.describe Asciidoctor::Gb do
           <?xml version="1.0" encoding="UTF-8"?>
        <gb-standard xmlns="http://riboseinc.com/gbstandard">
        <bibdata type="standard">
-         <title>
-
-         </title>
-         <title>
-
-         </title>
          <docidentifier type="gb">DBGB/123</docidentifier>
 <docidentifier type="gb-structured">
   <project-number>DBGB/123</project-number>
@@ -647,12 +613,6 @@ RSpec.describe Asciidoctor::Gb do
     <?xml version="1.0" encoding="UTF-8"?>
        <gb-standard xmlns="http://riboseinc.com/gbstandard">
        <bibdata type="standard">
-         <title>
-
-         </title>
-         <title>
-
-         </title>
          <docidentifier type="gb">DBGB/123</docidentifier>
 <docidentifier type="gb-structured">
   <project-number>DBGB/123</project-number>
@@ -724,7 +684,5 @@ RSpec.describe Asciidoctor::Gb do
        </gb-standard>
     OUTPUT
   end
-
-
 
 end

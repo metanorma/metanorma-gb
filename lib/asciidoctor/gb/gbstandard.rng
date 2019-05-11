@@ -68,14 +68,14 @@
       <optional>
         <ref name="doctype"/>
       </optional>
-      <optional>
-        <ref name="editorialgroup"/>
-      </optional>
       <zeroOrMore>
         <ref name="ics"/>
       </zeroOrMore>
       <zeroOrMore>
         <ref name="gbcommittee"/>
+      </zeroOrMore>
+      <zeroOrMore>
+        <ref name="ics"/>
       </zeroOrMore>
       <ref name="gbtype"/>
       <oneOrMore>

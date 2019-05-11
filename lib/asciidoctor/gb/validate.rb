@@ -69,8 +69,8 @@ module Asciidoctor
       end
 
       def title_intro_validate(root)
-        title_intro_en = root.at("//title-intro[@language='en']")
-        title_intro_zh = root.at("//title-intro[@language='zh']")
+        title_intro_en = root.at("//title[@type='title-intro' and @language='en']")
+        title_intro_zh = root.at("//title[@type='title-intro' and @language='zh']")
         if title_intro_en.nil? && !title_intro_zh.nil?
           warn "No English Title Intro!"
         end
@@ -80,8 +80,8 @@ module Asciidoctor
       end
 
       def title_main_validate(root)
-        title_main_en = root.at("//title-main[@language='en']")
-        title_main_zh = root.at("//title-main[@language='zh']")
+        title_main_en = root.at("//title[@type='title-main' and @language='en']")
+        title_main_zh = root.at("//title[@type='title-main' and @language='zh']")
         if title_main_en.nil? && !title_main_zh.nil?
           warn "No English Title!"
         end
@@ -91,8 +91,8 @@ module Asciidoctor
       end
 
       def title_part_validate(root)
-        title_part_en = root.at("//title-part[@language='en']")
-        title_part_zh = root.at("//title-part[@language='zh']")
+        title_part_en = root.at("//title[@type='title-part' and @language='en']")
+        title_part_zh = root.at("//title[@type='title-part' and @language='zh']")
         if title_part_en.nil? && !title_part_zh.nil?
           warn "No English Title Part!"
         end

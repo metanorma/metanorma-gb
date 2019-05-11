@@ -24,9 +24,9 @@ module IsoDoc
       end
 
       def title(isoxml, _out)
-        intro = isoxml.at(ns("//bibdata//title-intro[@language='zh']"))
-        main = isoxml.at(ns("//bibdata//title-main[@language='zh']"))
-        part = isoxml.at(ns("//bibdata//title-part[@language='zh']"))
+        intro = isoxml.at(ns("//bibdata//title[@type='title-intro' and @language='zh']"))
+        main = isoxml.at(ns("//bibdata//title[@type='title-main' and @language='zh']"))
+        part = isoxml.at(ns("//bibdata//title[@type='title-part' and @language='zh']"))
         partnumber = isoxml.at(ns("//bibdata/docidentifier/project-number/@part"))
         intro.nil? || set(:docmaintitlezh, intro.text + "&nbsp;")
         main.nil? || set(:docsubtitlezh, main.text)
@@ -46,9 +46,9 @@ module IsoDoc
       end
 
       def subtitle(isoxml, _out)
-        intro = isoxml.at(ns("//bibdata//title-intro[@language='en']"))
-        main = isoxml.at(ns("//bibdata//title-main[@language='en']"))
-        part = isoxml.at(ns("//bibdata//title-part[@language='en']"))
+        intro = isoxml.at(ns("//bibdata//title[@type='title-intro' and @language='en']"))
+        main = isoxml.at(ns("//bibdata//title[@type='title-main' and @language='en']"))
+        part = isoxml.at(ns("//bibdata//title[@type='title-part' and @language='en']"))
         partnumber = isoxml.at(ns("//bibdata/docidentifier/project-number/@part"))
         intro.nil? || set(:docmaintitleen, intro.text + "&mdash;")
         main.nil? || set(:docsubtitleen, main.text)

@@ -154,12 +154,6 @@ RSpec.describe Asciidoctor::Gb do
            <?xml version="1.0" encoding="UTF-8"?>
        <gb-standard xmlns="http://riboseinc.com/gbstandard">
        <bibdata type="standard">
-         <title>
-
-         </title>
-         <title>
-
-         </title>
          <docidentifier type="gb">NY 123</docidentifier>
          <docidentifier type="gb-structured">
            <project-number>NY 123</project-number>

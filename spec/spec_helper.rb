@@ -71,12 +71,6 @@ BLANK_HDR = <<~"HDR"
        <?xml version="1.0" encoding="UTF-8"?>
        <gb-standard xmlns="http://riboseinc.com/gbstandard">
        <bibdata type="standard">
-         <title>
-
-         </title>
-         <title>
-
-         </title>
          <contributor>
            <role type="author"/>
            <person>

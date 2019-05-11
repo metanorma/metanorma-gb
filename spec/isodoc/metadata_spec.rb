@@ -9,16 +9,12 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
     docxml, filename, dir = gbc.convert_init(<<~"INPUT", "test", true)
     <gb-standard xmlns="http://riboseinc.com/gbstandard">
 <bibdata type="standard">
-  <title>
-    <title-intro language="en" format="plain">Cereals and pulses</title-intro>
-    <title-main language="en" format="plain">Specifications and test methods</title-main>
-    <title-part language="en" format="plain">Rice</title-part>
-  </title>
-  <title>
-    <title-intro language="zh" format="plain">Cereals1</title-intro>
-    <title-main language="zh" format="plain">Specifications1</title-main>
-    <title-part language="zh" format="plain">Rice1</title-part>
-  </title>
+    <title type="title-intro" language="en" format="plain">Cereals and pulses</title>
+    <title type="title-main" language="en" format="plain">Specifications and test methods</title>
+    <title type="title-part" language="en" format="plain">Rice</title>
+    <title type="title-intro" language="zh" format="plain">Cereals1</title>
+    <title type="title-main" language="zh" format="plain">Specifications1</title>
+    <title type="title-part" language="zh" format="plain">Rice1</title>
   <docidentifier type="gb">PreCD3 17301-1&#x2014;2016</docidentifier>
   <docidentifier type="gb-structured">
     <project-number part="1">PreCD3 17301</project-number>
@@ -118,16 +114,12 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
     docxml, filename, dir = gbc.convert_init(<<~"INPUT", "test", true)
         <gb-standard xmlns="http://riboseinc.com/gbstandard">
 <bibdata type="standard">
-  <title>
-    <title-intro language="en" format="plain">Cereals and pulses</title-intro>
-    <title-main language="en" format="plain">Specifications and test methods</title-main>
-    <title-part language="en" format="plain">Rice</title-part>
-  </title>
-  <title>
-    <title-intro language="zh" format="plain">Cereals1</title-intro>
-    <title-main language="zh" format="plain">Specifications1</title-main>
-    <title-part language="zh" format="plain">Rice1</title-part>
-  </title>
+    <title type="title-intro" language="en" format="plain">Cereals and pulses</title>
+    <title type="title-main" language="en" format="plain">Specifications and test methods</title>
+    <title type="title-part" language="en" format="plain">Rice</title>
+    <title type="title-intro" language="zh" format="plain">Cereals1</title>
+    <title type="title-main" language="zh" format="plain">Specifications1</title>
+    <title type="title-part" language="zh" format="plain">Rice1</title>
   <docidentifier type="gb">PreCD3 17301-1&#x2014;2016</docidentifier>
   <docidentifier type="gb-structured">
     <project-number part="1">PreCD3 17301</project-number>
@@ -228,16 +220,12 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
     docxml, filename, dir = gbc.convert_init(<<~"INPUT", "test", true)
     <gb-standard xmlns="http://riboseinc.com/gbstandard">
 <bibdata type="standard">
-  <title>
-    <title-intro language="en" format="plain">Cereals and pulses</title-intro>
-    <title-main language="en" format="plain">Specifications and test methods</title-main>
-    <title-part language="en" format="plain">Rice</title-part>
-  </title>
-  <title>
-    <title-intro language="zh" format="plain">Cereals1</title-intro>
-    <title-main language="zh" format="plain">Specifications1</title-main>
-    <title-part language="zh" format="plain">Rice1</title-part>
-  </title>
+    <title type="title-intro" language="en" format="plain">Cereals and pulses</title>
+    <title type="title-main" language="en" format="plain">Specifications and test methods</title>
+    <title type="title-part" language="en" format="plain">Rice</title>
+    <title type="title-intro" language="zh" format="plain">Cereals1</title>
+    <title type="title-main" language="zh" format="plain">Specifications1</title>
+    <title type="title-part" language="zh" format="plain">Rice1</title>
     <docidentifier type="gb">PreCD3 17301-1&#x2014;2016</docidentifier>
   <docidentifier type="gb-structured">
     <project-number part="1">PreCD3 17301</project-number>
@@ -333,16 +321,12 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
     docxml, filename, dir = gbc.convert_init(<<~"INPUT", "test", true)
     <gb-standard xmlns="http://riboseinc.com/gbstandard">
 <bibdata type="standard">
-  <title>
-    <title-intro language="en" format="plain">Cereals and pulses</title-intro>
-    <title-main language="en" format="plain">Specifications and test methods</title-main>
-    <title-part language="en" format="plain">Rice</title-part>
-  </title>
-  <title>
-    <title-intro language="zh" format="plain">Cereals1</title-intro>
-    <title-main language="zh" format="plain">Specifications1</title-main>
-    <title-part language="zh" format="plain">Rice1</title-part>
-  </title>
+    <title type="title-intro" language="en" format="plain">Cereals and pulses</title>
+    <title type="title-main" language="en" format="plain">Specifications and test methods</title>
+    <title type="title-part" language="en" format="plain">Rice</title>
+    <title type="title-intro" language="zh" format="plain">Cereals1</title>
+    <title type="title-main" language="zh" format="plain">Specifications1</title>
+    <title type="title-part" language="zh" format="plain">Rice1</title>
   <docidentifier type="gb">17301&#x2014;2016</docidentifier>
   <docidentifier type="gb-structured">
     <project-number>17301</project-number>
@@ -436,16 +420,12 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
     docxml, filename, dir = gbc.convert_init(<<~"INPUT", "test", true)
     <gb-standard xmlns="http://riboseinc.com/gbstandard">
 <bibdata type="standard">
-  <title>
-    <title-intro language="en" format="plain">Cereals and pulses</title-intro>
-    <title-main language="en" format="plain">Specifications and test methods</title-main>
-    <title-part language="en" format="plain">Rice</title-part>
-  </title>
-  <title>
-    <title-intro language="zh" format="plain">Cereals1</title-intro>
-    <title-main language="zh" format="plain">Specifications1</title-main>
-    <title-part language="zh" format="plain">Rice1</title-part>
-  </title>
+    <title type="title-intro" language="en" format="plain">Cereals and pulses</title>
+    <title type="title-main" language="en" format="plain">Specifications and test methods</title>
+    <title type="title-part" language="en" format="plain">Rice</title>
+    <title type="title-intro" language="zh" format="plain">Cereals1</title>
+    <title type="title-main" language="zh" format="plain">Specifications1</title>
+    <title type="title-part" language="zh" format="plain">Rice1</title>
     <docidentifier type="gb">17301&#x2014;2016</docidentifier>
   <docidentifier type="gb-structured">
     <project-number>17301</project-number>
@@ -539,16 +519,12 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
     docxml, filename, dir = gbc.convert_init(<<~"INPUT", "test", true)
     <gb-standard xmlns="http://riboseinc.com/gbstandard">
 <bibdata type="standard">
-  <title>
-    <title-intro language="en" format="plain">Cereals and pulses</title-intro>
-    <title-main language="en" format="plain">Specifications and test methods</title-main>
-    <title-part language="en" format="plain">Rice</title-part>
-  </title>
-  <title>
-    <title-intro language="zh" format="plain">Cereals1</title-intro>
-    <title-main language="zh" format="plain">Specifications1</title-main>
-    <title-part language="zh" format="plain">Rice1</title-part>
-  </title>
+    <title type="title-intro" language="en" format="plain">Cereals and pulses</title>
+    <title type="title-main" language="en" format="plain">Specifications and test methods</title>
+    <title type="title-part" language="en" format="plain">Rice</title>
+    <title type="title-intro" language="zh" format="plain">Cereals1</title>
+    <title type="title-main" language="zh" format="plain">Specifications1</title>
+    <title type="title-part" language="zh" format="plain">Rice1</title>
     <docidentifier type="gb">17301&#x2014;2016</docidentifier>
   <docidentifier type="gb-structured">
     <project-number>17301</project-number>
@@ -642,16 +618,12 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
     docxml, filename, dir = gbc.convert_init(<<~"INPUT", "test", true)
     <gb-standard xmlns="http://riboseinc.com/gbstandard">
 <bibdata type="standard">
-  <title>
-    <title-intro language="en" format="plain">Cereals and pulses</title-intro>
-    <title-main language="en" format="plain">Specifications and test methods</title-main>
-    <title-part language="en" format="plain">Rice</title-part>
-  </title>
-  <title>
-    <title-intro language="zh" format="plain">Cereals1</title-intro>
-    <title-main language="zh" format="plain">Specifications1</title-main>
-    <title-part language="zh" format="plain">Rice1</title-part>
-  </title>
+    <title type="title-intro" language="en" format="plain">Cereals and pulses</title>
+    <title type="title-main" language="en" format="plain">Specifications and test methods</title>
+    <title type="title-part" language="en" format="plain">Rice</title>
+    <title type="title-intro" language="zh" format="plain">Cereals1</title>
+    <title type="title-main" language="zh" format="plain">Specifications1</title>
+    <title type="title-part" language="zh" format="plain">Rice1</title>
     <docidentifier type="gb">17301&#x2014;2016</docidentifier>
   <docidentifier type="gb-structured">
     <project-number>17301</project-number>
