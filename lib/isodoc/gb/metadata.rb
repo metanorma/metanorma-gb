@@ -27,7 +27,7 @@ module IsoDoc
         intro = isoxml.at(ns("//bibdata//title[@type='title-intro' and @language='zh']"))
         main = isoxml.at(ns("//bibdata//title[@type='title-main' and @language='zh']"))
         part = isoxml.at(ns("//bibdata//title[@type='title-part' and @language='zh']"))
-        partnumber = isoxml.at(ns("//bibdata/docidentifier/project-number/@part"))
+        partnumber = isoxml.at(ns("//bibdata/ext/structuredidentifier/project-number/@part"))
         intro.nil? || set(:docmaintitlezh, intro.text + "&nbsp;")
         main.nil? || set(:docsubtitlezh, main.text)
         partnum = partnumber ? "#{part_label(partnumber, 'zh')}:" : ""
@@ -49,7 +49,7 @@ module IsoDoc
         intro = isoxml.at(ns("//bibdata//title[@type='title-intro' and @language='en']"))
         main = isoxml.at(ns("//bibdata//title[@type='title-main' and @language='en']"))
         part = isoxml.at(ns("//bibdata//title[@type='title-part' and @language='en']"))
-        partnumber = isoxml.at(ns("//bibdata/docidentifier/project-number/@part"))
+        partnumber = isoxml.at(ns("//bibdata/ext/structuredidentifier/project-number/@part"))
         intro.nil? || set(:docmaintitleen, intro.text + "&mdash;")
         main.nil? || set(:docsubtitleen, main.text)
         partnum = partnumber ? "#{part_label(partnumber, 'en')}: " : ""

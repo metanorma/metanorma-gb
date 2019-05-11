@@ -155,9 +155,6 @@ RSpec.describe Asciidoctor::Gb do
        <gb-standard xmlns="http://riboseinc.com/gbstandard">
        <bibdata type="standard">
          <docidentifier type="gb">NY 123</docidentifier>
-         <docidentifier type="gb-structured">
-           <project-number>NY 123</project-number>
-         </docidentifier>
          <docnumber>123</docnumber>
          <contributor>
            <role type="author"/>
@@ -214,6 +211,9 @@ RSpec.describe Asciidoctor::Gb do
          <ext>
         <doctype>standard</doctype>
          <gbcommittee type="Governance">Technical</gbcommittee>
+         <structuredidentifier>
+           <project-number>NY 123</project-number>
+         </structuredidentifier>
          <gbtype>
            <gbscope>sector</gbscope>
            <gbprefix>NY</gbprefix>

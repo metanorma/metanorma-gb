@@ -180,7 +180,11 @@ module Asciidoctor
         dn = add_id_parts(node.attr("docnumber"), part, nil)
         dn = id_stage_prefix(dn, node)
         xml.docidentifier dn, **attr_code(type: "gb")
-        xml.docidentifier **attr_code(type: "gb-structured") do |i|
+      end
+
+      def structured_id(node, xml)
+        part = node.attr("partnumber")
+        xml.structuredidentifier do |i|
           i.project_number node.attr("docnumber"),
             **attr_code(part: part)
         end
@@ -216,6 +220,7 @@ module Asciidoctor
         metadata_doctype(node, xml)
         metadata_committee(node, xml)
         metadata_ics(node, xml)
+        structured_id(node, xml)
         metadata_gbtype(node, xml)
         metadata_gblibraryids(node, xml)
       end

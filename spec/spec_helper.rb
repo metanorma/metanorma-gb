@@ -125,7 +125,10 @@ BLANK_HDR = <<~"HDR"
          </copyright>
          <ext>
          <doctype>standard</doctype>
-         <gbtype>
+         <structuredidentifier>
+  <project-number/>
+</structuredidentifier>
+        <gbtype>
            <gbscope>national</gbscope>
            <gbprefix>GB</gbprefix>
            <gbmandate>mandatory</gbmandate>

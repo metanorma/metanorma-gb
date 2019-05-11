@@ -10,14 +10,6 @@
     <start>
       <ref name="gb-standard"/>
     </start>
-    <define name="script">
-      <element name="script">
-        <choice>
-          <value>Hans</value>
-          <value>Latn</value>
-        </choice>
-      </element>
-    </define>
     <define name="preferred">
       <element name="preferred">
         <ref name="ZhEnLocalizedString"/>
@@ -68,9 +60,6 @@
       <optional>
         <ref name="doctype"/>
       </optional>
-      <zeroOrMore>
-        <ref name="ics"/>
-      </zeroOrMore>
       <zeroOrMore>
         <ref name="gbcommittee"/>
       </zeroOrMore>

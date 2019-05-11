@@ -16,9 +16,6 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
     <title type="title-main" language="zh" format="plain">Specifications1</title>
     <title type="title-part" language="zh" format="plain">Rice1</title>
   <docidentifier type="gb">PreCD3 17301-1&#x2014;2016</docidentifier>
-  <docidentifier type="gb-structured">
-    <project-number part="1">PreCD3 17301</project-number>
-  </docidentifier>
   <date type="published">
     <on>2016-01-02</on>
   </date>
@@ -90,6 +87,9 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
   <ext>
   <doctype>recommendation</doctype>
   <ics><code>1322</code></ics>
+  <structuredidentifier>
+    <project-number part="1">PreCD3 17301</project-number>
+  </structuredidentifier>
   <ccs>A 01</ccs>
   <ccs>A 02</ccs>
   <plannumber>XYZ</plannumber>
@@ -121,9 +121,6 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
     <title type="title-main" language="zh" format="plain">Specifications1</title>
     <title type="title-part" language="zh" format="plain">Rice1</title>
   <docidentifier type="gb">PreCD3 17301-1&#x2014;2016</docidentifier>
-  <docidentifier type="gb-structured">
-    <project-number part="1">PreCD3 17301</project-number>
-  </docidentifier>
   <date type="published">
     <on>2016-01-02</on>
   </date>
@@ -195,6 +192,9 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
   <ext>
   <doctype>recommendation</doctype>
   <ics><code>1322</code></ics>
+  <structuredidentifier>
+    <project-number part="1">PreCD3 17301</project-number>
+  </structuredidentifier>
   <ccs>A 01</ccs>
   <ccs>A 02</ccs>
   <plannumber>XYZ</plannumber>
@@ -227,9 +227,6 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
     <title type="title-main" language="zh" format="plain">Specifications1</title>
     <title type="title-part" language="zh" format="plain">Rice1</title>
     <docidentifier type="gb">PreCD3 17301-1&#x2014;2016</docidentifier>
-  <docidentifier type="gb-structured">
-    <project-number part="1">PreCD3 17301</project-number>
-  </docidentifier>
   <date type="published">
     <on>2016-01-02</on>
   </date>
@@ -296,6 +293,9 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
   <ext>
   <doctype>recommendation</doctype>
   <ics><code>1322</code></ics>
+  <structuredidentifier>
+    <project-number part="1">PreCD3 17301</project-number>
+  </structuredidentifier>
   <ccs>A 01</ccs>
   <ccs>A 02</ccs>
   <plannumber>XYZ</plannumber>
@@ -328,9 +328,6 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
     <title type="title-main" language="zh" format="plain">Specifications1</title>
     <title type="title-part" language="zh" format="plain">Rice1</title>
   <docidentifier type="gb">17301&#x2014;2016</docidentifier>
-  <docidentifier type="gb-structured">
-    <project-number>17301</project-number>
-  </docidentifier>
   <date type="published">
     <on>2016-01-02</on>
   </date>
@@ -396,6 +393,9 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
   <ext>
   <doctype>recommendation</doctype>
   <ics><code>1322</code></ics>
+  <structuredidentifier>
+    <project-number>17301</project-number>
+  </structuredidentifier>
   <ccs>A 01</ccs>
   <ccs>A 02</ccs>
   <plannumber>XYZ</plannumber>
@@ -427,9 +427,6 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
     <title type="title-main" language="zh" format="plain">Specifications1</title>
     <title type="title-part" language="zh" format="plain">Rice1</title>
     <docidentifier type="gb">17301&#x2014;2016</docidentifier>
-  <docidentifier type="gb-structured">
-    <project-number>17301</project-number>
-  </docidentifier>
   <date type="published">
     <on>2016-01-02</on>
   </date>
@@ -495,6 +492,9 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
   <ext>
   <doctype>recommendation</doctype>
   <ics><code>1322</code></ics>
+  <structuredidentifier>
+    <project-number>17301</project-number>
+  </structuredidentifier>
   <ccs>A 01</ccs>
   <ccs>A 02</ccs>
   <plannumber>XYZ</plannumber>
@@ -526,9 +526,6 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
     <title type="title-main" language="zh" format="plain">Specifications1</title>
     <title type="title-part" language="zh" format="plain">Rice1</title>
     <docidentifier type="gb">17301&#x2014;2016</docidentifier>
-  <docidentifier type="gb-structured">
-    <project-number>17301</project-number>
-  </docidentifier>
   <date type="published">
     <on>2016-01-02</on>
   </date>
@@ -594,6 +591,9 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
   <ext>
   <doctype>recommendation</doctype>
   <ics><code>1322</code></ics>
+  <structuredidentifier>
+    <project-number>17301</project-number>
+  </structuredidentifier>
   <ccs>A 01</ccs>
   <ccs>A 02</ccs>
   <plannumber>XYZ</plannumber>
@@ -625,9 +625,6 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
     <title type="title-main" language="zh" format="plain">Specifications1</title>
     <title type="title-part" language="zh" format="plain">Rice1</title>
     <docidentifier type="gb">17301&#x2014;2016</docidentifier>
-  <docidentifier type="gb-structured">
-    <project-number>17301</project-number>
-  </docidentifier>
   <date type="published">
     <on>2016-01-02</on>
   </date>
@@ -693,6 +690,9 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
   <ext>
   <doctype>recommendation</doctype>
   <ics><code>1322</code></ics>
+  <structuredidentifier>
+    <project-number>17301</project-number>
+  </structuredidentifier>
   <ccs>A 01</ccs>
   <ccs>A 02</ccs>
   <plannumber>XYZ</plannumber>

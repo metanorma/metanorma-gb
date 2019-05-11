@@ -39,17 +39,16 @@ RSpec.describe Asciidoctor::Gb do
      <?xml version="1.0" encoding="UTF-8"?>
        <gb-standard xmlns="http://riboseinc.com/gbstandard">
        <bibdata type="standard">
+           <title type="main" language="en" format="plain">Title 1 — Title 2 — Title 3</title>
            <title type="title-intro" language="en" format="plain">Title 1</title>
            <title type="title-main" language="en" format="plain">Title 2</title>
            <title type="title-part" language="en" format="plain">Title 3</title>
+           <title type="main" language="zh" format="plain">Title 4 — Title 5 — Title 6</title>
            <title type="title-intro" language="zh" format="plain">Title 4</title>
            <title type="title-main" language="zh" format="plain">Title 5</title>
            <title type="title-part" language="zh" format="plain">Title 6</title>
          <docidentifier type="gb">GB 123-1999</docidentifier>
-<docidentifier type="gb-structured">
-  <project-number>GB 123</project-number>
-</docidentifier>
-<docnumber>123</docnumber>
+        <docnumber>123</docnumber>
          <date type="published">
            <on>2018-01-01</on>
          </date>
@@ -135,6 +134,9 @@ RSpec.describe Asciidoctor::Gb do
          <ext>
          <doctype>standard</doctype>
          <gbcommittee type="Governance">Technical</gbcommittee>
+<structuredidentifier>
+  <project-number>GB 123</project-number>
+</structuredidentifier>
          <gbtype>
            <gbscope>national</gbscope>
            <gbprefix>GB</gbprefix>
@@ -171,9 +173,6 @@ RSpec.describe Asciidoctor::Gb do
        <gb-standard xmlns="http://riboseinc.com/gbstandard">
        <bibdata type="standard">
          <docidentifier type="gb">T/AAA 123</docidentifier>
-<docidentifier type="gb-structured">
-  <project-number>T/AAA 123</project-number>
-</docidentifier>
 <docnumber>123</docnumber>
          <contributor>
            <role type="author"/>
@@ -235,6 +234,9 @@ RSpec.describe Asciidoctor::Gb do
          </relation>
          <ext>
          <doctype>recommendation</doctype>
+<structuredidentifier>
+  <project-number>T/AAA 123</project-number>
+</structuredidentifier>
          <gbtype>
            <gbscope>social-group</gbscope>
            <gbprefix>AAA</gbprefix>
@@ -263,9 +265,6 @@ RSpec.describe Asciidoctor::Gb do
        <gb-standard xmlns="http://riboseinc.com/gbstandard">
        <bibdata type="standard">
          <docidentifier type="gb">Q/BBB 123</docidentifier>
-<docidentifier type="gb-structured">
-  <project-number>Q/BBB 123</project-number>
-</docidentifier>
 <docnumber>123</docnumber>
          <contributor>
            <role type="author"/>
@@ -321,6 +320,9 @@ RSpec.describe Asciidoctor::Gb do
          </copyright>
          <ext>
          <doctype>standard</doctype>
+<structuredidentifier>
+  <project-number>Q/BBB 123</project-number>
+</structuredidentifier>
          <gbtype>
            <gbscope>enterprise</gbscope>
            <gbprefix>BBB</gbprefix>
@@ -351,9 +353,6 @@ RSpec.describe Asciidoctor::Gb do
        <gb-standard xmlns="http://riboseinc.com/gbstandard">
        <bibdata type="standard">
          <docidentifier type="gb">GB/Z 123</docidentifier>
-<docidentifier type="gb-structured">
-  <project-number>GB/Z 123</project-number>
-</docidentifier>
 <docnumber>123</docnumber>
          <contributor>
            <role type="author"/>
@@ -409,6 +408,9 @@ RSpec.describe Asciidoctor::Gb do
          </copyright>
          <ext>
          <doctype>guide</doctype>
+<structuredidentifier>
+  <project-number>GB/Z 123</project-number>
+</structuredidentifier>
          <gbtype>
            <gbscope>national</gbscope>
            <gbprefix>GB</gbprefix>
@@ -440,9 +442,6 @@ RSpec.describe Asciidoctor::Gb do
        <gb-standard xmlns="http://riboseinc.com/gbstandard">
        <bibdata type="standard">
          <docidentifier type="gb">DB81/123</docidentifier>
-<docidentifier type="gb-structured">
-  <project-number>DB81/123</project-number>
-</docidentifier>
 <docnumber>123</docnumber>
          <contributor>
            <role type="author"/>
@@ -498,6 +497,9 @@ RSpec.describe Asciidoctor::Gb do
          </copyright>
          <ext>
          <doctype>standard</doctype>
+<structuredidentifier>
+  <project-number>DB81/123</project-number>
+</structuredidentifier>
          <gbtype>
            <gbscope>local</gbscope>
            <gbprefix>81</gbprefix>
@@ -527,9 +529,6 @@ RSpec.describe Asciidoctor::Gb do
        <gb-standard xmlns="http://riboseinc.com/gbstandard">
        <bibdata type="standard">
          <docidentifier type="gb">DBGB/123</docidentifier>
-<docidentifier type="gb-structured">
-  <project-number>DBGB/123</project-number>
-</docidentifier>
 <docnumber>123</docnumber>
          <contributor>
            <role type="author"/>
@@ -585,6 +584,9 @@ RSpec.describe Asciidoctor::Gb do
          </copyright>
          <ext>
          <doctype>standard</doctype>
+<structuredidentifier>
+  <project-number>DBGB/123</project-number>
+</structuredidentifier>
          <gbtype>
            <gbscope>local</gbscope>
            <gbprefix>GB</gbprefix>
@@ -614,9 +616,6 @@ RSpec.describe Asciidoctor::Gb do
        <gb-standard xmlns="http://riboseinc.com/gbstandard">
        <bibdata type="standard">
          <docidentifier type="gb">DBGB/123</docidentifier>
-<docidentifier type="gb-structured">
-  <project-number>DBGB/123</project-number>
-</docidentifier>
 <docnumber>123</docnumber>
          <contributor>
            <role type="author"/>
@@ -672,6 +671,9 @@ RSpec.describe Asciidoctor::Gb do
          </copyright>
          <ext>
          <doctype>standard</doctype>
+<structuredidentifier>
+  <project-number>DBGB/123</project-number>
+</structuredidentifier>
          <gbtype>
            <gbscope>local</gbscope>
            <gbprefix>GB</gbprefix>

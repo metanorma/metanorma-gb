@@ -207,7 +207,7 @@ module Asciidoctor
         mand = xmldoc.at("//gbmandate")&.text || "mandatory"
         idtext = @agencyclass.docidentifier(scope, prefix, mand, nil, id.text)
         id.content = idtext&.gsub(/\&#x2002;/, " ")
-        id = xmldoc.at("//bibdata/docidentifier[@type = 'gb-structured']/"\
+        id = xmldoc.at("//bibdata/ext/structuredidentifier/"\
                        "project-number") or return
         idtext = @agencyclass.docidentifier(scope, prefix, mand, nil, id.text)
         id.content = idtext&.gsub(/\&#x2002;/, " ")
