@@ -1,5 +1,32 @@
 require "spec_helper"
 
+RSpec.describe  "Warns of illegal doctype" do
+    specify { expect { Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) }.to output(/heaven is not a recognised document type/).to_stderr }
+  = Document title
+  Author
+  :docfile: test.adoc
+  :nodoc:
+  :no-isobib:
+  :mandate: heaven
+  :doctype: pizza
+
+  text
+  INPUT
+end
+
+RSpec.describe  "Warns of illegal script" do
+    specify { expect { Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) }.to output(/pizza is not a recognised script/).to_stderr }
+  = Document title
+  Author
+  :docfile: test.adoc
+  :nodoc:
+  :no-isobib:
+  :script: pizza
+
+  text
+  INPUT
+end
+
 RSpec.describe "does not warn when missing scope but scope inferred from prefix" do
   specify { expect { Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) }.not_to output(/GB: no scope supplied, defaulting to National/).to_stderr }
     = Document title

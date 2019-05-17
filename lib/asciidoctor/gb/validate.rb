@@ -13,7 +13,25 @@ module Asciidoctor
         bilingual_terms_validate(doc.root)
         issuer_validate(doc.root)
         prefix_validate(doc.root)
+        bibdata_validate(doc.root)
         @agencyclass.gbtype_validate(doc.root.at("//gbscope")&.text, doc.root.at("//gbprefix")&.text)
+      end
+
+      def bibdata_validate(doc)
+        doctype_validate(doc)
+        script_validate(doc)
+      end
+
+      def doctype_validate(xmldoc)
+        doctype = xmldoc&.at("//bibdata/ext/doctype")&.text
+        %w(standard recommendation).include? doctype or
+          warn "Document Attributes: #{doctype} is not a recognised document type"
+      end
+
+      def script_validate(xmldoc)
+        script = xmldoc&.at("//bibdata/script")&.text
+        %(Hans Latn).include?(script) or
+          warn "Document Attributes: #{script} is not a recognised script"
       end
 
       def prefix_validate(root)
