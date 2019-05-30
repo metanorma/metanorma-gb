@@ -54,14 +54,15 @@ module IsoDoc
         super || prefix == "Chinese Standard"
       end
 
-      # Renderer part
-
       def formula_parse(node, out)
         out.div **attr_code(id: node["id"], class: "formula") do |div|
           insert_tab(div, 1)
           parse(node.at(ns("./stem")), out)
-          insert_tab(div, 1)
-          div << "(#{get_anchors[node['id']][:label]})"
+          lbl = anchor(node['id'], :label, false)
+          unless lbl.nil?
+            insert_tab(div, 1)
+            div << "(#{lbl})"
+          end
         end
         formula_where(node.at(ns("./dl")), out)
       end
@@ -116,7 +117,7 @@ module IsoDoc
         out.table **attr_code(id: node["id"], class: "Note") do |t|
           t.tr do |tr|
             tr.td **EXAMPLE_TBL_ATTR do |td|
-              td << l10n("#{get_anchors[node['id']][:label]}:")
+              td << l10n("#{anchor(node['id'], :label)}:")
             end
             tr.td **{ valign: "top", class: "Note" } do |td|
               node.children.each { |n| parse(n, td) }
@@ -204,8 +205,9 @@ module IsoDoc
         if node["inline-header"] == "true"
           inline_header_title(out, node, c1)
         else
-          div.send "h#{get_anchors[node['id']][:level]}" do |h|
-            h << "#{get_anchors[node['id']][:label]}.&#x3000;" if !@suppressheadingnumbers
+          div.send "h#{anchor(node['id'], :level) || '1'}" do |h|
+            lbl = anchor(node['id'], :label, false)
+            h << "#{lbl}.&#x3000;" if !@suppressheadingnumbers
             c1 and c1.children.each { |c2| parse(c2, h) }
           end
         end
