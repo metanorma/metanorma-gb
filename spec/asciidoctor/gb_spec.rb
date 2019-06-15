@@ -1,5 +1,6 @@
 require "spec_helper"
 require "fileutils"
+require "relaton_gb"
 
 RSpec.describe Asciidoctor::Gb do
   it "has a version number" do
@@ -417,8 +418,8 @@ RSpec.describe Asciidoctor::Gb do
     private
 
     def mock_gbbib_get_123
-      expect(Gbbib::GbBibliography).to receive(:get).with("GB/T 20223", "2006", {}) do
-        IsoBibItem::XMLParser.from_xml(GBT20223)
+      expect(RelatonGb::GbBibliography).to receive(:get).with("GB/T 20223", "2006", {}) do
+        RelatonIsoBib::XMLParser.from_xml(GBT20223)
       end
     end
 end

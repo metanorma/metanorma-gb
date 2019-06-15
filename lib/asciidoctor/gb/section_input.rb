@@ -1,4 +1,4 @@
-require "gbbib"
+require "relaton_gb"
 
 module Asciidoctor
   module Gb

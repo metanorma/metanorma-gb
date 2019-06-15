@@ -157,7 +157,7 @@ GBT20223 = <<~OUTPUT
   <title format="text/plain" language="zh" script="Hans">棉短绒</title>
   <title format="text/plain" language="en" script="Latn">Cotton linter</title>
   <uri type="src">http://www.std.gov.cn/gb/search/gbDetailed?id=5DDA8BA00FC618DEE05397BE0A0A95A7</uri>
-  <docidentifier>GB/T 20223</docidentifier>
+  <docidentifier type="GB">GB/T 20223</docidentifier>
   <date type="published">
     <on>2006</on>
   </date>
@@ -170,12 +170,6 @@ GBT20223 = <<~OUTPUT
   </contributor>
   <language>zh</language>
   <script>Hans</script>
-  <status>obsoleted</status>
-  <!--
-  <ics>
-    <code>59.060.10</code>
-    <text>Natural fibres</text>
-  </ics>
-  -->
+  <status><stage>obsoleted</stage></status>
 </bibitem>
       OUTPUT
