@@ -585,7 +585,7 @@ p.DeprecatedTerms {
     list-style: none;
 }
 
-#toc li {
+#toc li a {
     padding: 5px 10px;
 }
 
@@ -595,6 +595,7 @@ p.DeprecatedTerms {
 }
 
 #toc a:hover {
+    box-shadow: none;
     color: white;
 }
 
