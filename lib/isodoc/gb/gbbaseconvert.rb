@@ -101,6 +101,7 @@ module IsoDoc
         @note = true
         out.table **attr_code(id: node["id"], class: "Note") do |t|
           t.tr do |tr|
+        @libdir = File.dirname(__FILE__)
             tr.td **EXAMPLE_TBL_ATTR do |td|
               td << l10n(note_label(node) + ":")
             end
