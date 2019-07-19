@@ -256,6 +256,45 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
     OUTPUT
   end
 
+        it "processes empty modification of term source" do
+    FileUtils.rm_f "test.html"
+    IsoDoc::Gb::HtmlConvert.new({htmlstylesheet: "lib/isodoc/gb/html/htmlstyle.scss"}).convert("test", <<~"INPUT", false)
+            <gb-standard xmlns="http://riboseinc.com/gbstandard">
+            <bibdata>
+              <language>zh</language>
+  <script>Hans</script>
+</bibdata>
+                <sections>
+    <terms id="_terms_and_definitions" obligation="normative"><title>Terms and Definitions</title>
+    <term id="paddy"><preferred>paddy</preferred><admitted>paddy rice</admitted>
+<admitted>rough rice</admitted>
+<definition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p></definition>
+<termsource status="modified">
+  <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301: 2011"><locality type="clause"><referenceFrom>3.1</referenceFrom></locality></origin>
+    <modification>
+    <p id="_e73a417d-ad39-417d-a4c8-20e4e2529489"/>
+  </modification>
+</termsource>
+</term>
+    </terms></sections>
+
+        </gb-standard>
+    INPUT
+    html = File.read("test.html", encoding: "utf-8").sub(/^.*<main class="main-section">/m, '<main class="main-section">').
+      sub(%r{</main>.*$}m, "</main>")
+    expect(htmlencode(html.gsub(/"#[a-f0-9-]+"/, "#_"))).to be_equivalent_to <<~"OUTPUT"
+           <main class="main-section"><button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+               <p class="zzSTDTitle1">XXXX</p>
+               <div id="_terms_and_definitions"><h1>1.&#x3000;&#x672F;&#x8BED;&#x548C;&#x5B9A;&#x4E49;</h1><p>&#x4E0B;&#x5217;&#x672F;&#x8BED;&#x548C;&#x5B9A;&#x4E49;&#x9002;&#x7528;&#x4E8E;&#x672C;&#x6587;&#x4EF6;&#x3002;</p>
+       <h2 class="TermNum" id="paddy">1.1.</h2><p class="Terms" style="text-align:left;">paddy</p><p class="AltTerms" style="text-align:left;">paddy rice&#x3000;rough rice</p>
+
+       <p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p>
+       <p>&#x3010;<a href="#ISO7301">ISO 7301: 2011&#x3001;&#x7B2C;3.1&#x6761;</a>&#x3001;&#x6539;&#x5199;&#x3011;</p>
+       </div>
+               <hr width="25%" />
+             </main>
+    OUTPUT
+  end
 
   it "processes logo for social" do
     FileUtils.rm_f "test.doc"
