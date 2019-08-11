@@ -14,7 +14,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
         </sections>
     </gb-standard>
     INPUT
-      #{HTML_HDR}
+      #{HTML_HDR_ZH}
                <p class="zzSTDTitle1">XXXX</p>
        <div id="H"><h1>1.&#12288;&#26415;&#35821;&#21644;&#23450;&#20041;</h1><p>&#26412;&#25991;&#20214;&#19981;&#25552;&#20379;&#26415;&#35821;&#21644;&#23450;&#20041;&#12290;</p>
        </div>

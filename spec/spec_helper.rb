@@ -139,7 +139,20 @@ BLANK_HDR = <<~"HDR"
 HDR
 
 HTML_HDR = <<~HDR
-         <body lang="EN-US" link="blue" vlink="#954F72">
+         <body lang="en">
+           <div class="title-section">
+             <p>&#160;</p>
+           </div>
+           <br/>
+           <div class="prefatory-section">
+             <p>&#160;</p>
+           </div>
+           <br/>
+           <div class="main-section">
+HDR
+
+HTML_HDR_ZH = <<~HDR
+         <body lang="zh">
            <div class="title-section">
              <p>&#160;</p>
            </div>

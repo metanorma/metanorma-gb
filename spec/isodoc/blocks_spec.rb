@@ -19,8 +19,8 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
                  <h1 class="ForewordTitle">Foreword&#160;</h1>
                  <table class="Note">
                    <tr>
-                     <td valign="top" class="example_label" style="padding:2pt 2pt 2pt 2pt">NOTE:</td>
-                     <td valign="top" class="Note">
+                     <td class="example_label" style="padding:2pt 2pt 2pt 2pt;vertical-align:top;">NOTE:</td>
+                     <td style="vertical-align:top;" class="Note">
          <p id="_f06fd0d1-a203-4f3d-a515-0bdba0f8d83f">These results are based on a study carried out on three different types of kernel.</p>
        </td>
                    </tr>
@@ -51,8 +51,8 @@ INPUT
                  <h1 class="ForewordTitle">Foreword&#160;</h1>
                  <table id="note1" class="Note">
                    <tr>
-                     <td valign="top" class="example_label" style="padding:2pt 2pt 2pt 2pt">NOTE:</td>
-                     <td valign="top" class="Note">
+                     <td class="example_label" style="padding:2pt 2pt 2pt 2pt;vertical-align:top;">NOTE:</td>
+                     <td style="vertical-align:top;" class="Note">
          <p id="_f06fd0d1-a203-4f3d-a515-0bdba0f8d83f">These results are based on a study carried out on three different types of kernel.</p>
        </td>
                    </tr>
@@ -86,16 +86,16 @@ INPUT
                  <h1 class="ForewordTitle">Foreword&#160;</h1>
                  <table id="note1" class="Note">
                    <tr>
-                     <td valign="top" class="example_label" style="padding:2pt 2pt 2pt 2pt">NOTE  1:</td>
-                     <td valign="top" class="Note">
+                     <td class="example_label" style="padding:2pt 2pt 2pt 2pt;vertical-align:top;">NOTE  1:</td>
+                     <td style="vertical-align:top;" class="Note">
          <p id="_f06fd0d1-a203-4f3d-a515-0bdba0f8d83f">These results are based on a study carried out on three different types of kernel.</p>
        </td>
                    </tr>
                  </table>
                  <table id="note2" class="Note">
                    <tr>
-                     <td valign="top" class="example_label" style="padding:2pt 2pt 2pt 2pt">NOTE  2:</td>
-                     <td valign="top" class="Note">
+                     <td class="example_label" style="padding:2pt 2pt 2pt 2pt;vertical-align:top;">NOTE  2:</td>
+                     <td style="vertical-align:top;" class="Note">
          <p id="_f06fd0d1-a203-4f3d-a515-0bdba0f8d83a">These results are based on a study carried out on three different types of kernel.</p>
        </td>
                    </tr>
@@ -127,8 +127,8 @@ INPUT
                  <h1 class="ForewordTitle">Foreword&#160;</h1>
                  <table class="Note">
                    <tr>
-                     <td valign="top" class="example_label" style="padding:2pt 2pt 2pt 2pt">NOTE:</td>
-                     <td valign="top" class="Note">
+                     <td class="example_label" style="padding:2pt 2pt 2pt 2pt;vertical-align:top;">NOTE:</td>
+                     <td style="vertical-align:top;" class="Note">
          <p id="_f06fd0d1-a203-4f3d-a515-0bdba0f8d83f">These results are based on a study carried out on three different types of kernel.</p>
          <p id="_f06fd0d1-a203-4f3d-a515-0bdba0f8d83a">These results are based on a study carried out on three different types of kernel.</p>
        </td>
@@ -165,8 +165,8 @@ INPUT
                  <h1 class="ForewordTitle">Foreword&#160;</h1>
                  <table class="Note">
                    <tr>
-                     <td valign="top" class="example_label" style="padding:2pt 2pt 2pt 2pt">NOTE:</td>
-                     <td valign="top" class="Note">
+                     <td class="example_label" style="padding:2pt 2pt 2pt 2pt;vertical-align:top;">NOTE:</td>
+                     <td style="vertical-align:top;" class="Note">
            <dl><dt><p>A</p></dt><dd><p>B</p></dd></dl>
            <ul>
            <li>C</li></ul>
@@ -346,11 +346,11 @@ INPUT
                  <p>where</p>
                  <table class="dl">
                    <tr>
-                     <td valign="top" align="left">
+                     <td style="vertical-align:top;text-align:left;">
            <span class="stem">(#(r)#)</span>
          </td>
-                     <td valign="top">&#8212;</td>
-                     <td valign="top">
+                     <td style="vertical-align:top;">&#8212;</td>
+                     <td style="vertical-align:top;">
            <p id="_1b99995d-ff03-40f5-8f2e-ab9665a69b77">is the repeatability limit.</p>
          </td>
                    </tr>
@@ -391,10 +391,10 @@ INPUT
            the following terms and definitions apply.</p>
        <p class="TermNum" id="paddy">1.1.</p><p class="Terms" style="text-align:left;">paddy</p><p class="AltTerms" style="text-align:left;">paddy rice</p>
        <p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p>
-       <table id="_671a1994-4783-40d0-bc81-987d06ffb74e" class="Note"><tr><td valign="top" class="example_label" style="padding:2pt 2pt 2pt 2pt">Note 1 to entry:</td><td valign="top" class="Note">
+       <table id="_671a1994-4783-40d0-bc81-987d06ffb74e" class="Note"><tr><td class="example_label" style="padding:2pt 2pt 2pt 2pt;vertical-align:top;">Note 1 to entry:</td><td style="vertical-align:top;" class="Note">
          <p id="_19830f33-e46c-42cc-94ca-a5ef101132d5">The starch of waxy rice consists almost entirely of amylopectin. The kernels have a tendency to stick together after cooking.</p>
        </td></tr></table>
-       <table id="_671a1994-4783-40d0-bc81-987d06ffb74f" class="Note"><tr><td valign="top" class="example_label" style="padding:2pt 2pt 2pt 2pt">Note 2 to entry:</td><td valign="top" class="Note">
+       <table id="_671a1994-4783-40d0-bc81-987d06ffb74f" class="Note"><tr><td class="example_label" style="padding:2pt 2pt 2pt 2pt;vertical-align:top;">Note 2 to entry:</td><td style="vertical-align:top;" class="Note">
        <ul><li>A</li></ul>
          <p id="_19830f33-e46c-42cc-94ca-a5ef101132d5">The starch of waxy rice consists almost entirely of amylopectin. The kernels have a tendency to stick together after cooking.</p>
        </td></tr></table>

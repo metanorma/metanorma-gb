@@ -77,11 +77,11 @@ module IsoDoc
         out.table **{ class: "dl" } do |v|
           node.elements.each_slice(2) do |dt, dd|
             v.tr do |tr|
-              tr.td **{ valign: "top", align: "left" } do |term|
+              tr.td **{ style: "vertical-align:top;text-align:left;" } do |term|
                 dt_parse(dt, term)
               end
-              tr.td(**{ valign: "top" }) { |td| td << "&mdash;" }
-              tr.td **{ valign: "top" } do |listitem|
+              tr.td(**{ style: "vertical-align:top;" }) { |td| td << "&mdash;" }
+              tr.td **{ style: "vertical-align:top;" } do |listitem|
                 dd.children.each { |n| parse(n, listitem) }
               end
             end
@@ -90,8 +90,8 @@ module IsoDoc
       end
 
       EXAMPLE_TBL_ATTR =
-        { valign: "top", class: "example_label",
-          style: "padding:2pt 2pt 2pt 2pt" }.freeze
+        { class: "example_label",
+          style: "padding:2pt 2pt 2pt 2pt;vertical-align:top;" }.freeze
 
       def example_label(node)
         l10n(super + ":")
@@ -105,7 +105,7 @@ module IsoDoc
             tr.td **EXAMPLE_TBL_ATTR do |td|
               td << l10n(note_label(node) + ":")
             end
-            tr.td **{ valign: "top", class: "Note" } do |td|
+            tr.td **{ style: "vertical-align:top;", class: "Note" } do |td|
               node.children.each { |n| parse(n, td) }
             end
           end
@@ -120,7 +120,7 @@ module IsoDoc
             tr.td **EXAMPLE_TBL_ATTR do |td|
               td << l10n("#{anchor(node['id'], :label)}:")
             end
-            tr.td **{ valign: "top", class: "Note" } do |td|
+            tr.td **{ style: "vertical-align:top;", class: "Note" } do |td|
               node.children.each { |n| parse(n, td) }
             end
           end
