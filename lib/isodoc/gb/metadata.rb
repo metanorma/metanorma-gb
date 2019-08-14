@@ -102,16 +102,16 @@ module IsoDoc
 
       def stage_abbrev(stage, iter, draft)
         stage = STAGE_ABBRS[stage.to_sym] || "??"
-        stage += iter.text if iter
-        stage = "Pre" + stage if draft&.text =~ /^0\./
+        stage += iter if iter
+        stage = "Pre" + stage if draft =~ /^0\./
         stage
       end
 
       def stage_abbrev_cn(stage, iter, draft)
         return stage_abbrev(stage, iter, draft) if @lang != "zh"
         stage = STAGE_ABBRS_CN[stage.to_sym] || "??"
-        stage = "#{iter.text.to_i.localize(:zh).spellout.force_encoding("UTF-8")}次#{stage}" if iter
-        stage = "Pre" + HTMLEntities.new.encode(stage, :hexadecimal) if draft&.text =~ /^0\./
+        stage = "#{iter.to_i.localize(:zh).spellout.force_encoding("UTF-8")}次#{stage}" if iter
+        stage = "Pre" + HTMLEntities.new.encode(stage, :hexadecimal) if draft =~ /^0\./
         stage
       end
 
@@ -121,8 +121,9 @@ module IsoDoc
         if docstatus
           set(:stage, docstatus.text.to_i)
           set(:unpublished, docstatus.text.to_i < 60)
-          abbr = stage_abbrev_cn(docstatus.text, isoxml.at(ns("//bibdata/status/iteration")),
-                                 isoxml.at(ns("//version/draft")))
+          abbr = stage_abbrev_cn(docstatus.text,
+                                 isoxml&.at(ns("//bibdata/status/iteration"))&.text,
+                                 isoxml&.at(ns("//version/draft"))&.text)
           set(:stageabbr, abbr)
           set(:status, STATUS_CSS[docstatus.text.to_sym])
         end
