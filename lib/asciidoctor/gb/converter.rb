@@ -240,6 +240,11 @@ module Asciidoctor
       def omit_docid_prefix(prefix)
         IsoDoc::Gb::HtmlConvert.new({}).omit_docid_prefix(prefix)
       end
+
+      def boilerplate_cleanup(xmldoc)
+        return if @keepboilerplate
+        super
+      end
     end
   end
 end

@@ -1,29 +1,6 @@
 require "spec_helper"
 
 RSpec.describe IsoDoc::Gb::HtmlConvert do
-  it "processes empty terms & definitions" do
-          expect(IsoDoc::Gb::HtmlConvert.new({}).convert("test", <<~"INPUT", true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>")).to be_equivalent_to <<~"OUTPUT"
-        <gb-standard xmlns="http://riboseinc.com/gbstandard">
-        <bibdata>
-        <language>zh</language>
-        <script>Hans</script>
-        </bibdata>
-               <sections>
-       <terms id="H" obligation="normative"><title>Terms, Definitions, Symbols and Abbreviated Terms</title>
-       </terms>
-        </sections>
-    </gb-standard>
-    INPUT
-      #{HTML_HDR_ZH}
-               <p class="zzSTDTitle1">XXXX</p>
-       <div id="H"><h1>1.&#12288;&#26415;&#35821;&#21644;&#23450;&#20041;</h1><p>&#26412;&#25991;&#20214;&#19981;&#25552;&#20379;&#26415;&#35821;&#21644;&#23450;&#20041;&#12290;</p>
-       </div>
-               <hr width="25%"/>
-             </div>
-           </body>
-    OUTPUT
-  end
-
     it "processes clause names" do
           expect(IsoDoc::Gb::HtmlConvert.new({}).convert("test", <<~"INPUT", true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>")).to be_equivalent_to <<~"OUTPUT"
         <gb-standard xmlns="http://riboseinc.com/gbstandard">

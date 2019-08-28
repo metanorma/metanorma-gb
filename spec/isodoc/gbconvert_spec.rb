@@ -205,7 +205,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
     expect(html.gsub(/"#[a-f0-9-]+"/, "#_")).to be_equivalent_to <<~"OUTPUT"
            <main class="main-section"><button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
                <p class="zzSTDTitle1">XXXX</p>
-               <div id="_terms_and_definitions"><h1>1.&#x3000;&#x672F;&#x8BED;&#x548C;&#x5B9A;&#x4E49;</h1><p>&#x4E0B;&#x5217;&#x672F;&#x8BED;&#x548C;&#x5B9A;&#x4E49;&#x9002;&#x7528;&#x4E8E;&#x672C;&#x6587;&#x4EF6;&#x3002;</p>
+               <div id="_terms_and_definitions"><h1>1.&#x3000;&#x672F;&#x8BED;&#x548C;&#x5B9A;&#x4E49;</h1>
        <h2 class="TermNum" id="paddy">1.1.</h2><p class="Terms" style="text-align:left;">paddy</p><p class="AltTerms" style="text-align:left;">paddy rice&#x3000;rough rice</p>
 
        <p class="DeprecatedTerms">&#x88AB;&#x53D6;&#x4EE3;&#xFF1A;cargo rice</p>
@@ -245,11 +245,11 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
     expect(htmlencode(html.gsub(/"#[a-f0-9-]+"/, "#_"))).to be_equivalent_to <<~"OUTPUT"
            <main class="main-section"><button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
                <p class="zzSTDTitle1">XXXX</p>
-               <div id="_terms_and_definitions"><h1>1.&#x3000;&#x672F;&#x8BED;&#x548C;&#x5B9A;&#x4E49;</h1><p>&#x4E0B;&#x5217;&#x672F;&#x8BED;&#x548C;&#x5B9A;&#x4E49;&#x9002;&#x7528;&#x4E8E;&#x672C;&#x6587;&#x4EF6;&#x3002;</p>
+               <div id="_terms_and_definitions"><h1>1.&#x3000;&#x672F;&#x8BED;&#x548C;&#x5B9A;&#x4E49;</h1>
        <h2 class="TermNum" id="paddy">1.1.</h2><p class="Terms" style="text-align:left;">paddy</p><p class="AltTerms" style="text-align:left;">paddy rice&#x3000;rough rice</p>
 
        <p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p>
-       <p>&#x3010;<a href="#ISO7301">ISO 7301: 2011&#x3001;&#x7B2C;3.1&#x6761;</a>&#x3001;&#x6539;&#x5199;&mdash;The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here&#x3011;</p>
+       <p>&#x3010;<a href="#ISO7301">ISO 7301: 2011&#x3001;&#x7B2C;3.1&#x6761;</a>&#x3001;&#x6539;&#x5199;&#x2014;The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here&#x3011;</p>
        </div>
                <hr width="25%" />
              </main>
@@ -285,7 +285,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
     expect(htmlencode(html.gsub(/"#[a-f0-9-]+"/, "#_"))).to be_equivalent_to <<~"OUTPUT"
            <main class="main-section"><button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
                <p class="zzSTDTitle1">XXXX</p>
-               <div id="_terms_and_definitions"><h1>1.&#x3000;&#x672F;&#x8BED;&#x548C;&#x5B9A;&#x4E49;</h1><p>&#x4E0B;&#x5217;&#x672F;&#x8BED;&#x548C;&#x5B9A;&#x4E49;&#x9002;&#x7528;&#x4E8E;&#x672C;&#x6587;&#x4EF6;&#x3002;</p>
+               <div id="_terms_and_definitions"><h1>1.&#x3000;&#x672F;&#x8BED;&#x548C;&#x5B9A;&#x4E49;</h1>
        <h2 class="TermNum" id="paddy">1.1.</h2><p class="Terms" style="text-align:left;">paddy</p><p class="AltTerms" style="text-align:left;">paddy rice&#x3000;rough rice</p>
 
        <p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p>

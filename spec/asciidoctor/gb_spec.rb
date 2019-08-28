@@ -244,6 +244,17 @@ RSpec.describe Asciidoctor::Gb do
     #{BLANK_HDR}
               <sections>
          <terms id="_" obligation="normative"><title>Terms and definitions</title>
+         <p>For the purposes of this document,
+           the following terms and definitions apply.</p>
+       <p>ISO and IEC maintain terminological databases for use in
+       standardization at the following addresses:</p>
+
+       <ul>
+       <li> <p>ISO Online browsing platform: available at
+         <link target="http://www.iso.org/obp"/></p> </li>
+       <li> <p>IEC Electropedia: available at
+       <link target="http://www.electropedia.org"/>
+       </p> </li> </ul>
        <term id="_">
          <preferred language="zh"></preferred> <preferred language="en">Time</preferred>
          <definition><p id="_">This paragraph is extraneous</p></definition>

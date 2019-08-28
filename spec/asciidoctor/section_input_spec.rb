@@ -66,7 +66,18 @@ RSpec.describe Asciidoctor::Gb do
        </clause>
      
        <terms id="_" obligation="normative">
-         <title>Terms and definitions</title>
+         <title>Terms and definitions</title><p>For the purposes of this document, 
+    the following terms and definitions apply.</p>
+<p>ISO and IEC maintain terminological databases for use in
+standardization at the following addresses:</p>
+
+<ul>
+<li> <p>ISO Online browsing platform: available at
+  <link target="http://www.iso.org/obp"/></p> </li>
+<li> <p>IEC Electropedia: available at
+<link target="http://www.electropedia.org"/>
+</p> </li> </ul>
+
          <term id="_">
          <preferred language="zh">1</preferred> <preferred language="en">Term1</preferred>
        </term>
@@ -102,4 +113,31 @@ RSpec.describe Asciidoctor::Gb do
        </gb-standard>
 OUTPUT
   end
+
+    it "processes empty terms & definitions" do
+    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
+      #{ASCIIDOC_BLANK_HDR}
+
+      == Terms and Definitions
+      INPUT
+      #{BLANK_HDR}
+      <sections>
+  <terms id="_" obligation="normative">
+  <title>Terms and definitions</title><p>No terms and definitions are listed in this document.</p>
+<p>ISO and IEC maintain terminological databases for use in
+standardization at the following addresses:</p>
+
+<ul>
+<li> <p>ISO Online browsing platform: available at
+  <link target="http://www.iso.org/obp"/></p> </li>
+<li> <p>IEC Electropedia: available at
+<link target="http://www.electropedia.org"/>
+</p> </li> </ul>
+
+</terms>
+</sections>
+</gb-standard>
+      OUTPUT
+
+end
 end
