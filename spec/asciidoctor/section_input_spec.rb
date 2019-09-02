@@ -104,6 +104,7 @@ standardization at the following addresses:</p>
          <title>Appendix 1</title>
        </clause></annex><bibliography><references id="_" obligation="informative">
          <title>Normative References</title>
+         <p>There are no normative references in this document.</p>
        </references><clause id="_" obligation="informative">
          <title>Bibliography</title>
          <references id="_" obligation="informative">

@@ -420,6 +420,7 @@ RSpec.describe Asciidoctor::Gb do
       <sections>
              </sections><bibliography><references id="_" obligation="informative">
          <title>Normative References</title>
+         <p>The following documents are referred to in the text in such a way that some or all of their content constitutes requirements of this document. For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments) applies.</p>
     #{GBT20223.sub(%{id="GB/T20223"}, %{id="iso123"})}
        </references></bibliography>
        </gb-standard>
