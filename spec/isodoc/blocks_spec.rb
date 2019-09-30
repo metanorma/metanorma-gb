@@ -188,6 +188,7 @@ INPUT
                        <bibdata> <language>en</language> <script>Latn</script> </bibdata>
     <preface><foreword>
     <example id="samplecode">
+    <name>Title</name>
   <p>Hello</p>
 </example>
     </foreword></preface>
@@ -198,7 +199,7 @@ INPUT
              <div>
                <h1 class="ForewordTitle">Foreword&#160;</h1>
                <div id="samplecode" class="example">
-                 <p><span class="example_label">EXAMPLE:</span>&#160; Hello</p>
+                 <p><span class="example_label">EXAMPLE:&#160;&#8212; Title</span>&#160; Hello</p>
                </div>
              </div>
              <p class="zzSTDTitle1">XXXX</p>
@@ -215,9 +216,10 @@ INPUT
                        <bibdata> <language>en</language> <script>Latn</script> </bibdata>
     <preface><foreword>
     <example id="samplecode">
-  <p>Hello</p>
+  <quote>Hello</quote>
 </example>
     <example id="samplecode2">
+    <name>Title</name>
   <p>Hello</p>
 </example>
     </foreword></preface>
@@ -228,10 +230,11 @@ INPUT
              <div>
                <h1 class="ForewordTitle">Foreword&#160;</h1>
                <div id="samplecode" class="example">
-                 <p><span class="example_label">EXAMPLE  1:</span>&#160; Hello</p>
+                 <p><span class="example_label">EXAMPLE  1:</span>&#160; </p>
+                 <div class="Quote">Hello<p class="QuoteAttribution"/></div>
                </div>
                <div id="samplecode2" class="example">
-                 <p><span class="example_label">EXAMPLE  2:</span>&#160; Hello</p>
+                 <p><span class="example_label">EXAMPLE  2:&#160;&#8212; Title</span>&#160; Hello</p>
                </div>
              </div>
              <p class="zzSTDTitle1">XXXX</p>
@@ -247,7 +250,8 @@ INPUT
                        <bibdata> <language>en</language> <script>Latn</script> </bibdata>
     <preface><foreword>
     <example id="samplecode">
-  <p>Hello</p>
+    <name>Title</name>
+<p>Hello</p>
 </example>
     </foreword></preface>
     </gb-standard>
@@ -266,7 +270,7 @@ INPUT
              <div>
                <h1 class="ForewordTitle">Foreword&#160;</h1>
                <div id="samplecode" class="example">
-                 <p><span class="example_label">EXAMPLE:</span><span style="mso-tab-count:1">&#160; </span>Hello</p>
+                 <p><span class="example_label">EXAMPLE:&#160;&#8212; Title</span><span style="mso-tab-count:1">&#160; </span>Hello</p>
                </div>
              </div>
              <p>&#160;</p>
@@ -284,9 +288,10 @@ INPUT
                        <bibdata> <language>en</language> <script>Latn</script> </bibdata>
     <preface><foreword>
     <example id="samplecode">
-  <p>Hello</p>
+  <quote>Hello</quote>
 </example>
     <example id="samplecode2">
+    <name>Title</name>
   <p>Hello</p>
 </example>
     </foreword></preface>
@@ -306,10 +311,11 @@ INPUT
              <div>
                <h1 class="ForewordTitle">Foreword&#160;</h1>
                <div id="samplecode" class="example">
-                 <p><span class="example_label">EXAMPLE  1:</span><span style="mso-tab-count:1">&#160; </span>Hello</p>
+                 <p><span class="example_label">EXAMPLE  1:</span><span style="mso-tab-count:1">&#160; </span></p>
+                 <div class="Quote">Hello<p class="QuoteAttribution"/></div>
                </div>
                <div id="samplecode2" class="example">
-                 <p><span class="example_label">EXAMPLE  2:</span><span style="mso-tab-count:1">&#160; </span>Hello</p>
+                 <p><span class="example_label">EXAMPLE  2:&#160;&#8212; Title</span><span style="mso-tab-count:1">&#160; </span>Hello</p>
                </div>
              </div>
              <p>&#160;</p>
