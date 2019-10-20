@@ -101,7 +101,7 @@ module IsoDoc
         @note = true
         out.table **attr_code(id: node["id"], class: "Note") do |t|
           t.tr do |tr|
-        @libdir = File.dirname(__FILE__)
+            @libdir = File.dirname(__FILE__)
             tr.td **EXAMPLE_TBL_ATTR do |td|
               td << l10n(note_label(node) + ":")
             end
@@ -168,9 +168,9 @@ module IsoDoc
         parts = x.split(%r{(\s*\[MODIFICATION\]|,)}m)
         parts[1] = l10n(", #{@source_lbl}") if parts.size > 1 && parts[1] == "," &&
           !/^\s*#{@modified_lbl}/.match(parts[2])
-        parts.map do |p|
-          /\s*\[MODIFICATION\]/.match(p) ? l10n(", #{@modified_lbl} &mdash; ") : p
-        end.join.sub(/\A\s*/m, l10n("[")).sub(/\s*\z/m, l10n("]"))
+          parts.map do |p|
+            /\s*\[MODIFICATION\]/.match(p) ? l10n(", #{@modified_lbl} &mdash; ") : p
+          end.join.sub(/\A\s*/m, l10n("[")).sub(/\s*\z/m, l10n("]"))
       end
 
       def termref_resolve(docxml)
@@ -192,6 +192,10 @@ module IsoDoc
         end
       end
 
+      def clausedelimspace(out)
+        out << "&#x3000;"
+      end
+
       def clause_name(num, title, div, header_class)
         header_class = {} if header_class.nil?
         div.h1 **attr_code(header_class) do |h1|
@@ -204,28 +208,16 @@ module IsoDoc
         div.parent.at(".//h1")
       end
 
-      def clause_parse_title(node, div, c1, out)
-        if node["inline-header"] == "true"
-          inline_header_title(out, node, c1)
-        else
-          div.send "h#{anchor(node['id'], :level) || '1'}" do |h|
-            lbl = anchor(node['id'], :label, false)
-            h << "#{lbl}.&#x3000;" if !@suppressheadingnumbers
-            c1 and c1.children.each { |c2| parse(c2, h) }
-          end
+      def example_span_label(node, div, name)
+        n = get_anchors[node["id"]]
+        div.span **{ class: "example_label" } do |p|
+          lbl = (n.nil? || n[:label].nil? || n[:label].empty?) ? @example_lbl :
+            l10n("#{@example_lbl} #{n[:label]}")
+          p << l10n(lbl + ":")
+          name and !lbl.nil? and p << "&nbsp;&mdash; "
+          name and name.children.each { |n| parse(n, div) }
         end
       end
-
-       def example_span_label(node, div, name)
-      n = get_anchors[node["id"]]
-      div.span **{ class: "example_label" } do |p|
-        lbl = (n.nil? || n[:label].nil? || n[:label].empty?) ? @example_lbl :
-          l10n("#{@example_lbl} #{n[:label]}")
-        p << l10n(lbl + ":")
-        name and !lbl.nil? and p << "&nbsp;&mdash; "
-        name and name.children.each { |n| parse(n, div) }
-      end
-    end
 
       def example_p_parse(node, div)
         name = node&.at(ns("./name"))&.remove
