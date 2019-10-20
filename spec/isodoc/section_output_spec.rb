@@ -26,7 +26,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
    <h2>1.1.&#12288;Introduction</h2>
  </div>
         <div id="O">
-   <span class="zzMoveToFollowing"><b>1.2. Clause 4.2 </b></span>
+   <span class="zzMoveToFollowing"><b>1.2.&#12288;Clause 4.2 </b></span>
  </div>
       </div>
                <hr width="25%"/>
