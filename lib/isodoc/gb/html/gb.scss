@@ -489,8 +489,6 @@ p.example, li.example, div.example, td.example
 	mso-style-unhide:no;
 	mso-style-parent:"";
 	mso-style-next:示例内容;
-	margin:0in;
-	margin-bottom:.0001pt;
 	text-align:justify;
 	text-justify:inter-ideograph;
         tab-stops:20.15pt;
@@ -501,6 +499,11 @@ p.example, li.example, div.example, td.example
 	font-family:$bodyfont;
 	mso-hansi-font-family:$bodyfont;
 	mso-bidi-font-family:$bodyfont;}
+
+div.example, td.example {
+	margin:0in;
+	margin-bottom:.0001pt;
+}
 
 td.example p.MsoListParagraph {
   font-size: 9.0pt;
