@@ -1029,9 +1029,12 @@ margin-left: 2em;
 3.6 Source Code + figures
 */
 
-.Sourcecode, .figure {
+.Sourcecode {
 font-family: $monospacefont;
 font-variant-ligatures: none;
+}
+
+.Sourcecode, .figure, .pseudocode {
   font-size:0.9em;
   line-height: 1.6em;
 padding: 1.5em;
@@ -1101,7 +1104,7 @@ margin-top:0;
   }
 
 
-.example .Sourcecode {
+.example .Sourcecode, .example .pseudocode {
       background: none;
 }
 
