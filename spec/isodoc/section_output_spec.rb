@@ -2,7 +2,7 @@ require "spec_helper"
 
 RSpec.describe IsoDoc::Gb::HtmlConvert do
     it "processes clause names" do
-          expect(IsoDoc::Gb::HtmlConvert.new({}).convert("test", <<~"INPUT", true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>")).to be_equivalent_to <<~"OUTPUT"
+          expect(xmlpp(IsoDoc::Gb::HtmlConvert.new({}).convert("test", <<~"INPUT", true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>"))).to be_equivalent_to xmlpp(<<~"OUTPUT")
         <gb-standard xmlns="http://riboseinc.com/gbstandard">
         <bibdata>
         <language>en</language>
@@ -36,7 +36,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
   end
 
         it "processes clause names, suppressing heading numbers" do
-          expect(IsoDoc::Gb::HtmlConvert.new({suppressheadingnumbers: true}).convert("test", <<~"INPUT", true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>")).to be_equivalent_to <<~"OUTPUT"
+          expect(xmlpp(IsoDoc::Gb::HtmlConvert.new({suppressheadingnumbers: true}).convert("test", <<~"INPUT", true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>"))).to be_equivalent_to xmlpp(<<~"OUTPUT")
         <gb-standard xmlns="http://riboseinc.com/gbstandard">
         <bibdata>
         <language>en</language>
@@ -70,7 +70,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
   end
 
         it "processes annex names" do
-          expect(IsoDoc::Gb::HtmlConvert.new({}).convert("test", <<~"INPUT", true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>")).to be_equivalent_to <<~"OUTPUT"
+          expect(xmlpp(IsoDoc::Gb::HtmlConvert.new({}).convert("test", <<~"INPUT", true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>"))).to be_equivalent_to xmlpp(<<~"OUTPUT")
         <gb-standard xmlns="http://riboseinc.com/gbstandard">
         <bibdata>
         <language>en</language>

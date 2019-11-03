@@ -3,7 +3,7 @@ require "fileutils"
 
 RSpec.describe IsoDoc::Gb::HtmlConvert do
   it "cleans up formulas" do
-    expect(IsoDoc::Gb::HtmlConvert.new({}).cleanup(Nokogiri::XML(<<~"INPUT")).to_s).to be_equivalent_to <<~"OUTPUT"
+    expect(xmlpp(IsoDoc::Gb::HtmlConvert.new({}).cleanup(Nokogiri::XML(<<~"INPUT")).to_s)).to be_equivalent_to xmlpp(<<~"OUTPUT")
     <html>
     <body>
       <table class="dl">
@@ -24,7 +24,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
   end
 
   it "cleans up examples" do
-    expect(IsoDoc::Gb::HtmlConvert.new({}).cleanup(Nokogiri::XML(<<~"INPUT")).to_s).to be_equivalent_to <<~"OUTPUT"
+    expect(xmlpp(IsoDoc::Gb::HtmlConvert.new({}).cleanup(Nokogiri::XML(<<~"INPUT")).to_s)).to be_equivalent_to xmlpp(<<~"OUTPUT")
     <html>
     <body>
       <table class="Note">
@@ -53,7 +53,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
 </bibdata>
 </gb-standard>
     INPUT
-    expect(gbc.cleanup(Nokogiri::XML(<<~"INPUT")).to_s).to be_equivalent_to <<~"OUTPUT"
+    expect(xmlpp(gbc.cleanup(Nokogiri::XML(<<~"INPUT")).to_s)).to be_equivalent_to xmlpp(<<~"OUTPUT")
     <html>
     <body>
         <p class="zzContents">Text</p>
@@ -85,7 +85,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
 </bibdata>
 </gb-standard>
     INPUT
-    expect(gbc.cleanup(Nokogiri::XML(<<~"INPUT")).to_s).to be_equivalent_to <<~"OUTPUT"
+    expect(xmlpp(gbc.cleanup(Nokogiri::XML(<<~"INPUT")).to_s)).to be_equivalent_to xmlpp(<<~"OUTPUT")
     <html>
     <body>
         <p class="Terms" lang="zh">Text</p>
@@ -131,7 +131,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
     INPUT
     word = File.read("test.doc", encoding: "utf-8").sub(/^.*<div class="WordSection2">/m, '<div class="WordSection2">').
       sub(%r{<p class="MsoNormal">\s*<br clear="all" class="section"/>\s*</p>\s*<div class="WordSection3">.*$}m, "")
-    expect(word.gsub(/_Toc\d\d+/, "_Toc")).to be_equivalent_to <<~'OUTPUT'
+    expect(xmlpp(word.gsub(/_Toc\d\d+/, "_Toc"))).to be_equivalent_to <<~'OUTPUT'
     <div class="WordSection2"><p class="zzContents" style="margin-top:0cm">Table of contents</p>
        
        <p class="MsoToc1"><span lang="EN-GB" xml:lang="EN-GB"><span style="mso-element:field-begin"></span><span style="mso-spacerun:yes">&#xA0;</span>TOC

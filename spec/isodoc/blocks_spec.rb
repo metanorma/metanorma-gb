@@ -2,7 +2,7 @@ require "spec_helper"
 
 RSpec.describe IsoDoc::Gb::HtmlConvert do
   it "processes unlabelled notes" do
-                  expect(IsoDoc::Gb::HtmlConvert.new({}).convert("test", <<~"INPUT", true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>")).to be_equivalent_to <<~"OUTPUT"
+                  expect(xmlpp(IsoDoc::Gb::HtmlConvert.new({}).convert("test", <<~"INPUT", true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>"))).to be_equivalent_to xmlpp(<<~"OUTPUT")
 
         <gb-standard xmlns="http://riboseinc.com/gbstandard">
                        <bibdata> <language>en</language> <script>Latn</script> </bibdata>
@@ -30,12 +30,11 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
                <hr width="25%"/>
              </div>
            </body>
-       </html>
     OUTPUT
   end
 
   it "processes labelled notes" do
-                  expect(IsoDoc::Gb::HtmlConvert.new({}).convert("test", <<~"INPUT", true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>")).to be_equivalent_to <<~"OUTPUT"
+                  expect(xmlpp(IsoDoc::Gb::HtmlConvert.new({}).convert("test", <<~"INPUT", true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>"))).to be_equivalent_to xmlpp(<<~"OUTPUT")
         <gb-standard xmlns="http://riboseinc.com/gbstandard">
                        <bibdata> <language>en</language> <script>Latn</script> </bibdata>
     <preface><foreword>
@@ -62,12 +61,11 @@ INPUT
                <hr width="25%"/>
              </div>
            </body>
-       </html>
     OUTPUT
   end
 
   it "processes sequences of notes" do
-                  expect(IsoDoc::Gb::HtmlConvert.new({}).convert("test", <<~"INPUT", true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>")).to be_equivalent_to <<~"OUTPUT"
+                  expect(xmlpp(IsoDoc::Gb::HtmlConvert.new({}).convert("test", <<~"INPUT", true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>"))).to be_equivalent_to xmlpp(<<~"OUTPUT")
         <gb-standard xmlns="http://riboseinc.com/gbstandard">
                        <bibdata> <language>en</language> <script>Latn</script> </bibdata>
     <preface><foreword>
@@ -105,12 +103,11 @@ INPUT
                <hr width="25%"/>
              </div>
            </body>
-       </html>
     OUTPUT
   end
 
   it "processes multi-para notes" do
-                  expect(IsoDoc::Gb::HtmlConvert.new({}).convert("test", <<~"INPUT", true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>")).to be_equivalent_to <<~"OUTPUT"
+                  expect(xmlpp(IsoDoc::Gb::HtmlConvert.new({}).convert("test", <<~"INPUT", true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>"))).to be_equivalent_to xmlpp(<<~"OUTPUT")
         <gb-standard xmlns="http://riboseinc.com/gbstandard">
                        <bibdata> <language>en</language> <script>Latn</script> </bibdata>
     <preface><foreword>
@@ -139,12 +136,11 @@ INPUT
                <hr width="25%"/>
              </div>
            </body>
-       </html>
     OUTPUT
   end
 
   it "processes non-para notes" do
-                  expect(IsoDoc::Gb::HtmlConvert.new({}).convert("test", <<~"INPUT", true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>")).to be_equivalent_to <<~"OUTPUT"
+                  expect(xmlpp(IsoDoc::Gb::HtmlConvert.new({}).convert("test", <<~"INPUT", true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>"))).to be_equivalent_to xmlpp(<<~"OUTPUT")
         <gb-standard xmlns="http://riboseinc.com/gbstandard">
                        <bibdata> <language>en</language> <script>Latn</script> </bibdata>
     <preface><foreword>
@@ -178,12 +174,11 @@ INPUT
                <hr width="25%"/>
              </div>
            </body>
-       </html>
     OUTPUT
   end
 
   it "processes examples" do
-                  expect(IsoDoc::Gb::HtmlConvert.new({}).convert("test", <<~"INPUT", true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>")).to be_equivalent_to <<~"OUTPUT"
+                  expect(xmlpp(IsoDoc::Gb::HtmlConvert.new({}).convert("test", <<~"INPUT", true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>"))).to be_equivalent_to xmlpp(<<~"OUTPUT")
         <gb-standard xmlns="http://riboseinc.com/gbstandard">
                        <bibdata> <language>en</language> <script>Latn</script> </bibdata>
     <preface><foreword>
@@ -211,7 +206,7 @@ INPUT
 
 
   it "processes sequences of examples" do
-                  expect(IsoDoc::Gb::HtmlConvert.new({}).convert("test", <<~"INPUT", true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>")).to be_equivalent_to <<~"OUTPUT"
+                  expect(xmlpp(IsoDoc::Gb::HtmlConvert.new({}).convert("test", <<~"INPUT", true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>"))).to be_equivalent_to xmlpp(<<~"OUTPUT")
         <gb-standard xmlns="http://riboseinc.com/gbstandard">
                        <bibdata> <language>en</language> <script>Latn</script> </bibdata>
     <preface><foreword>
@@ -245,7 +240,7 @@ INPUT
   end
 
     it "processes examples (Word)" do
-                  expect(IsoDoc::Gb::WordConvert.new({}).convert("test", <<~"INPUT", true).gsub(/^.*<body/m, "<body").gsub(%r{<div class="WordSection3".*}m, "")).to be_equivalent_to <<~"OUTPUT"
+      expect(xmlpp(IsoDoc::Gb::WordConvert.new({}).convert("test", <<~"INPUT", true).gsub(/^.*<body/m, "<body").gsub(%r{<div class="WordSection3".*}m, "</body>"))).to be_equivalent_to xmlpp(<<~"OUTPUT")
         <gb-standard xmlns="http://riboseinc.com/gbstandard">
                        <bibdata> <language>en</language> <script>Latn</script> </bibdata>
     <preface><foreword>
@@ -278,12 +273,13 @@ INPUT
            <p>
              <br clear="all" class="section"/>
            </p>
+           </body>
     OUTPUT
   end
 
 
   it "processes sequences of examples (Word)" do
-                  expect(IsoDoc::Gb::WordConvert.new({}).convert("test", <<~"INPUT", true).gsub(/^.*<body/m, "<body").gsub(%r{<div class="WordSection3">.*}m, "")).to be_equivalent_to <<~"OUTPUT"
+                  expect(xmlpp(IsoDoc::Gb::WordConvert.new({}).convert("test", <<~"INPUT", true).gsub(/^.*<body/m, "<body").gsub(%r{<div class="WordSection3">.*}m, "</body>"))).to be_equivalent_to xmlpp(<<~"OUTPUT")
         <gb-standard xmlns="http://riboseinc.com/gbstandard">
                        <bibdata> <language>en</language> <script>Latn</script> </bibdata>
     <preface><foreword>
@@ -323,11 +319,12 @@ INPUT
            <p>
              <br clear="all" class="section"/>
            </p>
+           </body>
     OUTPUT
   end
 
   it "processes formulae" do
-                  expect(IsoDoc::Gb::HtmlConvert.new({}).convert("test", <<~"INPUT", true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>")).to be_equivalent_to <<~"OUTPUT"
+                  expect(xmlpp(IsoDoc::Gb::HtmlConvert.new({}).convert("test", <<~"INPUT", true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>"))).to be_equivalent_to xmlpp(<<~"OUTPUT")
         <gb-standard xmlns="http://riboseinc.com/gbstandard">
                        <bibdata> <language>en</language> <script>Latn</script> </bibdata>
     <preface><foreword>
@@ -366,12 +363,11 @@ INPUT
                <hr width="25%"/>
              </div>
            </body>
-       </html>
     OUTPUT
   end
 
     it "processes term notes" do
-                  expect(IsoDoc::Gb::HtmlConvert.new({}).convert("test", <<~"INPUT", true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>")).to be_equivalent_to <<~"OUTPUT"
+                  expect(xmlpp(IsoDoc::Gb::HtmlConvert.new({}).convert("test", <<~"INPUT", true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>"))).to be_equivalent_to xmlpp(<<~"OUTPUT")
         <gb-standard xmlns="http://riboseinc.com/gbstandard">
                        <bibdata> <language>en</language> <script>Latn</script> </bibdata>
     <sections>
@@ -407,7 +403,6 @@ INPUT
                <hr width="25%"/>
              </div>
            </body>
-       </html>
 OUTPUT
     end
 end

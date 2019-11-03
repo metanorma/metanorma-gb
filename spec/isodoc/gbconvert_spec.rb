@@ -3,7 +3,7 @@ require "fileutils"
 
 RSpec.describe IsoDoc::Gb::HtmlConvert do
   it "processes IsoXML bibliographies" do
-              expect(IsoDoc::Gb::HtmlConvert.new({}).convert("test", <<~"INPUT", true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>")).to be_equivalent_to <<~"OUTPUT"
+              expect(xmlpp(IsoDoc::Gb::HtmlConvert.new({}).convert("test", <<~"INPUT", true).gsub(/^.*<body/m, "<body xmlns:epub='epub'").gsub(%r{</body>.*}m, "</body>"))).to be_equivalent_to xmlpp(<<~"OUTPUT")
 
             <gb-standard xmlns="http://riboseinc.com/gbstandard">
                            <bibdata> <language>en</language> <script>Latn</script> </bibdata>
@@ -81,7 +81,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
 </bibliography>
     </gb-standard>
     INPUT
-    #{HTML_HDR}
+              #{HTML_HDR.sub(/<body/, "<body xmlns:epub='epub'")}
              <br/>
              <div>
                <h1 class="ForewordTitle">Foreword&#160;</h1>
@@ -117,7 +117,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
   end
 
   it "processes string tag" do
-              expect(IsoDoc::Gb::HtmlConvert.new({}).convert("test", <<~"INPUT", true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>")).to be_equivalent_to <<~"OUTPUT"
+              expect(xmlpp(IsoDoc::Gb::HtmlConvert.new({}).convert("test", <<~"INPUT", true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>"))).to be_equivalent_to xmlpp(<<~"OUTPUT")
 
             <gb-standard xmlns="http://riboseinc.com/gbstandard">
                            <bibdata> <language>en</language> <script>Latn</script> </bibdata>
@@ -167,7 +167,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
     INPUT
     html = File.read("test.html", encoding: "utf-8").sub(/^.*<main class="main-section">/m, '<main class="main-section">').
       sub(%r{</main>.*$}m, "</main>")
-    expect(html.gsub(/"#[a-f0-9-]+"/, "#_")).to be_equivalent_to <<~"OUTPUT"
+    expect(xmlpp(html.gsub(/"#[a-f0-9-]+"/, "#_"))).to be_equivalent_to xmlpp(<<~"OUTPUT")
            <main class="main-section"><button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
                <p class="zzSTDTitle1">XXXX</p>
                <div id="_terms_and_definitions"><h1>1.&#x3000;&#x672F;&#x8BED;&#x548C;&#x5B9A;&#x4E49;</h1>
@@ -203,7 +203,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
     INPUT
     html = File.read("test.html", encoding: "utf-8").sub(/^.*<main class="main-section">/m, '<main class="main-section">').
       sub(%r{</main>.*$}m, "</main>")
-    expect(html.gsub(/"#[a-f0-9-]+"/, "#_")).to be_equivalent_to <<~"OUTPUT"
+    expect(xmlpp(html.gsub(/"#[a-f0-9-]+"/, "#_"))).to be_equivalent_to xmlpp(<<~"OUTPUT")
            <main class="main-section"><button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
                <p class="zzSTDTitle1">XXXX</p>
                <div id="_terms_and_definitions"><h1>1.&#x3000;&#x672F;&#x8BED;&#x548C;&#x5B9A;&#x4E49;</h1>
@@ -243,7 +243,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
     INPUT
     html = File.read("test.html", encoding: "utf-8").sub(/^.*<main class="main-section">/m, '<main class="main-section">').
       sub(%r{</main>.*$}m, "</main>")
-    expect(htmlencode(html.gsub(/"#[a-f0-9-]+"/, "#_"))).to be_equivalent_to <<~"OUTPUT"
+    expect(xmlpp(htmlencode(html.gsub(/"#[a-f0-9-]+"/, "#_")))).to be_equivalent_to xmlpp(<<~"OUTPUT")
            <main class="main-section"><button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
                <p class="zzSTDTitle1">XXXX</p>
                <div id="_terms_and_definitions"><h1>1.&#x3000;&#x672F;&#x8BED;&#x548C;&#x5B9A;&#x4E49;</h1>
@@ -283,7 +283,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
     INPUT
     html = File.read("test.html", encoding: "utf-8").sub(/^.*<main class="main-section">/m, '<main class="main-section">').
       sub(%r{</main>.*$}m, "</main>")
-    expect(htmlencode(html.gsub(/"#[a-f0-9-]+"/, "#_"))).to be_equivalent_to <<~"OUTPUT"
+    expect(xmlpp(htmlencode(html.gsub(/"#[a-f0-9-]+"/, "#_")))).to be_equivalent_to xmlpp(<<~"OUTPUT")
            <main class="main-section"><button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
                <p class="zzSTDTitle1">XXXX</p>
                <div id="_terms_and_definitions"><h1>1.&#x3000;&#x672F;&#x8BED;&#x548C;&#x5B9A;&#x4E49;</h1>
