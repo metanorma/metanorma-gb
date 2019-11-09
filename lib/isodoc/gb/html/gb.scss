@@ -384,10 +384,6 @@ p.Formula, li.Formula, div.Formula
 	mso-fareast-font-family:$bodyfont;
 	mso-bidi-font-family:$bodyfont;
 	mso-ansi-language:EN-GB;}
-ol
-	{margin-bottom:0cm;}
-ul
-	{margin-bottom:0cm;}
 table.MsoISOTable
 	{mso-style-name:"Table ISO";
 	mso-tstyle-rowband-size:0;
@@ -410,8 +406,6 @@ table.MsoISOTable
 	font-size:10.0pt;
 	font-family:$bodyfont;
 	mso-fareast-font-family:$bodyfont;}
-table.MsoISOTable tr
-    {page-break-inside:avoid;}
 table.MsoISOTable th
     {border:solid windowtext 1pt;
     mso-border-alt:solid windowtext 1pt;
@@ -439,21 +433,11 @@ table.MsoTableGrid
 	font-size:10.0pt;
 	font-family:$bodyfont;
 	mso-fareast-font-family:$bodyfont;}
-td { page-break-inside:avoid; }
-tr { page-break-after:avoid; }
-span.stem
-    {font-family:"Cambria Math",serif;
-    mso-ascii-font-family:"Cambria Math";
-    font-style:
-    italic;}
 div.formula
     {tab-stops:center 212.65pt right 487.45pt;}
 body 
     {tab-interval:21.0pt;
     text-justify-trim:punctuation}
-dt
-    {page-break-inside:avoid;
-    page-break-after:avoid}
 .coverpage_docnumber
     {text-align:center;
     font-size:14.0pt;
