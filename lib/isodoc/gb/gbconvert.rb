@@ -12,22 +12,22 @@ module IsoDoc
 
       def initialize(options)
         @meta = options[:meta]
-        @standardlogoimg = options[:standardlogoimg]
-        @standardclassimg = options[:standardclassimg]
-        @standardissuerimg = options[:standardissuerimg]
+        @standardlogoimg = options[:standardlogoimg]&.sub(%r{^(?=/|[A-Z]:/)}, "#{@localdir}/")
+        @standardclassimg = options[:standardclassimg]&.sub(%r{^(?=/|[A-Z]:/)}, "#{@localdir}/")
+        @standardissuerimg = options[:standardissuerimg]&.sub(%r{^(?=/|[A-Z]:/)}, "#{@localdir}/")
       end
 
       def fileloc(loc)
-        File.join(File.dirname(__FILE__), loc)
+        File.expand_path(File.join(File.dirname(__FILE__), loc))
       end
 
       def format_agency(agency, format, localdir)
-        return "<img class='logo' src='#{localdir}/#{@standardissuerimg}' alt='#{agency.join(",")}'></img>" if @standardissuerimg
+        return "<img class='logo' src='#{@standardissuerimg}' alt='#{agency.join(",")}'></img>" if @standardissuerimg
         return agency unless agency.is_a?(Array)
         if agency == ["中华人民共和国国家质量监督检验检疫总局", "中国国家标准化管理委员会"]
-          logo = "#{localdir}/gb-issuer-default.gif"
-          FileUtils.cp fileloc(File.join('html/gb-logos', logo)), logo
-          return "<img class='logo' src='#{logo}' alt='#{agency.join(",")}'></img>"
+          logo = "gb-issuer-default.gif"
+          #FileUtils.cp fileloc(File.join('html/gb-logos', logo)), logo
+          return "<img class='logo' src='#{fileloc(File.join('html/gb-logos', logo))}' alt='#{agency.join(",")}'></img>"
         end
         format_agency1(agency, format)
       end
@@ -47,7 +47,7 @@ module IsoDoc
         if logo.nil?
           "<span style='font-size:36pt;font-weight:bold'>#{prefix}</span>"
         else
-          format_logo1("#{localdir}/#{logo}", prefix, scope, localdir)
+          format_logo1(logo, prefix, scope, localdir)
         end
       end
 
@@ -60,12 +60,12 @@ module IsoDoc
 
       def format_logo1(logo, prefix, scope, localdir)
         local = local_logo_suffix(scope)
-        return "<img class='logo' width='113' height='56' src='#{localdir}/#{@standardlogoimg}' alt='#{prefix}'></img>"\
+        return "<img class='logo' width='113' height='56' src='#{@standardlogoimg}' alt='#{prefix}'></img>"\
           "#{local}" if  @standardlogoimg
         logo += ".gif"
-        FileUtils.cp fileloc(File.join('html/gb-logos', logo)), logo
+        #FileUtils.cp fileloc(File.join('html/gb-logos', logo)), logo
         #@files_to_delete << logo
-        "<img class='logo' width='113' height='56' src='#{logo}' alt='#{prefix}'></img>"\
+        "<img class='logo' width='113' height='56' src='#{fileloc(File.join('html/gb-logos', logo))}' alt='#{prefix}'></img>"\
           "#{local}"
       end
     end
