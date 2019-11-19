@@ -76,7 +76,7 @@ module IsoDoc
         meta = @meta.get.merge(@labels)
         logo = @common.format_logo(meta[:gbprefix], meta[:gbscope], format, @localdir)
         logofile = @meta.standard_logo(meta[:gbprefix])
-        @files_to_delete << logofile + ".gif" unless logofile.nil?
+        #@files_to_delete << logofile + ".gif" unless logofile.nil?
         docxml = termref_resolve(docxml)
         meta[:standard_agency_formatted] =
           @common.format_agency(meta[:standard_agency], format, @localdir)
