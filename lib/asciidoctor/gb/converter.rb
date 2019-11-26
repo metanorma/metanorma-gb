@@ -245,6 +245,9 @@ module Asciidoctor
         return if @keepboilerplate
         super
       end
+
+      def initial_boilerplate(xmldoc)
+      end
     end
   end
 end
