@@ -114,7 +114,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
         <gb-standard xmlns="http://riboseinc.com/gbstandard">
                                    <bibdata> <language>en</language> <script>Latn</script> </bibdata>
         <sections>
-               <clause inline-header="false" obligation="normative"><title>Clause 4</title><clause id="N" inline-header="false" obligation="normative">
+               <clause id="A" inline-header="false" obligation="normative"><title>Clause 4</title><clause id="N" inline-header="false" obligation="normative">
 
          <title>Introduction<bookmark id="Q"/> to this<fn reference="1">
   <p id="_ff27c067-2785-4551-96cf-0a73530ff1e6">Formerly denoted as 15 % (m/m).</p>
