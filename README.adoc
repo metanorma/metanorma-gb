@@ -93,3 +93,10 @@ $ gem install metanorma-gb
 
 See https://www.metanorma.com/author/gb/[Author Chinese Guobiao standards using Metanorma].
 
+== Examples
+
+* Example documents are avalable at the https://github.com/metanorma/mn-samples-gb[mn-samples-gb] repository.
+
+////
+* Document templates are available at the https://github.com/metanorma/mn-templates-itu[mn-templates-itu] repository.
+////
