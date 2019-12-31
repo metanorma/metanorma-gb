@@ -91,30 +91,21 @@ nav a {
     line-height: 1.2em;
 }
 
-p.TermNum {
-  color: #485094;
-  font-weight: 400;
-        margin: 0;
-}
 
-p.Terms {
-  color: #485094;
-  font-weight: 400;
-        margin: 0;
-}
+// Terms
 
-p.AltTerms {
-  color: #485094;
-  font-weight: 400;
-  font-style: italic;
-        margin: 0;
-}
-
+p.TermNum,
+p.Terms,
+p.AltTerms,
 p.DeprecatedTerms {
+  margin: 0;
   color: #485094;
   font-weight: 400;
+}
+
+p.AltTerms,
+p.DeprecatedTerms {
   font-style: italic;
-        margin: 0;
 }
 
 
