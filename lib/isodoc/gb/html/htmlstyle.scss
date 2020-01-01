@@ -18,7 +18,7 @@ $docstage-colors-list: (
 
 body {
   @include bodyStyle1($bodyfont, 1.3, black, white);
-  @include sidbearNavContainer(360px);
+  @include sidebarNavContainer(360px);
 }
 
 .title-section, .prefatory-section {
