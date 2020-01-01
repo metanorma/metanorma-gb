@@ -269,11 +269,15 @@ p.Biblio, p.NormRef {
 }
 
 .Sourcecode {
-  @include sourceBlock(#f7f7f7, null, null);
+  @include sourceBlock(#f7f7f7, null);
+  // Requires fontSize: null, but needs an update in isodoc
+  // @include sourceBlock(#f7f7f7, null, null);
 }
 
 .pseudocode {
-  @include pseudocodeBlock(#f7f7f7, null, null);
+  @include pseudocodeBlock(#f7f7f7, null);
+  // Requires fontSize: null, but needs an update in isodoc
+  // @include pseudocodeBlock(#f7f7f7, null, null);
 }
 
 .RecommendationTitle {
