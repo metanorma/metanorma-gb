@@ -4,7 +4,6 @@ $doctype-colors-list: (
   guide: #48a0e7,
 );
 
-
 $docstage-colors-list: (
   working-draft: #fda706,
   committee-draft: #fd06fd,
@@ -100,6 +99,11 @@ span.obligation {
   font-weight: 400;
 }
 
+sup a {
+  vertical-align: super;
+  font-size: 0.8em;
+}
+
 a {
   &, &:visited {
     text-decoration: none;
@@ -118,6 +122,18 @@ ul, ol {
     margin-bottom: 0.6em;
     line-height: 1.2;
   }
+}
+
+ol > li > p:before {
+  content: "";
+  display: none;
+}
+
+
+// Keywords
+
+span.keyword {
+  font-weight: 600;
 }
 
 
@@ -238,6 +254,7 @@ p.Biblio, p.NormRef {
 
 .figure {
   @include figureBlock();
+  background-color: #f7f7f7;
 
   /*
     div.figure > img:not(.logo) { 
@@ -251,228 +268,137 @@ p.Biblio, p.NormRef {
   */
 }
 
-/*
-3.6 Source Code + figures
-*/
-
 .Sourcecode {
-font-family: $monospacefont;
-font-variant-ligatures: none;
+  @include sourceBlock(#f7f7f7, null, null);
 }
 
-.figure, .Sourcecode, .pseudocode {
-background-color: #f7f7f7;
-line-height: 1.6em;
-padding: 1.5em;
-margin: 2em 0 1em 0;
-overflow: auto;
+.pseudocode {
+  @include pseudocodeBlock(#f7f7f7, null, null);
 }
 
-.figure-title, .FigureTitle, .SourceTitle, .AdmonitionTitle, .RecommendationTitle {
-font-weight: 700;
-font-size: 1em;
-text-align: center;
+.RecommendationTitle {
+  @include blockTitle();
 }
-
-/*
-3.7 Notes
-*/
 
 .Note, .note {
-    background-color: #fff495;
-    color: #47430c;
-    padding: 0.5em;
-    margin: 1.5em 0 1.5em 0;
-    text-align: left;
-}
+  background-color: #fff495;
+  color: #47430c;
+  padding: 0.5em;
+  margin: 1.5em 0 1.5em 0;
+  text-align: left;
 
-.Note p, .note p {
+  p {
     margin: 0;
+  }
 }
 
 .Admonition {
-    background-color: #ffcccc;
-    color: #47430c;
-    padding: 0.5em;
-    margin: 1.5em 0 1.5em 0;
-    text-align: left;
-}
+  @include admonitionBlock();
 
-.Admonition p {
+  background-color: #ffcccc;
+  color: #47430c;
+  padding: 0.5em;
+  margin: 1.5em 0 1.5em 0;
+  text-align: left;
+
+  p {
     margin: 0;
+  }
 }
-
-
-/*
-3.8 Examples
-*/
 
 .example {
-    background-color: #e1eef1;
-    padding: 0.5em;
-    margin: 2em 0 1em 0;
-    text-align: left;
-    padding-left: 2em;
+  @include exampleBlock(#e1eef1, null, .5em, 1.5em);
+
+  .example-title {
+    margin-top:0;
+  }
+
+  .Sourcecode, .pseudocode {
+    background: none;
+  }
 }
 
-.example p {
+.blockquote, .Quote {
+  @include blockquoteBlock(#f7f7f7);
+}
+
+.formula {
+  @include formulaBlock(#f7f7f7);
+
+  margin-left: 20%;
+  margin-right: 20%;
+  font-size: 0.9em;
+}
+
+.Admonition, .admonition {
+  background-color: #ffb3b3;
+  padding: 0.5em;
+  margin: 1.5em 0 1.5em 0;
+  text-align: left;
+
+  p {
     margin: 0;
-}
-
-.example .example-title {
-font-weight: 700;
-text-transform: uppercase;
-margin-top:0;
-margin-left:-1.5em;
+  }
 }
 
 
-.example .Sourcecode, .example .pseudocode {
-      background: none;
-}
-
-/*
-3.9 Tables
-*/
+// Tables
 
 table {
-border-collapse: collapse;
-width: 100%;
-font-weight: 300;
-margin: 1em 0 2em 0;
-margin-left: auto;
-margin-right: auto;
-padding-right: 2em;
-text-align: center;
-}
+  @include table(1px solid black);
 
-table, th, td {
-border: 1px solid black;
-font-size: 0.95em;
-}
-
-td, th {
-padding: 1em!important;
-}
-
-td.header {
-font-weight: 400;
+  text-align: center;
 }
 
 p.TableTitle {
-text-align: center;
-margin-top: 2.5em;
-font-weight: 800;
-font-size: 1.1em;
+  text-align: center;
+  margin-top: 2.5em;
+  font-weight: 800;
+  font-size: 1.1em;
 }
 
 .TableFootnote {
-    text-align: left!important;
+  text-align: left !important;
 }
 
-/*
-3.10 Footnotes
-*/
+
+// Footnotes
 
 a.footnote-number, a.TableFootnoteRef, span.TableFootnoteRef {
-vertical-align: super;
-font-size: 0.8em;
+  vertical-align: super;
+  font-size: 0.8em;
 }
 
 .footnote {
-font-size: 0.9em;
+  font-size: 0.9em;
 }
 
-sup a {
-    vertical-align: super;
-    font-size: 0.8em;
-  }
-  #footnote_box {
-    font-size: 14px;
-    background: white;
-    padding: 0 10px;
-    margin: 10px;
-    border: 1px solid #888;
-    -moz-box-shadow: 0px 0px 5px #888;
-    -webkit-box-shadow: 0px 0px 5px #888;
-    box-shadow: 0px 0px 5px #888;
-  }
-
-  ol.footnotes-list, aside.footnote {
-      margin-left: 1em;
-
-  }
-
-  ol.footnotes-list li, aside.footnote {
-      font-size: 0.9em;
-      vertical-align: top;
-      list-style:decimal;
-      margin-bottom: 1em;
-  }
-
-  ol.footnotes-list:first-child {
-      margin-top: 2em;
-  }
-
-  ol.footnotes-list p, aside.footnote {
-      display: inline;
-  }
-
-  ol > li > p:before {
-      content: "";
-      display: none;
-  }
-
-
-
-/*
-3.11 Blockquotes
-*/
-
-.blockquote, .Quote {
-background-color: #f7f7f7;
-font-style: italic;
-width: 80%;
-padding: 1.5em;
-margin-top: 2em;
-margin-left: auto;
-margin-right: auto;
+#footnote_box {
+  font-size: 14px;
+  background: white;
+  padding: 0 10px;
+  margin: 10px;
+  border: 1px solid #888;
+  -moz-box-shadow: 0px 0px 5px #888;
+  -webkit-box-shadow: 0px 0px 5px #888;
+  box-shadow: 0px 0px 5px #888;
 }
 
-
-/*
-3.12 Formulas
-*/
-
-.formula {
-background-color: #f7f7f7;
-padding: 1.5em;
-margin-top: 2em;
-text-align: center;
-margin-left: 20%;
-margin-right: 20%;
-font-size: 0.9em;
+ol.footnotes-list, aside.footnote {
+  margin-left: 1em;
 }
 
-/*
-Keywords
-*/
-
-span.keyword {
-font-weight: 600;
+ol.footnotes-list li, aside.footnote {
+  font-size: 0.9em;
+  vertical-align: top;
+  list-style:decimal;
+  margin-bottom: 1em;
 }
 
-
-.Admonition, .admonition {
-    background-color: #ffb3b3;
-    /* color: #47430c;*/
-    padding: 0.5em;
-    margin: 1.5em 0 1.5em 0;
-    text-align: left;
+ol.footnotes-list:first-child {
+  margin-top: 2em;
 }
 
-.Admonition p, .admonition p {
-    margin: 0;
+ol.footnotes-list p, aside.footnote {
+  display: inline;
 }
-
-
