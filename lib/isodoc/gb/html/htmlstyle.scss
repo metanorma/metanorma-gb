@@ -334,6 +334,13 @@ p.document-stage {
     font-weight: 300;
     height:160px;
 }
+#toc-list {
+  ul {
+    margin-bottom: 0.25em;
+    li {
+      list-style-type: none;
+    }
+  }
 
 #standard-band {
     background-color: #0ac442;
@@ -415,10 +422,6 @@ p.document-stage {
 */
 
 ul, ol {margin-left: 2em;}
-
-#toc-list ul {margin-bottom: 0.25em;}
-
-#toc-list ul li {list-style-type: none;}
 
 /*
 3.4 Rules
