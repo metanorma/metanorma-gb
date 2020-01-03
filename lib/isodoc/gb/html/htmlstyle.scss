@@ -12,23 +12,25 @@ $docstage-colors-list: (
   obsolete: #7e0d13,
 );
 
+$mainContentsOffsetLeft: 4em;
+
 
 @import 'base_style/all';
 
 
 body {
   @include bodyStyle1($bodyfont, 1.3, black, white);
-  @include sidebarNavContainer(360px);
+  @include sidebarNavContainer(323px);
 }
 
 .title-section, .prefatory-section {
-  padding-left: 4em;
+  padding-right: 2em;
+
+  padding-left: $mainContentsOffsetLeft;
   padding-top: 2em;
 
   @media screen and (min-width: $bigscreenBreakpoint) {
-    padding-left: 0;
     padding-top: 0;
-    width: 100%;
   }
 }
 
@@ -170,10 +172,8 @@ nav {
   @include sidebarNavToggle(white, black);
 
   @media screen and (min-width: $bigscreenBreakpoint) {
-    #toggle {
-      margin-left: -4em;
-      margin-top: -2em;
-    }
+    margin-left: -$mainContentsOffsetLeft;
+    width: 30px;
   }
 }
 
