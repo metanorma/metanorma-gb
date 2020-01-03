@@ -200,6 +200,10 @@ nav {
   }
 }
 
+#myBtn {
+  @include toTopBtn($color: white, $colorBg: #1d1d1d);
+}
+
 
 // Typography misc.
 
