@@ -1,0 +1,249 @@
+.doctitle-en, .doctitle-fr {
+    margin-top: 2em;
+    text-align: left;
+}
+
+.doctitle-en {
+  background-color: black;
+  padding-left: 3em;
+  margin-left: -3em;
+  padding-top: 2em;
+  padding-bottom: 2em;
+
+  span {
+    font-size: 1.5em;
+    line-height: 1.5em;
+    font-weight: 900;
+    display: block;
+    color: white;
+  }
+}
+
+
+.doctitle-fr span {
+  font-size: 1.2em;
+  line-height: 1.2em;
+  font-style: italic;
+  display: block;
+}
+
+span.title {
+  text-transform: uppercase;
+  font-size: 1em;
+  font-weight: 800;
+}
+
+.coverpage_docstage {
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+.coverpage_warning {
+  border-top: solid 1px #f36f36;
+  border-bottom: solid 1px #f36f36;
+  margin: 1em 2em;
+  color: #485094;
+  padding: 1em;
+
+  .title {
+    color: #f36f36;
+    font-weight: 500;
+  }
+
+  .content {
+    font-style: italic;
+  }
+}
+
+.coverpage_docnumber,
+.coverpage_techcommittee {
+  text-align: right;
+  font-size:14.0pt;
+}
+
+.coverpage {
+  text-align: center;
+  padding: 2em 0;
+}
+
+.coverpage-category {
+  float: left;
+  text-align: left;
+}
+
+
+.coverpage-logo {
+  color: #485094;
+}
+
+.coverpage-tc-name {
+  color: #485094;
+  font-size: 1.2em;
+  line-height: 1.2em;
+  margin: 0.25em 0;
+}
+
+.coverpage-doc-identity {
+  background-color: #485094;
+  color: white;
+  font-size: 2em;
+  line-height: 2em;
+  margin: 0.5em 0;
+}
+
+.coverpage-doc-identity-first {
+  font-size: 5mm;
+  text-align: right;
+  padding-right: 5mm;
+  padding-bottom: 1em;
+  padding-top: 1em;
+}
+
+.coverpage-title {
+  font-weight: 400;
+
+  .title-second {
+    display: none;
+  }
+}
+
+.coverpage-logo-text {
+  font-size: 24.0pt;
+}
+
+.coverpage-stage-block {
+  font-style: italic;
+  text-align: center;
+  font-size: 1.25em;
+  font-weight: 600;
+}
+
+span.date-publish {
+  float:left;
+}
+
+span.date-active {
+  float:right;
+}
+
+.coverpage-doc-relations {
+  font-size: 10.5pt;
+  padding-top: 0.5em;
+}
+
+.coverpage-title-zh {
+  font-size: 8mm;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  /* flex-direction: column; */
+  font-family: $headerfont;
+}
+
+.coverpage-title-zh span {
+  padding-top: 2mm;
+  font-size: 28pt;
+}
+
+.coverpage-title-en {
+  margin-top: 10mm;
+  font-size: 18pt;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  font-family:$headerfont;
+}
+
+.coverpage-title-en span {
+  display: block;
+}
+
+.coverpage-title-en .title-first {
+  text-transform: uppercase;
+}
+
+
+.coverpage-iso-relation {
+  font-size: 14pt;
+  margin-top: 10mm;
+  text-align: center;
+}
+.coverpage-dates {
+  font-size:14.0pt;
+  width:100%;
+  margin-top: 25mm;
+  font-family: $headerfont;
+  border-bottom: 1px solid #000;
+}
+
+.coverpage_footer {
+  text-align:center;
+  font-size: 16pt;
+  font-weight: 600;
+  width: 100%;
+  margin-top: 10mm;
+
+  // New
+  table {
+    &, th, td {
+      border: 0;
+    }
+    th, td {
+      padding: 5px;
+      font-size: 1.1em;
+      font-weight: 600;
+    }
+  }
+  .publish {
+    vertical-align: middle;
+  }
+}
+
+
+.coverpage-banner {
+  padding-top: 5mm;
+  margin-left:auto;
+  margin-right:auto;
+  width:auto;
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+
+.coverpage-maturity {
+  font-family: 'Overpass', sans-serif;
+  font-weight: 400;
+  font-size: 1em;
+  margin: 0 0 2em 0;
+  text-transform: uppercase;
+}
+
+
+.copyright {
+  .year,
+  .message,
+  .name,
+  .address {
+    margin-top: 1em;
+    line-height: 1.1em;
+    display: block;
+  }
+
+  .message,
+  .name,
+  .address {
+    font-size: 0.9em;
+  }
+
+  .name {
+    color: #485094;
+    font-weight: 600;
+    padding-top: 1em;
+  }
+
+  .address {
+    color: #485094;
+  }
+}
