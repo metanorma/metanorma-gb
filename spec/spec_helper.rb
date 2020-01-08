@@ -13,9 +13,6 @@ require "htmlentities"
 require "metanorma"
 require "metanorma/gb"
 require "rexml/document"
-require "active_support"
-#require "active_support/all"
-require "active_support/core_ext/date/calculations"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
@@ -128,7 +125,7 @@ BLANK_HDR = <<~"HDR"
            <substage>60</substage>
          </status>
          <copyright>
-           <from>#{Date.current.year}</from>
+           <from>#{Date.today.year}</from>
            <owner>
              <organization>
                <name>General Administration of Quality Supervision, Inspection and Quarantine; Standardization Administration of China</name>
@@ -178,7 +175,7 @@ HDR
 
 GBT20223 = <<~OUTPUT
 <bibitem type="standard" id="GB/T20223">
-  <fetched>#{Date.current}</fetched>
+  <fetched>#{Date.today}</fetched>
   <title format="text/plain" language="zh" script="Hans">棉短绒</title>
   <title format="text/plain" language="en" script="Latn">Cotton linter</title>
   <uri type="src">http://www.std.gov.cn/gb/search/gbDetailed?id=5DDA8BA00FC618DEE05397BE0A0A95A7</uri>
