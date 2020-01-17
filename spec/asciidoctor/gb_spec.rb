@@ -244,15 +244,15 @@ RSpec.describe Asciidoctor::Gb do
     #{BLANK_HDR}
               <sections>
          <terms id="_" obligation="normative"><title>Terms and definitions</title>
-         <p>For the purposes of this document,
+         <p id="_">For the purposes of this document,
            the following terms and definitions apply.</p>
-       <p>ISO and IEC maintain terminological databases for use in
+       <p id="_">ISO and IEC maintain terminological databases for use in
        standardization at the following addresses:</p>
 
-       <ul>
-       <li> <p>ISO Online browsing platform: available at
+       <ul id="_">
+       <li> <p id="_">ISO Online browsing platform: available at
          <link target="http://www.iso.org/obp"/></p> </li>
-       <li> <p>IEC Electropedia: available at
+       <li> <p id="_">IEC Electropedia: available at
        <link target="http://www.electropedia.org"/>
        </p> </li> </ul>
        <term id="_">
@@ -420,7 +420,7 @@ RSpec.describe Asciidoctor::Gb do
       <sections>
              </sections><bibliography><references id="_" obligation="informative">
          <title>Normative References</title>
-         <p>The following documents are referred to in the text in such a way that some or all of their content constitutes requirements of this document. For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments) applies.</p>
+         <p id="_">The following documents are referred to in the text in such a way that some or all of their content constitutes requirements of this document. For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments) applies.</p>
     #{GBT20223.sub(%{id="GB/T20223"}, %{id="iso123"})}
        </references></bibliography>
        </gb-standard>

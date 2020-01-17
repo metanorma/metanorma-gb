@@ -66,15 +66,15 @@ RSpec.describe Asciidoctor::Gb do
        </clause>
      
        <terms id="_" obligation="normative">
-         <title>Terms and definitions</title><p>For the purposes of this document, 
+         <title>Terms and definitions</title><p id="_">For the purposes of this document, 
     the following terms and definitions apply.</p>
-<p>ISO and IEC maintain terminological databases for use in
+<p id="_">ISO and IEC maintain terminological databases for use in
 standardization at the following addresses:</p>
 
-<ul>
-<li> <p>ISO Online browsing platform: available at
+<ul id="_">
+<li> <p id="_">ISO Online browsing platform: available at
   <link target="http://www.iso.org/obp"/></p> </li>
-<li> <p>IEC Electropedia: available at
+<li> <p id="_">IEC Electropedia: available at
 <link target="http://www.electropedia.org"/>
 </p> </li> </ul>
 
@@ -104,7 +104,7 @@ standardization at the following addresses:</p>
          <title>Appendix 1</title>
        </clause></annex><bibliography><references id="_" obligation="informative">
          <title>Normative References</title>
-         <p>There are no normative references in this document.</p>
+         <p id="_">There are no normative references in this document.</p>
        </references><clause id="_" obligation="informative">
          <title>Bibliography</title>
          <references id="_" obligation="informative">
@@ -124,14 +124,14 @@ OUTPUT
       #{BLANK_HDR}
       <sections>
   <terms id="_" obligation="normative">
-  <title>Terms and definitions</title><p>No terms and definitions are listed in this document.</p>
-<p>ISO and IEC maintain terminological databases for use in
+  <title>Terms and definitions</title><p id="_">No terms and definitions are listed in this document.</p>
+<p id="_">ISO and IEC maintain terminological databases for use in
 standardization at the following addresses:</p>
 
-<ul>
-<li> <p>ISO Online browsing platform: available at
+<ul id="_">
+<li> <p id="_">ISO Online browsing platform: available at
   <link target="http://www.iso.org/obp"/></p> </li>
-<li> <p>IEC Electropedia: available at
+<li> <p id="_">IEC Electropedia: available at
 <link target="http://www.electropedia.org"/>
 </p> </li> </ul>
 
