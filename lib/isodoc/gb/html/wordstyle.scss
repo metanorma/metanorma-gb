@@ -606,9 +606,33 @@ p.IntroTitle, li.IntroTitle, div.IntroTitle, h1.IntroTitle
 	mso-bidi-font-family:$headerfont;
 	mso-ansi-language:EN-GB;
 	mso-fareast-language:ZH-CN;
-	mso-bidi-font-weight:normal;}
-div.WordSection2 p.IntroTitle, div.WordSection2 div.IntroTitle {
         page-break-before:always;
+	mso-bidi-font-weight:normal;}
+p.TitlePageSubhead, li.TitlePageSubhead, div.TitlePageSubhead {
+mso-style-noshow:yes;
+        mso-style-unhide:no;
+        margin-top:0.7cm;
+    mso-element:frame;
+    mso-element-wrap:no-wrap-beside;
+    mso-element-anchor-vertical:paragraph;
+    mso-element-left:center;
+        margin-right:0cm;
+        margin-bottom:0.9cm;
+        margin-left:0cm;
+        text-align:center;
+        line-height:15.5pt;
+        mso-pagination:widow-orphan;
+        page-break-after:avoid;
+        mso-hyphenate:none;
+        tab-stops:20.15pt;
+        font-size:16.0pt;
+        mso-bidi-font-size:11.0pt;
+        font-family:$headerfont;
+        mso-fareast-font-family:$headerfont;
+        mso-bidi-font-family:$headerfont;
+        mso-ansi-language:EN-GB;
+        mso-fareast-language:ZH-CN;
+        mso-bidi-font-weight:normal;
 }   
 .h2Annex
     {mso-style-priority:2;
