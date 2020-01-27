@@ -220,14 +220,14 @@ module IsoDoc
         m = get
         if @lang == "zh"
           set(:labelled_publisheddate, m[:publisheddate] + " " +
-              @labels["publicationdate_lbl"])
+              (@labels["publicationdate_lbl"] || ""))
           set(:labelled_implementeddate, m[:implementeddate] + " " +
-              @labels["implementationdate_lbl"])
+              (@labels["implementationdate_lbl"] || ""))
         else
-          set(:labelled_publisheddate, @labels["publicationdate_lbl"] +
+          set(:labelled_publisheddate, (@labels["publicationdate_lbl"] || "") +
               ": " + m[:publisheddate])
           set(:labelled_implementeddate,
-              @labels["implementationdate_lbl"] + ": " +
+              (@labels["implementationdate_lbl"] || "") + ": " +
               m[:implementeddate])
         end
       end

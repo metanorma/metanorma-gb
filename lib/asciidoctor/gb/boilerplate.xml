@@ -1,0 +1,13 @@
+<boilerplate>
+  {% if stage == 30 %}
+  <legal-statement>
+    <clause>
+      {% if language == "en" %}
+      <p>When submitting feedback, please attach any relevant patents that you are aware of, together with supporting documents.</p>
+      {% else %}
+      <p>在提交反馈意见时，请将您知道的相关专利连同支持文件一并附上。</p>
+      {% endif %}
+    </clause>
+  </legal-statement>
+  {% endif %}
+</boilerplate>
