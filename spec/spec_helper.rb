@@ -76,6 +76,10 @@ VALIDATING_BLANK_HDR = <<~"HDR"
 
 HDR
 
+BOILERPLATE = <<~"END"
+<boilerplate> </boilerplate>
+END
+
 BLANK_HDR = <<~"HDR"
        <?xml version="1.0" encoding="UTF-8"?>
        <gb-standard xmlns="http://riboseinc.com/gbstandard">
@@ -145,6 +149,7 @@ BLANK_HDR = <<~"HDR"
          </gbtype>
          </ext>
        </bibdata>
+       #{BOILERPLATE}
 HDR
 
 HTML_HDR = <<~HDR

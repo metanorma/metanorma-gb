@@ -242,8 +242,16 @@ module Asciidoctor
       end
 
       def boilerplate_cleanup(xmldoc)
+        isodoc = boilerplate_isodoc(xmldoc)
+        initial_boilerplate(xmldoc, isodoc)
         return if @keepboilerplate
-        super
+        f = xmldoc.at(self.class::TERM_CLAUSE) and
+          term_defs_boilerplate(f.at("./title"),
+                                xmldoc.xpath(".//termdocsource"),
+                                f.at(".//term"), f.at(".//p"), isodoc)
+        f = xmldoc.at(self.class::NORM_REF) and
+          norm_ref_preface(f)
+        initial_boilerplate(xmldoc, isodoc)
       end
     end
   end
