@@ -594,7 +594,6 @@ p.IntroTitle, li.IntroTitle, div.IntroTitle, h1.IntroTitle
 	margin-left:0cm;
 	text-align:center;
 	line-height:15.5pt;
-	page-break-before:always;
 	mso-pagination:widow-orphan;
 	page-break-after:avoid;
 	mso-outline-level:1;
@@ -608,6 +607,9 @@ p.IntroTitle, li.IntroTitle, div.IntroTitle, h1.IntroTitle
 	mso-ansi-language:EN-GB;
 	mso-fareast-language:ZH-CN;
 	mso-bidi-font-weight:normal;}
+div.WordSection2 p.IntroTitle, div.WordSection2 div.IntroTitle {
+        page-break-before:always;
+}   
 .h2Annex
     {mso-style-priority:2;
 	mso-style-unhide:no;
