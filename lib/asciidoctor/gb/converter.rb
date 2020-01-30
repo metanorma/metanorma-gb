@@ -161,16 +161,16 @@ module Asciidoctor
         "YD|YS|YY|YZ|ZY|GB|GBZ|GJB|GBn|GHZB|GWKB|GWPB|JJF|JJG|Q|T)(/Z|/T)?)"
 
       ISO_REF = %r{^<ref\sid="(?<anchor>[^"]+)">
-      \[(?<code>(ISO|IEC|#{GBCODE})[^0-9]*\s[0-9-]+?)
+      \[(?<usrlbl>\([^)]+\))?(?<code>(ISO|IEC|#{GBCODE})[^0-9]*\s[0-9-]+?)
       ([:-](?<year>(19|20)[0-9][0-9]))?\]</ref>,?\s
       (?<text>.*)$}xm
 
       ISO_REF_NO_YEAR = %r{^<ref\sid="(?<anchor>[^"]+)">
-      \[(?<code>(ISO|IEC|#{GBCODE})[^0-9]*\s[0-9-]+):--\]</ref>,?\s?
+      \[(?<usrlbl>\([^)]+\))?(?<code>(ISO|IEC|#{GBCODE})[^0-9]*\s[0-9-]+):--\]</ref>,?\s?
       <fn[^>]*>\s*<p>(?<fn>[^\]]+)</p>\s*</fn>,?\s?(?<text>.*)$}xm
 
       ISO_REF_ALL_PARTS = %r{^<ref\sid="(?<anchor>[^"]+)">
-      \[(?<code>(ISO|IEC|#{GBCODE})[^0-9]*\s[0-9]+)\s
+      \[(?<usrlbl>\([^)]+\))?(?<code>(ISO|IEC|#{GBCODE})[^0-9]*\s[0-9]+)\s
       \(all\sparts\)\]</ref>(<p>)?,?\s?
       (?<text>.*)(</p>)?$}xm
 
@@ -242,11 +242,16 @@ module Asciidoctor
       end
 
       def boilerplate_cleanup(xmldoc)
+        isodoc = boilerplate_isodoc(xmldoc)
+        initial_boilerplate(xmldoc, isodoc)
         return if @keepboilerplate
-        super
-      end
-
-      def initial_boilerplate(xmldoc)
+        f = xmldoc.at(self.class::TERM_CLAUSE) and
+          term_defs_boilerplate(f.at("./title"),
+                                xmldoc.xpath(".//termdocsource"),
+                                f.at(".//term"), f.at(".//p"), isodoc)
+        f = xmldoc.at(self.class::NORM_REF) and
+          norm_ref_preface(f)
+        initial_boilerplate(xmldoc, isodoc)
       end
     end
   end
