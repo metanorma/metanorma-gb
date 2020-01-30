@@ -223,6 +223,7 @@ RSpec.describe Asciidoctor::Gb do
          </gbtype>
          </ext>
        </bibdata>
+       <boilerplate> </boilerplate>
        <sections/>
        </gb-standard>
     OUTPUT
@@ -430,7 +431,7 @@ RSpec.describe Asciidoctor::Gb do
     private
 
     def mock_gbbib_get_123
-      expect(RelatonGb::GbBibliography).to receive(:get).with("GB/T 20223", "2006", {:title=>"<em>Standard</em>"}) do
+      expect(RelatonGb::GbBibliography).to receive(:get).with("GB/T 20223", "2006", {:title=>"<em>Standard</em>", :usrlbl=>nil}) do
         RelatonIsoBib::XMLParser.from_xml(GBT20223)
       end
     end

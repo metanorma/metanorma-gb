@@ -148,6 +148,7 @@ RSpec.describe Asciidoctor::Gb do
          <plannumber>AB</plannumber>
          </ext>
        </bibdata>
+       <boilerplate> </boilerplate>
        <sections/>
        </gb-standard>
     OUTPUT
@@ -245,6 +246,7 @@ RSpec.describe Asciidoctor::Gb do
          </gbtype>
          </ext>
        </bibdata>
+       <boilerplate> </boilerplate>
        <sections/>
        </gb-standard>
     OUTPUT
@@ -331,6 +333,7 @@ RSpec.describe Asciidoctor::Gb do
          </gbtype>
          </ext>
        </bibdata>
+       <boilerplate> </boilerplate>
        <sections/>
        </gb-standard>
     OUTPUT
@@ -419,6 +422,7 @@ RSpec.describe Asciidoctor::Gb do
          </gbtype>
          </ext>
        </bibdata>
+       <boilerplate> </boilerplate>
        <sections/>
        </gb-standard>
     OUTPUT
@@ -508,6 +512,7 @@ RSpec.describe Asciidoctor::Gb do
          </gbtype>
          </ext>
        </bibdata>
+       <boilerplate> </boilerplate>
        <sections/>
        </gb-standard>
     OUTPUT
@@ -595,13 +600,14 @@ RSpec.describe Asciidoctor::Gb do
          </gbtype>
          </ext>
        </bibdata>
+       <boilerplate> </boilerplate>
        <sections/>
        </gb-standard>
     OUTPUT
   end
 
   it "processes metadata" do
-    expect(xmlpp(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true))).to be_equivalent_to xmlpp(<<~"OUTPUT")
+    expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
       = Document title
       Author
       :docfile: test.adoc
@@ -610,6 +616,8 @@ RSpec.describe Asciidoctor::Gb do
       :docnumber: 123
       :nodoc:
       :novalid:
+      :status: 30
+      :language: en
 
     INPUT
     <?xml version="1.0" encoding="UTF-8"?>
@@ -655,11 +663,11 @@ RSpec.describe Asciidoctor::Gb do
              <name>GB</name>
            </organization>
          </contributor>
-         <language>zh</language>
+         <language>en</language>
          <script>Hans</script>
          <status>
-           <stage>60</stage>
-           <substage>60</substage>
+           <stage>30</stage>
+           <substage>00</substage>
          </status>
          <copyright>
            <from>#{Date.today.year}</from>
@@ -682,6 +690,16 @@ RSpec.describe Asciidoctor::Gb do
          </gbtype>
          </ext>
        </bibdata>
+       <boilerplate>
+  <legal-statement>
+    <clause>
+      <p id='_'>
+        When submitting feedback, please attach any relevant patents that you
+        are aware of, together with supporting documents.
+      </p>
+    </clause>
+  </legal-statement>
+</boilerplate>
        <sections/>
        </gb-standard>
     OUTPUT
