@@ -1105,6 +1105,26 @@ p.MsoHeader, li.MsoHeader, div.MsoHeader
 	mso-ansi-language:EN-US;
 	mso-fareast-language:ZH-CN;
 	mso-no-proof:yes;}
+p.MsoHeaderLandscape, li.MsoHeaderLandscape, div.MsoHeaderLandscape
+        {mso-style-name:?| ~G?~G~F书?~\~I_?~G?~U?页;
+        mso-style-unhide:no;
+        mso-style-parent:"";
+        mso-style-next:Normal;
+        margin-top:0cm;
+        margin-right:0cm;
+        margin-bottom:11.0pt;
+        margin-left:0cm;
+        text-align:right;
+        mso-pagination:widow-orphan;
+        tab-stops:center 353.0pt right 705.9pt;
+        font-size:9.0pt;
+        mso-font-kerning:1.0pt;
+        font-family:$bodyfont;
+        mso-hansi-font-family:$bodyfont;
+        mso-bidi-font-family:$bodyfont;
+        mso-ansi-language:EN-US;
+        mso-fareast-language:ZH-CN;
+        mso-no-proof:yes;}
 p.MsoFooter, li.MsoFooter, div.MsoFooter
 	{mso-style-name:标准书脚_奇数页;
 	mso-style-unhide:no;
@@ -1128,6 +1148,29 @@ p.MsoFooter, li.MsoFooter, div.MsoFooter
 	mso-bidi-font-family:$bodyfont;
 	mso-ansi-language:EN-US;
 	mso-fareast-language:ZH-CN;}
+p.MsoFooterLandscape, li.MsoFooterLandscape, div.MsoFooterLandscape
+        {mso-style-name:?| ~G?~G~F书?~D~Z_?~G?~U?页;
+        mso-style-unhide:no;
+        mso-style-parent:"";
+        margin-top:6.0pt;
+        margin-right:10.5pt;
+        margin-bottom:0cm;
+        margin-left:0cm;
+        margin-bottom:.0001pt;
+        mso-para-margin-top:0cm;
+        mso-para-margin-right:1.0gd;
+        mso-para-margin-bottom:0cm;
+        mso-para-margin-left:0cm;
+        mso-para-margin-bottom:.0001pt;
+        text-align:right;
+        mso-pagination:widow-orphan;
+        font-size:9.0pt;
+        mso-font-kerning:1.0pt;
+        font-family:$bodyfont;
+        mso-hansi-font-family:$bodyfont;
+        mso-bidi-font-family:$bodyfont;
+        mso-ansi-language:EN-US;
+        mso-fareast-language:ZH-CN;}
 p.a1, li.a1, div.a1
 	{mso-style-name:标准书脚_奇数页;  //  NAME: Standard Footer, Odd pages 
 	mso-style-unhide:no;
