@@ -53,18 +53,8 @@ module IsoDoc
       end
 
       def word_cleanup(docxml)
-        word_preface(docxml)
-        word_annex_cleanup(docxml)
         @cleanup.title_cleanup(docxml.at('//div[@class="WordSection2"]'))
-        word_table_align(docxml)
-      word_table_separator(docxml)
-      word_admonition_images(docxml)
-      word_list_continuations(docxml)
-      word_example_cleanup(docxml)
-      word_pseudocode_cleanup(docxml)
-      word_image_caption(docxml)
-      authority_cleanup(docxml)
-        docxml
+        super
       end
 
       def example_table_parse(node, out)
