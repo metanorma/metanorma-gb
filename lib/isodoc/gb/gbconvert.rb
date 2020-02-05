@@ -57,7 +57,6 @@ module IsoDoc
         "<span style='font-weight:bold'>#{local}</span>"
       end
 
-
       def format_logo1(logo, prefix, scope, localdir)
         local = local_logo_suffix(scope)
         return "<img class='logo' width='113' height='56' src='#{@standardlogoimg}' alt='#{prefix}'></img>"\
