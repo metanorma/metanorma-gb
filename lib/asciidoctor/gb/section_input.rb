@@ -7,6 +7,7 @@ module Asciidoctor
     # schema encapsulation of the document for validation
     class Converter < ISO::Converter
 
+=begin
       # subclause contains subclauses
       def term_def_subclause_parse(attrs, xml, node)
         return clause_parse(attrs, xml, node) if node.role == "nonterm"
@@ -21,7 +22,27 @@ module Asciidoctor
           xml_section << node.content
         end
       end
+=end
 
+      def sectiontype_streamline(ret)
+        case ret
+        when "引言" then "introduction"
+        when "范围" then "scope"
+        when "规范性引用文件" then "normative references"
+        when "术语和定义", "术语、定义、符号、代号和缩略语"
+          "terms and definitions"
+        when "符号、代号和缩略语" then "symbols and abbreviated terms"
+        when "参考文献" then "bibliography"
+        else
+          super
+        end
+      end
+
+      def appendix_parse(attrs, xml, node)
+        clause_parse(attrs, xml, node)
+      end
+
+=begin
       def section(node)
         a = section_attributes(node)
         noko do |xml|
@@ -59,6 +80,7 @@ module Asciidoctor
           end
         end.join("\n")
       end
+=end
 
 =begin
       # spec of permissible section sequence
