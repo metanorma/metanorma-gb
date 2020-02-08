@@ -15,7 +15,7 @@ module Asciidoctor
     # schema encapsulation of the document for validation
     class Converter < ISO::Converter
       XML_ROOT_TAG = "gb-standard".freeze
-      XML_NAMESPACE = "http://riboseinc.com/gbstandard".freeze
+      XML_NAMESPACE = "https://www.metanorma.com/ns/gb".freeze
 
       register_for "gb"
 

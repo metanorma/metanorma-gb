@@ -82,7 +82,7 @@ END
 
 BLANK_HDR = <<~"HDR"
        <?xml version="1.0" encoding="UTF-8"?>
-       <gb-standard xmlns="http://riboseinc.com/gbstandard">
+       <gb-standard xmlns="https://www.metanorma.com/ns/gb">
        <bibdata type="standard">
          <contributor>
            <role type="author"/>
