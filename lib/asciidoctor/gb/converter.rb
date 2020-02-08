@@ -11,26 +11,18 @@ require "fileutils"
 
 module Asciidoctor
   module Gb
-    GB_NAMESPACE = "http://riboseinc.com/gbstandard"
-
     # A {Converter} implementation that generates GB output, and a document
     # schema encapsulation of the document for validation
     class Converter < ISO::Converter
+      XML_ROOT_TAG = "gb-standard".freeze
+      XML_NAMESPACE = "https://www.metanorma.com/ns/gb".freeze
 
       register_for "gb"
 
       def makexml(node)
-        result = ["<?xml version='1.0' encoding='UTF-8'?>\n<gb-standard>"]
         @draft = node.attributes.has_key?("draft")
         @keepboilerplate = node.attributes.has_key?("keep-boilerplate")
-        result << noko { |ixml| front node, ixml }
-        result << noko { |ixml| middle node, ixml }
-        result << "</gb-standard>"
-        result = textcleanup(result)
-        ret1 = cleanup(Nokogiri::XML(result))
-        validate(ret1) unless @novalid
-        ret1.root.add_namespace(nil, GB_NAMESPACE)
-        ret1
+        super
       end
 
       def gb_attributes(node)
