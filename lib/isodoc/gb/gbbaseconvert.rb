@@ -255,6 +255,10 @@ module IsoDoc
           end
         end
       end
+
+      def textcleanup(docxml)
+        termref_resolve(docxml)
+      end
     end
   end
 end
