@@ -124,7 +124,7 @@ module IsoDoc
           abbr = stage_abbrev_cn(docstatus.text,
                                  isoxml&.at(ns("//bibdata/status/iteration"))&.text,
                                  isoxml&.at(ns("//version/draft"))&.text)
-          set(:stageabbr, abbr)
+          set(:statusabbr, abbr)
           set(:status, STATUS_CSS[docstatus.text.to_sym])
         end
       end
@@ -132,6 +132,8 @@ module IsoDoc
       def docid1(isoxml, _out)
         dn = isoxml.at(ns("//bibdata/docidentifier[@type = 'gb']"))
         set(:docnumber, dn&.text)
+        dn = isoxml.at(ns("//bibdata/docnumber"))
+        set(:docnumeric, dn&.text)
       end
 
       def docid(isoxml, _out)
