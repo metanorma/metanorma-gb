@@ -243,7 +243,6 @@ module Asciidoctor
                                 f.at(".//term"), f.at(".//p"), isodoc)
         f = xmldoc.at(self.class::NORM_REF) and
           norm_ref_preface(f)
-        initial_boilerplate(xmldoc, isodoc)
       end
     end
   end
