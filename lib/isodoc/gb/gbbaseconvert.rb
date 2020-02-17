@@ -203,7 +203,8 @@ module IsoDoc
             h1 << "#{num}."
             h1 << "&#x3000;"
           end
-          h1 << title
+          title.is_a?(String) ? h1 << title :
+          title&.children&.each { |c2| parse(c2, h1) }
         end
         div.parent.at(".//h1")
       end
