@@ -100,15 +100,19 @@ module IsoDoc
         "95": "obsolete",
       }
 
-      def stage_abbrev(stage, iter, draft)
+      def stage_abbr(stage)
+        STAGE_ABBRS[stage.to_sym] || "??"
+      end
+
+      def status_abbrev(stage, iter, draft)
         stage = STAGE_ABBRS[stage.to_sym] || "??"
         stage += iter if iter
         stage = "Pre" + stage if draft =~ /^0\./
         stage
       end
 
-      def stage_abbrev_cn(stage, iter, draft)
-        return stage_abbrev(stage, iter, draft) if @lang != "zh"
+      def status_abbrev_cn(stage, iter, draft)
+        return status_abbrev(stage, iter, draft) if @lang != "zh"
         stage = STAGE_ABBRS_CN[stage.to_sym] || "??"
         stage = "#{iter.to_i.localize(:zh).spellout.force_encoding("UTF-8")}次#{stage}" if iter
         stage = "Pre" + HTMLEntities.new.encode(stage, :hexadecimal) if draft =~ /^0\./
@@ -117,23 +121,26 @@ module IsoDoc
 
       def docstatus(isoxml, _out)
         docstatus = isoxml.at(ns("//bibdata/status/stage"))
-        set(:unpublished, false)
+        set(:unpublished, true)
         if docstatus
           set(:stage, docstatus.text.to_i)
-          set(:unpublished, docstatus.text.to_i < 60)
-          abbr = stage_abbrev_cn(docstatus.text,
-                                 isoxml&.at(ns("//bibdata/status/iteration"))&.text,
-                                 isoxml&.at(ns("//version/draft"))&.text)
-          set(:statusabbr, abbr)
+          set(:unpublished, unpublished(docstatus.text))
+          set(:statusabbr, status_abbrev_cn(docstatus.text,
+                                            isoxml&.at(ns("//bibdata/status/iteration"))&.text,
+                                            isoxml&.at(ns("//version/draft"))&.text))
           set(:status, STATUS_CSS[docstatus.text.to_sym])
+          unpublished(docstatus.text) and
+            set(:stageabbr, stage_abbr(docstatus.text))
         end
+      end
+
+      def unpublished(status)
+        status.to_i < 60
       end
 
       def docid1(isoxml, _out)
         dn = isoxml.at(ns("//bibdata/docidentifier[@type = 'gb']"))
         set(:docnumber, dn&.text)
-        dn = isoxml.at(ns("//bibdata/docnumber"))
-        set(:docnumeric, dn&.text)
       end
 
       def docid(isoxml, _out)
