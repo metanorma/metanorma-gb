@@ -13,6 +13,8 @@ RSpec.describe Asciidoctor::Gb do
 
       === Introduction Subsection
 
+      == 致谢
+
       == 范围
 
       Text
@@ -58,7 +60,11 @@ RSpec.describe Asciidoctor::Gb do
        </foreword><introduction id="_" obligation="informative"><title>Introduction</title><clause id="_" inline-header="false" obligation="informative">
          <title>Introduction Subsection</title>
        </clause>
-       </introduction></preface><sections>
+       </introduction>
+       <acknowledgements id='_' obligation='informative'>
+  <title>致谢</title>
+</acknowledgements>
+</preface><sections>
      
        <clause id="_" obligation="normative">
          <title>Scope</title>

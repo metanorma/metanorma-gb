@@ -33,6 +33,7 @@ module Asciidoctor
           "terms and definitions"
         when "符号、代号和缩略语" then "symbols and abbreviated terms"
         when "参考文献" then "bibliography"
+        when "致谢" then "acknowledgements"
         else
           super
         end
@@ -41,46 +42,6 @@ module Asciidoctor
       def appendix_parse(attrs, xml, node)
         clause_parse(attrs, xml, node)
       end
-
-=begin
-      def section(node)
-        a = section_attributes(node)
-        noko do |xml|
-          case sectiontype(node)
-          when "引言", "introduction" then introduction_parse(a, xml, node)
-          when "patent notice" then patent_notice_parse(xml, node)
-          when "范围", "scope" then scope_parse(a, xml, node)
-          when "规范性引用文件", "normative references"
-            norm_ref_parse(a, xml, node)
-          when "术语和定义", "terms and definitions",
-            "术语、定义、符号、代号和缩略语",
-            "terms, definitions, symbols and abbreviated terms",
-            "terms, definitions, symbols and abbreviations",
-            "terms, definitions and symbols",
-            "terms, definitions and abbreviations",
-            "terms, definitions and abbreviated terms"
-            @term_def = true
-            term_def_parse(a, xml, node, true)
-            @term_def = false
-          when "符号、代号和缩略语", "symbols and abbreviated terms",
-            "abbreviated terms", "abbreviations", "symbols"
-            symbols_parse(a, xml, node)
-          when "参考文献", "bibliography"
-            bibliography_parse(a, xml, node)
-          else
-            if @term_def then term_def_subclause_parse(a, xml, node)
-            elsif @biblio then bibliography_parse(a, xml, node)
-            elsif node.attr("style") == "bibliography"
-              bibliography_parse(a, xml, node)
-            elsif node.attr("style") == "appendix" && node.level == 1
-              annex_parse(a, xml, node)
-            else
-              clause_parse(a, xml, node)
-            end
-          end
-        end.join("\n")
-      end
-=end
 
 =begin
       # spec of permissible section sequence
