@@ -13,6 +13,8 @@ RSpec.describe Asciidoctor::Gb do
 
       === Introduction Subsection
 
+      == 致谢
+
       == 范围
 
       Text
@@ -58,7 +60,11 @@ RSpec.describe Asciidoctor::Gb do
        </foreword><introduction id="_" obligation="informative"><title>Introduction</title><clause id="_" inline-header="false" obligation="informative">
          <title>Introduction Subsection</title>
        </clause>
-       </introduction></preface><sections>
+       </introduction>
+       <acknowledgements id='_' obligation='informative'>
+  <title>致谢</title>
+</acknowledgements>
+</preface><sections>
      
        <clause id="_" obligation="normative">
          <title>Scope</title>
@@ -82,7 +88,27 @@ standardization at the following addresses:</p>
          <preferred language="zh">1</preferred> <preferred language="en">Term1</preferred>
        </term>
        </terms>
-       <clause id="_" obligation="normative"><title>Terms and definitions</title><terms id="_" obligation="normative">
+       <clause id="_" obligation="normative"><title>Terms and definitions</title>
+       <p id='_'>For the purposes of this document, the following terms and definitions apply.</p>
+<p id='_'>
+  ISO and IEC maintain terminological databases for use in standardization
+  at the following addresses:
+</p>
+<ul id='_'>
+  <li>
+    <p id='_'>
+      ISO Online browsing platform: available at
+      <link target='http://www.iso.org/obp'/>
+    </p>
+  </li>
+  <li>
+    <p id='_'>
+      IEC Electropedia: available at
+      <link target='http://www.electropedia.org'/>
+    </p>
+  </li>
+</ul>
+<terms id="_" obligation="normative">
          <title>Normal Terms</title>
          <term id="_">
          <preferred language="zh">2</preferred> <preferred language="en">Term2</preferred>

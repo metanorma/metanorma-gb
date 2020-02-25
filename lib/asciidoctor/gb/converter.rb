@@ -237,10 +237,11 @@ module Asciidoctor
         isodoc = boilerplate_isodoc(xmldoc)
         initial_boilerplate(xmldoc, isodoc)
         return if @keepboilerplate
-        f = xmldoc.at(self.class::TERM_CLAUSE) and
+        xmldoc.xpath(self.class::TERM_CLAUSE).each do |f|
           term_defs_boilerplate(f.at("./title"),
                                 xmldoc.xpath(".//termdocsource"),
                                 f.at(".//term"), f.at(".//p"), isodoc)
+        end
         f = xmldoc.at(self.class::NORM_REF) and
           norm_ref_preface(f)
       end
