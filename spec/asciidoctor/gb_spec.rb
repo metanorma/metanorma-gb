@@ -37,7 +37,7 @@ RSpec.describe Asciidoctor::Gb do
 
     INPUT
     html = File.read("test.doc", encoding: "utf-8")
-    expect(html).to match(%r[\.Sourcecode[^{]+\{[^{]+font-family: "Courier New", monospace;]m)
+    expect(html).to match(%r[\bpre[^{]+\{[^{]+font-family: "Courier New", monospace;]m)
     expect(html).to match(%r[body[^{]+\{[^{]+font-family: "Cambria", serif;]m)
     expect(html).to match(%r[\.h2Annex[^{]+\{[^{]+font-family: "Calibri", sans-serif;]m)
     expect(html).to match(%r[\.standard_class[^{]+\{[^{]+font-family: "Cambria", serif;]m)
@@ -55,7 +55,7 @@ RSpec.describe Asciidoctor::Gb do
 
     INPUT
     html = File.read("test.doc", encoding: "utf-8")
-    expect(html).to match(%r[\.Sourcecode[^{]+\{[^{]+font-family: "Courier New", monospace;]m)
+    expect(html).to match(%r[\bpre[^{]+\{[^{]+font-family: "Courier New", monospace;]m)
     expect(html).to match(%r[body[^{]+\{[^{]+font-family: "Cambria", serif;]m)
     expect(html).to match(%r[\.h2Annex[^{]+\{[^{]+font-family: "Calibri", sans-serif;]m)
     expect(html).to match(%r[\.standard_class[^{]+\{[^{]+font-family: "Calibri", sans-serif;]m)
@@ -71,7 +71,7 @@ RSpec.describe Asciidoctor::Gb do
 
     INPUT
     html = File.read("test.doc", encoding: "utf-8")
-    expect(html).to match(%r[\.Sourcecode[^{]+\{[^{]+font-family: "Courier New", monospace;]m)
+    expect(html).to match(%r[\bpre[^{]+\{[^{]+font-family: "Courier New", monospace;]m)
     expect(html).to match(%r[body[^{]+\{[^{]+font-family: "SimSun", serif;]m)
     expect(html).to match(%r[\.h2Annex[^{]+\{[^{]+font-family: "SimHei", sans-serif;]m)
     expect(html).to match(%r[\.standard_class[^{]+\{[^{]+font-family: "SimSun", serif;]m)
@@ -89,7 +89,7 @@ RSpec.describe Asciidoctor::Gb do
 
     INPUT
     html = File.read("test.doc", encoding: "utf-8")
-    expect(html).to match(%r[\.Sourcecode[^{]+\{[^{]+font-family: "Courier New", monospace;]m)
+    expect(html).to match(%r[\bpre[^{]+\{[^{]+font-family: "Courier New", monospace;]m)
     expect(html).to match(%r[body[^{]+\{[^{]+font-family: "SimSun", serif;]m)
     expect(html).to match(%r[\.h2Annex[^{]+\{[^{]+font-family: "SimHei", sans-serif;]m)
     expect(html).to match(%r[\.standard_class[^{]+\{[^{]+font-family: "SimHei", sans-serif;]m)
@@ -110,7 +110,7 @@ RSpec.describe Asciidoctor::Gb do
 
     INPUT
     html = File.read("test.doc", encoding: "utf-8")
-    expect(html).to match(%r[\.Sourcecode[^{]+\{[^{]+font-family: Andale Mono;]m)
+    expect(html).to match(%r[\bpre[^{]+\{[^{]+font-family: Andale Mono;]m)
     expect(html).to match(%r[body[^{]+\{[^{]+font-family: Zapf Chancery;]m)
     expect(html).to match(%r[\.h2Annex[^{]+\{[^{]+font-family: Comic Sans;]m)
     expect(html).to match(%r[\.standard_class[^{]+\{[^{]+font-family: Symbol;]m)
