@@ -260,7 +260,11 @@ p.Biblio, p.NormRef {
   */
 }
 
-.Sourcecode {
+.SourceTitle {
+  @include blockTitle();
+}
+
+pre {
   @include sourceBlock(#f7f7f7, null);
   // Requires fontSize: null, but needs an update in isodoc
   // @include sourceBlock(#f7f7f7, null, null);
@@ -309,7 +313,7 @@ p.Biblio, p.NormRef {
     margin-top:0;
   }
 
-  .Sourcecode, .pseudocode {
+  pre, .pseudocode {
     background: none;
   }
 }
