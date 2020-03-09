@@ -346,8 +346,8 @@ INPUT
                <div>
                  <h1 class="ForewordTitle">Foreword&#160;</h1>
                  <div id="_be9158af-7e93-4ee2-90c5-26d31c181934" class="formula">&#160; <span class="stem">(#(r = 1 %)#)</span>&#160; (1)</div>
-                 <p>where</p>
-                 <table class="dl">
+                 <p style='page-break-after:avoid;'>where</p>
+<table class='formula_dl'>
                    <tr>
                      <td style="vertical-align:top;text-align:left;">
            <span class="stem">(#(r)#)</span>

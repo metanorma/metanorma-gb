@@ -69,12 +69,14 @@ module IsoDoc
 
       def formula_where(dl, out)
         return unless dl
-        out.p { |p| p << @where_lbl }
+        out.p **{ style: "page-break-after:avoid;"} do |p|
+          p << @where_lbl
+        end
         formula_dl_parse(dl, out)
       end
 
       def formula_dl_parse(node, out)
-        out.table **{ class: "dl" } do |v|
+        out.table **{ class: "formula_dl" } do |v|
           node.elements.each_slice(2) do |dt, dd|
             v.tr do |tr|
               tr.td **{ style: "vertical-align:top;text-align:left;" } do |term|
@@ -204,7 +206,7 @@ module IsoDoc
             h1 << "&#x3000;"
           end
           title.is_a?(String) ? h1 << title :
-          title&.children&.each { |c2| parse(c2, h1) }
+            title&.children&.each { |c2| parse(c2, h1) }
         end
         div.parent.at(".//h1")
       end
