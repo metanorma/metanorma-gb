@@ -1,4 +1,3 @@
-
 module Asciidoctor
   module Gb
     class Converter < ISO::Converter
@@ -102,7 +101,7 @@ module Asciidoctor
                     m[0] == "Q" ? "enterprise" : nil
                 end
         return scope unless scope.nil?
-        warn "GB: no scope supplied, defaulting to National"
+        @log.add("Document Attributes", nil, "GB: no scope supplied, defaulting to National")
         "national"
       end
 
@@ -115,7 +114,7 @@ module Asciidoctor
         else
           prefix = "GB"
           scope = "national"
-          warn "GB: no prefix supplied, defaulting to GB"
+          @log.add("Document Attributes", nil, "GB: no prefix supplied, defaulting to GB")
         end
         [scope, prefix]
       end
@@ -127,14 +126,14 @@ module Asciidoctor
           %r{/Z}.match(p) ? "guidelines" : nil
         if mandate.nil?
           mandate = "mandatory"
-          warn "GB: no mandate supplied, defaulting to mandatory"
+          @log.add("Document Attributes", nil, "GB: no mandate supplied, defaulting to mandatory")
         end
         mandate
       end
 
       def get_topic(node)
         node.attr("topic") and return node.attr("topic")
-        warn "GB: no topic supplied, defaulting to basic"
+        @log.add("Document Attributes", nil, "GB: no topic supplied, defaulting to basic")
         "basic"
       end
 
@@ -200,7 +199,7 @@ module Asciidoctor
         if node.attr("docstage") && node.attr("docstage").to_i < 60
           abbr = IsoDoc::Gb::Metadata.new("en", "Latn", {}).
             status_abbrev(node.attr("docstage"), node.attr("iteration"),
-                         node.attr("draft"))
+                          node.attr("draft"))
           dn = "/#{abbr} #{dn}" # prefixes added in cleanup
         else
           dn += "-#{node.attr("copyright-year")}" if node.attr("copyright-year")
