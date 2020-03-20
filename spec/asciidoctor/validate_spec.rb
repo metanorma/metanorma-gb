@@ -1,7 +1,10 @@
 require "spec_helper"
 
-RSpec.describe  "Warns of illegal doctype" do
-    specify { expect { Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) }.to output(/heaven is not a recognised document type/).to_stderr }
+RSpec.describe Asciidoctor::Standoc do
+
+it  "Warns of illegal doctype" do
+    FileUtils.rm_f "test.err"
+    Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) 
   = Document title
   Author
   :docfile: test.adoc
@@ -12,10 +15,12 @@ RSpec.describe  "Warns of illegal doctype" do
 
   text
   INPUT
+  expect(File.read("test.err")).to include "heaven is not a recognised document type"
 end
 
-RSpec.describe  "Warns of illegal script" do
-    specify { expect { Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) }.to output(/pizza is not a recognised script/).to_stderr }
+it  "Warns of illegal script" do
+    FileUtils.rm_f "test.err"
+    Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) 
   = Document title
   Author
   :docfile: test.adoc
@@ -25,81 +30,92 @@ RSpec.describe  "Warns of illegal script" do
 
   text
   INPUT
+  expect(File.read("test.err")).to include "pizza is not a recognised script"
 end
 
-RSpec.describe "does not warn when missing scope but scope inferred from prefix" do
-  specify { expect { Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) }.not_to output(/GB: no scope supplied, defaulting to National/).to_stderr }
+it "does not warn when missing scope but scope inferred from prefix" do
+    FileUtils.rm_f "test.err"
+  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) 
     = Document title
     Author
     :docfile: test.adoc
     :mandate: guide
     :prefix: T/BBB
     :nodoc:
-    :novalid:
 
     INPUT
+  if(File.exist?("test.err"))
+  expect(File.read("test.err")).not_to include "GB: no scope supplied, defaulting to National"
+  end
 end
 
-RSpec.describe "warns when missing scope and scope not inferred from prefix" do
-  specify { expect { Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) }.to output(/GB: no scope supplied, defaulting to National/).to_stderr }
+it "warns when missing scope and scope not inferred from prefix" do
+    FileUtils.rm_f "test.err"
+  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) 
     = Document title
     Author
     :docfile: test.adoc
     :mandate: guide
     :prefix: K/BBB
     :nodoc:
-    :novalid:
 
     INPUT
+  expect(File.read("test.err")).to include "GB: no scope supplied, defaulting to National"
 end
 
-RSpec.describe "warns when missing prefix" do
-  specify { expect { Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) }.to output(/GB: no prefix supplied, defaulting to GB/).to_stderr }
+it "warns when missing prefix" do
+    FileUtils.rm_f "test.err"
+  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) 
     = Document title
     Author
     :docfile: test.adoc
     :mandate: guide
     :nodoc:
-    :novalid:
 
     INPUT
+  expect(File.read("test.err")).to include "GB: no prefix supplied, defaulting to GB"
 end
 
-RSpec.describe "warns when missing mandate" do
-  specify { expect { Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) }.to output(/GB: no mandate supplied, defaulting to mandatory/).to_stderr }
+it "warns when missing mandate" do
+    FileUtils.rm_f "test.err"
+  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) 
     = Document title
     Author
     :docfile: test.adoc
     :nodoc:
-    :novalid:
 
     INPUT
+  expect(File.read("test.err")).to include "GB: no mandate supplied, defaulting to mandatory"
 end
 
-RSpec.describe "warns when missing topic" do
-  specify { expect { Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) }.to output(/GB: no topic supplied, defaulting to basic/).to_stderr }
+it "warns when missing topic" do
+    FileUtils.rm_f "test.err"
+  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) 
     = Document title
     Author
     :docfile: test.adoc
     :mandate: guide
     :nodoc:
-    :novalid:
 
     INPUT
+  expect(File.read("test.err")).to include "GB: no topic supplied, defaulting to basic"
 end
 
-RSpec.describe "GB references is not a Non-ISO reference in Normative References" do
-  specify { expect { Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) }.not_to output(%r{non-ISO/IEC reference not expected as normative}).to_stderr }
+it "GB references is not a Non-ISO reference in Normative References" do
+    FileUtils.rm_f "test.err"
+  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) 
   #{VALIDATING_BLANK_HDR}
 
   [bibliography]
   == Normative References
   * [[[XYZ,NY 121]]] _Standard_
   INPUT
+  expect(File.read("test.err")).not_to include "non-ISO/IEC reference not expected as normative"
 end
 
-RSpec.describe "warns about improper social standard prefix" do
-  specify { expect { Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) }.to output(%r{is improperly formatted for social standards}).to_stderr }
+it "warns about improper social standard prefix" do
+    FileUtils.rm_f "test.err"
+  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) 
   = Document title
   Author
   :docfile: test.adoc
@@ -108,10 +124,12 @@ RSpec.describe "warns about improper social standard prefix" do
   :prefix: ABCDEFG
 
   INPUT
+  expect(File.read("test.err")).to include "is improperly formatted for social standards"
 end
 
-RSpec.describe "warns about improper enterprise standard prefix" do
-  specify { expect { Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) }.to output(%r{is improperly formatted for enterprise standards}).to_stderr }
+it "warns about improper enterprise standard prefix" do
+    FileUtils.rm_f "test.err"
+  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) 
   = Document title
   Author
   :docfile: test.adoc
@@ -120,10 +138,12 @@ RSpec.describe "warns about improper enterprise standard prefix" do
   :prefix: AbCD
 
   INPUT
+  expect(File.read("test.err")).to include "is improperly formatted for enterprise standards"
 end
 
-RSpec.describe "warns about improper sector standard prefix" do
-  specify { expect { Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) }.to output(%r{is not a legal sector standard prefix}).to_stderr }
+it "warns about improper sector standard prefix" do
+    FileUtils.rm_f "test.err"
+  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) 
   = Document title
   Author
   :docfile: test.adoc
@@ -132,10 +152,12 @@ RSpec.describe "warns about improper sector standard prefix" do
   :prefix: GJB
 
   INPUT
+  expect(File.read("test.err")).to include "is not a legal sector standard prefix"
 end
 
-RSpec.describe "warns about improper local standard prefix" do
-  specify { expect { Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) }.to output(%r{is not a legal local standard prefix}).to_stderr }
+it "warns about improper local standard prefix" do
+    FileUtils.rm_f "test.err"
+  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) 
   = Document title
   Author
   :docfile: test.adoc
@@ -144,10 +166,12 @@ RSpec.describe "warns about improper local standard prefix" do
   :prefix: GJB
 
   INPUT
+  expect(File.read("test.err")).to include "is not a legal local standard prefix"
 end
 
-RSpec.describe "warns about improper national standard prefix" do
-  specify { expect { Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) }.to output(%r{is not a legal national standard prefix}).to_stderr }
+it "warns about improper national standard prefix" do
+    FileUtils.rm_f "test.err"
+  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) 
   = Document title
   Author
   :docfile: test.adoc
@@ -156,10 +180,12 @@ RSpec.describe "warns about improper national standard prefix" do
   :prefix: NY
 
   INPUT
+  expect(File.read("test.err")).to include "is not a legal national standard prefix"
 end
 
-RSpec.describe "warns about no issuer for enterprise standard" do
-  specify { expect { Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) }.to output(%r{No issuer provided for enterprise standard}).to_stderr }
+it "warns about no issuer for enterprise standard" do
+    FileUtils.rm_f "test.err"
+  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) 
   = Document title
   Author
   :docfile: test.adoc
@@ -168,10 +194,12 @@ RSpec.describe "warns about no issuer for enterprise standard" do
   :prefix: ABC
 
   INPUT
+  expect(File.read("test.err")).to include "No issuer provided for enterprise standard"
 end
 
-RSpec.describe "warns about English-only preferred" do
-  specify { expect { Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) }.to output(%r{preferred term paddy has no Chinese counterpart}).to_stderr }
+it "warns about English-only preferred" do
+    FileUtils.rm_f "test.err"
+  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) 
   = Document title
   Author
   :docfile: test.adoc
@@ -184,10 +212,12 @@ RSpec.describe "warns about English-only preferred" do
   [deprecated]#paddy#
 
   INPUT
+  expect(File.read("test.err")).to include "preferred term paddy has no Chinese counterpart"
 end
 
-RSpec.describe "warns about English-only admitted" do
-  specify { expect { Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) }.to output(%r{admitted term paddy has no Chinese counterpart}).to_stderr }
+it "warns about English-only admitted" do
+    FileUtils.rm_f "test.err"
+  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) 
   = Document title
   Author
   :docfile: test.adoc
@@ -200,10 +230,12 @@ RSpec.describe "warns about English-only admitted" do
   [deprecated]#paddy#
 
   INPUT
+  expect(File.read("test.err")).to include "admitted term paddy has no Chinese counterpart"
 end
 
-RSpec.describe "warns about English-only deprecates" do
-  specify { expect { Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) }.to output(%r{deprecates term paddy has no Chinese counterpart}).to_stderr }
+it "warns about English-only deprecates" do
+    FileUtils.rm_f "test.err"
+  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) 
   = Document title
   Author
   :docfile: test.adoc
@@ -216,11 +248,13 @@ RSpec.describe "warns about English-only deprecates" do
   [deprecated]#paddy#
 
   INPUT
+  expect(File.read("test.err")).to include "deprecates term paddy has no Chinese counterpart"
 end
 
 
-RSpec.describe "warns about Chinese-only preferred" do
-  specify { expect { Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) }.to output(%r{preferred term XYZ paddy has no English counterpart}).to_stderr }
+it "warns about Chinese-only preferred" do
+    FileUtils.rm_f "test.err"
+  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) 
   = Document title
   Author
   :docfile: test.adoc
@@ -233,10 +267,12 @@ RSpec.describe "warns about Chinese-only preferred" do
   deprecated:[[zh]#XYZ paddy#]
 
   INPUT
+  expect(File.read("test.err")).to include "preferred term XYZ paddy has no English counterpart"
 end
 
-RSpec.describe "warns about Chinese-only admitted" do
-  specify { expect { Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) }.to output(%r{admitted term XYZ paddy has no English counterpart}).to_stderr }
+it "warns about Chinese-only admitted" do
+    FileUtils.rm_f "test.err"
+  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) 
   = Document title
   Author
   :docfile: test.adoc
@@ -249,10 +285,12 @@ RSpec.describe "warns about Chinese-only admitted" do
   deprecated:[[zh]#XYZ paddy#]
 
   INPUT
+  expect(File.read("test.err")).to include "admitted term XYZ paddy has no English counterpart"
 end
 
-RSpec.describe "warns about Chinese-only deprecates" do
-  specify { expect { Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) }.to output(%r{deprecates term XYZ paddy has no English counterpart}).to_stderr }
+it "warns about Chinese-only deprecates" do
+    FileUtils.rm_f "test.err"
+  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) 
   = Document title
   Author
   :docfile: test.adoc
@@ -265,10 +303,12 @@ RSpec.describe "warns about Chinese-only deprecates" do
   deprecated:[[zh]#XYZ paddy#]
 
   INPUT
+  expect(File.read("test.err")).to include "deprecates term XYZ paddy has no English counterpart"
 end
 
-RSpec.describe "warns about no English title intro" do
-  specify { expect { Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) }.to output(%r{No English Title Intro!}).to_stderr }
+it "warns about no English title intro" do
+    FileUtils.rm_f "test.err"
+  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) 
   = Document title
   Author
   :docfile: test.adoc
@@ -276,10 +316,12 @@ RSpec.describe "warns about no English title intro" do
   :title-intro-zh: Title
 
   INPUT
+  expect(File.read("test.err")).to include "No English Title Intro"
 end
 
-RSpec.describe "warns about no Chinese title intro" do
-  specify { expect { Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) }.to output(%r{No Chinese Title Intro!}).to_stderr }
+it "warns about no Chinese title intro" do
+    FileUtils.rm_f "test.err"
+  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) 
   = Document title
   Author
   :docfile: test.adoc
@@ -287,10 +329,12 @@ RSpec.describe "warns about no Chinese title intro" do
   :title-intro-en: Title
 
   INPUT
+  expect(File.read("test.err")).to include "No Chinese Title Intro"
 end
 
-RSpec.describe "warns about no English main title" do
-  specify { expect { Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) }.to output(%r{No English Title!}).to_stderr }
+it "warns about no English main title" do
+    FileUtils.rm_f "test.err"
+  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) 
   = Document title
   Author
   :docfile: test.adoc
@@ -298,10 +342,12 @@ RSpec.describe "warns about no English main title" do
   :title-main-zh: Title
 
   INPUT
+  expect(File.read("test.err")).to include "No English Title"
 end
 
-RSpec.describe "warns about no Chinese main title" do
-  specify { expect { Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) }.to output(%r{No Chinese Title!}).to_stderr }
+it "warns about no Chinese main title" do
+    FileUtils.rm_f "test.err"
+  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) 
   = Document title
   Author
   :docfile: test.adoc
@@ -309,10 +355,12 @@ RSpec.describe "warns about no Chinese main title" do
   :title-main-en: Title
 
   INPUT
+  expect(File.read("test.err")).to include "No Chinese Title"
 end
 
-RSpec.describe "warns about no English title part" do
-  specify { expect { Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) }.to output(%r{No English Title Part!}).to_stderr }
+it "warns about no English title part" do
+    FileUtils.rm_f "test.err"
+  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) 
   = Document title
   Author
   :docfile: test.adoc
@@ -320,10 +368,12 @@ RSpec.describe "warns about no English title part" do
   :title-part-zh: Title
 
   INPUT
+  expect(File.read("test.err")).to include "No English Title Part"
 end
 
-RSpec.describe "warns about no Chinese title part" do
-  specify { expect { Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) }.to output(%r{No Chinese Title Part!}).to_stderr }
+it "warns about no Chinese title part" do
+    FileUtils.rm_f "test.err"
+  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) 
   = Document title
   Author
   :docfile: test.adoc
@@ -331,10 +381,12 @@ RSpec.describe "warns about no Chinese title part" do
   :title-part-en: Title
 
   INPUT
+  expect(File.read("test.err")).to include "No Chinese Title Part"
 end
 
-RSpec.describe "warns about normative reference that is neither ISO nor GB" do
-  specify { expect { Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) }.to output(%r{non-ISO/IEC reference not expected as normative}).to_stderr }
+it "warns about normative reference that is neither ISO nor GB" do
+    FileUtils.rm_f "test.err"
+  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) 
   #{VALIDATING_BLANK_HDR}
 
   [bibliography]
@@ -342,10 +394,12 @@ RSpec.describe "warns about normative reference that is neither ISO nor GB" do
   * [[[XYZ,IESO 121]]] _Standard_
 
   INPUT
+  expect(File.read("test.err")).to include "non-ISO/IEC reference not expected as normative"
 end
 
-RSpec.describe "does not warn about normative reference that is GB" do
-  specify { expect { Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) }.not_to output(%r{non-ISO/IEC reference not expected as normative}).to_stderr }
+it "does not warn about normative reference that is GB" do
+    FileUtils.rm_f "test.err"
+  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) 
   #{VALIDATING_BLANK_HDR}
 
   [bibliography]
@@ -353,6 +407,7 @@ RSpec.describe "does not warn about normative reference that is GB" do
   * [[[XYZ,GB/T 121]]] _Standard_
 
   INPUT
+  expect(File.read("test.err")).not_to include "non-ISO/IEC reference not expected as normative"
 end
 
-
+end
