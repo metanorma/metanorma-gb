@@ -1,8 +1,9 @@
 = metanorma-gb: Authoring Chinese standards (GuoBiao, sector...) in AsciiDoc
 
 image:https://img.shields.io/gem/v/metanorma-gb.svg["Gem Version", link="https://rubygems.org/gems/metanorma-gb"]
-image:https://travis-ci.com/metanorma/metanorma-gb.svg["Build Status", link="https://travis-ci.com/metanorma/metanorma-gb"]
-image:https://ci.appveyor.com/api/projects/status/ngoyus5vqalc7v4c?svg=true["Appveyor Build Status", link="https://ci.appveyor.com/project/metanorma/metanorma-gb"]
+image:https://github.com/metanorma/metanorma-gb/workflows/macos/badge.svg["Build Status (macOS)", link="https://github.com/metanorma/metanorma-gb/actions?workflow=macos"]
+image:https://github.com/metanorma/metanorma-gb/workflows/ubuntu/badge.svg["Build Status (ubuntu)", link="https://github.com/metanorma/metanorma-gb/actions?workflow=ubuntu"]
+image:https://github.com/metanorma/metanorma-gb/workflows/windows/badge.svg["Build Status (Windows)", link="https://github.com/metanorma/metanorma-gb/actions?workflow=windows"]
 image:https://codeclimate.com/github/metanorma/metanorma-gb/badges/gpa.svg["Code Climate", link="https://codeclimate.com/github/metanorma/metanorma-gb"]
 image:https://img.shields.io/github/issues-pr-raw/metanorma/metanorma-gb.svg["Pull Requests", link="https://github.com/metanorma/metanorma-gb/pulls"]
 image:https://img.shields.io/github/commits-since/metanorma/metanorma-gb/latest.svg["Commits since latest",link="https://github.com/metanorma/metanorma-gb/releases"]
