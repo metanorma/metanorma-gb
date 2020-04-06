@@ -44,8 +44,8 @@ body {
 
 
 h1 {
-  font-size: 1.5em; 
-  line-height: 2em; 
+  font-size: 1.5em;
+  line-height: 2em;
   color: #485094;
   font-weight: 400;
 
@@ -54,8 +54,8 @@ h1 {
 }
 
 h2 {
-  font-size: 1.3em; 
-  line-height: 1.5em; 
+  font-size: 1.3em;
+  line-height: 1.5em;
   color: #485094;
   font-weight: 300;
 
@@ -75,8 +75,8 @@ h2 {
 }
 
 h3 {
-  font-size: 1.1em; 
-  line-height: 1.3em; 
+  font-size: 1.1em;
+  line-height: 1.3em;
   color: #485094;
   font-weight: 300;
 }
@@ -225,14 +225,17 @@ nav {
 }
 
 .document-type-band {
-  @include docBand($order: 2, $textLength: 210px, $offset: 180px);
+  @include docBand($order: 2, $offset: 180px);
+
+  .document-type {
+    top: 20px;
+  }
 }
 
 #governance-band p.document-type {
   font-weight: 400;
   height: 230px !important;
 }
-
 
 // Bibliograhy
 
@@ -249,7 +252,7 @@ p.Biblio, p.NormRef {
   background-color: #f7f7f7;
 
   /*
-    div.figure > img:not(.logo) { 
+    div.figure > img:not(.logo) {
       TODO:         ^^^ Relevant selector?
       margin-left: auto;
       margin-right: auto;
