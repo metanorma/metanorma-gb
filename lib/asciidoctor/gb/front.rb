@@ -67,7 +67,8 @@ module Asciidoctor
         type = node.attr("equivalence") || "equivalent"
         m = /^(?<code>[^,]+),?(?<title>.*)$/.match isostd
         title = m[:title].empty? ? "[not supplied]" : m[:title]
-        xml.relation **{ type: type } do |r|
+        xml.relation **{ type: "adoptedFrom" } do |r|
+          r.description type
           r.bibitem do |b|
             b.title { |t| t << title }
             b.docidentifier m[:code]

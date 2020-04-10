@@ -118,7 +118,8 @@ RSpec.describe Asciidoctor::Gb do
              </organization>
            </owner>
          </copyright>
-         <relation type="equivalent">
+         <relation type="adoptedFrom">
+           <description>equivalent</description>
            <bibitem>
              <title>[not supplied]</title>
              <docidentifier>ISO 1012</docidentifier>
@@ -227,7 +228,8 @@ RSpec.describe Asciidoctor::Gb do
              </organization>
            </owner>
          </copyright>
-         <relation type="nonequivalent">
+         <relation type="adoptedFrom">
+           <description>nonequivalent</description>
            <bibitem>
              <title> Televisual Frequencies</title>
              <docidentifier>ISO 1012</docidentifier>

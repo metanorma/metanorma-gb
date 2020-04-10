@@ -150,15 +150,15 @@ module IsoDoc
         gb_equivalence(isoxml)
       end
 
-      ISO_STD_XPATH = "//bibdata/relation[@type = 'equivalent' or "\
-        "@type = 'identical' or @type = 'nonequivalent']/bibitem".freeze
+      ISO_STD_XPATH = "//bibdata/relation[xmlns:description[text() = 'equivalent' or "\
+        "text() = 'identical' or text() = 'nonequivalent']]/bibitem".freeze
 
       def gb_equivalence(isoxml)
         isostdid = isoxml.at(ns("#{ISO_STD_XPATH}/docidentifier")) || return
         set(:isostandard, isostdid.text)
         isostdtitle = isoxml.at(ns("#{ISO_STD_XPATH}/title"))
         set(:isostandardtitle, isostdtitle.text) if isostdtitle
-        eq = isoxml.at(ns("//bibdata/relation/@type"))
+        eq = isoxml.at(ns("//bibdata/relation/description"))
         case eq.text
         when "equivalent" then set(:gbequivalence, "MOD")
         when "nonequivalent" then set(:gbequivalence, "NEQ")

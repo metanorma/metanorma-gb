@@ -79,7 +79,8 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
       </organization>
     </owner>
   </copyright>
-  <relation type="identical">
+  <relation type="adoptedFrom">
+  <description>identical</description>
   <bibitem>
     <docidentifier>ISO 123</docidentifier>
     <title>Rice Model document</title>
@@ -184,7 +185,8 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
       </organization>
     </owner>
   </copyright>
-  <relation type="identical">
+  <relation type="adoptedFrom">
+  <description>identical</description>
   <bibitem>
     <docidentifier>ISO 123</docidentifier>
     <title>Rice Model document</title>
@@ -289,7 +291,8 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
       </organization>
     </owner>
   </copyright>
-  <relation type="identical">
+  <relation type="adoptedFrom">
+  <description>identical</description>
   <bibitem>
     <docidentifier>ISO 123</docidentifier>
     <title>Rice Model document</title>
@@ -389,7 +392,8 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
       </organization>
     </owner>
   </copyright>
-  <relation type="equivalent">
+  <relation type="adoptedFrom">
+  <description>equivalent</description>
   <bibitem>
     <docidentifier>ISO 123</docidentifier>
     <title>Rice Model document</title>
@@ -488,7 +492,8 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
       </organization>
     </owner>
   </copyright>
-  <relation type="nonequivalent">
+  <relation type="adoptedFrom">
+  <description>nonequivalent</description>
   <bibitem>
     <docidentifier>ISO 123</docidentifier>
     <title>Rice Model document</title>
@@ -587,7 +592,8 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
       </organization>
     </owner>
   </copyright>
-  <relation type="nonequivalent">
+  <relation type="adoptedFrom">
+  <description>nonequivalent</description>
   <bibitem>
     <docidentifier>ISO 123</docidentifier>
     <title>Rice Model document</title>
@@ -686,7 +692,8 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
       </organization>
     </owner>
   </copyright>
-  <relation type="nonequivalent">
+  <relation type="adoptedFrom">
+  <description>nonequivalent</description>
   <bibitem>
     <docidentifier>ISO 123</docidentifier>
     <title>Rice Model document</title>
