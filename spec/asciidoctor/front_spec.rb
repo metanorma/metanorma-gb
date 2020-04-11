@@ -107,7 +107,7 @@ RSpec.describe Asciidoctor::Gb do
          <language>zh</language>
          <script>Hans</script>
          <status>
-           <stage>60</stage>
+           <stage  abbreviation='IS'>60</stage>
            <substage>60</substage>
          </status>
          <copyright>
@@ -138,6 +138,7 @@ RSpec.describe Asciidoctor::Gb do
 <structuredidentifier>
   <project-number>GB 123</project-number>
 </structuredidentifier>
+<stagename>国家标准</stagename>
          <gbtype>
            <gbscope>national</gbscope>
            <gbprefix>GB</gbprefix>
@@ -217,7 +218,7 @@ RSpec.describe Asciidoctor::Gb do
          <language>en</language>
          <script>Latn</script>
          <status>
-           <stage>60</stage>
+           <stage abbreviation="IS">60</stage>
            <substage>60</substage>
          </status>
          <copyright>
@@ -240,6 +241,7 @@ RSpec.describe Asciidoctor::Gb do
 <structuredidentifier>
   <project-number>T/AAA 123</project-number>
 </structuredidentifier>
+<stagename>国家标准</stagename>
          <gbtype>
            <gbscope>social-group</gbscope>
            <gbprefix>AAA</gbprefix>
@@ -311,7 +313,7 @@ RSpec.describe Asciidoctor::Gb do
          <language>zh</language>
          <script>Hans</script>
          <status>
-           <stage>60</stage>
+           <stage abbreviation="IS">60</stage>
            <substage>60</substage>
          </status>
          <copyright>
@@ -327,6 +329,7 @@ RSpec.describe Asciidoctor::Gb do
 <structuredidentifier>
   <project-number>Q/BBB 123</project-number>
 </structuredidentifier>
+<stagename>国家标准</stagename>
          <gbtype>
            <gbscope>enterprise</gbscope>
            <gbprefix>BBB</gbprefix>
@@ -400,7 +403,7 @@ RSpec.describe Asciidoctor::Gb do
          <language>en</language>
          <script>Latn</script>
          <status>
-           <stage>60</stage>
+           <stage abbreviation="IS">60</stage>
            <substage>60</substage>
          </status>
          <copyright>
@@ -416,6 +419,7 @@ RSpec.describe Asciidoctor::Gb do
 <structuredidentifier>
   <project-number>GB/Z 123</project-number>
 </structuredidentifier>
+<stagename>国家标准</stagename>
          <gbtype>
            <gbscope>national</gbscope>
            <gbprefix>GB</gbprefix>
@@ -490,7 +494,7 @@ RSpec.describe Asciidoctor::Gb do
          <language>en</language>
          <script>Latn</script>
          <status>
-           <stage>60</stage>
+           <stage abbreviation="IS">60</stage>
            <substage>60</substage>
          </status>
          <copyright>
@@ -506,6 +510,7 @@ RSpec.describe Asciidoctor::Gb do
 <structuredidentifier>
   <project-number>DB81/123</project-number>
 </structuredidentifier>
+<stagename>国家标准</stagename>
          <gbtype>
            <gbscope>local</gbscope>
            <gbprefix>81</gbprefix>
@@ -578,7 +583,7 @@ RSpec.describe Asciidoctor::Gb do
          <language>zh</language>
          <script>Hans</script>
          <status>
-           <stage>60</stage>
+           <stage abbreviation="IS">60</stage>
            <substage>60</substage>
          </status>
          <copyright>
@@ -594,6 +599,7 @@ RSpec.describe Asciidoctor::Gb do
 <structuredidentifier>
   <project-number>DBGB/123</project-number>
 </structuredidentifier>
+<stagename>国家标准</stagename>
          <gbtype>
            <gbscope>local</gbscope>
            <gbprefix>GB</gbprefix>
@@ -668,7 +674,7 @@ RSpec.describe Asciidoctor::Gb do
          <language>en</language>
          <script>Hans</script>
          <status>
-           <stage>30</stage>
+           <stage abbreviation="CD">30</stage>
            <substage>00</substage>
          </status>
          <copyright>
@@ -684,6 +690,7 @@ RSpec.describe Asciidoctor::Gb do
 <structuredidentifier>
   <project-number>DBGB/123</project-number>
 </structuredidentifier>
+ <stagename>标准草案征求意见稿</stagename>
          <gbtype>
            <gbscope>local</gbscope>
            <gbprefix>GB</gbprefix>
