@@ -130,7 +130,9 @@ RSpec.describe Asciidoctor::Gb do
              <title> Source Frequency Regulation</title>
              <docidentifier>GB/T 134</docidentifier>
            </bibitem>
+           <localityStack>
            <locality type="section"><referenceFrom>3</referenceFrom><referenceTo>5</referenceTo></locality>
+           </localityStack>
          </relation>
          <ext>
          <doctype>standard</doctype>
