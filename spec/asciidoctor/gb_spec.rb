@@ -198,7 +198,7 @@ RSpec.describe Asciidoctor::Gb do
          <language>en</language>
          <script>Latn</script>
          <status>
-           <stage>60</stage>
+           <stage abbreviation="IS">60</stage>
            <substage>60</substage>
          </status>
          <copyright>
@@ -215,6 +215,7 @@ RSpec.describe Asciidoctor::Gb do
          <structuredidentifier>
            <project-number>NY 123</project-number>
          </structuredidentifier>
+         <stagename>国家标准</stagename>
          <gbtype>
            <gbscope>sector</gbscope>
            <gbprefix>NY</gbprefix>

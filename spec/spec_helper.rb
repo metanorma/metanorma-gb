@@ -125,7 +125,7 @@ BLANK_HDR = <<~"HDR"
          <language>en</language>
          <script>Latn</script>
          <status>
-           <stage>60</stage>
+           <stage abbreviation="IS">60</stage>
            <substage>60</substage>
          </status>
          <copyright>
@@ -141,6 +141,7 @@ BLANK_HDR = <<~"HDR"
          <structuredidentifier>
   <project-number/>
 </structuredidentifier>
+<stagename>国家标准</stagename>
         <gbtype>
            <gbscope>national</gbscope>
            <gbprefix>GB</gbprefix>

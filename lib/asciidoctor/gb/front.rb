@@ -1,6 +1,24 @@
 module Asciidoctor
   module Gb
     class Converter < ISO::Converter
+      STAGE_ABBRS_CN = {
+        "00": "新工作项目建议",
+        "10": "新工作项目",
+        "20": "标准草案工作组讨论稿",
+        "30": "标准草案征求意见稿",
+        "40": "标准草案送审稿",
+        "50": "标准草案报批稿",
+        "60": "国家标准",
+        "90": "(Review)",
+        "95": "(Withdrawal)",
+      }.freeze
+
+      def stage_name(stage, substage)
+        return "Proof" if stage == "60" && substage == "00"
+        @language == "en" ?
+          STAGE_NAMES[stage.to_sym] : STAGE_ABBRS_CN[stage.to_sym]
+      end
+
       def doctype(node)
         type = node.attr("mandate") || "mandatory"
         type = "standard" if type == "mandatory"
@@ -221,6 +239,7 @@ module Asciidoctor
         metadata_committee(node, xml)
         metadata_ics(node, xml)
         structured_id(node, xml)
+        xml.stagename stage_name(get_stage(node), get_substage(node))
         metadata_gbtype(node, xml)
         metadata_gblibraryids(node, xml)
       end
