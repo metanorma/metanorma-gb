@@ -170,7 +170,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
     expect(xmlpp(html.gsub(/"#[a-f0-9-]+"/, "#_"))).to be_equivalent_to xmlpp(<<~"OUTPUT")
            <main class="main-section"><button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
                <p class="zzSTDTitle1">XXXX</p>
-               <div id="_terms_and_definitions"><h1 id="toc0">1.&#x3000;&#x672F;&#x8BED;&#x548C;&#x5B9A;&#x4E49;</h1>
+               <div id="_terms_and_definitions"><h1>1.&#x3000;&#x672F;&#x8BED;&#x548C;&#x5B9A;&#x4E49;</h1>
                <p>Prefatory content</p>
        <h2 class="TermNum" id="paddy">1.1.</h2><p class="Terms" style="text-align:left;">paddy</p><p class="AltTerms" style="text-align:left;">paddy rice&#x3000;rough rice</p>
 
@@ -206,7 +206,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
     expect(xmlpp(html.gsub(/"#[a-f0-9-]+"/, "#_"))).to be_equivalent_to xmlpp(<<~"OUTPUT")
            <main class="main-section"><button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
                <p class="zzSTDTitle1">XXXX</p>
-               <div id="_terms_and_definitions"><h1 id="toc0">1.&#x3000;&#x672F;&#x8BED;&#x548C;&#x5B9A;&#x4E49;</h1>
+               <div id="_terms_and_definitions"><h1>1.&#x3000;&#x672F;&#x8BED;&#x548C;&#x5B9A;&#x4E49;</h1>
        <h2 class="TermNum" id="paddy">1.1.</h2><p class="Terms" style="text-align:left;">paddy</p><p class="AltTerms" style="text-align:left;">paddy rice&#x3000;rough rice</p>
 
        <p class="DeprecatedTerms">&#x88AB;&#x53D6;&#x4EE3;&#xFF1A;cargo rice</p>
@@ -246,7 +246,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
     expect(xmlpp(htmlencode(html.gsub(/"#[a-f0-9-]+"/, "#_")))).to be_equivalent_to xmlpp(<<~"OUTPUT")
            <main class="main-section"><button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
                <p class="zzSTDTitle1">XXXX</p>
-               <div id="_terms_and_definitions"><h1 id="toc0">1.&#x3000;&#x672F;&#x8BED;&#x548C;&#x5B9A;&#x4E49;</h1>
+               <div id="_terms_and_definitions"><h1>1.&#x3000;&#x672F;&#x8BED;&#x548C;&#x5B9A;&#x4E49;</h1>
        <h2 class="TermNum" id="paddy">1.1.</h2><p class="Terms" style="text-align:left;">paddy</p><p class="AltTerms" style="text-align:left;">paddy rice&#x3000;rough rice</p>
 
        <p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p>
@@ -286,7 +286,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
     expect(xmlpp(htmlencode(html.gsub(/"#[a-f0-9-]+"/, "#_")))).to be_equivalent_to xmlpp(<<~"OUTPUT")
            <main class="main-section"><button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
                <p class="zzSTDTitle1">XXXX</p>
-               <div id="_terms_and_definitions"><h1 id="toc0">1.&#x3000;&#x672F;&#x8BED;&#x548C;&#x5B9A;&#x4E49;</h1>
+               <div id="_terms_and_definitions"><h1>1.&#x3000;&#x672F;&#x8BED;&#x548C;&#x5B9A;&#x4E49;</h1>
        <h2 class="TermNum" id="paddy">1.1.</h2><p class="Terms" style="text-align:left;">paddy</p><p class="AltTerms" style="text-align:left;">paddy rice&#x3000;rough rice</p>
 
        <p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p>
