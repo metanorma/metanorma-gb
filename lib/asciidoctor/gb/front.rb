@@ -217,7 +217,7 @@ module Asciidoctor
       def id_stage_prefix(dn, node)
         if node.attr("docstage") && node.attr("docstage").to_i < 60
           abbr = IsoDoc::Gb::Metadata.new("en", "Latn", {}).
-            status_abbrev(node.attr("docstage"), node.attr("iteration"),
+            status_abbrev(node.attr("docstage"), nil, node.attr("iteration"),
                           node.attr("draft"))
           dn = "/#{abbr} #{dn}" # prefixes added in cleanup
         else
