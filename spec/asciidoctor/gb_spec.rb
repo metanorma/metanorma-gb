@@ -394,6 +394,7 @@ RSpec.describe Asciidoctor::Gb do
          <bibitem id="xiso123">
          <em>a</em> <formattedref language="zh">A</formattedref> <formattedref language="en">B</formattedref>
          <docidentifier>XISO 123</docidentifier>
+         <docnumber>123</docnumber>
        </bibitem>
        </references></bibliography>
        </gb-standard>

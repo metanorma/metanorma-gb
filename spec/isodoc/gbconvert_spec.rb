@@ -154,7 +154,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
   <script>Hans</script>
 </bibdata>
                 <sections>
-    <terms id="_terms_and_definitions" obligation="normative"><title>Terms and Definitions</title>
+    <terms id="_terms_and_definitions" obligation="normative"><title>Terms and definitions</title>
     <p>Prefatory content</p>
     <term id="paddy"><preferred>paddy</preferred><admitted>paddy rice</admitted>
 <admitted>rough rice</admitted>
@@ -191,7 +191,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
   <script>Hans</script>
 </bibdata>
                 <sections>
-    <terms id="_terms_and_definitions" obligation="normative"><title>Terms and Definitions</title>
+    <terms id="_terms_and_definitions" obligation="normative"><title>Terms and definitions</title>
     <term id="paddy"><preferred>paddy</preferred><admitted>paddy rice</admitted>
 <admitted>rough rice</admitted>
 <deprecates>cargo rice</deprecates>
@@ -226,7 +226,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
   <script>Hans</script>
 </bibdata>
                 <sections>
-    <terms id="_terms_and_definitions" obligation="normative"><title>Terms and Definitions</title>
+    <terms id="_terms_and_definitions" obligation="normative"><title>Terms and definitions</title>
     <term id="paddy"><preferred>paddy</preferred><admitted>paddy rice</admitted>
 <admitted>rough rice</admitted>
 <definition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p></definition>
@@ -266,7 +266,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
   <script>Hans</script>
 </bibdata>
                 <sections>
-    <terms id="_terms_and_definitions" obligation="normative"><title>Terms and Definitions</title>
+    <terms id="_terms_and_definitions" obligation="normative"><title>Terms and definitions</title>
     <term id="paddy"><preferred>paddy</preferred><admitted>paddy rice</admitted>
 <admitted>rough rice</admitted>
 <definition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p></definition>

@@ -389,7 +389,7 @@ INPUT
     INPUT
         #{HTML_HDR}
                <p class="zzSTDTitle1">XXXX</p>
-               <div id="_terms_and_definitions"><h1>1.&#12288;Terms and definitions</h1>
+               <div id="_terms_and_definitions"><h1>1.&#12288;Terms and Definitions</h1>
        <p class="TermNum" id="paddy">1.1.</p><p class="Terms" style="text-align:left;">paddy</p><p class="AltTerms" style="text-align:left;">paddy rice</p>
        <p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p>
        <table id="_671a1994-4783-40d0-bc81-987d06ffb74e" class="Note"><tr><td class="example_label" style="padding:2pt 2pt 2pt 2pt;vertical-align:top;">Note 1 to entry:</td><td style="vertical-align:top;" class="Note">
