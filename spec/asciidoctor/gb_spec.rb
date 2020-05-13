@@ -257,7 +257,7 @@ RSpec.describe Asciidoctor::Gb do
        <li> <p id="_">IEC Electropedia: available at
        <link target="http://www.electropedia.org"/>
        </p> </li> </ul>
-       <term id="_">
+       <term id="term-time">
          <preferred language="zh"></preferred> <preferred language="en">Time</preferred>
          <definition><p id="_">This paragraph is extraneous</p></definition>
        </term></terms>
@@ -295,7 +295,7 @@ RSpec.describe Asciidoctor::Gb do
            <p id="_">So am I</p>
          </li>
        </ul>
-       <term id="_">
+       <term id="term-time">
          <preferred language="zh"></preferred> <preferred language="en">Time</preferred>
          <definition><p id="_">This paragraph is extraneous</p></definition>
        </term></terms>
@@ -389,7 +389,7 @@ RSpec.describe Asciidoctor::Gb do
        #{BLANK_HDR}
 <sections>
 
-       </sections><bibliography><references id="_" obligation="informative">
+       </sections><bibliography><references id="_" obligation="informative" normative="false">
          <title>Bibliography</title>
          <bibitem id="xiso123">
          <em>a</em> <formattedref language="zh">A</formattedref> <formattedref language="en">B</formattedref>
@@ -421,7 +421,7 @@ RSpec.describe Asciidoctor::Gb do
 </p>
 </foreword></preface>
       <sections>
-             </sections><bibliography><references id="_" obligation="informative">
+             </sections><bibliography><references id="_" obligation="informative" normative="true">
          <title>Normative References</title>
          <p id="_">The following documents are referred to in the text in such a way that some or all of their content constitutes requirements of this document. For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments) applies.</p>
     #{GBT20223.sub(%{id="GB/T20223"}, %{id="iso123"})}

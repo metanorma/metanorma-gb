@@ -66,8 +66,8 @@ RSpec.describe Asciidoctor::Gb do
 </acknowledgements>
 </preface><sections>
      
-       <clause id="_" obligation="normative">
-         <title>Scope</title>
+       <clause id="_" obligation="normative" inline-header="false">
+         <title>范围</title>
          <p id="_">Text</p>
        </clause>
      
@@ -84,7 +84,7 @@ standardization at the following addresses:</p>
 <link target="http://www.electropedia.org"/>
 </p> </li> </ul>
 
-         <term id="_">
+         <term id="term-term1">
          <preferred language="zh">1</preferred> <preferred language="en">Term1</preferred>
        </term>
        </terms>
@@ -110,7 +110,7 @@ standardization at the following addresses:</p>
     </p>
   </li>
 </ul>
-         <term id="_">
+         <term id="term-term2">
          <preferred language="zh">2</preferred> <preferred language="en">Term2</preferred>
        </term>
        </terms>
@@ -128,12 +128,12 @@ standardization at the following addresses:</p>
        </clause>
        <clause id="_" inline-header="false" obligation="normative">
          <title>Appendix 1</title>
-       </clause></annex><bibliography><references id="_" obligation="informative">
+       </clause></annex><bibliography><references id="_" obligation="informative" normative="true">
          <title>Normative References</title>
          <p id="_">There are no normative references in this document.</p>
        </references><clause id="_" obligation="informative">
          <title>Bibliography</title>
-         <references id="_" obligation="informative">
+         <references id="_" obligation="informative" normative="false">
          <title>Bibliography Subsection</title>
        </references>
        </clause></bibliography>
