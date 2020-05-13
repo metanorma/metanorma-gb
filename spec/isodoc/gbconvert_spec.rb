@@ -14,7 +14,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
   <eref bibitemid="ref10"/>
   </p>
     </foreword></preface>
-    <bibliography><references id="_normative_references" obligation="informative"><title>Normative References</title>
+    <bibliography><references id="_normative_references" obligation="informative" normative="true"><title>Normative References</title>
                <p>The following documents are referred to in the text in such a way that some or all of their content constitutes requirements of this document. For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments) applies.</p>
 <bibitem id="ISO712" type="standard">
   <title format="text/plain">Cereals and cereal products</title>
@@ -55,7 +55,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
   <docidentifier>ICC 167</docidentifier>
 </bibitem>
 
-</references><references id="_bibliography" obligation="informative">
+</references><references id="_bibliography" obligation="informative" normative="false">
   <title>Bibliography</title>
 <bibitem id="ISO3696" type="standard">
   <title format="text/plain">Water for analytical laboratory use</title>
