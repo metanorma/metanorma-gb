@@ -90,8 +90,8 @@ module IsoDoc
         "95": "obsolete",
       }
 
-      def status_abbrev_cn(stage, _substage, iter, draft)
-        return status_abbrev(stage, _substage, iter, draft) if @lang != "zh"
+      def status_abbrev_cn(stage, _substage, iter, draft, doctype)
+        return status_abbrev(stage, _substage, iter, draft, doctype) if @lang != "zh"
         stage_num = stage == "PRF" ? "60" : 
           (Asciidoctor::Gb::Converter::STAGE_ABBRS&.invert[stage]&.to_s || "??")
         stage = STAGE_ABBRS_CN[stage_num.to_sym] || "??"
@@ -109,7 +109,8 @@ module IsoDoc
           set(:statusabbr, status_abbrev_cn(docstatus["abbreviation"],
                                             isoxml&.at(ns("//bibdata/status/substage"))&.text,
                                             isoxml&.at(ns("//bibdata/status/iteration"))&.text,
-                                            isoxml&.at(ns("//version/draft"))&.text))
+                                            isoxml&.at(ns("//version/draft"))&.text,
+                                            isoxml&.at(ns("//bibdata/ext/doctype"))&.text))
           set(:status, STATUS_CSS[docstatus.text.to_sym])
           unpublished(docstatus.text) and
             set(:stageabbr, docstatus["abbreviation"])
