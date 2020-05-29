@@ -218,7 +218,7 @@ module Asciidoctor
         if node.attr("docstage") && node.attr("docstage").to_i < 60
           abbr = IsoDoc::Gb::Metadata.new("en", "Latn", {}).
             status_abbrev(node.attr("docstage"), nil, node.attr("iteration"),
-                          node.attr("draft"))
+                          node.attr("draft"), node.attr("doctype"))
           dn = "/#{abbr} #{dn}" # prefixes added in cleanup
         else
           dn += "-#{node.attr("copyright-year")}" if node.attr("copyright-year")
