@@ -236,6 +236,12 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
     <p id="_e73a417d-ad39-417d-a4c8-20e4e2529489">The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here</p>
   </modification>
 </termsource>
+<termsource status="modified">
+  <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301: 2011"><locality type="clause"><referenceFrom>3.3</referenceFrom></locality></origin>
+    <modification>
+    <p id="_e73a417d-ad39-417d-a4c8-20e4e2529489">Note 2 to entry is not included here</p>
+  </modification>
+</termsource>
 </term>
     </terms></sections>
 
@@ -250,7 +256,10 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
        <h2 class="TermNum" id="paddy">1.1.</h2><p class="Terms" style="text-align:left;">paddy</p><p class="AltTerms" style="text-align:left;">paddy rice&#x3000;rough rice</p>
 
        <p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p>
-       <p>&#x3010;<a href="#ISO7301">ISO 7301: 2011&#x3001;&#x7B2C;3.1&#x6761;</a>&#x3001;&#x6539;&#x5199;&#x2014;The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here&#x3011;</p>
+       <p>&#x3010;<a href="#ISO7301">ISO 7301: 2011&#x3001;&#x7B2C;3.1&#x6761;</a>&#x3001;&#x6539;&#x5199;&#x2014;The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here; 
+<a href='#ISO7301'>ISO 7301: 2011&#x3001;&#x7B2C;3.3&#x6761;</a>
+&#x3001;&#x6539;&#x5199;&#x2014;Note 2 to entry is not included
+here&#x3011;</p>
        </div>
                <hr width="25%" />
              </main>

@@ -176,6 +176,7 @@ module IsoDoc
       end
 
       def termref_resolve(docxml)
+        docxml = docxml.gsub(%r{\s*\[/TERMREF\]\s*</p>\s*<p>\s*\[TERMREF\]}, l10n("; "))
         docxml.split(%r{(\[TERMREF\]|\[/TERMREF\])}).each_slice(4).
           map do |a|
           a.size < 3 ? a[0] : a[0] + termref_render(a[2])
