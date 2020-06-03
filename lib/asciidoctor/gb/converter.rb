@@ -3,6 +3,7 @@ require "asciidoctor/iso/converter"
 require "metanorma/gb/version"
 require "isodoc/gb/gbconvert"
 require "isodoc/gb/gbwordconvert"
+require "isodoc/gb/pdf_convert"
 require "gb_agencies"
 require_relative "./section_input.rb"
 require_relative "./front.rb"
@@ -58,6 +59,11 @@ module Asciidoctor
           IsoDoc::Gb::WordConvert.new(doc_extract_attributes(node))
       end
 
+      def pdf_converter(node)
+        node.nil? ? IsoDoc::Gb::PdfConvert.new({}) :
+          IsoDoc::Gb::PdfConvert.new(doc_extract_attributes(node))
+      end
+
       def document(node)
         init(node)
         ret = makexml(node).to_xml(indent: 2)
@@ -68,6 +74,7 @@ module Asciidoctor
           FileUtils.mv "#{filename}.html", "#{filename}_compliant.html"
           html_converter(node).convert(filename + ".xml")
           doc_converter(node).convert(filename + ".xml")
+          pdf_converter(node).convert(filename + ".xml")
         end
         @log.write(@localdir + @filename + ".err") unless @novalid
         @files_to_delete.each { |f| FileUtils.rm f }

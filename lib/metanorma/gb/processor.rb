@@ -7,6 +7,7 @@ module Metanorma
         compliant_html: ["SimSun", "Cambria", "SimHei", "Calibri", "Courier New"],
         html: ["SimSun", "Cambria", "SimHei", "Calibri", "Courier New"],
         doc: ["SimSun", "Cambria", "SimHei", "Calibri", "Courier New"],
+        pdf: ["SimSun", "Cambria", "SimHei", "Calibri", "Courier New"],
       }
     end
 
@@ -22,7 +23,8 @@ module Metanorma
         super.merge(
           html: "html",
           compliant_html: "compliant.html",
-          doc: "doc"
+          doc: "doc",
+          pdf: "pdf",
         )
       end
 
@@ -57,6 +59,8 @@ module Metanorma
           IsoDoc::Gb::HtmlConvert.new(options.merge(compliant: true)).convert(outname, isodoc_node)
         when :doc
           IsoDoc::Gb::WordConvert.new(options).convert(outname, isodoc_node)
+        when :doc
+          IsoDoc::Gb::PdfConvert.new(options).convert(outname, isodoc_node)
         else
           super
         end

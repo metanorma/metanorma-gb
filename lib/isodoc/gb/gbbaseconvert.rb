@@ -12,7 +12,8 @@ module IsoDoc
         h = options[:headerfont] || "Arial"
         m = options[:monospacefont] || "Courier"
         t = options[:titlefont] || "Arial"
-        "$bodyfont: #{b};\n$headerfont: #{h};\n$monospacefont: #{m};\n$titlefont: #{t};\n"
+        "$bodyfont: #{b};\n$headerfont: #{h};\n$monospacefont: #{m};\n"\
+          "$titlefont: #{t};\n"
       end   
 
       def metadata_init(lang, script, labels)
@@ -45,7 +46,8 @@ module IsoDoc
               YAML.load_file(File.join(File.dirname(__FILE__),
                                        "i18n-zh-Hans.yaml"))
             else
-              YAML.load_file(File.join(File.dirname(__FILE__), "i18n-zh-Hans.yaml"))
+              YAML.load_file(File.join(File.dirname(__FILE__),
+                                       "i18n-zh-Hans.yaml"))
             end
         @labels = @labels.merge(y)
       end
@@ -100,12 +102,16 @@ module IsoDoc
       end
 
       def note_parse(node, out)
+        note_parse1(node, out, note_label(node) + ":")
+      end
+
+      def note_parse1(node, out, label)
         @note = true
         out.table **attr_code(id: node["id"], class: "Note") do |t|
           t.tr do |tr|
             @libdir = File.dirname(__FILE__)
             tr.td **EXAMPLE_TBL_ATTR do |td|
-              td << l10n(note_label(node) + ":")
+              td << l10n(label)
             end
             tr.td **{ style: "vertical-align:top;", class: "Note" } do |td|
               node.children.each { |n| parse(n, td) }
@@ -116,18 +122,7 @@ module IsoDoc
       end
 
       def termnote_parse(node, out)
-        @note = true
-        out.table **attr_code(id: node["id"], class: "Note") do |t|
-          t.tr do |tr|
-            tr.td **EXAMPLE_TBL_ATTR do |td|
-              td << l10n("#{anchor(node['id'], :label)}:")
-            end
-            tr.td **{ style: "vertical-align:top;", class: "Note" } do |td|
-              node.children.each { |n| parse(n, td) }
-            end
-          end
-        end
-        @note = false
+        note_parse1(node, out, "#{anchor(node['id'], :label)}:")
       end
 
       def middle(isoxml, out)
@@ -168,16 +163,17 @@ module IsoDoc
       def termref_render(x)
         x.sub!(%r{\s*\[MODIFICATION\]\s*$}m, l10n(", #{@modified_lbl}"))
         parts = x.split(%r{(\s*\[MODIFICATION\]|,)}m)
-        parts[1] = l10n(", #{@source_lbl}") if parts.size > 1 && parts[1] == "," &&
-          !/^\s*#{@modified_lbl}/.match(parts[2])
+        parts[1] = l10n(", #{@source_lbl}") if parts.size > 1 &&
+          parts[1] == "," && !/^\s*#{@modified_lbl}/.match(parts[2])
           parts.map do |p|
-            /\s*\[MODIFICATION\]/.match(p) ? l10n(", #{@modified_lbl} &mdash; ") : p
+            /\s*\[MODIFICATION\]/.match(p) ?
+              l10n(", #{@modified_lbl} &mdash; ") : p
           end.join.sub(/\A\s*/m, l10n("[")).sub(/\s*\z/m, l10n("]"))
       end
 
       def termref_resolve(docxml)
-        docxml = docxml.gsub(%r{\s*\[/TERMREF\]\s*</p>\s*<p>\s*\[TERMREF\]}, l10n("; "))
-        docxml.split(%r{(\[TERMREF\]|\[/TERMREF\])}).each_slice(4).
+        docxml.gsub(%r{\s*\[/TERMREF\]\s*</p>\s*<p>\s*\[TERMREF\]}, l10n("; ")).
+          split(%r{(\[TERMREF\]|\[/TERMREF\])}).each_slice(4).
           map do |a|
           a.size < 3 ? a[0] : a[0] + termref_render(a[2])
         end.join
@@ -252,11 +248,8 @@ module IsoDoc
 
       def example_parse(node, out)
         out.div **{ id: node["id"], class: "example" } do |div|
-          if node_begins_with_para(node)
-            example_p_parse(node, div)
-          else
-            example_parse1(node, div)
-          end
+          node_begins_with_para(node) ?
+            example_p_parse(node, div) : example_parse1(node, div)
         end
       end
 
