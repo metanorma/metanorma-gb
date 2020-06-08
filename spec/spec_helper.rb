@@ -33,7 +33,7 @@ end
 def htmlencode(x)
   HTMLEntities.new.encode(x, :hexadecimal).gsub(/&#x3e;/, ">").gsub(/&#xa;/, "\n").
     gsub(/&#x22;/, '"').gsub(/&#x3c;/, "<").gsub(/&#x26;/, '&').gsub(/&#x27;/, "'").
-    gsub(/\\u(....)/) { |s| "&#x#{$1.downcase};" }
+    gsub(/\\u(....)/) { |s| "&#x#{$1.downcase};" }.gsub(/, :/, ",\n:")
 end
 
 def xmlpp(x)
