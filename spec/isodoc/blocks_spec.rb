@@ -7,7 +7,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
         <gb-standard xmlns="http://riboseinc.com/gbstandard">
                        <bibdata> <language>en</language> <script>Latn</script> </bibdata>
     <preface><foreword>
-    <note>
+    <note id="A" keep-with-next="true" keep-lines-together="true">
   <p id="_f06fd0d1-a203-4f3d-a515-0bdba0f8d83f">These results are based on a study carried out on three different types of kernel.</p>
 </note>
     </foreword></preface>
@@ -17,7 +17,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
                <br/>
                <div>
                  <h1 class="ForewordTitle">Foreword&#160;</h1>
-                 <table class="Note">
+                 <table class="Note" keep-with-next="true" keep-lines-together="true">
                    <tr>
                      <td class="example_label" style="padding:2pt 2pt 2pt 2pt;vertical-align:top;">NOTE:</td>
                      <td style="vertical-align:top;" class="Note">

@@ -102,12 +102,12 @@ module IsoDoc
       end
 
       def note_parse(node, out)
-        note_parse1(node, out, note_label(node) + ":")
+        note_parse_table(node, out, note_label(node) + ":")
       end
 
-      def note_parse1(node, out, label)
+      def note_parse_table(node, out, label)
         @note = true
-        out.table **attr_code(id: node["id"], class: "Note") do |t|
+        out.table **note_attrs(node) do |t|
           t.tr do |tr|
             @libdir = File.dirname(__FILE__)
             tr.td **EXAMPLE_TBL_ATTR do |td|
@@ -122,7 +122,7 @@ module IsoDoc
       end
 
       def termnote_parse(node, out)
-        note_parse1(node, out, "#{anchor(node['id'], :label)}:")
+        note_parse_table(node, out, "#{anchor(node['id'], :label)}:")
       end
 
       def middle(isoxml, out)
