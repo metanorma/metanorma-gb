@@ -57,7 +57,8 @@ module IsoDoc
       end
 
       def formula_parse(node, out)
-        out.div **attr_code(id: node["id"], class: "formula") do |div|
+        out.div **formula_attrs(node) do div
+        out.div **attr_code(class: "formula") do |div|
           insert_tab(div, 1)
           parse(node.at(ns("./stem")), out)
           lbl = anchor(node['id'], :label, false)
@@ -67,6 +68,7 @@ module IsoDoc
           end
         end
         formula_where(node.at(ns("./dl")), out)
+        end
       end
 
       def formula_where(dl, out)
