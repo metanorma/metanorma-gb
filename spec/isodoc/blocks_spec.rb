@@ -17,7 +17,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
                <br/>
                <div>
                  <h1 class="ForewordTitle">Foreword&#160;</h1>
-                 <table class="Note" keep-with-next="true" keep-lines-together="true">
+                 <table class="Note" id="A" style='page-break-after: avoid;page-break-inside: avoid;'>
                    <tr>
                      <td class="example_label" style="padding:2pt 2pt 2pt 2pt;vertical-align:top;">NOTE:</td>
                      <td style="vertical-align:top;" class="Note">
@@ -345,19 +345,25 @@ INPUT
                <br/>
                <div>
                  <h1 class="ForewordTitle">Foreword&#160;</h1>
-                 <div id="_be9158af-7e93-4ee2-90c5-26d31c181934" class="formula">&#160; <span class="stem">(#(r = 1 %)#)</span>&#160; (1)</div>
-                 <p style='page-break-after:avoid;'>where</p>
-<table class='formula_dl'>
-                   <tr>
-                     <td style="vertical-align:top;text-align:left;">
-           <span class="stem">(#(r)#)</span>
-         </td>
-                     <td style="vertical-align:top;">&#8212;</td>
-                     <td style="vertical-align:top;">
-           <p id="_1b99995d-ff03-40f5-8f2e-ab9665a69b77">is the repeatability limit.</p>
-         </td>
-                   </tr>
-                 </table>
+                   <div id='_be9158af-7e93-4ee2-90c5-26d31c181934'>
+    <div class='formula'>
+      &#160;
+      <span class='stem'>(#(r = 1 %)#)</span>
+      &#160; (1)
+    </div>
+    <p style='page-break-after:avoid;'>where</p>
+    <table class='formula_dl'>
+      <tr>
+        <td style='vertical-align:top;text-align:left;'>
+          <span class='stem'>(#(r)#)</span>
+        </td>
+        <td style='vertical-align:top;'>&#8212;</td>
+        <td style='vertical-align:top;'>
+          <p id='_1b99995d-ff03-40f5-8f2e-ab9665a69b77'>is the repeatability limit.</p>
+        </td>
+      </tr>
+    </table>
+               </div>
                </div>
                <p class="zzSTDTitle1">XXXX</p>
                <hr width="25%"/>
