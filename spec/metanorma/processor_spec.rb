@@ -14,7 +14,7 @@ RSpec.describe Metanorma::Gb::Processor do
 
   it "registers output formats against metanorma" do
     expect(processor.output_formats.sort.to_s).to be_equivalent_to <<~"OUTPUT"
-    [[:compliant_html, "compliant.html"], [:doc, "doc"], [:html, "html"], [:pdf, "pdf"], [:rxl, "rxl"], [:xml, "xml"]]
+    [[:compliant_html, "compliant.html"], [:doc, "doc"], [:html, "html"], [:pdf, "pdf"], [:presentation, "presentation.xml"], [:rxl, "rxl"], [:xml, "xml"]]
     OUTPUT
   end
 
@@ -34,7 +34,7 @@ RSpec.describe Metanorma::Gb::Processor do
 
   it "generates HTML from IsoDoc XML" do
     FileUtils.rm_f "text.xml"
-    processor.output(<<~"INPUT", "test.html", :html)
+    processor.output(<<~"INPUT", "test.xml", "test.html", :html)
         <gb-standard xmlns="http://riboseinc.com/isoxml">
                <bibdata> <language>en</language> <script>Latn</script> </bibdata>
        <sections>

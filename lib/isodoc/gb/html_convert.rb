@@ -1,4 +1,4 @@
-require_relative "gbbaseconvert"
+require_relative "base_convert"
 require "isodoc"
 
 module IsoDoc

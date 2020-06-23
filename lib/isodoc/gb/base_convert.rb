@@ -1,6 +1,6 @@
-require_relative "gbconvert"
+require_relative "common"
 require "gb_agencies"
-require_relative "gbcleanup"
+require_relative "cleanup"
 require_relative "metadata"
 require "fileutils"
 

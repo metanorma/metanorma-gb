@@ -1,9 +1,10 @@
 require "asciidoctor"
 require "asciidoctor/iso/converter"
 require "metanorma/gb/version"
-require "isodoc/gb/gbconvert"
-require "isodoc/gb/gbwordconvert"
+require "isodoc/gb/common"
+require "isodoc/gb/word_convert"
 require "isodoc/gb/pdf_convert"
+require "isodoc/gb/presentation_xml_convert"
 require "gb_agencies"
 require_relative "./section_input.rb"
 require_relative "./front.rb"
@@ -64,21 +65,18 @@ module Asciidoctor
           IsoDoc::Gb::PdfConvert.new(doc_extract_attributes(node))
       end
 
-      def document(node)
-        init(node)
-        ret = makexml(node).to_xml(indent: 2)
-        unless node.attr("nodoc") || !node.attr("docfile")
-          filename = node.attr("docfile").gsub(/\.adoc$/, "").gsub(%r{^.*/}, "")
-          File.open(filename + ".xml", "w:utf-8") { |f| f.write(ret) }
-          html_compliant_converter(node).convert(filename + ".xml")
-          FileUtils.mv "#{filename}.html", "#{filename}_compliant.html"
-          html_converter(node).convert(filename + ".xml")
-          doc_converter(node).convert(filename + ".xml")
-          pdf_converter(node).convert(filename + ".xml")
-        end
-        @log.write(@localdir + @filename + ".err") unless @novalid
-        @files_to_delete.each { |f| FileUtils.rm f }
-        ret
+      def presentation_xml_converter(node)
+        node.nil? ? IsoDoc::Gb::PresentationXMLConvert.new({}) :
+          IsoDoc::Gb::PresentationXMLConvert.new(html_extract_attributes(node))
+      end
+
+      def outputs(node, ret)
+        File.open(@filename + ".xml", "w:UTF-8") { |f| f.write(ret) }
+        presentation_xml_converter(node).convert(@filename + ".xml")
+        html_compliant_converter(node).convert(@filename + ".presentation.xml", nil, false, "#{@filename}_compliant.html")
+        html_converter(node).convert(@filename + ".presentation.xml", nil, false, "#{@filename}.html")
+        doc_converter(node).convert(@filename + ".presentation.xml", nil, false, "#{@filename}.doc")
+        pdf_converter(node)&.convert(@filename + ".presentation.xml", nil, false, "#{@filename}.pdf")
       end
 
       def termdef_cleanup(xmldoc)

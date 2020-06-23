@@ -1,5 +1,5 @@
 require "isodoc"
-require_relative "./gbcleanup.rb"
+require_relative "./cleanup.rb"
 require_relative "./metadata.rb"
 require "fileutils"
 
