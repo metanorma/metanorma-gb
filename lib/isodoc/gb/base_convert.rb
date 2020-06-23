@@ -61,7 +61,7 @@ module IsoDoc
          div1.div **attr_code(class: "formula") do |div|
           insert_tab(div, 1)
           parse(node.at(ns("./stem")), div)
-          lbl = anchor(node['id'], :label, false)
+          lbl = @xrefs.anchor(node['id'], :label, false)
           unless lbl.nil?
             insert_tab(div, 1)
             div << "(#{lbl})"
@@ -124,7 +124,7 @@ module IsoDoc
       end
 
       def termnote_parse(node, out)
-        note_parse_table(node, out, "#{anchor(node['id'], :label)}:")
+        note_parse_table(node, out, "#{@xrefs.anchor(node['id'], :label)}:")
       end
 
       def middle(isoxml, out)
@@ -211,7 +211,7 @@ module IsoDoc
       end
 
       def example_span_label(node, div, name)
-        n = get_anchors[node["id"]]
+        n = @xrefs.get[node["id"]]
         div.span **{ class: "example_label" } do |p|
           lbl = (n.nil? || n[:label].nil? || n[:label].empty?) ? @example_lbl :
             l10n("#{@example_lbl} #{n[:label]}")

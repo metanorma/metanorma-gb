@@ -54,7 +54,7 @@ module IsoDoc
 
       def annex_name(annex, name, div)
         div.h1 **{ class: "Annex" } do |t|
-          t << "#{anchor(annex['id'], :label)}<br/><br/>"
+          t << "#{@xrefs.anchor(annex['id'], :label)}<br/><br/>"
           t.b do |b|
             name&.children&.each { |c2| parse(c2, b) }
           end
