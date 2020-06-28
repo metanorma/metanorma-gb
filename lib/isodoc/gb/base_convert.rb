@@ -1,7 +1,6 @@
 require_relative "common"
 require "gb_agencies"
 require_relative "cleanup"
-require_relative "metadata"
 require "fileutils"
 
 module IsoDoc
@@ -15,16 +14,6 @@ module IsoDoc
         "$bodyfont: #{b};\n$headerfont: #{h};\n$monospacefont: #{m};\n"\
           "$titlefont: #{t};\n"
       end   
-
-      def metadata_init(lang, script, labels)
-        unless ["en", "zh"].include? lang
-          lang = "zh"
-          script = "Hans"
-        end
-        @meta = Metadata.new(lang, script, labels)
-        @meta.set(:standardclassimg, @standardclassimg)
-        @common.meta = @meta
-      end
 
       def cleanup(docxml)
         @cleanup = Cleanup.new(@script, @deprecated_lbl)
