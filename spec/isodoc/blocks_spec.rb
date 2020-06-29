@@ -8,6 +8,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
                        <bibdata> <language>en</language> <script>Latn</script> </bibdata>
     <preface><foreword>
     <note id="A" keep-with-next="true" keep-lines-together="true">
+    <name>NOTE</name>
   <p id="_f06fd0d1-a203-4f3d-a515-0bdba0f8d83f">These results are based on a study carried out on three different types of kernel.</p>
 </note>
     </foreword></preface>
@@ -33,46 +34,17 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
     OUTPUT
   end
 
-  it "processes labelled notes" do
-                  expect(xmlpp(IsoDoc::Gb::HtmlConvert.new({}).convert("test", <<~"INPUT", true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>"))).to be_equivalent_to xmlpp(<<~"OUTPUT")
-        <gb-standard xmlns="http://riboseinc.com/gbstandard">
-                       <bibdata> <language>en</language> <script>Latn</script> </bibdata>
-    <preface><foreword>
-    <note id="note1">
-  <p id="_f06fd0d1-a203-4f3d-a515-0bdba0f8d83f">These results are based on a study carried out on three different types of kernel.</p>
-</note>
-    </foreword></preface>
-    </gb-standard>
-INPUT
-    #{HTML_HDR}
-               <br/>
-               <div>
-                 <h1 class="ForewordTitle">Foreword&#160;</h1>
-                 <table id="note1" class="Note">
-                   <tr>
-                     <td class="example_label" style="padding:2pt 2pt 2pt 2pt;vertical-align:top;">NOTE:</td>
-                     <td style="vertical-align:top;" class="Note">
-         <p id="_f06fd0d1-a203-4f3d-a515-0bdba0f8d83f">These results are based on a study carried out on three different types of kernel.</p>
-       </td>
-                   </tr>
-                 </table>
-               </div>
-               <p class="zzSTDTitle1">XXXX</p>
-               <hr width="25%"/>
-             </div>
-           </body>
-    OUTPUT
-  end
-
   it "processes sequences of notes" do
                   expect(xmlpp(IsoDoc::Gb::HtmlConvert.new({}).convert("test", <<~"INPUT", true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>"))).to be_equivalent_to xmlpp(<<~"OUTPUT")
         <gb-standard xmlns="http://riboseinc.com/gbstandard">
                        <bibdata> <language>en</language> <script>Latn</script> </bibdata>
     <preface><foreword>
     <note id="note1">
+    <name>NOTE  1</name>
   <p id="_f06fd0d1-a203-4f3d-a515-0bdba0f8d83f">These results are based on a study carried out on three different types of kernel.</p>
 </note>
     <note id="note2">
+    <name>NOTE  2</name>
   <p id="_f06fd0d1-a203-4f3d-a515-0bdba0f8d83a">These results are based on a study carried out on three different types of kernel.</p>
 </note>
     </foreword></preface>
@@ -112,6 +84,7 @@ INPUT
                        <bibdata> <language>en</language> <script>Latn</script> </bibdata>
     <preface><foreword>
     <note>
+    <name>NOTE</name>
   <p id="_f06fd0d1-a203-4f3d-a515-0bdba0f8d83f">These results are based on a study carried out on three different types of kernel.</p>
   <p id="_f06fd0d1-a203-4f3d-a515-0bdba0f8d83a">These results are based on a study carried out on three different types of kernel.</p>
 </note>
@@ -145,6 +118,7 @@ INPUT
                        <bibdata> <language>en</language> <script>Latn</script> </bibdata>
     <preface><foreword>
     <note>
+    <name>NOTE</name>
     <dl>
     <dt>A</dt>
     <dd><p>B</p></dd>
@@ -479,9 +453,11 @@ OUTPUT
 <term id="paddy"><preferred>paddy</preferred><admitted>paddy rice</admitted>
 <definition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p></definition>
 <termnote id="_671a1994-4783-40d0-bc81-987d06ffb74e">
+<name>Note 1 to entry</name<
   <p id="_19830f33-e46c-42cc-94ca-a5ef101132d5">The starch of waxy rice consists almost entirely of amylopectin. The kernels have a tendency to stick together after cooking.</p>
 </termnote>
 <termnote id="_671a1994-4783-40d0-bc81-987d06ffb74f">
+<name>Note 2 to entry</name<
 <ul><li>A</li></ul>
   <p id="_19830f33-e46c-42cc-94ca-a5ef101132d5">The starch of waxy rice consists almost entirely of amylopectin. The kernels have a tendency to stick together after cooking.</p>
 </termnote>

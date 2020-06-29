@@ -76,27 +76,32 @@ module IsoDoc
       #end
 
       def note_parse(node, out)
-        note_parse_table(node, out, note_label(node) + ":")
+        note_parse_table(node, out)
       end
 
-      def note_parse_table(node, out, label)
+      def note_parse_table(node, out)
         @note = true
+        name = node&.at(ns("./name"))&.remove
+        note_parse_table1(node, out, name)
+        @note = false
+      end
+
+      def note_parse_table1(node, out, name)
         out.table **note_attrs(node) do |t|
           t.tr do |tr|
-            @libdir = File.dirname(__FILE__)
             tr.td **EXAMPLE_TBL_ATTR do |td|
-              td << l10n(label)
+              name and name.children.each { |n| parse(n, td) }
+              td << l10n(": ")
             end
             tr.td **{ style: "vertical-align:top;", class: "Note" } do |td|
               node.children.each { |n| parse(n, td) }
             end
           end
         end
-        @note = false
       end
 
       def termnote_parse(node, out)
-        note_parse_table(node, out, "#{@xrefs.anchor(node['id'], :label)}:")
+        note_parse_table(node, out)
       end
 
       def middle(isoxml, out)
