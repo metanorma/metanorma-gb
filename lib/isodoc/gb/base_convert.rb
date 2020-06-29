@@ -71,9 +71,9 @@ module IsoDoc
         { class: "example_label",
           style: "padding:2pt 2pt 2pt 2pt;vertical-align:top;" }.freeze
 
-      #def example_label(node)
-        #l10n(super + ":")
-      #end
+      def note_delim
+        l10n(": ")
+      end
 
       def note_parse(node, out)
         note_parse_table(node, out)
@@ -91,7 +91,7 @@ module IsoDoc
           t.tr do |tr|
             tr.td **EXAMPLE_TBL_ATTR do |td|
               name and name.children.each { |n| parse(n, td) }
-              td << l10n(": ")
+              td << note_delim
             end
             tr.td **{ style: "vertical-align:top;", class: "Note" } do |td|
               node.children.each { |n| parse(n, td) }
