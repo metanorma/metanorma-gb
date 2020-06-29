@@ -62,10 +62,10 @@ module IsoDoc
         out.table **attr_code(id: node["id"], class: "example") do |t|
           t.tr do |tr|
             tr.td **EXAMPLE_TBL_ATTR do |td|
-              td << l10n(example_label(node) + ":")
+              node.at(ns("./name")).children.each { |n| parse(n, td) }
             end
             tr.td **{ valign: "top", class: "example" } do |td|
-              node.children.each { |n| parse(n, td) }
+              node.children.each { |n| parse(n, td) unless n.name == "name" }
             end
           end
         end

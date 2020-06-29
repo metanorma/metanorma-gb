@@ -45,18 +45,15 @@ module IsoDoc
         super || prefix == "Chinese Standard"
       end
 
-      def formula_parse(node, out)
-        out.div **formula_attrs(node) do |div1|
-         div1.div **attr_code(class: "formula") do |div|
+      def formula_parse1(node, out)
+         out.div **attr_code(class: "formula") do |div|
           insert_tab(div, 1)
           parse(node.at(ns("./stem")), div)
-          lbl = @xrefs.anchor(node['id'], :label, false)
+          lbl = node&.at(ns("./name"))&.text
           unless lbl.nil?
             insert_tab(div, 1)
             div << "(#{lbl})"
           end
-        end
-        formula_where(node.at(ns("./dl")), div1)
         end
       end
 
@@ -88,9 +85,9 @@ module IsoDoc
         { class: "example_label",
           style: "padding:2pt 2pt 2pt 2pt;vertical-align:top;" }.freeze
 
-      def example_label(node)
-        l10n(super + ":")
-      end
+      #def example_label(node)
+        #l10n(super + ":")
+      #end
 
       def note_parse(node, out)
         note_parse_table(node, out, note_label(node) + ":")
@@ -200,12 +197,7 @@ module IsoDoc
       end
 
       def example_span_label(node, div, name)
-        n = @xrefs.get[node["id"]]
         div.span **{ class: "example_label" } do |p|
-          lbl = (n.nil? || n[:label].nil? || n[:label].empty?) ? @example_lbl :
-            l10n("#{@example_lbl} #{n[:label]}")
-          p << l10n(lbl + ":")
-          name and !lbl.nil? and p << "&nbsp;&mdash; "
           name and name.children.each { |n| parse(n, div) }
         end
       end
