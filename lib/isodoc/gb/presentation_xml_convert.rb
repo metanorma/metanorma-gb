@@ -8,7 +8,7 @@ module IsoDoc
         n = @xrefs.get[f["id"]]
         lbl = (n.nil? || n[:label].nil? || n[:label].empty?) ? @example_lbl :
           l10n("#{@example_lbl} #{n[:label]}")
-        prefix_name(f, "&nbsp;&mdash; ", l10n(lbl + ":"))
+        prefix_name(f, "&nbsp;&mdash; ", l10n(lbl + ":"), "name")
       end
 
       include Init
