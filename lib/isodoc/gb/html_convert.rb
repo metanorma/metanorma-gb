@@ -44,13 +44,8 @@ module IsoDoc
         meta[:standard_agency_formatted] =
           @common.format_agency(meta[:standard_agency], format, @localdir)
         meta[:standard_logo] = logo
-
         template = Liquid::Template.parse(docxml)
         template.render(meta.map { |k, v| [k.to_s, v] }.to_h)
-
-        #template = liquid(docxml)
-      #template.render(meta.map { |k, v| [k.to_s, empty2nil(v)] }.to_h).
-        #gsub('&lt;', '&#x3c;').gsub('&gt;', '&#x3e;').gsub('&amp;', '&#x26;')
       end
 
       def annex_name(annex, name, div)

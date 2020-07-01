@@ -9,9 +9,6 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
                            <bibdata> <language>en</language> <script>Latn</script> </bibdata>
     <preface><foreword>
   <p id="_f06fd0d1-a203-4f3d-a515-0bdba0f8d83f">
-  <eref bibitemid="ISO712"/>
-  <eref bibitemid="ref1"/>
-  <eref bibitemid="ref10"/>
   </p>
     </foreword></preface>
     <bibliography><references id="_normative_references" obligation="informative" normative="true"><title>Normative References</title>
@@ -86,9 +83,6 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
              <div>
                <h1 class="ForewordTitle">Foreword&#160;</h1>
                <p id="_f06fd0d1-a203-4f3d-a515-0bdba0f8d83f">
-         <a href="#ISO712">ISO 712</a>
-         <a href="#ref1">ICC 167</a>
-         <a href="#ref10">[10]</a>
          </p>
              </div>
              <p class="zzSTDTitle1">XXXX</p>
@@ -231,13 +225,13 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
 <admitted>rough rice</admitted>
 <definition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p></definition>
 <termsource status="modified">
-  <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301: 2011"><locality type="clause"><referenceFrom>3.1</referenceFrom></locality></origin>
+  <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301: 2011"><locality type="clause"><referenceFrom>3.1</referenceFrom></locality>ISO 7301: 2011&#x3001;&#x7B2C;3.1&#x6761;</origin>
     <modification>
     <p id="_e73a417d-ad39-417d-a4c8-20e4e2529489">The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here</p>
   </modification>
 </termsource>
 <termsource status="modified">
-  <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301: 2011"><locality type="clause"><referenceFrom>3.3</referenceFrom></locality></origin>
+  <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301: 2011"><locality type="clause"><referenceFrom>3.3</referenceFrom></locality>ISO 7301: 2011&#x3001;&#x7B2C;3.3&#x6761;</origin>
     <modification>
     <p id="_e73a417d-ad39-417d-a4c8-20e4e2529489">Note 2 to entry is not included here</p>
   </modification>
@@ -280,7 +274,7 @@ here&#x3011;</p>
 <admitted>rough rice</admitted>
 <definition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p></definition>
 <termsource status="modified">
-  <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301: 2011"><locality type="clause"><referenceFrom>3.1</referenceFrom></locality></origin>
+  <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301: 2011"><locality type="clause"><referenceFrom>3.1</referenceFrom></locality>ISO 7301: 2011&#x3001;&#x7B2C;3.1&#x6761;</origin>
     <modification>
     <p id="_e73a417d-ad39-417d-a4c8-20e4e2529489"/>
   </modification>
