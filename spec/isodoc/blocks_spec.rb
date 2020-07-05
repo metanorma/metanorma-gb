@@ -448,9 +448,11 @@ OUTPUT
         <gb-standard xmlns="http://riboseinc.com/gbstandard">
                        <bibdata> <language>en</language> <script>Latn</script> </bibdata>
     <sections>
-    <terms id="_terms_and_definitions" obligation="normative"><title>Terms and Definitions</title>
+    <terms id="_terms_and_definitions" obligation="normative"><title>1.<tab/>Terms and Definitions</title>
 
-<term id="paddy"><preferred>paddy</preferred><admitted>paddy rice</admitted>
+<term id="paddy">
+<name>1.1.</name>
+<preferred>paddy</preferred><admitted>paddy rice</admitted>
 <definition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p></definition>
 <termnote id="_671a1994-4783-40d0-bc81-987d06ffb74e">
 <name>Note 1 to entry</name<

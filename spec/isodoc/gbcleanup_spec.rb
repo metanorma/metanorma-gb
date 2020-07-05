@@ -114,14 +114,15 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
         <gb-standard xmlns="http://riboseinc.com/gbstandard">
                                    <bibdata> <language>en</language> <script>Latn</script> </bibdata>
         <sections>
-               <clause id="A" inline-header="false" obligation="normative"><title>Clause 4</title><clause id="N" inline-header="false" obligation="normative">
+               <clause id="A" inline-header="false" obligation="normative"><title>1.<tab/>Clause 4</title>
+<clause id="N" inline-header="false" obligation="normative">
 
-         <title>Introduction<bookmark id="Q"/> to this<fn reference="1">
+         <title>1.1.<tab/>Introduction<bookmark id="Q"/> to this<fn reference="1">
   <p id="_ff27c067-2785-4551-96cf-0a73530ff1e6">Formerly denoted as 15 % (m/m).</p>
 </fn></title>
        </clause>
        <clause id="O" inline-header="false" obligation="normative">
-         <title>Clause 4.2</title>
+         <title>1.2.<tab/>Clause 4.2</title>
          <p>A<fn reference="1">
   <p id="_ff27c067-2785-4551-96cf-0a73530ff1e6">Formerly denoted as 15 % (m/m).</p>
 </fn></p>
@@ -131,7 +132,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
     INPUT
     word = File.read("test.doc", encoding: "utf-8").sub(/^.*<div class="WordSection2">/m, '<div class="WordSection2">').
       sub(%r{<p class="MsoNormal">\s*<br clear="all" class="section"/>\s*</p>\s*<div class="WordSection3">.*$}m, "")
-    expect(xmlpp(word.gsub(/_Toc\d\d+/, "_Toc"))).to be_equivalent_to <<~'OUTPUT'
+    expect(xmlpp(word.gsub(/_Toc\d\d+/, "_Toc"))).to be_equivalent_to xmlpp(<<~'OUTPUT')
     <div class="WordSection2"><p class="zzContents" style="margin-top:0cm">Table of contents</p>
        
        <p class="MsoToc1"><span lang="EN-GB" xml:lang="EN-GB"><span style="mso-element:field-begin"></span><span style="mso-spacerun:yes">&#xA0;</span>TOC

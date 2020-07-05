@@ -48,15 +48,6 @@ module IsoDoc
         template.render(meta.map { |k, v| [k.to_s, v] }.to_h)
       end
 
-      def annex_name(annex, name, div)
-        div.h1 **{ class: "Annex" } do |t|
-          t << "#{@xrefs.anchor(annex['id'], :label)}<br/><br/>"
-          t.b do |b|
-            name&.children&.each { |c2| parse(c2, b) }
-          end
-        end
-      end
-
       include BaseConvert
       include Init
     end

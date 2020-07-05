@@ -66,8 +66,8 @@ RSpec.describe Asciidoctor::Gb do
 </acknowledgements>
 </preface><sections>
      
-       <clause id="_" obligation="normative" inline-header="false">
-         <title>范围</title>
+       <clause id="_" obligation="normative" type="scope">
+         <title>Scope</title>
          <p id="_">Text</p>
        </clause>
      
@@ -114,8 +114,8 @@ standardization at the following addresses:</p>
          <preferred language="zh">2</preferred> <preferred language="en">Term2</preferred>
        </term>
        </terms>
-       <definitions id="_"><title>符号、代号和缩略语</title></definitions></clause>
-       <definitions id="_"><title>符号、代号和缩略语</title></definitions>
+       <definitions id="_" obligation="normative"><title>符号、代号和缩略语</title></definitions></clause>
+       <definitions id="_" obligation="normative"><title>符号、代号和缩略语</title></definitions>
        <clause id="_" inline-header="false" obligation="normative"><title>Clause 4</title><clause id="_" inline-header="false" obligation="normative">
          <title>Introduction</title>
        </clause>

@@ -3,7 +3,7 @@ require "fileutils"
 
 RSpec.describe IsoDoc::Gb::HtmlConvert do
   it "processes IsoXML bibliographies" do
-              expect(xmlpp(IsoDoc::Gb::HtmlConvert.new({}).convert("test", <<~"INPUT", true).gsub(/^.*<body/m, "<body xmlns:epub='epub'").gsub(%r{</body>.*}m, "</body>"))).to be_equivalent_to xmlpp(<<~"OUTPUT")
+    input = <<~INPUT
 
             <gb-standard xmlns="http://riboseinc.com/gbstandard">
                            <bibdata> <language>en</language> <script>Latn</script> </bibdata>
@@ -78,6 +78,81 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
 </bibliography>
     </gb-standard>
     INPUT
+    presxml = <<~OUTPUT
+<gb-standard xmlns="http://riboseinc.com/gbstandard">
+                                  <bibdata> <language>en</language> <script>Latn</script> </bibdata>
+           <preface><foreword>
+         <p id="_f06fd0d1-a203-4f3d-a515-0bdba0f8d83f">
+         </p>
+           </foreword></preface>
+           <bibliography><references id="_normative_references" obligation="informative" normative="true"><title depth="1">1&#x3000;Normative References</title>
+                      <p>The following documents are referred to in the text in such a way that some or all of their content constitutes requirements of this document. For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments) applies.</p>
+       <bibitem id="ISO712" type="standard">
+         <title format="text/plain">Cereals and cereal products</title>
+         <docidentifier type="ISO">ISO 712</docidentifier>
+         <contributor>
+           <role type="publisher"/>
+           <organization>
+             <name>International Organization for Standardization</name>
+           </organization>
+         </contributor>
+       </bibitem>
+       <bibitem id="ISO16634" type="standard">
+         <title format="text/plain">Cereals, pulses, milled cereal products, oilseeds and animal feeding stuffs</title>
+         <docidentifier type="Chinese Standard">GM/T 16634:-- (all parts)</docidentifier>
+         <date type="published"><on>--</on></date>
+         <contributor>
+           <role type="publisher"/>
+           <organization>
+             <abbreviation>ISO</abbreviation>
+           </organization>
+         </contributor>
+         <note format="text/plain" reference="1" type="ISO DATE">Under preparation. (Stage at the time of publication ISO/DIS 16634)</note>
+         <extent type="part"><referenceFrom>all</referenceFrom></extent>
+       </bibitem>
+       <bibitem id="ISO20483" type="standard">
+         <title format="text/plain">Cereals and pulses</title>
+         <docidentifier type="ISO">ISO 20483:2013-2014</docidentifier>
+         <date type="published"><from>2013</from><to>2014</to></date>
+         <contributor>
+           <role type="publisher"/>
+           <organization>
+             <name>International Organization for Standardization</name>
+           </organization>
+         </contributor>
+       </bibitem>
+       <bibitem id="ref1">
+         <formattedref format="application/x-isodoc+xml"><smallcap>Standard No I.C.C 167</smallcap>. <em>Determination of the protein content in cereal and cereal products for food and animal feeding stuffs according to the Dumas combustion method</em> (see <link target="http://www.icc.or.at"/>)</formattedref>
+         <docidentifier>ICC 167</docidentifier>
+       </bibitem>
+     
+       </references><references id="_bibliography" obligation="informative" normative="false">
+         <title depth="1">Bibliography</title>
+       <bibitem id="ISO3696" type="standard">
+         <title format="text/plain">Water for analytical laboratory use</title>
+         <docidentifier type="ISO">ISO 3696</docidentifier>
+         <contributor>
+           <role type="publisher"/>
+           <organization>
+             <abbreviation>ISO</abbreviation>
+           </organization>
+         </contributor>
+       </bibitem>
+       <bibitem id="ref10">
+         <formattedref format="application/x-isodoc+xml"><smallcap>Standard No I.C.C 167</smallcap>. <em>Determination of the protein content in cereal and cereal products for food and animal feeding stuffs according to the Dumas combustion method</em> (see <link target="http://www.icc.or.at"/>)</formattedref>
+         <docidentifier type="metanorma">[10]</docidentifier>
+       </bibitem>
+       <bibitem id="ref11">
+         <formattedref format="application/x-isodoc+xml"><smallcap>Standard No I.C.C 167</smallcap>. <em>Determination of the protein content in cereal and cereal products for food and animal feeding stuffs according to the Dumas combustion method</em> (see <link target="http://www.icc.or.at"/>)</formattedref>
+         <docidentifier type="IETF">RFC 10</docidentifier>
+       </bibitem>
+     
+     
+       </references>
+       </bibliography>
+           </gb-standard>
+    OUTPUT
+    html = <<~OUTPUT
               #{HTML_HDR.sub(/<body/, "<body xmlns:epub='epub'")}
              <br/>
              <div>
@@ -87,7 +162,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
              </div>
              <p class="zzSTDTitle1">XXXX</p>
              <div>
-               <h1>1.&#12288;Normative references</h1>
+               <h1>1&#12288;Normative References</h1>
                <p>The following documents are referred to in the text in such a way that some or all of their content constitutes requirements of this document. For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments) applies.</p>
                <p id="ISO712" class="NormRef">ISO 712, <i>Cereals and cereal products</i></p>
                <p id="ISO16634" class="NormRef">GM/T 16634:-- (all parts)<a href="#fn:1" class="FootnoteRef"><sup>1</sup></a>, <i>Cereals, pulses, milled cereal products, oilseeds and animal feeding stuffs</i></p>
@@ -108,6 +183,8 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
            </div>
          </body>
     OUTPUT
+              expect(xmlpp(IsoDoc::Gb::PresentationXMLConvert.new({}).convert("test", input, true).gsub(/^.*<body/m, "<body xmlns:epub='epub'").gsub(%r{</body>.*}m, "</body>"))).to be_equivalent_to xmlpp(presxml)
+              expect(xmlpp(IsoDoc::Gb::HtmlConvert.new({}).convert("test", presxml, true).gsub(/^.*<body/m, "<body xmlns:epub='epub'").gsub(%r{</body>.*}m, "</body>"))).to be_equivalent_to xmlpp(html)
   end
 
   it "processes string tag" do
@@ -148,9 +225,11 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
   <script>Hans</script>
 </bibdata>
                 <sections>
-    <terms id="_terms_and_definitions" obligation="normative"><title>Terms and definitions</title>
+    <terms id="_terms_and_definitions" obligation="normative"><title>1.<tab/>Terms and definitions</title>
     <p>Prefatory content</p>
-    <term id="paddy"><preferred>paddy</preferred><admitted>paddy rice</admitted>
+    <term id="paddy">
+    <name>1.1.</name>
+<preferred>paddy</preferred><admitted>paddy rice</admitted>
 <admitted>rough rice</admitted>
 <deprecates>cargo rice</deprecates>
 <definition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p></definition>
@@ -164,7 +243,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
     expect(xmlpp(html.gsub(/"#[a-f0-9-]+"/, "#_"))).to be_equivalent_to xmlpp(<<~"OUTPUT")
            <main class="main-section"><button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
                <p class="zzSTDTitle1">XXXX</p>
-               <div id="_terms_and_definitions"><h1 id="toc0">1.&#x3000;&#x672F;&#x8BED;&#x548C;&#x5B9A;&#x4E49;</h1>
+               <div id="_terms_and_definitions"><h1 id="toc0">1.&#x3000;Terms and definitions</h1>
                <p>Prefatory content</p>
        <h2 class="TermNum" id="paddy">1.1.</h2><p class="Terms" style="text-align:left;">paddy</p><p class="AltTerms" style="text-align:left;">paddy rice&#x3000;rough rice</p>
 
@@ -185,8 +264,10 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
   <script>Hans</script>
 </bibdata>
                 <sections>
-    <terms id="_terms_and_definitions" obligation="normative"><title>Terms and definitions</title>
-    <term id="paddy"><preferred>paddy</preferred><admitted>paddy rice</admitted>
+    <terms id="_terms_and_definitions" obligation="normative"><title>1.<tab/>Terms and definitions</title>
+    <term id="paddy">
+    <name>1.1.</name>
+<preferred>paddy</preferred><admitted>paddy rice</admitted>
 <admitted>rough rice</admitted>
 <deprecates>cargo rice</deprecates>
 <definition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p></definition>
@@ -200,7 +281,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
     expect(xmlpp(html.gsub(/"#[a-f0-9-]+"/, "#_"))).to be_equivalent_to xmlpp(<<~"OUTPUT")
            <main class="main-section"><button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
                <p class="zzSTDTitle1">XXXX</p>
-               <div id="_terms_and_definitions"><h1 id="toc0">1.&#x3000;&#x672F;&#x8BED;&#x548C;&#x5B9A;&#x4E49;</h1>
+               <div id="_terms_and_definitions"><h1 id="toc0">1.&#x3000;Terms and definitions</h1>
        <h2 class="TermNum" id="paddy">1.1.</h2><p class="Terms" style="text-align:left;">paddy</p><p class="AltTerms" style="text-align:left;">paddy rice&#x3000;rough rice</p>
 
        <p class="DeprecatedTerms">&#x88AB;&#x53D6;&#x4EE3;&#xFF1A;cargo rice</p>
@@ -220,8 +301,10 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
   <script>Hans</script>
 </bibdata>
                 <sections>
-    <terms id="_terms_and_definitions" obligation="normative"><title>Terms and definitions</title>
-    <term id="paddy"><preferred>paddy</preferred><admitted>paddy rice</admitted>
+    <terms id="_terms_and_definitions" obligation="normative"><title>1.<tab/>Terms and definitions</title>
+    <term id="paddy">
+    <name>1.1.</name>
+<preferred>paddy</preferred><admitted>paddy rice</admitted>
 <admitted>rough rice</admitted>
 <definition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p></definition>
 <termsource status="modified">
@@ -246,7 +329,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
     expect(xmlpp(htmlencode(html.gsub(/"#[a-f0-9-]+"/, "#_")))).to be_equivalent_to xmlpp(<<~"OUTPUT")
            <main class="main-section"><button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
                <p class="zzSTDTitle1">XXXX</p>
-               <div id="_terms_and_definitions"><h1 id="toc0">1.&#x3000;&#x672F;&#x8BED;&#x548C;&#x5B9A;&#x4E49;</h1>
+               <div id="_terms_and_definitions"><h1 id="toc0">1.&#x3000;Terms and definitions</h1>
        <h2 class="TermNum" id="paddy">1.1.</h2><p class="Terms" style="text-align:left;">paddy</p><p class="AltTerms" style="text-align:left;">paddy rice&#x3000;rough rice</p>
 
        <p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p>
@@ -269,8 +352,10 @@ here&#x3011;</p>
   <script>Hans</script>
 </bibdata>
                 <sections>
-    <terms id="_terms_and_definitions" obligation="normative"><title>Terms and definitions</title>
-    <term id="paddy"><preferred>paddy</preferred><admitted>paddy rice</admitted>
+    <terms id="_terms_and_definitions" obligation="normative"><title>1.<tab/>Terms and definitions</title>
+    <term id="paddy">
+    <name>1.1.</name>
+<preferred>paddy</preferred><admitted>paddy rice</admitted>
 <admitted>rough rice</admitted>
 <definition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p></definition>
 <termsource status="modified">
@@ -289,7 +374,7 @@ here&#x3011;</p>
     expect(xmlpp(htmlencode(html.gsub(/"#[a-f0-9-]+"/, "#_")))).to be_equivalent_to xmlpp(<<~"OUTPUT")
            <main class="main-section"><button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
                <p class="zzSTDTitle1">XXXX</p>
-               <div id="_terms_and_definitions"><h1 id="toc0">1.&#x3000;&#x672F;&#x8BED;&#x548C;&#x5B9A;&#x4E49;</h1>
+               <div id="_terms_and_definitions"><h1 id="toc0">1.&#x3000;Terms and definitions</h1>
        <h2 class="TermNum" id="paddy">1.1.</h2><p class="Terms" style="text-align:left;">paddy</p><p class="AltTerms" style="text-align:left;">paddy rice&#x3000;rough rice</p>
 
        <p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p>
