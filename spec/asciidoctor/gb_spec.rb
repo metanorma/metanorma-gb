@@ -34,6 +34,7 @@ RSpec.describe Asciidoctor::Gb do
       :docfile: test.adoc
       :novalid:
       :script: Latn
+      :no-pdf:
 
     INPUT
     html = File.read("test.doc", encoding: "utf-8")
@@ -52,6 +53,7 @@ RSpec.describe Asciidoctor::Gb do
       :novalid:
       :script: Latn
       :scope: local
+      :no-pdf:
 
     INPUT
     html = File.read("test.doc", encoding: "utf-8")
@@ -68,6 +70,7 @@ RSpec.describe Asciidoctor::Gb do
       Author
       :docfile: test.adoc
       :novalid:
+      :no-pdf:
 
     INPUT
     html = File.read("test.doc", encoding: "utf-8")
@@ -86,6 +89,7 @@ RSpec.describe Asciidoctor::Gb do
       :novalid:
       :script: Hans
       :scope: local
+      :no-pdf:
 
     INPUT
     html = File.read("test.doc", encoding: "utf-8")
@@ -107,6 +111,7 @@ RSpec.describe Asciidoctor::Gb do
       :header-font: Comic Sans
       :monospace-font: Andale Mono
       :title-font: Symbol
+      :no-pdf:
 
     INPUT
     html = File.read("test.doc", encoding: "utf-8")
@@ -126,12 +131,13 @@ RSpec.describe Asciidoctor::Gb do
       :standard-logo-img: spec/asciidoctor/examples/a.gif
       :standard-class-img: spec/asciidoctor/examples/b.gif
       :standard-issuer-img: spec/asciidoctor/examples/c.gif
+      :no-pdf:
 
     INPUT
     html = File.read("test.html", encoding: "utf-8")
-    expect(html).to match %r{<div class="coverpage-logo-gb-img"><img class="logo" width="113" height="56" src="test.presentation_htmlimages/[^\.]+.gif" alt="GB" /></div>}
-    expect(html).to match %r{<span class="coverpage-logo-text"><img class="logo" src="test.presentation_htmlimages/[^\.]+.gif" alt="&#x4E2D;&#x534E;&#x4EBA;&#x6C11;&#x5171;&#x548C;&#x56FD;&#x56FD;&#x5BB6;&#x6807;&#x51C6;" width="18" height="18" /></span>}
-    expect(html).to match %r{<img class="logo" src="test.presentation_htmlimages/[^\.]+.gif" alt="&#x4E2D;&#x534E;&#x4EBA;&#x6C11;&#x5171;&#x548C;&#x56FD;&#x56FD;&#x5BB6;&#x8D28;&#x91CF;&#x76D1;&#x7763;&#x68C0;&#x9A8C;&#x68C0;&#x75AB;&#x603B;&#x5C40;,&#x4E2D;&#x56FD;&#x56FD;&#x5BB6;&#x6807;&#x51C6;&#x5316;&#x7BA1;&#x7406;&#x59D4;&#x5458;&#x4F1A;" width="18" height="18" />}
+    expect(html).to match %r{<div class="coverpage-logo-gb-img"><img class="logo" width="113" height="56" src="test.htmlimages/[^\.]+.gif" alt="GB" /></div>}
+    expect(html).to match %r{<span class="coverpage-logo-text"><img class="logo" src="test.htmlimages/[^\.]+.gif" alt="&#x4E2D;&#x534E;&#x4EBA;&#x6C11;&#x5171;&#x548C;&#x56FD;&#x56FD;&#x5BB6;&#x6807;&#x51C6;" width="18" height="18" /></span>}
+    expect(html).to match %r{<img class="logo" src="test.htmlimages/[^\.]+.gif" alt="&#x4E2D;&#x534E;&#x4EBA;&#x6C11;&#x5171;&#x548C;&#x56FD;&#x56FD;&#x5BB6;&#x8D28;&#x91CF;&#x76D1;&#x7763;&#x68C0;&#x9A8C;&#x68C0;&#x75AB;&#x603B;&#x5C40;,&#x4E2D;&#x56FD;&#x56FD;&#x5BB6;&#x6807;&#x51C6;&#x5316;&#x7BA1;&#x7406;&#x59D4;&#x5458;&#x4F1A;" width="18" height="18" />}
   end
 
   it "does contributor cleanup" do

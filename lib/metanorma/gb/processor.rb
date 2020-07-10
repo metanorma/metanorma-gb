@@ -32,10 +32,6 @@ module Metanorma
         "Metanorma::Gb #{Metanorma::Gb::VERSION}"
       end
 
-      def input_to_isodoc(file, filename)
-        Metanorma::Input::Asciidoc.new.process(file, filename, @asciidoctor_backend)
-      end
-
       def extract_options(file)
         head = file.sub(/\n\n.*$/m, "\n")
         /\n:standard-logo-img: (?<standardlogoimg>[^\n]+)\n/ =~ head
