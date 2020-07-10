@@ -61,6 +61,7 @@ module Asciidoctor
       end
 
       def pdf_converter(node)
+        return nil if node.attr("no-pdf")
         node.nil? ? IsoDoc::Gb::PdfConvert.new({}) :
           IsoDoc::Gb::PdfConvert.new(doc_extract_attributes(node))
       end
