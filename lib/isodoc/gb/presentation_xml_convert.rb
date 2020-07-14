@@ -6,8 +6,8 @@ module IsoDoc
     class PresentationXMLConvert < IsoDoc::Iso::PresentationXMLConvert
       def example1(f)
         n = @xrefs.get[f["id"]]
-        lbl = (n.nil? || n[:label].nil? || n[:label].empty?) ? @example_lbl :
-          l10n("#{@example_lbl} #{n[:label]}")
+        lbl = (n.nil? || n[:label].nil? || n[:label].empty?) ? @i18n.example :
+          l10n("#{@i18n.example} #{n[:label]}")
         prefix_name(f, "&nbsp;&mdash; ", l10n(lbl + ":"), "name")
       end
 

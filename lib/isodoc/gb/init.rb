@@ -1,6 +1,7 @@
 require "isodoc"
 require_relative "metadata"
 require_relative "xref"
+require_relative "i18n"
 
 module IsoDoc
   module Gb
@@ -19,18 +20,8 @@ module IsoDoc
         @xrefs = Xref.new(lang, script, HtmlConvert.new(language: lang, script: script), labels, options)
       end
 
-      def i18n_init(lang, script)
-        super
-        y = if lang == "en"
-              YAML.load_file(File.join(File.dirname(__FILE__), "i18n-en.yaml"))
-            elsif lang == "zh" && script == "Hans"
-              YAML.load_file(File.join(File.dirname(__FILE__),
-                                       "i18n-zh-Hans.yaml"))
-            else
-              YAML.load_file(File.join(File.dirname(__FILE__),
-                                       "i18n-zh-Hans.yaml"))
-            end
-        @labels = @labels.merge(y)
+      def i18n_init(lang, script, i18nyaml = nil)
+        @i18n = I18n.new(lang, script, i18nyaml || @i18nyaml)
       end
     end
   end

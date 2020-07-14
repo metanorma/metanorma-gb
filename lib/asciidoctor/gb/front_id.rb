@@ -1,7 +1,7 @@
 module Asciidoctor
   module Gb
     class Converter < ISO::Converter
-            STAGE_ABBRS_CN = {
+      STAGE_ABBRS_CN = {
         "00": "新工作项目建议",
         "10": "新工作项目",
         "20": "标准草案工作组讨论稿",
@@ -43,7 +43,7 @@ module Asciidoctor
 
       def id_stage_prefix(dn, node)
         if node.attr("docstage") && node.attr("docstage").to_i < 60
-          abbr = IsoDoc::Gb::Metadata.new("en", "Latn", {}).
+          abbr = IsoDoc::Gb::Metadata.new("en", "Latn", @i18n).
             status_abbrev(node.attr("docstage"), nil, node.attr("iteration"),
                           node.attr("draft"), node.attr("doctype"))
           dn = "/#{abbr} #{dn}" # prefixes added in cleanup

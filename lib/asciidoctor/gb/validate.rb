@@ -1,7 +1,6 @@
 module Asciidoctor
   module Gb
     class Converter < ISO::Converter
-
       def validate(doc)
         content_validate(doc)
         schema_validate(formattedstr_strip(doc.dup),

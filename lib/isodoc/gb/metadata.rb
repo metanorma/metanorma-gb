@@ -8,7 +8,7 @@ module IsoDoc
     # A {Converter} implementation that generates GB output, and a document
     # schema encapsulation of the document for validation
     class Metadata < IsoDoc::Iso::Metadata
-      def initialize(lang, script, labels)
+      def initialize(lang, script, i18n)
         super
         set(:docmaintitlezh, "")
         set(:docsubtitlezh, "XXXX")

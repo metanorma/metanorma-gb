@@ -16,7 +16,8 @@ module IsoDoc
       end   
 
       def cleanup(docxml)
-        @cleanup = Cleanup.new(@script, @deprecated_lbl)
+        @i18n ||= i18n_init(@lang, @script)
+        @cleanup = Cleanup.new(@script, @i18n.deprecated)
         super
         @cleanup.cleanup(docxml)
         docxml
@@ -46,7 +47,7 @@ module IsoDoc
       def formula_where(dl, out)
         return unless dl
         out.p **{ style: "page-break-after:avoid;"} do |p|
-          p << @where_lbl
+          p << @i18n.where
         end
         formula_dl_parse(dl, out)
       end
@@ -134,19 +135,19 @@ module IsoDoc
 
       def deprecated_term_parse(node, out)
         out.p **{ class: "DeprecatedTerms" } do |p|
-          p << l10n("#{@deprecated_lbl}: ")
+          p << l10n("#{@i18n.deprecated}: ")
           node.children.each { |c| parse(c, p) }
         end
       end
 
       def termref_render(x)
-        x.sub!(%r{\s*\[MODIFICATION\]\s*$}m, l10n(", #{@modified_lbl}"))
+        x.sub!(%r{\s*\[MODIFICATION\]\s*$}m, l10n(", #{@i18n.modified}"))
         parts = x.split(%r{(\s*\[MODIFICATION\]|,)}m)
-        parts[1] = l10n(", #{@source_lbl}") if parts.size > 1 &&
-          parts[1] == "," && !/^\s*#{@modified_lbl}/.match(parts[2])
+        parts[1] = l10n(", #{@i18n.source}") if parts.size > 1 &&
+          parts[1] == "," && !/^\s*#{@i18n.modified}/.match(parts[2])
           parts.map do |p|
             /\s*\[MODIFICATION\]/.match(p) ?
-              l10n(", #{@modified_lbl} &mdash; ") : p
+              l10n(", #{@i18n.modified} &mdash; ") : p
           end.join.sub(/\A\s*/m, l10n("[")).sub(/\s*\z/m, l10n("]"))
       end
 
@@ -163,7 +164,7 @@ module IsoDoc
         page_break(out)
         out.div do |s|
           s.h1 **{ class: "ForewordTitle" } do |h1|
-            h1 << "#{@foreword_lbl}&nbsp;"
+            h1 << "#{@i18n.foreword}&nbsp;"
           end
           f.elements.each { |e| parse(e, s) unless e.name == "title" }
         end

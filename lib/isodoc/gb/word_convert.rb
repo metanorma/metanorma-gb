@@ -72,7 +72,7 @@ module IsoDoc
       end
 
       def populate_template(docxml, format)
-        meta = @meta.get.merge(@labels)
+        meta = @meta.get.merge(@i18n.get)
         logo = @common.format_logo(meta[:gbprefix], meta[:gbscope], format, @localdir)
         logofile = @meta.standard_logo(meta[:gbprefix])
         meta[:standard_agency_formatted] =
