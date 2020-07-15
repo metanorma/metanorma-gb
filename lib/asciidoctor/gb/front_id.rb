@@ -15,7 +15,7 @@ module Asciidoctor
 
       def stage_name(stage, substage)
         return "Proof" if stage == "60" && substage == "00"
-        @language == "en" ?
+        @lang == "en" ?
           STAGE_NAMES[stage.to_sym] : STAGE_ABBRS_CN[stage.to_sym]
       end
 
