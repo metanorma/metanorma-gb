@@ -27,6 +27,16 @@ module IsoDoc
         }
       end
 
+      def fonts_options
+        default_font_options = default_fonts(options)
+        {
+          bodyfont: options[:bodyfont] || default_font_options[:bodyfont],
+          headerfont: options[:headerfont] || default_font_options[:headerfont],
+          monospacefont: options[:monospacefont] || default_font_options[:monospacefont],
+          titlefont: options[:titlefont] || default_font_options[:titlefont]
+        }
+      end
+
       def default_file_locations(options)
         {
           htmlstylesheet: options[:compliant] ? html_doc_path("htmlcompliantstyle.scss") : html_doc_path("htmlstyle.scss"),
@@ -37,7 +47,7 @@ module IsoDoc
       end
 
       def populate_template(docxml, format)
-        meta = @meta.get.merge(@labels)
+        meta = @meta.get.merge(@labels).merge(@meta.fonts_options || {})
         logo = @common.format_logo(meta[:gbprefix], meta[:gbscope], format, @localdir)
         logofile = @meta.standard_logo(meta[:gbprefix])
         meta[:standard_agency_formatted] =
