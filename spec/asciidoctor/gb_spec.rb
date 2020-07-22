@@ -221,7 +221,7 @@ RSpec.describe Asciidoctor::Gb do
          <structuredidentifier>
            <project-number>NY 123</project-number>
          </structuredidentifier>
-         <stagename>国家标准</stagename>
+         <stagename>International standard</stagename>
          <gbtype>
            <gbscope>sector</gbscope>
            <gbprefix>NY</gbprefix>
