@@ -140,7 +140,7 @@ RSpec.describe Asciidoctor::Gb do
 <structuredidentifier>
   <project-number>GB 123</project-number>
 </structuredidentifier>
-<stagename>国家标准</stagename>
+<stagename>International standard</stagename>
          <gbtype>
            <gbscope>national</gbscope>
            <gbprefix>GB</gbprefix>
@@ -243,7 +243,7 @@ RSpec.describe Asciidoctor::Gb do
 <structuredidentifier>
   <project-number>T/AAA 123</project-number>
 </structuredidentifier>
-<stagename>国家标准</stagename>
+<stagename>International standard</stagename>
          <gbtype>
            <gbscope>social-group</gbscope>
            <gbprefix>AAA</gbprefix>
@@ -331,7 +331,7 @@ RSpec.describe Asciidoctor::Gb do
 <structuredidentifier>
   <project-number>Q/BBB 123</project-number>
 </structuredidentifier>
-<stagename>国家标准</stagename>
+<stagename>International standard</stagename>
          <gbtype>
            <gbscope>enterprise</gbscope>
            <gbprefix>BBB</gbprefix>
@@ -421,7 +421,7 @@ RSpec.describe Asciidoctor::Gb do
 <structuredidentifier>
   <project-number>GB/Z 123</project-number>
 </structuredidentifier>
-<stagename>国家标准</stagename>
+<stagename>International standard</stagename>
          <gbtype>
            <gbscope>national</gbscope>
            <gbprefix>GB</gbprefix>
@@ -512,7 +512,7 @@ RSpec.describe Asciidoctor::Gb do
 <structuredidentifier>
   <project-number>DB81/123</project-number>
 </structuredidentifier>
-<stagename>国家标准</stagename>
+<stagename>International standard</stagename>
          <gbtype>
            <gbscope>local</gbscope>
            <gbprefix>81</gbprefix>
@@ -601,7 +601,7 @@ RSpec.describe Asciidoctor::Gb do
 <structuredidentifier>
   <project-number>DBGB/123</project-number>
 </structuredidentifier>
-<stagename>国家标准</stagename>
+<stagename>International standard</stagename>
          <gbtype>
            <gbscope>local</gbscope>
            <gbprefix>GB</gbprefix>
@@ -692,7 +692,7 @@ RSpec.describe Asciidoctor::Gb do
 <structuredidentifier>
   <project-number>DBGB/123</project-number>
 </structuredidentifier>
- <stagename>标准草案征求意见稿</stagename>
+ <stagename>Committee draft</stagename>
          <gbtype>
            <gbscope>local</gbscope>
            <gbprefix>GB</gbprefix>

@@ -141,7 +141,7 @@ BLANK_HDR = <<~"HDR"
          <structuredidentifier>
   <project-number/>
 </structuredidentifier>
-<stagename>国家标准</stagename>
+<stagename>International standard</stagename>
         <gbtype>
            <gbscope>national</gbscope>
            <gbprefix>GB</gbprefix>
