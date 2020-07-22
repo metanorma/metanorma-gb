@@ -221,7 +221,7 @@ RSpec.describe Asciidoctor::Gb do
          <structuredidentifier>
            <project-number>NY 123</project-number>
          </structuredidentifier>
-         <stagename>国家标准</stagename>
+         <stagename>International standard</stagename>
          <gbtype>
            <gbscope>sector</gbscope>
            <gbprefix>NY</gbprefix>
@@ -428,7 +428,7 @@ RSpec.describe Asciidoctor::Gb do
 </foreword></preface>
       <sections>
              </sections><bibliography><references id="_" obligation="informative" normative="true">
-         <title>Normative References</title>
+         <title>Normative references</title>
          <p id="_">The following documents are referred to in the text in such a way that some or all of their content constitutes requirements of this document. For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments) applies.</p>
     #{GBT20223.sub(%{id="GB/T20223"}, %{id="iso123"})}
        </references></bibliography>

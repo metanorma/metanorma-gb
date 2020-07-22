@@ -55,6 +55,18 @@ ASCIIDOC_BLANK_HDR = <<~"HDR"
 
 HDR
 
+ASCIIDOC_BLANK_HDR_ZH = <<~"HDR"
+      = Document title
+      Author
+      :docfile: test.adoc
+      :nodoc:
+      :novalid:
+      :language: zh
+      :script: Hans
+
+HDR
+
+
 ISOBIB_BLANK_HDR = <<~"HDR"
       = Document title
       Author
@@ -141,7 +153,7 @@ BLANK_HDR = <<~"HDR"
          <structuredidentifier>
   <project-number/>
 </structuredidentifier>
-<stagename>国家标准</stagename>
+<stagename>International standard</stagename>
         <gbtype>
            <gbscope>national</gbscope>
            <gbprefix>GB</gbprefix>

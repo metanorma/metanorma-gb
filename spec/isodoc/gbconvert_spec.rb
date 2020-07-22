@@ -156,7 +156,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
               #{HTML_HDR.sub(/<body/, "<body xmlns:epub='epub'")}
              <br/>
              <div>
-               <h1 class="ForewordTitle">Foreword&#160;</h1>
+               <h1 class="ForewordTitle">Foreword</h1>
                <p id="_f06fd0d1-a203-4f3d-a515-0bdba0f8d83f">
          </p>
              </div>
@@ -203,7 +203,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
         #{HTML_HDR}
              <br/>
              <div>
-               <h1 class="ForewordTitle">Foreword&#160;</h1>
+               <h1 class="ForewordTitle">Foreword</h1>
                <p id="_f06fd0d1-a203-4f3d-a515-0bdba0f8d83f">
        <span class="Hant"><i>Hello</i></span>
        <i>Hello</i>

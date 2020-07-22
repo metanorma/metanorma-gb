@@ -133,6 +133,14 @@ module Asciidoctor
           /^#{GBCODE}[^A-Za-z]/.match(code)
           super
       end
+
+      def init(node)
+        node.attr("language") or node.set_attr("language", "zh")
+        node.attr("script") or
+          node.set_attr("script", node.attr("language") == "zh" ?
+                        "Hans" : "Latn")
+        super
+      end
     end
   end
 end

@@ -159,17 +159,6 @@ module IsoDoc
         end.join
       end
 
-      def foreword(isoxml, out)
-        f = isoxml.at(ns("//foreword")) || return
-        page_break(out)
-        out.div do |s|
-          s.h1 **{ class: "ForewordTitle" } do |h1|
-            h1 << "#{@i18n.foreword}&nbsp;"
-          end
-          f.elements.each { |e| parse(e, s) unless e.name == "title" }
-        end
-      end
-
       def clausedelimspace(out)
         out << "&#x3000;"
       end

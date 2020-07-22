@@ -17,7 +17,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
     #{HTML_HDR}
                <br/>
                <div>
-                 <h1 class="ForewordTitle">Foreword&#160;</h1>
+                 <h1 class="ForewordTitle">Foreword</h1>
                  <table class="Note" id="A" style='page-break-after: avoid;page-break-inside: avoid;'>
                    <tr>
                      <td class="example_label" style="padding:2pt 2pt 2pt 2pt;vertical-align:top;">NOTE:</td>
@@ -53,7 +53,7 @@ INPUT
     #{HTML_HDR}
                <br/>
                <div>
-                 <h1 class="ForewordTitle">Foreword&#160;</h1>
+                 <h1 class="ForewordTitle">Foreword</h1>
                  <table id="note1" class="Note">
                    <tr>
                      <td class="example_label" style="padding:2pt 2pt 2pt 2pt;vertical-align:top;">NOTE  1:</td>
@@ -94,7 +94,7 @@ INPUT
         #{HTML_HDR}
                <br/>
                <div>
-                 <h1 class="ForewordTitle">Foreword&#160;</h1>
+                 <h1 class="ForewordTitle">Foreword</h1>
                  <table class="Note">
                    <tr>
                      <td class="example_label" style="padding:2pt 2pt 2pt 2pt;vertical-align:top;">NOTE:</td>
@@ -132,7 +132,7 @@ INPUT
         #{HTML_HDR}
                <br/>
                <div>
-                 <h1 class="ForewordTitle">Foreword&#160;</h1>
+                 <h1 class="ForewordTitle">Foreword</h1>
                  <table class="Note">
                    <tr>
                      <td class="example_label" style="padding:2pt 2pt 2pt 2pt;vertical-align:top;">NOTE:</td>
@@ -201,7 +201,7 @@ INPUT
         #{HTML_HDR}
                      <br/>
              <div>
-               <h1 class="ForewordTitle">Foreword&#160;</h1>
+               <h1 class="ForewordTitle">Foreword</h1>
                <div id="samplecode" class="example">
                  <p><span class="example_label">EXAMPLE:&#160;&#8212; Title</span>&#160; Hello</p>
                </div>
@@ -274,7 +274,7 @@ INPUT
 #{HTML_HDR}
     <br/>
     <div>
-      <h1 class='ForewordTitle'>Foreword&#160;</h1>
+      <h1 class='ForewordTitle'>Foreword</h1>
       <div id='samplecode' class='example'>
         <p>
           <span class='example_label'>EXAMPLE 1:</span>
@@ -328,7 +328,7 @@ OUTPUT
                <br clear="all" style="mso-special-character:line-break;page-break-before:always"/>
              </p>
              <div>
-               <h1 class="ForewordTitle">Foreword&#160;</h1>
+               <h1 class="ForewordTitle">Foreword</h1>
                <div id="samplecode" class="example">
                  <p><span class="example_label">EXAMPLE:&#160;&#8212; Title</span><span style="mso-tab-count:1">&#160; </span>Hello</p>
                </div>
@@ -376,7 +376,7 @@ OUTPUT
                <br clear="all" style="mso-special-character:line-break;page-break-before:always"/>
              </p>
              <div>
-               <h1 class="ForewordTitle">Foreword&#160;</h1>
+               <h1 class="ForewordTitle">Foreword</h1>
                <div id="samplecode" class="example">
                  <p><span class="example_label">EXAMPLE  1:</span><span style="mso-tab-count:1">&#160; </span></p>
                  <div class="Quote">Hello<p class="QuoteAttribution"/></div>
@@ -415,7 +415,7 @@ OUTPUT
         #{HTML_HDR}
                <br/>
                <div>
-                 <h1 class="ForewordTitle">Foreword&#160;</h1>
+                 <h1 class="ForewordTitle">Foreword</h1>
                    <div id='_be9158af-7e93-4ee2-90c5-26d31c181934'>
     <div class='formula'>
       &#160;
