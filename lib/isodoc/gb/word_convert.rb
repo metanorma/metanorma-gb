@@ -25,11 +25,21 @@ module IsoDoc
           monospacefont: '"Courier New",monospace',
           titlefont: (scope == "national" ? (script != "Hans" ? '"Cambria",serif' : '"SimSun",serif' ) :
                       (script == "Hans" ? '"SimHei",sans-serif' : '"Calibri",sans-serif' ))
-        }     
-      end     
+        }
+      end
+
+      def fonts_options
+        default_font_options = default_fonts(options)
+        {
+          bodyfont: options[:bodyfont] || default_font_options[:bodyfont],
+          headerfont: options[:headerfont] || default_font_options[:headerfont],
+          monospacefont: options[:monospacefont] || default_font_options[:monospacefont],
+          titlefont: options[:titlefont] || default_font_options[:titlefont]
+        }
+      end
 
       def default_file_locations(options)
-        {   
+        {
           wordstylesheet: html_doc_path("wordstyle.scss"),
           standardstylesheet: html_doc_path("gb.scss"),
           header: html_doc_path("header.html"),
@@ -38,10 +48,10 @@ module IsoDoc
           ulstyle: "l7",
           olstyle: "l10",
         }
-      end 
+      end
 
       ENDLINE = <<~END.freeze
-      <v:line 
+      <v:line
  alt="" style='position:absolute;left:0;text-align:left;z-index:251662848;
  mso-wrap-edited:f;mso-width-percent:0;mso-height-percent:0;
  mso-width-percent:0;mso-height-percent:0'
@@ -72,7 +82,7 @@ module IsoDoc
       end
 
       def populate_template(docxml, format)
-        meta = @meta.get.merge(@i18n.get)
+        meta = @meta.get.merge(@i18n.get).merge(@meta.fonts_options || {})
         logo = @common.format_logo(meta[:gbprefix], meta[:gbscope], format, @localdir)
         logofile = @meta.standard_logo(meta[:gbprefix])
         meta[:standard_agency_formatted] =

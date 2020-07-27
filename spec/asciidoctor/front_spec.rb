@@ -140,7 +140,7 @@ RSpec.describe Asciidoctor::Gb do
 <structuredidentifier>
   <project-number>GB 123</project-number>
 </structuredidentifier>
-<stagename>国家标准</stagename>
+<stagename>International standard</stagename>
          <gbtype>
            <gbscope>national</gbscope>
            <gbprefix>GB</gbprefix>
@@ -331,7 +331,7 @@ RSpec.describe Asciidoctor::Gb do
 <structuredidentifier>
   <project-number>Q/BBB 123</project-number>
 </structuredidentifier>
-<stagename>国家标准</stagename>
+<stagename>International standard</stagename>
          <gbtype>
            <gbscope>enterprise</gbscope>
            <gbprefix>BBB</gbprefix>
@@ -601,7 +601,7 @@ RSpec.describe Asciidoctor::Gb do
 <structuredidentifier>
   <project-number>DBGB/123</project-number>
 </structuredidentifier>
-<stagename>国家标准</stagename>
+<stagename>International standard</stagename>
          <gbtype>
            <gbscope>local</gbscope>
            <gbprefix>GB</gbprefix>

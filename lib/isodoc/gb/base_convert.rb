@@ -6,14 +6,14 @@ require "fileutils"
 module IsoDoc
   module Gb
     module BaseConvert
-      def extract_fonts(options)
+      def scss_fontheader
         b = options[:bodyfont] || "Arial"
         h = options[:headerfont] || "Arial"
         m = options[:monospacefont] || "Courier"
         t = options[:titlefont] || "Arial"
         "$bodyfont: #{b};\n$headerfont: #{h};\n$monospacefont: #{m};\n"\
           "$titlefont: #{t};\n"
-      end   
+      end
 
       def cleanup(docxml)
         @i18n ||= i18n_init(@lang, @script)
