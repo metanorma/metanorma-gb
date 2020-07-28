@@ -58,6 +58,11 @@ module IsoDoc
         template.render(meta.map { |k, v| [k.to_s, v] }.to_h)
       end
 
+      def insert_tab(out, n)
+        tab = "&#x3000;"
+        [1..n].each { out << tab }
+      end
+
       include BaseConvert
       include Init
     end

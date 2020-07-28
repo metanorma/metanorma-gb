@@ -11,16 +11,6 @@ module IsoDoc
         prefix_name(f, "&nbsp;&mdash; ", l10n(lbl + ":"), "name")
       end
 
-      def clause1(f)
-        level = @xrefs.anchor(f['id'], :level, false) || "1"
-        t = f.at(ns("./title")) and t["depth"] = level
-        return unless f.ancestors("boilerplate").empty?
-        return if @suppressheadingnumbers || f["unnumbered"]
-        lbl = @xrefs.anchor(f['id'], :label,
-                            f.parent.name != "sections") or return
-        prefix_name(f, "&#x3000;", "#{lbl}#{clausedelim}", "title")
-      end
-
       def annex1(f)
       lbl = @xrefs.anchor(f['id'], :label)
       if t = f.at(ns("./title"))

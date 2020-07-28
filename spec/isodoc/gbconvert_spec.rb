@@ -85,7 +85,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
          <p id="_f06fd0d1-a203-4f3d-a515-0bdba0f8d83f">
          </p>
            </foreword></preface>
-           <bibliography><references id="_normative_references" obligation="informative" normative="true"><title depth="1">1&#x3000;Normative References</title>
+           <bibliography><references id="_normative_references" obligation="informative" normative="true"><title depth="1">1<tab/>Normative References</title>
                       <p>The following documents are referred to in the text in such a way that some or all of their content constitutes requirements of this document. For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments) applies.</p>
        <bibitem id="ISO712" type="standard">
          <title format="text/plain">Cereals and cereal products</title>
@@ -172,9 +172,9 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
              <br/>
              <div>
                <h1 class="Section3">Bibliography</h1>
-               <p id="ISO3696" class="Biblio">[1]&#160; ISO 3696, <i>Water for analytical laboratory use</i></p>
-               <p id="ref10" class="Biblio">[10]&#160; <span style="font-variant:small-caps;">Standard No I.C.C 167</span>. <i>Determination of the protein content in cereal and cereal products for food and animal feeding stuffs according to the Dumas combustion method</i> (see <a href="http://www.icc.or.at">http://www.icc.or.at</a>)</p>
-               <p id="ref11" class="Biblio">[3]&#160; IETF RFC 10,<span style="font-variant:small-caps;">Standard No I.C.C 167</span>. <i>Determination of the protein content in cereal and cereal products for food and animal feeding stuffs according to the Dumas combustion method</i> (see <a href="http://www.icc.or.at">http://www.icc.or.at</a>)</p>
+               <p id="ISO3696" class="Biblio">[1]&#12288;ISO 3696, <i>Water for analytical laboratory use</i></p>
+               <p id="ref10" class="Biblio">[10]&#12288;<span style="font-variant:small-caps;">Standard No I.C.C 167</span>. <i>Determination of the protein content in cereal and cereal products for food and animal feeding stuffs according to the Dumas combustion method</i> (see <a href="http://www.icc.or.at">http://www.icc.or.at</a>)</p>
+               <p id="ref11" class="Biblio">[3]&#12288;IETF RFC 10,<span style="font-variant:small-caps;">Standard No I.C.C 167</span>. <i>Determination of the protein content in cereal and cereal products for food and animal feeding stuffs according to the Dumas combustion method</i> (see <a href="http://www.icc.or.at">http://www.icc.or.at</a>)</p>
              </div>
              <hr width="25%"/>
              <aside id="fn:1" class="footnote">

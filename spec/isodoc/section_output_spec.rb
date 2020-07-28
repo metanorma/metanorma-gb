@@ -25,12 +25,12 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
   </bibdata>
   <sections>
     <clause id='M' inline-header='false' obligation='normative'>
-      <title depth='1'>1&#x3000;Clause 4</title>
+      <title depth='1'>1<tab/>Clause 4</title>
       <clause id='N' inline-header='false' obligation='normative'>
-        <title depth='2'>1.1&#x3000;Introduction</title>
+        <title depth='2'>1.1<tab/>Introduction</title>
       </clause>
       <clause id='O' inline-header='true' obligation='normative'>
-        <title depth='2'>1.2&#x3000;Clause 4.2</title>
+        <title depth='2'>1.2<tab/>Clause 4.2</title>
       </clause>
     </clause>
   </sections>

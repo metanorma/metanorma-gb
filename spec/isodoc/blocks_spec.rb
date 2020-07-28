@@ -151,8 +151,8 @@ INPUT
     OUTPUT
   end
 
-  it "processes examples (Presentation XML)" do
-                  expect(xmlpp(IsoDoc::Gb::PresentationXMLConvert.new({}).convert("test", <<~"INPUT", true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>"))).to be_equivalent_to xmlpp(<<~"OUTPUT")
+  it "processes examples" do
+    input = <<~INPUT
         <gb-standard xmlns="http://riboseinc.com/gbstandard">
                        <bibdata> <language>en</language> <script>Latn</script> </bibdata>
     <preface><foreword>
@@ -163,7 +163,8 @@ INPUT
     </foreword></preface>
     </gb-standard>
     INPUT
-    <?xml version='1.0'?>
+
+    presxml = <<~OUTPUT
 <gb-standard xmlns='http://riboseinc.com/gbstandard'>
   <bibdata>
     <language>en</language>
@@ -179,31 +180,14 @@ INPUT
   </preface>
 </gb-standard>
     OUTPUT
-  end
 
-  it "processes examples (HTML)" do
-                  expect(xmlpp(IsoDoc::Gb::HtmlConvert.new({}).convert("test", <<~"INPUT", true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>"))).to be_equivalent_to xmlpp(<<~"OUTPUT")
-                  <gb-standard xmlns='http://riboseinc.com/gbstandard'>
-  <bibdata>
-    <language>en</language>
-    <script>Latn</script>
-  </bibdata>
-  <preface>
-    <foreword>
-      <example id='samplecode'>
-        <name>EXAMPLE:&#xA0;&#x2014; Title</name>
-        <p>Hello</p>
-      </example>
-    </foreword>
-  </preface>
-</gb-standard>
-    INPUT
+    html = <<~OUTPUT
         #{HTML_HDR}
                      <br/>
              <div>
                <h1 class="ForewordTitle">Foreword</h1>
                <div id="samplecode" class="example">
-                 <p><span class="example_label">EXAMPLE:&#160;&#8212; Title</span>&#160; Hello</p>
+                 <p><span class="example_label">EXAMPLE:&#160;&#8212; Title</span>&#12288;Hello</p>
                </div>
              </div>
              <p class="zzSTDTitle1">XXXX</p>
@@ -211,112 +195,9 @@ INPUT
            </div>
          </body>
     OUTPUT
-  end
 
-  it "processes sequences of examples (Presentation XML)" do
-                  expect(xmlpp(IsoDoc::Gb::PresentationXMLConvert.new({}).convert("test", <<~"INPUT", true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>"))).to be_equivalent_to xmlpp(<<~"OUTPUT")
-        <gb-standard xmlns="http://riboseinc.com/gbstandard">
-                       <bibdata> <language>en</language> <script>Latn</script> </bibdata>
-    <preface><foreword>
-    <example id="samplecode">
-  <quote>Hello</quote>
-</example>
-    <example id="samplecode2">
-    <name>Title</name>
-  <p>Hello</p>
-</example>
-    </foreword></preface>
-    </gb-standard>
-    INPUT
-<?xml version='1.0'?>
-<gb-standard xmlns='http://riboseinc.com/gbstandard'>
-  <bibdata>
-    <language>en</language>
-    <script>Latn</script>
-  </bibdata>
-  <preface>
-    <foreword>
-      <example id='samplecode'>
-        <name>EXAMPLE 1:</name>
-        <quote>Hello</quote>
-      </example>
-      <example id='samplecode2'>
-        <name>EXAMPLE 2:&#xA0;&#x2014; Title</name>
-        <p>Hello</p>
-      </example>
-    </foreword>
-  </preface>
-</gb-standard>
-    OUTPUT
-  end
-
-    it "processes sequences of examples (HTML)" do
-                  expect(xmlpp(IsoDoc::Gb::HtmlConvert.new({}).convert("test", <<~"INPUT", true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>"))).to be_equivalent_to xmlpp(<<~"OUTPUT")
-                  <gb-standard xmlns='http://riboseinc.com/gbstandard'>
-  <bibdata>
-    <language>en</language>
-    <script>Latn</script>
-  </bibdata>
-  <preface>
-    <foreword>
-      <example id='samplecode'>
-        <name>EXAMPLE 1:</name>
-        <quote>Hello</quote>
-      </example>
-      <example id='samplecode2'>
-        <name>EXAMPLE 2:&#xA0;&#x2014; Title</name>
-        <p>Hello</p>
-      </example>
-    </foreword>
-  </preface>
-</gb-standard>
-INPUT
-#{HTML_HDR}
-    <br/>
-    <div>
-      <h1 class='ForewordTitle'>Foreword</h1>
-      <div id='samplecode' class='example'>
-        <p>
-          <span class='example_label'>EXAMPLE 1:</span>
-          &#160;
-        </p>
-        <div class='Quote'>
-          Hello
-          <p class='QuoteAttribution'/>
-        </div>
-      </div>
-      <div id='samplecode2' class='example'>
-        <p>
-          <span class='example_label'>EXAMPLE 2:&#160;&#8212; Title</span>
-          &#160; Hello
-        </p>
-      </div>
-    </div>
-    <p class='zzSTDTitle1'>XXXX</p>
-    <hr width='25%'/>
-  </div>
-</body>
-OUTPUT
-    end
-
-    it "processes examples (Word)" do
-      expect(xmlpp(IsoDoc::Gb::WordConvert.new({}).convert("test", <<~"INPUT", true).gsub(/^.*<body/m, "<body").gsub(%r{<div class="WordSection3".*}m, "</body>"))).to be_equivalent_to xmlpp(<<~"OUTPUT")
-      <gb-standard xmlns='http://riboseinc.com/gbstandard'>
-  <bibdata>
-    <language>en</language>
-    <script>Latn</script>
-  </bibdata>
-  <preface>
-    <foreword>
-      <example id='samplecode'>
-        <name>EXAMPLE:&#xA0;&#x2014; Title</name>
-        <p>Hello</p>
-      </example>
-    </foreword>
-  </preface>
-</gb-standard>
-    INPUT
-          <body lang="EN-US" link="blue" vlink="#954F72">
+    word = <<~OUTPUT
+    <body lang="EN-US" link="blue" vlink="#954F72">
            <div class="WordSection1">
              <p>&#160;</p>
            </div>
@@ -339,13 +220,30 @@ OUTPUT
              <br clear="all" class="section"/>
            </p>
            </body>
-    OUTPUT
+OUTPUT
+                  expect(xmlpp(IsoDoc::Gb::PresentationXMLConvert.new({}).convert("test", input, true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>"))).to be_equivalent_to xmlpp(presxml)
+                  expect(xmlpp(IsoDoc::Gb::HtmlConvert.new({}).convert("test", presxml, true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>"))).to be_equivalent_to xmlpp(html)
+      expect(xmlpp(IsoDoc::Gb::WordConvert.new({}).convert("test", presxml, true).gsub(/^.*<body/m, "<body").gsub(%r{<div class="WordSection3".*}m, "</body>"))).to be_equivalent_to xmlpp(word)
   end
 
+  it "processes sequences of examples" do
+    input = <<~INPUT
+        <gb-standard xmlns="http://riboseinc.com/gbstandard">
+                       <bibdata> <language>en</language> <script>Latn</script> </bibdata>
+    <preface><foreword>
+    <example id="samplecode">
+  <quote>Hello</quote>
+</example>
+    <example id="samplecode2">
+    <name>Title</name>
+  <p>Hello</p>
+</example>
+    </foreword></preface>
+    </gb-standard>
+    INPUT
 
-  it "processes sequences of examples (Word)" do
-                  expect(xmlpp(IsoDoc::Gb::WordConvert.new({}).convert("test", <<~"INPUT", true).gsub(/^.*<body/m, "<body").gsub(%r{<div class="WordSection3">.*}m, "</body>"))).to be_equivalent_to xmlpp(<<~"OUTPUT")
-    <gb-standard xmlns='http://riboseinc.com/gbstandard'>
+    presxml = <<~OUTPUT
+<gb-standard xmlns='http://riboseinc.com/gbstandard'>
   <bibdata>
     <language>en</language>
     <script>Latn</script>
@@ -363,7 +261,37 @@ OUTPUT
     </foreword>
   </preface>
 </gb-standard>
-    INPUT
+    OUTPUT
+
+  html = <<~OUTPUT
+#{HTML_HDR}
+    <br/>
+    <div>
+      <h1 class='ForewordTitle'>Foreword</h1>
+      <div id='samplecode' class='example'>
+        <p>
+          <span class='example_label'>EXAMPLE 1:</span>
+          &#12288;
+        </p>
+        <div class='Quote'>
+          Hello
+          <p class='QuoteAttribution'/>
+        </div>
+      </div>
+      <div id='samplecode2' class='example'>
+        <p>
+          <span class='example_label'>EXAMPLE 2:&#160;&#8212; Title</span>
+          &#12288;Hello
+        </p>
+      </div>
+    </div>
+    <p class='zzSTDTitle1'>XXXX</p>
+    <hr width='25%'/>
+  </div>
+</body>
+OUTPUT
+
+    word = <<~OUTPUT
            <body lang="EN-US" link="blue" vlink="#954F72">
            <div class="WordSection1">
              <p>&#160;</p>
@@ -392,6 +320,9 @@ OUTPUT
            </p>
            </body>
     OUTPUT
+                  expect(xmlpp(IsoDoc::Gb::PresentationXMLConvert.new({}).convert("test", input, true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>"))).to be_equivalent_to xmlpp(presxml)
+                  expect(xmlpp(IsoDoc::Gb::HtmlConvert.new({}).convert("test", presxml, true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>"))).to be_equivalent_to xmlpp(html)
+                  expect(xmlpp(IsoDoc::Gb::WordConvert.new({}).convert("test", presxml, true).gsub(/^.*<body/m, "<body").gsub(%r{<div class="WordSection3">.*}m, "</body>"))).to be_equivalent_to xmlpp(word)
   end
 
   it "processes formulae" do
@@ -418,9 +349,9 @@ OUTPUT
                  <h1 class="ForewordTitle">Foreword</h1>
                    <div id='_be9158af-7e93-4ee2-90c5-26d31c181934'>
     <div class='formula'>
-      &#160;
+      &#12288;
       <span class='stem'>(#(r = 1 %)#)</span>
-      &#160; (1)
+      &#12288;(1)
     </div>
     <p style='page-break-after:avoid;'>where</p>
     <table class='formula_dl'>
