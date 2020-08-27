@@ -339,7 +339,13 @@ RSpec.describe Asciidoctor::Gb do
        ‘single quote’
        super<sup>script</sup>
        sub<sub>script</sub>
-       <stem type="MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>a</mi><mn>90</mn></msub></math></stem>
+       <stem type="MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mrow>
+  <mi>a</mi>
+</mrow>
+<mrow>
+  <mn>90</mn>
+</mrow>
+</msub></math></stem>
        <stem type="MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub> <mrow> <mrow> <mi mathvariant="bold-italic">F</mi> </mrow> </mrow> <mrow> <mrow> <mi mathvariant="bold-italic">Α</mi> </mrow> </mrow> </msub> </math></stem>
        <admitted language="zh"></admitted> <admitted language="en">alt</admitted>
        <deprecates language="zh"></deprecates> <deprecates language="en">deprecated</deprecates>
