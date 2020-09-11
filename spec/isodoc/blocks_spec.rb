@@ -275,7 +275,6 @@ OUTPUT
         </p>
         <div class='Quote'>
           Hello
-          <p class='QuoteAttribution'/>
         </div>
       </div>
       <div id='samplecode2' class='example'>
@@ -307,7 +306,7 @@ OUTPUT
                <h1 class="ForewordTitle">Foreword</h1>
                <div id="samplecode" class="example">
                  <p><span class="example_label">EXAMPLE  1:</span><span style="mso-tab-count:1">&#160; </span></p>
-                 <div class="Quote">Hello<p class="QuoteAttribution"/></div>
+                 <div class="Quote">Hello</div>
                </div>
                <div id="samplecode2" class="example">
                  <p><span class="example_label">EXAMPLE  2:&#160;&#8212; Title</span><span style="mso-tab-count:1">&#160; </span>Hello</p>
