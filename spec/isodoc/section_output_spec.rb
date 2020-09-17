@@ -18,7 +18,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
         </sections>
     </gb-standard>
     INPUT
-           <gb-standard xmlns='http://riboseinc.com/gbstandard'>
+           <gb-standard xmlns='http://riboseinc.com/gbstandard' type="presentation">
   <bibdata>
     <language>en</language>
     <script>Latn</script>
@@ -56,7 +56,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
         </sections>
     </gb-standard>
     INPUT
-           <gb-standard xmlns='http://riboseinc.com/gbstandard'>
+           <gb-standard xmlns='http://riboseinc.com/gbstandard' type="presentation">
   <bibdata>
     <language>en</language>
     <script>Latn</script>
@@ -88,7 +88,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
         </annex> 
     </gb-standard>
     INPUT
-    <gb-standard xmlns='http://riboseinc.com/gbstandard'>
+    <gb-standard xmlns='http://riboseinc.com/gbstandard' type="presentation">
   <bibdata>
     <language>en</language>
     <script>Latn</script>

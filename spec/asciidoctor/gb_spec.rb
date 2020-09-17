@@ -159,7 +159,7 @@ RSpec.describe Asciidoctor::Gb do
 
     INPUT
            <?xml version="1.0" encoding="UTF-8"?>
-       <gb-standard xmlns="https://www.metanorma.org/ns/gb">
+       <gb-standard xmlns="https://www.metanorma.org/ns/gb"  type="semantic" version="#{Metanorma::Gb::VERSION}">
        <bibdata type="standard">
          <docidentifier type="gb">NY 123</docidentifier>
          <docnumber>123</docnumber>

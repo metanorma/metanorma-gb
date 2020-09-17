@@ -165,7 +165,7 @@ INPUT
     INPUT
 
     presxml = <<~OUTPUT
-<gb-standard xmlns='http://riboseinc.com/gbstandard'>
+<gb-standard xmlns='http://riboseinc.com/gbstandard' type="presentation">
   <bibdata>
     <language>en</language>
     <script>Latn</script>
@@ -243,7 +243,7 @@ OUTPUT
     INPUT
 
     presxml = <<~OUTPUT
-<gb-standard xmlns='http://riboseinc.com/gbstandard'>
+<gb-standard xmlns='http://riboseinc.com/gbstandard' type="presentation">
   <bibdata>
     <language>en</language>
     <script>Latn</script>

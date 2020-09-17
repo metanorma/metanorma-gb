@@ -193,7 +193,7 @@ OUTPUT
 
       === Bibliography Subsection
     INPUT
-    <gb-standard xmlns='https://www.metanorma.org/ns/gb'>
+    <gb-standard xmlns='https://www.metanorma.org/ns/gb'  type="semantic" version="#{Metanorma::Gb::VERSION}">
          <bibdata type='standard'>
            <contributor>
              <role type='author'/>
