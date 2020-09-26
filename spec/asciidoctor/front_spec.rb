@@ -37,7 +37,7 @@ RSpec.describe Asciidoctor::Gb do
 
     INPUT
      <?xml version="1.0" encoding="UTF-8"?>
-       <gb-standard xmlns="https://www.metanorma.org/ns/gb">
+       <gb-standard xmlns="https://www.metanorma.org/ns/gb"  type="semantic" version="#{Metanorma::Gb::VERSION}">
        <bibdata type="standard">
            <title type="main" language="en" format="plain">Title 1 — Title 2 — Title 3</title>
            <title type="title-intro" language="en" format="plain">Title 1</title>
@@ -175,7 +175,7 @@ RSpec.describe Asciidoctor::Gb do
 
     INPUT
     <?xml version="1.0" encoding="UTF-8"?>
-       <gb-standard xmlns="https://www.metanorma.org/ns/gb">
+       <gb-standard xmlns="https://www.metanorma.org/ns/gb"  type="semantic" version="#{Metanorma::Gb::VERSION}">
        <bibdata type="standard">
          <docidentifier type="gb">T/AAA 123</docidentifier>
 <docnumber>123</docnumber>
@@ -270,7 +270,7 @@ RSpec.describe Asciidoctor::Gb do
 
     INPUT
     <?xml version="1.0" encoding="UTF-8"?>
-       <gb-standard xmlns="https://www.metanorma.org/ns/gb">
+       <gb-standard xmlns="https://www.metanorma.org/ns/gb"  type="semantic" version="#{Metanorma::Gb::VERSION}">
        <bibdata type="standard">
          <docidentifier type="gb">Q/BBB 123</docidentifier>
 <docnumber>123</docnumber>
@@ -360,7 +360,7 @@ RSpec.describe Asciidoctor::Gb do
 
     INPUT
     <?xml version="1.0" encoding="UTF-8"?>
-       <gb-standard xmlns="https://www.metanorma.org/ns/gb">
+       <gb-standard xmlns="https://www.metanorma.org/ns/gb"  type="semantic" version="#{Metanorma::Gb::VERSION}">
        <bibdata type="standard">
          <docidentifier type="gb">GB/Z 123</docidentifier>
 <docnumber>123</docnumber>
@@ -451,7 +451,7 @@ RSpec.describe Asciidoctor::Gb do
 
     INPUT
     <?xml version="1.0" encoding="UTF-8"?>
-       <gb-standard xmlns="https://www.metanorma.org/ns/gb">
+       <gb-standard xmlns="https://www.metanorma.org/ns/gb"  type="semantic" version="#{Metanorma::Gb::VERSION}">
        <bibdata type="standard">
          <docidentifier type="gb">DB81/123</docidentifier>
 <docnumber>123</docnumber>
@@ -540,7 +540,7 @@ RSpec.describe Asciidoctor::Gb do
 
     INPUT
           <?xml version="1.0" encoding="UTF-8"?>
-       <gb-standard xmlns="https://www.metanorma.org/ns/gb">
+       <gb-standard xmlns="https://www.metanorma.org/ns/gb"  type="semantic" version="#{Metanorma::Gb::VERSION}">
        <bibdata type="standard">
          <docidentifier type="gb">DBGB/123</docidentifier>
 <docnumber>123</docnumber>
@@ -631,7 +631,7 @@ RSpec.describe Asciidoctor::Gb do
 
     INPUT
     <?xml version="1.0" encoding="UTF-8"?>
-       <gb-standard xmlns="https://www.metanorma.org/ns/gb">
+       <gb-standard xmlns="https://www.metanorma.org/ns/gb"  type="semantic" version="#{Metanorma::Gb::VERSION}">
        <bibdata type="standard">
          <docidentifier type="gb">DBGB/123</docidentifier>
 <docnumber>123</docnumber>
