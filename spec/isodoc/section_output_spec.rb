@@ -23,6 +23,10 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
     <language>en</language>
     <script>Latn</script>
   </bibdata>
+  <local_bibdata>
+    <language>en</language>
+    <script>Latn</script>
+  </local_bibdata>
   <sections>
     <clause id='M' inline-header='false' obligation='normative'>
       <title depth='1'>1<tab/>Clause 4</title>
@@ -61,6 +65,10 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
     <language>en</language>
     <script>Latn</script>
   </bibdata>
+  <local_bibdata>
+    <language>en</language>
+    <script>Latn</script>
+  </local_bibdata>
   <sections>
     <clause id='M' inline-header='false' obligation='normative'>
       <title depth='1'>Clause 4</title>
@@ -89,6 +97,10 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
     </gb-standard>
     INPUT
     <gb-standard xmlns='http://riboseinc.com/gbstandard' type="presentation">
+  <local_bibdata>
+    <language>en</language>
+    <script>Latn</script>
+  </local_bibdata>
   <bibdata>
     <language>en</language>
     <script>Latn</script>

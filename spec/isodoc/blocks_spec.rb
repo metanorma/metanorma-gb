@@ -170,6 +170,10 @@ INPUT
     <language>en</language>
     <script>Latn</script>
   </bibdata>
+  <local_bibdata>
+    <language>en</language>
+    <script>Latn</script>
+  </local_bibdata>
   <preface>
     <foreword>
       <example id='samplecode'>
@@ -248,6 +252,10 @@ OUTPUT
     <language>en</language>
     <script>Latn</script>
   </bibdata>
+  <local_bibdata>
+    <language>en</language>
+    <script>Latn</script>
+  </local_bibdata>
   <preface>
     <foreword>
       <example id='samplecode'>

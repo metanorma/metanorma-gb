@@ -81,6 +81,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
     presxml = <<~OUTPUT
 <gb-standard xmlns="http://riboseinc.com/gbstandard" type="presentation">
                                   <bibdata> <language>en</language> <script>Latn</script> </bibdata>
+                                  <local_bibdata> <language>en</language> <script>Latn</script> </local_bibdata>
            <preface><foreword>
          <p id="_f06fd0d1-a203-4f3d-a515-0bdba0f8d83f">
          </p>
