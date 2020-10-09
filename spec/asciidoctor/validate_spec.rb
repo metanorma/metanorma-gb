@@ -1,10 +1,30 @@
 require "spec_helper"
 
 RSpec.describe Asciidoctor::Standoc do
+  context "when xref_error.adoc compilation" do
+    around do |example|
+      FileUtils.rm_f "spec/assets/xref_error.err"
+      example.run
+      Dir["spec/assets/xref_error*"].each do |file|
+        next if file.match?(/adoc$/)
+
+        FileUtils.rm_f(file)
+      end
+    end
+
+    it "generates error file" do
+      expect do
+        Metanorma::Compile
+          .new
+          .compile("spec/assets/xref_error.adoc", type: "gb")
+      end.to(change { File.exist?("spec/assets/xref_error.err") }
+              .from(false).to(true))
+    end
+  end
 
 it  "Warns of illegal doctype" do
     FileUtils.rm_f "test.err"
-    Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) 
+    Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)
   = Document title
   Author
   :docfile: test.adoc
@@ -20,7 +40,7 @@ end
 
 it  "Warns of illegal script" do
     FileUtils.rm_f "test.err"
-    Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) 
+    Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)
   = Document title
   Author
   :docfile: test.adoc
@@ -35,7 +55,7 @@ end
 
 it "does not warn when missing scope but scope inferred from prefix" do
     FileUtils.rm_f "test.err"
-  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) 
+  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)
     = Document title
     Author
     :docfile: test.adoc
@@ -51,7 +71,7 @@ end
 
 it "warns when missing scope and scope not inferred from prefix" do
     FileUtils.rm_f "test.err"
-  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) 
+  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)
     = Document title
     Author
     :docfile: test.adoc
@@ -65,7 +85,7 @@ end
 
 it "warns when missing prefix" do
     FileUtils.rm_f "test.err"
-  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) 
+  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)
     = Document title
     Author
     :docfile: test.adoc
@@ -78,7 +98,7 @@ end
 
 it "warns when missing mandate" do
     FileUtils.rm_f "test.err"
-  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) 
+  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)
     = Document title
     Author
     :docfile: test.adoc
@@ -90,7 +110,7 @@ end
 
 it "warns when missing topic" do
     FileUtils.rm_f "test.err"
-  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) 
+  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)
     = Document title
     Author
     :docfile: test.adoc
@@ -103,7 +123,7 @@ end
 
 it "GB references is not a Non-ISO reference in Normative References" do
     FileUtils.rm_f "test.err"
-  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) 
+  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)
   #{VALIDATING_BLANK_HDR}
 
   [bibliography]
@@ -115,7 +135,7 @@ end
 
 it "warns about improper social standard prefix" do
     FileUtils.rm_f "test.err"
-  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) 
+  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)
   = Document title
   Author
   :docfile: test.adoc
@@ -129,7 +149,7 @@ end
 
 it "warns about improper enterprise standard prefix" do
     FileUtils.rm_f "test.err"
-  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) 
+  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)
   = Document title
   Author
   :docfile: test.adoc
@@ -143,7 +163,7 @@ end
 
 it "warns about improper sector standard prefix" do
     FileUtils.rm_f "test.err"
-  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) 
+  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)
   = Document title
   Author
   :docfile: test.adoc
@@ -157,7 +177,7 @@ end
 
 it "warns about improper local standard prefix" do
     FileUtils.rm_f "test.err"
-  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) 
+  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)
   = Document title
   Author
   :docfile: test.adoc
@@ -171,7 +191,7 @@ end
 
 it "warns about improper national standard prefix" do
     FileUtils.rm_f "test.err"
-  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) 
+  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)
   = Document title
   Author
   :docfile: test.adoc
@@ -185,7 +205,7 @@ end
 
 it "warns about no issuer for enterprise standard" do
     FileUtils.rm_f "test.err"
-  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) 
+  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)
   = Document title
   Author
   :docfile: test.adoc
@@ -199,7 +219,7 @@ end
 
 it "warns about English-only preferred" do
     FileUtils.rm_f "test.err"
-  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) 
+  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)
   = Document title
   Author
   :docfile: test.adoc
@@ -217,7 +237,7 @@ end
 
 it "warns about English-only admitted" do
     FileUtils.rm_f "test.err"
-  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) 
+  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)
   = Document title
   Author
   :docfile: test.adoc
@@ -235,7 +255,7 @@ end
 
 it "warns about English-only deprecates" do
     FileUtils.rm_f "test.err"
-  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) 
+  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)
   = Document title
   Author
   :docfile: test.adoc
@@ -254,7 +274,7 @@ end
 
 it "warns about Chinese-only preferred" do
     FileUtils.rm_f "test.err"
-  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) 
+  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)
   = Document title
   Author
   :docfile: test.adoc
@@ -272,7 +292,7 @@ end
 
 it "warns about Chinese-only admitted" do
     FileUtils.rm_f "test.err"
-  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) 
+  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)
   = Document title
   Author
   :docfile: test.adoc
@@ -290,7 +310,7 @@ end
 
 it "warns about Chinese-only deprecates" do
     FileUtils.rm_f "test.err"
-  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) 
+  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)
   = Document title
   Author
   :docfile: test.adoc
@@ -308,7 +328,7 @@ end
 
 it "warns about no English title intro" do
     FileUtils.rm_f "test.err"
-  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) 
+  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)
   = Document title
   Author
   :docfile: test.adoc
@@ -321,7 +341,7 @@ end
 
 it "warns about no Chinese title intro" do
     FileUtils.rm_f "test.err"
-  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) 
+  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)
   = Document title
   Author
   :docfile: test.adoc
@@ -334,7 +354,7 @@ end
 
 it "warns about no English main title" do
     FileUtils.rm_f "test.err"
-  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) 
+  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)
   = Document title
   Author
   :docfile: test.adoc
@@ -347,7 +367,7 @@ end
 
 it "warns about no Chinese main title" do
     FileUtils.rm_f "test.err"
-  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) 
+  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)
   = Document title
   Author
   :docfile: test.adoc
@@ -360,7 +380,7 @@ end
 
 it "warns about no English title part" do
     FileUtils.rm_f "test.err"
-  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) 
+  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)
   = Document title
   Author
   :docfile: test.adoc
@@ -373,7 +393,7 @@ end
 
 it "warns about no Chinese title part" do
     FileUtils.rm_f "test.err"
-  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) 
+  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)
   = Document title
   Author
   :docfile: test.adoc
@@ -386,7 +406,7 @@ end
 
 it "warns about normative reference that is neither ISO nor GB" do
     FileUtils.rm_f "test.err"
-  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) 
+  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)
   #{VALIDATING_BLANK_HDR}
 
   [bibliography]
@@ -399,7 +419,7 @@ end
 
 it "does not warn about normative reference that is GB" do
     FileUtils.rm_f "test.err"
-  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true) 
+  Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)
   #{VALIDATING_BLANK_HDR}
 
   [bibliography]
