@@ -413,8 +413,8 @@ RSpec.describe Asciidoctor::Gb do
     OUTPUT
   end
 
-    it "fetches simple GB reference" do
-    mock_gbbib_get_123
+    it "fetches simple GB reference in English" do
+    mock_gbbib_get_123("en")
     expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
       #{ISOBIB_BLANK_HDR}
       
@@ -436,16 +436,50 @@ RSpec.describe Asciidoctor::Gb do
              </sections><bibliography><references id="_" obligation="informative" normative="true">
          <title>Normative references</title>
          <p id="_">The following documents are referred to in the text in such a way that some or all of their content constitutes requirements of this document. For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments) applies.</p>
-    #{GBT20223.sub(%{id="GB/T20223"}, %{id="iso123"})}
+      #{GBT20223.sub(%{id="GB/T20223"}, %{id="iso123"}).sub(%r{<title format="text/plain" language="zh".+?</title>}, "")}
        </references></bibliography>
        </gb-standard>
     OUTPUT
     end
 
+     it "fetches simple GB reference in Chinese" do
+    mock_gbbib_get_123("zh")
+    expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)).sub(%r{<bibdata.*</bibdata>}m, ""))).to be_equivalent_to xmlpp(<<~"OUTPUT")
+      #{ISOBIB_BLANK_HDR_ZH}
+
+      <<iso123>>
+
+      [bibliography]
+      == Normative References
+
+      * [[[iso123,GB/T 20223-2006]]] _Standard_
+    INPUT
+       <gb-standard xmlns="https://www.metanorma.org/ns/gb"  type="semantic" version="#{Metanorma::Gb::VERSION}">
+         <boilerplate> </boilerplate>
+         <preface>
+           <foreword id='_' obligation='informative'>
+             <title>前言</title>
+             <p id='_'>
+               <eref type='inline' bibitemid='iso123' citeas='GB/T 20223'/>
+             </p>
+           </foreword>
+         </preface>
+      <sections>
+             </sections><bibliography><references id="_" obligation="informative" normative="true">
+         <title>规范性引用文件</title>
+         <p id="_">下列文件对于本文件的应用是必不可少的。 凡是注日期的引用文件，仅注日期的版本适用于本文件。
+凡是不注日期的引用文件，其最新版本（包括所有的修改单）适用于本文件。</p>
+      #{GBT20223.sub(%{id="GB/T20223"}, %{id="iso123"}).sub(%r{<title format="text/plain" language="en".+?</title>}, "")}
+       </references></bibliography>
+       </gb-standard>
+    OUTPUT
+    end
+
+
     private
 
-    def mock_gbbib_get_123
-      expect(RelatonGb::GbBibliography).to receive(:get).with("GB/T 20223", "2006", {:title=>"<em>Standard</em>", :usrlbl=>nil}) do
+    def mock_gbbib_get_123(lang)
+      expect(RelatonGb::GbBibliography).to receive(:get).with("GB/T 20223", "2006", {:lang=>lang, :title=>"<em>Standard</em>", :usrlbl=>nil}) do
         RelatonIsoBib::XMLParser.from_xml(GBT20223)
       end
     end
