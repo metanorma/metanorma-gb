@@ -1455,6 +1455,7 @@
 		
 		
 		
+		
 	</xsl:attribute-set><xsl:variable name="note-body-indent">10mm</xsl:variable><xsl:variable name="note-body-indent-table">5mm</xsl:variable><xsl:attribute-set name="note-name-style">
 		
 		
@@ -2002,10 +2003,24 @@
 							
 							
 							
-							<!-- except gb and bipm -->
 							
 							
 							
+							<!-- except gb -->
+							
+							
+							<!-- show Note under table in preface (ex. abstract) sections -->
+							<!-- empty, because notes show at page side in main sections -->
+							<!-- <xsl:if test="$namespace = 'bipm'">
+								<xsl:choose>
+									<xsl:when test="ancestor::*[local-name()='preface']">										
+										<xsl:apply-templates select="../*[local-name()='note']" mode="process"/>
+									</xsl:when>
+									<xsl:otherwise>										
+									<fo:block/>
+									</xsl:otherwise>
+								</xsl:choose>
+							</xsl:if> -->
 							
 							
 							<!-- horizontal row separator -->
@@ -2070,7 +2085,11 @@
 							
 							
 							
-							<!-- except gb and bipm -->
+							
+							
+							
+							
+							<!-- except gb  -->
 							
 							
 							<!-- <xsl:if test="$namespace = 'bipm'">
@@ -2156,6 +2175,9 @@
 				
 				
 				
+				<!-- <xsl:if test="$namespace = 'bipm'">
+					<xsl:attribute name="height">8mm</xsl:attribute>
+				</xsl:if> -->
 				
 			<xsl:apply-templates/>
 		</fo:table-row>

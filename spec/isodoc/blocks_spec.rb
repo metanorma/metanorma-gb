@@ -225,7 +225,7 @@ INPUT
            </p>
            </body>
 OUTPUT
-                  expect(xmlpp(IsoDoc::Gb::PresentationXMLConvert.new({}).convert("test", input, true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>"))).to be_equivalent_to xmlpp(presxml)
+    expect(xmlpp(IsoDoc::Gb::PresentationXMLConvert.new({}).convert("test", input, true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>").sub(%r{<i18nyaml>.*</i18nyaml>}m, ""))).to be_equivalent_to xmlpp(presxml)
                   expect(xmlpp(IsoDoc::Gb::HtmlConvert.new({}).convert("test", presxml, true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>"))).to be_equivalent_to xmlpp(html)
       expect(xmlpp(IsoDoc::Gb::WordConvert.new({}).convert("test", presxml, true).gsub(/^.*<body/m, "<body").gsub(%r{<div class="WordSection3".*}m, "</body>"))).to be_equivalent_to xmlpp(word)
   end
@@ -327,7 +327,7 @@ OUTPUT
            </p>
            </body>
     OUTPUT
-                  expect(xmlpp(IsoDoc::Gb::PresentationXMLConvert.new({}).convert("test", input, true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>"))).to be_equivalent_to xmlpp(presxml)
+                  expect(xmlpp(IsoDoc::Gb::PresentationXMLConvert.new({}).convert("test", input, true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>").sub(%r{<i18nyaml>.*</i18nyaml>}m, ""))).to be_equivalent_to xmlpp(presxml)
                   expect(xmlpp(IsoDoc::Gb::HtmlConvert.new({}).convert("test", presxml, true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>"))).to be_equivalent_to xmlpp(html)
                   expect(xmlpp(IsoDoc::Gb::WordConvert.new({}).convert("test", presxml, true).gsub(/^.*<body/m, "<body").gsub(%r{<div class="WordSection3">.*}m, "</body>"))).to be_equivalent_to xmlpp(word)
   end
