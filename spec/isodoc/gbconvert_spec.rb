@@ -184,7 +184,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
            </div>
          </body>
     OUTPUT
-              expect(xmlpp(IsoDoc::Gb::PresentationXMLConvert.new({}).convert("test", input, true).gsub(/^.*<body/m, "<body xmlns:epub='epub'").gsub(%r{</body>.*}m, "</body>"))).to be_equivalent_to xmlpp(presxml)
+              expect(xmlpp(IsoDoc::Gb::PresentationXMLConvert.new({}).convert("test", input, true).gsub(/^.*<body/m, "<body xmlns:epub='epub'").gsub(%r{</body>.*}m, "</body>").sub(%r{<i18nyaml>.*</i18nyaml>}m, ""))).to be_equivalent_to xmlpp(presxml)
               expect(xmlpp(IsoDoc::Gb::HtmlConvert.new({}).convert("test", presxml, true).gsub(/^.*<body/m, "<body xmlns:epub='epub'").gsub(%r{</body>.*}m, "</body>"))).to be_equivalent_to xmlpp(html)
   end
 
