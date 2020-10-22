@@ -37,7 +37,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
   it "processes sequences of notes" do
                   expect(xmlpp(IsoDoc::Gb::HtmlConvert.new({}).convert("test", <<~"INPUT", true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>"))).to be_equivalent_to xmlpp(<<~"OUTPUT")
         <gb-standard xmlns="http://riboseinc.com/gbstandard">
-                       <bibdata> <language>en</language> <script>Latn</script> </bibdata>
+                       <bibdata> <language current="true">en</language> <script current="true">Latn</script> </bibdata>
     <preface><foreword>
     <note id="note1">
     <name>NOTE  1</name>
@@ -167,13 +167,9 @@ INPUT
     presxml = <<~OUTPUT
 <gb-standard xmlns='http://riboseinc.com/gbstandard' type="presentation">
   <bibdata>
-    <language>en</language>
-    <script>Latn</script>
+    <language current="true">en</language>
+    <script current="true">Latn</script>
   </bibdata>
-  <local_bibdata>
-    <language>en</language>
-    <script>Latn</script>
-  </local_bibdata>
   <preface>
     <foreword>
       <example id='samplecode'>
@@ -225,7 +221,7 @@ INPUT
            </p>
            </body>
 OUTPUT
-    expect(xmlpp(IsoDoc::Gb::PresentationXMLConvert.new({}).convert("test", input, true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>").sub(%r{<i18nyaml>.*</i18nyaml>}m, ""))).to be_equivalent_to xmlpp(presxml)
+    expect(xmlpp(IsoDoc::Gb::PresentationXMLConvert.new({}).convert("test", input, true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>").sub(%r{<localized-strings>.*</localized-strings>}m, ""))).to be_equivalent_to xmlpp(presxml)
                   expect(xmlpp(IsoDoc::Gb::HtmlConvert.new({}).convert("test", presxml, true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>"))).to be_equivalent_to xmlpp(html)
       expect(xmlpp(IsoDoc::Gb::WordConvert.new({}).convert("test", presxml, true).gsub(/^.*<body/m, "<body").gsub(%r{<div class="WordSection3".*}m, "</body>"))).to be_equivalent_to xmlpp(word)
   end
@@ -249,13 +245,9 @@ OUTPUT
     presxml = <<~OUTPUT
 <gb-standard xmlns='http://riboseinc.com/gbstandard' type="presentation">
   <bibdata>
-    <language>en</language>
-    <script>Latn</script>
+    <language current="true">en</language>
+    <script current="true">Latn</script>
   </bibdata>
-  <local_bibdata>
-    <language>en</language>
-    <script>Latn</script>
-  </local_bibdata>
   <preface>
     <foreword>
       <example id='samplecode'>
@@ -327,7 +319,7 @@ OUTPUT
            </p>
            </body>
     OUTPUT
-                  expect(xmlpp(IsoDoc::Gb::PresentationXMLConvert.new({}).convert("test", input, true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>").sub(%r{<i18nyaml>.*</i18nyaml>}m, ""))).to be_equivalent_to xmlpp(presxml)
+                  expect(xmlpp(IsoDoc::Gb::PresentationXMLConvert.new({}).convert("test", input, true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>").sub(%r{<localized-strings>.*</localized-strings>}m, ""))).to be_equivalent_to xmlpp(presxml)
                   expect(xmlpp(IsoDoc::Gb::HtmlConvert.new({}).convert("test", presxml, true).gsub(/^.*<body/m, "<body").gsub(%r{</body>.*}m, "</body>"))).to be_equivalent_to xmlpp(html)
                   expect(xmlpp(IsoDoc::Gb::WordConvert.new({}).convert("test", presxml, true).gsub(/^.*<body/m, "<body").gsub(%r{<div class="WordSection3">.*}m, "</body>"))).to be_equivalent_to xmlpp(word)
   end
