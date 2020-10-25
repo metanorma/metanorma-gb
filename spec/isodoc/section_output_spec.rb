@@ -2,7 +2,7 @@ require "spec_helper"
 
 RSpec.describe IsoDoc::Gb::HtmlConvert do
     it "processes clause names" do
-          expect(xmlpp(IsoDoc::Gb::PresentationXMLConvert.new({}).convert("test", <<~"INPUT", true).sub(%r{<i18nyaml>.*</i18nyaml>}m, ""))).to be_equivalent_to xmlpp(<<~"OUTPUT")
+          expect(xmlpp(IsoDoc::Gb::PresentationXMLConvert.new({}).convert("test", <<~"INPUT", true).sub(%r{<localized-strings>.*</localized-strings>}m, ""))).to be_equivalent_to xmlpp(<<~"OUTPUT")
         <gb-standard xmlns="http://riboseinc.com/gbstandard">
         <bibdata>
         <language>en</language>
@@ -20,13 +20,9 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
     INPUT
            <gb-standard xmlns='http://riboseinc.com/gbstandard' type="presentation">
   <bibdata>
-    <language>en</language>
-    <script>Latn</script>
+    <language current="true">en</language>
+    <script current="true">Latn</script>
   </bibdata>
-  <local_bibdata>
-    <language>en</language>
-    <script>Latn</script>
-  </local_bibdata>
   <sections>
     <clause id='M' inline-header='false' obligation='normative'>
       <title depth='1'>1<tab/>Clause 4</title>
@@ -44,7 +40,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
   end
 
         it "processes clause names, suppressing heading numbers" do
-          expect(xmlpp(IsoDoc::Gb::PresentationXMLConvert.new({suppressheadingnumbers: true}).convert("test", <<~"INPUT", true).sub(%r{<i18nyaml>.*</i18nyaml>}m, ""))).to be_equivalent_to xmlpp(<<~"OUTPUT")
+          expect(xmlpp(IsoDoc::Gb::PresentationXMLConvert.new({suppressheadingnumbers: true}).convert("test", <<~"INPUT", true).sub(%r{<localized-strings>.*</localized-strings>}m, ""))).to be_equivalent_to xmlpp(<<~"OUTPUT")
         <gb-standard xmlns="http://riboseinc.com/gbstandard">
         <bibdata>
         <language>en</language>
@@ -62,13 +58,9 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
     INPUT
            <gb-standard xmlns='http://riboseinc.com/gbstandard' type="presentation">
   <bibdata>
-    <language>en</language>
-    <script>Latn</script>
+    <language current="true">en</language>
+    <script current="true">Latn</script>
   </bibdata>
-  <local_bibdata>
-    <language>en</language>
-    <script>Latn</script>
-  </local_bibdata>
   <sections>
     <clause id='M' inline-header='false' obligation='normative'>
       <title depth='1'>Clause 4</title>
@@ -85,7 +77,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
   end
 
         it "processes annex names" do
-          expect(xmlpp(IsoDoc::Gb::PresentationXMLConvert.new({}).convert("test", <<~"INPUT", true).sub(%r{<i18nyaml>.*</i18nyaml>}m, ""))).to be_equivalent_to xmlpp(<<~"OUTPUT")
+          expect(xmlpp(IsoDoc::Gb::PresentationXMLConvert.new({}).convert("test", <<~"INPUT", true).sub(%r{<localized-strings>.*</localized-strings>}m, ""))).to be_equivalent_to xmlpp(<<~"OUTPUT")
         <gb-standard xmlns="http://riboseinc.com/gbstandard">
         <bibdata>
         <language>en</language>
@@ -97,13 +89,9 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
     </gb-standard>
     INPUT
     <gb-standard xmlns='http://riboseinc.com/gbstandard' type="presentation">
-  <local_bibdata>
-    <language>en</language>
-    <script>Latn</script>
-  </local_bibdata>
   <bibdata>
-    <language>en</language>
-    <script>Latn</script>
+    <language current="true">en</language>
+    <script current="true">Latn</script>
   </bibdata>
   <annex id='P' inline-header='false' obligation='normative'>
     <title>
