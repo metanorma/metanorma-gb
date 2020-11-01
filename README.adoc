@@ -10,9 +10,9 @@ image:https://img.shields.io/github/commits-since/metanorma/metanorma-gb/latest.
 
 == Functionality
 
-This gem generates
-https://en.wikipedia.org/wiki/Guobiao_standards[Guobiao standards]
-(Chinese national standards), using AsciiDoc.
+This gem processes https://www.metanorma.com[Metanorma documents] following
+the Metanorma model for generating https://en.wikipedia.org/wiki/Guobiao_standards[Guobiao standards]
+(Chinese national standards).
 
 This gem implements the https://github.com/metanorma/metanorma-model-gb[GbDoc] data model,
 which inherits from
