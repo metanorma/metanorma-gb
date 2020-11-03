@@ -33,7 +33,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
       <abbreviation>ISO</abbreviation>
     </organization>
   </contributor>
-  <note format="text/plain" reference="1" type="ISO DATE">Under preparation. (Stage at the time of publication ISO/DIS 16634)</note>
+  <note format="text/plain" reference="1" type="Unpublished-Status">Under preparation. (Stage at the time of publication ISO/DIS 16634)</note>
   <extent type="part"><referenceFrom>all</referenceFrom></extent>
 </bibitem>
 <bibitem id="ISO20483" type="standard">
@@ -107,7 +107,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
              <abbreviation>ISO</abbreviation>
            </organization>
          </contributor>
-         <note format="text/plain" reference="1" type="ISO DATE">Under preparation. (Stage at the time of publication ISO/DIS 16634)</note>
+         <note format="text/plain" reference="1" type="Unpublished-Status">Under preparation. (Stage at the time of publication ISO/DIS 16634)</note>
          <extent type="part"><referenceFrom>all</referenceFrom></extent>
        </bibitem>
        <bibitem id="ISO20483" type="standard">
