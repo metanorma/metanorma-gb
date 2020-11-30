@@ -2,15 +2,6 @@ require "metanorma/processor"
 
 module Metanorma
   module Gb
-    def self.fonts_used
-      {
-        compliant_html: ["SimSun", "Cambria", "SimHei", "Calibri", "Courier New"],
-        html: ["SimSun", "Cambria", "SimHei", "Calibri", "Courier New"],
-        doc: ["SimSun", "Cambria", "SimHei", "Calibri", "Courier New"],
-        pdf: ["SimSun", "Cambria", "SimHei", "Calibri", "Courier New"],
-      }
-    end
-
     class Processor < Metanorma::Processor
 
       def initialize
