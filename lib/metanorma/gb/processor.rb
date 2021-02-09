@@ -23,6 +23,18 @@ module Metanorma
         "Metanorma::Gb #{Metanorma::Gb::VERSION}"
       end
 
+      def fonts_manifest
+        {
+          "SimHei" => nil,
+          "SimSun" => nil,
+          "Calibri" => nil,
+          "Cambria" => nil,
+          "Cambria Math" => nil,
+          "Courier" => nil,
+          "Courier New" => nil,
+        }
+      end
+
       def extract_options(file)
         head = file.sub(/\n\n.*$/m, "\n")
         /\n:standard-logo-img: (?<standardlogoimg>[^\n]+)\n/ =~ head
