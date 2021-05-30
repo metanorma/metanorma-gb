@@ -1291,6 +1291,7 @@
 		
 		
 		
+		
 	</xsl:attribute-set><xsl:attribute-set name="sourcecode-style">
 		<xsl:attribute name="white-space">pre</xsl:attribute>
 		<xsl:attribute name="wrap-option">wrap</xsl:attribute>
@@ -1452,7 +1453,9 @@
 		
 		
 		
+		
 	</xsl:attribute-set><xsl:attribute-set name="eref-style">
+		
 		
 		
 		
@@ -1551,7 +1554,9 @@
 		
 		
 		
+		
 	</xsl:attribute-set><xsl:attribute-set name="origin-style">
+		
 		
 		
 		
@@ -4184,6 +4189,7 @@
 	</xsl:template><xsl:template match="*[local-name()='sourcecode']" name="sourcecode">
 	
 		<fo:block-container margin-left="0mm">
+			<xsl:copy-of select="@id"/>
 			<xsl:if test="parent::*[local-name() = 'note']">
 				<xsl:attribute name="margin-left">
 					<xsl:choose>
