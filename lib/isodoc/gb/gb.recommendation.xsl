@@ -4141,6 +4141,7 @@
 		<xsl:if test="normalize-space() != ''">			
 			<fo:block xsl:use-attribute-sets="figure-name-style">
 				
+				
 				<xsl:apply-templates/>
 			</fo:block>
 		</xsl:if>
