@@ -1972,6 +1972,9 @@
 			<fo:block xsl:use-attribute-sets="table-name-style">
 				
 				
+				
+				
+				
 				<xsl:choose>
 					<xsl:when test="$continued = 'true'"> 
 						<!-- <xsl:if test="$namespace = 'bsi'"></xsl:if> -->
@@ -2369,6 +2372,9 @@
 				
 				
 				
+				
+				
+				
 				<!-- <xsl:if test="$namespace = 'bipm'">
 					<xsl:attribute name="height">8mm</xsl:attribute>
 				</xsl:if> -->
@@ -2450,6 +2456,8 @@
 				<xsl:if test="ancestor::*[local-name() = 'tfoot']">
 					<xsl:attribute name="border-bottom">solid black 0</xsl:attribute>
 				</xsl:if>
+			
+			
 			
 			
 			
