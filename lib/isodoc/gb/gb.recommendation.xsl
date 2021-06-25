@@ -2549,6 +2549,7 @@
 						
 						
 						
+						
 							<xsl:attribute name="font-size">50%</xsl:attribute>							
 						
 						
@@ -2691,6 +2692,9 @@
 	</xsl:template><xsl:template match="*[local-name()='fn']">
 		<!-- <xsl:variable name="namespace" select="substring-before(name(/*), '-')"/> -->
 		<fo:inline font-size="80%" keep-with-previous.within-line="always">
+			
+			
+			
 			
 			
 				<xsl:attribute name="font-size">50%</xsl:attribute>
