@@ -2277,6 +2277,7 @@
 					<fo:table-row>
 						<fo:table-cell border="solid black 1pt" padding-left="1mm" padding-right="1mm" padding-top="1mm" number-columns-spanned="{$cols-count}">
 							
+							
 								<xsl:attribute name="border-top">solid black 0pt</xsl:attribute>
 							
 							
@@ -2287,6 +2288,10 @@
 							
 							
 							
+							
+							
+							
+							<!-- for BSI (not PAS) display Notes before footnotes -->
 							
 							
 							<!-- except gb  -->
@@ -2311,6 +2316,10 @@
 							
 							<!-- fn processing -->
 							<xsl:call-template name="fn_display"/>
+							
+							
+							<!-- for PAS display Notes after footnotes -->
+							
 							
 						</fo:table-cell>
 					</fo:table-row>
@@ -2367,6 +2376,7 @@
 					
 				</xsl:if>
 				<xsl:if test="$parent-name = 'tfoot'">
+					
 					
 					
 				</xsl:if>
@@ -2499,6 +2509,7 @@
 			<fo:block font-size="10pt" margin-bottom="12pt">
 				
 				
+				
 					<xsl:attribute name="font-size">9pt</xsl:attribute>
 					<xsl:attribute name="text-align">center</xsl:attribute>
 					<xsl:attribute name="margin-bottom">6pt</xsl:attribute>
@@ -2508,7 +2519,11 @@
 				
 				
 				
+				<!-- Table's note name (NOTE, for example) -->
+
 				<fo:inline padding-right="2mm">
+					
+				
 					
 						<xsl:attribute name="font-family">SimHei</xsl:attribute>
 					
@@ -2518,6 +2533,8 @@
 					<xsl:apply-templates select="*[local-name() = 'name']" mode="presentation"/>
 						
 				</fo:inline>
+				
+				
 				
 				<xsl:apply-templates mode="process"/>
 			</fo:block>
@@ -2538,6 +2555,8 @@
 			<xsl:variable name="reference" select="@reference"/>
 			<xsl:if test="not(preceding-sibling::*[@reference = $reference])"> <!-- only unique reference puts in note-->
 				<fo:block margin-bottom="12pt">
+				
+					
 					
 					
 						<xsl:attribute name="text-indent">7.4mm</xsl:attribute>
@@ -2561,6 +2580,7 @@
 						
 						
 						<xsl:value-of select="@reference"/>
+						
 						
 						
 					</fo:inline>
@@ -2715,6 +2735,7 @@
 				
 				
 				<xsl:value-of select="@reference"/>
+				
 				
 			</fo:basic-link>
 		</fo:inline>
