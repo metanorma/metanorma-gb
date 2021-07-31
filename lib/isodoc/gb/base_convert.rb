@@ -9,7 +9,7 @@ module IsoDoc
       def scss_fontheader
         b = options[:bodyfont] || "Arial"
         h = options[:headerfont] || "Arial"
-        m = options[:monospacefont] || "Courier"
+        m = options[:monospacefont] || "Courier New"
         t = options[:titlefont] || "Arial"
         "$bodyfont: #{b};\n$headerfont: #{h};\n$monospacefont: #{m};\n"\
           "$titlefont: #{t};\n"

@@ -30,7 +30,6 @@ module Metanorma
           "Calibri" => nil,
           "Cambria" => nil,
           "Cambria Math" => nil,
-          "Courier" => nil,
           "Courier New" => nil,
         }
       end
