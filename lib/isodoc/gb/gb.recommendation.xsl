@@ -1299,6 +1299,7 @@
 	</xsl:attribute-set><xsl:attribute-set name="sourcecode-style">
 		<xsl:attribute name="white-space">pre</xsl:attribute>
 		<xsl:attribute name="wrap-option">wrap</xsl:attribute>
+		<xsl:attribute name="role">Code</xsl:attribute>
 		
 			<xsl:attribute name="font-family">Courier New</xsl:attribute>			
 			<xsl:attribute name="margin-bottom">12pt</xsl:attribute>
@@ -1546,7 +1547,8 @@
 				
 		
 		
-	</xsl:attribute-set><xsl:attribute-set name="quote-style">		
+	</xsl:attribute-set><xsl:attribute-set name="quote-style">
+		<xsl:attribute name="role">BlockQuote</xsl:attribute>
 		
 		
 			<xsl:attribute name="margin-top">12pt</xsl:attribute>
@@ -3773,7 +3775,10 @@
 		</fo:block>
 		<xsl:apply-templates/>
 	</xsl:template><xsl:template match="*[local-name()='appendix']/*[local-name()='title']"/><xsl:template match="*[local-name()='appendix']/*[local-name()='title']" mode="process">
-		<fo:inline><xsl:apply-templates/></fo:inline>
+		<xsl:variable name="level">
+			<xsl:call-template name="getLevel"/>
+		</xsl:variable>
+		<fo:inline role="H{$level}"><xsl:apply-templates/></fo:inline>
 	</xsl:template><xsl:template match="*[local-name()='appendix']//*[local-name()='example']" priority="2">
 		<fo:block id="{@id}" xsl:use-attribute-sets="appendix-example-style">			
 			<xsl:apply-templates select="*[local-name()='name']" mode="presentation"/>
@@ -3970,7 +3975,10 @@
 		</fo:block>
 	</xsl:template><xsl:template match="*[local-name() = 'term']/*[local-name() = 'name']"/><xsl:template match="*[local-name() = 'term']/*[local-name() = 'name']" mode="presentation">
 		<xsl:if test="normalize-space() != ''">
-			<fo:inline>
+			<xsl:variable name="level">
+				<xsl:call-template name="getLevelTermName"/>
+			</xsl:variable>
+			<fo:inline role="H{$level}">
 				<xsl:apply-templates/>
 				<!-- <xsl:if test="$namespace = 'gb' or $namespace = 'ogc'">
 					<xsl:text>.</xsl:text>
@@ -5890,6 +5898,26 @@
 					</xsl:choose>
 				</xsl:variable>
 				<xsl:value-of select="$level"/>
+			</xsl:otherwise>
+		</xsl:choose>
+	</xsl:template><xsl:template name="getLevelTermName">
+		<xsl:choose>
+			<xsl:when test="normalize-space(../@depth) != ''">
+				<xsl:value-of select="../@depth"/>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:variable name="title_level_">
+					<xsl:for-each select="../preceding-sibling::*[local-name() = 'title'][1]">
+						<xsl:call-template name="getLevel"/>
+					</xsl:for-each>
+				</xsl:variable>
+				<xsl:variable name="title_level" select="normalize-space($title_level_)"/>
+				<xsl:choose>
+					<xsl:when test="$title_level != ''"><xsl:value-of select="$title_level + 1"/></xsl:when>
+					<xsl:otherwise>
+						<xsl:call-template name="getLevel"/>
+					</xsl:otherwise>
+				</xsl:choose>
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template><xsl:template name="split">
