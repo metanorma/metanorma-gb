@@ -343,8 +343,8 @@
 							<xsl:variable name="margin-left">12</xsl:variable>
 							<xsl:for-each select="xalan:nodeset($contents)//item[@display = 'true']"><!-- [@display = 'true'][not(@level = 2 and starts-with(@section, '0'))] skip clause from preface -->							
 								<fo:block text-align-last="justify">
-									<xsl:if test="@level =2">
-										<xsl:attribute name="margin-left">3.7mm</xsl:attribute>
+									<xsl:if test="@level &gt;= 2">
+										<xsl:attribute name="margin-left"><xsl:value-of select="(@level - 1) * 3.7"/>mm</xsl:attribute>
 									</xsl:if>
 									<fo:basic-link internal-destination="{@id}" fox:alt-text="{title}">
 										<xsl:if test="normalize-space(@section) != ''">
@@ -469,7 +469,7 @@
 		
 		<xsl:variable name="display">
 			<xsl:choose>				
-				<xsl:when test="$level &lt;= 2">true</xsl:when>
+				<xsl:when test="$level &lt;= $toc_level">true</xsl:when>
 				<xsl:otherwise>false</xsl:otherwise>
 			</xsl:choose>
 		</xsl:variable>
@@ -5877,7 +5877,31 @@
 		<fo:block-container border="1pt solid black" width="50%">
 			<fo:block> </fo:block>
 		</fo:block-container>
-	</xsl:template><xsl:template match="*[local-name() = 'toc']">
+	</xsl:template><xsl:variable name="toc_level">
+		<xsl:choose>
+			<xsl:when test="1 = 2"/> <!-- to do https://github.com/metanorma/mn-native-pdf/issues/337: if there is value in xml -->
+			<xsl:otherwise><!-- default value -->
+				
+				
+				
+				
+				2
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+			</xsl:otherwise>
+		</xsl:choose>
+	</xsl:variable><xsl:template match="*[local-name() = 'toc']">
 		<xsl:param name="colwidths"/>
 		<xsl:variable name="colwidths_">
 			<xsl:choose>
