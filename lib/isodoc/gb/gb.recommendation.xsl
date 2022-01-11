@@ -3100,15 +3100,21 @@
 			<xsl:apply-templates/>
 		</fo:inline>
 	</xsl:template><xsl:template match="*[local-name()='add']">
+		<xsl:param name="skip">true</xsl:param>
 		<xsl:choose>
 			<xsl:when test="starts-with(., $ace_tag)"> <!-- examples: ace-tag_A1_start, ace-tag_A2_end, C1_start, AC_start -->
-				<fo:inline>
-					<xsl:call-template name="insertTag">
-						<xsl:with-param name="type" select="substring-after(substring-after(., $ace_tag), '_')"/> <!-- start or end -->
-						<xsl:with-param name="kind" select="substring(substring-before(substring-after(., $ace_tag), '_'), 1, 1)"/> <!-- A or C -->
-						<xsl:with-param name="value" select="substring(substring-before(substring-after(., $ace_tag), '_'), 2)"/> <!-- 1, 2, C -->
-					</xsl:call-template>
-				</fo:inline>
+				<xsl:choose>
+					<xsl:when test="$skip = 'true' and       ((local-name(../..) = 'note' and not(preceding-sibling::node())) or       (local-name(..) = 'title' and preceding-sibling::node()[1][local-name() = 'tab']))      and       ../node()[last()][local-name() = 'add'][starts-with(text(), $ace_tag)]"><!-- start tag displayed in template name="note" and title --></xsl:when>
+					<xsl:otherwise>
+						<fo:inline>
+							<xsl:call-template name="insertTag">
+								<xsl:with-param name="type" select="substring-after(substring-after(., $ace_tag), '_')"/> <!-- start or end -->
+								<xsl:with-param name="kind" select="substring(substring-before(substring-after(., $ace_tag), '_'), 1, 1)"/> <!-- A or C -->
+								<xsl:with-param name="value" select="substring(substring-before(substring-after(., $ace_tag), '_'), 2)"/> <!-- 1, 2, C -->
+							</xsl:call-template>
+						</fo:inline>
+					</xsl:otherwise>
+				</xsl:choose>
 			</xsl:when>
 			<xsl:when test="@amendment">
 				<fo:inline>
