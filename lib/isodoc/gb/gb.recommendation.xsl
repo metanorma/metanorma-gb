@@ -697,7 +697,7 @@
 	<!-- ====== -->
 	
 	
-	<xsl:template match="gb:p">		
+	<xsl:template match="gb:p" name="paragraph">		
 		<xsl:variable name="previous-element" select="local-name(preceding-sibling::*[1])"/>
 		<xsl:variable name="element-name">
 			<xsl:choose>				
@@ -988,26 +988,6 @@
 		</fo:inline>
 	</xsl:template>
 	
-
-
-	
-	<xsl:template match="gb:admonition">
-		<fo:block font-family="SimHei" text-align="center" margin-bottom="12pt" font-weight="bold">
-			<xsl:variable name="title_admonition_">
-				<xsl:call-template name="getLocalizedString">
-					<xsl:with-param name="key">admonition.<xsl:value-of select="@type"/></xsl:with-param>																			
-				</xsl:call-template>
-			</xsl:variable>
-			<xsl:variable name="title_admonition" select="normalize-space(java:toUpperCase(java:java.lang.String.new($title_admonition_)))"/>
-			<xsl:value-of select="$title_admonition"/>
-			<xsl:if test="$title_admonition = ''">
-				<xsl:value-of select="java:toUpperCase(java:java.lang.String.new(@type))"/>
-			</xsl:if>
-		</fo:block>
-		<fo:block font-weight="bold">
-			<xsl:apply-templates/>
-		</fo:block>
-	</xsl:template>
 	
 
 	<xsl:template match="gb:formula/gb:stem">
@@ -1895,6 +1875,66 @@
 		
 		
 		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</xsl:attribute-set><xsl:attribute-set name="admonition-style">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</xsl:attribute-set><xsl:attribute-set name="admonition-container-style">
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</xsl:attribute-set><xsl:attribute-set name="admonition-name-style">
+		<xsl:attribute name="keep-with-next">always</xsl:attribute>
+		
+		
+		
+		
+			<xsl:attribute name="font-family">SimHei</xsl:attribute>
+			<xsl:attribute name="text-align">center</xsl:attribute>
+			<xsl:attribute name="margin-bottom">12pt</xsl:attribute>
+			<xsl:attribute name="font-weight">bold</xsl:attribute>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</xsl:attribute-set><xsl:attribute-set name="admonition-p-style">
+		
+		
+		
+			<xsl:attribute name="font-weight">bold</xsl:attribute>
 		
 		
 		
@@ -5953,6 +5993,44 @@
 		<xsl:copy-of select="."/>
 	</xsl:template><xsl:template match="*[local-name() = 'p'][@type = 'floating-title']" priority="4">
 		<xsl:call-template name="title"/>
+	</xsl:template><xsl:template match="*[local-name() = 'admonition']">
+		
+		
+		
+		
+		
+		
+				<fo:block xsl:use-attribute-sets="admonition-name-style">
+					<xsl:call-template name="displayAdmonitionName"/>
+				</fo:block>
+				<xsl:apply-templates select="node()[not(local-name() = 'name')]"/>
+			
+	</xsl:template><xsl:template name="displayAdmonitionName">
+		
+				<xsl:apply-templates select="*[local-name() = 'name']"/>
+				<xsl:if test="not(*[local-name() = 'name'])">
+					<xsl:apply-templates select="@type"/>
+				</xsl:if>
+			
+	</xsl:template><xsl:template match="*[local-name() = 'admonition']/*[local-name() = 'name']">
+		<xsl:apply-templates/>
+	</xsl:template><xsl:template match="*[local-name() = 'admonition']/@type">
+		<xsl:variable name="admonition_type_">
+			<xsl:call-template name="getLocalizedString">
+				<xsl:with-param name="key">admonition.<xsl:value-of select="."/></xsl:with-param>
+			</xsl:call-template>
+		</xsl:variable>
+		<xsl:variable name="admonition_type" select="normalize-space(java:toUpperCase(java:java.lang.String.new($admonition_type_)))"/>
+		<xsl:value-of select="$admonition_type"/>
+		<xsl:if test="$admonition_type = ''">
+			<xsl:value-of select="java:toUpperCase(java:java.lang.String.new(.))"/>
+		</xsl:if>
+	</xsl:template><xsl:template match="*[local-name() = 'admonition']/*[local-name() = 'p']">
+		
+				<fo:block xsl:use-attribute-sets="admonition-p-style">
+					<xsl:call-template name="paragraph"/>
+				</fo:block>
+			
 	</xsl:template><xsl:template name="convertDate">
 		<xsl:param name="date"/>
 		<xsl:param name="format" select="'short'"/>
