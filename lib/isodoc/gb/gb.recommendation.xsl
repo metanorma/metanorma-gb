@@ -539,51 +539,6 @@
 		<fo:inline><xsl:value-of select="$tab_zh"/></fo:inline>
 	</xsl:template>
 	
-	<xsl:template match="gb:license-statement//gb:title">
-		<fo:block text-align="center" font-weight="bold">
-			<xsl:apply-templates/>
-		</fo:block>
-	</xsl:template>
-	
-	<xsl:template match="gb:license-statement//gb:p">
-		<fo:block margin-left="1.5mm" margin-right="1.5mm">
-			<xsl:if test="following-sibling::gb:p">
-				<xsl:attribute name="margin-top">6pt</xsl:attribute>
-				<xsl:attribute name="margin-bottom">6pt</xsl:attribute>
-			</xsl:if>
-			<xsl:apply-templates/>
-		</fo:block>
-	</xsl:template>
-	
-	<!-- <fo:block margin-bottom="12pt">© ISO 2019, Published in Switzerland.</fo:block>
-			<fo:block font-size="10pt" margin-bottom="12pt">All rights reserved. Unless otherwise specified, no part of this publication may be reproduced or utilized otherwise in any form or by any means, electronic or mechanical, including photocopying, or posting on the internet or an intranet, without prior written permission. Permission can be requested from either ISO at the address below or ISO’s member body in the country of the requester.</fo:block>
-			<fo:block font-size="10pt" text-indent="7.1mm">
-				<fo:block>ISO copyright office</fo:block>
-				<fo:block>Ch. de Blandonnet 8 • CP 401</fo:block>
-				<fo:block>CH-1214 Vernier, Geneva, Switzerland</fo:block>
-				<fo:block>Tel.  + 41 22 749 01 11</fo:block>
-				<fo:block>Fax  + 41 22 749 09 47</fo:block>
-				<fo:block>copyright@iso.org</fo:block>
-				<fo:block>www.iso.org</fo:block>
-			</fo:block> -->
-	
-	<xsl:template match="gb:copyright-statement//gb:p">
-		<fo:block>
-			<xsl:if test="preceding-sibling::gb:p">
-				<!-- <xsl:attribute name="font-size">10pt</xsl:attribute> -->
-			</xsl:if>
-			<xsl:if test="following-sibling::gb:p">
-				<!-- <xsl:attribute name="margin-bottom">12pt</xsl:attribute> -->
-				<xsl:attribute name="margin-bottom">3pt</xsl:attribute>
-			</xsl:if>
-			<xsl:if test="contains(@id, 'address')"> <!-- not(following-sibling::gb:p) -->
-				<!-- <xsl:attribute name="margin-left">7.1mm</xsl:attribute> -->
-				<xsl:attribute name="margin-left">4mm</xsl:attribute>
-			</xsl:if>
-			<xsl:apply-templates/>
-		</fo:block>
-	</xsl:template>
-	
 	
 	<!-- ====== -->
 	<!-- title      -->
@@ -1054,6 +1009,53 @@
 		
 		
 		
+		
+		
+	</xsl:attribute-set><xsl:attribute-set name="copyright-statement-style">
+		
+	</xsl:attribute-set><xsl:attribute-set name="copyright-statement-title-style">
+		
+		
+	</xsl:attribute-set><xsl:attribute-set name="copyright-statement-p-style">
+		
+		
+		
+	</xsl:attribute-set><xsl:attribute-set name="license-statement-style">
+		
+		
+	</xsl:attribute-set><xsl:attribute-set name="license-statement-title-style">
+		<xsl:attribute name="keep-with-next">always</xsl:attribute>
+		
+		
+		
+		
+		
+		
+	</xsl:attribute-set><xsl:attribute-set name="license-statement-p-style">
+		
+		
+		
+		
+	</xsl:attribute-set><xsl:attribute-set name="legal-statement-style">
+		
+		
+		
+	</xsl:attribute-set><xsl:attribute-set name="legal-statement-title-style">
+		<xsl:attribute name="keep-with-next">always</xsl:attribute>
+		
+		
+		
+		
+		
+	</xsl:attribute-set><xsl:attribute-set name="legal-statement-p-style">
+		
+	</xsl:attribute-set><xsl:attribute-set name="feedback-statement-style">
+		
+		
+	</xsl:attribute-set><xsl:attribute-set name="feedback-statement-title-style">
+		<xsl:attribute name="keep-with-next">always</xsl:attribute>
+		
+	</xsl:attribute-set><xsl:attribute-set name="feedback-statement-p-style">
 		
 		
 	</xsl:attribute-set><xsl:attribute-set name="link-style">
@@ -2012,6 +2014,64 @@
 		<xsl:value-of select="."/>
 	</xsl:template><xsl:template match="*[local-name()='br']">
 		<xsl:value-of select="$linebreak"/>
+	</xsl:template><xsl:template match="*[local-name()='copyright-statement']">
+		<fo:block xsl:use-attribute-sets="copyright-statement-style">
+			<xsl:apply-templates/>
+		</fo:block>
+	</xsl:template><xsl:template match="*[local-name()='copyright-statement']//*[local-name()='title']">
+		
+				<!-- process in the template 'title' -->
+				<xsl:call-template name="title"/>
+			
+	</xsl:template><xsl:template match="*[local-name()='copyright-statement']//*[local-name()='p']">
+		
+		
+				<!-- process in the template 'paragraph' -->
+				<xsl:call-template name="paragraph"/>
+			
+	</xsl:template><xsl:template match="*[local-name()='license-statement']">
+		<fo:block xsl:use-attribute-sets="license-statement-style">
+			<xsl:apply-templates/>
+		</fo:block>
+	</xsl:template><xsl:template match="*[local-name()='license-statement']//*[local-name()='title']">
+		
+				<!-- process in the template 'title' -->
+				<xsl:call-template name="title"/>
+			
+	</xsl:template><xsl:template match="*[local-name()='license-statement']//*[local-name()='p']">
+		
+				<!-- process in the template 'paragraph' -->
+				<xsl:call-template name="paragraph"/>
+			
+	</xsl:template><xsl:template match="*[local-name()='legal-statement']">
+		<fo:block xsl:use-attribute-sets="legal-statement-style">
+			<xsl:apply-templates/>
+		</fo:block>
+	</xsl:template><xsl:template match="*[local-name()='legal-statement']//*[local-name()='title']">
+		
+				<!-- process in the template 'title' -->
+				<xsl:call-template name="title"/>
+			
+	
+	</xsl:template><xsl:template match="*[local-name()='legal-statement']//*[local-name()='p']">
+		
+				<!-- process in the template 'paragraph' -->
+				<xsl:call-template name="paragraph"/>
+			
+	</xsl:template><xsl:template match="*[local-name()='feedback-statement']">
+		<fo:block xsl:use-attribute-sets="feedback-statement-style">
+			<xsl:apply-templates/>
+		</fo:block>
+	</xsl:template><xsl:template match="*[local-name()='feedback-statement']//*[local-name()='title']">
+		
+				<!-- process in the template 'title' -->
+				<xsl:call-template name="title"/>
+			
+	</xsl:template><xsl:template match="*[local-name()='feedback-statement']//*[local-name()='p']">
+		
+				<!-- process in the template 'paragraph' -->
+				<xsl:call-template name="paragraph"/>
+			
 	</xsl:template><xsl:template match="*[local-name()='td']//text() | *[local-name()='th']//text() | *[local-name()='dt']//text() | *[local-name()='dd']//text()" priority="1">
 		<!-- <xsl:call-template name="add-zero-spaces"/> -->
 		<xsl:call-template name="add-zero-spaces-java"/>
