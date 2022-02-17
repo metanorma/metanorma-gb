@@ -1640,13 +1640,19 @@
 	</xsl:attribute-set><xsl:variable name="color-added-text">
 		<xsl:text>rgb(0, 255, 0)</xsl:text>
 	</xsl:variable><xsl:attribute-set name="add-style">
-		<xsl:attribute name="color">red</xsl:attribute>
-		<xsl:attribute name="text-decoration">underline</xsl:attribute>
-		<!-- <xsl:attribute name="color">black</xsl:attribute>
-		<xsl:attribute name="background-color"><xsl:value-of select="$color-added-text"/></xsl:attribute>
-		<xsl:attribute name="padding-top">1mm</xsl:attribute>
-		<xsl:attribute name="padding-bottom">0.5mm</xsl:attribute> -->
-	</xsl:attribute-set><xsl:variable name="color-deleted-text">
+		
+				<xsl:attribute name="color">red</xsl:attribute>
+				<xsl:attribute name="text-decoration">underline</xsl:attribute>
+				<!-- <xsl:attribute name="color">black</xsl:attribute>
+				<xsl:attribute name="background-color"><xsl:value-of select="$color-added-text"/></xsl:attribute>
+				<xsl:attribute name="padding-top">1mm</xsl:attribute>
+				<xsl:attribute name="padding-bottom">0.5mm</xsl:attribute> -->
+			
+	</xsl:attribute-set><xsl:variable name="add-style">
+			<add-style xsl:use-attribute-sets="add-style"/>
+		</xsl:variable><xsl:template name="append_add-style">
+		<xsl:copy-of select="xalan:nodeset($add-style)/add-style/@*"/>
+	</xsl:template><xsl:variable name="color-deleted-text">
 		<xsl:text>red</xsl:text>
 	</xsl:variable><xsl:attribute-set name="del-style">
 		<xsl:attribute name="color"><xsl:value-of select="$color-deleted-text"/></xsl:attribute>
@@ -4146,6 +4152,9 @@
 		</fo:inline>		
 	</xsl:template><xsl:template match="*[local-name() = 'xref']">
 		<fo:basic-link internal-destination="{@target}" fox:alt-text="{@target}" xsl:use-attribute-sets="xref-style">
+			<xsl:if test="parent::bsi:add">
+				<xsl:call-template name="append_add-style"/>
+			</xsl:if>
 			<xsl:apply-templates/>
 		</fo:basic-link>
 	</xsl:template><xsl:template match="*[local-name() = 'formula']" name="formula">
@@ -4281,6 +4290,12 @@
 			
 				
 				
+				<!-- if 'p' contains all text in 'add' first and last elements in first p are 'add' -->
+				<!-- <xsl:if test="*[not(local-name()='name')][1][node()[normalize-space() != ''][1][local-name() = 'add'] and node()[normalize-space() != ''][last()][local-name() = 'add']]"> -->
+				<xsl:if test="*[not(local-name()='name')][1][count(node()[normalize-space() != '']) = 1 and *[local-name() = 'add']]">
+					<xsl:call-template name="append_add-style"/>
+				</xsl:if>
+				
 				<xsl:apply-templates select="*[local-name() = 'name']"/>
 				
 			</fo:inline>
@@ -4334,6 +4349,7 @@
 		</fo:block>
 	</xsl:template><xsl:template match="*[local-name() = 'term']">
 		<fo:block id="{@id}" xsl:use-attribute-sets="term-style">
+
 			
 				<fo:block font-family="SimHei" font-size="11pt" keep-with-next="always" margin-top="10pt" margin-bottom="8pt" line-height="1.1">
 					<xsl:apply-templates select="gb:name"/>
@@ -6105,6 +6121,11 @@
 				
 					
 				
+					<!-- if 'p' contains all text in 'add' first and last elements in first p are 'add' -->
+					<xsl:if test="*[1][count(node()[normalize-space() != '']) = 1 and *[local-name() = 'add']]">
+						<xsl:call-template name="append_add-style"/>
+					</xsl:if>
+					
 					<xsl:call-template name="getListItemFormat"/>
 				</fo:block>
 			</fo:list-item-label>
