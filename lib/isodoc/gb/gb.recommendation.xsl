@@ -2107,9 +2107,11 @@
 			<xsl:attribute name="text-align">justify</xsl:attribute>
 		
 		
+		
 	</xsl:attribute-set><xsl:attribute-set name="bibitem-non-normative-list-body-style">
 		
 			<xsl:attribute name="text-align">justify</xsl:attribute>
+		
 		
 		
 		
