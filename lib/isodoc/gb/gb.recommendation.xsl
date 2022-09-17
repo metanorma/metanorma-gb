@@ -6643,6 +6643,18 @@
 		</xsl:copy>
 	</xsl:template>
 
+	<xsl:template match="*[local-name() = 'sub']" mode="contents_item">
+		<xsl:copy>
+			<xsl:apply-templates mode="contents_item"/>
+		</xsl:copy>
+	</xsl:template>
+
+	<xsl:template match="*[local-name() = 'sup']" mode="contents_item">
+		<xsl:copy>
+			<xsl:apply-templates mode="contents_item"/>
+		</xsl:copy>
+	</xsl:template>
+
 	<xsl:template match="*[local-name() = 'stem']" mode="contents_item">
 		<xsl:copy-of select="."/>
 	</xsl:template>
