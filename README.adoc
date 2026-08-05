@@ -1,5 +1,10 @@
 = metanorma-gb: Authoring Chinese standards (GuoBiao, sector...) in AsciiDoc
 
+[IMPORTANT]
+====
+*This repository is dormant and unmaintained.* Last release v1.5.8 (2020-10-25), last commit `aa871fa` (2020-11-06). Removed from cimas.yml per maintainer triage on 2026-07-05 (metanorma/ci@8c35bef) — not part of the active metanorma processor family. Not archived, so historical references and PR URLs stay resolvable, but no active maintenance, releases, or bug fixes are planned.
+====
+
 image:https://img.shields.io/gem/v/metanorma-gb.svg["Gem Version", link="https://rubygems.org/gems/metanorma-gb"]
 image:https://github.com/metanorma/metanorma-gb/workflows/rake/badge.svg["Build Status", link="https://github.com/metanorma/metanorma-gb/actions?workflow=rake"]
 image:https://codeclimate.com/github/metanorma/metanorma-gb/badges/gpa.svg["Code Climate", link="https://codeclimate.com/github/metanorma/metanorma-gb"]
