@@ -5,6 +5,12 @@ source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}" }
 gemspec
 
+# TEMPORARY cross-PR pins (metanorma-core#18 wave)
+gem "metanorma-core", github: "metanorma/metanorma-core", branch: "feat/flavor-table"
+gem "metanorma-standoc", github: "metanorma/metanorma-standoc", branch: "feat/move-standard-document"
+gem "metanorma-document", github: "metanorma/metanorma-document", branch: "feat/model-validation-l1-declarations"
+gem "metanorma-iso", github: "metanorma/metanorma-iso", branch: "feat/model-validation-migration"
+
 if File.exist? 'Gemfile.devel'
   eval File.read('Gemfile.devel'), nil, 'Gemfile.devel' # rubocop:disable Security/Eval
 end
