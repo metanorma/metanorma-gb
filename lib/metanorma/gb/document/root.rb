@@ -3,7 +3,7 @@
 module Metanorma
   module Gb::Document
     class Root < Lutaml::Model::Serializable
-      include Metanorma::StandardDocument::RootAttributes
+      include Metanorma::Standoc::Document::RootAttributes
 
       def self.lutaml_default_register
         :gb_document
@@ -20,9 +20,9 @@ module Metanorma
 
       xml do
         element "metanorma"
-        namespace Metanorma::StandardDocument::Namespace
+        namespace Metanorma::Standoc::Document::Namespace
 
-        Metanorma::StandardDocument::RootXmlMapping.apply(self)
+        Metanorma::Standoc::Document::RootXmlMapping.apply(self)
       end
     end
   end

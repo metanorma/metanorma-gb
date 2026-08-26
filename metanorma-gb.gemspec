@@ -29,9 +29,9 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
   spec.required_ruby_version = Gem::Requirement.new(">= 2.4.0")
 
-  spec.add_dependency "metanorma-iso", "~> 1.5.10"
-  spec.add_dependency "isodoc", "~> 1.2.0"
-  spec.add_dependency "twitter_cldr", "~> 4.4.4"
+  spec.add_dependency "metanorma-iso", "~> 3.5.0"
+  spec.add_dependency "isodoc", "~> 3.7.0"
+  spec.add_dependency "twitter_cldr", ">= 6.6.0"
   spec.add_dependency "gb-agencies", "~> 0.0.4"
   spec.add_dependency "htmlentities", "~> 4.3.4"
 
@@ -42,7 +42,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "guard-rspec", "~> 4.7"
   spec.add_development_dependency "rake", "~> 12.0"
   spec.add_development_dependency "rspec", "~> 3.6"
-  spec.add_development_dependency "rubocop", "= 0.54.0"
+  spec.add_development_dependency "rubocop", "~> 1.5"
   spec.add_development_dependency "simplecov", "~> 0.15"
   spec.add_development_dependency "timecop", "~> 0.9"
   spec.add_development_dependency "metanorma"
