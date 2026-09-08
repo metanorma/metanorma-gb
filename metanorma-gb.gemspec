@@ -29,7 +29,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
   spec.required_ruby_version = Gem::Requirement.new(">= 2.4.0")
 
-  spec.add_dependency "metanorma-iso", "~> 3"
+  spec.add_dependency "metanorma-iso", ">= 3.4.2" # audit chain
   spec.add_dependency "isodoc", ">= 3.0"
   spec.add_dependency "twitter_cldr", ">= 6.6.0"
   spec.add_dependency "gb-agencies", "~> 0.0.4"
