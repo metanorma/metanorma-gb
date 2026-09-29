@@ -1,3 +1,7 @@
+@use 'base_style/all' as *;
+@use 'coverpage';
+@use 'base_style/defaults' as *;
+
 /*
     0 CSS RESET
 */
@@ -21,7 +25,6 @@ $docstage-colors-list: (working-draft: #fda706,
 
 $mainContentsOffsetLeft: 4em;
 
-@import 'base_style/all';
 
 h1, h2, h3, h4, h5, h6, .h2Annex {
   margin-top: 1.5em;
@@ -40,7 +43,6 @@ body {
   }
 }
 
-@import 'coverpage';
 
 /* Setting of the page size and margins */
 

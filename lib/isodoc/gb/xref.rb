@@ -1,6 +1,6 @@
 module IsoDoc
   module Gb
-    class Xref < IsoDoc::Xref
+    class Xref < IsoDoc::Iso::Xref
     end
   end
 end

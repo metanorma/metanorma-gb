@@ -1,8 +1,8 @@
 require_relative "front_id"
 
-module Asciidoctor
+module Metanorma
   module Gb
-    class Converter < ISO::Converter
+    class Converter < Iso::Converter
       def doctype(node)
         type = node.attr("mandate") || "mandatory"
         type = "standard" if type == "mandatory"
@@ -104,7 +104,7 @@ module Asciidoctor
                     m[0] == "Q" ? "enterprise" : nil
                 end
         return scope unless scope.nil?
-        @log.add("Document Attributes", nil, "GB: no scope supplied, defaulting to National")
+        @log.add(:GB_1, nil)
         "national"
       end
 
@@ -117,7 +117,7 @@ module Asciidoctor
         else
           prefix = "GB"
           scope = "national"
-          @log.add("Document Attributes", nil, "GB: no prefix supplied, defaulting to GB")
+          @log.add(:GB_2, nil)
         end
         [scope, prefix]
       end
@@ -129,14 +129,14 @@ module Asciidoctor
           %r{/Z}.match(p) ? "guidelines" : nil
         if mandate.nil?
           mandate = "mandatory"
-          @log.add("Document Attributes", nil, "GB: no mandate supplied, defaulting to mandatory")
+          @log.add(:GB_3, nil)
         end
         mandate
       end
 
       def get_topic(node)
         node.attr("topic") and return node.attr("topic")
-        @log.add("Document Attributes", nil, "GB: no topic supplied, defaulting to basic")
+        @log.add(:GB_4, nil)
         "basic"
       end
 
@@ -184,6 +184,20 @@ module Asciidoctor
         xml.script (node.attr("script") || "Hans")
       end
 
+      # ISO's status output pubid-parses the docnumber, which is not an
+      # ISO identifier for GB; use the plain standoc status block (GB's
+      # stagename is written by metadata_ext).
+      def metadata_status(node, xml)
+        xml.status do |s|
+          add_noko_elem(s, "stage",
+                        node.attr("status") || node.attr("docstage") ||
+                        "published", abbreviation: node.attr("docstage-abbrev"))
+          add_noko_elem(s, "substage", node.attr("docsubstage") ||
+                        node.attr("substage"))
+          add_noko_elem(s, "iteration", node.attr("iteration"))
+        end
+      end
+
       def metadata_ext(node, xml)
         metadata_doctype(node, xml)
         metadata_committee(node, xml)
@@ -201,21 +215,21 @@ module Asciidoctor
         title = "#{intro} -- #{title}" if intro
         title = "#{title} -- #{part}" if part
         t.title **attr_code(at.merge(type: "main")) do |t1|
-          t1 << Asciidoctor::Standoc::Utils::asciidoc_sub(title)
+          t1 << Metanorma::Utils::asciidoc_sub(title)
         end
       end
 
       def title_intro(node, lang, t, at)
         node.attr("title-intro-#{lang}") and
           t.title **attr_code(at.merge(type: "title-intro")) do |t1|
-          t1 << Asciidoctor::Standoc::Utils::asciidoc_sub(
+          t1 << Metanorma::Utils::asciidoc_sub(
             node.attr("title-intro-#{lang}"))
         end
       end
 
       def title_main(node, lang, t, at)
         t.title **attr_code(at.merge(type: "title-main")) do |t1|
-          t1 << Asciidoctor::Standoc::Utils::asciidoc_sub(
+          t1 << Metanorma::Utils::asciidoc_sub(
             node.attr("title-main-#{lang}"))
         end
       end
@@ -223,7 +237,7 @@ module Asciidoctor
       def title_part(node, lang, t, at)
         node.attr("title-part-#{lang}") and
           t.title **attr_code(at.merge(type: "title-part")) do |t1|
-          t1 << Asciidoctor::Standoc::Utils::asciidoc_sub(
+          t1 << Metanorma::Utils::asciidoc_sub(
             node.attr("title-part-#{lang}"))
         end
       end

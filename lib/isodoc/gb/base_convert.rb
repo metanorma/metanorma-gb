@@ -6,17 +6,13 @@ require "fileutils"
 module IsoDoc
   module Gb
     module BaseConvert
-      def scss_fontheader
-        b = options[:bodyfont] || "Arial"
-        h = options[:headerfont] || "Arial"
-        m = options[:monospacefont] || "Courier New"
+      def scss_fontheader(is_html_css)
         t = options[:titlefont] || "Arial"
-        "$bodyfont: #{b};\n$headerfont: #{h};\n$monospacefont: #{m};\n"\
-          "$titlefont: #{t};\n"
+        super + "$titlefont: #{t};\n"
       end
 
       def cleanup(docxml)
-        @i18n ||= i18n_init(@lang, @script)
+        @i18n ||= i18n_init(@lang, @script, @locale)
         @cleanup = Cleanup.new(@script, @i18n.deprecated)
         super
         @cleanup.cleanup(docxml)
@@ -159,7 +155,7 @@ module IsoDoc
         end.join
       end
 
-      def clausedelimspace(out)
+      def clausedelimspace(_node, out)
         out << "&#x3000;"
       end
 

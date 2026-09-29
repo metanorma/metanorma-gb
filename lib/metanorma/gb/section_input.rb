@@ -1,11 +1,9 @@
-require "relaton_gb"
-
-module Asciidoctor
+module Metanorma
   module Gb
 
     # A {Converter} implementation that generates GB output, and a document
     # schema encapsulation of the document for validation
-    class Converter < ISO::Converter
+    class Converter < Iso::Converter
       def sectiontype_streamline(ret)
         case ret
         when "前言" then "foreword"

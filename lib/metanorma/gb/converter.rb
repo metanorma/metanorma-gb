@@ -1,25 +1,82 @@
 require "asciidoctor"
-require "asciidoctor/iso/converter"
+require "metanorma-iso"
 require "isodoc/gb/common"
 require "isodoc/gb/word_convert"
 require "isodoc/gb/pdf_convert"
 require "isodoc/gb/presentation_xml_convert"
 require "gb_agencies"
-require_relative "./section_input.rb"
-require_relative "./front.rb"
-require_relative "./validate.rb"
-require_relative "cleanup.rb"
+require "metanorma/gb/section_input"
+require "metanorma/gb/front"
+require "metanorma/gb/validate"
+require "metanorma/gb/cleanup"
 require "fileutils"
 
-module Asciidoctor
+module Metanorma
   module Gb
     # A {Converter} implementation that generates GB output, and a document
     # schema encapsulation of the document for validation
-    class Converter < ISO::Converter
+    class Converter < Iso::Converter
       XML_ROOT_TAG = "gb-standard".freeze
       XML_NAMESPACE = "https://www.metanorma.org/ns/gb".freeze
 
       register_for "gb"
+
+      GB_LOG_MESSAGES = {
+        GB_1: { category: "Document Attributes",
+                error: "GB: no scope supplied, defaulting to National",
+                severity: 2 },
+        GB_2: { category: "Document Attributes",
+                error: "GB: no prefix supplied, defaulting to GB",
+                severity: 2 },
+        GB_3: { category: "Document Attributes",
+                error: "GB: no mandate supplied, defaulting to mandatory",
+                severity: 2 },
+        GB_4: { category: "Document Attributes",
+                error: "GB: no topic supplied, defaulting to basic",
+                severity: 2 },
+        GB_5: { category: "Document Attributes",
+                error: "%s is not a recognised document type", severity: 2 },
+        GB_6: { category: "Document Attributes",
+                error: "%s is not a recognised script", severity: 2 },
+        GB_7: { category: "Document Attributes",
+                error: "%s is improperly formatted for social standards",
+                severity: 2 },
+        GB_8: { category: "Document Attributes",
+                error: "%s is improperly formatted for enterprise standards",
+                severity: 2 },
+        GB_9: { category: "Document Attributes",
+                error: "%s is not a legal sector standard prefix",
+                severity: 2 },
+        GB_10: { category: "Document Attributes",
+                 error: "%s is not a legal local standard prefix",
+                 severity: 2 },
+        GB_11: { category: "Document Attributes",
+                 error: "%s is not a legal national standard prefix",
+                 severity: 2 },
+        GB_12: { category: "Document Attributes",
+                 error: "No issuer provided for %s standard", severity: 2 },
+        GB_13: { category: "Style",
+                 error: "GB: %s term %s has no English counterpart",
+                 severity: 2 },
+        GB_14: { category: "Style",
+                 error: "GB: %s term %s has no Chinese counterpart",
+                 severity: 2 },
+        GB_15: { category: "Style", error: "No English Title Intro!",
+                 severity: 2 },
+        GB_16: { category: "Style", error: "No Chinese Title Intro!",
+                 severity: 2 },
+        GB_17: { category: "Style", error: "No English Title!", severity: 2 },
+        GB_18: { category: "Style", error: "No Chinese Title!",
+                 severity: 2 },
+        GB_19: { category: "Style", error: "No English Title Part!",
+                 severity: 2 },
+        GB_20: { category: "Style", error: "No Chinese Title Part!",
+                 severity: 2 },
+      }.freeze
+
+      def log_messages
+        super.merge(GB_LOG_MESSAGES)
+      end
 
       def makexml(node)
         @draft = node.attributes.has_key?("draft")
@@ -97,7 +154,7 @@ module Asciidoctor
           else
             nil
           end
-        end.join
+        end
         return ret unless ret.nil? or ret.empty?
         super
       end
@@ -110,7 +167,7 @@ module Asciidoctor
       ISO_REF = %r{^<ref\sid="(?<anchor>[^"]+)">
       \[(?<usrlbl>\([^)]+\))?(?<code>(ISO|IEC|#{GBCODE})[^0-9]*\s[0-9-]+?)
       ([:-](?<year>(19|20)[0-9][0-9]))?\]</ref>,?\s
-      (?<text>.*)$}xm
+      (?:<fn[^>]*>\s*<p>(?<fn>[^\]]+)</p>\s*</fn>)?\s?(?<text>.*)$}xm
 
       ISO_REF_NO_YEAR = %r{^<ref\sid="(?<anchor>[^"]+)">
       \[(?<usrlbl>\([^)]+\))?(?<code>(ISO|IEC|#{GBCODE})[^0-9]*\s[0-9-]+):--\]</ref>,?\s?
@@ -118,7 +175,7 @@ module Asciidoctor
 
       ISO_REF_ALL_PARTS = %r{^<ref\sid="(?<anchor>[^"]+)">
       \[(?<usrlbl>\([^)]+\))?(?<code>(ISO|IEC|#{GBCODE})[^0-9]*\s[0-9]+)\s
-      \(all\sparts\)\]</ref>(<p>)?,?\s?
+      \(all\sparts\)\]</ref>(?:<fn[^>]*>\s*<p>(?<fn>[^\]]+)</p>\s*</fn>)?(<p>)?,?\s?
       (?<text>.*)(</p>)?$}xm
 
       def reference1_matches(item)
