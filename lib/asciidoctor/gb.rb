@@ -1,5 +1,7 @@
+require "metanorma/gb/converter"
+
 module Asciidoctor
-  module Gb
-    # Your code goes here...
-  end
+  # Deprecated alias: the GB compile converter moved to Metanorma::Gb.
+  Gb = Metanorma::Gb
+  deprecate_constant :Gb
 end

@@ -1,6 +1,12 @@
-module Asciidoctor
+require "gb_agencies"
+
+module Metanorma
   module Gb
-    class Converter < ISO::Converter
+    class Cleanup < Iso::Cleanup
+      def copied_instance_variables
+        super + %i[draft keepboilerplate]
+      end
+
       def termdef_cleanup(xmldoc)
         super
         # TODO this should become variant tag
@@ -113,6 +119,12 @@ module Asciidoctor
         IsoDoc::Gb::HtmlConvert.new({}).omit_docid_prefix(prefix)
       end
 
+      # gb ships boilerplate.xml (standoc's XML boilerplate), not iso's
+      # boilerplate.adoc
+      def boilerplate_file(_xmldoc)
+        File.join(@libdir, "boilerplate.xml")
+      end
+
       def boilerplate_cleanup(xmldoc)
         isodoc = boilerplate_isodoc(xmldoc)
         initial_boilerplate(xmldoc, isodoc)
@@ -123,7 +135,7 @@ module Asciidoctor
                                 f.at(".//term"), f.at(".//p"), isodoc)
         end
         f = xmldoc.at(self.class::NORM_REF) and
-          norm_ref_preface(f)
+          norm_ref_preface(f, isodoc)
       end
     end
   end

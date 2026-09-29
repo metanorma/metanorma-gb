@@ -1,13 +1,19 @@
-module Asciidoctor
+require "gb_agencies"
+
+module Metanorma
   module Gb
-    class Converter < ISO::Converter
+    class Validate < Iso::Validate
+      # The old RNG pass is retired with the model-based pipeline (the
+      # iso-main pattern): gbstandard.rng predates the current semantic
+      # model, and gb ships no generated compile schema.
       def validate(doc)
+        @log.add_error_ranges(doc)
         content_validate(doc)
-        schema_validate(formattedstr_strip(doc.dup),
-                        File.join(File.dirname(__FILE__), "gbstandard.rng"))
       end
 
       def content_validate(doc)
+        @agencyclass ||=
+          GbAgencies::Agencies.new(doc.at("//language")&.text, {}, "")
         super
         bilingual_terms_validate(doc.root)
         issuer_validate(doc.root)
@@ -15,6 +21,10 @@ module Asciidoctor
         bibdata_validate(doc.root)
         @agencyclass.gbtype_validate(doc.root.at("//gbscope")&.text, doc.root.at("//gbprefix")&.text)
       end
+
+      # ISO Layer-3 model rules target the ISO root and have no GB
+      # profile; the RNG pass went with them.
+      def model_validate(_doc); end
 
       def bibdata_validate(doc)
         doctype_validate(doc)
@@ -24,13 +34,13 @@ module Asciidoctor
       def doctype_validate(xmldoc)
         doctype = xmldoc&.at("//bibdata/ext/doctype")&.text
         %w(standard recommendation).include? doctype or
-          @log.add("Document Attributes", nil, "#{doctype} is not a recognised document type")
+          @log.add(:GB_5, nil, params: [doctype])
       end
 
       def script_validate(xmldoc)
         script = xmldoc&.at("//bibdata/script")&.text
         %(Hans Latn).include?(script) or
-          @log.add("Document Attributes", nil, "#{script} is not a recognised script")
+          @log.add(:GB_6, nil, params: [script])
       end
 
       def prefix_validate(root)
@@ -39,23 +49,23 @@ module Asciidoctor
         case scope
         when "social-group"
           /^[A-Za-z]{3,6}$/.match(prefix) or
-            @log.add("Document Attributes", nil, "#{prefix} is improperly formatted for social standards")
+            @log.add(:GB_7, nil, params: [prefix])
         when "enterprise"
           /^[A-Z0-9]{3,}$/.match(prefix) or
-            @log.add("Document Attributes", nil, "#{prefix} is improperly formatted for enterprise standards")
+            @log.add(:GB_8, nil, params: [prefix])
         when "sector"
           %w(AQ BB CB CH CJ CY DA DB DL DZ EJ FZ GA GH GM GY HB HG HJ HS HY
              JB JC JG JR JT JY LB LD LS LY MH MT MZ NY QB QC QJ QX SB SC SH
              SJ SL SN SY TB TD TJ TY WB WH WJ WM WS WW XB YB YC YD YS YY YZ
              ZY).include? prefix or
-             @log.add("Document Attributes", nil, "#{prefix} is not a legal sector standard prefix")
+             @log.add(:GB_9, nil, params: [prefix])
         when "local"
           %w(11 12 13 14 15 21 22 23 31 32 33 34 35 36 37 41 42 43 44 45 46
              50 51 52 53 54 61 62 63 64 65 71 81 82 end).include? prefix or
-             @log.add("Document Attributes", nil, "#{prefix} is not a legal local standard prefix")
+             @log.add(:GB_10, nil, params: [prefix])
         when "national"
           %w(GB GBZ GJB GBn GHZB GWPB JJF JJG).include? prefix or
-            @log.add("Document Attributes", nil, "#{prefix} is not a legal national standard prefix")
+            @log.add(:GB_11, nil, params: [prefix])
         end
       end
 
@@ -64,7 +74,7 @@ module Asciidoctor
                           "organization/name")&.text
         scope = root&.at("//gbscope")&.text
         if %w(enterprise social).include?(scope) && issuer == "GB"
-          @log.add("Document Attributes", nil, "No issuer provided for #{scope} standard")
+          @log.add(:GB_12, nil, params: [scope])
         end
       end
 
@@ -72,9 +82,9 @@ module Asciidoctor
         zh = t.at(".//#{element}[@language = 'zh']")
         en = t.at(".//#{element}[@language = 'en']")
         (en.nil? || en.text.empty?) && !(zh.nil? || zh.text.empty?) &&
-          @log.add("Style", t, "GB: #{element} term #{zh.text} has no English counterpart")
+          @log.add(:GB_13, t, params: [element, zh.text])
         !(en.nil? || en.text.empty?) && (zh.nil? || zh.text.empty?) &&
-          @log.add("Style", t, "GB: #{element} term #{en.text} has no Chinese counterpart")
+          @log.add(:GB_14, t, params: [element, en.text])
       end
 
       def bilingual_terms_validate(root)
@@ -89,10 +99,10 @@ module Asciidoctor
         title_intro_en = root.at("//title[@type='title-intro' and @language='en']")
         title_intro_zh = root.at("//title[@type='title-intro' and @language='zh']")
         if title_intro_en.nil? && !title_intro_zh.nil?
-          @log.add("Style", title_intro_zh, "No English Title Intro!")
+          @log.add(:GB_15, title_intro_zh)
         end
         if !title_intro_en.nil? && title_intro_zh.nil?
-          @log.add("Style", title_intro_en, "No Chinese Title Intro!")
+          @log.add(:GB_16, title_intro_en)
         end
       end
 
@@ -100,10 +110,10 @@ module Asciidoctor
         title_main_en = root.at("//title[@type='title-main' and @language='en']")
         title_main_zh = root.at("//title[@type='title-main' and @language='zh']")
         if title_main_en.nil? && !title_main_zh.nil?
-          @log.add("Style", title_main_zh,  "No English Title!")
+          @log.add(:GB_17, title_main_zh)
         end
         if !title_main_en.nil? && title_main_zh.nil?
-          @log.add("Style", title_main_en,  "No Chinese Title!")
+          @log.add(:GB_18, title_main_en)
         end
       end
 
@@ -111,20 +121,10 @@ module Asciidoctor
         title_part_en = root.at("//title[@type='title-part' and @language='en']")
         title_part_zh = root.at("//title[@type='title-part' and @language='zh']")
         if title_part_en.nil? && !title_part_zh.nil?
-          @log.add("Style", title_part_en,  "No English Title Part!")
+          @log.add(:GB_19, title_part_en)
         end
         if !title_part_en.nil? && title_part_zh.nil?
-          @log.add("Style", title_part_zh,  "No Chinese Title Part!")
-        end
-      end
-
-      def norm_bibitem_style(root)
-        root.xpath(NORM_BIBITEMS).each do |b|
-          if b.at(Asciidoctor::Standoc::Converter::ISO_PUBLISHER_XPATH).nil?
-            unless /^#{GBCODE}(?![A-Z])/.match(b.at("./docidentifier").text)
-              @log.add("Bibliography", b, "#{NORM_ISO_WARN}: #{b.text}")
-            end
-          end
+          @log.add(:GB_20, title_part_zh)
         end
       end
     end

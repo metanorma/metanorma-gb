@@ -1,3 +1,7 @@
+@use 'base_style/all' as *;
+@use 'coverpage';
+@use 'base_style/defaults' as *;
+
 $doctype-colors-list: (
   standard: #0ac442,
   governance: #750697,
@@ -15,7 +19,6 @@ $docstage-colors-list: (
 $mainContentsOffsetLeft: 4em;
 
 
-@import 'base_style/all';
 
 
 body {
@@ -35,7 +38,6 @@ body {
 }
 
 
-@import 'coverpage';
 
 
 .prefatory-section {

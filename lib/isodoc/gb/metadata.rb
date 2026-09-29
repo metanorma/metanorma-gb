@@ -8,7 +8,7 @@ module IsoDoc
     # A {Converter} implementation that generates GB output, and a document
     # schema encapsulation of the document for validation
     class Metadata < IsoDoc::Iso::Metadata
-      def initialize(lang, script, i18n)
+      def initialize(lang, script, locale, i18n)
         super
         set(:docmaintitlezh, "")
         set(:docsubtitlezh, "XXXX")
@@ -93,7 +93,7 @@ module IsoDoc
       def status_abbrev_cn(stage, _substage, iter, draft, doctype)
         return status_abbrev(stage, _substage, iter, draft, doctype) if @lang != "zh"
         stage_num = stage == "PRF" ? "60" : 
-          (Asciidoctor::Gb::Converter::STAGE_ABBRS&.invert[stage]&.to_s || "??")
+          (Metanorma::Gb::Converter::STAGE_ABBRS&.invert[stage]&.to_s || "??")
         stage = STAGE_ABBRS_CN[stage_num.to_sym] || "??"
         stage = "#{iter.to_i.localize(:zh).spellout.force_encoding("UTF-8")}次#{stage}" if iter
         stage = "Pre" + HTMLEntities.new.encode(stage, :hexadecimal) if draft =~ /^0\./

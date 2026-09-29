@@ -1,7 +1,17 @@
 # frozen_string_literal: true
 
 require "metanorma/standoc"
-require "metanorma/iso/document"
+iso_document_models = begin
+  require "metanorma/iso/document"
+  true
+rescue LoadError
+  false
+end
+# Compile-only bundles resolve the released metanorma-iso line, which
+# predates the ISO document models the flavor table needs; rendering
+# bundles pin the model-layout iso and register below.
+return unless iso_document_models
+
 # Forward-declare parent namespace so this file is safe to require
 # directly (without first requiring metanorma/gb.rb).
 module Metanorma

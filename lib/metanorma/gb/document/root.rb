@@ -6,8 +6,10 @@ module Metanorma
     class Root < Lutaml::Model::Serializable
       include Metanorma::Standoc::Document::RootAttributes
 
+      # The GB model chain is the ISO one (RootXmlMapping, ISO section
+      # classes), so parse context resolves through the ISO register.
       def self.lutaml_default_register
-        :gb_document
+        :iso_document
       end
 
       attribute :bibdata, Metadata::GbBibliographicItem
