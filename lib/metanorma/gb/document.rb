@@ -52,6 +52,7 @@ require "metanorma-core"
 # (metanorma-core#18). Lazy: the table exists only on the flavor-table
 # line of metanorma-core; skip silently on resolutions without it.
 if defined?(Metanorma::Core::Flavors)
+  Metanorma::Gb::Registers.setup
   Metanorma::Core::Flavors.register(Metanorma::Core::Flavor.new(
                                       name: :gb,
                                       gem: "metanorma-gb",
