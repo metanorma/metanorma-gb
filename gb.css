@@ -1,0 +1,379 @@
+p.Sourcecode, li.Sourcecode, div.Sourcecode, pre.Sourcecode {
+  margin-top: 0cm;
+  margin-right: 0cm;
+  margin-bottom: 12.0pt;
+  margin-left: 0cm;
+  text-align: left;
+  line-height: 12.0pt;
+  tab-stops: 20.15pt;
+  font-size: 9.0pt;
+  font-family: "Courier New", monospace; }
+
+p.Biblio, li.Biblio, div.Biblio {
+  margin-top: 0cm;
+  margin-right: 0cm;
+  margin-bottom: 12.0pt;
+  margin-left: 33.15pt;
+  text-indent: -33.15pt;
+  tab-stops: 33.15pt;
+  line-height: 12.0pt;
+  font-size: 11.0pt;
+  font-family: "SimSun", serif; }
+
+p.FigureTitle {
+  margin-top: 0cm;
+  margin-right: 0cm;
+  margin-bottom: 12.0pt;
+  margin-left: 0cm;
+  text-align: center;
+  line-height: 12.0pt;
+  page-break-before: avoid;
+  tab-stops: 20.15pt;
+  font-size: 10.5pt;
+  font-family: "SimHei", sans-serif; }
+
+p.TableTitle {
+  margin-top: 0cm;
+  margin-right: 0cm;
+  margin-bottom: 12.0pt;
+  margin-left: 0cm;
+  text-align: center;
+  page-break-after: avoid;
+  line-height: 12.0pt;
+  tab-stops: 20.15pt;
+  font-size: 10.5pt;
+  font-family: "SimHei", sans-serif; }
+
+p.Note, li.Note, td.Note {
+  margin-top: 0in;
+  margin-right: 0in;
+  margin-bottom: 0in;
+  tab-stops: 20.15pt;
+  /*
+  margin-left:45.0pt;
+  text-indent:-18.0pt;
+  */
+  margin-left: 0pt;
+  margin-bottom: .0001pt;
+  text-align: justify;
+  text-justify: inter-ideograph;
+  font-size: 9.0pt;
+  text-autospace: none;
+  font-family: "SimSun", serif; }
+
+p.TableFootnote, li.TableFootnote {
+  margin-top: 0in;
+  margin-right: 0in;
+  margin-bottom: 0in;
+  margin-left: 36.0pt;
+  tab-stops: 20.15pt;
+  text-indent: -9.0pt;
+  margin-bottom: .0001pt;
+  text-align: justify;
+  text-justify: inter-ideograph;
+  font-size: 9.0pt;
+  text-autospace: none;
+  font-family: "SimSun", serif; }
+
+p.ANNEX, li.ANNEX, div.ANNEX {
+  margin-top: 0cm;
+  margin-right: 0cm;
+  margin-bottom: 24.0pt;
+  margin-left: 0cm;
+  text-align: center;
+  text-indent: 0cm;
+  line-height: 15.5pt;
+  page-break-before: always;
+  page-break-after: avoid;
+  tab-stops: 20.15pt;
+  font-size: 14.0pt;
+  font-family: "SimHei", sans-serif;
+  font-weight: bold; }
+
+p.BiblioTitle, li.BiblioTitle, div.BiblioTitle {
+  margin-top: 0cm;
+  margin-right: 0cm;
+  margin-bottom: 15.5pt;
+  margin-left: 0cm;
+  text-align: center;
+  line-height: 15.5pt;
+  tab-stops: 20.15pt;
+  font-size: 14.0pt;
+  font-family: "SimHei", sans-serif;
+  font-weight: bold; }
+
+p.Definition, li.Definition, div.Definition {
+  margin-top: 0cm;
+  margin-right: 0cm;
+  margin-bottom: 12.0pt;
+  margin-left: 0cm;
+  text-align: justify;
+  line-height: 12.0pt;
+  tab-stops: 20.15pt;
+  font-size: 11.0pt;
+  font-family: "SimSun", serif; }
+
+p.zzCopyright, li.zzCopyright {
+  margin-top: 0cm;
+  margin-right: 14.2pt;
+  margin-bottom: 12.0pt;
+  margin-left: 14.2pt;
+  text-align: justify;
+  line-height: 12.0pt;
+  tab-stops: 20.15pt 25.7pt 481.15pt;
+  padding: 0cm;
+  font-size: 11.0pt;
+  font-family: "SimSun", serif; }
+
+div.zzCopyright {
+  border: solid windowtext 1.0pt;
+  padding: 1.0pt 4.0pt 0cm 4.0pt;
+  margin-left: 5.1pt;
+  margin-right: 5.1pt; }
+
+p.zzCopyright_address {
+  margin-top: 0cm;
+  margin-right: 14.2pt;
+  margin-bottom: 0.0pt;
+  margin-left: 14.2pt;
+  text-autospace: none;
+  padding-left: 20pt;
+  font-size: 10.0pt;
+  text-align: left; }
+
+p.zzSTDTitle, li.zzSTDTitle, div.zzSTDTitle {
+  margin-top: 20.0pt;
+  margin-right: 0cm;
+  margin-bottom: 38.0pt;
+  margin-left: 0cm;
+  line-height: 17.5pt;
+  text-align: center;
+  tab-stops: 20.15pt;
+  font-size: 16.0pt;
+  font-family: "SimHei", sans-serif; }
+
+p.zzSTDTitle1, li.zzSTDTitle1, div.zzSTDTitle1 {
+  margin-top: 0pt;
+  margin-right: 0cm;
+  margin-bottom: 18.0pt;
+  margin-left: 0cm;
+  line-height: 17.5pt;
+  text-align: center;
+  tab-stops: 20.15pt;
+  font-size: 16.0pt;
+  font-family: "SimHei", sans-serif; }
+
+p.Quote, li.Quote, div.Quote {
+  margin-top: 0cm;
+  margin-right: 36.0pt;
+  margin-bottom: 0cm;
+  margin-left: 36.0pt;
+  text-align: justify;
+  line-height: 12.0pt;
+  tab-stops: 20.15pt;
+  font-size: 10.5pt;
+  font-family: "SimSun", serif; }
+
+p.QuoteAttribution {
+  text-align: right; }
+
+p.Admonition, li.Admonition, div.Admonition {
+  border: none;
+  padding: 0cm;
+  font-size: 10.5pt;
+  font-family: "SimSun", serif;
+  font-weight: bold; }
+
+p.Code, li.Code, div.Code {
+  margin: 0cm;
+  margin-bottom: .0001pt;
+  line-height: 10.0pt;
+  tab-stops: 20.15pt;
+  font-size: 9.0pt;
+  font-family: "Courier New", monospace; }
+
+p.Formula, li.Formula, div.Formula {
+  margin-top: 0cm;
+  margin-right: 0cm;
+  margin-bottom: 11.0pt;
+  margin-left: 20.15pt;
+  line-height: 12.0pt;
+  tab-stops: center 212.65pt right 487.45pt;
+  font-size: 11.0pt;
+  font-family: "SimSun", serif; }
+
+ol {
+  margin-bottom: 0cm; }
+
+ul {
+  margin-bottom: 0cm; }
+
+table.MsoISOTable {
+  margin-bottom: 12.0pt;
+  border-collapse: collapse;
+  border: solid windowtext 2pt;
+  font-size: 10.0pt;
+  font-family: "SimSun", serif; }
+
+table.MsoISOTable tr {
+  page-break-inside: avoid; }
+
+table.MsoISOTable th {
+  border: solid windowtext 1pt;
+  padding: 0cm 2.85pt 0cm 2.85pt; }
+
+table.MsoISOTable td {
+  border: solid windowtext 1pt;
+  padding: 0cm 2.85pt 0cm 2.85pt; }
+
+table.MsoTableGrid {
+  border: solid windowtext 1.0pt;
+  font-size: 10.0pt;
+  font-family: "SimSun", serif; }
+
+td {
+  page-break-inside: avoid; }
+
+tr {
+  page-break-after: avoid; }
+
+span.stem {
+  font-family: "Cambria Math",serif;
+  font-style: italic; }
+
+div.formula {
+  tab-stops: center 212.65pt right 487.45pt; }
+
+body {
+  tab-interval: 21.0pt;
+  text-justify-trim: punctuation; }
+
+dt {
+  page-break-inside: avoid;
+  page-break-after: avoid; }
+
+.coverpage_docnumber {
+  text-align: center;
+  font-size: 14.0pt;
+  font-weight: bold; }
+
+.coverpage_techcommittee {
+  text-align: center; }
+
+.coverpage_docstage {
+  text-align: center;
+  font-size: 30.0pt;
+  color: #485094; }
+
+div.coverpage_warning {
+  border: solid windowtext 1.0pt #485094;
+  padding: 1.0pt 4.0pt 1.0pt 4.0pt #485094;
+  margin-left: 4.25pt;
+  margin-right: 4.25pt; }
+
+.coverpage_warning {
+  color: #485094;
+  font-size: 10.0pt; }
+
+.coverpage_footer {
+  text-align: center;
+  font-family: "SimHei", sans-serif; }
+
+.coverpage_footer table {
+  text-align: left;
+  margin-left: auto;
+  margin-right: auto; }
+
+a.TableFootnoteRef {
+  vertical-align: super; }
+
+aside {
+  font-size: 10.0pt; }
+
+.Hant {
+  font-family: PMingLiU; }
+
+/*
+div.example {
+	border:solid black .25pt;
+	
+	padding:10pt;
+	
+	margin:10pt;
+	
+}
+*/
+table.example, table.Note {
+  margin-left: 21.0pt; }
+
+p.example, li.example, div.example, td.example, td.example p {
+  /* NAME: Example */
+  margin: 0in;
+  margin-bottom: .0001pt;
+  text-align: justify;
+  text-justify: inter-ideograph;
+  /* text-indent:18.15pt;
+   */
+  font-size: 9.0pt;
+  font-family: "SimSun", serif; }
+
+p.leftpagenumber, li.leftpagenumber, div.leftpagenumber {
+  margin-top: 6.0pt;
+  margin-right: 0cm;
+  margin-bottom: 0cm;
+  margin-left: 0cm;
+  margin-bottom: .0001pt;
+  font-size: 9.0pt;
+  font-family: "SimSun", serif; }
+
+p.rightpagenumber, li.rightpagenumber, div.rightpagenumber {
+  margin-top: 6.0pt;
+  margin-right: 0cm;
+  margin-bottom: 0cm;
+  margin-left: 0cm;
+  margin-bottom: .0001pt;
+  text-align: right;
+  font-size: 9.0pt;
+  font-family: "SimSun", serif; }
+
+p.supersedes, li.supersedes, div.supersedes {
+  /* NAME: Cover page standard "supercedes" information */
+  margin-top: 2.85pt;
+  margin-right: 0in;
+  margin-bottom: 0in;
+  margin-left: 0in;
+  margin-bottom: .0001pt;
+  text-align: right;
+  line-height: 14.0pt;
+  font-size: 10.5pt;
+  font-family: "SimSun", serif; }
+
+table.dl {
+  margin-top: 0cm;
+  margin-right: 0cm;
+  margin-bottom: 11.0pt;
+  margin-left: 20.15pt; }
+
+span.note_label, span.example_label, td.example_label, td.note_label {
+  font-size: 9.0pt;
+  font-family: "SimHei", sans-serif; }
+
+p.dl {
+  margin-left: 0pt;
+  font-size: 10.5pt; }
+
+div.figure {
+  margin-top: 12pt; }
+
+span.ccs_label {
+  font-weight: bold;
+  font-family: "SimSun", serif; }
+
+span.ccs {
+  font-family: "SimHei", sans-serif; }
+
+span.zh {
+  font-family: SimSun,serif; }
+
+span.en {
+  font-family: Cambria,serif; }

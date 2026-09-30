@@ -21,9 +21,11 @@ module Metanorma
 
           dates = gb_dates(bibdata)
           issuer = gb_issuer(bibdata)
-          return "" if dates.empty? && issuer.nil?
+          completion = gb_completion_date(bibdata)
+          return "" if dates.empty? && issuer.nil? && completion.nil?
 
           inner = dates
+          inner += %(<span class="revision-if-draft">（Completion date for this manuscript: #{escape_html(completion)}）</span>) if completion
           inner += %(<div class="coverpage_footer">#{escape_html(issuer)}</div>) if issuer
           render_liquid("_element.html.liquid", {
                           "tag" => "div",
@@ -60,19 +62,45 @@ module Metanorma
                         })
         end
 
+        def gb_role_type(r)
+          return r if r.is_a?(String)
+
+          t = safe_attr(r, :type) || safe_attr(r, :type_attr)
+          return t if t.is_a?(String)
+
+          raw = r.public_send(:type) if r.respond_to?(:type)
+          return raw if raw.is_a?(String)
+          return Array(raw.value).join.strip if raw.respond_to?(:value)
+
+          nil
+        end
+
         # The issuing authority organization (role "issuer").
         def gb_issuer(bibdata)
           Array(safe_attr(bibdata, :contributor)).each do |c|
             roles = Array(safe_attr(c, :role))
             is_issuer = roles.any? do |r|
-              type = r.is_a?(String) ? r : cover_date_text(safe_attr(r, :type))
-              type == "issuer"
+              gb_role_type(r) == "issuer"
             end
             next unless is_issuer
 
             org = safe_attr(c, :organization)
             name = org ? cover_date_text(safe_attr(org, :name)) : nil
             return name if name && !name.empty?
+          end
+          nil
+        end
+
+        # "Completion date for this manuscript" — the created/updated
+        # date of the manuscript.
+        def gb_completion_date(bibdata)
+          Array(safe_attr(bibdata, :date)).each do |d|
+            type = cover_date_text(safe_attr(d, :type)) || safe_attr(d, :type)
+            next unless %w[created updated].include?(type)
+
+            on = cover_date_text(safe_attr(d, :on)) ||
+                 cover_date_text(safe_attr(d, :from))
+            return on if on
           end
           nil
         end
