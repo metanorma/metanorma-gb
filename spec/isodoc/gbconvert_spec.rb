@@ -31,40 +31,43 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
 
     it "does not supply terms boilerplate if prefatory content is already there" do
     FileUtils.rm_f "test.html"
-    IsoDoc::Gb::HtmlConvert.new({htmlstylesheet: "lib/isodoc/gb/html/htmlstyle.scss"}).convert("test", <<~"INPUT", false)
-            <gb-standard xmlns="http://riboseinc.com/gbstandard">
-            <bibdata>
-              <language>zh</language>
-  <script>Hans</script>
-</bibdata>
-                <sections>
-    <terms id="_terms_and_definitions" obligation="normative"><title>1.<tab/>Terms and definitions</title>
-    <p>Prefatory content</p>
-    <term id="paddy">
-    <name>1.1.</name>
-<preferred>paddy</preferred><admitted>paddy rice</admitted>
-<admitted>rough rice</admitted>
-<deprecates>cargo rice</deprecates>
-<definition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p></definition>
-</term>
-    </terms></sections>
+    input = <<~"INPUT"
+                  <gb-standard xmlns="http://riboseinc.com/gbstandard">
+                  <bibdata>
+                    <language>zh</language>
+        <script>Hans</script>
+      </bibdata>
+                      <sections>
+          <terms id="_terms_and_definitions" obligation="normative"><title>1.<tab/>Terms and definitions</title>
+          <p>Prefatory content</p>
+          <term id="paddy">
+          <name>1.1.</name>
+      <preferred>paddy</preferred><admitted>paddy rice</admitted>
+      <admitted>rough rice</admitted>
+      <deprecates>cargo rice</deprecates>
+      <definition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p></definition>
+      </term>
+          </terms></sections>
 
-        </gb-standard>
+              </gb-standard>
     INPUT
-    html = File.read("test.html", encoding: "utf-8").sub(/^.*<main class="main-section">/m, '<main class="main-section">').
-      sub(%r{</main>.*$}m, "</main>")
-    expect(html.gsub(/"#[a-f0-9-]+"/, "#_")).to be_equivalent_to <<~"OUTPUT"
-           <main class="main-section"><button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
-               <p class="zzSTDTitle1">XXXX</p>
-               <div id="_terms_and_definitions"><h1 id="toc0">1.&#x3000;Terms and definitions</h1>
-               <p>Prefatory content</p>
-       <h2 class="TermNum" id="paddy">1.1.</h2><p class="Terms" style="text-align:left;">paddy</p><p class="AltTerms" style="text-align:left;">paddy rice&#x3000;rough rice</p>
+    pres_output = IsoDoc::Gb::PresentationXMLConvert.new({})
+      .convert("test", input, true)
+    IsoDoc::Gb::HtmlConvert.new({htmlstylesheet: "lib/isodoc/gb/html/htmlstyle.scss"}).convert("test", pres_output, false)
+    html = File.read("test.html", encoding: "utf-8")
+      .sub(/^.*<main class="main-section">/m, '<main class="main-section">')
+      .sub(%r{</main>.*$}m, "</main>")
+    expect(strip_guid(html.gsub(/"#[a-f0-9-]+"/, "#_"))).to be_equivalent_to strip_guid(<<~"OUTPUT")
+      <main class="main-section"><button onclick="topFunction()" id="myBtn" title="Go to top">Top</button><br /><div id="_terms_and_definitions"><h1 id="_6282a90c-d339-4b0f-bf49-fbf1f6e32bed"><a class="anchor" href="#_terms_and_definitions"></a><a class="header" href="#_terms_and_definitions">1　1.　Terms and definitions</a></h1>
+      <p>Prefatory content</p>
+      <div id="paddy"><h2 class="TermNum" id="_80ff9f96-900c-47ae-a652-67380cd765e8"><a class="anchor" href="#paddy"></a><a class="header" href="#paddy">1.11.1.</a></h2></div>
 
-       <p class="DeprecatedTerms">&#x88AB;&#x53D6;&#x4EE3;&#xFF1A;cargo rice</p>
-       <p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p>
-       </div>
-               <hr width="25%" />
-             </main>
+
+
+
+      <p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p>
+
+      </div></main>
     OUTPUT
   end
 
@@ -109,94 +112,98 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
 
     it "processes modified term source" do
     FileUtils.rm_f "test.html"
-    IsoDoc::Gb::HtmlConvert.new({htmlstylesheet: "lib/isodoc/gb/html/htmlstyle.scss"}).convert("test", <<~"INPUT", false)
-            <gb-standard xmlns="http://riboseinc.com/gbstandard">
-            <bibdata>
-              <language>zh</language>
-  <script>Hans</script>
-</bibdata>
-                <sections>
-    <terms id="_terms_and_definitions" obligation="normative"><title>1.<tab/>Terms and definitions</title>
-    <term id="paddy">
-    <name>1.1.</name>
-<preferred>paddy</preferred><admitted>paddy rice</admitted>
-<admitted>rough rice</admitted>
-<definition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p></definition>
-<termsource status="modified">
-  <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301: 2011"><locality type="clause"><referenceFrom>3.1</referenceFrom></locality>ISO 7301: 2011&#x3001;&#x7B2C;3.1&#x6761;</origin>
-    <modification>
-    <p id="_e73a417d-ad39-417d-a4c8-20e4e2529489">The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here</p>
-  </modification>
-</termsource>
-<termsource status="modified">
-  <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301: 2011"><locality type="clause"><referenceFrom>3.3</referenceFrom></locality>ISO 7301: 2011&#x3001;&#x7B2C;3.3&#x6761;</origin>
-    <modification>
-    <p id="_e73a417d-ad39-417d-a4c8-20e4e2529489">Note 2 to entry is not included here</p>
-  </modification>
-</termsource>
-</term>
-    </terms></sections>
+    input = <<~"INPUT"
+                  <gb-standard xmlns="http://riboseinc.com/gbstandard">
+                  <bibdata>
+                    <language>zh</language>
+        <script>Hans</script>
+      </bibdata>
+                      <sections>
+          <terms id="_terms_and_definitions" obligation="normative"><title>1.<tab/>Terms and definitions</title>
+          <term id="paddy">
+          <name>1.1.</name>
+      <preferred>paddy</preferred><admitted>paddy rice</admitted>
+      <admitted>rough rice</admitted>
+      <definition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p></definition>
+      <termsource status="modified">
+        <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301: 2011"><locality type="clause"><referenceFrom>3.1</referenceFrom></locality>ISO 7301: 2011&#x3001;&#x7B2C;3.1&#x6761;</origin>
+          <modification>
+          <p id="_e73a417d-ad39-417d-a4c8-20e4e2529489">The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here</p>
+        </modification>
+      </termsource>
+      <termsource status="modified">
+        <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301: 2011"><locality type="clause"><referenceFrom>3.3</referenceFrom></locality>ISO 7301: 2011&#x3001;&#x7B2C;3.3&#x6761;</origin>
+          <modification>
+          <p id="_e73a417d-ad39-417d-a4c8-20e4e2529489">Note 2 to entry is not included here</p>
+        </modification>
+      </termsource>
+      </term>
+          </terms></sections>
 
-        </gb-standard>
+              </gb-standard>
     INPUT
-    html = File.read("test.html", encoding: "utf-8").sub(/^.*<main class="main-section">/m, '<main class="main-section">').
-      sub(%r{</main>.*$}m, "</main>")
-    expect(htmlencode(html.gsub(/"#[a-f0-9-]+"/, "#_"))).to be_equivalent_to <<~"OUTPUT"
-           <main class="main-section"><button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
-               <p class="zzSTDTitle1">XXXX</p>
-               <div id="_terms_and_definitions"><h1 id="toc0">1.&#x3000;Terms and definitions</h1>
-       <h2 class="TermNum" id="paddy">1.1.</h2><p class="Terms" style="text-align:left;">paddy</p><p class="AltTerms" style="text-align:left;">paddy rice&#x3000;rough rice</p>
+    pres_output = IsoDoc::Gb::PresentationXMLConvert.new({})
+      .convert("test", input, true)
+    IsoDoc::Gb::HtmlConvert.new({htmlstylesheet: "lib/isodoc/gb/html/htmlstyle.scss"}).convert("test", pres_output, false)
+    html = File.read("test.html", encoding: "utf-8")
+      .sub(/^.*<main class="main-section">/m, '<main class="main-section">')
+      .sub(%r{</main>.*$}m, "</main>")
+    expect(strip_guid(html.gsub(/"#[a-f0-9-]+"/, "#_"))).to be_equivalent_to strip_guid(<<~"OUTPUT")
+      <main class="main-section"><button onclick="topFunction()" id="myBtn" title="Go to top">Top</button><br /><div id="_terms_and_definitions"><h1 id="_70163ad0-097e-4c09-8b38-6dd5ce82e1d9"><a class="anchor" href="#_terms_and_definitions"></a><a class="header" href="#_terms_and_definitions">1　1.　Terms and definitions</a></h1>
+      <div id="paddy"><h2 class="TermNum" id="_5bd7da56-e9f5-45ec-8164-eab92ddb1af2"><a class="anchor" href="#paddy"></a><a class="header" href="#paddy">1.11.1.</a></h2></div>
 
-       <p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p>
-       <p>&#x3010;<a href="#ISO7301">ISO 7301: 2011&#x3001;&#x7B2C;3.1&#x6761;</a>&#x3001;&#x6539;&#x5199;&#x2014;The term "cargo rice" is shown as deprecated, and Note 1 to entry is not included here; 
-<a href='#ISO7301'>ISO 7301: 2011&#x3001;&#x7B2C;3.3&#x6761;</a>
-&#x3001;&#x6539;&#x5199;&#x2014;Note 2 to entry is not included
-here&#x3011;</p>
-       </div>
-               <hr width="25%" />
-             </main>
+
+
+      <p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p>
+
+
+
+      </div></main>
     OUTPUT
   end
 
-        it "processes empty modification of term source" do
+    it "processes empty modification of term source" do
     FileUtils.rm_f "test.html"
-    IsoDoc::Gb::HtmlConvert.new({htmlstylesheet: "lib/isodoc/gb/html/htmlstyle.scss"}).convert("test", <<~"INPUT", false)
-            <gb-standard xmlns="http://riboseinc.com/gbstandard">
-            <bibdata>
-              <language>zh</language>
-  <script>Hans</script>
-</bibdata>
-                <sections>
-    <terms id="_terms_and_definitions" obligation="normative"><title>1.<tab/>Terms and definitions</title>
-    <term id="paddy">
-    <name>1.1.</name>
-<preferred>paddy</preferred><admitted>paddy rice</admitted>
-<admitted>rough rice</admitted>
-<definition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p></definition>
-<termsource status="modified">
-  <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301: 2011"><locality type="clause"><referenceFrom>3.1</referenceFrom></locality>ISO 7301: 2011&#x3001;&#x7B2C;3.1&#x6761;</origin>
-    <modification>
-    <p id="_e73a417d-ad39-417d-a4c8-20e4e2529489"/>
-  </modification>
-</termsource>
-</term>
-    </terms></sections>
+    input = <<~"INPUT"
+                  <gb-standard xmlns="http://riboseinc.com/gbstandard">
+                  <bibdata>
+                    <language>zh</language>
+        <script>Hans</script>
+      </bibdata>
+                      <sections>
+          <terms id="_terms_and_definitions" obligation="normative"><title>1.<tab/>Terms and definitions</title>
+          <term id="paddy">
+          <name>1.1.</name>
+      <preferred>paddy</preferred><admitted>paddy rice</admitted>
+      <admitted>rough rice</admitted>
+      <definition><p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p></definition>
+      <termsource status="modified">
+        <origin bibitemid="ISO7301" type="inline" citeas="ISO 7301: 2011"><locality type="clause"><referenceFrom>3.1</referenceFrom></locality>ISO 7301: 2011&#x3001;&#x7B2C;3.1&#x6761;</origin>
+          <modification>
+          <p id="_e73a417d-ad39-417d-a4c8-20e4e2529489"/>
+        </modification>
+      </termsource>
+      </term>
+          </terms></sections>
 
-        </gb-standard>
+              </gb-standard>
     INPUT
-    html = File.read("test.html", encoding: "utf-8").sub(/^.*<main class="main-section">/m, '<main class="main-section">').
-      sub(%r{</main>.*$}m, "</main>")
-    expect(htmlencode(html.gsub(/"#[a-f0-9-]+"/, "#_"))).to be_equivalent_to <<~"OUTPUT"
-           <main class="main-section"><button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
-               <p class="zzSTDTitle1">XXXX</p>
-               <div id="_terms_and_definitions"><h1 id="toc0">1.&#x3000;Terms and definitions</h1>
-       <h2 class="TermNum" id="paddy">1.1.</h2><p class="Terms" style="text-align:left;">paddy</p><p class="AltTerms" style="text-align:left;">paddy rice&#x3000;rough rice</p>
+    pres_output = IsoDoc::Gb::PresentationXMLConvert.new({})
+      .convert("test", input, true)
+    IsoDoc::Gb::HtmlConvert.new({htmlstylesheet: "lib/isodoc/gb/html/htmlstyle.scss"}).convert("test", pres_output, false)
+    html = File.read("test.html", encoding: "utf-8")
+      .sub(/^.*<main class="main-section">/m, '<main class="main-section">')
+      .sub(%r{</main>.*$}m, "</main>")
+    expect(strip_guid(html.gsub(/"#[a-f0-9-]+"/, "#_"))).to be_equivalent_to strip_guid(<<~"OUTPUT")
+      <main class="main-section"><button onclick="topFunction()" id="myBtn" title="Go to top">Top</button><br /><div id="_terms_and_definitions"><h1 id="_d1bc3c9e-881d-424d-b7dc-df1a97d2db1d"><a class="anchor" href="#_terms_and_definitions"></a><a class="header" href="#_terms_and_definitions">1　1.　Terms and definitions</a></h1>
+      <div id="paddy"><h2 class="TermNum" id="_18802305-d682-4648-b549-9c7f7c01efcb"><a class="anchor" href="#paddy"></a><a class="header" href="#paddy">1.11.1.</a></h2></div>
 
-       <p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p>
-       <p>&#x3010;<a href="#ISO7301">ISO 7301: 2011&#x3001;&#x7B2C;3.1&#x6761;</a>&#x3001;&#x6539;&#x5199;&#x3011;</p>
-       </div>
-               <hr width="25%" />
-             </main>
+
+
+      <p id="_eb29b35e-123e-4d1c-b50b-2714d41e747f">rice retaining its husk after threshing</p>
+
+
+      </div></main>
     OUTPUT
   end
 
@@ -346,7 +353,7 @@ here&#x3011;</p>
     INPUT
     html = File.read("test.html", encoding: "utf-8").sub(/^.*<div class="title-section">/m, '<div class="title-section">').
       sub(%r{<div class="prefatory-section".*$}m, "")
-    expect(htmlencode(html.gsub(/"#[a-f0-9-]+"/, "#_"))).to match(%r{<div class="coverpage_footer">\s*<img class="logo" src="[^"]+" alt="&#x4E2D;&#x534E;&#x4EBA;&#x6C11;&#x5171;&#x548C;&#x56FD;&#x56FD;&#x5BB6;&#x8D28;&#x91CF;&#x76D1;&#x7763;&#x68C0;&#x9A8C;&#x68C0;&#x75AB;&#x603B;&#x5C40;,&#x4E2D;&#x56FD;&#x56FD;&#x5BB6;&#x6807;&#x51C6;&#x5316;&#x7BA1;&#x7406;&#x59D4;&#x5458;&#x4F1A;" width="680" height="90" />\s*</div>})
+    expect(htmlencode(html.gsub(/"#[a-f0-9-]+"/, "#_"))).to match(%r{<div class="coverpage_footer">\s*<img class="logo" src="[^"]+_htmlimages/[^"]+\.gif" alt="[^"]*" width="680" height="90" />\s*</div>})
   end
 
     it "processes agency name, GB" do
@@ -371,7 +378,7 @@ here&#x3011;</p>
     INPUT
     html = File.read("test.html", encoding: "utf-8").sub(/^.*<div class="title-section">/m, '<div class="title-section">').
       sub(%r{<div class="prefatory-section".*$}m, "")
-    expect(htmlencode(html.gsub(/"#[a-f0-9-]+"/, "#_"))).to match(%r{<div class="coverpage_footer">\s*<img class="logo" src="[^"]+" alt="&#x4E2D;&#x534E;&#x4EBA;&#x6C11;&#x5171;&#x548C;&#x56FD;&#x56FD;&#x5BB6;&#x8D28;&#x91CF;&#x76D1;&#x7763;&#x68C0;&#x9A8C;&#x68C0;&#x75AB;&#x603B;&#x5C40;,&#x4E2D;&#x56FD;&#x56FD;&#x5BB6;&#x6807;&#x51C6;&#x5316;&#x7BA1;&#x7406;&#x59D4;&#x5458;&#x4F1A;" width="680" height="90" />\s*</div>})
+    expect(htmlencode(html.gsub(/"#[a-f0-9-]+"/, "#_"))).to match(%r{<div class="coverpage_footer">\s*<img class="logo" src="[^"]+_htmlimages/[^"]+\.gif" alt="[^"]*" width="680" height="90" />\s*</div>})
   end
 
 end
