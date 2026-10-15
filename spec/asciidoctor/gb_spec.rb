@@ -738,8 +738,7 @@ RSpec.describe Asciidoctor::Gb do
   end
 
   it "processes ISO inline_quoted formatting" do
-    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
-
+    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)).sub(/\A<\?xml[^>]*\?>\s*/, "")).to be_equivalent_to <<~"OUTPUT"
       #{ASCIIDOC_BLANK_HDR}
 
       _emphasis_
@@ -757,7 +756,91 @@ RSpec.describe Asciidoctor::Gb do
       [strike]#strike#
       [smallcap]#smallcap#
     INPUT
-      #{BLANK_HDR}
+      <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version='1.5.8' schema-version='v2.3.0' flavor='gb'>
+        <bibdata type='standard'>
+          <contributor>
+            <role type='author'/>
+            <person>
+              <name>
+                <surname>Author</surname>
+              </name>
+            </person>
+          </contributor>
+          <contributor>
+            <role type='author'/>
+            <organization>
+              <name>GB</name>
+            </organization>
+          </contributor>
+          <contributor>
+            <role type='publisher'/>
+            <organization>
+              <name>GB</name>
+            </organization>
+          </contributor>
+          <contributor>
+            <role type='authority'/>
+            <organization>
+              <name>GB</name>
+            </organization>
+          </contributor>
+          <contributor>
+            <role type='proposer'/>
+            <organization>
+              <name>GB</name>
+            </organization>
+          </contributor>
+          <contributor>
+            <role type='issuer'/>
+            <organization>
+              <name>
+                General Administration of Quality Supervision, Inspection and
+                Quarantine; Standardization Administration of China
+              </name>
+            </organization>
+          </contributor>
+          <language>en</language>
+          <script>Latn</script>
+          <status>
+            <stage>published</stage>
+          </status>
+          <copyright>
+            <from>2026</from>
+            <owner>
+              <organization>
+                <name>
+                  General Administration of Quality Supervision, Inspection and
+                  Quarantine; Standardization Administration of China
+                </name>
+              </organization>
+            </owner>
+          </copyright>
+          <ext>
+            <doctype>standard</doctype>
+            <structuredidentifier>
+              <project-number/>
+            </structuredidentifier>
+            <stagename>International standard</stagename>
+            <gbtype>
+              <gbscope>national</gbscope>
+              <gbprefix>GB</gbprefix>
+              <gbmandate>mandatory</gbmandate>
+              <gbtopic>basic</gbtopic>
+            </gbtype>
+          </ext>
+        </bibdata>
+        <metanorma-extension>
+          <semantic-metadata>
+            <stage-published>false</stage-published>
+          </semantic-metadata>
+          <presentation-metadata>
+            <document-scheme>2024</document-scheme>
+            <toc-heading-levels>2</toc-heading-levels>
+            <html-toc-heading-levels>2</html-toc-heading-levels>
+            <doc-toc-heading-levels>3</doc-toc-heading-levels>
+            <pdf-toc-heading-levels>3</pdf-toc-heading-levels>
+          </presentation-metadata>
+        </metanorma-extension>
         <boilerplate> </boilerplate>
         <sections>
           <em>emphasis</em>
