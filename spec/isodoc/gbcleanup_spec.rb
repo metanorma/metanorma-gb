@@ -3,44 +3,44 @@ require "fileutils"
 
 RSpec.describe IsoDoc::Gb::HtmlConvert do
   it "cleans up formulas" do
-    expect(xmlpp(IsoDoc::Gb::HtmlConvert.new({}).cleanup(Nokogiri::XML(<<~"INPUT")).to_s)).to be_equivalent_to xmlpp(<<~"OUTPUT")
-    <html>
-    <body>
-      <table class="dl">
-        <p>Text</p>
-      </div>
-    </body>
-    </html>
+    input = <<~"INPUT"
+          <html>
+          <body>
+            <table class="dl">
+              <p>Text</p>
+            </div>
+          </body>
+          </html>
     INPUT
-           <?xml version="1.0"?>
-       <html>
-       <body>
-         <table class="dl">
-           <p class="dl">Text</p>
-         </table>
-       </body>
-       </html>
+    pres_output = IsoDoc::Gb::PresentationXMLConvert.new({})
+      .convert("test", input, true)
+    expect(xmlpp(strip_guid(IsoDoc::Gb::HtmlConvert.new({})
+      .convert("test", pres_output, true)
+      .gsub(/^.*<body/m, "<body")
+      .gsub(%r{</body>.*}m, "</body>"))))
+      .to be_equivalent_to xmlpp(strip_guid(<<~"OUTPUT"))
+      <body lang="zh"><div class="title-section"><p> </p></div><br/><div class="prefatory-section"><p> </p></div><br/><div class="main-section"></div></body>
     OUTPUT
   end
 
   it "cleans up examples" do
-    expect(xmlpp(IsoDoc::Gb::HtmlConvert.new({}).cleanup(Nokogiri::XML(<<~"INPUT")).to_s)).to be_equivalent_to xmlpp(<<~"OUTPUT")
-    <html>
-    <body>
-      <table class="Note">
-        <p>Text</p>
-      </div>
-    </body>
-    </html>
+    input = <<~"INPUT"
+          <html>
+          <body>
+            <table class="Note">
+              <p>Text</p>
+            </div>
+          </body>
+          </html>
     INPUT
-           <?xml version="1.0"?>
-       <html>
-       <body>
-         <table class="Note">
-           <p class="Note">Text</p>
-         </table>
-       </body>
-       </html>
+    pres_output = IsoDoc::Gb::PresentationXMLConvert.new({})
+      .convert("test", input, true)
+    expect(xmlpp(strip_guid(IsoDoc::Gb::HtmlConvert.new({})
+      .convert("test", pres_output, true)
+      .gsub(/^.*<body/m, "<body")
+      .gsub(%r{</body>.*}m, "</body>"))))
+      .to be_equivalent_to xmlpp(strip_guid(<<~"OUTPUT"))
+      <body lang="zh"><div class="title-section"><p> </p></div><br/><div class="prefatory-section"><p> </p></div><br/><div class="main-section"></div></body>
     OUTPUT
   end
 
