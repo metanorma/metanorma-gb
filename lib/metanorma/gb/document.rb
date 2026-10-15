@@ -16,6 +16,7 @@ return unless iso_document_models
 # directly (without first requiring metanorma/gb.rb).
 module Metanorma
   module Gb
+    autoload :Registers, "metanorma/gb/registers"
   end
 end
 
