@@ -26,7 +26,8 @@ module IsoDoc
       end
 
       def bibrenderer(options = {})
-        ::Relaton::Render::Iso::General.new(options
+        require_relative "../../relaton/render/gb/general"
+        ::Relaton::Render::Gb::General.new(options
           .merge(language: @lang, script: @script, i18nhash: @i18n.get))
       end
 
