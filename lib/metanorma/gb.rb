@@ -1,8 +1,9 @@
 require_relative "./gb/processor"
-require "metanorma/gb/document"
 
 module Metanorma
   module Gb
-
+    autoload :Registers, "metanorma/gb/registers"
   end
 end
+
+require "metanorma/gb/document"

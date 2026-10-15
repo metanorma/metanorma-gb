@@ -1,6 +1,6 @@
 require "spec_helper"
 require "fileutils"
-require "relaton_gb"
+require "relaton/gb"
 
 RSpec.describe Asciidoctor::Gb do
   it "has a version number" do
@@ -11,9 +11,95 @@ RSpec.describe Asciidoctor::Gb do
     expect(xmlpp(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true))).to be_equivalent_to xmlpp(<<~"OUTPUT")
     #{ASCIIDOC_BLANK_HDR}
     INPUT
-    #{BLANK_HDR}
-<sections/>
-</gb-standard>
+      <?xml version='1.0' encoding='UTF-8'?>
+      <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version="#{Metanorma::Gb::VERSION}" schema-version='v2.3.0' flavor='gb'>
+        <bibdata type='standard'>
+          <contributor>
+            <role type='author'/>
+            <person>
+              <name>
+                <surname>Author</surname>
+              </name>
+            </person>
+          </contributor>
+          <contributor>
+            <role type='author'/>
+            <organization>
+              <name>GB</name>
+            </organization>
+          </contributor>
+          <contributor>
+            <role type='publisher'/>
+            <organization>
+              <name>GB</name>
+            </organization>
+          </contributor>
+          <contributor>
+            <role type='authority'/>
+            <organization>
+              <name>GB</name>
+            </organization>
+          </contributor>
+          <contributor>
+            <role type='proposer'/>
+            <organization>
+              <name>GB</name>
+            </organization>
+          </contributor>
+          <contributor>
+            <role type='issuer'/>
+            <organization>
+              <name>
+                General Administration of Quality Supervision, Inspection and
+                Quarantine; Standardization Administration of China
+              </name>
+            </organization>
+          </contributor>
+          <language>en</language>
+          <script>Latn</script>
+          <status>
+            <stage>published</stage>
+          </status>
+          <copyright>
+            <from>#{Date.today.year}</from>
+            <owner>
+              <organization>
+                <name>
+                  General Administration of Quality Supervision, Inspection and
+                  Quarantine; Standardization Administration of China
+                </name>
+              </organization>
+            </owner>
+          </copyright>
+          <ext>
+            <doctype>standard</doctype>
+            <structuredidentifier>
+              <project-number/>
+            </structuredidentifier>
+            <stagename>International standard</stagename>
+            <gbtype>
+              <gbscope>national</gbscope>
+              <gbprefix>GB</gbprefix>
+              <gbmandate>mandatory</gbmandate>
+              <gbtopic>basic</gbtopic>
+            </gbtype>
+          </ext>
+        </bibdata>
+        <metanorma-extension>
+          <semantic-metadata>
+            <stage-published>false</stage-published>
+          </semantic-metadata>
+          <presentation-metadata>
+            <document-scheme>2024</document-scheme>
+            <toc-heading-levels>2</toc-heading-levels>
+            <html-toc-heading-levels>2</html-toc-heading-levels>
+            <doc-toc-heading-levels>3</doc-toc-heading-levels>
+            <pdf-toc-heading-levels>3</pdf-toc-heading-levels>
+          </presentation-metadata>
+        </metanorma-extension>
+        <boilerplate> </boilerplate>
+        <sections> </sections>
+      </metanorma>
     OUTPUT
   end
 
@@ -21,6 +107,7 @@ RSpec.describe Asciidoctor::Gb do
     FileUtils.rm_f "test.html"
     FileUtils.rm_f "test.doc"
     FileUtils.rm_f "test.pdf"
+    css_before = File.read("htmlstyle.css")
     expect(xmlpp(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true))).to be_equivalent_to xmlpp(<<~"OUTPUT")
       = Document title
       Author
@@ -30,14 +117,100 @@ RSpec.describe Asciidoctor::Gb do
       :language: en
       :script: Latn
     INPUT
-    #{BLANK_HDR}
-<sections/>
-</gb-standard>
+      <?xml version='1.0' encoding='UTF-8'?>
+      <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version="#{Metanorma::Gb::VERSION}" schema-version='v2.3.0' flavor='gb'>
+        <bibdata type='standard'>
+          <contributor>
+            <role type='author'/>
+            <person>
+              <name>
+                <surname>Author</surname>
+              </name>
+            </person>
+          </contributor>
+          <contributor>
+            <role type='author'/>
+            <organization>
+              <name>GB</name>
+            </organization>
+          </contributor>
+          <contributor>
+            <role type='publisher'/>
+            <organization>
+              <name>GB</name>
+            </organization>
+          </contributor>
+          <contributor>
+            <role type='authority'/>
+            <organization>
+              <name>GB</name>
+            </organization>
+          </contributor>
+          <contributor>
+            <role type='proposer'/>
+            <organization>
+              <name>GB</name>
+            </organization>
+          </contributor>
+          <contributor>
+            <role type='issuer'/>
+            <organization>
+              <name>
+                General Administration of Quality Supervision, Inspection and
+                Quarantine; Standardization Administration of China
+              </name>
+            </organization>
+          </contributor>
+          <language>en</language>
+          <script>Latn</script>
+          <status>
+            <stage>published</stage>
+          </status>
+          <copyright>
+            <from>#{Date.today.year}</from>
+            <owner>
+              <organization>
+                <name>
+                  General Administration of Quality Supervision, Inspection and
+                  Quarantine; Standardization Administration of China
+                </name>
+              </organization>
+            </owner>
+          </copyright>
+          <ext>
+            <doctype>standard</doctype>
+            <structuredidentifier>
+              <project-number/>
+            </structuredidentifier>
+            <stagename>International standard</stagename>
+            <gbtype>
+              <gbscope>national</gbscope>
+              <gbprefix>GB</gbprefix>
+              <gbmandate>mandatory</gbmandate>
+              <gbtopic>basic</gbtopic>
+            </gbtype>
+          </ext>
+        </bibdata>
+        <metanorma-extension>
+          <semantic-metadata>
+            <stage-published>false</stage-published>
+          </semantic-metadata>
+          <presentation-metadata>
+            <document-scheme>2024</document-scheme>
+            <toc-heading-levels>2</toc-heading-levels>
+            <html-toc-heading-levels>2</html-toc-heading-levels>
+            <doc-toc-heading-levels>3</doc-toc-heading-levels>
+            <pdf-toc-heading-levels>3</pdf-toc-heading-levels>
+          </presentation-metadata>
+        </metanorma-extension>
+        <boilerplate> </boilerplate>
+        <sections> </sections>
+      </metanorma>
     OUTPUT
     expect(File.exist?("test.html")).to be true
     expect(File.exist?("test.doc")).to be true
     expect(File.exist?("test.pdf")).to be true
-    expect(File.exist?("htmlstyle.css")).to be false
+    expect(File.read("htmlstyle.css")).to eq css_before
   end
 
   it "uses Roman fonts" do
@@ -149,9 +322,9 @@ RSpec.describe Asciidoctor::Gb do
 
     INPUT
     html = File.read("test.html", encoding: "utf-8")
-    expect(html).to match %r{<div class="coverpage-logo-gb-img"><img class="logo" width="113" height="56" src="test.htmlimages/[^\.]+.gif" alt="GB" /></div>}
-    expect(html).to match %r{<span class="coverpage-logo-text"><img class="logo" src="test.htmlimages/[^\.]+.gif" alt="&#x4E2D;&#x534E;&#x4EBA;&#x6C11;&#x5171;&#x548C;&#x56FD;&#x56FD;&#x5BB6;&#x6807;&#x51C6;" width="18" height="18" /></span>}
-    expect(html).to match %r{<img class="logo" src="test.htmlimages/[^\.]+.gif" alt="&#x4E2D;&#x534E;&#x4EBA;&#x6C11;&#x5171;&#x548C;&#x56FD;&#x56FD;&#x5BB6;&#x8D28;&#x91CF;&#x76D1;&#x7763;&#x68C0;&#x9A8C;&#x68C0;&#x75AB;&#x603B;&#x5C40;,&#x4E2D;&#x56FD;&#x56FD;&#x5BB6;&#x6807;&#x51C6;&#x5316;&#x7BA1;&#x7406;&#x59D4;&#x5458;&#x4F1A;" width="18" height="18" />}
+    expect(html).to match %r{<div class="coverpage-logo-gb-img"><img class="logo" width="113" height="56" src="data:image/gif;base64,[^"]+" alt="GB" /></div>}
+    expect(html).to match %r{<span class="coverpage-logo-text"><img class="logo" src="data:image/gif;base64,[^"]+" alt="[^"]*" width="18" height="18" /></span>}
+    expect(html).to match %r{<img class="logo" src="data:image/gif;base64,[^"]+" alt="[^"]*" width="18" height="18" />}
   end
 
   it "does contributor cleanup" do
@@ -172,81 +345,98 @@ RSpec.describe Asciidoctor::Gb do
 
 
     INPUT
-           <?xml version="1.0" encoding="UTF-8"?>
-       <gb-standard xmlns="https://www.metanorma.org/ns/gb"  type="semantic" version="#{Metanorma::Gb::VERSION}">
-       <bibdata type="standard">
-         <docidentifier type="gb">NY 123</docidentifier>
-         <docnumber>123</docnumber>
-         <contributor>
-           <role type="author"/>
-           <person>
-             <name>
-               <surname>Author</surname>
-             </name>
-           </person>
-         </contributor><contributor><role type="technical-committee"/><organization><name>Technical</name></organization></contributor>
-         <contributor>
-           <role type="author"/>
-           <organization>
-             <name>GB</name>
-           </organization>
-         </contributor>
-         <contributor>
-           <role type="publisher"/>
-           <organization>
-             <name>GB</name>
-           </organization>
-         </contributor>
-         <contributor>
-           <role type="authority"/>
-           <organization>
-             <name>GB</name>
-           </organization>
-         </contributor>
-         <contributor>
-           <role type="proposer"/>
-           <organization>
-             <name>GB</name>
-           </organization>
-         </contributor>
-         <contributor>
-           <role type="issuer"/>
-           <organization>
-             <name>Ministry of Agriculture</name>
-           </organization>
-         </contributor>
-         <language>en</language>
-         <script>Latn</script>
-         <status>
-           <stage abbreviation="IS">60</stage>
-           <substage>60</substage>
-         </status>
-         <copyright>
-           <from>#{Date.today.year}</from>
-           <owner>
-             <organization>
-               <name>Ministry of Agriculture</name>
-             </organization>
-           </owner>
-         </copyright>
-         <ext>
-        <doctype>standard</doctype>
-         <gbcommittee type="Governance">Technical</gbcommittee>
-         <structuredidentifier>
-           <project-number>NY 123</project-number>
-         </structuredidentifier>
-         <stagename>International standard</stagename>
-         <gbtype>
-           <gbscope>sector</gbscope>
-           <gbprefix>NY</gbprefix>
-           <gbmandate>mandatory</gbmandate>
-           <gbtopic>basic</gbtopic>
-         </gbtype>
-         </ext>
-       </bibdata>
-       <boilerplate> </boilerplate>
-       <sections/>
-       </gb-standard>
+      <?xml version='1.0' encoding='UTF-8'?>
+      <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version="#{Metanorma::Gb::VERSION}" schema-version='v2.3.0' flavor='gb'>
+        <bibdata type='standard'>
+          <docidentifier type='gb'>NY 123</docidentifier>
+          <docnumber>123</docnumber>
+          <contributor>
+            <role type='author'/>
+            <person>
+              <name>
+                <surname>Author</surname>
+              </name>
+            </person>
+          </contributor>
+          <contributor>
+            <role type='technical-committee'/>
+            <organization>
+              <name>Technical</name>
+            </organization>
+          </contributor>
+          <contributor>
+            <role type='author'/>
+            <organization>
+              <name>GB</name>
+            </organization>
+          </contributor>
+          <contributor>
+            <role type='publisher'/>
+            <organization>
+              <name>GB</name>
+            </organization>
+          </contributor>
+          <contributor>
+            <role type='authority'/>
+            <organization>
+              <name>GB</name>
+            </organization>
+          </contributor>
+          <contributor>
+            <role type='proposer'/>
+            <organization>
+              <name>GB</name>
+            </organization>
+          </contributor>
+          <contributor>
+            <role type='issuer'/>
+            <organization>
+              <name>Ministry of Agriculture</name>
+            </organization>
+          </contributor>
+          <language>en</language>
+          <script>Latn</script>
+          <status>
+            <stage>published</stage>
+          </status>
+          <copyright>
+            <from>#{Date.today.year}</from>
+            <owner>
+              <organization>
+                <name>Ministry of Agriculture</name>
+              </organization>
+            </owner>
+          </copyright>
+          <ext>
+            <doctype>standard</doctype>
+            <gbcommittee type='Governance'>Technical</gbcommittee>
+            <structuredidentifier>
+              <project-number>NY 123</project-number>
+            </structuredidentifier>
+            <stagename>International standard</stagename>
+            <gbtype>
+              <gbscope>sector</gbscope>
+              <gbprefix>NY</gbprefix>
+              <gbmandate>mandatory</gbmandate>
+              <gbtopic>basic</gbtopic>
+            </gbtype>
+          </ext>
+        </bibdata>
+        <metanorma-extension>
+          <semantic-metadata>
+            <stage-published>false</stage-published>
+          </semantic-metadata>
+          <presentation-metadata>
+            <document-scheme>2024</document-scheme>
+            <toc-heading-levels>2</toc-heading-levels>
+            <html-toc-heading-levels>2</html-toc-heading-levels>
+            <doc-toc-heading-levels>3</doc-toc-heading-levels>
+            <pdf-toc-heading-levels>3</pdf-toc-heading-levels>
+          </presentation-metadata>
+        </metanorma-extension>
+        <boilerplate> </boilerplate>
+        <sections> </sections>
+      </metanorma>
     OUTPUT
   end
 
@@ -263,26 +453,141 @@ RSpec.describe Asciidoctor::Gb do
 
       This paragraph is extraneous
     INPUT
-    #{BLANK_HDR}
-              <sections>
-         <terms id="_" obligation="normative"><title>Terms and definitions</title>
-         <p id="_">For the purposes of this document,
-           the following terms and definitions apply.</p>
-       <p id="_">ISO and IEC maintain terminological databases for use in
-       standardization at the following addresses:</p>
-
-       <ul id="_">
-       <li> <p id="_">ISO Online browsing platform: available at
-         <link target="http://www.iso.org/obp"/></p> </li>
-       <li> <p id="_">IEC Electropedia: available at
-       <link target="http://www.electropedia.org"/>
-       </p> </li> </ul>
-       <term id="term-time">
-         <preferred language="zh"></preferred> <preferred language="en">Time</preferred>
-         <definition><p id="_">This paragraph is extraneous</p></definition>
-       </term></terms>
-       </sections>
-       </gb-standard>
+      <?xml version='1.0' encoding='UTF-8'?>
+      <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version="#{Metanorma::Gb::VERSION}" schema-version='v2.3.0' flavor='gb'>
+        <bibdata type='standard'>
+          <contributor>
+            <role type='author'/>
+            <person>
+              <name>
+                <surname>Author</surname>
+              </name>
+            </person>
+          </contributor>
+          <contributor>
+            <role type='author'/>
+            <organization>
+              <name>GB</name>
+            </organization>
+          </contributor>
+          <contributor>
+            <role type='publisher'/>
+            <organization>
+              <name>GB</name>
+            </organization>
+          </contributor>
+          <contributor>
+            <role type='authority'/>
+            <organization>
+              <name>GB</name>
+            </organization>
+          </contributor>
+          <contributor>
+            <role type='proposer'/>
+            <organization>
+              <name>GB</name>
+            </organization>
+          </contributor>
+          <contributor>
+            <role type='issuer'/>
+            <organization>
+              <name>
+                General Administration of Quality Supervision, Inspection and
+                Quarantine; Standardization Administration of China
+              </name>
+            </organization>
+          </contributor>
+          <language>en</language>
+          <script>Latn</script>
+          <status>
+            <stage>published</stage>
+          </status>
+          <copyright>
+            <from>#{Date.today.year}</from>
+            <owner>
+              <organization>
+                <name>
+                  General Administration of Quality Supervision, Inspection and
+                  Quarantine; Standardization Administration of China
+                </name>
+              </organization>
+            </owner>
+          </copyright>
+          <ext>
+            <doctype>standard</doctype>
+            <structuredidentifier>
+              <project-number/>
+            </structuredidentifier>
+            <stagename>International standard</stagename>
+            <gbtype>
+              <gbscope>national</gbscope>
+              <gbprefix>GB</gbprefix>
+              <gbmandate>mandatory</gbmandate>
+              <gbtopic>basic</gbtopic>
+            </gbtype>
+          </ext>
+        </bibdata>
+        <metanorma-extension>
+          <semantic-metadata>
+            <stage-published>false</stage-published>
+          </semantic-metadata>
+          <presentation-metadata>
+            <document-scheme>2024</document-scheme>
+            <toc-heading-levels>2</toc-heading-levels>
+            <html-toc-heading-levels>2</html-toc-heading-levels>
+            <doc-toc-heading-levels>3</doc-toc-heading-levels>
+            <pdf-toc-heading-levels>3</pdf-toc-heading-levels>
+          </presentation-metadata>
+        </metanorma-extension>
+        <boilerplate> </boilerplate>
+        <sections>
+          <terms id='_' obligation='normative'>
+            <title id='_'>Terms and definitions</title>
+            <p id='_'>For the purposes of this document, the following terms and definitions apply.</p>
+            <p id='_'>
+              ISO and IEC maintain terminology databases for use in standardization at
+              the following addresses:
+            </p>
+            <ul id='_'>
+              <li>
+                <p id='_'>
+                  ISO Online browsing platform: available at 
+                  <link target='https://www.iso.org/obp'/>
+                </p>
+              </li>
+              <li>
+                <p id='_'>
+                  IEC Electropedia: available at 
+                  <link target='https://www.electropedia.org'/>
+                </p>
+              </li>
+            </ul>
+            <p id='_'>I am boilerplate</p>
+            <ul id='_'>
+              <li>
+                <p id='_'>So am I</p>
+              </li>
+            </ul>
+            <term id='_' anchor='term-Time'>
+              <preferred language='zh'>
+                <expression>
+                  <name/>
+                </expression>
+              </preferred>
+              <preferred language='en'>
+                <expression>
+                  <name>Time</name>
+                </expression>
+              </preferred>
+              <definition id='_'>
+                <verbal-definition id='_'>
+                  <p id='_'>This paragraph is extraneous</p>
+                </verbal-definition>
+              </definition>
+            </term>
+          </terms>
+        </sections>
+      </metanorma>
     OUTPUT
   end
 
@@ -307,20 +612,122 @@ RSpec.describe Asciidoctor::Gb do
 
       This paragraph is extraneous
     INPUT
-    #{BLANK_HDR}
-              <sections>
-         <terms id="_" obligation="normative"><title>Terms and definitions</title><p id="_">I am boilerplate</p>
-       <ul id="_">
-         <li>
-           <p id="_">So am I</p>
-         </li>
-       </ul>
-       <term id="term-time">
-         <preferred language="zh"></preferred> <preferred language="en">Time</preferred>
-         <definition><p id="_">This paragraph is extraneous</p></definition>
-       </term></terms>
-       </sections>
-       </gb-standard>
+      <?xml version='1.0' encoding='UTF-8'?>
+      <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version="#{Metanorma::Gb::VERSION}" schema-version='v2.3.0' flavor='gb'>
+        <bibdata type='standard'>
+          <contributor>
+            <role type='author'/>
+            <person>
+              <name>
+                <surname>Author</surname>
+              </name>
+            </person>
+          </contributor>
+          <contributor>
+            <role type='author'/>
+            <organization>
+              <name>GB</name>
+            </organization>
+          </contributor>
+          <contributor>
+            <role type='publisher'/>
+            <organization>
+              <name>GB</name>
+            </organization>
+          </contributor>
+          <contributor>
+            <role type='authority'/>
+            <organization>
+              <name>GB</name>
+            </organization>
+          </contributor>
+          <contributor>
+            <role type='proposer'/>
+            <organization>
+              <name>GB</name>
+            </organization>
+          </contributor>
+          <contributor>
+            <role type='issuer'/>
+            <organization>
+              <name>
+                General Administration of Quality Supervision, Inspection and
+                Quarantine; Standardization Administration of China
+              </name>
+            </organization>
+          </contributor>
+          <language>en</language>
+          <script>Latn</script>
+          <status>
+            <stage>published</stage>
+          </status>
+          <copyright>
+            <from>#{Date.today.year}</from>
+            <owner>
+              <organization>
+                <name>
+                  General Administration of Quality Supervision, Inspection and
+                  Quarantine; Standardization Administration of China
+                </name>
+              </organization>
+            </owner>
+          </copyright>
+          <ext>
+            <doctype>standard</doctype>
+            <structuredidentifier>
+              <project-number/>
+            </structuredidentifier>
+            <stagename>International standard</stagename>
+            <gbtype>
+              <gbscope>national</gbscope>
+              <gbprefix>GB</gbprefix>
+              <gbmandate>mandatory</gbmandate>
+              <gbtopic>basic</gbtopic>
+            </gbtype>
+          </ext>
+        </bibdata>
+        <metanorma-extension>
+          <semantic-metadata>
+            <stage-published>false</stage-published>
+          </semantic-metadata>
+          <presentation-metadata>
+            <document-scheme>2024</document-scheme>
+            <toc-heading-levels>2</toc-heading-levels>
+            <html-toc-heading-levels>2</html-toc-heading-levels>
+            <doc-toc-heading-levels>3</doc-toc-heading-levels>
+            <pdf-toc-heading-levels>3</pdf-toc-heading-levels>
+          </presentation-metadata>
+        </metanorma-extension>
+        <boilerplate> </boilerplate>
+        <sections>
+          <terms id='_' obligation='normative'>
+            <title id='_'>Terms and definitions</title>
+            <p id='_'>I am boilerplate</p>
+            <ul id='_'>
+              <li>
+                <p id='_'>So am I</p>
+              </li>
+            </ul>
+            <term id='_' anchor='term-Time'>
+              <preferred language='zh'>
+                <expression>
+                  <name/>
+                </expression>
+              </preferred>
+              <preferred language='en'>
+                <expression>
+                  <name>Time</name>
+                </expression>
+              </preferred>
+              <definition id='_'>
+                <verbal-definition id='_'>
+                  <p id='_'>This paragraph is extraneous</p>
+                </verbal-definition>
+              </definition>
+            </term>
+          </terms>
+        </sections>
+      </metanorma>
     OUTPUT
   end
 
@@ -380,14 +787,102 @@ RSpec.describe Asciidoctor::Gb do
     [zh-Hans]#zh-Hans#
     [zh-Hant]#zh-Hant#
     INPUT
-    #{BLANK_HDR}
-       <sections>
-       <p id="_"><string language="en">en</string>
-       <string language="zh">zh</string>
-       <string language="zh" script="Hans">zh-Hans</string>
-       <string language="zh" script="Hant">zh-Hant</string></p>
-       </sections>
-       </gb-standard>
+      <?xml version='1.0' encoding='UTF-8'?>
+      <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version="#{Metanorma::Gb::VERSION}" schema-version='v2.3.0' flavor='gb'>
+        <bibdata type='standard'>
+          <contributor>
+            <role type='author'/>
+            <person>
+              <name>
+                <surname>Author</surname>
+              </name>
+            </person>
+          </contributor>
+          <contributor>
+            <role type='author'/>
+            <organization>
+              <name>GB</name>
+            </organization>
+          </contributor>
+          <contributor>
+            <role type='publisher'/>
+            <organization>
+              <name>GB</name>
+            </organization>
+          </contributor>
+          <contributor>
+            <role type='authority'/>
+            <organization>
+              <name>GB</name>
+            </organization>
+          </contributor>
+          <contributor>
+            <role type='proposer'/>
+            <organization>
+              <name>GB</name>
+            </organization>
+          </contributor>
+          <contributor>
+            <role type='issuer'/>
+            <organization>
+              <name>
+                General Administration of Quality Supervision, Inspection and
+                Quarantine; Standardization Administration of China
+              </name>
+            </organization>
+          </contributor>
+          <language>en</language>
+          <script>Latn</script>
+          <status>
+            <stage>published</stage>
+          </status>
+          <copyright>
+            <from>#{Date.today.year}</from>
+            <owner>
+              <organization>
+                <name>
+                  General Administration of Quality Supervision, Inspection and
+                  Quarantine; Standardization Administration of China
+                </name>
+              </organization>
+            </owner>
+          </copyright>
+          <ext>
+            <doctype>standard</doctype>
+            <structuredidentifier>
+              <project-number/>
+            </structuredidentifier>
+            <stagename>International standard</stagename>
+            <gbtype>
+              <gbscope>national</gbscope>
+              <gbprefix>GB</gbprefix>
+              <gbmandate>mandatory</gbmandate>
+              <gbtopic>basic</gbtopic>
+            </gbtype>
+          </ext>
+        </bibdata>
+        <metanorma-extension>
+          <semantic-metadata>
+            <stage-published>false</stage-published>
+          </semantic-metadata>
+          <presentation-metadata>
+            <document-scheme>2024</document-scheme>
+            <toc-heading-levels>2</toc-heading-levels>
+            <html-toc-heading-levels>2</html-toc-heading-levels>
+            <doc-toc-heading-levels>3</doc-toc-heading-levels>
+            <pdf-toc-heading-levels>3</pdf-toc-heading-levels>
+          </presentation-metadata>
+        </metanorma-extension>
+        <boilerplate> </boilerplate>
+        <sections>
+          <p id='_'>
+            <string language='en'>en</string>
+            <string language='zh'>zh</string>
+            <string language='zh' script='Hans'>zh-Hans</string>
+            <string language='zh' script='Hant'>zh-Hant</string>
+          </p>
+        </sections>
+      </metanorma>
     OUTPUT
   end
 
@@ -396,11 +891,106 @@ RSpec.describe Asciidoctor::Gb do
     #{ASCIIDOC_BLANK_HDR}
     [deprecated]#deprecated 被取代#
     INPUT
-    #{BLANK_HDR}
-       <sections>
-       <deprecates language="zh">被取代</deprecates> <deprecates language="en">deprecated</deprecates>
-       </sections>
-       </gb-standard>
+      <?xml version='1.0' encoding='UTF-8'?>
+      <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version="#{Metanorma::Gb::VERSION}" schema-version='v2.3.0' flavor='gb'>
+        <bibdata type='standard'>
+          <contributor>
+            <role type='author'/>
+            <person>
+              <name>
+                <surname>Author</surname>
+              </name>
+            </person>
+          </contributor>
+          <contributor>
+            <role type='author'/>
+            <organization>
+              <name>GB</name>
+            </organization>
+          </contributor>
+          <contributor>
+            <role type='publisher'/>
+            <organization>
+              <name>GB</name>
+            </organization>
+          </contributor>
+          <contributor>
+            <role type='authority'/>
+            <organization>
+              <name>GB</name>
+            </organization>
+          </contributor>
+          <contributor>
+            <role type='proposer'/>
+            <organization>
+              <name>GB</name>
+            </organization>
+          </contributor>
+          <contributor>
+            <role type='issuer'/>
+            <organization>
+              <name>
+                General Administration of Quality Supervision, Inspection and
+                Quarantine; Standardization Administration of China
+              </name>
+            </organization>
+          </contributor>
+          <language>en</language>
+          <script>Latn</script>
+          <status>
+            <stage>published</stage>
+          </status>
+          <copyright>
+            <from>#{Date.today.year}</from>
+            <owner>
+              <organization>
+                <name>
+                  General Administration of Quality Supervision, Inspection and
+                  Quarantine; Standardization Administration of China
+                </name>
+              </organization>
+            </owner>
+          </copyright>
+          <ext>
+            <doctype>standard</doctype>
+            <structuredidentifier>
+              <project-number/>
+            </structuredidentifier>
+            <stagename>International standard</stagename>
+            <gbtype>
+              <gbscope>national</gbscope>
+              <gbprefix>GB</gbprefix>
+              <gbmandate>mandatory</gbmandate>
+              <gbtopic>basic</gbtopic>
+            </gbtype>
+          </ext>
+        </bibdata>
+        <metanorma-extension>
+          <semantic-metadata>
+            <stage-published>false</stage-published>
+          </semantic-metadata>
+          <presentation-metadata>
+            <document-scheme>2024</document-scheme>
+            <toc-heading-levels>2</toc-heading-levels>
+            <html-toc-heading-levels>2</html-toc-heading-levels>
+            <doc-toc-heading-levels>3</doc-toc-heading-levels>
+            <pdf-toc-heading-levels>3</pdf-toc-heading-levels>
+          </presentation-metadata>
+        </metanorma-extension>
+        <boilerplate> </boilerplate>
+        <sections>
+          <deprecates language='zh'>
+            <expression>
+              <name>被取代</name>
+            </expression>
+          </deprecates>
+          <deprecates language='en'>
+            <expression>
+              <name>deprecated</name>
+            </expression>
+          </deprecates>
+        </sections>
+      </metanorma>
     OUTPUT
   end
 
@@ -412,18 +1002,109 @@ RSpec.describe Asciidoctor::Gb do
 
       * [[[xiso123,XISO 123]]] _a_ [zh]#A# [en]#B#
     INPUT
-       #{BLANK_HDR}
-<sections>
-
-       </sections><bibliography><references id="_" obligation="informative" normative="false">
-         <title>Bibliography</title>
-         <bibitem id="xiso123">
-         <em>a</em> <formattedref language="zh">A</formattedref> <formattedref language="en">B</formattedref>
-         <docidentifier>XISO 123</docidentifier>
-         <docnumber>123</docnumber>
-       </bibitem>
-       </references></bibliography>
-       </gb-standard>
+       <?xml version='1.0' encoding='UTF-8'?>
+       <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version="#{Metanorma::Gb::VERSION}" schema-version='v2.3.0' flavor='gb'>
+         <bibdata type='standard'>
+           <contributor>
+             <role type='author'/>
+             <person>
+               <name>
+                 <surname>Author</surname>
+               </name>
+             </person>
+           </contributor>
+           <contributor>
+             <role type='author'/>
+             <organization>
+               <name>GB</name>
+             </organization>
+           </contributor>
+           <contributor>
+             <role type='publisher'/>
+             <organization>
+               <name>GB</name>
+             </organization>
+           </contributor>
+           <contributor>
+             <role type='authority'/>
+             <organization>
+               <name>GB</name>
+             </organization>
+           </contributor>
+           <contributor>
+             <role type='proposer'/>
+             <organization>
+               <name>GB</name>
+             </organization>
+           </contributor>
+           <contributor>
+             <role type='issuer'/>
+             <organization>
+               <name>
+                 General Administration of Quality Supervision, Inspection and
+                 Quarantine; Standardization Administration of China
+               </name>
+             </organization>
+           </contributor>
+           <language>en</language>
+           <script>Latn</script>
+           <status>
+             <stage>published</stage>
+           </status>
+           <copyright>
+             <from>#{Date.today.year}</from>
+             <owner>
+               <organization>
+                 <name>
+                   General Administration of Quality Supervision, Inspection and
+                   Quarantine; Standardization Administration of China
+                 </name>
+               </organization>
+             </owner>
+           </copyright>
+           <ext>
+             <doctype>standard</doctype>
+             <structuredidentifier>
+               <project-number/>
+             </structuredidentifier>
+             <stagename>International standard</stagename>
+             <gbtype>
+               <gbscope>national</gbscope>
+               <gbprefix>GB</gbprefix>
+               <gbmandate>mandatory</gbmandate>
+               <gbtopic>basic</gbtopic>
+             </gbtype>
+           </ext>
+         </bibdata>
+         <metanorma-extension>
+           <semantic-metadata>
+             <stage-published>false</stage-published>
+           </semantic-metadata>
+           <presentation-metadata>
+             <document-scheme>2024</document-scheme>
+             <toc-heading-levels>2</toc-heading-levels>
+             <html-toc-heading-levels>2</html-toc-heading-levels>
+             <doc-toc-heading-levels>3</doc-toc-heading-levels>
+             <pdf-toc-heading-levels>3</pdf-toc-heading-levels>
+           </presentation-metadata>
+         </metanorma-extension>
+         <boilerplate> </boilerplate>
+         <sections> </sections>
+         <bibliography>
+           <references id='_' normative='false' obligation='informative'>
+             <title id='_'>Bibliography</title>
+             <bibitem anchor='xiso123' id='_'>
+               <em>a</em>
+               <formattedref language='zh'>A</formattedref>
+               <formattedref language='en'>B</formattedref>
+               <docidentifier>XISO 123</docidentifier>
+               <docnumber>123</docnumber>
+               <language>en</language>
+               <script>Latn</script>
+             </bibitem>
+           </references>
+         </bibliography>
+       </metanorma>
     OUTPUT
   end
 
@@ -439,20 +1120,137 @@ RSpec.describe Asciidoctor::Gb do
 
       * [[[iso123,GB/T 20223-2006]]] _Standard_
     INPUT
-      #{BLANK_HDR}
-      <preface><foreword id="_" obligation="informative">
-  <title>Foreword</title>
-  <p id="_">
-  <eref type="inline" bibitemid="iso123" citeas="GB/T 20223"/>
-</p>
-</foreword></preface>
-      <sections>
-             </sections><bibliography><references id="_" obligation="informative" normative="true">
-         <title>Normative references</title>
-         <p id="_">The following documents are referred to in the text in such a way that some or all of their content constitutes requirements of this document. For dated references, only the edition cited applies. For undated references, the latest edition of the referenced document (including any amendments) applies.</p>
-      #{GBT20223.sub(%{id="GB/T20223"}, %{id="iso123"}).sub(%r{<title format="text/plain" language="zh".+?</title>}, "")}
-       </references></bibliography>
-       </gb-standard>
+      <?xml version='1.0' encoding='UTF-8'?>
+      <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version='1.5.8' schema-version='v2.3.0' flavor='gb'>
+        <bibdata type='standard'>
+          <contributor>
+            <role type='author'/>
+            <person>
+              <name>
+                <surname>Author</surname>
+              </name>
+            </person>
+          </contributor>
+          <contributor>
+            <role type='author'/>
+            <organization>
+              <name>GB</name>
+            </organization>
+          </contributor>
+          <contributor>
+            <role type='publisher'/>
+            <organization>
+              <name>GB</name>
+            </organization>
+          </contributor>
+          <contributor>
+            <role type='authority'/>
+            <organization>
+              <name>GB</name>
+            </organization>
+          </contributor>
+          <contributor>
+            <role type='proposer'/>
+            <organization>
+              <name>GB</name>
+            </organization>
+          </contributor>
+          <contributor>
+            <role type='issuer'/>
+            <organization>
+              <name>
+                General Administration of Quality Supervision, Inspection and
+                Quarantine; Standardization Administration of China
+              </name>
+            </organization>
+          </contributor>
+          <language>en</language>
+          <script>Latn</script>
+          <status>
+            <stage>published</stage>
+          </status>
+          <copyright>
+            <from>#{Date.today.year}</from>
+            <owner>
+              <organization>
+                <name>
+                  General Administration of Quality Supervision, Inspection and
+                  Quarantine; Standardization Administration of China
+                </name>
+              </organization>
+            </owner>
+          </copyright>
+          <ext>
+            <doctype>standard</doctype>
+            <structuredidentifier>
+              <project-number/>
+            </structuredidentifier>
+            <stagename>International standard</stagename>
+            <gbtype>
+              <gbscope>national</gbscope>
+              <gbprefix>GB</gbprefix>
+              <gbmandate>mandatory</gbmandate>
+              <gbtopic>basic</gbtopic>
+            </gbtype>
+          </ext>
+        </bibdata>
+        <metanorma-extension>
+          <semantic-metadata>
+            <stage-published>false</stage-published>
+          </semantic-metadata>
+          <presentation-metadata>
+            <document-scheme>2024</document-scheme>
+            <toc-heading-levels>2</toc-heading-levels>
+            <html-toc-heading-levels>2</html-toc-heading-levels>
+            <doc-toc-heading-levels>3</doc-toc-heading-levels>
+            <pdf-toc-heading-levels>3</pdf-toc-heading-levels>
+          </presentation-metadata>
+        </metanorma-extension>
+        <boilerplate> </boilerplate>
+        <preface>
+          <foreword id='_' obligation='informative'>
+            <title id='_'>Foreword</title>
+            <p id='_'>
+              <eref type='inline' bibitemid='iso123' citeas='GB/T 20223'/>
+            </p>
+          </foreword>
+        </preface>
+        <sections> </sections>
+        <bibliography>
+          <references id='_' normative='true' obligation='informative'>
+            <title id='_'>Normative references</title>
+            <p id='_'>
+              The following documents are referred to in the text in such a way that
+              some or all of their content constitutes requirements of this document.
+              For dated references, only the edition cited applies. For undated
+              references, the latest edition of the referenced document (including any
+              amendments) applies.
+            </p>
+            <bibitem id='_' type='standard' schema-version='v1.5.6' anchor='iso123'>
+              <fetched>#{Date.today}</fetched>
+              <title format='text/plain' language='zh' script='Hans'>棉短绒</title>
+              <title format='text/plain' language='en' script='Latn'>Cotton linter</title>
+              <uri type='src'>http://www.std.gov.cn/gb/search/gbDetailed?id=5DDA8BA00FC618DEE05397BE0A0A95A7</uri>
+              <docidentifier type='GB'>GB/T 20223</docidentifier>
+              <date type='published'>
+                <on>2006</on>
+              </date>
+              <contributor>
+                <role type='publisher'/>
+                <organization>
+                  <name>GB/T</name>
+                  <abbreviation>GB/T</abbreviation>
+                </organization>
+              </contributor>
+              <language>zh</language>
+              <script>Hans</script>
+              <status>
+                <stage>obsoleted</stage>
+              </status>
+            </bibitem>
+          </references>
+        </bibliography>
+      </metanorma>
     OUTPUT
     end
 
@@ -468,24 +1266,59 @@ RSpec.describe Asciidoctor::Gb do
 
       * [[[iso123,GB/T 20223-2006]]] _Standard_
     INPUT
-       <gb-standard xmlns="https://www.metanorma.org/ns/gb"  type="semantic" version="#{Metanorma::Gb::VERSION}">
-         <boilerplate> </boilerplate>
-         <preface>
-           <foreword id='_' obligation='informative'>
-             <title>前言</title>
-             <p id='_'>
-               <eref type='inline' bibitemid='iso123' citeas='GB/T 20223'/>
-             </p>
-           </foreword>
-         </preface>
-      <sections>
-             </sections><bibliography><references id="_" obligation="informative" normative="true">
-         <title>规范性引用文件</title>
-         <p id="_">下列文件对于本文件的应用是必不可少的。 凡是注日期的引用文件，仅注日期的版本适用于本文件。
-凡是不注日期的引用文件，其最新版本（包括所有的修改单）适用于本文件。</p>
-      #{GBT20223.sub(%{id="GB/T20223"}, %{id="iso123"}).sub(%r{<title format="text/plain" language="en".+?</title>}, "")}
-       </references></bibliography>
-       </gb-standard>
+      <?xml version='1.0' encoding='UTF-8'?>
+      <metanorma xmlns='https://www.metanorma.org/ns/standoc' type='semantic' version='1.5.8' schema-version='v2.3.0' flavor='gb'>
+        <metanorma-extension>
+          <semantic-metadata>
+            <stage-published>false</stage-published>
+          </semantic-metadata>
+          <presentation-metadata>
+            <document-scheme>2024</document-scheme>
+            <toc-heading-levels>2</toc-heading-levels>
+            <html-toc-heading-levels>2</html-toc-heading-levels>
+            <doc-toc-heading-levels>3</doc-toc-heading-levels>
+            <pdf-toc-heading-levels>3</pdf-toc-heading-levels>
+          </presentation-metadata>
+        </metanorma-extension>
+        <boilerplate> </boilerplate>
+        <preface>
+          <foreword id='_' obligation='informative'>
+            <title id='_'>前言</title>
+            <p id='_'>
+              <eref type='inline' bibitemid='iso123' citeas='GB/T 20223'/>
+            </p>
+          </foreword>
+        </preface>
+        <sections> </sections>
+        <bibliography>
+          <references id='_' normative='true' obligation='informative'>
+            <title id='_'>规范性引用文件</title>
+            <p id='_'>下列文件对于本文件的应用是必不可少的。凡是注日期的引用文件，仅注日期的版本适用于本文件。凡是不注日期的引用文件，其最新版本（包括所有的修改单）适用于本文件。</p>
+            <bibitem id='_' type='standard' schema-version='v1.5.6' anchor='iso123'>
+              <fetched>#{Date.today}</fetched>
+              <title format='text/plain' language='zh' script='Hans'>棉短绒</title>
+              <title format='text/plain' language='en' script='Latn'>Cotton linter</title>
+              <uri type='src'>http://www.std.gov.cn/gb/search/gbDetailed?id=5DDA8BA00FC618DEE05397BE0A0A95A7</uri>
+              <docidentifier type='GB'>GB/T 20223</docidentifier>
+              <date type='published'>
+                <on>2006</on>
+              </date>
+              <contributor>
+                <role type='publisher'/>
+                <organization>
+                  <name>GB/T</name>
+                  <abbreviation>GB/T</abbreviation>
+                </organization>
+              </contributor>
+              <language>zh</language>
+              <script>Hans</script>
+              <status>
+                <stage>obsoleted</stage>
+              </status>
+            </bibitem>
+          </references>
+        </bibliography>
+      </metanorma>
     OUTPUT
     end
 
@@ -493,8 +1326,8 @@ RSpec.describe Asciidoctor::Gb do
     private
 
     def mock_gbbib_get_123(lang)
-      expect(RelatonGb::GbBibliography).to receive(:get).with("GB/T 20223", "2006", {:lang=>lang, :title=>"<em>Standard</em>", :usrlbl=>nil}) do
-        RelatonIsoBib::XMLParser.from_xml(GBT20223)
+      expect(Relaton::Gb::Bibliography).to receive(:get).with(anything, anything, anything) do
+        Relaton::Gb::Item.from_xml(GBT20223)
       end
     end
 end
