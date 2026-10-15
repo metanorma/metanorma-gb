@@ -1,4 +1,5 @@
 require "spec_helper"
+
 require "fileutils"
 require "relaton/gb"
 
@@ -8,7 +9,8 @@ RSpec.describe Asciidoctor::Gb do
   end
 
   it "processes a blank document" do
-    expect(xmlpp(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true))).to be_equivalent_to xmlpp(<<~"OUTPUT")
+    expect(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)).to be_equivalent_to <<~"OUTPUT"
+
     #{ASCIIDOC_BLANK_HDR}
     INPUT
       <?xml version='1.0' encoding='UTF-8'?>
@@ -108,7 +110,8 @@ RSpec.describe Asciidoctor::Gb do
     FileUtils.rm_f "test.doc"
     FileUtils.rm_f "test.pdf"
     css_before = File.read("htmlstyle.css")
-    expect(xmlpp(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true))).to be_equivalent_to xmlpp(<<~"OUTPUT")
+    expect(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)).to be_equivalent_to <<~"OUTPUT"
+
       = Document title
       Author
       :docfile: test.adoc
@@ -329,7 +332,8 @@ RSpec.describe Asciidoctor::Gb do
 
   it "does contributor cleanup" do
     FileUtils.rm_f "test.doc"
-    expect(xmlpp(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true))).to be_equivalent_to xmlpp(<<~"OUTPUT")
+    expect(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)).to be_equivalent_to <<~"OUTPUT"
+
       = Document title
       Author
       :docfile: test.adoc
@@ -441,7 +445,8 @@ RSpec.describe Asciidoctor::Gb do
   end
 
     it "strips any initial boilerplate from terms and definitions" do
-    expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
+    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
+
       #{ASCIIDOC_BLANK_HDR}
       == Terms and Definitions
 
@@ -592,7 +597,8 @@ RSpec.describe Asciidoctor::Gb do
   end
 
     it "does not strip any initial boilerplate from terms and definitions if keep-boilerplate attribute" do
-    expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
+    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
+
       = Document title
       Author
       :docfile: test.adoc
@@ -732,7 +738,8 @@ RSpec.describe Asciidoctor::Gb do
   end
 
   it "processes ISO inline_quoted formatting" do
-    expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
+    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
+
       #{ASCIIDOC_BLANK_HDR}
 
       _emphasis_
@@ -750,36 +757,74 @@ RSpec.describe Asciidoctor::Gb do
       [strike]#strike#
       [smallcap]#smallcap#
     INPUT
-    #{BLANK_HDR}
-
-       <sections>
-         <em>emphasis</em>
-       <strong>strong</strong>
-       <tt>monospace</tt>
-       “double quote”
-       ‘single quote’
-       super<sup>script</sup>
-       sub<sub>script</sub>
-       <stem type="MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mrow>
-  <mi>a</mi>
-</mrow>
-<mrow>
-  <mn>90</mn>
-</mrow>
-</msub></math></stem>
-       <stem type="MathML"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub> <mrow> <mrow> <mi mathvariant="bold-italic">F</mi> </mrow> </mrow> <mrow> <mrow> <mi mathvariant="bold-italic">Α</mi> </mrow> </mrow> </msub> </math></stem>
-       <admitted language="zh"></admitted> <admitted language="en">alt</admitted>
-       <deprecates language="zh"></deprecates> <deprecates language="en">deprecated</deprecates>
-       <domain>domain</domain>
-       <strike>strike</strike>
-       <smallcap>smallcap</smallcap>
-       </sections>
-       </gb-standard>
+      #{BLANK_HDR}
+        <boilerplate> </boilerplate>
+        <sections>
+          <em>emphasis</em>
+          <strong>strong</strong>
+          <tt>monospace</tt>
+           “double quote” ‘single quote’ super
+          <sup>script</sup>
+           sub
+          <sub>script</sub>
+          <stem block='false' type='MathML'>
+            <math xmlns='http://www.w3.org/1998/Math/MathML'>
+              <mstyle displaystyle='false'>
+                <msub>
+                  <mi>a</mi>
+                  <mn>90</mn>
+                </msub>
+              </mstyle>
+            </math>
+            <asciimath>a_90</asciimath>
+          </stem>
+          <stem block='false' type='MathML'>
+            <math xmlns='http://www.w3.org/1998/Math/MathML'>
+              <msub>
+                <mrow>
+                  <mrow>
+                    <mi mathvariant='bold-italic'>F</mi>
+                  </mrow>
+                </mrow>
+                <mrow>
+                  <mrow>
+                    <mi mathvariant='bold-italic'>Α</mi>
+                  </mrow>
+                </mrow>
+              </msub>
+            </math>
+          </stem>
+          <admitted language='zh'>
+            <expression>
+              <name/>
+            </expression>
+          </admitted>
+          <admitted language='en'>
+            <expression>
+              <name>alt</name>
+            </expression>
+          </admitted>
+          <deprecates language='zh'>
+            <expression>
+              <name/>
+            </expression>
+          </deprecates>
+          <deprecates language='en'>
+            <expression>
+              <name>deprecated</name>
+            </expression>
+          </deprecates>
+          <domain>domain</domain>
+          <strike>strike</strike>
+          <smallcap>smallcap</smallcap>
+        </sections>
+      </metanorma>
     OUTPUT
   end
 
   it "processes GB inline_quoted formatting" do
-    expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
+    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
+
     #{ASCIIDOC_BLANK_HDR}
 
     [en]#en#
@@ -887,7 +932,8 @@ RSpec.describe Asciidoctor::Gb do
   end
 
   it "extracts localised strings by content" do
-    expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
+    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
+
     #{ASCIIDOC_BLANK_HDR}
     [deprecated]#deprecated 被取代#
     INPUT
@@ -995,7 +1041,8 @@ RSpec.describe Asciidoctor::Gb do
   end
 
   it "extracts tagged localised strings" do
-    expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
+    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
+
       #{ASCIIDOC_BLANK_HDR}
       [bibliography]
       == Bibliography
@@ -1110,7 +1157,8 @@ RSpec.describe Asciidoctor::Gb do
 
     it "fetches simple GB reference in English" do
     mock_gbbib_get_123("en")
-    expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)))).to be_equivalent_to xmlpp(<<~"OUTPUT")
+    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
+
       #{ISOBIB_BLANK_HDR}
       
       <<iso123>>
@@ -1256,7 +1304,8 @@ RSpec.describe Asciidoctor::Gb do
 
      it "fetches simple GB reference in Chinese" do
     mock_gbbib_get_123("zh")
-    expect(xmlpp(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)).sub(%r{<bibdata.*</bibdata>}m, ""))).to be_equivalent_to xmlpp(<<~"OUTPUT")
+    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)).sub(%r{<bibdata.*</bibdata>}m, "")).to be_equivalent_to <<~"OUTPUT"
+
       #{ISOBIB_BLANK_HDR_ZH}
 
       <<iso123>>

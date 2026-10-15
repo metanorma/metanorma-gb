@@ -17,11 +17,11 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
     INPUT
     pres_output = IsoDoc::Gb::PresentationXMLConvert.new({})
       .convert("test", input, true)
-    expect(xmlpp(strip_guid(IsoDoc::Gb::HtmlConvert.new({})
+    expect(strip_guid(IsoDoc::Gb::HtmlConvert.new({})
       .convert("test", pres_output, true)
       .gsub(/^.*<body/m, "<body")
-      .gsub(%r{</body>.*}m, "</body>"))))
-      .to be_equivalent_to xmlpp(strip_guid(<<~"OUTPUT"))
+      .gsub(%r{</body>.*}m, "</body>")))
+      .to be_equivalent_to strip_guid(<<~"OUTPUT")
       <body lang="en"><div class="title-section"><p> </p></div><br/><div class="prefatory-section"><p> </p></div><br/><div class="main-section"><br/><div id="_431ef2eb-8396-9bc6-d97f-294b258fa00e" class="TOC"><h1 class="IntroTitle">Contents</h1></div><br/><div id="_54c89430-7522-0f9f-9f62-8fdcefbecfff"><h1 class="ForewordTitle">Foreword</h1><p id="_f06fd0d1-a203-4f3d-a515-0bdba0f8d83f">
         <span class="Hant"><i>Hello</i></span>
         <i>Hello</i>
@@ -53,7 +53,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
     INPUT
     html = File.read("test.html", encoding: "utf-8").sub(/^.*<main class="main-section">/m, '<main class="main-section">').
       sub(%r{</main>.*$}m, "</main>")
-    expect(xmlpp(html.gsub(/"#[a-f0-9-]+"/, "#_"))).to be_equivalent_to xmlpp(<<~"OUTPUT")
+    expect(html.gsub(/"#[a-f0-9-]+"/, "#_")).to be_equivalent_to <<~"OUTPUT"
            <main class="main-section"><button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
                <p class="zzSTDTitle1">XXXX</p>
                <div id="_terms_and_definitions"><h1 id="toc0">1.&#x3000;Terms and definitions</h1>
@@ -90,11 +90,11 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
     INPUT
     pres_output = IsoDoc::Gb::PresentationXMLConvert.new({})
       .convert("test", input, true)
-    expect(xmlpp(strip_guid(IsoDoc::Gb::HtmlConvert.new({})
+    expect(strip_guid(IsoDoc::Gb::HtmlConvert.new({})
       .convert("test", pres_output, true)
       .gsub(/^.*<body/m, "<body")
-      .gsub(%r{</body>.*}m, "</body>"))))
-      .to be_equivalent_to xmlpp(strip_guid(<<~"OUTPUT"))
+      .gsub(%r{</body>.*}m, "</body>")))
+      .to be_equivalent_to strip_guid(<<~"OUTPUT")
       <body lang="zh"><div class="title-section"><p> </p></div><br/><div class="prefatory-section"><p> </p></div><br/><div class="main-section"><br/><div id="_b681feb2-7e1f-2705-1100-e151c7b5d8b4" class="TOC"><h1 class="IntroTitle">目　次</h1></div><div id="_terms_and_definitions"><h1>1　1.　Terms and definitions</h1>
       <p class="TermNum" id="paddy">1.11.1.</p>
 
@@ -141,7 +141,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
     INPUT
     html = File.read("test.html", encoding: "utf-8").sub(/^.*<main class="main-section">/m, '<main class="main-section">').
       sub(%r{</main>.*$}m, "</main>")
-    expect(xmlpp(htmlencode(html.gsub(/"#[a-f0-9-]+"/, "#_")))).to be_equivalent_to xmlpp(<<~"OUTPUT")
+    expect(htmlencode(html.gsub(/"#[a-f0-9-]+"/, "#_"))).to be_equivalent_to <<~"OUTPUT"
            <main class="main-section"><button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
                <p class="zzSTDTitle1">XXXX</p>
                <div id="_terms_and_definitions"><h1 id="toc0">1.&#x3000;Terms and definitions</h1>
@@ -186,7 +186,7 @@ here&#x3011;</p>
     INPUT
     html = File.read("test.html", encoding: "utf-8").sub(/^.*<main class="main-section">/m, '<main class="main-section">').
       sub(%r{</main>.*$}m, "</main>")
-    expect(xmlpp(htmlencode(html.gsub(/"#[a-f0-9-]+"/, "#_")))).to be_equivalent_to xmlpp(<<~"OUTPUT")
+    expect(htmlencode(html.gsub(/"#[a-f0-9-]+"/, "#_"))).to be_equivalent_to <<~"OUTPUT"
            <main class="main-section"><button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
                <p class="zzSTDTitle1">XXXX</p>
                <div id="_terms_and_definitions"><h1 id="toc0">1.&#x3000;Terms and definitions</h1>
