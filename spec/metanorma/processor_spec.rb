@@ -1,4 +1,5 @@
 require "spec_helper"
+
 require "metanorma"
 require "fileutils"
 
@@ -23,7 +24,8 @@ RSpec.describe Metanorma::Gb::Processor do
   end
 
   it "generates IsoDoc XML from a blank document" do
-    expect(xmlpp(processor.input_to_isodoc(<<~"INPUT", nil))).to be_equivalent_to xmlpp(<<~"OUTPUT")
+    expect(processor.input_to_isodoc(<<~"INPUT", nil)).to be_equivalent_to <<~"OUTPUT"
+
     #{ASCIIDOC_BLANK_HDR}
     INPUT
     #{BLANK_HDR}
@@ -47,7 +49,8 @@ RSpec.describe Metanorma::Gb::Processor do
         </sections>
         </gb-standard>
     INPUT
-    expect(xmlpp(File.read("test.html", encoding: "utf-8").gsub(%r{^.*<main}m, "<main").gsub(%r{</main>.*}m, "</main>"))).to be_equivalent_to xmlpp(<<~"OUTPUT")
+    expect(File.read("test.html", encoding: "utf-8").gsub(%r{^.*<main}m, "<main").gsub(%r{</main>.*}m, "</main>")).to be_equivalent_to <<~"OUTPUT"
+
            <main class="main-section"><button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
              <p class="zzSTDTitle1">XXXX</p>
              <div id="H"><h1 id="toc0">1.&#x3000;Terms, Definitions, Symbols and Abbreviated Terms</h1>
