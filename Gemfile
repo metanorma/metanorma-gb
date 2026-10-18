@@ -8,7 +8,6 @@ gem "relaton", "= 3.0.0.pre.alpha.14"
 gem "relaton-render", "= 3.0.0.pre.alpha.43"
 gem "relaton-bib", "~> 2.2.0.pre.alpha.1"
 gem "pubid", github: "pubid/pubid", branch: "main"
-gem "moxml", github: "lutaml/moxml", branch: "main"
 gem "lutaml-model", "0.8.107"
 
 # isodoc runs as a git gem here (SCSS on board), so the CSS pipeline needs the embedded compiler
