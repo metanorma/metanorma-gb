@@ -25,6 +25,10 @@ RSpec.configure do |config|
   end
 end
 
+def strip_date(x)
+  x.gsub(%r{date="\d{4}-\d{2}-\d{2}"}, %(date="_"))
+end
+
 def metadata(x)
   Hash[x.sort].delete_if{ |k, v| v.nil? || v.respond_to?(:empty?) && v.empty? }
 end
