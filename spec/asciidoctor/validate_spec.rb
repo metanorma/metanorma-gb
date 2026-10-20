@@ -22,7 +22,8 @@ end
       expect do
         Metanorma::Compile
           .new
-          .compile("spec/assets/xref_error.adoc", type: "gb")
+          .compile("spec/assets/xref_error.adoc", type: "gb",
+                   install_fonts: false)
       end.to(change { File.exist?("spec/assets/xref_error.err.html") }
               .from(false).to(true))
     end

@@ -161,7 +161,6 @@ GEM
     bindata (2.5.1)
     brotli (0.8.0)
     builder (3.3.0)
-    byebug (9.1.0)
     cabriolet (0.2.4)
       bindata (~> 2.5)
       fractor (~> 0.1)
@@ -1155,7 +1154,6 @@ PLATFORMS
   x86_64-linux-musl
 
 DEPENDENCIES
-  byebug (~> 9.1)
   equivalent-xml (~> 0.6)
   guard (~> 2.14)
   guard-rspec (~> 4.7)
@@ -1200,7 +1198,6 @@ CHECKSUMS
   brotli (0.8.0) sha256=0c5a42046b3b603fb109656881147fd76064c034b7d19c1b4fcc32a093a4d55d
   builder (3.3.0) sha256=497918d2f9dca528fdca4b88d84e4ef4387256d984b8154e9d5d3fe5a9c8835f
   bundler (4.0.23) sha256=407ba8a1d928f412847f819aa5f8b6aef7c59fb51feb517112af8a165487287b
-  byebug (9.1.0) sha256=3890be9b2fa99785ce8f8e1feabd93a9153ffad0598e8fc9c36149c411d267ef
   cabriolet (0.2.4) sha256=fde76321a5b7ee5506581c01aeac44e4476332bc64fe7ae1a07a72227a318e9b
   camertron-eprun (2.0.0) sha256=e148a3035332609433d096401650f199dd6ce0031af3edb603dc44ea21aad3d5
   canon (0.3.105) sha256=d34ab38e55c50974914978e0038a84377845dc8ed54a95a3bea0f7d2fa12db66
