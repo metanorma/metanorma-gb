@@ -19,7 +19,23 @@ module Metanorma
         issuer_validate(doc.root)
         prefix_validate(doc.root)
         bibdata_validate(doc.root)
+        title_intro_validate(doc.root)
+        title_main_validate(doc.root)
+        title_part_validate(doc.root)
         @agencyclass.gbtype_validate(doc.root.at("//gbscope")&.text, doc.root.at("//gbprefix")&.text)
+      end
+
+      # Layer 3's NormativeBibitemRule has no GB profile (model_validate
+      # below is a no-op), so keep the DIR 2 check on the GB code list.
+      def normref_validate(root)
+        super
+        root.xpath("//references[@normative = 'true']/bibitem").each do |b|
+          id = b.at("./docidentifier")&.text.to_s
+          next if /^(ISO|IEC)\b/.match?(id) ||
+            /^#{Converter::GBCODE}(?![A-Za-z])/.match?(id)
+
+          @log.add(:ISO_42, b, params: [id])
+        end
       end
 
       # ISO Layer-3 model rules target the ISO root and have no GB
@@ -79,12 +95,23 @@ module Metanorma
       end
 
       def check_bilingual(t, element)
-        zh = t.at(".//#{element}[@language = 'zh']")
-        en = t.at(".//#{element}[@language = 'en']")
-        (en.nil? || en.text.empty?) && !(zh.nil? || zh.text.empty?) &&
-          @log.add(:GB_13, t, params: [element, zh.text])
-        !(en.nil? || en.text.empty?) && (zh.nil? || zh.text.empty?) &&
-          @log.add(:GB_14, t, params: [element, en.text])
+        zh = designation_text(t, element, "zh")
+        en = designation_text(t, element, "en")
+        en.empty? && !zh.empty? && @log.add(:GB_13, t, params: [element, zh])
+        !en.empty? && zh.empty? && @log.add(:GB_14, t, params: [element, en])
+      end
+
+      # The designation's language can sit on the element or on the
+      # string it carries; the model emits both shapes.
+      def designation_text(t, element, lang)
+        t.xpath(".//#{element}").each do |d|
+          s = d.xpath(".//string[@language = '#{lang}']")
+          return s.map(&:text).join unless s.empty?
+          next unless d.xpath(".//string[@language]").empty?
+
+          d["language"] == lang && !d.text.strip.empty? and return d.text
+        end
+        ""
       end
 
       def bilingual_terms_validate(root)
