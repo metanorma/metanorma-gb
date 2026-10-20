@@ -101,7 +101,7 @@ END
 
 BLANK_HDR = <<~"HDR"
        <?xml version="1.0" encoding="UTF-8"?>
-       <gb-standard xmlns="https://www.metanorma.org/ns/gb" type="semantic" version="#{Metanorma::Gb::VERSION}">
+       <metanorma xmlns="https://www.metanorma.org/ns/standoc" type="semantic" version="#{Metanorma::Gb::VERSION}" schema-version="v2.3.0" flavor="gb">
        <bibdata type="standard">
          <contributor>
            <role type="author"/>

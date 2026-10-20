@@ -38,125 +38,54 @@ RSpec.describe Asciidoctor::Gb do
       :novalid:
 
     INPUT
-     <?xml version="1.0" encoding="UTF-8"?>
-       <gb-standard xmlns="https://www.metanorma.org/ns/gb"  type="semantic" version="#{Metanorma::Gb::VERSION}">
-       <bibdata type="standard">
-           <title type="main" language="en" format="plain">Title 1 — Title 2 — Title 3</title>
-           <title type="title-intro" language="en" format="plain">Title 1</title>
-           <title type="title-main" language="en" format="plain">Title 2</title>
-           <title type="title-part" language="en" format="plain">Title 3</title>
-           <title type="main" language="zh" format="plain">Title 4 — Title 5 — Title 6</title>
-           <title type="title-intro" language="zh" format="plain">Title 4</title>
-           <title type="title-main" language="zh" format="plain">Title 5</title>
-           <title type="title-part" language="zh" format="plain">Title 6</title>
-         <docidentifier type="gb">GB 123-1999</docidentifier>
-        <docnumber>123</docnumber>
-         <date type="published">
-           <on>2018-01-01</on>
-         </date>
-         <contributor>
-           <role type="author"/>
-           <person>
-             <name>
-               <surname>Fred Bloggs</surname>
-             </name>
-           </person>
-         </contributor><contributor><role type="technical-committee"/><organization><name>Technical</name></organization></contributor>
-         <contributor>
-           <role type="author"/>
-           <person>
-             <name>
-               <surname>Joe Schmoe</surname>
-             </name>
-           </person>
-         </contributor>
-         <contributor>
-           <role type="author"/>
-           <organization>
-             <name>AC</name>
-           </organization>
-         </contributor>
-         <contributor>
-           <role type="author"/>
-           <organization>
-             <name>BC</name>
-           </organization>
-         </contributor>
-         <contributor>
-           <role type="publisher"/>
-           <organization>
-             <name>P</name>
-           </organization>
-         </contributor>
-         <contributor>
-           <role type="authority"/>
-           <organization>
-             <name>Q</name>
-           </organization>
-         </contributor>
-         <contributor>
-           <role type="proposer"/>
-           <organization>
-             <name>X</name>
-           </organization>
-         </contributor>
-         <contributor>
-           <role type="issuer"/>
-           <organization>
-             <name>Y</name>
-           </organization>
-         </contributor>
-         <language>zh</language>
-         <script>Hans</script>
-         <status>
-           <stage  abbreviation='IS'>60</stage>
-           <substage>60</substage>
-         </status>
-         <copyright>
-           <from>1999</from>
-           <owner>
-             <organization>
-               <name>Y</name>
-             </organization>
-           </owner>
-         </copyright>
-         <relation type="adoptedFrom">
-           <description>equivalent</description>
-           <bibitem>
-             <title>[not supplied]</title>
-             <docidentifier>ISO 1012</docidentifier>
-           </bibitem>
-         </relation>
-         <relation type="obsoletes">
-           <bibitem>
-             <title> Source Frequency Regulation</title>
-             <docidentifier>GB/T 134</docidentifier>
-           </bibitem>
-           <localityStack>
-           <locality type="section"><referenceFrom>3</referenceFrom><referenceTo>5</referenceTo></locality>
-           </localityStack>
-         </relation>
-         <ext>
-         <doctype>standard</doctype>
-         <gbcommittee type="Governance">Technical</gbcommittee>
-<structuredidentifier>
-  <project-number>GB 123</project-number>
-</structuredidentifier>
-<stagename>国家标准</stagename>
-         <gbtype>
-           <gbscope>national</gbscope>
-           <gbprefix>GB</gbprefix>
-           <gbmandate>mandatory</gbmandate>
-           <gbtopic>Radio</gbtopic>
-         </gbtype>
-         <ccs>12</ccs>
-         <ccs>34</ccs>
-         <plannumber>AB</plannumber>
-         </ext>
-       </bibdata>
-       <boilerplate> </boilerplate>
-       <sections/>
-       </gb-standard>
+<?xml version="1.0" encoding="UTF-8"?>
+<metanorma xmlns="https://www.metanorma.org/ns/standoc" type="semantic" version="1.5.8" schema-version="v2.3.0" flavor="gb">
+<bibdata type="standard">
+<title language="en" format="plain" type="main">Title 1 — Title 2 — Title 3</title>
+
+<title language="en" format="plain" type="title-intro">Title 1</title>
+
+<title language="en" format="plain" type="title-main">Title 2</title>
+
+<title language="en" format="plain" type="title-part">Title 3</title>
+
+<title language="zh" format="plain" type="main">Title 4 — Title 5 — Title 6</title>
+
+<title language="zh" format="plain" type="title-intro">Title 4</title>
+
+<title language="zh" format="plain" type="title-main">Title 5</title>
+
+<title language="zh" format="plain" type="title-part">Title 6</title>
+<docidentifier type="gb">GB 123-1999</docidentifier><docnumber>123</docnumber><date type="published"><on>2018-01-01</on></date><contributor><role type="author"/><person>
+<name><surname>Fred Bloggs</surname></name>
+</person></contributor><contributor><role type="technical-committee"/><organization><name>Technical</name></organization></contributor><contributor><role type="author"/><person>
+<name><surname>Joe Schmoe</surname></name>
+</person></contributor><contributor><role type="author"/><organization>
+<name>AC</name>
+</organization></contributor><contributor><role type="author"/><organization>
+<name>BC</name>
+</organization></contributor><contributor><role type="publisher"/><organization>
+<name>P</name>
+</organization></contributor><contributor><role type="authority"/><organization>
+<name>Q</name>
+</organization></contributor><contributor><role type="proposer"/><organization>
+<name>X</name>
+</organization></contributor><contributor><role type="issuer"/><organization>
+<name>Y</name>
+</organization></contributor><language>zh</language><script>Hans</script><status><stage>published</stage></status><copyright><from>1999</from><owner><organization>
+<name>Y</name>
+</organization></owner></copyright><relation type="adoptedFrom"><description>equivalent</description><bibitem>
+<title>[not supplied]</title>
+<docidentifier>ISO 1012</docidentifier></bibitem>
+</relation><relation type="obsoletes"><bibitem>
+<title> Source Frequency Regulation</title>
+<docidentifier>GB/T 134</docidentifier></bibitem>
+<localityStack><locality type="section"><referenceFrom>3</referenceFrom><referenceTo>5</referenceTo></locality></localityStack></relation><ext><doctype>standard</doctype><gbcommittee type="Governance">Technical</gbcommittee><structuredidentifier><project-number>GB 123</project-number></structuredidentifier><stagename>国家标准</stagename><gbtype><gbscope>national</gbscope><gbprefix>GB</gbprefix><gbmandate>mandatory</gbmandate><gbtopic>Radio</gbtopic></gbtype><ccs>12</ccs><ccs>34</ccs><plannumber>AB</plannumber></ext></bibdata><metanorma-extension><semantic-metadata><stage-published>false</stage-published></semantic-metadata>
+<presentation-metadata><document-scheme>1989</document-scheme><toc-heading-levels>2</toc-heading-levels><html-toc-heading-levels>2</html-toc-heading-levels><doc-toc-heading-levels>3</doc-toc-heading-levels><pdf-toc-heading-levels>3</pdf-toc-heading-levels></presentation-metadata></metanorma-extension>
+<boilerplate>
+  
+</boilerplate><sections> </sections>
+</metanorma>
     OUTPUT
   end
 
@@ -177,87 +106,35 @@ RSpec.describe Asciidoctor::Gb do
       :novalid:
 
     INPUT
-    <?xml version="1.0" encoding="UTF-8"?>
-       <gb-standard xmlns="https://www.metanorma.org/ns/gb"  type="semantic" version="#{Metanorma::Gb::VERSION}">
-       <bibdata type="standard">
-         <docidentifier type="gb">T/AAA 123</docidentifier>
-<docnumber>123</docnumber>
-         <contributor>
-           <role type="author"/>
-           <person>
-             <name>
-               <surname>Author</surname>
-             </name>
-           </person>
-         </contributor>
-         <contributor>
-           <role type="author"/>
-           <organization>
-             <name>GB</name>
-           </organization>
-         </contributor>
-         <contributor>
-           <role type="publisher"/>
-           <organization>
-             <name>GB</name>
-           </organization>
-         </contributor>
-         <contributor>
-           <role type="authority"/>
-           <organization>
-             <name>GB</name>
-           </organization>
-         </contributor>
-         <contributor>
-           <role type="proposer"/>
-           <organization>
-             <name>GB</name>
-           </organization>
-         </contributor>
-         <contributor>
-           <role type="issuer"/>
-           <organization>
-             <name>GB</name>
-           </organization>
-         </contributor>
-         <language>en</language>
-         <script>Latn</script>
-         <status>
-           <stage abbreviation="IS">60</stage>
-           <substage>60</substage>
-         </status>
-         <copyright>
-           <from>#{Date.today.year}</from>
-           <owner>
-             <organization>
-               <name>GB</name>
-             </organization>
-           </owner>
-         </copyright>
-         <relation type="adoptedFrom">
-           <description>nonequivalent</description>
-           <bibitem>
-             <title> Televisual Frequencies</title>
-             <docidentifier>ISO 1012</docidentifier>
-           </bibitem>
-         </relation>
-         <ext>
-         <doctype>recommendation</doctype>
-<structuredidentifier>
-  <project-number>T/AAA 123</project-number>
-</structuredidentifier>
-<stagename>International standard</stagename>
-         <gbtype>
-           <gbscope>social-group</gbscope>
-           <gbprefix>AAA</gbprefix>
-           <gbmandate>recommendation</gbmandate>
-           <gbtopic>basic</gbtopic>
-         </gbtype>
-         </ext>
-       </bibdata>
-       <boilerplate> </boilerplate>
-       <sections/>
-       </gb-standard>
+<?xml version="1.0" encoding="UTF-8"?>
+<metanorma xmlns="https://www.metanorma.org/ns/standoc" type="semantic" version="1.5.8" schema-version="v2.3.0" flavor="gb">
+<bibdata type="standard">
+
+
+
+<docidentifier type="gb">T/AAA 123</docidentifier><docnumber>123</docnumber><contributor><role type="author"/><person>
+<name><surname>Author</surname></name>
+</person></contributor><contributor><role type="author"/><organization>
+<name>GB</name>
+</organization></contributor><contributor><role type="publisher"/><organization>
+<name>GB</name>
+</organization></contributor><contributor><role type="authority"/><organization>
+<name>GB</name>
+</organization></contributor><contributor><role type="proposer"/><organization>
+<name>GB</name>
+</organization></contributor><contributor><role type="issuer"/><organization>
+<name>GB</name>
+</organization></contributor><language>en</language><script>Latn</script><status><stage>published</stage></status><copyright><from>2026</from><owner><organization>
+<name>GB</name>
+</organization></owner></copyright><relation type="adoptedFrom"><description>nonequivalent</description><bibitem>
+<title> Televisual Frequencies</title>
+<docidentifier>ISO 1012</docidentifier></bibitem>
+</relation><ext><doctype>recommendation</doctype><structuredidentifier><project-number>T/AAA 123</project-number></structuredidentifier><stagename>International standard</stagename><gbtype><gbscope>social-group</gbscope><gbprefix>AAA</gbprefix><gbmandate>recommendation</gbmandate><gbtopic>basic</gbtopic></gbtype></ext></bibdata><metanorma-extension><semantic-metadata><stage-published>false</stage-published></semantic-metadata>
+<presentation-metadata><document-scheme>2024</document-scheme><toc-heading-levels>2</toc-heading-levels><html-toc-heading-levels>2</html-toc-heading-levels><doc-toc-heading-levels>3</doc-toc-heading-levels><pdf-toc-heading-levels>3</pdf-toc-heading-levels></presentation-metadata></metanorma-extension>
+<boilerplate>
+  
+</boilerplate><sections> </sections>
+</metanorma>
     OUTPUT
   end
 
@@ -273,80 +150,32 @@ RSpec.describe Asciidoctor::Gb do
       :novalid:
 
     INPUT
-    <?xml version="1.0" encoding="UTF-8"?>
-       <gb-standard xmlns="https://www.metanorma.org/ns/gb"  type="semantic" version="#{Metanorma::Gb::VERSION}">
-       <bibdata type="standard">
-         <docidentifier type="gb">Q/BBB 123</docidentifier>
-<docnumber>123</docnumber>
-         <contributor>
-           <role type="author"/>
-           <person>
-             <name>
-               <surname>Author</surname>
-             </name>
-           </person>
-         </contributor>
-         <contributor>
-           <role type="author"/>
-           <organization>
-             <name>GB</name>
-           </organization>
-         </contributor>
-         <contributor>
-           <role type="publisher"/>
-           <organization>
-             <name>GB</name>
-           </organization>
-         </contributor>
-         <contributor>
-           <role type="authority"/>
-           <organization>
-             <name>GB</name>
-           </organization>
-         </contributor>
-         <contributor>
-           <role type="proposer"/>
-           <organization>
-             <name>GB</name>
-           </organization>
-         </contributor>
-         <contributor>
-           <role type="issuer"/>
-           <organization>
-             <name>GB</name>
-           </organization>
-         </contributor>
-         <language>zh</language>
-         <script>Hans</script>
-         <status>
-           <stage abbreviation="IS">60</stage>
-           <substage>60</substage>
-         </status>
-         <copyright>
-           <from>#{Date.today.year}</from>
-           <owner>
-             <organization>
-               <name>GB</name>
-             </organization>
-           </owner>
-         </copyright>
-         <ext>
-         <doctype>standard</doctype>
-<structuredidentifier>
-  <project-number>Q/BBB 123</project-number>
-</structuredidentifier>
-<stagename>国家标准</stagename>
-         <gbtype>
-           <gbscope>enterprise</gbscope>
-           <gbprefix>BBB</gbprefix>
-           <gbmandate>mandatory</gbmandate>
-           <gbtopic>basic</gbtopic>
-         </gbtype>
-         </ext>
-       </bibdata>
-       <boilerplate> </boilerplate>
-       <sections/>
-       </gb-standard>
+<?xml version="1.0" encoding="UTF-8"?>
+<metanorma xmlns="https://www.metanorma.org/ns/standoc" type="semantic" version="1.5.8" schema-version="v2.3.0" flavor="gb">
+<bibdata type="standard">
+
+
+
+<docidentifier type="gb">Q/BBB 123</docidentifier><docnumber>123</docnumber><contributor><role type="author"/><person>
+<name><surname>Author</surname></name>
+</person></contributor><contributor><role type="author"/><organization>
+<name>GB</name>
+</organization></contributor><contributor><role type="publisher"/><organization>
+<name>GB</name>
+</organization></contributor><contributor><role type="authority"/><organization>
+<name>GB</name>
+</organization></contributor><contributor><role type="proposer"/><organization>
+<name>GB</name>
+</organization></contributor><contributor><role type="issuer"/><organization>
+<name>GB</name>
+</organization></contributor><language>zh</language><script>Hans</script><status><stage>published</stage></status><copyright><from>2026</from><owner><organization>
+<name>GB</name>
+</organization></owner></copyright><ext><doctype>standard</doctype><structuredidentifier><project-number>Q/BBB 123</project-number></structuredidentifier><stagename>国家标准</stagename><gbtype><gbscope>enterprise</gbscope><gbprefix>BBB</gbprefix><gbmandate>mandatory</gbmandate><gbtopic>basic</gbtopic></gbtype></ext></bibdata><metanorma-extension><semantic-metadata><stage-published>false</stage-published></semantic-metadata>
+<presentation-metadata><document-scheme>2024</document-scheme><toc-heading-levels>2</toc-heading-levels><html-toc-heading-levels>2</html-toc-heading-levels><doc-toc-heading-levels>3</doc-toc-heading-levels><pdf-toc-heading-levels>3</pdf-toc-heading-levels></presentation-metadata></metanorma-extension>
+<boilerplate>
+  
+</boilerplate><sections> </sections>
+</metanorma>
     OUTPUT
   end
 
@@ -364,80 +193,32 @@ RSpec.describe Asciidoctor::Gb do
       :script: Latn
 
     INPUT
-    <?xml version="1.0" encoding="UTF-8"?>
-       <gb-standard xmlns="https://www.metanorma.org/ns/gb"  type="semantic" version="#{Metanorma::Gb::VERSION}">
-       <bibdata type="standard">
-         <docidentifier type="gb">GB/Z 123</docidentifier>
-<docnumber>123</docnumber>
-         <contributor>
-           <role type="author"/>
-           <person>
-             <name>
-               <surname>Author</surname>
-             </name>
-           </person>
-         </contributor>
-         <contributor>
-           <role type="author"/>
-           <organization>
-             <name>GB</name>
-           </organization>
-         </contributor>
-         <contributor>
-           <role type="publisher"/>
-           <organization>
-             <name>GB</name>
-           </organization>
-         </contributor>
-         <contributor>
-           <role type="authority"/>
-           <organization>
-             <name>GB</name>
-           </organization>
-         </contributor>
-         <contributor>
-           <role type="proposer"/>
-           <organization>
-             <name>GB</name>
-           </organization>
-         </contributor>
-         <contributor>
-           <role type="issuer"/>
-           <organization>
-             <name>General Administration of Quality Supervision, Inspection and Quarantine; Standardization Administration of China</name>
-           </organization>
-         </contributor>
-         <language>en</language>
-         <script>Latn</script>
-         <status>
-           <stage abbreviation="IS">60</stage>
-           <substage>60</substage>
-         </status>
-         <copyright>
-           <from>#{Date.today.year}</from>
-           <owner>
-             <organization>
-               <name>General Administration of Quality Supervision, Inspection and Quarantine; Standardization Administration of China</name>
-             </organization>
-           </owner>
-         </copyright>
-         <ext>
-         <doctype>guide</doctype>
-<structuredidentifier>
-  <project-number>GB/Z 123</project-number>
-</structuredidentifier>
-<stagename>International standard</stagename>
-         <gbtype>
-           <gbscope>national</gbscope>
-           <gbprefix>GB</gbprefix>
-           <gbmandate>guide</gbmandate>
-           <gbtopic>basic</gbtopic>
-         </gbtype>
-         </ext>
-       </bibdata>
-       <boilerplate> </boilerplate>
-       <sections/>
-       </gb-standard>
+<?xml version="1.0" encoding="UTF-8"?>
+<metanorma xmlns="https://www.metanorma.org/ns/standoc" type="semantic" version="1.5.8" schema-version="v2.3.0" flavor="gb">
+<bibdata type="standard">
+
+
+
+<docidentifier type="gb">GB/Z 123</docidentifier><docnumber>123</docnumber><contributor><role type="author"/><person>
+<name><surname>Author</surname></name>
+</person></contributor><contributor><role type="author"/><organization>
+<name>GB</name>
+</organization></contributor><contributor><role type="publisher"/><organization>
+<name>GB</name>
+</organization></contributor><contributor><role type="authority"/><organization>
+<name>GB</name>
+</organization></contributor><contributor><role type="proposer"/><organization>
+<name>GB</name>
+</organization></contributor><contributor><role type="issuer"/><organization>
+<name>General Administration of Quality Supervision, Inspection and Quarantine; Standardization Administration of China</name>
+</organization></contributor><language>en</language><script>Latn</script><status><stage>published</stage></status><copyright><from>2026</from><owner><organization>
+<name>General Administration of Quality Supervision, Inspection and Quarantine; Standardization Administration of China</name>
+</organization></owner></copyright><ext><doctype>guide</doctype><structuredidentifier><project-number>GB/Z 123</project-number></structuredidentifier><stagename>International standard</stagename><gbtype><gbscope>national</gbscope><gbprefix>GB</gbprefix><gbmandate>guide</gbmandate><gbtopic>basic</gbtopic></gbtype></ext></bibdata><metanorma-extension><semantic-metadata><stage-published>false</stage-published></semantic-metadata>
+<presentation-metadata><document-scheme>2024</document-scheme><toc-heading-levels>2</toc-heading-levels><html-toc-heading-levels>2</html-toc-heading-levels><doc-toc-heading-levels>3</doc-toc-heading-levels><pdf-toc-heading-levels>3</pdf-toc-heading-levels></presentation-metadata></metanorma-extension>
+<boilerplate>
+  
+</boilerplate><sections> </sections>
+</metanorma>
     OUTPUT
   end
 
@@ -456,80 +237,32 @@ RSpec.describe Asciidoctor::Gb do
       :script: Latn
 
     INPUT
-    <?xml version="1.0" encoding="UTF-8"?>
-       <gb-standard xmlns="https://www.metanorma.org/ns/gb"  type="semantic" version="#{Metanorma::Gb::VERSION}">
-       <bibdata type="standard">
-         <docidentifier type="gb">DB81/123</docidentifier>
-<docnumber>123</docnumber>
-         <contributor>
-           <role type="author"/>
-           <person>
-             <name>
-               <surname>Author</surname>
-             </name>
-           </person>
-         </contributor>
-         <contributor>
-           <role type="author"/>
-           <organization>
-             <name>GB</name>
-           </organization>
-         </contributor>
-         <contributor>
-           <role type="publisher"/>
-           <organization>
-             <name>GB</name>
-           </organization>
-         </contributor>
-         <contributor>
-           <role type="authority"/>
-           <organization>
-             <name>GB</name>
-           </organization>
-         </contributor>
-         <contributor>
-           <role type="proposer"/>
-           <organization>
-             <name>GB</name>
-           </organization>
-         </contributor>
-         <contributor>
-           <role type="issuer"/>
-           <organization>
-             <name>Hong Kong Special Administrative Region</name>
-           </organization>
-         </contributor>
-         <language>en</language>
-         <script>Latn</script>
-         <status>
-           <stage abbreviation="IS">60</stage>
-           <substage>60</substage>
-         </status>
-         <copyright>
-           <from>#{Date.today.year}</from>
-           <owner>
-             <organization>
-               <name>Hong Kong Special Administrative Region</name>
-             </organization>
-           </owner>
-         </copyright>
-         <ext>
-         <doctype>standard</doctype>
-<structuredidentifier>
-  <project-number>DB81/123</project-number>
-</structuredidentifier>
-<stagename>International standard</stagename>
-         <gbtype>
-           <gbscope>local</gbscope>
-           <gbprefix>81</gbprefix>
-           <gbmandate>mandatory</gbmandate>
-           <gbtopic>basic</gbtopic>
-         </gbtype>
-         </ext>
-       </bibdata>
-       <boilerplate> </boilerplate>
-       <sections/>
-       </gb-standard>
+<?xml version="1.0" encoding="UTF-8"?>
+<metanorma xmlns="https://www.metanorma.org/ns/standoc" type="semantic" version="1.5.8" schema-version="v2.3.0" flavor="gb">
+<bibdata type="standard">
+
+
+
+<docidentifier type="gb">DB81/123</docidentifier><docnumber>123</docnumber><contributor><role type="author"/><person>
+<name><surname>Author</surname></name>
+</person></contributor><contributor><role type="author"/><organization>
+<name>GB</name>
+</organization></contributor><contributor><role type="publisher"/><organization>
+<name>GB</name>
+</organization></contributor><contributor><role type="authority"/><organization>
+<name>GB</name>
+</organization></contributor><contributor><role type="proposer"/><organization>
+<name>GB</name>
+</organization></contributor><contributor><role type="issuer"/><organization>
+<name>Hong Kong Special Administrative Region</name>
+</organization></contributor><language>en</language><script>Latn</script><status><stage>published</stage></status><copyright><from>2026</from><owner><organization>
+<name>Hong Kong Special Administrative Region</name>
+</organization></owner></copyright><ext><doctype>standard</doctype><structuredidentifier><project-number>DB81/123</project-number></structuredidentifier><stagename>International standard</stagename><gbtype><gbscope>local</gbscope><gbprefix>81</gbprefix><gbmandate>mandatory</gbmandate><gbtopic>basic</gbtopic></gbtype></ext></bibdata><metanorma-extension><semantic-metadata><stage-published>false</stage-published></semantic-metadata>
+<presentation-metadata><document-scheme>2024</document-scheme><toc-heading-levels>2</toc-heading-levels><html-toc-heading-levels>2</html-toc-heading-levels><doc-toc-heading-levels>3</doc-toc-heading-levels><pdf-toc-heading-levels>3</pdf-toc-heading-levels></presentation-metadata></metanorma-extension>
+<boilerplate>
+  
+</boilerplate><sections> </sections>
+</metanorma>
     OUTPUT
   end
 
@@ -546,80 +279,32 @@ RSpec.describe Asciidoctor::Gb do
       :novalid:
 
     INPUT
-          <?xml version="1.0" encoding="UTF-8"?>
-       <gb-standard xmlns="https://www.metanorma.org/ns/gb"  type="semantic" version="#{Metanorma::Gb::VERSION}">
-       <bibdata type="standard">
-         <docidentifier type="gb">DBGB/123</docidentifier>
-<docnumber>123</docnumber>
-         <contributor>
-           <role type="author"/>
-           <person>
-             <name>
-               <surname>Author</surname>
-             </name>
-           </person>
-         </contributor>
-         <contributor>
-           <role type="author"/>
-           <organization>
-             <name>GB</name>
-           </organization>
-         </contributor>
-         <contributor>
-           <role type="publisher"/>
-           <organization>
-             <name>GB</name>
-           </organization>
-         </contributor>
-         <contributor>
-           <role type="authority"/>
-           <organization>
-             <name>GB</name>
-           </organization>
-         </contributor>
-         <contributor>
-           <role type="proposer"/>
-           <organization>
-             <name>GB</name>
-           </organization>
-         </contributor>
-         <contributor>
-           <role type="issuer"/>
-           <organization>
-             <name>GB</name>
-           </organization>
-         </contributor>
-         <language>zh</language>
-         <script>Hans</script>
-         <status>
-           <stage abbreviation="IS">60</stage>
-           <substage>60</substage>
-         </status>
-         <copyright>
-           <from>#{Date.today.year}</from>
-           <owner>
-             <organization>
-               <name>GB</name>
-             </organization>
-           </owner>
-         </copyright>
-         <ext>
-         <doctype>standard</doctype>
-<structuredidentifier>
-  <project-number>DBGB/123</project-number>
-</structuredidentifier>
-<stagename>国家标准</stagename>
-         <gbtype>
-           <gbscope>local</gbscope>
-           <gbprefix>GB</gbprefix>
-           <gbmandate>mandatory</gbmandate>
-           <gbtopic>basic</gbtopic>
-         </gbtype>
-         </ext>
-       </bibdata>
-       <boilerplate> </boilerplate>
-       <sections/>
-       </gb-standard>
+<?xml version="1.0" encoding="UTF-8"?>
+<metanorma xmlns="https://www.metanorma.org/ns/standoc" type="semantic" version="1.5.8" schema-version="v2.3.0" flavor="gb">
+<bibdata type="standard">
+
+
+
+<docidentifier type="gb">DBGB/123</docidentifier><docnumber>123</docnumber><contributor><role type="author"/><person>
+<name><surname>Author</surname></name>
+</person></contributor><contributor><role type="author"/><organization>
+<name>GB</name>
+</organization></contributor><contributor><role type="publisher"/><organization>
+<name>GB</name>
+</organization></contributor><contributor><role type="authority"/><organization>
+<name>GB</name>
+</organization></contributor><contributor><role type="proposer"/><organization>
+<name>GB</name>
+</organization></contributor><contributor><role type="issuer"/><organization>
+<name>GB</name>
+</organization></contributor><language>zh</language><script>Hans</script><status><stage>published</stage></status><copyright><from>2026</from><owner><organization>
+<name>GB</name>
+</organization></owner></copyright><ext><doctype>standard</doctype><structuredidentifier><project-number>DBGB/123</project-number></structuredidentifier><stagename>国家标准</stagename><gbtype><gbscope>local</gbscope><gbprefix>GB</gbprefix><gbmandate>mandatory</gbmandate><gbtopic>basic</gbtopic></gbtype></ext></bibdata><metanorma-extension><semantic-metadata><stage-published>false</stage-published></semantic-metadata>
+<presentation-metadata><document-scheme>2024</document-scheme><toc-heading-levels>2</toc-heading-levels><html-toc-heading-levels>2</html-toc-heading-levels><doc-toc-heading-levels>3</doc-toc-heading-levels><pdf-toc-heading-levels>3</pdf-toc-heading-levels></presentation-metadata></metanorma-extension>
+<boilerplate>
+  
+</boilerplate><sections> </sections>
+</metanorma>
     OUTPUT
   end
 
@@ -638,89 +323,40 @@ RSpec.describe Asciidoctor::Gb do
       :language: en
 
     INPUT
-    <?xml version="1.0" encoding="UTF-8"?>
-       <gb-standard xmlns="https://www.metanorma.org/ns/gb"  type="semantic" version="#{Metanorma::Gb::VERSION}">
-       <bibdata type="standard">
-         <docidentifier type="gb">DBGB/123</docidentifier>
-<docnumber>123</docnumber>
-         <contributor>
-           <role type="author"/>
-           <person>
-             <name>
-               <surname>Author</surname>
-             </name>
-           </person>
-         </contributor>
-         <contributor>
-           <role type="author"/>
-           <organization>
-             <name>GB</name>
-           </organization>
-         </contributor>
-         <contributor>
-           <role type="publisher"/>
-           <organization>
-             <name>GB</name>
-           </organization>
-         </contributor>
-         <contributor>
-           <role type="authority"/>
-           <organization>
-             <name>GB</name>
-           </organization>
-         </contributor>
-         <contributor>
-           <role type="proposer"/>
-           <organization>
-             <name>GB</name>
-           </organization>
-         </contributor>
-         <contributor>
-           <role type="issuer"/>
-           <organization>
-             <name>GB</name>
-           </organization>
-         </contributor>
-         <language>en</language>
-         <script>Latn</script>
-         <status>
-           <stage abbreviation="CD">30</stage>
-           <substage>00</substage>
-         </status>
-         <copyright>
-           <from>#{Date.today.year}</from>
-           <owner>
-             <organization>
-               <name>GB</name>
-             </organization>
-           </owner>
-         </copyright>
-         <ext>
-         <doctype>standard</doctype>
-<structuredidentifier>
-  <project-number>DBGB/123</project-number>
-</structuredidentifier>
- <stagename>Committee draft</stagename>
-         <gbtype>
-           <gbscope>local</gbscope>
-           <gbprefix>GB</gbprefix>
-           <gbmandate>mandatory</gbmandate>
-           <gbtopic>basic</gbtopic>
-         </gbtype>
-         </ext>
-       </bibdata>
-       <boilerplate>
+<?xml version="1.0" encoding="UTF-8"?>
+<metanorma xmlns="https://www.metanorma.org/ns/standoc" type="semantic" version="1.5.8" schema-version="v2.3.0" flavor="gb">
+<bibdata type="standard">
+
+
+
+<docidentifier type="gb">DBGB/123</docidentifier><docnumber>123</docnumber><contributor><role type="author"/><person>
+<name><surname>Author</surname></name>
+</person></contributor><contributor><role type="author"/><organization>
+<name>GB</name>
+</organization></contributor><contributor><role type="publisher"/><organization>
+<name>GB</name>
+</organization></contributor><contributor><role type="authority"/><organization>
+<name>GB</name>
+</organization></contributor><contributor><role type="proposer"/><organization>
+<name>GB</name>
+</organization></contributor><contributor><role type="issuer"/><organization>
+<name>GB</name>
+</organization></contributor><language>en</language><script>Latn</script><status><stage>30</stage></status><copyright><from>2026</from><owner><organization>
+<name>GB</name>
+</organization></owner></copyright><ext><doctype>standard</doctype><structuredidentifier><project-number>DBGB/123</project-number></structuredidentifier><stagename>Committee draft</stagename><gbtype><gbscope>local</gbscope><gbprefix>GB</gbprefix><gbmandate>mandatory</gbmandate><gbtopic>basic</gbtopic></gbtype></ext></bibdata><metanorma-extension><semantic-metadata><stage-published>false</stage-published></semantic-metadata>
+<presentation-metadata><document-scheme>2024</document-scheme><toc-heading-levels>2</toc-heading-levels><html-toc-heading-levels>2</html-toc-heading-levels><doc-toc-heading-levels>3</doc-toc-heading-levels><pdf-toc-heading-levels>3</pdf-toc-heading-levels></presentation-metadata></metanorma-extension>
+<boilerplate>
+  
   <legal-statement>
     <clause>
-      <p id='_'>
-        When submitting feedback, please attach any relevant patents that you
-        are aware of, together with supporting documents.
-      </p>
+      
+      <p id="_">在提交反馈意见时，请将您知道的相关专利连同支持文件一并附上。</p>
+      
     </clause>
   </legal-statement>
-</boilerplate>
-       <sections/>
-       </gb-standard>
+  
+</boilerplate><sections> </sections>
+</metanorma>
     OUTPUT
   end
 

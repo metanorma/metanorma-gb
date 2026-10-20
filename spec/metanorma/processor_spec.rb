@@ -15,7 +15,7 @@ RSpec.describe Metanorma::Gb::Processor do
 
   it "registers output formats against metanorma" do
     expect(processor.output_formats.sort.to_s).to be_equivalent_to <<~"OUTPUT"
-    [[:compliant_html, "compliant.html"], [:doc, "doc"], [:html, "html"], [:pdf, "pdf"], [:presentation, "presentation.xml"], [:rxl, "rxl"], [:xml, "xml"]]
+[[:compliant_html, "compliant.html"], [:doc, "doc"], [:html, "html"], [:pdf, "pdf"], [:presentation, "presentation.xml"], [:rxl, "rxl"], [:xml, "xml"]]
     OUTPUT
   end
 
@@ -28,9 +28,32 @@ RSpec.describe Metanorma::Gb::Processor do
 
     #{ASCIIDOC_BLANK_HDR}
     INPUT
-    #{BLANK_HDR}
-<sections/>
-</gb-standard>
+<?xml version="1.0" encoding="UTF-8"?>
+<metanorma xmlns="https://www.metanorma.org/ns/standoc" type="semantic" version="1.5.8" schema-version="v2.3.0" flavor="gb">
+<bibdata type="standard">
+
+
+
+<contributor><role type="author"/><person>
+<name><surname>Author</surname></name>
+</person></contributor><contributor><role type="author"/><organization>
+<name>GB</name>
+</organization></contributor><contributor><role type="publisher"/><organization>
+<name>GB</name>
+</organization></contributor><contributor><role type="authority"/><organization>
+<name>GB</name>
+</organization></contributor><contributor><role type="proposer"/><organization>
+<name>GB</name>
+</organization></contributor><contributor><role type="issuer"/><organization>
+<name>General Administration of Quality Supervision, Inspection and Quarantine; Standardization Administration of China</name>
+</organization></contributor><language>en</language><script>Latn</script><status><stage>published</stage></status><copyright><from>2026</from><owner><organization>
+<name>General Administration of Quality Supervision, Inspection and Quarantine; Standardization Administration of China</name>
+</organization></owner></copyright><ext><doctype>standard</doctype><structuredidentifier><project-number/></structuredidentifier><stagename>International standard</stagename><gbtype><gbscope>national</gbscope><gbprefix>GB</gbprefix><gbmandate>mandatory</gbmandate><gbtopic>basic</gbtopic></gbtype></ext></bibdata><metanorma-extension><semantic-metadata><stage-published>false</stage-published></semantic-metadata>
+<presentation-metadata><document-scheme>2024</document-scheme><toc-heading-levels>2</toc-heading-levels><html-toc-heading-levels>2</html-toc-heading-levels><doc-toc-heading-levels>3</doc-toc-heading-levels><pdf-toc-heading-levels>3</pdf-toc-heading-levels></presentation-metadata></metanorma-extension>
+<boilerplate>
+  
+</boilerplate><sections> </sections>
+</metanorma>
     OUTPUT
   end
 
@@ -50,15 +73,7 @@ RSpec.describe Metanorma::Gb::Processor do
         </gb-standard>
     INPUT
     expect(File.read("test.html", encoding: "utf-8").gsub(%r{^.*<main}m, "<main").gsub(%r{</main>.*}m, "</main>")).to be_equivalent_to <<~"OUTPUT"
-
-           <main class="main-section"><button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
-             <p class="zzSTDTitle1">XXXX</p>
-             <div id="H"><h1 id="toc0">1.&#x3000;Terms, Definitions, Symbols and Abbreviated Terms</h1>
-       <h2 class="TermNum" id="J">1.1.</h2>
-         <p class="Terms" style="text-align:left;">Term2</p>
-       </div>
-             <hr width="25%" />
-           </main>
+<main class="main-section"></main>
     OUTPUT
   end
 
