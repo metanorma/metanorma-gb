@@ -33,6 +33,12 @@ def metadata(x)
   Hash[x.sort].delete_if{ |k, v| v.nil? || v.respond_to?(:empty?) && v.empty? }
 end
 
+# Hash#inspect changed format in Ruby 3.4; canonicalise the older
+# symbol-key form so the fixtures compare on every supported Ruby.
+def metadata_str(x)
+  metadata(x).to_s.gsub(/:([a-z_]\w*)=>/, '\1: ')
+end
+
 def strip_guid(x)
   x.gsub(%r{ id="_[^"]+"}, ' id="_"').gsub(%r{ target="_[^"]+"}, ' target="_"')
 end
