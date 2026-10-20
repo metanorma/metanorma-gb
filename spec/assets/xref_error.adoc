@@ -1,8 +1,7 @@
 = X
 A
+:no-pdf:
 
 == Clause
 
 <<a,b>>
-
-:no-pdf:
