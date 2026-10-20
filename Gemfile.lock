@@ -1,11 +1,4 @@
 GIT
-  remote: https://github.com/lutaml/moxml
-  revision: 9521000170925a4074f1344784b4abf22f895fdf
-  branch: main
-  specs:
-    moxml (0.5.135)
-
-GIT
   remote: https://github.com/metanorma/isodoc
   revision: a96ba7dfb6d48ba9b21ad9e66b0e3e25a07e2589
   branch: main
@@ -580,6 +573,7 @@ GEM
       relaton-render (>= 1.0.0)
     mn2pdf (2.72)
     mnconvert (1.89.0)
+    moxml (0.5.135)
     multi_json (1.21.2)
     nenv (0.3.0)
     net-http-digest_auth (1.4.1)
@@ -1030,7 +1024,6 @@ DEPENDENCIES
   metanorma-iso!
   metanorma-mirror!
   metanorma-standoc!
-  moxml!
   pubid!
   rake (>= 13)
   relaton (= 3.0.0.pre.alpha.14)
@@ -1192,7 +1185,7 @@ CHECKSUMS
   mn-requirements (0.5.13) sha256=e82675d00135740565509cd36d608954c2dd78df149e73981ca39c045f52138b
   mn2pdf (2.72) sha256=5941292a5f2ca6516e7aad8f6d5f44b5e12843638088e8ada7e43a58ab8c00e4
   mnconvert (1.89.0) sha256=02edfbf41118a8ff767f7c04f44db0c1faaed84e326f417fb24c4ed4e25f4b53
-  moxml (0.5.135)
+  moxml (0.5.135) sha256=612906980f44cd825cb2606a44feed5f859b73b821e159a4ee4178cac8384df7
   multi_json (1.21.2) sha256=245531eaf54bdba57aba515ff08b4503505c5e09911daa89c5a561e2f85bea8e
   nenv (0.3.0) sha256=d9de6d8fb7072228463bf61843159419c969edb34b3cef51832b516ae7972765
   net-http-digest_auth (1.4.1) sha256=4b8ad50ed8d180a58db5d6c49449b987dd0466fe01e24037945bc007562a08db
