@@ -1,6 +1,12 @@
 require "spec_helper"
 
 RSpec.describe Metanorma::Gb::Converter do
+
+# The log HTML inserts zero-width spaces after punctuation for line
+# breaking; compare on the visible text.
+def err_html
+  File.read("test.err.html").delete("\u200B")
+end
   context "when xref_error.adoc compilation" do
     around do |example|
       FileUtils.rm_f "spec/assets/xref_error.err.html"
@@ -35,7 +41,7 @@ it  "Warns of illegal doctype" do
 
   text
   INPUT
-  expect(File.read("test.err.html")).to include "heaven is not a recognised document type"
+  expect(err_html).to include "heaven is not a recognised document type"
 end
 
 it  "Warns of illegal script" do
@@ -50,7 +56,7 @@ it  "Warns of illegal script" do
 
   text
   INPUT
-  expect(File.read("test.err.html")).to include "pizza is not a recognised script"
+  expect(err_html).to include "pizza is not a recognised script"
 end
 
 it "does not warn when missing scope but scope inferred from prefix" do
@@ -65,7 +71,7 @@ it "does not warn when missing scope but scope inferred from prefix" do
 
     INPUT
   if(File.exist?("test.err.html"))
-  expect(File.read("test.err.html")).not_to include "GB: no scope supplied, defaulting to National"
+  expect(err_html).not_to include "GB: no scope supplied, defaulting to National"
   end
 end
 
@@ -80,7 +86,7 @@ it "warns when missing scope and scope not inferred from prefix" do
     :nodoc:
 
     INPUT
-  expect(File.read("test.err.html")).to include "GB: no scope supplied, defaulting to National"
+  expect(err_html).to include "GB: no scope supplied, defaulting to National"
 end
 
 it "warns when missing prefix" do
@@ -93,7 +99,7 @@ it "warns when missing prefix" do
     :nodoc:
 
     INPUT
-  expect(File.read("test.err.html")).to include "GB: no prefix supplied, defaulting to GB"
+  expect(err_html).to include "GB: no prefix supplied, defaulting to GB"
 end
 
 it "warns when missing mandate" do
@@ -105,7 +111,7 @@ it "warns when missing mandate" do
     :nodoc:
 
     INPUT
-  expect(File.read("test.err.html")).to include "GB: no mandate supplied, defaulting to mandatory"
+  expect(err_html).to include "GB: no mandate supplied, defaulting to mandatory"
 end
 
 it "warns when missing topic" do
@@ -118,7 +124,7 @@ it "warns when missing topic" do
     :nodoc:
 
     INPUT
-  expect(File.read("test.err.html")).to include "GB: no topic supplied, defaulting to basic"
+  expect(err_html).to include "GB: no topic supplied, defaulting to basic"
 end
 
 it "GB references is not a Non-ISO reference in Normative References" do
@@ -130,7 +136,7 @@ it "GB references is not a Non-ISO reference in Normative References" do
   == Normative References
   * [[[XYZ,NY 121]]] _Standard_
   INPUT
-  expect(File.read("test.err.html")).not_to include "non-ISO/IEC reference not expected as normative"
+  expect(err_html).not_to include "non-ISO/IEC reference is allowed as normative"
 end
 
 it "warns about improper social standard prefix" do
@@ -144,7 +150,7 @@ it "warns about improper social standard prefix" do
   :prefix: ABCDEFG
 
   INPUT
-  expect(File.read("test.err.html")).to include "is improperly formatted for social standards"
+  expect(err_html).to include "is improperly formatted for social standards"
 end
 
 it "warns about improper enterprise standard prefix" do
@@ -158,7 +164,7 @@ it "warns about improper enterprise standard prefix" do
   :prefix: AbCD
 
   INPUT
-  expect(File.read("test.err.html")).to include "is improperly formatted for enterprise standards"
+  expect(err_html).to include "is improperly formatted for enterprise standards"
 end
 
 it "warns about improper sector standard prefix" do
@@ -172,7 +178,7 @@ it "warns about improper sector standard prefix" do
   :prefix: GJB
 
   INPUT
-  expect(File.read("test.err.html")).to include "is not a legal sector standard prefix"
+  expect(err_html).to include "is not a legal sector standard prefix"
 end
 
 it "warns about improper local standard prefix" do
@@ -186,7 +192,7 @@ it "warns about improper local standard prefix" do
   :prefix: GJB
 
   INPUT
-  expect(File.read("test.err.html")).to include "is not a legal local standard prefix"
+  expect(err_html).to include "is not a legal local standard prefix"
 end
 
 it "warns about improper national standard prefix" do
@@ -200,7 +206,7 @@ it "warns about improper national standard prefix" do
   :prefix: NY
 
   INPUT
-  expect(File.read("test.err.html")).to include "is not a legal national standard prefix"
+  expect(err_html).to include "is not a legal national standard prefix"
 end
 
 it "warns about no issuer for enterprise standard" do
@@ -214,7 +220,7 @@ it "warns about no issuer for enterprise standard" do
   :prefix: ABC
 
   INPUT
-  expect(File.read("test.err.html")).to include "No issuer provided for enterprise standard"
+  expect(err_html).to include "No issuer provided for enterprise standard"
 end
 
 it "warns about English-only preferred" do
@@ -232,7 +238,7 @@ it "warns about English-only preferred" do
   [deprecated]#paddy#
 
   INPUT
-  expect(File.read("test.err.html")).to include "preferred term paddy has no Chinese counterpart"
+  expect(err_html).to include "preferred term paddy has no Chinese counterpart"
 end
 
 it "warns about English-only admitted" do
@@ -250,7 +256,7 @@ it "warns about English-only admitted" do
   [deprecated]#paddy#
 
   INPUT
-  expect(File.read("test.err.html")).to include "admitted term paddy has no Chinese counterpart"
+  expect(err_html).to include "admitted term paddy has no Chinese counterpart"
 end
 
 it "warns about English-only deprecates" do
@@ -268,7 +274,7 @@ it "warns about English-only deprecates" do
   [deprecated]#paddy#
 
   INPUT
-  expect(File.read("test.err.html")).to include "deprecates term paddy has no Chinese counterpart"
+  expect(err_html).to include "deprecates term paddy has no Chinese counterpart"
 end
 
 
@@ -287,7 +293,7 @@ it "warns about Chinese-only preferred" do
   deprecated:[[zh]#XYZ paddy#]
 
   INPUT
-  expect(File.read("test.err.html")).to include "preferred term XYZ paddy has no English counterpart"
+  expect(err_html).to include "preferred term XYZ paddy has no English counterpart"
 end
 
 it "warns about Chinese-only admitted" do
@@ -305,7 +311,7 @@ it "warns about Chinese-only admitted" do
   deprecated:[[zh]#XYZ paddy#]
 
   INPUT
-  expect(File.read("test.err.html")).to include "admitted term XYZ paddy has no English counterpart"
+  expect(err_html).to include "admitted term XYZ paddy has no English counterpart"
 end
 
 it "warns about Chinese-only deprecates" do
@@ -323,7 +329,7 @@ it "warns about Chinese-only deprecates" do
   deprecated:[[zh]#XYZ paddy#]
 
   INPUT
-  expect(File.read("test.err.html")).to include "deprecates term XYZ paddy has no English counterpart"
+  expect(err_html).to include "deprecates term XYZ paddy has no English counterpart"
 end
 
 it "warns about no English title intro" do
@@ -336,7 +342,7 @@ it "warns about no English title intro" do
   :title-intro-zh: Title
 
   INPUT
-  expect(File.read("test.err.html")).to include "No English Title Intro"
+  expect(err_html).to include "No English Title Intro"
 end
 
 it "warns about no Chinese title intro" do
@@ -349,7 +355,7 @@ it "warns about no Chinese title intro" do
   :title-intro-en: Title
 
   INPUT
-  expect(File.read("test.err.html")).to include "No Chinese Title Intro"
+  expect(err_html).to include "No Chinese Title Intro"
 end
 
 it "warns about no English main title" do
@@ -362,7 +368,7 @@ it "warns about no English main title" do
   :title-main-zh: Title
 
   INPUT
-  expect(File.read("test.err.html")).to include "No English Title"
+  expect(err_html).to include "No English Title"
 end
 
 it "warns about no Chinese main title" do
@@ -375,7 +381,7 @@ it "warns about no Chinese main title" do
   :title-main-en: Title
 
   INPUT
-  expect(File.read("test.err.html")).to include "No Chinese Title"
+  expect(err_html).to include "No Chinese Title"
 end
 
 it "warns about no English title part" do
@@ -388,7 +394,7 @@ it "warns about no English title part" do
   :title-part-zh: Title
 
   INPUT
-  expect(File.read("test.err.html")).to include "No English Title Part"
+  expect(err_html).to include "No English Title Part"
 end
 
 it "warns about no Chinese title part" do
@@ -401,7 +407,7 @@ it "warns about no Chinese title part" do
   :title-part-en: Title
 
   INPUT
-  expect(File.read("test.err.html")).to include "No Chinese Title Part"
+  expect(err_html).to include "No Chinese Title Part"
 end
 
 it "warns about normative reference that is neither ISO nor GB" do
@@ -414,7 +420,7 @@ it "warns about normative reference that is neither ISO nor GB" do
   * [[[XYZ,IESO 121]]] _Standard_
 
   INPUT
-  expect(File.read("test.err.html")).to include "non-ISO/IEC reference not expected as normative"
+  expect(err_html).to include "non-ISO/IEC reference is allowed as normative"
 end
 
 it "does not warn about normative reference that is GB" do
@@ -427,7 +433,7 @@ it "does not warn about normative reference that is GB" do
   * [[[XYZ,GB/T 121]]] _Standard_
 
   INPUT
-  expect(File.read("test.err.html")).not_to include "non-ISO/IEC reference not expected as normative"
+  expect(err_html).not_to include "non-ISO/IEC reference is allowed as normative"
 end
 
 end
