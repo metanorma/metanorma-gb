@@ -106,7 +106,7 @@ GIT
 PATH
   remote: .
   specs:
-    metanorma-gb (1.5.8)
+    metanorma-gb (1.5.9.pre.alpha.1)
       gb-agencies (~> 0.0.4)
       htmlentities (~> 4.3.4)
       isodoc (>= 3.0)
@@ -1359,7 +1359,7 @@ CHECKSUMS
   metanorma (2.5.5) sha256=25f08487e7ceeb20cf1aa7d597f743cf5b62b8409c392605a3294b24467eb07c
   metanorma-core (0.2.4)
   metanorma-document (0.5.1)
-  metanorma-gb (1.5.8)
+  metanorma-gb (1.5.9.pre.alpha.1)
   metanorma-iso (3.5.0)
   metanorma-mirror (1.0.0)
   metanorma-mko (1.1.1) sha256=4c8fb55b485b49341c28cad0e862889e5d3855547adf21accce627714a35a41a
