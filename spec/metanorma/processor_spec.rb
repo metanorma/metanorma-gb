@@ -29,7 +29,7 @@ RSpec.describe Metanorma::Gb::Processor do
     #{ASCIIDOC_BLANK_HDR}
     INPUT
 <?xml version="1.0" encoding="UTF-8"?>
-<metanorma xmlns="https://www.metanorma.org/ns/standoc" type="semantic" version="1.5.8" schema-version="v2.3.0" flavor="gb">
+<metanorma xmlns="https://www.metanorma.org/ns/standoc" type="semantic" version="1.5.9.pre.alpha.4" schema-version="v2.3.0" flavor="gb">
 <bibdata type="standard">
 
 
