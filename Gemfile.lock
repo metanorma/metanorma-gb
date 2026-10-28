@@ -1,15 +1,4 @@
 GIT
-  remote: https://github.com/metanorma/metanorma-core
-  revision: 698b57287df57893d4b88dee85398596f49fe1cd
-  branch: main
-  specs:
-    metanorma-core (0.2.5.pre.alpha.1)
-      asciidoctor
-      metanorma-taste (~> 1.1.0)
-      metanorma-utils
-      nokogiri (~> 1.19)
-
-GIT
   remote: https://github.com/metanorma/metanorma-iso
   revision: a02a1fbb2072b23d39d6c444bd826d2708339310
   branch: main
@@ -622,6 +611,11 @@ GEM
       mn2pdf (~> 2)
       nokogiri
       relaton-cli
+    metanorma-core (0.2.5.pre.alpha.1)
+      asciidoctor
+      metanorma-taste (~> 1.1.0)
+      metanorma-utils
+      nokogiri (~> 1.19)
     metanorma-document (0.5.2.pre.alpha.2)
       glossarist (~> 2.13)
       lutaml-model (~> 0.8.0)
@@ -1186,7 +1180,7 @@ DEPENDENCIES
   leptris (~> 1.9.384)
   lutaml-model (~> 0.8)
   metanorma
-  metanorma-core!
+  metanorma-core (~> 0.2.5.pre.alpha)
   metanorma-document (~> 0.5.2.pre.alpha)
   metanorma-gb!
   metanorma-iso!
@@ -1358,7 +1352,7 @@ CHECKSUMS
   mechanize (2.14.2) sha256=aaf0a91dad80a2a72f51054780731d42ffed564fc530d6cffa8022717508e23e
   memo_wise (1.13.0) sha256=30220c38c4cef410849bc73553c58664dc2c91c6379e4a1df22aea02358b716b
   metanorma (2.5.5) sha256=25f08487e7ceeb20cf1aa7d597f743cf5b62b8409c392605a3294b24467eb07c
-  metanorma-core (0.2.5.pre.alpha.1)
+  metanorma-core (0.2.5.pre.alpha.1) sha256=6097e11ead9907850da0160afd9b5e03a4226324eba5afc14e97fe8a6c49ec69
   metanorma-document (0.5.2.pre.alpha.2) sha256=7f035f37fed887ec78d06eb7c79097c669f589c639799d6fecbe2ea47b6e7601
   metanorma-gb (1.5.9.pre.alpha.4)
   metanorma-iso (3.5.1.pre.alpha.3)
