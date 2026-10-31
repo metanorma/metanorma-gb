@@ -21,7 +21,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
       .convert("test", pres_output, true)
       .gsub(/^.*<body/m, "<body")
       .gsub(%r{</body>.*}m, "</body>")))
-      .to be_equivalent_to strip_guid(<<~"OUTPUT")
+      .to be_xml_equivalent_to strip_guid(<<~"OUTPUT")
       <body lang="en"><div class="title-section"><p> </p></div><br/><div class="prefatory-section"><p> </p></div><br/><div class="main-section"><br/><div id="_431ef2eb-8396-9bc6-d97f-294b258fa00e" class="TOC"><h1 class="IntroTitle">Contents</h1></div><br/><div id="_54c89430-7522-0f9f-9f62-8fdcefbecfff"><h1 class="ForewordTitle">Foreword</h1><p id="_f06fd0d1-a203-4f3d-a515-0bdba0f8d83f">
         <span class="Hant"><i>Hello</i></span>
         <i>Hello</i>
@@ -57,7 +57,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
     html = File.read("test.html", encoding: "utf-8")
       .sub(/^.*<main class="main-section">/m, '<main class="main-section">')
       .sub(%r{</main>.*$}m, "</main>")
-    expect(strip_guid(html.gsub(/"#[a-f0-9-]+"/, "#_"))).to be_equivalent_to strip_guid(<<~"OUTPUT")
+    expect(strip_guid(html.gsub(/"#[a-f0-9-]+"/, "#_"))).to be_xml_equivalent_to strip_guid(<<~"OUTPUT")
       <main class="main-section"><button onclick="topFunction()" id="myBtn" title="Go to top">Top</button><br /><div id="_terms_and_definitions"><h1 id="_6282a90c-d339-4b0f-bf49-fbf1f6e32bed"><a class="anchor" href="#_terms_and_definitions"></a><a class="header" href="#_terms_and_definitions">1　1.　Terms and definitions</a></h1>
       <p>Prefatory content</p>
       <div id="paddy"><h2 class="TermNum" id="_80ff9f96-900c-47ae-a652-67380cd765e8"><a class="anchor" href="#paddy"></a><a class="header" href="#paddy">1.11.1.</a></h2></div>
@@ -97,7 +97,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
       .convert("test", pres_output, true)
       .gsub(/^.*<body/m, "<body")
       .gsub(%r{</body>.*}m, "</body>")))
-      .to be_equivalent_to strip_guid(<<~"OUTPUT")
+      .to be_xml_equivalent_to strip_guid(<<~"OUTPUT")
       <body lang="zh"><div class="title-section"><p> </p></div><br/><div class="prefatory-section"><p> </p></div><br/><div class="main-section"><br/><div id="_b681feb2-7e1f-2705-1100-e151c7b5d8b4" class="TOC"><h1 class="IntroTitle">目　次</h1></div><div id="_terms_and_definitions"><h1>1　1.　Terms and definitions</h1>
       <p class="TermNum" id="paddy">1.11.1.</p>
 
@@ -148,7 +148,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
     html = File.read("test.html", encoding: "utf-8")
       .sub(/^.*<main class="main-section">/m, '<main class="main-section">')
       .sub(%r{</main>.*$}m, "</main>")
-    expect(strip_guid(html.gsub(/"#[a-f0-9-]+"/, "#_"))).to be_equivalent_to strip_guid(<<~"OUTPUT")
+    expect(strip_guid(html.gsub(/"#[a-f0-9-]+"/, "#_"))).to be_xml_equivalent_to strip_guid(<<~"OUTPUT")
       <main class="main-section"><button onclick="topFunction()" id="myBtn" title="Go to top">Top</button><br /><div id="_terms_and_definitions"><h1 id="_70163ad0-097e-4c09-8b38-6dd5ce82e1d9"><a class="anchor" href="#_terms_and_definitions"></a><a class="header" href="#_terms_and_definitions">1　1.　Terms and definitions</a></h1>
       <div id="paddy"><h2 class="TermNum" id="_5bd7da56-e9f5-45ec-8164-eab92ddb1af2"><a class="anchor" href="#paddy"></a><a class="header" href="#paddy">1.11.1.</a></h2></div>
 
@@ -194,7 +194,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
     html = File.read("test.html", encoding: "utf-8")
       .sub(/^.*<main class="main-section">/m, '<main class="main-section">')
       .sub(%r{</main>.*$}m, "</main>")
-    expect(strip_guid(html.gsub(/"#[a-f0-9-]+"/, "#_"))).to be_equivalent_to strip_guid(<<~"OUTPUT")
+    expect(strip_guid(html.gsub(/"#[a-f0-9-]+"/, "#_"))).to be_xml_equivalent_to strip_guid(<<~"OUTPUT")
       <main class="main-section"><button onclick="topFunction()" id="myBtn" title="Go to top">Top</button><br /><div id="_terms_and_definitions"><h1 id="_d1bc3c9e-881d-424d-b7dc-df1a97d2db1d"><a class="anchor" href="#_terms_and_definitions"></a><a class="header" href="#_terms_and_definitions">1　1.　Terms and definitions</a></h1>
       <div id="paddy"><h2 class="TermNum" id="_18802305-d682-4648-b549-9c7f7c01efcb"><a class="anchor" href="#paddy"></a><a class="header" href="#paddy">1.11.1.</a></h2></div>
 

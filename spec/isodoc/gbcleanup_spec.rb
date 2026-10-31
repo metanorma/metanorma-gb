@@ -18,7 +18,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
       .convert("test", pres_output, true)
       .gsub(/^.*<body/m, "<body")
       .gsub(%r{</body>.*}m, "</body>")))
-      .to be_equivalent_to strip_guid(<<~"OUTPUT")
+      .to be_xml_equivalent_to strip_guid(<<~"OUTPUT")
 <body lang="zh"><div class="title-section"><p> </p></div><br/><div class="prefatory-section"><p> </p></div><br/><div class="main-section"></div></body>
     OUTPUT
   end
@@ -39,7 +39,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
       .convert("test", pres_output, true)
       .gsub(/^.*<body/m, "<body")
       .gsub(%r{</body>.*}m, "</body>")))
-      .to be_equivalent_to strip_guid(<<~"OUTPUT")
+      .to be_xml_equivalent_to strip_guid(<<~"OUTPUT")
 <body lang="zh"><div class="title-section"><p> </p></div><br/><div class="prefatory-section"><p> </p></div><br/><div class="main-section"></div></body>
     OUTPUT
   end
@@ -53,7 +53,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
 </bibdata>
 </gb-standard>
     INPUT
-    expect(gbc.cleanup(Nokogiri::XML(<<~"INPUT")).to_s).to be_equivalent_to <<~"OUTPUT"
+    expect(gbc.cleanup(Nokogiri::XML(<<~"INPUT")).to_s).to be_xml_equivalent_to <<~"OUTPUT"
     <html>
     <body>
         <p class="zzContents">Text</p>
@@ -85,7 +85,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
 </bibdata>
 </gb-standard>
     INPUT
-    expect(gbc.cleanup(Nokogiri::XML(<<~"INPUT")).to_s).to be_equivalent_to <<~"OUTPUT"
+    expect(gbc.cleanup(Nokogiri::XML(<<~"INPUT")).to_s).to be_xml_equivalent_to <<~"OUTPUT"
     <html>
     <body>
         <p class="Terms" lang="zh">Text</p>
@@ -135,7 +135,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
     INPUT
     word = File.read("test.doc", encoding: "utf-8").sub(/^.*<div class="WordSection2">/m, '<div class="WordSection2">').
       sub(%r{<p class="MsoNormal">\s*<br clear="all" class="section"/>\s*</p>\s*<div class="WordSection3">.*$}m, "")
-    expect(word.gsub(/_Toc\d\d+/, "_Toc")).to be_equivalent_to <<~'OUTPUT'
+    expect(word.gsub(/_Toc\d\d+/, "_Toc")).to be_xml_equivalent_to <<~'OUTPUT'
 <div class="WordSection2"><p class="MsoNormal"></p>zzContents style='margin-top:0cm'&gt;Contents<p class="MsoNormal">&#xA0;</p></div>
     
 OUTPUT

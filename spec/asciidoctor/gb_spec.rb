@@ -9,7 +9,7 @@ RSpec.describe Asciidoctor::Gb do
   end
 
   it "processes a blank document" do
-    expect(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)).to be_equivalent_to <<~"OUTPUT"
+    expect(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)).to be_xml_equivalent_to(<<~"OUTPUT").with_profile(:spec_friendly)
 
     #{ASCIIDOC_BLANK_HDR}
     INPUT
@@ -110,7 +110,7 @@ RSpec.describe Asciidoctor::Gb do
     FileUtils.rm_f "test.doc"
     FileUtils.rm_f "test.pdf"
     css_before = File.read("htmlstyle.css")
-    expect(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)).to be_equivalent_to <<~"OUTPUT"
+    expect(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)).to be_xml_equivalent_to(<<~"OUTPUT").with_profile(:spec_friendly)
 
       = Document title
       Author
@@ -332,7 +332,7 @@ RSpec.describe Asciidoctor::Gb do
 
   it "does contributor cleanup" do
     FileUtils.rm_f "test.doc"
-    expect(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)).to be_equivalent_to <<~"OUTPUT"
+    expect(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)).to be_xml_equivalent_to(<<~"OUTPUT").with_profile(:spec_friendly)
 
       = Document title
       Author
@@ -445,7 +445,7 @@ RSpec.describe Asciidoctor::Gb do
   end
 
     it "strips any initial boilerplate from terms and definitions" do
-    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
+    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true))).to be_xml_equivalent_to(<<~"OUTPUT").with_profile(:spec_friendly)
 
       #{ASCIIDOC_BLANK_HDR}
       == Terms and Definitions
@@ -597,7 +597,7 @@ RSpec.describe Asciidoctor::Gb do
   end
 
     it "does not strip any initial boilerplate from terms and definitions if keep-boilerplate attribute" do
-    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
+    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true))).to be_xml_equivalent_to(<<~"OUTPUT").with_profile(:spec_friendly)
 
       = Document title
       Author
@@ -738,7 +738,7 @@ RSpec.describe Asciidoctor::Gb do
   end
 
   it "processes ISO inline_quoted formatting" do
-    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)).sub(/\A<\?xml[^>]*\?>\s*/, "")).to be_equivalent_to <<~"OUTPUT"
+    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)).sub(/\A<\?xml[^>]*\?>\s*/, "")).to be_xml_equivalent_to(<<~"OUTPUT").with_profile(:spec_friendly)
       #{ASCIIDOC_BLANK_HDR}
 
       _emphasis_
@@ -906,7 +906,7 @@ RSpec.describe Asciidoctor::Gb do
   end
 
   it "processes GB inline_quoted formatting" do
-    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
+    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true))).to be_xml_equivalent_to(<<~"OUTPUT").with_profile(:spec_friendly)
 
     #{ASCIIDOC_BLANK_HDR}
 
@@ -1015,7 +1015,7 @@ RSpec.describe Asciidoctor::Gb do
   end
 
   it "extracts localised strings by content" do
-    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
+    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true))).to be_xml_equivalent_to(<<~"OUTPUT").with_profile(:spec_friendly)
 
     #{ASCIIDOC_BLANK_HDR}
     [deprecated]#deprecated 被取代#
@@ -1124,7 +1124,7 @@ RSpec.describe Asciidoctor::Gb do
   end
 
   it "extracts tagged localised strings" do
-    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
+    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true))).to be_xml_equivalent_to(<<~"OUTPUT").with_profile(:spec_friendly)
 
       #{ASCIIDOC_BLANK_HDR}
       [bibliography]
@@ -1240,7 +1240,7 @@ RSpec.describe Asciidoctor::Gb do
 
     it "fetches simple GB reference in English" do
     mock_gbbib_get_123("en")
-    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
+    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true))).to be_xml_equivalent_to(<<~"OUTPUT").with_profile(:spec_friendly)
 
       #{ISOBIB_BLANK_HDR}
       
@@ -1387,7 +1387,7 @@ RSpec.describe Asciidoctor::Gb do
 
      it "fetches simple GB reference in Chinese" do
     mock_gbbib_get_123("zh")
-    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)).sub(%r{<bibdata.*</bibdata>}m, "")).to be_equivalent_to <<~"OUTPUT"
+    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)).sub(%r{<bibdata.*</bibdata>}m, "")).to be_xml_equivalent_to(<<~"OUTPUT").with_profile(:spec_friendly)
 
       #{ISOBIB_BLANK_HDR_ZH}
 

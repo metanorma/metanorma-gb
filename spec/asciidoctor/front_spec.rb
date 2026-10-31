@@ -3,7 +3,7 @@ require "spec_helper"
 
 RSpec.describe Asciidoctor::Gb do
   it "processes metadata" do
-    expect(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)).to be_equivalent_to <<~"OUTPUT"
+    expect(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)).to be_xml_equivalent_to <<~"OUTPUT"
 
       = Document title
       Author
@@ -90,7 +90,7 @@ RSpec.describe Asciidoctor::Gb do
   end
 
   it "processes metadata" do
-    expect(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)).to be_equivalent_to <<~"OUTPUT"
+    expect(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)).to be_xml_equivalent_to <<~"OUTPUT"
 
       = Document title
       Author
@@ -139,7 +139,7 @@ RSpec.describe Asciidoctor::Gb do
   end
 
   it "processes metadata" do
-    expect(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)).to be_equivalent_to <<~"OUTPUT"
+    expect(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)).to be_xml_equivalent_to <<~"OUTPUT"
 
       = Document title
       Author
@@ -180,7 +180,7 @@ RSpec.describe Asciidoctor::Gb do
   end
 
   it "processes metadata" do
-    expect(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)).to be_equivalent_to <<~"OUTPUT"
+    expect(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)).to be_xml_equivalent_to <<~"OUTPUT"
 
       = Document title
       Author
@@ -223,7 +223,7 @@ RSpec.describe Asciidoctor::Gb do
   end
 
   it "processes metadata" do
-    expect(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)).to be_equivalent_to <<~"OUTPUT"
+    expect(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)).to be_xml_equivalent_to <<~"OUTPUT"
 
       = Document title
       Author
@@ -267,7 +267,7 @@ RSpec.describe Asciidoctor::Gb do
   end
 
   it "processes metadata" do
-    expect(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)).to be_equivalent_to <<~"OUTPUT"
+    expect(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true)).to be_xml_equivalent_to <<~"OUTPUT"
 
       = Document title
       Author
@@ -309,7 +309,7 @@ RSpec.describe Asciidoctor::Gb do
   end
 
   it "processes metadata" do
-    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
+    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true))).to be_xml_equivalent_to <<~"OUTPUT"
 
       = Document title
       Author
