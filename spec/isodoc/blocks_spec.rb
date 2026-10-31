@@ -20,7 +20,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
       .convert("test", pres_output, true)
       .gsub(/^.*<body/m, "<body")
       .gsub(%r{</body>.*}m, "</body>")))
-      .to be_equivalent_to strip_guid(<<~"OUTPUT")
+      .to be_xml_equivalent_to(strip_guid(<<~"OUTPUT")).with_profile(:spec_friendly)
       <body lang="en"><div class="title-section"><p> </p></div><br/><div class="prefatory-section"><p> </p></div><br/><div class="main-section"><br/><div id="_431ef2eb-8396-9bc6-d97f-294b258fa00e" class="TOC"><h1 class="IntroTitle">Contents</h1></div><br/><div id="_dc33a740-6584-3234-81be-fdd0c2742799"><h1 class="ForewordTitle">Foreword</h1><table id="A" class="Note" style="page-break-after: avoid;page-break-inside: avoid;"><tr><td class="example_label" style="padding:2pt 2pt 2pt 2pt;vertical-align:top;">NOTE: </td><td style="vertical-align:top;" class="Note">
       NOTENOTE　
         <p id="_f06fd0d1-a203-4f3d-a515-0bdba0f8d83f">These results are based on a study carried out on three different types of kernel.</p>
@@ -50,7 +50,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
       .convert("test", pres_output, true)
       .gsub(/^.*<body/m, "<body")
       .gsub(%r{</body>.*}m, "</body>")))
-      .to be_equivalent_to strip_guid(<<~"OUTPUT")
+      .to be_xml_equivalent_to(strip_guid(<<~"OUTPUT")).with_profile(:spec_friendly)
       <body lang="en"><div class="title-section"><p> </p></div><br/><div class="prefatory-section"><p> </p></div><br/><div class="main-section"><br/><div id="_431ef2eb-8396-9bc6-d97f-294b258fa00e" class="TOC"><h1 class="IntroTitle">Contents</h1></div><br/><div id="_909633b1-dc37-99e5-6b1d-5b5d7ac3ef6c"><h1 class="ForewordTitle">Foreword</h1><table id="note1" class="Note"><tr><td class="example_label" style="padding:2pt 2pt 2pt 2pt;vertical-align:top;">NOTE  1: </td><td style="vertical-align:top;" class="Note">
       NOTE 1NOTE  1　
         <p id="_f06fd0d1-a203-4f3d-a515-0bdba0f8d83f">These results are based on a study carried out on three different types of kernel.</p>
@@ -80,7 +80,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
       .convert("test", pres_output, true)
       .gsub(/^.*<body/m, "<body")
       .gsub(%r{</body>.*}m, "</body>")))
-      .to be_equivalent_to strip_guid(<<~"OUTPUT")
+      .to be_xml_equivalent_to(strip_guid(<<~"OUTPUT")).with_profile(:spec_friendly)
       <body lang="en"><div class="title-section"><p> </p></div><br/><div class="prefatory-section"><p> </p></div><br/><div class="main-section"><br/><div id="_431ef2eb-8396-9bc6-d97f-294b258fa00e" class="TOC"><h1 class="IntroTitle">Contents</h1></div><br/><div id="_7ce251a3-9631-7385-5d6c-99b32d03dde2"><h1 class="ForewordTitle">Foreword</h1><table class="Note"><tr><td class="example_label" style="padding:2pt 2pt 2pt 2pt;vertical-align:top;">NOTE: </td><td style="vertical-align:top;" class="Note">
       NOTENOTE　
         <p id="_f06fd0d1-a203-4f3d-a515-0bdba0f8d83f">These results are based on a study carried out on three different types of kernel.</p>
@@ -112,7 +112,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
       .convert("test", pres_output, true)
       .gsub(/^.*<body/m, "<body")
       .gsub(%r{</body>.*}m, "</body>")))
-      .to be_equivalent_to strip_guid(<<~"OUTPUT")
+      .to be_xml_equivalent_to(strip_guid(<<~"OUTPUT")).with_profile(:spec_friendly)
       <body lang="en"><div class="title-section"><p> </p></div><br/><div class="prefatory-section"><p> </p></div><br/><div class="main-section"><br/><div id="_431ef2eb-8396-9bc6-d97f-294b258fa00e" class="TOC"><h1 class="IntroTitle">Contents</h1></div><br/><div id="_c92508ef-3341-a2ce-ecb5-229deec0ac8d"><h1 class="ForewordTitle">Foreword</h1><table class="Note"><tr><td class="example_label" style="padding:2pt 2pt 2pt 2pt;vertical-align:top;">NOTE: </td><td style="vertical-align:top;" class="Note">
       NOTENOTE　
       <div class="figdl"><dl><dt><p>A</p></dt><dd><p>B</p></dd></dl></div>
@@ -146,7 +146,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
       .convert("test", pres_output, true)
       .gsub(/^.*<body/m, "<body")
       .gsub(%r{</body>.*}m, "</body>")))
-      .to be_equivalent_to strip_guid(<<~"OUTPUT")
+      .to be_xml_equivalent_to(strip_guid(<<~"OUTPUT")).with_profile(:spec_friendly)
       <body lang="en"><div class="title-section"><p> </p></div><br/><div class="prefatory-section"><p> </p></div><br/><div class="main-section"><br/><div id="_431ef2eb-8396-9bc6-d97f-294b258fa00e" class="TOC"><h1 class="IntroTitle">Contents</h1></div><br/><div id="_c0ba0d7e-b5b6-23a3-376c-15939eaec524"><h1 class="ForewordTitle">Foreword</h1><div id="_be9158af-7e93-4ee2-90c5-26d31c181934"><div class="formula">　　(1)</div>
 
       <p>where
@@ -186,7 +186,7 @@ RSpec.describe IsoDoc::Gb::HtmlConvert do
         .convert("test", pres_output, true)
         .gsub(/^.*<body/m, "<body")
         .gsub(%r{</body>.*}m, "</body>")))
-        .to be_equivalent_to strip_guid(<<~"OUTPUT")
+        .to be_xml_equivalent_to(strip_guid(<<~"OUTPUT")).with_profile(:spec_friendly)
         <body lang="en"><div class="title-section"><p> </p></div><br/><div class="prefatory-section"><p> </p></div><br/><div class="main-section"><br/><div id="_51f71510-ce18-7db8-84af-dbaa1d3c48ac" class="TOC"><h1 class="IntroTitle">Contents</h1></div><div id="_terms_and_definitions"><h1>1　1.　Terms and Definitions</h1>
 
         <p class="TermNum" id="paddy">1.11.1.</p>

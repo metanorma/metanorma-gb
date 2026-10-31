@@ -3,7 +3,7 @@ require "spec_helper"
 
 RSpec.describe Asciidoctor::Gb do
   it "processes sections" do
-    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
+    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true))).to be_xml_equivalent_to <<~"OUTPUT"
 
       #{ASCIIDOC_BLANK_HDR}
       
@@ -168,7 +168,7 @@ OUTPUT
   end
 
   it "processes sections in Simplified Chinese" do
-    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
+    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true))).to be_xml_equivalent_to <<~"OUTPUT"
 
       #{ASCIIDOC_BLANK_HDR_ZH}
 
@@ -329,7 +329,7 @@ OUTPUT
   end
 
     it "processes empty terms & definitions" do
-    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true))).to be_equivalent_to <<~"OUTPUT"
+    expect(strip_guid(Asciidoctor.convert(<<~"INPUT", backend: :gb, header_footer: true))).to be_xml_equivalent_to <<~"OUTPUT"
 
       #{ASCIIDOC_BLANK_HDR}
 

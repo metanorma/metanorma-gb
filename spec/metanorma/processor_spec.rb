@@ -14,7 +14,7 @@ RSpec.describe Metanorma::Gb::Processor do
   end
 
   it "registers output formats against metanorma" do
-    expect(processor.output_formats.sort.to_s).to be_equivalent_to <<~"OUTPUT"
+    expect(processor.output_formats.sort.to_s).to be_xml_equivalent_to <<~"OUTPUT"
 [[:compliant_html, "compliant.html"], [:doc, "doc"], [:html, "html"], [:pdf, "pdf"], [:presentation, "presentation.xml"], [:rxl, "rxl"], [:xml, "xml"]]
     OUTPUT
   end
@@ -24,7 +24,7 @@ RSpec.describe Metanorma::Gb::Processor do
   end
 
   it "generates IsoDoc XML from a blank document" do
-    expect(processor.input_to_isodoc(<<~"INPUT", nil)).to be_equivalent_to <<~"OUTPUT"
+    expect(processor.input_to_isodoc(<<~"INPUT", nil)).to be_xml_equivalent_to <<~"OUTPUT"
 
     #{ASCIIDOC_BLANK_HDR}
     INPUT
@@ -72,7 +72,7 @@ RSpec.describe Metanorma::Gb::Processor do
         </sections>
         </gb-standard>
     INPUT
-    expect(File.read("test.html", encoding: "utf-8").gsub(%r{^.*<main}m, "<main").gsub(%r{</main>.*}m, "</main>")).to be_equivalent_to <<~"OUTPUT"
+    expect(File.read("test.html", encoding: "utf-8").gsub(%r{^.*<main}m, "<main").gsub(%r{</main>.*}m, "</main>")).to be_xml_equivalent_to <<~"OUTPUT"
 <main class="main-section"></main>
     OUTPUT
   end
