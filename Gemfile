@@ -10,7 +10,7 @@ gem "relaton-bib", "~> 2.2.0.pre.alpha.1"
 gem "pubid", "~> 2.0"
 gem "lutaml-model", "~> 0.8"
 gem "leptris", "~> 1.9.384"
-gem "moxml", "~> 0.5"
+gem "moxml", "~> 0.6.0"
 
 # isodoc runs as a git gem here (SCSS on board), so the CSS pipeline needs the embedded compiler
 
