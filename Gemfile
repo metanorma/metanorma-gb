@@ -17,12 +17,12 @@ gem "sassc-embedded", "~> 1.80"
 
 # The TEMPORARY cross-PR pins (standoc#1232, document#45, iso
 # model-validation-migration, core#18, mirror svgmap handlers) all merged.
-gem "metanorma-standoc", "~> 3.5.1.pre.alpha"
-gem "metanorma-document", "~> 0.5.2.pre.alpha"
-gem "isodoc", "~> 3.7.4.pre.alpha"
+gem "metanorma-standoc", "~> 3.5.7"
+gem "metanorma-document", "~> 0.5.3"
+gem "isodoc", "~> 3.7.9"
 
 eval_gemfile("Gemfile.devel") rescue nil
 
 gem "metanorma-mirror", github: "metanorma/metanorma-mirror", branch: "main"
 gem "metanorma-iso", github: "metanorma/metanorma-iso", branch: "main"
-gem "metanorma-core", "~> 0.2.5.pre.alpha" # published flavor/taste table (metanorma-core#18)
+gem "metanorma-core", "~> 0.2.7" # published flavor/taste table (metanorma-core#18)
