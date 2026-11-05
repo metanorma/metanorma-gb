@@ -6,7 +6,6 @@ gemspec
 # Canonical dependency line: relaton 3.x prerelease monogem across the fleet.
 gem "relaton", "~> 3.0"
 gem "relaton-render", "~> 3.0"
-gem "relaton-bib", "~> 2.2.0.pre.alpha.1"
 gem "pubid", "~> 2.0"
 gem "lutaml-model", "~> 0.8"
 gem "leptris", "~> 1.9.384"
