@@ -1,0 +1,8 @@
+
+= Document title
+Author
+:docfile: test.adoc
+:nodoc:
+:novalid:
+:language: en
+:script: Latn
