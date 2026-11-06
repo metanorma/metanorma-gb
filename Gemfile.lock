@@ -627,7 +627,7 @@ GEM
       ogc-gml (~> 1.1)
     metanorma-plugin-plantuml (1.0.16)
       asciidoctor
-    metanorma-standoc (3.5.10)
+    metanorma-standoc (3.5.11)
       addressable (~> 2.8)
       asciidoctor (~> 2.0.0)
       concurrent-ruby
@@ -1299,7 +1299,7 @@ CHECKSUMS
   metanorma-plugin-glossarist (0.5.2) sha256=d1b05bf76162412d7cabe2c99034a287fdf684f822d87eff762fcaf64a35766e
   metanorma-plugin-lutaml (0.7.63) sha256=58b0202080481f2d3c470a54ee3b9d87827f7ac7c1591a90a43fbc1333a7b2c9
   metanorma-plugin-plantuml (1.0.16) sha256=0152005ce066a1f91db71465ca905dc1399f01d946574c76c95ba83e19fd8d75
-  metanorma-standoc (3.5.10) sha256=8ea6bf533a7d669594e2d8069dba55d07514e0f8a5e1bd44663b461746c7831a
+  metanorma-standoc (3.5.11) sha256=dd14529517b71ca8de23b7a000f432f9605c56a50de4c64d0b083909e05bd7bf
   metanorma-taste (1.1.2) sha256=dc520440018880a219bd6ff090eb095255db96768cca532f9bdad2dc00908448
   metanorma-utils (2.0.11) sha256=ca060b13209bb7cab3d6b612905116bfd04588c63f6d75e5eab405c2dbaebf50
   method_source (1.1.0) sha256=181301c9c45b731b4769bc81e8860e72f9161ad7d66dd99103c9ab84f560f5c5
