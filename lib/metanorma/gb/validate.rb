@@ -95,15 +95,22 @@ module Metanorma
       end
 
       def check_bilingual(t, element)
-        zh = designation_text(t, element, "zh")
-        en = designation_text(t, element, "en")
+        zh = bilingual_designation_text(t, element, "zh")
+        en = bilingual_designation_text(t, element, "en")
         en.empty? && !zh.empty? && @log.add(:GB_13, t, params: [element, zh])
         !en.empty? && zh.empty? && @log.add(:GB_14, t, params: [element, en])
       end
 
       # The designation's language can sit on the element or on the
       # string it carries; the model emits both shapes.
-      def designation_text(t, element, lang)
+      #
+      # Not `designation_text`: metanorma-standoc's Validate gained its own
+      # single-argument `designation_text(name)` (the STANDOC_24
+      # duplicate-designation check), and this class inherits
+      # `preferred_validate` from it. Shadowing that method with a
+      # three-argument helper made the inherited check raise
+      # ArgumentError (mn-samples-gb#55).
+      def bilingual_designation_text(t, element, lang)
         t.xpath(".//#{element}").each do |d|
           s = d.xpath(".//string[@language = '#{lang}']")
           return s.map(&:text).join unless s.empty?
